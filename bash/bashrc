@@ -63,6 +63,11 @@ alias ni="nonet"
 alias info="pinfo"
 alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to preserve env when editing
 
+# Explanation: list x clients; don't match in color; only display the parts that match; use pcre; 
+# (Any amount of whitespace; 'Command:'; any amount of whitespace) <-- don't match that, just assert it
+# Match any sequence of alphabetical characters given the previous assertion
+alias xlsprograms='xlsclients -l | grep --color=never -oxP "(\s+Command:\s+)\K[a-zA-Z]+"'
+
 function vi()
 {
 	echo "Nope."
