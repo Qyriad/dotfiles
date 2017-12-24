@@ -1,0 +1,96 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="tabIcon.js"></script>
+		<script src="nocontext.js"></script>
+		<style type="text/css">
+			div.divRow {
+				color: black;
+				background-color: pink;
+				padding-top: 0px;
+				padding-left: 0px;
+				padding-right: 0px;
+				white-space: nowrap;
+				border: 1px solid black;
+				width: 621px;
+				height: 29px;
+				overflow: hidden;
+			}
+			div.divRow:hover {
+				cursor: pointer;
+				color: white;
+				background-color:green;
+			}
+			img.favicon {
+				width: 16px;
+				height: 16px;
+				padding-left: 3px;
+				padding-top: 5px;
+			}
+			div.divEdit {
+				min-width: 526px;
+				max-width: 526px;
+				min-height: 21px;
+				max-height: 21px;
+				margin-top: -5px;
+				width: 555px;
+				display: inline-block;
+				overflow: hidden;
+			}
+			font.fontEdit {
+				font-family: Times New Roman;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body id="body" bgcolor="#CFECEC" style="overflow-x:hidden; overflow-y:hidden; margin:0; font-family:Times New Roman; font-size:16px;">
+		<center>
+			<table cellspacing="0" cellpadding="0" style="max-width:630px; min-width:630px;">
+				<tr>
+					<td>
+						<center>
+							<button id="addRule">Add Rule</button>
+							<button id="undoDelete" disabled="disabled">Undo Delete</button>
+							<button id="help">Help</button>
+							<input type="file" accept="image/*" id="openFile" hidden="hidden"></input>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="24px">
+						<div style="border-left:1px solid black; border-top:1px solid black; border-bottom:1px solid black; height:22px; padding-top:3px; background-color:yellow;">
+							<img src="icon16.png" style="padding-left:3px; padding-top:1px;"></img>
+						</div>
+					</td>
+					<td width="599px">
+						<div style="border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; border-bottom:1px solid black; height:22px; padding-top:3px; background-color:yellow;">
+							<center>URL Rule</center>
+						</div>
+					</td>
+					<td width="18px">
+					</td>
+				</tr>
+			</table>
+			<table style="border-spacing:2px;">
+				<tr>
+					<td style="padding:0px;">
+						<div id="0" style="padding:0; margin:0; overflow-x:hidden; overflow-y:auto; min-width:640px; max-width:640px;">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</center>
+		<div id="transparentGlass" style="z-index:20; display:none; opacity:0; background-color:white; overflow:hidden; position:absolute; left:0px; top:0px; width:100%; min-height:100%;">
+		</div>
+		<div id="myEditBoxDiv" style="border:0px; position:absolute; opacity:1; z-index:30; left:0; top:0; height:22px; width:526px; display:none;">
+			<input type="text" id="myEditBox" style="border:0; padding-top:4px; height:22px; width:526px; font-family:Times New Roman; font-size:16px;"></input>
+		</div>
+	</body>
+</html>

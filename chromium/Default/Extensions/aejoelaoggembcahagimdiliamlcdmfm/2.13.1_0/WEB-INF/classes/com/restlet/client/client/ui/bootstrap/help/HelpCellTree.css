@@ -1,0 +1,71 @@
+/*
+ * Copyright 2010-2017 Restlet S.A.S. All rights reserved.
+ * Restlet is registered trademark of Restlet S.A.S.
+ */
+.cellTreeWidget {
+
+}
+
+.cellTreeEmptyMessage {
+    padding-left: 16px;
+    font-style: italic;
+}
+
+.cellTreeItem {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    cursor: hand;
+    cursor: pointer;
+    zoom: 1;
+}
+
+.cellTreeItemImage {
+
+}
+
+.cellTreeItemImageValue {
+    zoom: 1;
+}
+
+.cellTreeItemValue {
+    padding-left: 3px;
+    padding-right: 3px;
+    outline: none;
+}
+
+.cellTreeOpenItem {
+
+}
+
+.cellTreeTopItem {
+    font-weight: bold;
+    color: #4b4a4a;
+    /* margin-top: 20px; */
+    padding: 3px 13px 3px 10px !important;
+}
+
+.cellTreeTopItemImage {
+
+}
+
+.cellTreeTopItemImageValue {
+    padding-bottom: 1px;
+}
+
+.cellTreeKeyboardSelectedItem {
+    background-color: #ffc;
+    outline: none;
+}
+
+.cellTreeSelectedItem {
+    /* gwt-image: 'cellTreeSelectedBackground'; */
+    background-color: white;
+    /* color: white; */
+    height: auto;
+    overflow: visible;
+}
+
+.cellTreeShowMoreButton {
+    padding-left: 16px;
+    outline: none;
+}

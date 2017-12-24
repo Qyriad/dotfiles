@@ -1,0 +1,354 @@
+{
+	"already_mounted_message": {
+		"message": "Filsystemet er allerede tilkoblet."
+	},
+	"backup_prefs": {
+		"message": "Lagre en sikkerhetskopi"
+	},
+	"bad_destination": {
+		"message": "Kan ikke analysere destinasjonen: $1",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"before_unload": {
+		"message": "Hvis du lukker denne fanen, avsluttes nåværende økt."
+	},
+	"cancel_button_label": {
+		"message": "Avbryt"
+	},
+	"cmd_ssh_forget_host_help": {
+		"message": "Denne kommandoen viser en meny med kjente verter, og ber verten om å glemme."
+	},
+	"cmd_ssh_forget_host_title": {
+		"message": "Glem en kjent ssh-vert."
+	},
+	"cmd_ssh_help": {
+		"message": "Parametrene |username| og |hostname| er obligatorisk, men |port| er valgfritt. Hvis porten ikke er spesifisert, settes den til 22 som standard."
+	},
+	"cmd_ssh_title": {
+		"message": "Åpner en ny SSH-økt."
+	},
+	"command_complete": {
+		"message": "$1-kommandoen ble avsluttet med statuskoden $2.",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			},
+			"2": {
+				"content": "$2"
+			}
+		}
+	},
+	"connect_button_label": {
+		"message": "Koble til"
+	},
+	"connect_or_exit_message": {
+		"message": "Vil du velge en annen tilkobling (C) eller avslutte (X)?"
+	},
+	"connecting": {
+		"message": "Kobler til $1 …",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"console_crosh_options_notice": {
+		"message": "Visste du at det finnes en dedikert side for alternativer?\nDu trenger ikke å fikle med term_ direkte lenger!\nTrykk på $1 for å åpne den, eller klikk på:\n$2",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			},
+			"2": {
+				"content": "$2"
+			}
+		}
+	},
+	"console_nassh_options_notice": {
+		"message": "Visste du at det finnes en dedikert side for alternativer?\nDu trenger ikke å fikle med term_ direkte lenger!\n$1",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"del_keycap": {
+		"message": "[DEL]"
+	},
+	"delete_button_label": {
+		"message": "Slett"
+	},
+	"disconnect_message": {
+		"message": "NaCl-programtillegget ble avsluttet med statuskoden $1.",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"enter_keycap": {
+		"message": "[ENTER]"
+	},
+	"field_argstr_placeholder": {
+		"message": "ekstra argumenter for kommandolinjen"
+	},
+	"field_description_aria_label": {
+		"message": "beskrivelse"
+	},
+	"field_description_placeholder": {
+		"message": "brukernavn@vertsnavn eller tekst i et fritt format"
+	},
+	"field_hostname_aria_label": {
+		"message": "vertsnavn"
+	},
+	"field_hostname_placeholder": {
+		"message": "vertsnavn"
+	},
+	"field_mount_path_placeholder": {
+		"message": "standardbanen er brukerens startkatalog"
+	},
+	"field_port_aria_label": {
+		"message": "port"
+	},
+	"field_port_placeholder": {
+		"message": "port"
+	},
+	"field_relay_options_aria_label": {
+		"message": "alternativer for relétjener"
+	},
+	"field_relay_options_placeholder": {
+		"message": "Alternativer for SSH-relétjener"
+	},
+	"field_terminal_profile_placeholder": {
+		"message": "standard"
+	},
+	"field_username_aria_label": {
+		"message": "brukernavn"
+	},
+	"field_username_placeholder": {
+		"message": "brukernavn"
+	},
+	"found_relay": {
+		"message": "Fant denne relétjeneren: $1",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"identity_label": {
+		"message": "Identitet"
+	},
+	"import_link_aria_label": {
+		"message": "filimport"
+	},
+	"import_link_label": {
+		"message": "Importér…"
+	},
+	"initializing_relay": {
+		"message": "Ser etter relétjeneren via $1",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"json_parse_error": {
+		"message": "Kunne ikke parse JSON i «$1»: $2",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			},
+			"2": {
+				"content": "$2"
+			}
+		}
+	},
+	"known_hosts_empty": {
+		"message": "Ingen kjente verter, ingenting å glemme."
+	},
+	"known_hosts_prompt": {
+		"message": "Velg en vert du kan glemme [1–$1]:",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"known_hosts_title": {
+		"message": "Kjente verter:"
+	},
+	"loading_label": {
+		"message": "Laster inn …"
+	},
+	"missing_param": {
+		"message": "Manglende parameter: $1",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"mount_button_label": {
+		"message": "SFTP-tilkobling"
+	},
+	"mount_path_label": {
+		"message": "Innsettingsbane"
+	},
+	"mounted_message": {
+		"message": "Tilkoblet."
+	},
+	"notify_copy": {
+		"message": "Utvalget er kopiert"
+	},
+	"ok_button_label": {
+		"message": "OK"
+	},
+	"omnibox_default": {
+		"message": "<url><match>user@hostname[:port]</match></url> Koble til en lagret profil eller et nytt SSH-system"
+	},
+	"open_as_window_tip": {
+		"message": "[Profftips] Bruk «Åpne som vindu» for å hindre at terminalen lukkes av Ctrl+W.\n[Profftips] Se $1 for å få mer informasjon.",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"options_button_label": {
+		"message": "Alternativer"
+	},
+	"plugin_loading": {
+		"message": "Laster inn NaCl-programtillegget …"
+	},
+	"plugin_loading_complete": {
+		"message": "ferdig."
+	},
+	"plugin_loading_failed": {
+		"message": " Mislyktes"
+	},
+	"pref_backup_filename": {
+		"message": "Sikkerhetskopi av Secure Shell-innstillinger.json"
+	},
+	"preferences_header": {
+		"message": "Profilinnstillinger"
+	},
+	"preferences_reset": {
+		"message": "Alle innstillingene er tilbakestilt."
+	},
+	"reconnect_message": {
+		"message": "Vil du koble til på nytt (R), velge en annen tilkobling (C) eller avslutte (X)?"
+	},
+	"relay_retry": {
+		"message": "Prøver på nytt …"
+	},
+	"restore_prefs": {
+		"message": "Gjenopprett fra sikkerhetskopi"
+	},
+	"shortcut_list_aria_label": {
+		"message": "lagrede tilkoblinger"
+	},
+	"ssh_argstr_label": {
+		"message": "SSH-argumenter"
+	},
+	"terminal_preview_label": {
+		"message": "Forhåndsvisning"
+	},
+	"terminal_profile_label": {
+		"message": "Nåværende profil"
+	},
+	"tip_1": {
+		"message": "Du kan holde inne Ctrl (Cmd på macOS) mens du klikker på linkene for å åpne dem."
+	},
+	"tip_10": {
+		"message": "Når du kjører i et vindu, kan du trykke på Ctrl+Shift+N for å åpne en ny økt."
+	},
+	"tip_11": {
+		"message": "Du kan binde taster/hurtigtaster på nytt: https://goo.gl/LWRndr"
+	},
+	"tip_2": {
+		"message": "Vis varsler i nettleseren med hterm-notify: https://goo.gl/ZNxGdF"
+	},
+	"tip_3": {
+		"message": "Koble til fra multifunksjonsfeltet ved å skrive inn «ssh <profilnavn>»: https://goo.gl/V7o8ki"
+	},
+	"tip_4": {
+		"message": "Chrome OS kan sette inn filsystemer via SFTP og bla gjennom dem via Filer-appen. Bruk «SFTP Mount» i stedet for «Connect»."
+	},
+	"tip_5": {
+		"message": "Koble til med «ssh://»-linker på nettsider, eller lagre et bokmerke: https://goo.gl/zS8EZD"
+	},
+	"tip_6": {
+		"message": "Legg til farger for utdata/ledetekst med 16 farger, 256 farger eller 24-bits farger: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+	},
+	"tip_7": {
+		"message": "Kopiér fra Emacs/Vim/osv. til utklippstavlen med OSC-52: https://goo.gl/XSnyLo"
+	},
+	"tip_8": {
+		"message": "Chat med andre hterm/SSH-brukere via chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+	},
+	"tip_9": {
+		"message": "Funnet en feil? Vil du be oss om å legge til en ny funksjon? Si fra til oss: https://goo.gl/vb94JY"
+	},
+	"unexpected_error": {
+		"message": "Det har oppstått en uventet feil. Du finner mer informasjon i JavaScript-konsollen."
+	},
+	"unmount_button_label": {
+		"message": "Koble fra SFTP"
+	},
+	"update_available_tooltip": {
+		"message": "En oppdatering er tilgjengelig. Lukk alle vinduer."
+	},
+	"welcome_changelog": {
+		"message": "Endringslogg/versjonsnotater: $1",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"welcome_faq": {
+		"message": "Svar på vanlige spørsmål: $1 (Ctrl-klikk på linker for å åpne dem)",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"welcome_release_highlights": {
+		"message": "Betydelige endringer siden $1:",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			}
+		}
+	},
+	"welcome_tip_of_day": {
+		"message": "Tilfeldig profftips $1: $2",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			},
+			"2": {
+				"content": "$2"
+			}
+		}
+	},
+	"welcome_version": {
+		"message": "Velkommen til versjon $2 av $1.",
+		"placeholders": {
+			"1": {
+				"content": "$1"
+			},
+			"2": {
+				"content": "$2"
+			}
+		}
+	},
+	"zoom_warning": {
+		"message": "Sett Zoom til 100 % i Chrome-menyen"
+	}
+}

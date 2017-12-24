@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright 2010-2017 Restlet S.A.S. All rights reserved.
+  ~ Restlet is registered trademark of Restlet S.A.S.
+  -->
+
+<p class="whats-new-intro">January 12, 2017 - DHC 1.4.1</p>
+<h4>
+    <span class="whats-new-circle whats-new-item-title-circle"></span>
+    Enhance your headers
+</h4>
+<div>
+    <div>
+        <p>DHC now supports setting assertions on headers that are present <a
+                href="https://tools.ietf.org/html/rfc7230#page-22" target="_blank">multiple times in the
+            response</a>.
+        </p>
+        <p>For example, let's say that header "Cache-Control" is received as follow:</p>
+        <pre>
+            Cache-Control: no-cache
+            Cache-Control: no-store
+        </pre>
+        <p>You can check that the header "Cache-Control" contains the value "no-cache" or
+            "no-cache,no-store".
+            As the order matters, it does not contain the value "no-store,no-cache".
+        </p>
+
+        <p>Various bug fixes and improvements have also been made across the application.</p>
+    </div>
+</div>

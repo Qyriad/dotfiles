@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "A fájlrendszer már be van töltve!"
+   },
+   "backup_prefs": {
+      "message": "Biztonsági másolat készítése"
+   },
+   "bad_destination": {
+      "message": "A hely ($1) elemzése nem lehetséges.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "A lap bezárásával megszakítja a futó programot."
+   },
+   "cancel_button_label": {
+      "message": "Mégse"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Ez a parancs ismert gazdagépek egy listáját jeleníti meg, és megkérdezi, hogy melyiket felejtse el."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Egy megjegyzett ssh-gazdagép adatainak az elfelejtése."
+   },
+   "cmd_ssh_help": {
+      "message": "A |username| és |hostname| paramétereket kötelező, a |port| értékét nem kötelező megadni. Ha a port nincs meghatározva, akkor alapbeállítás szerint 22 lesz az értéke."
+   },
+   "cmd_ssh_title": {
+      "message": "Új SSH-munkamenet megnyitása."
+   },
+   "command_complete": {
+      "message": "A(z) $1 parancs a következő állapotkóddal lépett ki: $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Csatlakozás"
+   },
+   "connect_or_exit_message": {
+      "message": "Másik kapcsolat kiválasztása (c) vagy Kilépés (x)?"
+   },
+   "connecting": {
+      "message": "Csatlakozás a következőhöz: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Tudta, hogy van egy külön oldal a beállításoknak?\nTöbbé nem kell közvetlenül a term_ parancsokat használni!\nA megnyitásához nyomja meg a $1 billentyűparancsot, vagy kattintson a következő linkre:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Tudta, hogy van egy külön oldal a beállításoknak?\nTöbbé nem kell közvetlenül a term_ parancsokat használni!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Törlés"
+   },
+   "disconnect_message": {
+      "message": "A NaCl beépülő modul a következő állapotkóddal lépett ki: $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "extra parancssori argumentumok"
+   },
+   "field_description_aria_label": {
+      "message": "leírás"
+   },
+   "field_description_placeholder": {
+      "message": "felhasznalonev@tarhelyszolgaltato vagy szabad formájú szöveg"
+   },
+   "field_hostname_aria_label": {
+      "message": "tárhelyszolgáltató"
+   },
+   "field_hostname_placeholder": {
+      "message": "tárhelyszolgáltató"
+   },
+   "field_mount_path_placeholder": {
+      "message": "az alapértelmezett elérési út a felhasználó kezdőkönyvtára"
+   },
+   "field_port_aria_label": {
+      "message": "port"
+   },
+   "field_port_placeholder": {
+      "message": "port"
+   },
+   "field_relay_options_aria_label": {
+      "message": "továbbítási lehetőségek"
+   },
+   "field_relay_options_placeholder": {
+      "message": "SSH-továbbítószerver beállításai"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "alapbeállítás"
+   },
+   "field_username_aria_label": {
+      "message": "felhasználónév"
+   },
+   "field_username_placeholder": {
+      "message": "felhasználónév"
+   },
+   "found_relay": {
+      "message": "Megtalált továbbítószerver: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Azonosság"
+   },
+   "import_link_aria_label": {
+      "message": "fájl importálása"
+   },
+   "import_link_label": {
+      "message": "Importálás…"
+   },
+   "initializing_relay": {
+      "message": "Továbbítószerver keresése a következővel: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "A(z) „$1” kulcsban lévő JSON-adatok elemzése nem sikerült: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Nem található megjegyzett gazdagép; nincs mit elfelejteni."
+   },
+   "known_hosts_prompt": {
+      "message": "Elfelejteni kívánt gazdagép kiválasztása [1--$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Ismert gazdagépek:"
+   },
+   "loading_label": {
+      "message": "Betöltés…"
+   },
+   "missing_param": {
+      "message": "Hiányzó paraméter: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "SFTP csatlakoztatása"
+   },
+   "mount_path_label": {
+      "message": "Csatolási útvonal"
+   },
+   "mounted_message": {
+      "message": "Csatlakoztatva!"
+   },
+   "notify_copy": {
+      "message": "Kiválasztott szöveg másolva"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Csatlakozás mentett profilhoz vagy új SSH-rendszerhez"
+   },
+   "open_as_window_tip": {
+      "message": "[Profi tipp] Használja a „Megnyitás ablakként” lehetőséget, hogy a Ctrl+W ne zárja be a terminált!\n[Profi tipp] További információt a következő URL-en talál: $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Beállítások"
+   },
+   "plugin_loading": {
+      "message": "NaCl bővítmény betöltése..."
+   },
+   "plugin_loading_complete": {
+      "message": " kész."
+   },
+   "plugin_loading_failed": {
+      "message": " nem sikerült. :("
+   },
+   "pref_backup_filename": {
+      "message": "Biztonságos héj beállításainak biztonsági másolata.json"
+   },
+   "preferences_header": {
+      "message": "Profilbeállítások"
+   },
+   "preferences_reset": {
+      "message": "Minden beállítás visszaállítva!"
+   },
+   "reconnect_message": {
+      "message": "Újracsatlakozás (r), Másik kapcsolat kiválasztása (c) vagy Kilépés (x)?"
+   },
+   "relay_retry": {
+      "message": "Újrapróbálkozás…"
+   },
+   "restore_prefs": {
+      "message": "Biztonsági másolat visszaállítása"
+   },
+   "shortcut_list_aria_label": {
+      "message": "mentett kapcsolatok"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH-argumentumok"
+   },
+   "terminal_preview_label": {
+      "message": "Előnézet"
+   },
+   "terminal_profile_label": {
+      "message": "Aktuális profil"
+   },
+   "tip_1": {
+      "message": "A linkek megnyitásához a Ctrl (Mac OS rendszeren Cmd) billentyűt is lenyomhatja, miközben rájuk kattint!"
+   },
+   "tip_10": {
+      "message": "Amikor ablakban fut, a Ctrl+Shift+N billentyűparanccsal lehet új munkamenetet indítani."
+   },
+   "tip_11": {
+      "message": "Módosíthatja a billentyűket/billentyűparancsokat: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Értesítések megjelenítése a böngészőben a hterm-notify szkripttel: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Ha a cím- és keresősávból szeretne csatlakozni, írja be az „ssh \u003Cprofilnév>” parancsot: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "A Chrome OS képes fájlrendszerek csatolására SFTP használatával, ezt követően pedig a Fájlok alkalmazással lehet tallózni. A „Connect” parancs helyett használja az „SFTP Mount” lehetőséget."
+   },
+   "tip_5": {
+      "message": "Csatlakozás a weboldalakon lévő ssh:// linkek használatával, illetve könyvjelző mentése: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "A kimenet/kérdés színezése 16 alapszín, 256 szín vagy a teljes 24 bites színskála használatával: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "A vágólap tartalmának másolása az emacs/vim/etc… elérési útról OSC-52 használatával: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Csevegés hterm/Secure Shell felhasználókkal a chromium-hterm@chromium.org fórumon: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Programhibát talált?  Új funkció megvalósítását szeretné kérni?  Tudassa velünk: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Váratlan hiba történt. Ha további részletekre kíváncsi, nézze meg a JavaScript-konzolt."
+   },
+   "unmount_button_label": {
+      "message": "SFTP leválasztása"
+   },
+   "update_available_tooltip": {
+      "message": "Frissítés áll rendelkezésre. Zárja be az összes ablakot."
+   },
+   "welcome_changelog": {
+      "message": "Módosításnapló/kibocsátási megjegyzések: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Válaszok a Gyakran Ismételt Kérdésekre: $1 (Ctrl+kattintás a hivatkozásra a megnyitáshoz)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Fontosabb változtatások a(z) $1 verzió óta:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Véletlenszerűen kiválasztott profi tipp – $1.: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Üdvözli a(z) $1 ($2).",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Állítsa be a Chrome Menü -> Nagyítás értékét 100%-ra"
+   }
+}

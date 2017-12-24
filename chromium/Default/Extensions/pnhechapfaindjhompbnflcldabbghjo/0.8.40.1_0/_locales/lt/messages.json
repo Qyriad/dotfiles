@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Failų sistema jau įdėta!"
+   },
+   "backup_prefs": {
+      "message": "Išsaugoti atsarginę kopiją"
+   },
+   "bad_destination": {
+      "message": "Nepavyko išanalizuoti paskirties vietos: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Uždarius šį skirtuką, sesija bus nutraukta."
+   },
+   "cancel_button_label": {
+      "message": "Atšaukti"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Taikant šią komandą pateikiamas žinomų prieglobų meniu ir raginama ištrinti prieglobą."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Ištrinama žinoma SSH priegloba."
+   },
+   "cmd_ssh_help": {
+      "message": "Būtina pateikti parametrus |username| ir |hostname|, parametras |port| neprivalomas. Jei prievado nenurodysite, jo numatytasis parametras bus 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Atidaroma nauja SSH sesija."
+   },
+   "command_complete": {
+      "message": "Komanda „$1“ atlikta su būsenos kodu $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Prisijungti"
+   },
+   "connect_or_exit_message": {
+      "message": "Pasirinkti kitą ryšį (C) ar išeiti (X)?"
+   },
+   "connecting": {
+      "message": "Prisijungiama prie $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Ar žinote, kad yra paskirtas parinkčių puslapis?\nNebereikia atlikti veiksmų tiesiogiai su terminu!\nPaspauskite $1, kad atidarytumėte, arba spustelėkite\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Ar žinote, kad yra paskirtas parinkčių puslapis?\nNebereikia atlikti veiksmų tiesiogiai su terminu!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Ištrinti"
+   },
+   "disconnect_message": {
+      "message": "„NaCl“ papildinys išjungtas su būsenos kodu $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "papildomi komandos eilutės argumentai"
+   },
+   "field_description_aria_label": {
+      "message": "aprašas"
+   },
+   "field_description_placeholder": {
+      "message": "naudotojovardas@prieglobosserveriopavadinimas arba laisvos formos tekstas"
+   },
+   "field_hostname_aria_label": {
+      "message": "prieglobos serverio pavadinimas"
+   },
+   "field_hostname_placeholder": {
+      "message": "prieglobos serverio pavadinimas"
+   },
+   "field_mount_path_placeholder": {
+      "message": "numatytasis kelias yra naudotojo pagrindinis katalogas"
+   },
+   "field_port_aria_label": {
+      "message": "prievadas"
+   },
+   "field_port_placeholder": {
+      "message": "prievadas"
+   },
+   "field_relay_options_aria_label": {
+      "message": "perdavimo parinktys"
+   },
+   "field_relay_options_placeholder": {
+      "message": "SSH perdavimo serverio parinktys"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "numatytasis"
+   },
+   "field_username_aria_label": {
+      "message": "naudotojo vardas"
+   },
+   "field_username_placeholder": {
+      "message": "naudotojo vardas"
+   },
+   "found_relay": {
+      "message": "Rastas perdavimo serveris: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Tapatybė"
+   },
+   "import_link_aria_label": {
+      "message": "failų importavimas"
+   },
+   "import_link_label": {
+      "message": "Importuoti..."
+   },
+   "initializing_relay": {
+      "message": "Ieškoma perdavimo serverio naudojant: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Nepavyko išanalizuoti JSON „$1“: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Nėra žinomų prieglobų; nėra, ką ištrinti."
+   },
+   "known_hosts_prompt": {
+      "message": "Pasirinkite prieglobą, kurią reikia ištrinti [1–$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Žinomos prieglobos:"
+   },
+   "loading_label": {
+      "message": "Įkeliama..."
+   },
+   "missing_param": {
+      "message": "Trūksta parametro: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Įdėti SFTP"
+   },
+   "mount_path_label": {
+      "message": "Įdėtasis kelias"
+   },
+   "mounted_message": {
+      "message": "Įdėta!"
+   },
+   "notify_copy": {
+      "message": "Pasirinkimas nukopijuotas"
+   },
+   "ok_button_label": {
+      "message": "GERAI"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Prisijunkite prie išsaugoto profilio arba naujos SSH sistemos."
+   },
+   "open_as_window_tip": {
+      "message": "[Pro Tip] Naudokite parinktį „Atidaryti kaip langą“, kad neuždarytumėte terminalo naudodami spartųjį klavišą „Control“ + W.\n[Pro Tip] Jei reikia daugiau informacijos, žr. adresu $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Parinktys"
+   },
+   "plugin_loading": {
+      "message": "Įkeliamas papildinys „NaCl“..."
+   },
+   "plugin_loading_complete": {
+      "message": " atlikta."
+   },
+   "plugin_loading_failed": {
+      "message": " nepavyko! :("
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "Profilio nustatymai"
+   },
+   "preferences_reset": {
+      "message": "Visos nuostatos nustatytos iš naujo!"
+   },
+   "reconnect_message": {
+      "message": "Iš naujo prisijungti (R), pasirinkti kitą ryšį (C) ar išeiti (X)?"
+   },
+   "relay_retry": {
+      "message": "Bandoma iš naujo..."
+   },
+   "restore_prefs": {
+      "message": "Atkurti atsarginę kopiją"
+   },
+   "shortcut_list_aria_label": {
+      "message": "išsaugoti ryšiai"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH argumentai"
+   },
+   "terminal_preview_label": {
+      "message": "Peržiūra"
+   },
+   "terminal_profile_label": {
+      "message": "Dabartinis profilis"
+   },
+   "tip_1": {
+      "message": "Galite laikyti paspaudę „Ctrl“ („Cmd“, jei naudojate „Mac“ OS) ir spustelėti nuorodas, kad jas atidarytumėte!"
+   },
+   "tip_10": {
+      "message": "Vykdant lange paspaudus „Ctrl“ + „Shift“ + N gali būti atidaryta kita sesija."
+   },
+   "tip_11": {
+      "message": "Galite pakartotinai susieti raktus / sparčiuosius klavišus: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Pateikite pranešimus naršyklėje naudodami „hterm-notify“: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Prisijunkite iš „omnibox“ įvesdami „ssh \u003Cprofile name>“: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "„Chrome“ OS gali įdėti failų sistemas per SFTP ir naršyti naudodama Failų programą. Naudokite „SFTP įdėjimas“ vietoje „Prisijungti“."
+   },
+   "tip_5": {
+      "message": "Prisijunkite naudodami nuorodas ssh:// tinklalapiuose arba išsaugokite žymę: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Nuspalvinkite išvestį / raginimą naudodami 16 pagrindinių spalvų ir 256 spalvas bei 24 bitų spalvas: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Nukopijuokite į iškarpinę iš „emacs/vim/etc...“ naudodami OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Kalbėkite su kitais „hterm“ / „Secure Shell“ naudotojais naudodami adresą chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Radote riktą? Norite pateikti naujos funkcijos užklausą? Praneškite mums: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Įvyko nenumatyta klaida. Jei reikia daugiau išsamios informacijos, žr. „JavaScript“ pultą."
+   },
+   "unmount_button_label": {
+      "message": "Išimti SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Pasiekiamas naujinys. Uždarykite visus langus."
+   },
+   "welcome_changelog": {
+      "message": "Pakeitimų žurnalas / laidos informacija: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Atsakymai į dažniausiai užduodamus klausimus: $1 („Ctrl“ + spustelėkite nuorodas, kad atidarytumėte)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Pagrindiniai pakeitimai, palyginti su $1 versija:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Atsitiktinis profesionalų patarimas Nr. $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Sveiki, tai – $2 versijos „$1“.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Nustatykite „Chrome“ mastelį į 100 % pasirinkę meniu -> „Keisti mastelį“"
+   }
+}

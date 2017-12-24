@@ -1,0 +1,128 @@
+html {
+  overflow: auto;
+}
+
+body {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 1em;
+  margin: 10px 7px 10px 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0000ee;
+  text-decoration: none;
+}
+
+table {
+  font-size: 0.75em;
+  border-collapse: collapse;
+}
+
+tr {
+  vertical-align: top;
+}
+
+td {
+  padding: 14px 15px 10px 0px;
+}
+
+img.logo {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.smaller-size-button {
+  vertical-align: -4px;
+}
+
+img.text-size-button {
+  vertical-align: -6px;
+}
+
+img.bigger-size-button {
+  vertical-align: -10px;
+}
+
+div.about {
+  margin-left: 4px;
+}
+
+p {
+  line-height: 1.4em;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  font-size: 0.75em;
+}
+
+div.breadcrumb {
+  border-bottom: 1px solid #eeeeee;
+}
+
+div.breadcrumb p {
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+p.heading1 {
+  font-weight: bold;
+  font-size: 1.0em;
+  margin-bottom: 10px;
+  margin-top: 17px;
+}
+
+p.heading1-top{
+  font-weight: bold;
+  font-size: 1.0em;
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+
+p.heading2 {
+  font-weight: bold;
+  margin-top: 14px;
+}
+
+ul {
+  font-size: 0.75em;
+  margin-left: -23px;
+}
+
+ol {
+  font-size: 0.75em;
+  margin-left: -21px;
+}
+
+li {
+  line-height: 1.4em;
+  margin-top: 9px;
+  margin-bottom: 9px;
+}
+
+ul ol, ul ul, ul p {
+  font-size: 1.0em;
+  list-style: disc;
+}
+
+ol ul, ol p {
+  font-size: 1.0em;
+  list-style: disc;
+}
+
+code {
+  font-size: 1.4em;
+}
+
+.iphone {
+  display: none;
+}
+
+.ipad {
+  display: none;
+}

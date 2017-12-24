@@ -1,0 +1,70 @@
+﻿.evalSbSelVal
+{
+    position: relative;
+    font-size: 13px;
+    min-width: 100px;
+    -webkit-user-select: none;
+    outline: none;
+}
+
+.countTabUrls
+{
+    height:33px;
+    line-height:33px;
+    text-align:center;
+    /*background-color: hsl(0, 0%, 37%);*/
+    border-bottom: 1px solid #e1e1e1;
+    margin: 0 5px;
+ }
+
+.saveCurrentWindow
+{
+    display: inline-block;
+    outline: 0;
+    height:28px;
+    line-height:28px;
+    text-decoration: none;
+    font-size: 100%;
+    list-style: none;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.startActionVal
+{
+    color: #727272;
+    cursor: pointer;
+    float: left;
+    height:31px;
+    line-height:31px;
+    list-style: none;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0 25px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.iIdx
+{
+    background: #ffffff;
+    color: hsl(0, 0%, 11%);
+    color: #3ea5ed;
+    font-weight: bold;
+    border-bottom: 3px solid #3ea5ed;
+    position: relative;
+}
+
+.nodeRangeVal
+{
+    display: none;
+    padding: 25px 20px;
+    background: none;
+}
+
+.extractTabUrl
+{
+    display: block !important;
+}

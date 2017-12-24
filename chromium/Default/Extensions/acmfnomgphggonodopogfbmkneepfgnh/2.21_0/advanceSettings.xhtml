@@ -1,0 +1,82 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="advanceSettings.js"></script>
+		<script src="nocontext.js"></script>
+	</head>
+	<body style="overflow-x:hidden; overflow-y:auto;">
+		<table border="1" cellpadding="5" cellspacing="0">
+			<tr>
+				<td>
+					<table align="center">
+						<tr><td><input id="timeoutRange" type="range" min="1" max="60" step="1"></input></td></tr>
+						<tr><td align="center"><font id="timeoutText">DummyText</font></td></tr>
+					</table>
+				</td>
+				<td>
+					<table cellpadding="0" cellspacing="10">
+						<tr><td>
+							<p>Select time for <b>Bookmark Favicon Changer</b> to wait for network response before "<b>timeout error</b>" occurs.
+							You can increase it if your network is slow.</p>
+							<p>Default value is "<b>20 seconds</b>"</p>
+						</td></tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input id="autoHideBookmarkBarName" type="checkbox"></input>Auto hide bookmarks bar name
+				</td>
+				<td>
+					<table cellpadding="0" cellspacing="10">
+						<tr>
+							<td>Get more space on bookmark bar by hide all the names (titles) of bookmarks.</td>
+							<td><img src="compactBookmarkBar.png"></img></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="280px">
+					<center><b>Page Action</b></center>
+					<br></br><input id="showPageAction0" type="radio" name="pageAction"></input>Don't show any icon
+					<br></br><input id="showPageAction1" type="radio" name="pageAction"></input>Show on page that use custom favicon
+					<br></br><input id="showPageAction2" type="radio" name="pageAction"></input>Show on page that can use custom favicon
+					<br></br>
+					<br></br><input id="pageActionToOptions" type="checkbox"></input>Goto options page directly when click
+				</td>
+				<td>
+					<table cellpadding="0" cellspacing="10">
+						<tr>
+							<td>
+								<table>
+									<tr>
+										<td>
+											<b>Page Action</b> is an icon that show on URL bar (see picture on the right). You can choose when to show "Page Action".
+											<br></br><img src="icon19.png"></img>&nbsp;&nbsp;This icon will show on page that use custom favicon or tab icon.
+											<br></br><img src="icon19x.png"></img>&nbsp;&nbsp;This icon will show on page that don't use custom favicon or tab icon but it can be changed to use it.
+											<br></br>Default is "<b>show on page that can use custom favicon</b>".
+										</td>
+										<td>
+											<img src="pageAction.png"></img>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								You can also change the on click event by choosing to "<b>open popup</b>" (default) or directly "<b>open the options page</b>".
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

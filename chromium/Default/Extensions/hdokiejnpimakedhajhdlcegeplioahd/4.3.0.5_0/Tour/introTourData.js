@@ -1,0 +1,1 @@
+var IntroTourData=function(r,a,o){"use strict";var t=function(){};return t.prototype.getAvailableTours=function(){var t={},u={familyOnboardingTour:o.getTourData(),omarMigrationTour:a.getTourData(),vault41Tour:r.getTourData()};for(var n in u)u.hasOwnProperty(n)&&u[n]&&u[n].isAvailable()&&(t[n]=u[n]);return t},t}(vault41Tour,omarMigrationTour,familyOnboardingTour);

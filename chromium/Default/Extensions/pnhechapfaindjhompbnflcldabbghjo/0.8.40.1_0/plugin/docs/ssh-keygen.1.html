@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    div.Pp { margin: 1ex 0ex; }
+  </style>
+  <title>SSH-KEYGEN(1)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">SSH-KEYGEN(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">SSH-KEYGEN(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<h1 class="Sh" title="Sh" id="NAME"><a class="selflink" href="#NAME">NAME</a></h1>
+<b class="Nm" title="Nm">ssh-keygen</b> &#x2014;
+  <span class="Nd" title="Nd">authentication key generation, management and
+  conversion</span>
+<h1 class="Sh" title="Sh" id="SYNOPSIS"><a class="selflink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td>[<span class="Op"><b class="Fl" title="Fl">-q</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-b</b>&#x00A0;<var class="Ar" title="Ar">bits</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-t</b>&#x00A0;<b class="Cm" title="Cm">dsa</b>&#x00A0;|&#x00A0;<b class="Cm" title="Cm">ecdsa</b>&#x00A0;|&#x00A0;<b class="Cm" title="Cm">ed25519</b>&#x00A0;|&#x00A0;<b class="Cm" title="Cm">rsa</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-N</b>&#x00A0;<var class="Ar" title="Ar">new_passphrase</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-C</b>&#x00A0;<var class="Ar" title="Ar">comment</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">output_keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-p</b>
+      [<span class="Op"><b class="Fl" title="Fl">-P</b>&#x00A0;<var class="Ar" title="Ar">old_passphrase</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-N</b>&#x00A0;<var class="Ar" title="Ar">new_passphrase</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-i</b>
+      [<span class="Op"><b class="Fl" title="Fl">-m</b>&#x00A0;<var class="Ar" title="Ar">key_format</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">input_keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-e</b>
+      [<span class="Op"><b class="Fl" title="Fl">-m</b>&#x00A0;<var class="Ar" title="Ar">key_format</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">input_keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-y</b>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">input_keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-c</b>
+      [<span class="Op"><b class="Fl" title="Fl">-P</b>&#x00A0;<var class="Ar" title="Ar">passphrase</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-C</b>&#x00A0;<var class="Ar" title="Ar">comment</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-l</b>
+      [<span class="Op"><b class="Fl" title="Fl">-v</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-E</b>&#x00A0;<var class="Ar" title="Ar">fingerprint_hash</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">input_keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-B</b>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">input_keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-D</b>
+      <var class="Ar" title="Ar">pkcs11</var></td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-F</b>
+      <var class="Ar" title="Ar">hostname</var>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">known_hosts_file</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-l</b></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-H</b>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">known_hosts_file</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-R</b>
+      <var class="Ar" title="Ar">hostname</var>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">known_hosts_file</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-r</b>
+      <var class="Ar" title="Ar">hostname</var>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">input_keyfile</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-g</b></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-G</b>
+      <var class="Ar" title="Ar">output_file</var>
+      [<span class="Op"><b class="Fl" title="Fl">-v</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-b</b>&#x00A0;<var class="Ar" title="Ar">bits</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-M</b>&#x00A0;<var class="Ar" title="Ar">memory</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-S</b>&#x00A0;<var class="Ar" title="Ar">start_point</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-T</b>
+      <var class="Ar" title="Ar">output_file</var>&#x00A0;<b class="Fl" title="Fl">-f</b>
+      <var class="Ar" title="Ar">input_file</var>
+      [<span class="Op"><b class="Fl" title="Fl">-v</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-a</b>&#x00A0;<var class="Ar" title="Ar">rounds</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-J</b>&#x00A0;<var class="Ar" title="Ar">num_lines</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-j</b>&#x00A0;<var class="Ar" title="Ar">start_line</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-K</b>&#x00A0;<var class="Ar" title="Ar">checkpt</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-W</b>&#x00A0;<var class="Ar" title="Ar">generator</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-s</b>
+      <var class="Ar" title="Ar">ca_key</var>&#x00A0;<b class="Fl" title="Fl">-I</b>
+      <var class="Ar" title="Ar">certificate_identity</var>
+      [<span class="Op"><b class="Fl" title="Fl">-h</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-U</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-D</b>&#x00A0;<var class="Ar" title="Ar">pkcs11_provider</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-n</b>&#x00A0;<var class="Ar" title="Ar">principals</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-O</b>&#x00A0;<var class="Ar" title="Ar">option</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-V</b>&#x00A0;<var class="Ar" title="Ar">validity_interval</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-z</b>&#x00A0;<var class="Ar" title="Ar">serial_number</var></span>]&#x00A0;<var class="Ar" title="Ar">file
+      ...</var></td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-L</b>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">input_keyfile</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-A</b>
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">prefix_path</var></span>]</td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-k</b> <b class="Fl" title="Fl">-f</b>
+      <var class="Ar" title="Ar">krl_file</var>
+      [<span class="Op"><b class="Fl" title="Fl">-u</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-s</b>&#x00A0;<var class="Ar" title="Ar">ca_public</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-z</b>&#x00A0;<var class="Ar" title="Ar">version_number</var></span>]&#x00A0;<var class="Ar" title="Ar">file
+      ...</var></td>
+  </tr>
+</table>
+<br/>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">ssh-keygen</b></td>
+    <td><b class="Fl" title="Fl">-Q</b> <b class="Fl" title="Fl">-f</b>
+      <var class="Ar" title="Ar">krl_file</var>&#x00A0;<var class="Ar" title="Ar">file
+      ...</var></td>
+  </tr>
+</table>
+<h1 class="Sh" title="Sh" id="DESCRIPTION"><a class="selflink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<b class="Nm" title="Nm">ssh-keygen</b> generates, manages and converts
+  authentication keys for <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>.
+  <b class="Nm" title="Nm">ssh-keygen</b> can create keys for use by SSH
+  protocol version 2.
+<div class="Pp"></div>
+The type of key to be generated is specified with the
+  <b class="Fl" title="Fl">-t</b> option. If invoked without any arguments,
+  <b class="Nm" title="Nm">ssh-keygen</b> will generate an RSA key.
+<div class="Pp"></div>
+<b class="Nm" title="Nm">ssh-keygen</b> is also used to generate groups for use
+  in Diffie-Hellman group exchange (DH-GEX). See the
+  <a class="Sx" title="Sx" href="#MODULI_GENERATION">MODULI GENERATION</a>
+  section for details.
+<div class="Pp"></div>
+Finally, <b class="Nm" title="Nm">ssh-keygen</b> can be used to generate and
+  update Key Revocation Lists, and to test whether given keys have been revoked
+  by one. See the <a class="Sx" title="Sx" href="#KEY_REVOCATION_LISTS">KEY
+  REVOCATION LISTS</a> section for details.
+<div class="Pp"></div>
+Normally each user wishing to use SSH with public key authentication runs this
+  once to create the authentication key in
+  <i class="Pa" title="Pa">~/.ssh/id_dsa</i>,
+  <i class="Pa" title="Pa">~/.ssh/id_ecdsa</i>,
+  <i class="Pa" title="Pa">~/.ssh/id_ed25519</i> or
+  <i class="Pa" title="Pa">~/.ssh/id_rsa</i>. Additionally, the system
+  administrator may use this to generate host keys, as seen in
+  <i class="Pa" title="Pa">/etc/rc</i>.
+<div class="Pp"></div>
+Normally this program generates the key and asks for a file in which to store
+  the private key. The public key is stored in a file with the same name but
+  &#x201C;.pub&#x201D; appended. The program also asks for a passphrase. The
+  passphrase may be empty to indicate no passphrase (host keys must have an
+  empty passphrase), or it may be a string of arbitrary length. A passphrase is
+  similar to a password, except it can be a phrase with a series of words,
+  punctuation, numbers, whitespace, or any string of characters you want. Good
+  passphrases are 10-30 characters long, are not simple sentences or otherwise
+  easily guessable (English prose has only 1-2 bits of entropy per character,
+  and provides very bad passphrases), and contain a mix of upper and lowercase
+  letters, numbers, and non-alphanumeric characters. The passphrase can be
+  changed later by using the <b class="Fl" title="Fl">-p</b> option.
+<div class="Pp"></div>
+There is no way to recover a lost passphrase. If the passphrase is lost or
+  forgotten, a new key must be generated and the corresponding public key copied
+  to other machines.
+<div class="Pp"></div>
+For keys stored in the newer OpenSSH format, there is also a comment field in
+  the key file that is only for convenience to the user to help identify the
+  key. The comment can tell what the key is for, or whatever is useful. The
+  comment is initialized to &#x201C;user@host&#x201D; when the key is created,
+  but can be changed using the <b class="Fl" title="Fl">-c</b> option.
+<div class="Pp"></div>
+After a key is generated, instructions below detail where the keys should be
+  placed to be activated.
+<div class="Pp"></div>
+The options are as follows:
+<dl class="Bl-tag">
+  <dt class="It-tag"><a class="selflink" href="#A"><b class="Fl" title="Fl" id="A">-A</b></a></dt>
+  <dd class="It-tag">For each of the key types (rsa, dsa, ecdsa and ed25519) for
+      which host keys do not exist, generate the host keys with the default key
+      file path, an empty passphrase, default bits for the key type, and default
+      comment. If <b class="Fl" title="Fl">-f</b> has also been specified, its
+      argument is used as a prefix to the default path for the resulting host
+      key files. This is used by <i class="Pa" title="Pa">/etc/rc</i> to
+      generate new host keys.</dd>
+  <dt class="It-tag"><a class="selflink" href="#a"><b class="Fl" title="Fl" id="a">-a</b></a>
+    <var class="Ar" title="Ar">rounds</var></dt>
+  <dd class="It-tag">When saving a new-format private key (i.e. an ed25519 key
+      or when the <b class="Fl" title="Fl">-o</b> flag is set), this option
+      specifies the number of KDF (key derivation function) rounds used. Higher
+      numbers result in slower passphrase verification and increased resistance
+      to brute-force password cracking (should the keys be stolen).
+    <div class="Pp"></div>
+    When screening DH-GEX candidates (using the <b class="Fl" title="Fl">-T</b>
+      command). This option specifies the number of primality tests to
+    perform.</dd>
+  <dt class="It-tag"><a class="selflink" href="#B"><b class="Fl" title="Fl" id="B">-B</b></a></dt>
+  <dd class="It-tag">Show the bubblebabble digest of specified private or public
+      key file.</dd>
+  <dt class="It-tag"><a class="selflink" href="#b"><b class="Fl" title="Fl" id="b">-b</b></a>
+    <var class="Ar" title="Ar">bits</var></dt>
+  <dd class="It-tag">Specifies the number of bits in the key to create. For RSA
+      keys, the minimum size is 1024 bits and the default is 2048 bits.
+      Generally, 2048 bits is considered sufficient. DSA keys must be exactly
+      1024 bits as specified by FIPS 186-2. For ECDSA keys, the
+      <b class="Fl" title="Fl">-b</b> flag determines the key length by
+      selecting from one of three elliptic curve sizes: 256, 384 or 521 bits.
+      Attempting to use bit lengths other than these three values for ECDSA keys
+      will fail. Ed25519 keys have a fixed length and the
+      <b class="Fl" title="Fl">-b</b> flag will be ignored.</dd>
+  <dt class="It-tag"><a class="selflink" href="#C"><b class="Fl" title="Fl" id="C">-C</b></a>
+    <var class="Ar" title="Ar">comment</var></dt>
+  <dd class="It-tag">Provides a new comment.</dd>
+  <dt class="It-tag"><a class="selflink" href="#c"><b class="Fl" title="Fl" id="c">-c</b></a></dt>
+  <dd class="It-tag">Requests changing the comment in the private and public key
+      files. This operation is only supported for keys stored in the newer
+      OpenSSH format. The program will prompt for the file containing the
+      private keys, for the passphrase if the key has one, and for the new
+      comment.</dd>
+  <dt class="It-tag"><a class="selflink" href="#D"><b class="Fl" title="Fl" id="D">-D</b></a>
+    <var class="Ar" title="Ar">pkcs11</var></dt>
+  <dd class="It-tag">Download the RSA public keys provided by the PKCS#11 shared
+      library <var class="Ar" title="Ar">pkcs11</var>. When used in combination
+      with <b class="Fl" title="Fl">-s</b>, this option indicates that a CA key
+      resides in a PKCS#11 token (see the
+      <a class="Sx" title="Sx" href="#CERTIFICATES">CERTIFICATES</a> section for
+      details).</dd>
+  <dt class="It-tag"><a class="selflink" href="#E"><b class="Fl" title="Fl" id="E">-E</b></a>
+    <var class="Ar" title="Ar">fingerprint_hash</var></dt>
+  <dd class="It-tag">Specifies the hash algorithm used when displaying key
+      fingerprints. Valid options are: &#x201C;md5&#x201D; and
+      &#x201C;sha256&#x201D;. The default is &#x201C;sha256&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#e"><b class="Fl" title="Fl" id="e">-e</b></a></dt>
+  <dd class="It-tag">This option will read a private or public OpenSSH key file
+      and print to stdout the key in one of the formats specified by the
+      <b class="Fl" title="Fl">-m</b> option. The default export format is
+      &#x201C;RFC4716&#x201D;. This option allows exporting OpenSSH keys for use
+      by other programs, including several commercial SSH implementations.</dd>
+  <dt class="It-tag"><a class="selflink" href="#F"><b class="Fl" title="Fl" id="F">-F</b></a>
+    <var class="Ar" title="Ar">hostname</var></dt>
+  <dd class="It-tag">Search for the specified
+      <var class="Ar" title="Ar">hostname</var> in a
+      <i class="Pa" title="Pa">known_hosts</i> file, listing any occurrences
+      found. This option is useful to find hashed host names or addresses and
+      may also be used in conjunction with the <b class="Fl" title="Fl">-H</b>
+      option to print found keys in a hashed format.</dd>
+  <dt class="It-tag"><a class="selflink" href="#f"><b class="Fl" title="Fl" id="f">-f</b></a>
+    <var class="Ar" title="Ar">filename</var></dt>
+  <dd class="It-tag">Specifies the filename of the key file.</dd>
+  <dt class="It-tag"><a class="selflink" href="#G"><b class="Fl" title="Fl" id="G">-G</b></a>
+    <var class="Ar" title="Ar">output_file</var></dt>
+  <dd class="It-tag">Generate candidate primes for DH-GEX. These primes must be
+      screened for safety (using the <b class="Fl" title="Fl">-T</b> option)
+      before use.</dd>
+  <dt class="It-tag"><a class="selflink" href="#g"><b class="Fl" title="Fl" id="g">-g</b></a></dt>
+  <dd class="It-tag">Use generic DNS format when printing fingerprint resource
+      records using the <b class="Fl" title="Fl">-r</b> command.</dd>
+  <dt class="It-tag"><a class="selflink" href="#H"><b class="Fl" title="Fl" id="H">-H</b></a></dt>
+  <dd class="It-tag">Hash a <i class="Pa" title="Pa">known_hosts</i> file. This
+      replaces all hostnames and addresses with hashed representations within
+      the specified file; the original content is moved to a file with a .old
+      suffix. These hashes may be used normally by
+      <b class="Nm" title="Nm">ssh</b> and <b class="Nm" title="Nm">sshd</b>,
+      but they do not reveal identifying information should the file's contents
+      be disclosed. This option will not modify existing hashed hostnames and is
+      therefore safe to use on files that mix hashed and non-hashed names.</dd>
+  <dt class="It-tag"><a class="selflink" href="#h"><b class="Fl" title="Fl" id="h">-h</b></a></dt>
+  <dd class="It-tag">When signing a key, create a host certificate instead of a
+      user certificate. Please see the
+      <a class="Sx" title="Sx" href="#CERTIFICATES">CERTIFICATES</a> section for
+      details.</dd>
+  <dt class="It-tag"><a class="selflink" href="#I"><b class="Fl" title="Fl" id="I">-I</b></a>
+    <var class="Ar" title="Ar">certificate_identity</var></dt>
+  <dd class="It-tag">Specify the key identity when signing a public key. Please
+      see the <a class="Sx" title="Sx" href="#CERTIFICATES">CERTIFICATES</a>
+      section for details.</dd>
+  <dt class="It-tag"><a class="selflink" href="#i"><b class="Fl" title="Fl" id="i">-i</b></a></dt>
+  <dd class="It-tag">This option will read an unencrypted private (or public)
+      key file in the format specified by the <b class="Fl" title="Fl">-m</b>
+      option and print an OpenSSH compatible private (or public) key to stdout.
+      This option allows importing keys from other software, including several
+      commercial SSH implementations. The default import format is
+      &#x201C;RFC4716&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#J"><b class="Fl" title="Fl" id="J">-J</b></a>
+    <var class="Ar" title="Ar">num_lines</var></dt>
+  <dd class="It-tag">Exit after screening the specified number of lines while
+      performing DH candidate screening using the
+      <b class="Fl" title="Fl">-T</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#j"><b class="Fl" title="Fl" id="j">-j</b></a>
+    <var class="Ar" title="Ar">start_line</var></dt>
+  <dd class="It-tag">Start screening at the specified line number while
+      performing DH candidate screening using the
+      <b class="Fl" title="Fl">-T</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#K"><b class="Fl" title="Fl" id="K">-K</b></a>
+    <var class="Ar" title="Ar">checkpt</var></dt>
+  <dd class="It-tag">Write the last line processed to the file
+      <var class="Ar" title="Ar">checkpt</var> while performing DH candidate
+      screening using the <b class="Fl" title="Fl">-T</b> option. This will be
+      used to skip lines in the input file that have already been processed if
+      the job is restarted.</dd>
+  <dt class="It-tag"><a class="selflink" href="#k"><b class="Fl" title="Fl" id="k">-k</b></a></dt>
+  <dd class="It-tag">Generate a KRL file. In this mode,
+      <b class="Nm" title="Nm">ssh-keygen</b> will generate a KRL file at the
+      location specified via the <b class="Fl" title="Fl">-f</b> flag that
+      revokes every key or certificate presented on the command line.
+      Keys/certificates to be revoked may be specified by public key file or
+      using the format described in the
+      <a class="Sx" title="Sx" href="#KEY_REVOCATION_LISTS">KEY REVOCATION
+      LISTS</a> section.</dd>
+  <dt class="It-tag"><a class="selflink" href="#L"><b class="Fl" title="Fl" id="L">-L</b></a></dt>
+  <dd class="It-tag">Prints the contents of one or more certificates.</dd>
+  <dt class="It-tag"><a class="selflink" href="#l"><b class="Fl" title="Fl" id="l">-l</b></a></dt>
+  <dd class="It-tag">Show fingerprint of specified public key file. For RSA and
+      DSA keys <b class="Nm" title="Nm">ssh-keygen</b> tries to find the
+      matching public key file and prints its fingerprint. If combined with
+      <b class="Fl" title="Fl">-v</b>, a visual ASCII art representation of the
+      key is supplied with the fingerprint.</dd>
+  <dt class="It-tag"><a class="selflink" href="#M"><b class="Fl" title="Fl" id="M">-M</b></a>
+    <var class="Ar" title="Ar">memory</var></dt>
+  <dd class="It-tag">Specify the amount of memory to use (in megabytes) when
+      generating candidate moduli for DH-GEX.</dd>
+  <dt class="It-tag"><a class="selflink" href="#m"><b class="Fl" title="Fl" id="m">-m</b></a>
+    <var class="Ar" title="Ar">key_format</var></dt>
+  <dd class="It-tag">Specify a key format for the
+      <b class="Fl" title="Fl">-i</b> (import) or
+      <b class="Fl" title="Fl">-e</b> (export) conversion options. The supported
+      key formats are: &#x201C;RFC4716&#x201D; (RFC 4716/SSH2 public or private
+      key), &#x201C;PKCS8&#x201D; (PEM PKCS8 public key) or &#x201C;PEM&#x201D;
+      (PEM public key). The default conversion format is
+      &#x201C;RFC4716&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#N"><b class="Fl" title="Fl" id="N">-N</b></a>
+    <var class="Ar" title="Ar">new_passphrase</var></dt>
+  <dd class="It-tag">Provides the new passphrase.</dd>
+  <dt class="It-tag"><a class="selflink" href="#n"><b class="Fl" title="Fl" id="n">-n</b></a>
+    <var class="Ar" title="Ar">principals</var></dt>
+  <dd class="It-tag">Specify one or more principals (user or host names) to be
+      included in a certificate when signing a key. Multiple principals may be
+      specified, separated by commas. Please see the
+      <a class="Sx" title="Sx" href="#CERTIFICATES">CERTIFICATES</a> section for
+      details.</dd>
+  <dt class="It-tag"><a class="selflink" href="#O"><b class="Fl" title="Fl" id="O">-O</b></a>
+    <var class="Ar" title="Ar">option</var></dt>
+  <dd class="It-tag">Specify a certificate option when signing a key. This
+      option may be specified multiple times. See also the
+      <a class="Sx" title="Sx" href="#CERTIFICATES">CERTIFICATES</a> section for
+      further details. The options that are valid for user certificates are:
+    <div class="Pp"></div>
+    <dl class="Bl-tag Bl-compact">
+      <dt class="It-tag"><a class="selflink" href="#clear"><b class="Ic" title="Ic" id="clear">clear</b></a></dt>
+      <dd class="It-tag">Clear all enabled permissions. This is useful for
+          clearing the default set of permissions so permissions may be added
+          individually.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#critical"><b class="Ic" title="Ic" id="critical">critical</b></a>:<var class="Ar" title="Ar">name</var>[<span class="Op">=<var class="Ar" title="Ar">contents</var></span>]</dt>
+      <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+      <dt class="It-tag"><a class="selflink" href="#extension"><b class="Ic" title="Ic" id="extension">extension</b></a>:<var class="Ar" title="Ar">name</var>[<span class="Op">=<var class="Ar" title="Ar">contents</var></span>]</dt>
+      <dd class="It-tag">Includes an arbitrary certificate critical option or
+          extension. The specified <var class="Ar" title="Ar">name</var> should
+          include a domain suffix, e.g. &#x201C;name@example.com&#x201D;. If
+          <var class="Ar" title="Ar">contents</var> is specified then it is
+          included as the contents of the extension/option encoded as a string,
+          otherwise the extension/option is created with no contents (usually
+          indicating a flag). Extensions may be ignored by a client or server
+          that does not recognise them, whereas unknown critical options will
+          cause the certificate to be refused.
+        <div class="Pp"></div>
+        At present, no standard options are valid for host keys.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#force-command"><b class="Ic" title="Ic" id="force-command">force-command</b></a>=<var class="Ar" title="Ar">command</var></dt>
+      <dd class="It-tag">Forces the execution of
+          <var class="Ar" title="Ar">command</var> instead of any shell or
+          command specified by the user when the certificate is used for
+          authentication.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#no-agent-forwarding"><b class="Ic" title="Ic" id="no-agent-forwarding">no-agent-forwarding</b></a></dt>
+      <dd class="It-tag">Disable
+          <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>
+          forwarding (permitted by default).
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#no-port-forwarding"><b class="Ic" title="Ic" id="no-port-forwarding">no-port-forwarding</b></a></dt>
+      <dd class="It-tag">Disable port forwarding (permitted by default).
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#no-pty"><b class="Ic" title="Ic" id="no-pty">no-pty</b></a></dt>
+      <dd class="It-tag">Disable PTY allocation (permitted by default).
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#no-user-rc"><b class="Ic" title="Ic" id="no-user-rc">no-user-rc</b></a></dt>
+      <dd class="It-tag">Disable execution of
+          <i class="Pa" title="Pa">~/.ssh/rc</i> by
+          <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> (permitted by
+          default).
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#no-x11-forwarding"><b class="Ic" title="Ic" id="no-x11-forwarding">no-x11-forwarding</b></a></dt>
+      <dd class="It-tag">Disable X11 forwarding (permitted by default).
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#permit-agent-forwarding"><b class="Ic" title="Ic" id="permit-agent-forwarding">permit-agent-forwarding</b></a></dt>
+      <dd class="It-tag">Allows
+          <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>
+          forwarding.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#permit-port-forwarding"><b class="Ic" title="Ic" id="permit-port-forwarding">permit-port-forwarding</b></a></dt>
+      <dd class="It-tag">Allows port forwarding.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#permit-pty"><b class="Ic" title="Ic" id="permit-pty">permit-pty</b></a></dt>
+      <dd class="It-tag">Allows PTY allocation.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#permit-user-rc"><b class="Ic" title="Ic" id="permit-user-rc">permit-user-rc</b></a></dt>
+      <dd class="It-tag">Allows execution of
+          <i class="Pa" title="Pa">~/.ssh/rc</i> by
+          <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#permit-x11-forwarding"><b class="Ic" title="Ic" id="permit-x11-forwarding">permit-x11-forwarding</b></a></dt>
+      <dd class="It-tag">Allows X11 forwarding.
+        <div class="Pp"></div>
+      </dd>
+      <dt class="It-tag"><a class="selflink" href="#source-address"><b class="Ic" title="Ic" id="source-address">source-address</b></a>=<var class="Ar" title="Ar">address_list</var></dt>
+      <dd class="It-tag">Restrict the source addresses from which the
+          certificate is considered valid. The
+          <var class="Ar" title="Ar">address_list</var> is a comma-separated
+          list of one or more address/netmask pairs in CIDR format.</dd>
+    </dl>
+  </dd>
+  <dt class="It-tag"><a class="selflink" href="#o"><b class="Fl" title="Fl" id="o">-o</b></a></dt>
+  <dd class="It-tag">Causes <b class="Nm" title="Nm">ssh-keygen</b> to save
+      private keys using the new OpenSSH format rather than the more compatible
+      PEM format. The new format has increased resistance to brute-force
+      password cracking but is not supported by versions of OpenSSH prior to
+      6.5. Ed25519 keys always use the new private key format.</dd>
+  <dt class="It-tag"><a class="selflink" href="#P"><b class="Fl" title="Fl" id="P">-P</b></a>
+    <var class="Ar" title="Ar">passphrase</var></dt>
+  <dd class="It-tag">Provides the (old) passphrase.</dd>
+  <dt class="It-tag"><a class="selflink" href="#p"><b class="Fl" title="Fl" id="p">-p</b></a></dt>
+  <dd class="It-tag">Requests changing the passphrase of a private key file
+      instead of creating a new private key. The program will prompt for the
+      file containing the private key, for the old passphrase, and twice for the
+      new passphrase.</dd>
+  <dt class="It-tag"><a class="selflink" href="#Q"><b class="Fl" title="Fl" id="Q">-Q</b></a></dt>
+  <dd class="It-tag">Test whether keys have been revoked in a KRL.</dd>
+  <dt class="It-tag"><a class="selflink" href="#q"><b class="Fl" title="Fl" id="q">-q</b></a></dt>
+  <dd class="It-tag">Silence <b class="Nm" title="Nm">ssh-keygen</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#R"><b class="Fl" title="Fl" id="R">-R</b></a>
+    <var class="Ar" title="Ar">hostname</var></dt>
+  <dd class="It-tag">Removes all keys belonging to
+      <var class="Ar" title="Ar">hostname</var> from a
+      <i class="Pa" title="Pa">known_hosts</i> file. This option is useful to
+      delete hashed hosts (see the <b class="Fl" title="Fl">-H</b> option
+      above).</dd>
+  <dt class="It-tag"><a class="selflink" href="#r"><b class="Fl" title="Fl" id="r">-r</b></a>
+    <var class="Ar" title="Ar">hostname</var></dt>
+  <dd class="It-tag">Print the SSHFP fingerprint resource record named
+      <var class="Ar" title="Ar">hostname</var> for the specified public key
+      file.</dd>
+  <dt class="It-tag"><a class="selflink" href="#S"><b class="Fl" title="Fl" id="S">-S</b></a>
+    <var class="Ar" title="Ar">start</var></dt>
+  <dd class="It-tag">Specify start point (in hex) when generating candidate
+      moduli for DH-GEX.</dd>
+  <dt class="It-tag"><a class="selflink" href="#s"><b class="Fl" title="Fl" id="s">-s</b></a>
+    <var class="Ar" title="Ar">ca_key</var></dt>
+  <dd class="It-tag">Certify (sign) a public key using the specified CA key.
+      Please see the
+      <a class="Sx" title="Sx" href="#CERTIFICATES">CERTIFICATES</a> section for
+      details.
+    <div class="Pp"></div>
+    When generating a KRL, <b class="Fl" title="Fl">-s</b> specifies a path to a
+      CA public key file used to revoke certificates directly by key ID or
+      serial number. See the
+      <a class="Sx" title="Sx" href="#KEY_REVOCATION_LISTS">KEY REVOCATION
+      LISTS</a> section for details.</dd>
+  <dt class="It-tag"><a class="selflink" href="#T"><b class="Fl" title="Fl" id="T">-T</b></a>
+    <var class="Ar" title="Ar">output_file</var></dt>
+  <dd class="It-tag">Test DH group exchange candidate primes (generated using
+      the <b class="Fl" title="Fl">-G</b> option) for safety.</dd>
+  <dt class="It-tag"><a class="selflink" href="#t"><b class="Fl" title="Fl" id="t">-t</b></a>
+    <b class="Cm" title="Cm">dsa</b> |
+    <a class="selflink" href="#ecdsa"><b class="Cm" title="Cm" id="ecdsa">ecdsa</b></a>
+    |
+    <a class="selflink" href="#ed25519"><b class="Cm" title="Cm" id="ed25519">ed25519</b></a>
+    |
+    <a class="selflink" href="#rsa"><b class="Cm" title="Cm" id="rsa">rsa</b></a></dt>
+  <dd class="It-tag">Specifies the type of key to create. The possible values
+      are &#x201C;dsa&#x201D;, &#x201C;ecdsa&#x201D;, &#x201C;ed25519&#x201D;,
+      or &#x201C;rsa&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#U"><b class="Fl" title="Fl" id="U">-U</b></a></dt>
+  <dd class="It-tag">When used in combination with
+      <b class="Fl" title="Fl">-s</b>, this option indicates that a CA key
+      resides in a
+      <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>. See the
+      <a class="Sx" title="Sx" href="#CERTIFICATES">CERTIFICATES</a> section for
+      more information.</dd>
+  <dt class="It-tag"><a class="selflink" href="#u"><b class="Fl" title="Fl" id="u">-u</b></a></dt>
+  <dd class="It-tag">Update a KRL. When specified with
+      <b class="Fl" title="Fl">-k</b>, keys listed via the command line are
+      added to the existing KRL rather than a new KRL being created.</dd>
+  <dt class="It-tag"><a class="selflink" href="#V"><b class="Fl" title="Fl" id="V">-V</b></a>
+    <var class="Ar" title="Ar">validity_interval</var></dt>
+  <dd class="It-tag">Specify a validity interval when signing a certificate. A
+      validity interval may consist of a single time, indicating that the
+      certificate is valid beginning now and expiring at that time, or may
+      consist of two times separated by a colon to indicate an explicit time
+      interval. The start time may be specified as a date in YYYYMMDD format, a
+      time in YYYYMMDDHHMMSS format or a relative time (to the current time)
+      consisting of a minus sign followed by a relative time in the format
+      described in the TIME FORMATS section of
+      <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>. The
+      end time may be specified as a YYYYMMDD date, a YYYYMMDDHHMMSS time or a
+      relative time starting with a plus character.
+    <div class="Pp"></div>
+    For example: &#x201C;+52w1d&#x201D; (valid from now to 52 weeks and one day
+      from now), &#x201C;-4w:+4w&#x201D; (valid from four weeks ago to four
+      weeks from now), &#x201C;20100101123000:20110101123000&#x201D; (valid from
+      12:30 PM, January 1st, 2010 to 12:30 PM, January 1st, 2011),
+      &#x201C;-1d:20110101&#x201D; (valid from yesterday to midnight, January
+      1st, 2011).</dd>
+  <dt class="It-tag"><a class="selflink" href="#v"><b class="Fl" title="Fl" id="v">-v</b></a></dt>
+  <dd class="It-tag">Verbose mode. Causes
+      <b class="Nm" title="Nm">ssh-keygen</b> to print debugging messages about
+      its progress. This is helpful for debugging moduli generation. Multiple
+      <b class="Fl" title="Fl">-v</b> options increase the verbosity. The
+      maximum is 3.</dd>
+  <dt class="It-tag"><a class="selflink" href="#W"><b class="Fl" title="Fl" id="W">-W</b></a>
+    <var class="Ar" title="Ar">generator</var></dt>
+  <dd class="It-tag">Specify desired generator when testing candidate moduli for
+      DH-GEX.</dd>
+  <dt class="It-tag"><a class="selflink" href="#y"><b class="Fl" title="Fl" id="y">-y</b></a></dt>
+  <dd class="It-tag">This option will read a private OpenSSH format file and
+      print an OpenSSH public key to stdout.</dd>
+  <dt class="It-tag"><a class="selflink" href="#z"><b class="Fl" title="Fl" id="z">-z</b></a>
+    <var class="Ar" title="Ar">serial_number</var></dt>
+  <dd class="It-tag">Specifies a serial number to be embedded in the certificate
+      to distinguish this certificate from others from the same CA. The default
+      serial number is zero.
+    <div class="Pp"></div>
+    When generating a KRL, the <b class="Fl" title="Fl">-z</b> flag is used to
+      specify a KRL version number.</dd>
+</dl>
+<h1 class="Sh" title="Sh" id="MODULI_GENERATION"><a class="selflink" href="#MODULI_GENERATION">MODULI
+  GENERATION</a></h1>
+<b class="Nm" title="Nm">ssh-keygen</b> may be used to generate groups for the
+  Diffie-Hellman Group Exchange (DH-GEX) protocol. Generating these groups is a
+  two-step process: first, candidate primes are generated using a fast, but
+  memory intensive process. These candidate primes are then tested for
+  suitability (a CPU-intensive process).
+<div class="Pp"></div>
+Generation of primes is performed using the <b class="Fl" title="Fl">-G</b>
+  option. The desired length of the primes may be specified by the
+  <b class="Fl" title="Fl">-b</b> option. For example:
+<div class="Pp"></div>
+<div class="D1"><code class="Li"># ssh-keygen -G moduli-2048.candidates -b
+  2048</code></div>
+<div class="Pp"></div>
+By default, the search for primes begins at a random point in the desired length
+  range. This may be overridden using the <b class="Fl" title="Fl">-S</b>
+  option, which specifies a different start point (in hex).
+<div class="Pp"></div>
+Once a set of candidates have been generated, they must be screened for
+  suitability. This may be performed using the <b class="Fl" title="Fl">-T</b>
+  option. In this mode <b class="Nm" title="Nm">ssh-keygen</b> will read
+  candidates from standard input (or a file specified using the
+  <b class="Fl" title="Fl">-f</b> option). For example:
+<div class="Pp"></div>
+<div class="D1"><code class="Li"># ssh-keygen -T moduli-2048 -f
+  moduli-2048.candidates</code></div>
+<div class="Pp"></div>
+By default, each candidate will be subjected to 100 primality tests. This may be
+  overridden using the <b class="Fl" title="Fl">-a</b> option. The DH generator
+  value will be chosen automatically for the prime under consideration. If a
+  specific generator is desired, it may be requested using the
+  <b class="Fl" title="Fl">-W</b> option. Valid generator values are 2, 3, and
+  5.
+<div class="Pp"></div>
+Screened DH groups may be installed in <i class="Pa" title="Pa">/etc/moduli</i>.
+  It is important that this file contains moduli of a range of bit lengths and
+  that both ends of a connection share common moduli.
+<h1 class="Sh" title="Sh" id="CERTIFICATES"><a class="selflink" href="#CERTIFICATES">CERTIFICATES</a></h1>
+<b class="Nm" title="Nm">ssh-keygen</b> supports signing of keys to produce
+  certificates that may be used for user or host authentication. Certificates
+  consist of a public key, some identity information, zero or more principal
+  (user or host) names and a set of options that are signed by a Certification
+  Authority (CA) key. Clients or servers may then trust only the CA key and
+  verify its signature on a certificate rather than trusting many user/host
+  keys. Note that OpenSSH certificates are a different, and much simpler, format
+  to the X.509 certificates used in
+  <a class="Xr" title="Xr" href="ssl.8.html">ssl(8)</a>.
+<div class="Pp"></div>
+<b class="Nm" title="Nm">ssh-keygen</b> supports two types of certificates: user
+  and host. User certificates authenticate users to servers, whereas host
+  certificates authenticate server hosts to users. To generate a user
+  certificate:
+<div class="Pp"></div>
+<div class="D1"><code class="Li">$ ssh-keygen -s /path/to/ca_key -I key_id
+  /path/to/user_key.pub</code></div>
+<div class="Pp"></div>
+The resultant certificate will be placed in
+  <i class="Pa" title="Pa">/path/to/user_key-cert.pub</i>. A host certificate
+  requires the <b class="Fl" title="Fl">-h</b> option:
+<div class="Pp"></div>
+<div class="D1"><code class="Li">$ ssh-keygen -s /path/to/ca_key -I key_id -h
+  /path/to/host_key.pub</code></div>
+<div class="Pp"></div>
+The host certificate will be output to
+  <i class="Pa" title="Pa">/path/to/host_key-cert.pub</i>.
+<div class="Pp"></div>
+It is possible to sign using a CA key stored in a PKCS#11 token by providing the
+  token library using <b class="Fl" title="Fl">-D</b> and identifying the CA key
+  by providing its public half as an argument to
+  <b class="Fl" title="Fl">-s</b>:
+<div class="Pp"></div>
+<div class="D1"><code class="Li">$ ssh-keygen -s ca_key.pub -D libpkcs11.so -I
+  key_id user_key.pub</code></div>
+<div class="Pp"></div>
+Similarly, it is possible for the CA key to be hosted in a
+  <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>. This is
+  indicated by the <b class="Fl" title="Fl">-U</b> flag and, again, the CA key
+  must be identified by its public half.
+<div class="Pp"></div>
+<div class="D1"><code class="Li">$ ssh-keygen -Us ca_key.pub -I key_id
+  user_key.pub</code></div>
+<div class="Pp"></div>
+In all cases, <var class="Ar" title="Ar">key_id</var> is a &quot;key
+  identifier&quot; that is logged by the server when the certificate is used for
+  authentication.
+<div class="Pp"></div>
+Certificates may be limited to be valid for a set of principal (user/host)
+  names. By default, generated certificates are valid for all users or hosts. To
+  generate a certificate for a specified set of principals:
+<div class="Pp"></div>
+<div class="D1"><code class="Li">$ ssh-keygen -s ca_key -I key_id -n user1,user2
+  user_key.pub</code></div>
+<div class="D1"><code class="Li">$ ssh-keygen -s ca_key -I key_id -h -n
+  host.domain host_key.pub</code></div>
+<div class="Pp"></div>
+Additional limitations on the validity and use of user certificates may be
+  specified through certificate options. A certificate option may disable
+  features of the SSH session, may be valid only when presented from particular
+  source addresses or may force the use of a specific command. For a list of
+  valid certificate options, see the documentation for the
+  <b class="Fl" title="Fl">-O</b> option above.
+<div class="Pp"></div>
+Finally, certificates may be defined with a validity lifetime. The
+  <b class="Fl" title="Fl">-V</b> option allows specification of certificate
+  start and end times. A certificate that is presented at a time outside this
+  range will not be considered valid. By default, certificates are valid from
+  <span class="Ux">UNIX</span> Epoch to the distant future.
+<div class="Pp"></div>
+For certificates to be used for user or host authentication, the CA public key
+  must be trusted by <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> or
+  <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>. Please refer to those
+  manual pages for details.
+<h1 class="Sh" title="Sh" id="KEY_REVOCATION_LISTS"><a class="selflink" href="#KEY_REVOCATION_LISTS">KEY
+  REVOCATION LISTS</a></h1>
+<b class="Nm" title="Nm">ssh-keygen</b> is able to manage OpenSSH format Key
+  Revocation Lists (KRLs). These binary files specify keys or certificates to be
+  revoked using a compact format, taking as little as one bit per certificate if
+  they are being revoked by serial number.
+<div class="Pp"></div>
+KRLs may be generated using the <b class="Fl" title="Fl">-k</b> flag. This
+  option reads one or more files from the command line and generates a new KRL.
+  The files may either contain a KRL specification (see below) or public keys,
+  listed one per line. Plain public keys are revoked by listing their hash or
+  contents in the KRL and certificates revoked by serial number or key ID (if
+  the serial is zero or not available).
+<div class="Pp"></div>
+Revoking keys using a KRL specification offers explicit control over the types
+  of record used to revoke keys and may be used to directly revoke certificates
+  by serial number or key ID without having the complete original certificate on
+  hand. A KRL specification consists of lines containing one of the following
+  directives followed by a colon and some directive-specific information.
+<dl class="Bl-tag">
+  <dt class="It-tag"><a class="selflink" href="#serial"><b class="Cm" title="Cm" id="serial">serial</b></a>:
+    <var class="Ar" title="Ar">serial_number</var>[<span class="Op">-<var class="Ar" title="Ar">serial_number</var></span>]</dt>
+  <dd class="It-tag">Revokes a certificate with the specified serial number.
+      Serial numbers are 64-bit values, not including zero and may be expressed
+      in decimal, hex or octal. If two serial numbers are specified separated by
+      a hyphen, then the range of serial numbers including and between each is
+      revoked. The CA key must have been specified on the
+      <b class="Nm" title="Nm">ssh-keygen</b> command line using the
+      <b class="Fl" title="Fl">-s</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#id"><b class="Cm" title="Cm" id="id">id</b></a>:
+    <var class="Ar" title="Ar">key_id</var></dt>
+  <dd class="It-tag">Revokes a certificate with the specified key ID string. The
+      CA key must have been specified on the
+      <b class="Nm" title="Nm">ssh-keygen</b> command line using the
+      <b class="Fl" title="Fl">-s</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#key"><b class="Cm" title="Cm" id="key">key</b></a>:
+    <var class="Ar" title="Ar">public_key</var></dt>
+  <dd class="It-tag">Revokes the specified key. If a certificate is listed, then
+      it is revoked as a plain public key.</dd>
+  <dt class="It-tag"><a class="selflink" href="#sha1"><b class="Cm" title="Cm" id="sha1">sha1</b></a>:
+    <var class="Ar" title="Ar">public_key</var></dt>
+  <dd class="It-tag">Revokes the specified key by its SHA1 hash.</dd>
+</dl>
+<div class="Pp"></div>
+KRLs may be updated using the <b class="Fl" title="Fl">-u</b> flag in addition
+  to <b class="Fl" title="Fl">-k</b>. When this option is specified, keys listed
+  via the command line are merged into the KRL, adding to those already there.
+<div class="Pp"></div>
+It is also possible, given a KRL, to test whether it revokes a particular key
+  (or keys). The <b class="Fl" title="Fl">-Q</b> flag will query an existing
+  KRL, testing each key specified on the command line. If any key listed on the
+  command line has been revoked (or an error encountered) then
+  <b class="Nm" title="Nm">ssh-keygen</b> will exit with a non-zero exit status.
+  A zero exit status will only be returned if no key was revoked.
+<h1 class="Sh" title="Sh" id="FILES"><a class="selflink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag Bl-compact">
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_dsa</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_ecdsa</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_ed25519</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_rsa</i></dt>
+  <dd class="It-tag">Contains the DSA, ECDSA, Ed25519 or RSA authentication
+      identity of the user. This file should not be readable by anyone but the
+      user. It is possible to specify a passphrase when generating the key; that
+      passphrase will be used to encrypt the private part of this file using
+      128-bit AES. This file is not automatically accessed by
+      <b class="Nm" title="Nm">ssh-keygen</b> but it is offered as the default
+      file for the private key.
+      <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a> will read this file
+      when a login attempt is made.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_dsa.pub</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_ecdsa.pub</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_ed25519.pub</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/id_rsa.pub</i></dt>
+  <dd class="It-tag">Contains the DSA, ECDSA, Ed25519 or RSA public key for
+      authentication. The contents of this file should be added to
+      <i class="Pa" title="Pa">~/.ssh/authorized_keys</i> on all machines where
+      the user wishes to log in using public key authentication. There is no
+      need to keep the contents of this file secret.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/moduli</i></dt>
+  <dd class="It-tag">Contains Diffie-Hellman groups used for DH-GEX. The file
+      format is described in
+      <a class="Xr" title="Xr" href="moduli.5.html">moduli(5)</a>.</dd>
+</dl>
+<h1 class="Sh" title="Sh" id="SEE_ALSO"><a class="selflink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>,
+  <a class="Xr" title="Xr" href="ssh-add.1.html">ssh-add(1)</a>,
+  <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>,
+  <a class="Xr" title="Xr" href="moduli.5.html">moduli(5)</a>,
+  <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>
+<div class="Pp"></div>
+<cite class="Rs" title="Rs"><span class="RsT">The Secure Shell (SSH) Public Key
+  File Format</span>, <span class="RsR">RFC 4716</span>,
+  <span class="RsD">2006</span>.</cite>
+<h1 class="Sh" title="Sh" id="AUTHORS"><a class="selflink" href="#AUTHORS">AUTHORS</a></h1>
+OpenSSH is a derivative of the original and free ssh 1.2.12 release by Tatu
+  Ylonen. Aaron Campbell, Bob Beck, Markus Friedl, Niels Provos, Theo de Raadt
+  and Dug Song removed many bugs, re-added newer features and created OpenSSH.
+  Markus Friedl contributed the support for SSH protocol versions 1.5 and
+  2.0.</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">July 8, 2017</td>
+    <td class="foot-os">openssh-7.6p1</td>
+  </tr>
+</table>
+</body>
+</html>

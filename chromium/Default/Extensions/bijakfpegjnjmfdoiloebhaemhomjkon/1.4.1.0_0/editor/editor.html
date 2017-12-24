@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://qsnapnet.com -->
+<html>
+<head>
+    <meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>        
+    <title>qSnap Editor</title>
+    <meta name='description' content='qSnap'>
+    <meta name='viewport' content='width=device-width'>
+    <link rel='stylesheet' href='css/bootstrap.css'>
+    <link rel='stylesheet' href='css/bootstrap-responsive.css'>
+    <link rel='stylesheet' href='css/bootstrap-modal.css'>
+    <link rel='stylesheet' href='css/yajc.css'>
+    <link rel='stylesheet' href='css/editor.css'>
+    <script src='js/qsnap.iecss.js'></script>
+</head>
+<body>
+  <div class="noscript" id="noscript">
+    <p class="center">qSnap needs JavaScript to work, please <a href="http://www.enable-javascript.com/">enable JavaScript</a>.</p>
+  </div>
+
+  <div class='wrapper'>
+    <!-- Top bar
+    ================================================== -->
+    <div class='navbar navbar-inverse navbar-fixed-top'>
+        <div class='navbar-inner'>                
+            <a id='logo' target='_blank' class='brand' href='https://qsnapnet.com'>
+                <img src='img/logo.png' alt='qSnap' width='75' height='22'>
+            </a>
+           
+            <div id='tools' class='toolbar'></div>
+
+            <ul class='nav pull-right'>
+                <li>
+                    <a href='#' id='btn-settings' rel='tooltip' data-placement='bottom' data-original-title='Settings'>
+                        <i class='icon-setting'></i>
+                    </a>
+                </li>
+                <li>
+                    <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+                      <i class='icon-help'></i> <span class='caret'></span>
+                    </a>
+                    <ul class='dropdown-menu'>
+                      <li><a href='http://support.qasymphony.com/entries/26612237-qSnap-Plug-in-Features' target="_blank">Help</a></li>
+                      <li><a href='http://support.qasymphony.com/anonymous_requests/new' target="_blank">Submit ticket to QASymphony</a></li>
+                    </ul>
+                </li>
+            </ul>            
+        </div>
+    </div>
+
+    <!-- Bottom bar
+    ================================================== -->
+    <div class='navbar navbar-inverse navbar-fixed-bottom'>
+        <div class='navbar-inner'>
+            <ul class='nav'>
+                <li>
+                    <a id='btn-show-thumbnails' class='btn btn-mini btn-inverse' href='#' rel='tooltip' data-placement='top' data-original-title='Show list'>
+                        <i class='icon-th-large icon-white'></i>
+                    </a>
+                </li>
+                <li class='divider-vertical'></li>
+                <li>
+                    <a id='btn-prev-thumbnail' class='btn btn-mini btn-inverse' href='#' rel='tooltip' data-placement='top' data-original-title='Previous screen'>
+                        <i class='icon-chevron-left icon-white'></i>
+                    </a>
+                </li>
+                <li>
+                    <span id='thumbnail-counter-index'>
+                        <b id='thumbnail-index'>0</b> of <b id='thumbnail-counter'>0</b>
+                    </span>
+                </li>
+                <li>
+                    <a id='btn-next-thumbnail' class='btn btn-mini btn-inverse' href='#' rel='tooltip' data-placement='top' data-original-title='Next screen'>
+                        <i class='icon-chevron-right icon-white'></i>
+                    </a>
+                </li>
+                <li class='divider-vertical'></li>              
+                <li>
+                    <a id='btn-capture-new' class='btn btn-small btn-inverse' href='#' rel='tooltip' data-original-title='Capture new screenshot'>
+                        <i class='icon-camera icon-white'></i> Capture new
+                    </a>
+                </li>
+                <li>
+                    <a id='btn-add-file' class='btn btn-small btn-inverse' href='#' rel='tooltip' data-original-title='Add JPEG or PNG images from your computer'>
+                        <i class='icon-attach-file'></i> Add files
+                    </a>
+                    <form id='add-file-form' method='post' enctype='multipart/form-data' style='position:absolute; top:-9999px' action='#'>
+                        <input class='file-attachment' type='file' id='files' name='files' accept="image/jpeg,image/png,jpg|png" multiple />
+                    </form>
+                </li>
+            </ul>
+            <ul class='nav pull-right'>
+                <li>
+                    <div id="btn-share-group" class="btn-group dropup">
+                        <a id="btn-share-screen" class="btn btn-small last-btn" data-toggle="dropdown">Share<i class="caret"></i>
+                        </a>
+                        <ul id="share-list" class="dropdown-menu pull-right">
+                            <li><a id="btn-share" href="#"><i class='icon-share'></i>Share screen (Ctrl/Cmd + X)</a></li>
+                            <li><a id="btn-share-all" href="#"><i class='icon-share'></i>Share all screens (Ctrl/Cmd + Alt + X)</a></li>
+                            <li><a id="btn-save" href="#"><i class='icon-save'></i>Save screen to your machine (Ctrl/Cmd + Alt + S)</a></li>
+                            <li><a id="btn-save-all" href="#"><i class='icon-save'></i>Save all screens to your machine (Ctrl/Cmd + Alt + A)</a></li>
+                            <li><a id="btn-print" href="#"><i class='icon-print'></i>Print this screen (Ctrl/Cmd + Alt + P)</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Thumbnails
+    ================================================== --> 
+    <div id='thumbnails' style='display: none;'></div>
+
+    <!-- Main canvas
+    ================================================== --> 
+    <div id='main' tabindex="0">
+        <canvas id='canvas' class='background' ></canvas>
+    </div>   
+
+    <div id='message-channel' style='display: none'></div>
+    <script src='js/require.config.js'></script>
+    <script data-main='js/main' src='../libs/require.js'></script>
+  </div>
+</body>
+</html>

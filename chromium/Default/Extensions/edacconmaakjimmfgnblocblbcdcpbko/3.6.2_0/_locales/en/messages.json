@@ -1,0 +1,191 @@
+{
+   "actionTimeframe": {
+      "message": "seconds"
+   },
+   "addImportedSession": {
+      "message": "In the Future"
+   },
+   "appModeVal": {
+      "message": "week"
+   },
+   "cacheActiveTab": {
+      "message": "Last Week"
+   },
+   "cacheWindowSource": {
+      "message": "Month"
+   },
+   "copyTabUrl": {
+      "message": "Today"
+   },
+   "ctrl": {
+      "message": "$ACTION$ moments ago",
+      "placeholders": {
+         "action": {
+            "content": "$1",
+            "example": "updated"
+         }
+      }
+   },
+   "deferSync": {
+      "message": "$ACTION$ more than a year ago",
+      "placeholders": {
+         "action": {
+            "content": "$1",
+            "example": "updated"
+         }
+      }
+   },
+   "evalPanelLocationIsLeft": {
+      "message": "Year"
+   },
+   "evalPanelLocationIsLeftVal": {
+      "message": "minute"
+   },
+   "evalPosStringVal": {
+      "message": "Last Month"
+   },
+   "evalRegisterValue5": {
+      "message": "This Year"
+   },
+   "evalRevise": {
+      "message": "Old Sessions"
+   },
+   "evalSequenceVal": {
+      "message": "Day Name"
+   },
+   "exprVal": {
+      "message": "Time"
+   },
+   "filterVal": {
+      "message": "hour"
+   },
+   "formatTabTitle": {
+      "message": "Updated"
+   },
+   "formatWindowTab": {
+      "message": "Older"
+   },
+   "hideTabLineItem": {
+      "message": "Saved Sessions"
+   },
+   "iAddSessionConfigsVal": {
+      "description": "4 periods are relevant here",
+      "message": "Loading . . . ."
+   },
+   "iPosVal": {
+      "message": "Day"
+   },
+   "iSelLength": {
+      "message": "Two Weeks Ago"
+   },
+   "iSessionId": {
+      "message": "Saved Session"
+   },
+   "iSrc": {
+      "message": "days"
+   },
+   "ignoreUsrInputVal": {
+      "message": "day"
+   },
+   "initSessionWindow": {
+      "message": "most recent"
+   },
+   "initTabAction": {
+      "message": "Previous Sessions"
+   },
+   "initWindowSource": {
+      "message": "Last Year"
+   },
+   "isForceSearchVal": {
+      "message": "months"
+   },
+   "iterateCurrentSession": {
+      "message": "This Week"
+   },
+   "linkset": {
+      "message": "Session"
+   },
+   "linksets": {
+      "message": "$COUNT$ Sessions",
+      "placeholders": {
+         "count": {
+            "content": "$1",
+            "example": "7"
+         }
+      }
+   },
+   "moveTab": {
+      "message": "Current Sessions"
+   },
+   "noText": {
+      "message": "Sessions"
+   },
+   "parseRecoverySession": {
+      "message": "year"
+   },
+   "propagateCurrentTab": {
+      "message": "Saved"
+   },
+   "refreshSessionState": {
+      "message": "weeks"
+   },
+   "refreshTabConfig": {
+      "message": "Completed"
+   },
+   "registerSessionListener": {
+      "message": "Session"
+   },
+   "removedTabCountVal": {
+      "message": "minutes"
+   },
+   "requestDisplayedSession": {
+      "message": "Refreshed"
+   },
+   "saveCurrentSession": {
+      "message": "Three Weeks Ago"
+   },
+   "searchSessionTab": {
+      "message": "Current Session"
+   },
+   "searchWindow": {
+      "message": "Unknown"
+   },
+   "selType": {
+      "message": "Previous Session"
+   },
+   "tabSrc": {
+      "message": "Recorded"
+   },
+   "tabStartIdx": {
+      "message": "$ACTION$ $AMOUNT_OF_TIME$ $UNIT_OF_TIME$ ago",
+      "placeholders": {
+         "AMOUNT_OF_TIME": {
+            "content": "$2",
+            "example": "5"
+         },
+         "UNIT_OF_TIME": {
+            "content": "$3",
+            "example": "minutes"
+         },
+         "action": {
+            "content": "$1",
+            "example": "updated"
+         }
+      }
+   },
+   "tabStartIdxVal": {
+      "message": "second"
+   },
+   "tokenComponent": {
+      "message": "Yesterday"
+   },
+   "tpaVal": {
+      "message": "hours"
+   },
+   "trackTabState": {
+      "message": "years"
+   },
+   "validateTab": {
+      "message": "month"
+   }
+}

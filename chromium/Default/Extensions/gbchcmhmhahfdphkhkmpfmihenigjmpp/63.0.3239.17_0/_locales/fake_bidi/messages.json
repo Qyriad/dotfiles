@@ -1,0 +1,988 @@
+﻿{
+  "CLOSE_PROMPT": {
+    "message": "\u202eLeaving\u202c \u202ethis\u202c \u202epage\u202c \u202ewill\u202c \u202eend\u202c \u202eyour\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202esession\u202c."
+  },
+  "DESCRIPTION_THIRD_PARTY_AUTH": {
+    "message": "\u202eThe\u202c \u202eremote\u202c \u202ehost\u202c \u202erequires\u202c \u202eyou\u202c \u202eto\u202c \u202eauthenticate\u202c \u202eto\u202c \u202ea\u202c \u202ethird\u202c-\u202eparty\u202c \u202ewebsite\u202c. \u202eTo\u202c \u202econtinue\u202c, \u202eyou\u202c \u202emust\u202c \u202egrant\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eadditional\u202c \u202epermissions\u202c \u202eto\u202c \u202eaccess\u202c \u202ethis\u202c \u202eaddress\u202c:"
+  },
+  "DESCRIPTION_HOME": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eallows\u202c \u202eyou\u202c \u202eto\u202c \u202esecurely\u202c \u202eshare\u202c \u202eyour\u202c \u202ecomputer\u202c \u202eover\u202c \u202ethe\u202c \u202eWeb\u202c. \u202eBoth\u202c \u202eusers\u202c \u202emust\u202c \u202ebe\u202c \u202erunning\u202c \u202ethe\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eapp\u202c, \u202ewhich\u202c \u202ecan\u202c \u202ebe\u202c \u202efound\u202c \u202eat\u202c $1$.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_AUTHENTICATION_FAILED": {
+    "message": "\u202eAuthentication\u202c \u202efailed\u202c. \u202ePlease\u202c \u202esign\u202c \u202ein\u202c \u202eto\u202c \u202eChrome\u202c \u202eagain\u202c."
+  },
+  "ERROR_INVALID_HOST_DOMAIN": {
+    "message": "\u202ePolicy\u202c \u202esettings\u202c \u202edo\u202c \u202enot\u202c \u202epermit\u202c \u202esharing\u202c \u202ethis\u202c \u202ecomputer\u202c \u202eas\u202c \u202ea\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202ehost\u202c. \u202eContact\u202c \u202eyour\u202c \u202esystem\u202c \u202eadministrator\u202c \u202efor\u202c \u202eassistance\u202c."
+  },
+  "ERROR_NOT_AUTHENTICATED": {
+    "message": "\u202eYou\u202c \u202eare\u202c \u202enot\u202c \u202esigned\u202c \u202ein\u202c \u202eto\u202c \u202eChrome\u202c. \u202ePlease\u202c \u202esign\u202c \u202ein\u202c \u202eand\u202c \u202etry\u202c \u202eagain\u202c."
+  },
+  "HOME_DAEMON_ACTIVE_MESSAGE": {
+    "message": "\u202eYou\u202c \u202emay\u202c \u202esecurely\u202c \u202eaccess\u202c \u202ethis\u202c \u202ecomputer\u202c \u202eusing\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c."
+  },
+  "HOME_DAEMON_START_MESSAGE": {
+    "message": "\u202eYou\u202c \u202emust\u202c \u202eenable\u202c \u202eremote\u202c \u202econnections\u202c \u202eif\u202c \u202eyou\u202c \u202ewant\u202c \u202eto\u202c \u202euse\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eto\u202c \u202eaccess\u202c \u202ethis\u202c \u202ecomputer\u202c."
+  },
+  "HOST_LIST_EMPTY_HOSTING_SUPPORTED": {
+    "message": "\u202eTo\u202c \u202eenable\u202c \u202eremote\u202c \u202econnections\u202c \u202eto\u202c \u202ea\u202c \u202edifferent\u202c \u202ecomputer\u202c, \u202einstall\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202ethere\u202c \u202eand\u202c \u202eclick\u202c \u201c$1$\u201d.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "HOST_LIST_EMPTY_HOSTING_UNSUPPORTED": {
+    "message": "\u202eYou\u202c \u202ehave\u202c \u202eno\u202c \u202ecomputers\u202c \u202eregistered\u202c. \u202eTo\u202c \u202eenable\u202c \u202eremote\u202c \u202econnections\u202c \u202eto\u202c \u202ea\u202c \u202ecomputer\u202c, \u202einstall\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202ethere\u202c \u202eand\u202c \u202eclick\u202c \u201c$1$\u201d.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "HOST_LIST_EMPTY_V2_MIGRATION": {
+    "message": "\u202eYou\u202c \u202ehave\u202c \u202epreviously\u202c \u202esigned\u202c \u202ein\u202c \u202eas\u202c $1$ ($2$).  \u202eTo\u202c \u202eaccess\u202c \u202eyour\u202c \u202ecomputers\u202c \u202ein\u202c \u202ethat\u202c \u202eaccount\u202c, $3$\u202esign\u202c \u202ein\u202c \u202eto\u202c \u202eGoogle\u202c \u202eChrome\u202c$4$ \u202ewith\u202c \u202ethat\u202c \u202eaccount\u202c \u202eand\u202c \u202ere\u202c-\u202einstall\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      },
+      "3": {
+        "content": "$3"
+      },
+      "4": {
+        "content": "$4"
+      }
+    }
+  },
+  "HOST_SETUP_CRASH_REPORTING_MESSAGE": {
+    "message": "\u202eHelp\u202c \u202eus\u202c \u202eimprove\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eby\u202c \u202eallowing\u202c \u202eus\u202c \u202eto\u202c \u202ecollect\u202c \u202eusage\u202c \u202estatistics\u202c \u202eand\u202c \u202ecrash\u202c \u202ereports\u202c."
+  },
+  "INSTALLER_DOWNLOAD": {
+    "message": "\u202eDownload\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eHost\u202c \u202eInstaller\u202c"
+  },
+  "HOST_SETUP_TERMS_OF_SERVICE": {
+    "message": "\u202eBy\u202c \u202edownloading\u202c \u202ethe\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eHost\u202c \u202eInstaller\u202c, \u202eyou\u202c \u202eare\u202c \u202eagreeing\u202c \u202eto\u202c \u202ethe\u202c \u202eGoogle\u202c $1$\u202eTerms\u202c \u202eof\u202c \u202eService\u202c$4.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "HOST_SETUP_INSTALL": {
+    "message": "\u202eChrome\u202c \u202eis\u202c \u202edownloading\u202c \u202ethe\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eHost\u202c \u202einstaller\u202c.  \u202eOnce\u202c \u202ethe\u202c \u202edownload\u202c \u202eis\u202c \u202ecomplete\u202c, \u202eplease\u202c \u202erun\u202c \u202ethe\u202c \u202einstaller\u202c \u202ebefore\u202c \u202econtinuing\u202c."
+  },
+  "MESSAGE_SESSION_FINISHED": {
+    "message": "\u202eYour\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202esession\u202c \u202ehas\u202c \u202eended\u202c."
+  },
+  "PRODUCT_NAME": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c"
+  },
+  "PRODUCT_NAME_APP_STREAMING": {
+    "message": "\u202eChrome\u202c \u202eApp\u202c \u202eStreaming\u202c"
+  },
+  "WARNING_NOT_WINDOWED": {
+    "message": "\u202eNOTE\u202c: \u202eTo\u202c \u202eensure\u202c \u202ethat\u202c \u202eall\u202c \u202ekeyboard\u202c \u202eshortcuts\u202c \u202eare\u202c \u202eavailable\u202c, \u202eyou\u202c \u202ecan\u202c \u202econfigure\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eto\u202c \u2018\u202eOpen\u202c \u202eas\u202c \u202ewindow\u202c\u2019."
+  },
+  "HOST_NEEDS_UPDATE_TITLE": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eon\u202c $1$ \u202eis\u202c \u202eout\u202c-\u202eof\u202c-\u202edate\u202c \u202eand\u202c \u202eneeds\u202c \u202eto\u202c \u202ebe\u202c \u202eupdated\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "COMPANY_NAME": {
+    "message": "\u202eGoogle\u202c \u202eInc\u202c."
+  },
+  "COPYRIGHT": {
+    "message": "\u202eCopyright\u202c 2013 \u202eGoogle\u202c \u202eInc\u202c. \u202eAll\u202c \u202eRights\u202c \u202eReserved\u202c."
+  },
+  "DISPLAY_SERVICE_NAME": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eService\u202c"
+  },
+  "SERVICE_DESCRIPTION": {
+    "message": "\u202eThis\u202c \u202eservice\u202c \u202eenables\u202c \u202eincoming\u202c \u202econnections\u202c \u202efrom\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eclients\u202c."
+  },
+  "CONTROLLER_NAME": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eHost\u202c \u202eController\u202c"
+  },
+  "VERIFY_PIN_DIALOG_MESSAGE": {
+    "message": "\u202ePlease\u202c \u202econfirm\u202c \u202eyour\u202c \u202eaccount\u202c \u202eand\u202c \u202ePIN\u202c \u202ebelow\u202c \u202eto\u202c \u202eallow\u202c \u202eaccess\u202c \u202eby\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c."
+  },
+  "MAC_UNINSTALLER_BUNDLE_NAME": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eHost\u202c \u202eUninstaller\u202c"
+  },
+  "ERROR_POLICY": {
+    "message": "\u202eThere\u202c \u202eis\u202c \u202ean\u202c \u202eerror\u202c \u202ewith\u202c \u202ethe\u202c \u202epolicy\u202c \u202esettings\u202c \u202efor\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c. \u202eContact\u202c \u202eyour\u202c \u202esystem\u202c \u202eadministrator\u202c \u202efor\u202c \u202eassistance\u202c."
+  },
+  "ERROR_INCOMPATIBLE_PROTOCOL": {
+    "message": "\u202eAn\u202c \u202eincompatible\u202c \u202eprotocol\u202c \u202eversion\u202c \u202ewas\u202c \u202edetected\u202c. \u202ePlease\u202c \u202emake\u202c \u202esure\u202c \u202ethat\u202c \u202eyou\u202c \u202ehave\u202c \u202ethe\u202c \u202elatest\u202c \u202eversion\u202c \u202eof\u202c \u202ethe\u202c \u202esoftware\u202c \u202einstalled\u202c \u202eon\u202c \u202eboth\u202c \u202ecomputers\u202c \u202eand\u202c \u202etry\u202c \u202eagain\u202c."
+  },
+  "DESCRIPTION_AUTHORIZE": {
+    "message": "\u202eTo\u202c \u202econtinue\u202c \u202eyou\u202c \u202emust\u202c \u202efirst\u202c \u202egrant\u202c \u202eextended\u202c \u202eaccess\u202c \u202epermissions\u202c \u202eto\u202c \u202eyour\u202c \u202ecomputer\u202c. \u202eYou\u202c \u202eonly\u202c \u202ehave\u202c \u202eto\u202c \u202edo\u202c \u202ethis\u202c \u202eonce\u202c."
+  },
+  "ERROR_BAD_PLUGIN_VERSION": {
+    "message": "\u202eSome\u202c \u202erequired\u202c \u202ecomponents\u202c \u202eare\u202c \u202emissing\u202c. \u202ePlease\u202c \u202emake\u202c \u202esure\u202c \u202eyou\u202c \u202ehave\u202c \u202einstalled\u202c \u202ethe\u202c \u202elatest\u202c \u202eversion\u202c \u202eof\u202c \u202ethe\u202c \u202esoftware\u202c \u202eand\u202c \u202etry\u202c \u202eagain\u202c."
+  },
+  "ERROR_MISSING_PLUGIN": {
+    "message": "\u202eSome\u202c \u202erequired\u202c \u202ecomponents\u202c \u202eare\u202c \u202emissing\u202c. \u202ePlease\u202c \u202emake\u202c \u202esure\u202c \u202eyou\u202c'\u202ere\u202c \u202erunning\u202c \u202ethe\u202c \u202elatest\u202c \u202eversion\u202c \u202eof\u202c \u202eChrome\u202c \u202eand\u202c \u202etry\u202c \u202eagain\u202c."
+  },
+  "ERROR_NACL_PLUGIN_CRASHED": {
+    "message": "\u202eA\u202c \u202erequired\u202c \u202ecomponent\u202c \u202ehas\u202c \u202estopped\u202c \u202eworking\u202c. \u202ePlease\u202c \u202ereport\u202c \u202ethis\u202c \u202eproblem\u202c \u202eto\u202c \u202ethe\u202c \u202edevelopers\u202c."
+  },
+  "ERROR_NACL_DISABLED": {
+    "message": "\u202eSome\u202c \u202erequired\u202c \u202ecomponents\u202c \u202eare\u202c \u202emissing\u202c. \u202ePlease\u202c \u202ego\u202c \u202eto\u202c \u202echrome\u202c://\u202eplugins\u202c \u202eand\u202c \u202emake\u202c \u202esure\u202c \u202eNative\u202c \u202eClient\u202c \u202eis\u202c \u202eenabled\u202c."
+  },
+  "ERROR_NOT_AUTHORIZED": {
+    "message": "\u202eYou\u202c \u202edo\u202c \u202enot\u202c \u202ehave\u202c \u202epermission\u202c \u202eto\u202c \u202eperform\u202c \u202ethat\u202c \u202eaction\u202c."
+  },
+  "ERROR_NOT_FOUND": {
+    "message": "\u202eThe\u202c \u202erequested\u202c \u202eobject\u202c \u202edoes\u202c \u202enot\u202c \u202eexist\u202c."
+  },
+  "ERROR_APP_NOT_AUTHORIZED": {
+    "message": "\u202eYou\u202c \u202edo\u202c \u202enot\u202c \u202ehave\u202c \u202epermission\u202c \u202eto\u202c \u202erun\u202c \u202ethis\u202c \u202eapplication\u202c."
+  },
+  "SHOW_STATS": {
+    "message": "\u202eShow\u202c \u202estatistics\u202c"
+  },
+  "SHOW_STATS_WITH_RTT": {
+    "message": "\u202eShow\u202c \u202estatistics\u202c (\u202econnection\u202c: $1$)",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONNECTION_QUALITY_GOOD": {
+    "message": "\u202eGood\u202c"
+  },
+  "CONNECTION_QUALITY_FAIR": {
+    "message": "\u202eFair\u202c"
+  },
+  "CONNECTION_QUALITY_POOR": {
+    "message": "\u202ePoor\u202c"
+  },
+  "SEND_FEEDBACK": {
+    "message": "\u202eReport\u202c \u202ean\u202c \u202eissue\u202c\u2026"
+  },
+  "FEEDBACK_CONSENT_TITLE": {
+    "message": "\u202eReport\u202c \u202ean\u202c \u202eissue\u202c"
+  },
+  "FEEDBACK_CONSENT_EMAIL": {
+    "message": "\u202eTo\u202c \u202eallow\u202c \u202eus\u202c \u202eto\u202c \u202econtact\u202c \u202eyou\u202c \u202efor\u202c \u202efurther\u202c \u202einformation\u202c, \u202eyour\u202c \u202eemail\u202c \u202eaddress\u202c \u202ewill\u202c \u202ebe\u202c \u202eincluded\u202c \u202ein\u202c \u202eany\u202c \u202efeedback\u202c \u202eyou\u202c \u202esubmit\u202c."
+  },
+  "FEEDBACK_CATEGORY_INSTRUCTIONS": {
+    "message": "\u202eTo\u202c \u202ehelp\u202c \u202eus\u202c \u202esolve\u202c \u202eyour\u202c \u202eproblem\u202c, \u202eplease\u202c \u202etell\u202c \u202eus\u202c \u202ewhat\u202c \u202ewent\u202c \u202ewrong\u202c:"
+  },
+  "FEEDBACK_CATEGORY_SELECT": {
+    "message": "\u202eSelect\u202c\u2026"
+  },
+  "FEEDBACK_CATEGORY_APP_LAUNCH": {
+    "message": "\u202eI\u202c \u202ecan\u202c'\u202et\u202c \u202eopen\u202c \u202ethe\u202c \u202eapplication\u202c."
+  },
+  "FEEDBACK_CATEGORY_APP_PERFORMANCE": {
+    "message": "\u202eThe\u202c \u202eapplication\u202c \u202eis\u202c \u202etoo\u202c \u202eslow\u202c."
+  },
+  "FEEDBACK_CATEGORY_INPUT": {
+    "message": "\u202eI\u202c'\u202em\u202c \u202ehaving\u202c \u202eproblems\u202c \u202ewith\u202c \u202emy\u202c \u202ekeyboard\u202c \u202eor\u202c \u202emouse\u202c."
+  },
+  "FEEDBACK_CATEGORY_DRIVE_UPLOAD": {
+    "message": "\u202eI\u202c \u202ecan\u202c'\u202et\u202c \u202esee\u202c \u202emy\u202c \u202esaved\u202c \u202efiles\u202c \u202eon\u202c-\u202eline\u202c \u202ein\u202c \u202eGoogle\u202c \u202eDrive\u202c."
+  },
+  "FEEDBACK_CATEGORY_DRIVE_DOWNLOAD": {
+    "message": "\u202eI\u202c \u202ecan\u202c'\u202et\u202c \u202eopen\u202c \u202emy\u202c \u202eGoogle\u202c \u202eDrive\u202c \u202efiles\u202c."
+  },
+  "FEEDBACK_CATEGORY_OTHER": {
+    "message": "\u202eSomething\u202c \u202eelse\u202c."
+  },
+  "WINDOWS_SUBMENU_TITLE": {
+    "message": "\u202eWindows\u202c"
+  },
+  "FEEDBACK_ABANDON_HOST": {
+    "message": "\u202eReset\u202c \u202ethe\u202c \u202eapplication\u202c. \u202eYou\u202c \u202ewill\u202c \u202elose\u202c \u202eany\u202c \u202eunsaved\u202c \u202ework\u202c."
+  },
+  "FEEDBACK_INCLUDE_LOGS": {
+    "message": "\u202eInclude\u202c \u202eapplication\u202c \u202elogs\u202c \u202eto\u202c \u202ehelp\u202c \u202eus\u202c \u202eresolve\u202c \u202eyour\u202c \u202eproblem\u202c (\u202elogs\u202c \u202emay\u202c \u202einclude\u202c \u202eprivate\u202c \u202einformation\u202c)."
+  },
+  "LEARN_MORE": {
+    "message": "\u202eLearn\u202c \u202emore\u202c."
+  },
+  "FEEDBACK_PRIVACY_INFORMATION1": {
+    "message": "\u202eApplication\u202c \u202elogs\u202c \u202emay\u202c \u202einclude\u202c \u202eprivate\u202c \u202einformation\u202c, \u202eincluding\u202c \u202eyour\u202c \u202eidentity\u202c (\u202eemail\u202c \u202eaddress\u202c) \u202eand\u202c \u202ethe\u202c \u202enames\u202c \u202eand\u202c \u202eproperties\u202c \u202eof\u202c \u202efiles\u202c \u202eand\u202c \u202efolders\u202c \u202ein\u202c \u202eGoogle\u202c \u202eDrive\u202c."
+  },
+  "FEEDBACK_PRIVACY_INFORMATION2": {
+    "message": "\u202eThis\u202c \u202einformation\u202c \u202eis\u202c \u202eused\u202c \u202eonly\u202c \u202efor\u202c \u202ediagnosing\u202c \u202ethe\u202c \u202eproblem\u202c \u202eyou\u202c \u202eare\u202c \u202ereporting\u202c, \u202eis\u202c \u202eavailable\u202c \u202eonly\u202c \u202eto\u202c \u202esomeone\u202c \u202einvestigating\u202c \u202eyour\u202c \u202ereport\u202c, \u202eand\u202c \u202eis\u202c \u202eretained\u202c \u202efor\u202c \u202eno\u202c \u202emore\u202c \u202ethan\u202c 30 \u202edays\u202c."
+  },
+  "FEEDBACK_ABANDON_FAILED": {
+    "message": "\u202eCould\u202c \u202enot\u202c \u202ereset\u202c \u202ethe\u202c \u202eapplication\u202c. \u202eYou\u202c \u202ecan\u202c \u202estill\u202c \u202esend\u202c \u202ea\u202c \u202ebug\u202c \u202ereport\u202c."
+  },
+  "KEYBOARD_LAYOUTS_SUBMENU_TITLE": {
+    "message": "\u202eKeyboard\u202c \u202elayouts\u202c"
+  },
+  "CONNECTION_FAILED": {
+    "message": "\u202eConnection\u202c \u202efailed\u202c"
+  },
+  "NO_TRANSPARENCY_WARNING": {
+    "message": "\u202eDesktop\u202c \u202eintegration\u202c \u202eis\u202c \u202enot\u202c \u202esupported\u202c \u202eon\u202c \u202ethis\u202c \u202eplatform\u202c. \u202eYou\u202c \u202ecan\u202c \u202estill\u202c \u202euse\u202c \u202ethe\u202c \u202eapplication\u202c, \u202ebut\u202c \u202ethe\u202c \u202euser\u202c \u202eexperience\u202c \u202ewill\u202c \u202ebe\u202c \u202edegraded\u202c."
+  },
+  "IDLE_TIMEOUT_WARNING": {
+    "message": "\u202eYour\u202c $1$ \u202esession\u202c \u202ehas\u202c \u202ebeen\u202c \u202einactive\u202c \u202efor\u202c \u202ea\u202c \u202ewhile\u202c \u202eand\u202c \u202ewill\u202c \u202ebe\u202c \u202edisconnected\u202c \u202eshortly\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "IDLE_CONTINUE": {
+    "message": "\u202eContinue\u202c"
+  },
+  "IDLE_DISCONNECT": {
+    "message": "\u202eDisconnect\u202c \u202enow\u202c"
+  },
+  "RESTART_BUTTON": {
+    "message": "\u202eRestart\u202c \u202enow\u202c"
+  },
+  "ERROR_CONNECTION_DROPPED": {
+    "message": "\u202eA\u202c \u202enetwork\u202c \u202eerror\u202c \u202eoccurred\u202c. \u202eWe\u202c \u202ewill\u202c \u202erestart\u202c \u202ethe\u202c \u202eapp\u202c \u202ewhen\u202c \u202eyour\u202c \u202edevice\u202c \u202eis\u202c \u202eon\u202c-\u202eline\u202c \u202eagain\u202c."
+  },
+  "REMOTE_DEVICES_TITLE": {
+    "message": "\u202eRemote\u202c \u202edevices\u202c"
+  },
+  "HOST_ONLINE_SUBTITLE": {
+    "message": "\u202eOnline\u202c"
+  },
+  "HOST_OFFLINE_SUBTITLE": {
+    "message": "\u202eOffline\u202c"
+  },
+  "LAST_ONLINE_SUBTITLE": {
+    "message": "\u202eLast\u202c \u202eonline\u202c: $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "SETTINGS_BUTTON": {
+    "message": "\u202eSettings\u202c"
+  },
+  "MOVE_FAB_LEFT_BUTTON": {
+    "message": "\u202eDock\u202c \u202eLeft\u202c"
+  },
+  "MOVE_FAB_RIGHT_BUTTON": {
+    "message": "\u202eDock\u202c \u202eRight\u202c"
+  },
+  "ENTER_PIN": {
+    "message": "\u202eEnter\u202c \u202ePIN\u202c"
+  },
+  "CONNECTING_TO_HOST_MESSAGE": {
+    "message": "\u202eConnecting\u202c \u202eto\u202c $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONNECTED_TO_HOST_MESSAGE": {
+    "message": "\u202eConnected\u202c \u202eto\u202c $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONNECTION_CLOSED_FOR_HOST_MESSAGE": {
+    "message": "\u202eConnection\u202c \u202eclosed\u202c \u202efor\u202c $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "ERROR_CONNECTING_TO_HOST_MESSAGE": {
+    "message": "\u202eError\u202c \u202econnecting\u202c \u202eto\u202c $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "DISPLAY_OPTIONS": {
+    "message": "\u202eDisplay\u202c \u202eoptions\u202c"
+  },
+  "MOUSE_OPTIONS": {
+    "message": "\u202eMouse\u202c \u202eoptions\u202c"
+  },
+  "KEYBOARD_OPTIONS": {
+    "message": "\u202eKeyboard\u202c \u202eoptions\u202c"
+  },
+  "SUPPORT_MENU": {
+    "message": "\u202eSupport\u202c"
+  },
+  "HELP_CENTER": {
+    "message": "\u202eHelp\u202c \u202eCenter\u202c"
+  },
+  "FAQS": {
+    "message": "\u202eFAQs\u202c"
+  },
+  "SHRINK_TO_FIT_SUBTITLE": {
+    "message": "\u202eKeep\u202c \u202ewhole\u202c \u202eremote\u202c \u202edesktop\u202c \u202evisible\u202c"
+  },
+  "RESIZE_TO_CLIENT_SUBTITLE": {
+    "message": "\u202eUpdate\u202c \u202eremote\u202c \u202eresolution\u202c \u202eto\u202c \u202ematch\u202c \u202ewindow\u202c"
+  },
+  "TOUCH_MODE_DESCRIPTION": {
+    "message": "\u202eScreen\u202c \u202eacts\u202c \u202elike\u202c \u202ea\u202c \u202etouch\u202c \u202escreen\u202c"
+  },
+  "TRACKPAD_MODE_DESCRIPTION": {
+    "message": "\u202eScreen\u202c \u202eacts\u202c \u202elike\u202c \u202ea\u202c \u202etrackpad\u202c"
+  },
+  "REMEMBER_PIN_ON_THIS_DEVICE": {
+    "message": "\u202eRemember\u202c \u202emy\u202c \u202ePIN\u202c \u202eon\u202c \u202ethis\u202c \u202edevice\u202c."
+  },
+  "HOST_SETUP_TITLE": {
+    "message": "\u202eWelcome\u202c \u202eto\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c"
+  },
+  "HOST_SETUP_STEP_1": {
+    "message": "\u202eOn\u202c \u202ethe\u202c \u202ecomputer\u202c \u202eyou\u202c \u202ewant\u202c \u202eto\u202c \u202eaccess\u202c \u202eremotely\u202c, \u202eopen\u202c \u202eChrome\u202c \u202eand\u202c \u202evisit\u202c $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "HOST_SETUP_STEP_2": {
+    "message": "\u202eInstall\u202c \u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202esoftware\u202c \u202eand\u202c \u202efollow\u202c \u202ethe\u202c \u202einstructions\u202c \u202eto\u202c \u202ecomplete\u202c \u202esetup\u202c"
+  },
+  "HOST_SETUP_STEP_3": {
+    "message": "\u202eAfter\u202c \u202esetup\u202c \u202eis\u202c \u202ecomplete\u202c, \u202eyou\u202c'\u202ell\u202c \u202ebe\u202c \u202eable\u202c \u202eto\u202c \u202eaccess\u202c \u202ethe\u202c \u202ecomputer\u202c \u202efrom\u202c \u202ethis\u202c \u202epage\u202c \u202eby\u202c \u202eentering\u202c \u202ethe\u202c \u202ePIN\u202c \u202eor\u202c \u202eaccess\u202c \u202ecode\u202c"
+  },
+  "EMAIL_LINKS_AND_INSTRUCTIONS": {
+    "message": "\u202eEmail\u202c \u202ethese\u202c \u202einstructions\u202c"
+  },
+  "HOST_CONNECTED_ANNOUNCEMENT": {
+    "message": "\u202eYou\u202c \u202eare\u202c \u202econnected\u202c \u202eto\u202c \u202eyour\u202c \u202eremote\u202c \u202edevice\u202c. \u202eTo\u202c \u202eopen\u202c \u202ethe\u202c \u202emenu\u202c, \u202eplease\u202c \u202etap\u202c \u202ethe\u202c \u202escreen\u202c \u202ewith\u202c \u202efour\u202c \u202efingers\u202c."
+  },
+  "ACCESS_CODE": {
+    "message": "\u202eAccess\u202c \u202ecode\u202c"
+  },
+  "ACCESS_CODE_TIMER": {
+    "message": "\u202eThis\u202c \u202eaccess\u202c \u202ecode\u202c \u202ewill\u202c \u202eexpire\u202c \u202ein\u202c $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "ALL_CONNECTIONS": {
+    "message": "\u202eAll\u202c \u202econnections\u202c"
+  },
+  "ASK_PIN_DIALOG_LABEL": {
+    "message": "\u202ePIN\u202c"
+  },
+  "ASK_PIN_DIALOG_CONFIRM_LABEL": {
+    "message": "\u202eRe\u202c-\u202etype\u202c \u202ePIN\u202c"
+  },
+  "CANCEL": {
+    "message": "\u202eCancel\u202c"
+  },
+  "CLEAR_HISTORY": {
+    "message": "\u202eClear\u202c \u202ehistory\u202c"
+  },
+  "CLOSE": {
+    "message": "\u202eClose\u202c"
+  },
+  "CONNECT_BUTTON": {
+    "message": "\u202eConnect\u202c"
+  },
+  "CONNECT_ANYWAY": {
+    "message": "\u202eConnect\u202c \u202eanyway\u202c"
+  },
+  "CONFIRM_HOST_DELETE": {
+    "message": "\u202eAre\u202c \u202eyou\u202c \u202esure\u202c \u202eyou\u202c \u202ewant\u202c \u202eto\u202c \u202edisable\u202c \u202eremote\u202c \u202econnections\u202c \u202eto\u202c $1$? \u202eIf\u202c \u202eyou\u202c \u202echange\u202c \u202eyour\u202c \u202emind\u202c, \u202eyou\u202c'\u202ell\u202c \u202eneed\u202c \u202eto\u202c \u202evisit\u202c \u202ethat\u202c \u202ecomputer\u202c \u202eto\u202c \u202ere\u202c-\u202eenable\u202c \u202econnections\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "CONFIRM_HOST_DELETE_ANDROID": {
+    "message": "\u202eAre\u202c \u202eyou\u202c \u202esure\u202c \u202eyou\u202c \u202ewant\u202c \u202eto\u202c \u202edisable\u202c \u202eremote\u202c \u202econnections\u202c \u202eto\u202c %1$s?"
+  },
+  "CONNECTION_FROM_HEADER": {
+    "message": "\u202eFrom\u202c"
+  },
+  "CONNECTION_HISTORY_TITLE": {
+    "message": "\u202eConnection\u202c \u202eHistory\u202c"
+  },
+  "CONNECTION_TO_HEADER": {
+    "message": "\u202eTo\u202c"
+  },
+  "CONTINUE_BUTTON": {
+    "message": "\u202eContinue\u202c"
+  },
+  "CONTINUE_PROMPT": {
+    "message": "\u202eYou\u202c \u202eare\u202c \u202ecurrently\u202c \u202esharing\u202c \u202ethis\u202c \u202emachine\u202c \u202ewith\u202c \u202eanother\u202c \u202euser\u202c. \u202eDo\u202c \u202eyou\u202c \u202ewant\u202c \u202eto\u202c \u202econtinue\u202c \u202esharing\u202c?"
+  },
+  "DESCRIPTION_CONNECT": {
+    "message": "\u202eAsk\u202c \u202ethe\u202c \u202euser\u202c \u202ewhose\u202c \u202ecomputer\u202c \u202eyou\u202c \u202ewish\u202c \u202eto\u202c \u202eaccess\u202c \u202eto\u202c \u202eclick\u202c \u201c$1$\u201d \u202eand\u202c \u202egive\u202c \u202eyou\u202c \u202ethe\u202c \u202eaccess\u202c \u202ecode\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "DISABLE_HOST": {
+    "message": "\u202eDisable\u202c"
+  },
+  "DISCONNECT_MYSELF_BUTTON": {
+    "message": "\u202eDisconnect\u202c"
+  },
+  "DURATION_HEADER": {
+    "message": "\u202eDuration\u202c"
+  },
+  "ERROR_HOST_OVERLOAD": {
+    "message": "\u202eConnections\u202c \u202eto\u202c \u202ethe\u202c \u202eremote\u202c \u202ecomputer\u202c \u202eare\u202c \u202etemporarily\u202c \u202eblocked\u202c \u202ebecause\u202c \u202esomebody\u202c \u202ewas\u202c \u202etrying\u202c \u202eto\u202c \u202econnect\u202c \u202eto\u202c \u202eit\u202c \u202ewith\u202c \u202ean\u202c \u202einvalid\u202c \u202ePIN\u202c. \u202ePlease\u202c \u202etry\u202c \u202eagain\u202c \u202elater\u202c."
+  },
+  "ERROR_MAX_SESSION_LENGTH": {
+    "message": "\u202eThe\u202c \u202eremote\u202c \u202esession\u202c \u202ehas\u202c \u202eexpired\u202c."
+  },
+  "ERROR_HOST_CONFIGURATION_ERROR": {
+    "message": "\u202eThe\u202c \u202eremote\u202c \u202ecomputer\u202c \u202ehas\u202c \u202efailed\u202c \u202eto\u202c \u202einitialize\u202c \u202ethe\u202c \u202esession\u202c. \u202eIf\u202c \u202eproblem\u202c \u202epersist\u202c \u202eplease\u202c \u202etry\u202c \u202eto\u202c \u202econfigure\u202c \u202ethe\u202c \u202ehost\u202c \u202eagain\u202c."
+  },
+  "ERROR_HOST_IS_OFFLINE": {
+    "message": "\u202eThe\u202c \u202eremote\u202c \u202ecomputer\u202c \u202eis\u202c \u202enot\u202c \u202eresponding\u202c \u202eto\u202c \u202econnection\u202c \u202erequests\u202c. \u202ePlease\u202c \u202everify\u202c \u202ethat\u202c \u202eit\u202c \u202eis\u202c \u202eonline\u202c \u202eand\u202c \u202etry\u202c \u202eagain\u202c."
+  },
+  "ERROR_INVALID_ACCESS_CODE": {
+    "message": "\u202eThe\u202c \u202eaccess\u202c \u202ecode\u202c \u202eis\u202c \u202einvalid\u202c. \u202ePlease\u202c \u202etry\u202c \u202eagain\u202c."
+  },
+  "ERROR_INVALID_ACCOUNT": {
+    "message": "\u202eSecurity\u202c \u202epolicies\u202c \u202eon\u202c \u202ethe\u202c \u202eremote\u202c \u202ecomputer\u202c \u202edo\u202c \u202enot\u202c \u202eallow\u202c \u202econnections\u202c \u202efrom\u202c \u202eyour\u202c \u202eaccount\u202c."
+  },
+  "ERROR_P2P_FAILURE": {
+    "message": "\u202eUnable\u202c \u202eto\u202c \u202ereach\u202c \u202ethe\u202c \u202ehost\u202c. \u202eThis\u202c \u202eis\u202c \u202eprobably\u202c \u202edue\u202c \u202eto\u202c \u202ethe\u202c \u202econfiguration\u202c \u202eof\u202c \u202ethe\u202c \u202enetwork\u202c \u202eyou\u202c \u202eare\u202c \u202eusing\u202c."
+  },
+  "ERROR_NETWORK_FAILURE": {
+    "message": "\u202eCould\u202c \u202enot\u202c \u202econnect\u202c \u202eto\u202c \u202ethe\u202c \u202enetwork\u202c. \u202ePlease\u202c \u202echeck\u202c \u202ethat\u202c \u202eyour\u202c \u202edevice\u202c \u202eis\u202c \u202eon\u202c-\u202eline\u202c."
+  },
+  "ERROR_SERVICE_UNAVAILABLE": {
+    "message": "\u202eThe\u202c \u202eservice\u202c \u202eis\u202c \u202etemporarily\u202c \u202eunavailable\u202c. \u202ePlease\u202c \u202etry\u202c \u202eagain\u202c \u202elater\u202c."
+  },
+  "ERROR_OAUTH_TOKEN_INVALID": {
+    "message": "\u202eThere\u202c \u202ewas\u202c \u202ean\u202c \u202eissue\u202c \u202eauthenticating\u202c, \u202eplease\u202c \u202elogin\u202c \u202eagain\u202c."
+  },
+  "ERROR_UNEXPECTED": {
+    "message": "\u202eAn\u202c \u202eunexpected\u202c \u202eerror\u202c \u202eoccurred\u202c. \u202ePlease\u202c \u202ereport\u202c \u202ethis\u202c \u202eproblem\u202c \u202eto\u202c \u202ethe\u202c \u202edevelopers\u202c."
+  },
+  "FOOTER_CONNECTING": {
+    "message": "\u202eConnecting\u202c\u2026"
+  },
+  "FOOTER_WAITING": {
+    "message": "\u202ewaiting\u202c \u202efor\u202c \u202econnection\u202c\u2026"
+  },
+  "FULL_SCREEN": {
+    "message": "\u202eFull\u202c \u202escreen\u202c"
+  },
+  "EXIT_FULL_SCREEN": {
+    "message": "\u202eExit\u202c \u202efull\u202c \u202escreen\u202c"
+  },
+  "CLOSE_WINDOW": {
+    "message": "\u202eClose\u202c \u202ewindow\u202c"
+  },
+  "MAXIMIZE_WINDOW": {
+    "message": "\u202eMaximize\u202c \u202ewindow\u202c"
+  },
+  "MINIMIZE_WINDOW": {
+    "message": "\u202eMinimize\u202c \u202ewindow\u202c"
+  },
+  "RESTORE_WINDOW": {
+    "message": "\u202eRestore\u202c \u202ewindow\u202c"
+  },
+  "OPTIONS_MENU": {
+    "message": "\u202eOptions\u202c"
+  },
+  "GET_STARTED": {
+    "message": "\u202eGet\u202c \u202estarted\u202c"
+  },
+  "HELP": {
+    "message": "\u202eHelp\u202c"
+  },
+  "CREDITS": {
+    "message": "\u202eCredits\u202c"
+  },
+  "HOME_ACCESS_BUTTON": {
+    "message": "\u202eAccess\u202c"
+  },
+  "HOME_ACCESS_DESCRIPTION": {
+    "message": "\u202eSee\u202c \u202eand\u202c \u202econtrol\u202c \u202ea\u202c \u202eshared\u202c \u202ecomputer\u202c."
+  },
+  "HOME_DAEMON_CHANGE_PIN_LINK": {
+    "message": "\u202eChange\u202c \u202ePIN\u202c"
+  },
+  "HOME_DAEMON_STOP_BUTTON": {
+    "message": "\u202eDisable\u202c \u202eremote\u202c \u202econnections\u202c"
+  },
+  "HOME_DAEMON_START_BUTTON": {
+    "message": "\u202eEnable\u202c \u202eremote\u202c \u202econnections\u202c"
+  },
+  "HOME_DAEMON_HOST_ENABLED_OTHER_ACCOUNT": {
+    "message": "\u202eThis\u202c \u202ecomputer\u202c \u202eis\u202c \u202ecurrently\u202c \u202eshared\u202c \u202eunder\u202c \u202ea\u202c \u202edifferent\u202c \u202eaccount\u202c."
+  },
+  "HOST_SETUP_DIALOG_DESCRIPTION": {
+    "message": "\u202eTo\u202c \u202eprotect\u202c \u202eaccess\u202c \u202eto\u202c \u202ethis\u202c \u202ecomputer\u202c, \u202eplease\u202c \u202echoose\u202c \u202ea\u202c \u202ePIN\u202c \u202eof\u202c $1$\u202eat\u202c \u202eleast\u202c \u202esix\u202c \u202edigits\u202c$2$. \u202eThis\u202c \u202ePIN\u202c \u202ewill\u202c \u202ebe\u202c \u202erequired\u202c \u202ewhen\u202c \u202econnecting\u202c \u202efrom\u202c \u202eanother\u202c \u202elocation\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
+  },
+  "HOST_SETUP_HOST_FAILED": {
+    "message": "\u202eFailed\u202c \u202eto\u202c \u202estart\u202c \u202eremote\u202c \u202eaccess\u202c \u202eservice\u202c."
+  },
+  "HOST_SETUP_INSTALL_PENDING": {
+    "message": "\u202ePlease\u202c \u202erun\u202c \u202ethe\u202c \u202einstaller\u202c \u202ebefore\u202c \u202econtinuing\u202c."
+  },
+  "ERROR_HOST_REGISTRATION_FAILED": {
+    "message": "\u202eFailed\u202c \u202eto\u202c \u202eregister\u202c \u202ethis\u202c \u202ecomputer\u202c."
+  },
+  "HOST_SETUP_STARTED": {
+    "message": "\u202eRemote\u202c \u202econnections\u202c \u202efor\u202c \u202ethis\u202c \u202ecomputer\u202c \u202ehave\u202c \u202ebeen\u202c \u202eenabled\u202c."
+  },
+  "HOST_SETUP_STARTED_DISABLE_SLEEP": {
+    "message": "\u202ePlease\u202c \u202echeck\u202c \u202eyour\u202c \u202ecomputer\u202c'\u202es\u202c \u202epower\u202c \u202emanagement\u202c \u202esettings\u202c \u202eand\u202c \u202eensure\u202c \u202ethat\u202c \u202eit\u202c \u202eis\u202c \u202enot\u202c \u202econfigured\u202c \u202eto\u202c \u202esleep\u202c \u202ewhen\u202c \u202eidle\u202c."
+  },
+  "HOST_SETUP_STARTING": {
+    "message": "\u202eEnabling\u202c \u202eremote\u202c \u202econnections\u202c \u202efor\u202c \u202ethis\u202c \u202ecomputer\u202c\u2026"
+  },
+  "HOST_SETUP_STOP_FAILED": {
+    "message": "\u202eFailed\u202c \u202eto\u202c \u202edisable\u202c \u202eremote\u202c \u202eaccess\u202c \u202eto\u202c \u202ethis\u202c \u202ecomputer\u202c. \u202ePlease\u202c \u202etry\u202c \u202eagain\u202c \u202elater\u202c."
+  },
+  "HOST_SETUP_STOPPED": {
+    "message": "\u202eRemote\u202c \u202econnections\u202c \u202efor\u202c \u202ethis\u202c \u202ecomputer\u202c \u202ehave\u202c \u202ebeen\u202c \u202edisabled\u202c."
+  },
+  "HOST_SETUP_STOPPING": {
+    "message": "\u202eDisabling\u202c \u202eremote\u202c \u202econnections\u202c \u202efor\u202c \u202ethis\u202c \u202ecomputer\u202c\u2026"
+  },
+  "HOST_SETUP_UPDATED_PIN": {
+    "message": "\u202eYour\u202c \u202ePIN\u202c \u202ehas\u202c \u202ebeen\u202c \u202eupdated\u202c."
+  },
+  "HOST_SETUP_UPDATING_PIN": {
+    "message": "\u202eThe\u202c \u202ePIN\u202c \u202efor\u202c \u202ethis\u202c \u202ecomputer\u202c \u202eis\u202c \u202ebeing\u202c \u202eupdated\u202c\u2026"
+  },
+  "HOST_SETUP_UPDATE_PIN_FAILED": {
+    "message": "\u202eFailed\u202c \u202eto\u202c \u202eupdate\u202c \u202ethe\u202c \u202ePIN\u202c. \u202ePlease\u202c \u202etry\u202c \u202eagain\u202c \u202elater\u202c."
+  },
+  "HOME_SHARE_BUTTON": {
+    "message": "\u202eShare\u202c"
+  },
+  "HOME_SHARE_DESCRIPTION": {
+    "message": "\u202eShare\u202c \u202ethis\u202c \u202ecomputer\u202c \u202efor\u202c \u202eanother\u202c \u202euser\u202c \u202eto\u202c \u202esee\u202c \u202eand\u202c \u202econtrol\u202c."
+  },
+  "HOME_SHARE_DESCRIPTION_UNSUPPORTED": {
+    "message": "(\u202ethis\u202c \u202efeature\u202c \u202eis\u202c \u202enot\u202c \u202eyet\u202c \u202eavailable\u202c \u202efor\u202c \u202eyour\u202c \u202ecomputer\u202c)"
+  },
+  "INCOMING_CONNECTIONS": {
+    "message": "\u202eTo\u202c \u202ethis\u202c \u202ecomputer\u202c"
+  },
+  "INSTRUCTIONS_SHARE_ABOVE": {
+    "message": "\u202eTo\u202c \u202ebegin\u202c \u202esharing\u202c \u202eyour\u202c \u202edesktop\u202c, \u202egive\u202c \u202ethe\u202c \u202eaccess\u202c \u202ecode\u202c \u202ebelow\u202c \u202eto\u202c \u202ethe\u202c \u202eperson\u202c \u202ewho\u202c \u202ewill\u202c \u202ebe\u202c \u202eassisting\u202c \u202eyou\u202c."
+  },
+  "INSTRUCTIONS_SHARE_BELOW": {
+    "message": "\u202eOnce\u202c \u202ethey\u202c \u202eenter\u202c \u202ethe\u202c \u202ecode\u202c, \u202eyou\u202c \u202ewill\u202c \u202ebe\u202c \u202eprompted\u202c \u202eto\u202c \u202eaccept\u202c \u202ethe\u202c \u202econnection\u202c \u202eand\u202c \u202ebegin\u202c \u202ethe\u202c \u202esharing\u202c \u202esession\u202c."
+  },
+  "INSTRUCTIONS_SHARE_PROMPT": {
+    "message": "\u202ePlease\u202c \u202eselect\u202c '$1$' \u202eon\u202c \u202ethe\u202c \u202econnection\u202c \u202edialog\u202c \u202ebox\u202c \u202eto\u202c \u202ecomplete\u202c \u202ethe\u202c \u202eprocess\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "INVALID_PIN": {
+    "message": "\u202ePlease\u202c \u202eenter\u202c \u202ea\u202c \u202ePIN\u202c \u202econsisting\u202c \u202eof\u202c \u202esix\u202c \u202eor\u202c \u202emore\u202c \u202edigits\u202c."
+  },
+  "IT2ME_FIRST_RUN": {
+    "message": "\u202eUser\u202c-\u202eto\u202c-\u202euser\u202c \u202escreen\u202c \u202esharing\u202c, \u202eperfect\u202c \u202efor\u202c \u202eremote\u202c \u202etechnical\u202c \u202esupport\u202c."
+  },
+  "LABEL_CONNECTED": {
+    "message": "\u202eConnected\u202c:"
+  },
+  "ME2ME_FIRST_RUN": {
+    "message": "\u202eAccess\u202c \u202eyour\u202c \u202eown\u202c \u202ecomputer\u202c \u202efrom\u202c \u202eanywhere\u202c."
+  },
+  "MESSAGE_GENERATING": {
+    "message": "\u202eGenerating\u202c \u202eaccess\u202c \u202ecode\u202c\u2026"
+  },
+  "MESSAGE_SHARED": {
+    "message": "\u202eYour\u202c \u202edesktop\u202c \u202eis\u202c \u202ecurrently\u202c \u202eshared\u202c \u202ewith\u202c $1$.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "MODE_AUTHORIZE": {
+    "message": "\u202eAuthorize\u202c"
+  },
+  "MODE_IT2ME": {
+    "message": "\u202eRemote\u202c \u202eAssistance\u202c"
+  },
+  "MODE_ME2ME": {
+    "message": "\u202eMy\u202c \u202eComputers\u202c"
+  },
+  "OK": {
+    "message": "\u202eOK\u202c"
+  },
+  "LOG_IN_ACCOUNT_DESCRIPTION": {
+    "message": "\u202eSigned\u202c \u202ein\u202c \u202eas\u202c $1$.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "OFFLINE": {
+    "message": "$1$ (\u202eoffline\u202c)",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "LAST_ONLINE": {
+    "message": "$1$ (\u202elast\u202c \u202eonline\u202c $2$)",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
+  },
+  "OFFLINE_REASON_INITIALIZATION_FAILED": {
+    "message": "\u202eHost\u202c \u202einitialization\u202c \u202efailed\u202c."
+  },
+  "OFFLINE_REASON_INVALID_HOST_CONFIGURATION": {
+    "message": "\u202eInvalid\u202c \u202ehost\u202c \u202econfiguration\u202c."
+  },
+  "OFFLINE_REASON_INVALID_HOST_ID": {
+    "message": "\u202eInvalid\u202c \u202ehost\u202c \u202eid\u202c."
+  },
+  "OFFLINE_REASON_INVALID_OAUTH_CREDENTIALS": {
+    "message": "\u202eHost\u202c \u202eis\u202c \u202econfigured\u202c \u202ewith\u202c \u202einvalid\u202c \u202eOAuth\u202c \u202ecredentials\u202c."
+  },
+  "OFFLINE_REASON_INVALID_HOST_DOMAIN": {
+    "message": "\u202eInvalid\u202c \u202ehost\u202c \u202eowner\u202c \u202edomain\u202c."
+  },
+  "OFFLINE_REASON_LOGIN_SCREEN_NOT_SUPPORTED": {
+    "message": "\u202eHost\u202c \u202erunning\u202c \u202eat\u202c \u202ethe\u202c \u202econsole\u202c \u202elogic\u202c \u202escreen\u202c \u202ehas\u202c \u202eshutdown\u202c \u202eto\u202c \u202esupport\u202c \u202ecurtain\u202c \u202emode\u202c \u202eby\u202c \u202eswitching\u202c \u202eto\u202c \u202ea\u202c \u202ehost\u202c \u202erunning\u202c \u202ein\u202c \u202ea\u202c \u202euser\u202c-\u202especific\u202c \u202esession\u202c."
+  },
+  "OFFLINE_REASON_POLICY_READ_ERROR": {
+    "message": "\u202eHost\u202c \u202efailed\u202c \u202eto\u202c \u202eread\u202c \u202ethe\u202c \u202epolicy\u202c."
+  },
+  "OFFLINE_REASON_POLICY_CHANGE_REQUIRES_RESTART": {
+    "message": "\u202eHost\u202c \u202eis\u202c \u202erestarting\u202c, \u202eto\u202c \u202etake\u202c \u202einto\u202c \u202eaccount\u202c \u202ea\u202c \u202epolicy\u202c \u202echange\u202c."
+  },
+  "OFFLINE_REASON_SUCCESS_EXIT": {
+    "message": "\u202eHost\u202c \u202ehas\u202c \u202eshut\u202c \u202edown\u202c."
+  },
+  "OFFLINE_REASON_USERNAME_MISMATCH": {
+    "message": "\u202eInvalid\u202c \u202ehost\u202c \u202eowner\u202c."
+  },
+  "OFFLINE_REASON_X_SERVER_RETRIES_EXCEEDED": {
+    "message": "\u202eX\u202c \u202eserver\u202c \u202ecrashed\u202c \u202eor\u202c \u202efailed\u202c \u202eto\u202c \u202estart\u202c."
+  },
+  "OFFLINE_REASON_SESSION_RETRIES_EXCEEDED": {
+    "message": "\u202eSession\u202c \u202ecrashed\u202c \u202eor\u202c \u202efailed\u202c \u202eto\u202c \u202estart\u202c. \u202eIf\u202c ~/.\u202echrome\u202c-\u202eremote\u202c-\u202edesktop\u202c-\u202esession\u202c \u202eexists\u202c \u202eon\u202c \u202ethe\u202c \u202eremote\u202c \u202ecomputer\u202c, \u202emake\u202c \u202esure\u202c \u202eit\u202c \u202estarts\u202c \u202ea\u202c \u202elong\u202c-\u202erunning\u202c \u202eforeground\u202c \u202eprocess\u202c \u202esuch\u202c \u202eas\u202c \u202ea\u202c \u202edesktop\u202c \u202eenvironment\u202c \u202eor\u202c \u202ewindow\u202c \u202emanager\u202c."
+  },
+  "OFFLINE_REASON_HOST_RETRIES_EXCEEDED": {
+    "message": "\u202eHost\u202c \u202ecrashed\u202c \u202eor\u202c \u202efailed\u202c \u202eto\u202c \u202estart\u202c."
+  },
+  "OFFLINE_REASON_UNKNOWN": {
+    "message": "\u202eUnrecognized\u202c \u202ehost\u202c \u202eerror\u202c: $1$.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "UPDATE_REQUIRED": {
+    "message": "$1$ (\u202eout\u202c-\u202eof\u202c-\u202edate\u202c)",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "HOST_NEEDS_UPDATE_DETAIL": {
+    "message": "\u202eSoftware\u202c \u202eupdates\u202c \u202eusually\u202c \u202ehappen\u202c \u202eautomatically\u202c, \u202ebut\u202c \u202ecan\u202c \u202efail\u202c \u202ein\u202c \u202esome\u202c \u202erare\u202c \u202ecases\u202c. \u202eUpdating\u202c \u202ethe\u202c \u202esoftware\u202c \u202eshould\u202c \u202etake\u202c \u202eno\u202c \u202emore\u202c \u202ethan\u202c \u202ea\u202c \u202efew\u202c \u202eminutes\u202c \u202eand\u202c \u202ecan\u202c \u202ebe\u202c \u202edone\u202c \u202ewhile\u202c \u202econnected\u202c \u202eto\u202c \u202eyour\u202c \u202ecomputer\u202c \u202eremotely\u202c."
+  },
+  "OUTGOING_CONNECTIONS": {
+    "message": "\u202eFrom\u202c \u202ethis\u202c \u202ecomputer\u202c"
+  },
+  "PIN": {
+    "message": "\u202ePIN\u202c"
+  },
+  "PIN_MESSAGE": {
+    "message": "\u202ePlease\u202c \u202eenter\u202c \u202eyour\u202c \u202ePIN\u202c \u202efor\u202c $1$.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "PIN_MESSAGE_ANDROID": {
+    "message": "\u202ePlease\u202c \u202eenter\u202c \u202eyour\u202c \u202ePIN\u202c \u202efor\u202c \u202ethe\u202c \u202eremote\u202c \u202ecomputer\u202c."
+  },
+  "PINS_NOT_EQUAL": {
+    "message": "\u202ePlease\u202c \u202eenter\u202c \u202ethe\u202c \u202esame\u202c \u202ePIN\u202c \u202ein\u202c \u202eboth\u202c \u202eboxes\u202c."
+  },
+  "PRODUCT_DESCRIPTION": {
+    "message": "\u202eAccess\u202c \u202eother\u202c \u202ecomputers\u202c \u202eor\u202c \u202eallow\u202c \u202eanother\u202c \u202euser\u202c \u202eto\u202c \u202eaccess\u202c \u202eyour\u202c \u202ecomputer\u202c \u202esecurely\u202c \u202eover\u202c \u202ethe\u202c \u202eInternet\u202c."
+  },
+  "RECONNECT": {
+    "message": "\u202eReconnect\u202c"
+  },
+  "RESIZE_TO_CLIENT": {
+    "message": "\u202eResize\u202c \u202edesktop\u202c \u202eto\u202c \u202efit\u202c"
+  },
+  "RETRY": {
+    "message": "\u202eRetry\u202c"
+  },
+  "SCREEN_OPTIONS": {
+    "message": "\u202eScreen\u202c \u202eoptions\u202c"
+  },
+  "SEND_CTRL_ALT_DEL": {
+    "message": "\u202eSend\u202c \u202eCtrl\u202c-\u202eAlt\u202c-\u202eDel\u202c"
+  },
+  "SEND_KEYS": {
+    "message": "\u202eSend\u202c \u202ekeys\u202c"
+  },
+  "SEND_PRINT_SCREEN": {
+    "message": "\u202eSend\u202c \u202ePrtScn\u202c"
+  },
+  "MAP_RIGHT_CTRL_TO_META": {
+    "message": "\u202eUse\u202c \u202eright\u202c \u202eCtrl\u202c \u202efor\u202c \u202eWin\u202c \u202ekey\u202c (\u2318 \u202eon\u202c \u202eMac\u202c)"
+  },
+  "SHRINK_TO_FIT": {
+    "message": "\u202eShrink\u202c \u202eto\u202c \u202efit\u202c"
+  },
+  "SIGN_IN_BUTTON": {
+    "message": "\u202eSign\u202c \u202ein\u202c"
+  },
+  "SIGN_OUT_BUTTON": {
+    "message": "\u202eSign\u202c \u202eout\u202c"
+  },
+  "STOP_SHARING_BUTTON": {
+    "message": "\u202eStop\u202c \u202eSharing\u202c"
+  },
+  "TIME_HEADER": {
+    "message": "\u202eTime\u202c"
+  },
+  "TOOLTIP_CONNECT": {
+    "message": "\u202eConnect\u202c \u202eto\u202c $1$",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      }
+    }
+  },
+  "TOOLTIP_DELETE": {
+    "message": "\u202eDisable\u202c \u202eremote\u202c \u202econnections\u202c \u202eto\u202c \u202ethis\u202c \u202ecomputer\u202c"
+  },
+  "TOOLTIP_REFRESH": {
+    "message": "\u202eRefresh\u202c \u202ethe\u202c \u202elist\u202c \u202eof\u202c \u202ehosts\u202c"
+  },
+  "TOOLTIP_RENAME": {
+    "message": "\u202eEdit\u202c \u202ecomputer\u202c \u202ename\u202c"
+  },
+  "WARNING_NAT_DISABLED": {
+    "message": "\u202eNOTE\u202c: \u202ePolicy\u202c \u202esettings\u202c \u202epermit\u202c \u202econnections\u202c \u202eonly\u202c \u202ebetween\u202c \u202ecomputers\u202c \u202ewithin\u202c \u202eyour\u202c \u202enetwork\u202c."
+  },
+  "LEARN_HOW": {
+    "message": "\u202eLearn\u202c \u202ehow\u202c."
+  },
+  "WHY_IS_THIS_SAFE": {
+    "message": "\u202eWhy\u202c \u202eis\u202c \u202ethis\u202c \u202esafe\u202c?"
+  },
+  "REMEMBER_PIN": {
+    "message": "\u202eDon\u202c'\u202et\u202c \u202eask\u202c \u202efor\u202c \u202ea\u202c \u202ePIN\u202c \u202eagain\u202c \u202ewhen\u202c \u202econnecting\u202c \u202eto\u202c \u202ethis\u202c \u202ehost\u202c \u202efrom\u202c \u202ethis\u202c \u202edevice\u202c."
+  },
+  "REMOTING_CORE_DESCRIPTION": {
+    "message": "\u202eCore\u202c \u202eLibrary\u202c"
+  },
+  "REMOTING_DESKTOP_DESCRIPTION": {
+    "message": "\u202eDesktop\u202c \u202eIntegration\u202c \u202eProcess\u202c"
+  },
+  "REMOTING_HOST_DESCRIPTION": {
+    "message": "\u202eHost\u202c \u202eProcess\u202c"
+  },
+  "REMOTING_NATIVE_MESSAGING_HOST_DESCRIPTION": {
+    "message": "\u202eNative\u202c \u202emessaging\u202c \u202ehost\u202c \u202efor\u202c \u202eremoting\u202c \u202ehost\u202c \u202emanagement\u202c"
+  },
+  "REMOTING_REMOTE_ASSISTANCE_HOST_DESCRIPTION": {
+    "message": "\u202eNative\u202c \u202emessaging\u202c \u202ehost\u202c \u202efor\u202c \u202eremote\u202c \u202eassistance\u202c"
+  },
+  "REMOTING_REMOTE_SECURITY_KEY_DESCRIPTION": {
+    "message": "\u202eSecurity\u202c \u202eKey\u202c \u202eRemoting\u202c \u202eProcess\u202c"
+  },
+  "REMOTING_HOST_COMMAND_DESCRIPTION": {
+    "message": "\u202eApplication\u202c \u202eto\u202c \u202eissue\u202c \u202ecommands\u202c \u202eto\u202c \u202eChrome\u202c \u202eremote\u202c \u202edesktop\u202c \u202ehost\u202c."
+  },
+  "REMOTING_START_HOST_DESCRIPTION": {
+    "message": "\u202eHost\u202c \u202eProvisioning\u202c \u202eUtility\u202c"
+  },
+  "VERIFY_PIN_DIALOG_EMAIL_LABEL": {
+    "message": "\u202eAccount\u202c"
+  },
+  "HOST_CATEGORY": {
+    "message": "\u202eHost\u202c"
+  },
+  "HOST_CLIENT_CONNECTED": {
+    "message": "\u202eClient\u202c \u202econnected\u202c: %1."
+  },
+  "HOST_CLIENT_DISCONNECTED": {
+    "message": "\u202eClient\u202c \u202edisconnected\u202c: %1."
+  },
+  "HOST_CLIENT_ACCESS_DENIED": {
+    "message": "\u202eAccess\u202c \u202edenied\u202c \u202efor\u202c \u202eclient\u202c: %1."
+  },
+  "HOST_CLIENT_ROUTING_CHANGED": {
+    "message": "\u202eChannel\u202c \u202eIP\u202c \u202efor\u202c \u202eclient\u202c: %1 \u202eip\u202c='%2' \u202ehost\u202c_\u202eip\u202c='%3' \u202echannel\u202c='%4' \u202econnection\u202c='%5'."
+  },
+  "HOST_STARTED": {
+    "message": "\u202eHost\u202c \u202estarted\u202c \u202efor\u202c \u202euser\u202c: %1."
+  },
+  "HOST_STOPPED": {
+    "message": "\u202eHost\u202c \u202estopped\u202c."
+  },
+  "HOME_DAEMON_MANAGE_PAIRINGS": {
+    "message": "\u202eView\u202c/\u202eedit\u202c"
+  },
+  "DELETE_LIST_ITEM": {
+    "message": "\u202eDelete\u202c"
+  },
+  "DELETE_PAIRED_CLIENT": {
+    "message": "\u202eDelete\u202c"
+  },
+  "DELETE_ALL_PAIRED_CLIENTS": {
+    "message": "\u202eDelete\u202c \u202eall\u202c"
+  },
+  "NO_PAIRED_CLIENTS": {
+    "message": "\u202eAll\u202c \u202epaired\u202c \u202eclients\u202c \u202ehave\u202c \u202ebeen\u202c \u202edeleted\u202c."
+  },
+  "HOME_DAEMON_PAIRED_MESSAGE": {
+    "message": "\u202eThis\u202c \u202ecomputer\u202c \u202eis\u202c \u202econfigured\u202c \u202eto\u202c \u202eallow\u202c \u202eone\u202c \u202eor\u202c \u202emore\u202c \u202eclients\u202c \u202eto\u202c \u202econnect\u202c \u202ewithout\u202c \u202eentering\u202c \u202ea\u202c \u202ePIN\u202c."
+  },
+  "PAIRED_CLIENTS_INTRODUCTION": {
+    "message": "\u202eThe\u202c \u202efollowing\u202c \u202eclients\u202c \u202ehave\u202c \u202ebeen\u202c \u202epaired\u202c \u202ewith\u202c \u202ethis\u202c \u202ecomputer\u202c \u202eand\u202c \u202ecan\u202c \u202econnect\u202c \u202ewithout\u202c \u202esupplying\u202c \u202ea\u202c \u202ePIN\u202c. \u202eYou\u202c \u202ecan\u202c \u202erevoke\u202c \u202ethis\u202c \u202epermission\u202c \u202eat\u202c \u202eany\u202c \u202etime\u202c, \u202eeither\u202c \u202eindividually\u202c, \u202eor\u202c \u202efor\u202c \u202eall\u202c \u202eclients\u202c."
+  },
+  "PAIRED_CLIENT_DATE": {
+    "message": "\u202ePairing\u202c \u202edate\u202c"
+  },
+  "PAIRED_CLIENT_NAME": {
+    "message": "\u202eClient\u202c"
+  },
+  "WORKING": {
+    "message": "\u202eWorking\u202c\u2026"
+  },
+  "TOGGLE_STATS": {
+    "message": "\u202eShow\u202c \u202estatistics\u202c"
+  },
+  "NEW_WINDOW": {
+    "message": "\u202eNew\u202c \u202ewindow\u202c\u2026"
+  },
+  "ACTIONBAR_FEEDBACK": {
+    "message": "\u202eFeedback\u202c"
+  },
+  "ACTIONBAR_MENU": {
+    "message": "\u202eMenu\u202c"
+  },
+  "HANGOUTS_CONFIRM_DIALOG_ACCEPT": {
+    "message": "\u202eAccept\u202c"
+  },
+  "HANGOUTS_CONFIRM_DIALOG_DECLINE": {
+    "message": "\u202eDecline\u202c"
+  },
+  "SHARE_CONFIRM_DIALOG_MESSAGE": {
+    "message": "\u202eWould\u202c \u202eyou\u202c \u202elike\u202c \u202eto\u202c \u202eshare\u202c \u202ethis\u202c \u202ecomputer\u202c \u202efor\u202c \u202eanother\u202c \u202euser\u202c \u202eto\u202c \u202esee\u202c \u202eand\u202c \u202econtrol\u202c?"
+  },
+  "SHARE_CONFIRM_DIALOG_MESSAGE_WITH_USERNAME": {
+    "message": "\u202eWould\u202c \u202eyou\u202c \u202elike\u202c \u202eto\u202c \u202eallow\u202c {0} \u202eto\u202c \u202esee\u202c \u202eand\u202c \u202econtrol\u202c \u202eyour\u202c \u202ecomputer\u202c?"
+  },
+  "SHARE_CONFIRM_DIALOG_CONFIRM": {
+    "message": "\u202eShare\u202c"
+  },
+  "SHARE_CONFIRM_DIALOG_CONFIRM_TEMP": {
+    "message": "\u202eShare\u202c"
+  },
+  "SHARE_CONFIRM_DIALOG_DECLINE": {
+    "message": "\u202eCancel\u202c"
+  },
+  "SETTING_MANAGED_BY_POLICY": {
+    "message": "\u202eThis\u202c \u202esetting\u202c \u202eis\u202c \u202emanaged\u202c \u202eby\u202c \u202eyour\u202c \u202edomain\u202c \u202epolicy\u202c."
+  },
+  "FOR_PLATFORM_WINDOWS": {
+    "message": "\u202eFor\u202c \u202eWindows\u202c 7 \u202eand\u202c \u202eabove\u202c"
+  },
+  "FOR_PLATFORM_MAC": {
+    "message": "\u202eFor\u202c \u202eMac\u202c (\u202eOS\u202c \u202eX\u202c \u202eMavericks\u202c 10.9 \u202eand\u202c \u202eabove\u202c)"
+  },
+  "ACCEPT_AND_INSTALL": {
+    "message": "\u202eAccept\u202c \u202eand\u202c \u202eInstall\u202c"
+  },
+  "WEBSITE_INVITE_BETA": {
+    "message": "\u202eGet\u202c \u202ea\u202c \u202esneak\u202c \u202epeek\u202c \u202eat\u202c \u202ethe\u202c \u202enew\u202c $1$\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eweb\u202c \u202eapp\u202c$2$. \u202eWe\u202c'\u202ed\u202c \u202elove\u202c \u202eto\u202c \u202ehear\u202c \u202eyour\u202c \u202efeedback\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
+  },
+  "WEBSITE_INVITE_STABLE": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eis\u202c \u202enow\u202c \u202eon\u202c \u202ethe\u202c \u202eweb\u202c! \u202eCheck\u202c \u202eout\u202c \u202eour\u202c $1$\u202efree\u202c \u202eweb\u202c \u202eapp\u202c$2$.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
+  },
+  "WEBSITE_INVITE_DEPRECATION_1": {
+    "message": "\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eis\u202c \u202emoving\u202c \u202eto\u202c \u202ea\u202c \u202enew\u202c \u202ehome\u202c \u202eon\u202c \u202ethe\u202c \u202eweb\u202c. \u202eTry\u202c \u202eour\u202c $1$\u202eweb\u202c \u202eapp\u202c$2$\u2014\u202eit\u202c'\u202es\u202c \u202efast\u202c \u202eand\u202c \u202efree\u202c, \u202ewith\u202c \u202eall\u202c \u202ethe\u202c \u202esame\u202c \u202efeatures\u202c \u202eas\u202c \u202ebefore\u202c.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
+  },
+  "WEBSITE_INVITE_DEPRECATION_2": {
+    "message": "\u202eThis\u202c \u202eapp\u202c \u202eis\u202c \u202eno\u202c \u202elonger\u202c \u202esupported\u202c. \u202eTo\u202c \u202eensure\u202c \u202eyou\u202c'\u202ere\u202c \u202egetting\u202c \u202ethe\u202c \u202elatest\u202c \u202efeatures\u202c \u202eand\u202c \u202esecurity\u202c \u202eupdates\u202c, \u202eplease\u202c \u202euse\u202c \u202ethe\u202c $1$\u202eChrome\u202c \u202eRemote\u202c \u202eDesktop\u202c \u202eweb\u202c \u202eapp\u202c$2$.",
+    "placeholders": {
+      "1": {
+        "content": "$1"
+      },
+      "2": {
+        "content": "$2"
+      }
+    }
+  }
+}

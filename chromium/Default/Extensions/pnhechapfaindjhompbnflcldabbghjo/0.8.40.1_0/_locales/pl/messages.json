@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "System plików jest już podłączony."
+   },
+   "backup_prefs": {
+      "message": "Zapisz kopię zapasową"
+   },
+   "bad_destination": {
+      "message": "Nie można przeanalizować celu: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Zamknięcie tej karty spowoduje odłączenie bieżącej sesji."
+   },
+   "cancel_button_label": {
+      "message": "Anuluj"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "To polecenie powoduje wyświetlenie menu znanych hostów i monituje o podanie hosta, który ma zostać zapomniany."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Zapomnij znanego hosta ssh."
+   },
+   "cmd_ssh_help": {
+      "message": "Parametry |username| i |hostname| są wymagane, a |port| jest opcjonalny. Jeśli port nie został określony, stosowana jest wartość domyślna 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Otwiera nową sesję SSH."
+   },
+   "command_complete": {
+      "message": "Polecenie $1 zostało wykonane. Kod stanu: $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Połącz"
+   },
+   "connect_or_exit_message": {
+      "message": "Wybierz (C) inne połączenie lub Zakończ (X)."
+   },
+   "connecting": {
+      "message": "Łączę z: $1…",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Czy wiesz, że istnieje specjalna strona opcji?\nNie musisz się już męczyć bezpośrednio z term_.\nNaciśnij $1, by ją otworzyć, lub kliknij:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Czy wiesz, że istnieje specjalna strona opcji?\nNie musisz się już męczyć bezpośrednio z term_.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Usuń"
+   },
+   "disconnect_message": {
+      "message": "Wtyczka NaCl zakończyła działanie. Kod stanu: $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "dodatkowe argumenty wiersza poleceń"
+   },
+   "field_description_aria_label": {
+      "message": "opis"
+   },
+   "field_description_placeholder": {
+      "message": "nazwa_użytkownika@nazwa_hosta lub dowolny tekst"
+   },
+   "field_hostname_aria_label": {
+      "message": "nazwa hosta"
+   },
+   "field_hostname_placeholder": {
+      "message": "nazwa hosta"
+   },
+   "field_mount_path_placeholder": {
+      "message": "ścieżką domyślną jest katalog główny użytkownika"
+   },
+   "field_port_aria_label": {
+      "message": "port"
+   },
+   "field_port_placeholder": {
+      "message": "port"
+   },
+   "field_relay_options_aria_label": {
+      "message": "opcje serwera przekazującego"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Opcje serwera przekazującego SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "domyślny"
+   },
+   "field_username_aria_label": {
+      "message": "nazwa użytkownika"
+   },
+   "field_username_placeholder": {
+      "message": "nazwa użytkownika"
+   },
+   "found_relay": {
+      "message": "Znaleziono serwer przekazujący: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Tożsamość"
+   },
+   "import_link_aria_label": {
+      "message": "import plików"
+   },
+   "import_link_label": {
+      "message": "Importuj…"
+   },
+   "initializing_relay": {
+      "message": "Szukam serwera przekazującego przy użyciu: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Nie udało się przeanalizować elementu JSON w: „$1”: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Brak znanych hostów. Nie ma nic do zapomnienia."
+   },
+   "known_hosts_prompt": {
+      "message": "Wybierz hosta do zapomnienia [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Znane hosty:"
+   },
+   "loading_label": {
+      "message": "Wczytuję…"
+   },
+   "missing_param": {
+      "message": "Brak parametru: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Podłącz SFTP"
+   },
+   "mount_path_label": {
+      "message": "Ścieżka podłączenia"
+   },
+   "mounted_message": {
+      "message": "Podłączono."
+   },
+   "notify_copy": {
+      "message": "Wybór skopiowany"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Połącz się z zapisanym profilem lub nowym systemem ssh"
+   },
+   "open_as_window_tip": {
+      "message": "[Wskazówka] Użyj opcji „Otwórz jako okno”, by skrót Control-W nie zamykał terminala.\n[Wskazówka] Więcej informacji znajdziesz na stronie $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Opcje"
+   },
+   "plugin_loading": {
+      "message": "Ładuję wtyczkę NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " gotowe."
+   },
+   "plugin_loading_failed": {
+      "message": " niepowodzenie :("
+   },
+   "pref_backup_filename": {
+      "message": "Kopia_zapasowa_ustawień_bezpiecznej_powłoki.json"
+   },
+   "preferences_header": {
+      "message": "Ustawienia profilu"
+   },
+   "preferences_reset": {
+      "message": "Wszystkie ustawienia zostały zresetowane."
+   },
+   "reconnect_message": {
+      "message": "Połącz ponownie (R), Wybierz inne połączenie (C) lub Zakończ (X)."
+   },
+   "relay_retry": {
+      "message": "Próbuję ponownie…"
+   },
+   "restore_prefs": {
+      "message": "Przywróć dane z kopii zapasowej"
+   },
+   "shortcut_list_aria_label": {
+      "message": "zapisane połączenia"
+   },
+   "ssh_argstr_label": {
+      "message": "Argumenty SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Podgląd"
+   },
+   "terminal_profile_label": {
+      "message": "Bieżący profil"
+   },
+   "tip_1": {
+      "message": "Aby otworzyć linki, podczas ich klikania trzymaj wciśnięty klawisz Ctrl (Cmd na Macu)."
+   },
+   "tip_10": {
+      "message": "Naciskając Ctrl+Shift+N podczas pracy w oknie, możesz otworzyć nową sesję."
+   },
+   "tip_11": {
+      "message": "Możesz ponownie powiązać klawisze/skróty: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Powiadomienia możesz wyświetlać w przeglądarce, korzystając z polecenia hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Aby połączyć się z poziomu omniboxa, wpisz „ssh \u003Cnazwa profilu>”: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "System operacyjny Chrome pozwala podłączać systemy plików przez SFTP i przeglądać je w aplikacji Pliki. Użyj polecenia „Podłącz SFTP” zamiast „Połącz”."
+   },
+   "tip_5": {
+      "message": "Połącz się, korzystając z linków ssh:// na stronach internetowych, lub zapisz zakładkę: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Możesz pokolorować wynik lub komunikat, używając podstawowych 16 kolorów, 256 kolorów lub pełnych kolorów 24-bitowych: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Zawartość edytora emacs/vim/etc i innych możesz skopiować do schowka, korzystając z sekwencji OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Z innymi użytkownikami hterm / bezpiecznej powłoki możesz rozmawiać w grupie chromium-hterm na chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Widzisz błąd? Chcesz zaproponować nową funkcję? Daj nam znać: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Wystąpił nieoczekiwany błąd. Aby dowiedzieć się więcej, sprawdź konsolę JavaScript."
+   },
+   "unmount_button_label": {
+      "message": "Odłącz SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Dostępna jest aktualizacja. Zamknij wszystkie okna."
+   },
+   "welcome_changelog": {
+      "message": "Informacje o wersji / dziennik zmian: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Odpowiedzi na najczęstsze pytania: $1 (naciśnij Ctrl i kliknij linki, by je otworzyć)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Główne zmiany od wersji $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Losowa wskazówka nr $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "$1, wersja $2 – witamy.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "W menu Chrome ustaw powiększenie na 100%"
+   }
+}

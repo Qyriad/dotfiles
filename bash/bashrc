@@ -1,0 +1,73 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+source /usr/share/git/completion/git-completion.bash
+source /usr/share/git/completion/git-prompt.sh
+PS1="\[\e[0;32m\]\u@\h.$(tty | cut -c6-)\[\e[m\] \[\e[0;33m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[1;32m\] \$\[\e[0;37m\] "
+[ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
+export PATH=$PATH:/usr/local/bin:~/.local/bin:~/.local/share/cargo/bin
+
+# Use vim for everything
+export EDITOR="/usr/bin/vim"
+export VISUAL="/usr/bin/vim"
+export SYSTEMD_EDITOR="/usr/bin/vim"
+
+# Make stuff follow XDG
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
+alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
+
+# Coreutils and builtins
+alias ls='ls --color=auto -p --group-directories-first'
+alias ll="ls -lh"
+alias la="ls -Al"
+alias cp="cp -vi"
+alias rm="rm -vi"
+alias mv="mv -vi"
+alias ln="ln -vi"
+alias chown="chown --preserve-root"
+alias chmod="chmod --preserve-root"
+alias chgrp="chgrp --preserve-root"
+alias grep="grep --color=auto"
+alias less="less -R"
+
+# Tar
+alias tarx="tar -xvf"
+alias tart="tar -tvf"
+alias tarc="tar -cvf"
+
+# Edit config shortucts
+alias et="vim ~/.config/tmux/tmux.conf"
+alias ev="vim ~/.config/vim/vimrc"
+alias ei3="vim ~/.config/i3/config"
+alias eb="vim ~/.config/bash/bashrc"
+alias ex="vim ~/.xinitrc"
+alias exr="vim ~/.config/X11/Xresources"
+alias ei="vim ~/.config/i3/config"
+alias sb="source ~/.bashrc"
+
+# Misc
+alias wgetc="wget --content-disposition" # Uses server filename across redirects
+alias ni="nonet"
+alias info="pinfo"
+alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to preserve env when editing
+
+set -C # Disallow overriting on >, require >| to override that
+
+eval $(thefuck --alias)
+
+function diffcmd()
+{
+	echo Diffing command $1 and $2
+}

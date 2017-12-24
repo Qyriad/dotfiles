@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Файлову систему вже встановлено."
+   },
+   "backup_prefs": {
+      "message": "Зберегти резервну копію"
+   },
+   "bad_destination": {
+      "message": "Неможливо проаналізувати місце призначення: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Якщо закрити цю вкладку, поточний сеанс буде припинено."
+   },
+   "cancel_button_label": {
+      "message": "Скасувати"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Ця команда відображає меню відомих хостів і запитує, які хости потрібно ігнорувати."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Ігнорувати відомий хост SSH."
+   },
+   "cmd_ssh_help": {
+      "message": "Параметри |username| і |hostname| – обов’язкові, параметр |port| – необов’язковий. Якщо порт не вказано, установлюється значення за умовчанням – 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Відкриває новий сеанс SSH."
+   },
+   "command_complete": {
+      "message": "Команда $1 завершила роботу з кодом статусу $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "З’єднатися"
+   },
+   "connect_or_exit_message": {
+      "message": "Вибрати інше підключення (C) чи вийти (X)?"
+   },
+   "connecting": {
+      "message": "Підключення до хосту $1…",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Чи знали ви про сторінку з виділеними параметрами?\nБільше не потрібно безпосередньо застосовувати параметр term_.\nЩоб відкрити цю сторінку, натисніть $1 або\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Чи знали ви про сторінку з виділеними параметрами?\nБільше не потрібно безпосередньо застосовувати параметр term_.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Видалити"
+   },
+   "disconnect_message": {
+      "message": "Плагін NaCl завершив роботу з кодом статусу $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "додаткові аргументи командного рядка"
+   },
+   "field_description_aria_label": {
+      "message": "опис"
+   },
+   "field_description_placeholder": {
+      "message": "imyakorystuvacha@imyakhostu або без тексту"
+   },
+   "field_hostname_aria_label": {
+      "message": "ім’я хосту"
+   },
+   "field_hostname_placeholder": {
+      "message": "ім’я хосту"
+   },
+   "field_mount_path_placeholder": {
+      "message": "шлях за умовчанням – це домашній каталог користувача"
+   },
+   "field_port_aria_label": {
+      "message": "порт"
+   },
+   "field_port_placeholder": {
+      "message": "порт"
+   },
+   "field_relay_options_aria_label": {
+      "message": "параметри передавання"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Параметри сервера передавання SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "за умовчанням"
+   },
+   "field_username_aria_label": {
+      "message": "ім’я користувача"
+   },
+   "field_username_placeholder": {
+      "message": "ім’я користувача"
+   },
+   "found_relay": {
+      "message": "Знайдено сервер передавання: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Ідентифікатор"
+   },
+   "import_link_aria_label": {
+      "message": "імпорт файлу"
+   },
+   "import_link_label": {
+      "message": "Імпорт…"
+   },
+   "initializing_relay": {
+      "message": "Пошук сервера передавання з хостом $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Не вдалося виконати синтаксичний аналіз файлу JSON у параметрі \"$1\": $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Жодного відомого хосту. Немає що ігнорувати."
+   },
+   "known_hosts_prompt": {
+      "message": "Виберіть хост, який потрібно ігнорувати [1–$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Відомі хости:"
+   },
+   "loading_label": {
+      "message": "Завантаження…"
+   },
+   "missing_param": {
+      "message": "Відсутній параметр: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Підключити протокол SFTP"
+   },
+   "mount_path_label": {
+      "message": "Шлях підключення"
+   },
+   "mounted_message": {
+      "message": "Підключено"
+   },
+   "notify_copy": {
+      "message": "Виділений текст скопійовано"
+   },
+   "ok_button_label": {
+      "message": "ОК"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Під’єднайтеся до збереженого профілю чи нової системи SSH"
+   },
+   "open_as_window_tip": {
+      "message": "[Порада професіонала] Вибирайте опцію \"Відкрити як вікно\", щоб команда Control-W не закривала термінал.\n[Порада професіонала] Дізнайтеся більше на сторінці $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Параметри"
+   },
+   "plugin_loading": {
+      "message": "Завантаження плагіна NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " готово."
+   },
+   "plugin_loading_failed": {
+      "message": " помилка"
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "Налаштування профілю"
+   },
+   "preferences_reset": {
+      "message": "Усі налаштування скинуто."
+   },
+   "reconnect_message": {
+      "message": "Ще раз підключитися (R), вибрати інше підключення (C) чи вийти (X)?"
+   },
+   "relay_retry": {
+      "message": "Повторна спроба…"
+   },
+   "restore_prefs": {
+      "message": "Відновити резервну копію"
+   },
+   "shortcut_list_aria_label": {
+      "message": "збережені підключення"
+   },
+   "ssh_argstr_label": {
+      "message": "Аргументи SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Попередній перегляд"
+   },
+   "terminal_profile_label": {
+      "message": "Поточний профіль"
+   },
+   "tip_1": {
+      "message": "Утримуйте клавішу Ctrl (Cmd в ОС Mac) і натискайте посилання, щоб відкрити їх."
+   },
+   "tip_10": {
+      "message": "Коли завдання виконується у вікні, комбінацією клавіш Ctrl-Shift-N можна почати новий сеанс."
+   },
+   "tip_11": {
+      "message": "Ви можете повторно зв’язувати ключі або комбінації клавіш: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Увімкніть сповіщення у веб-переглядачі командою hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Під’єднуйтеся з універсального вікна пошуку, ввівши команду \"ssh \u003Cprofile name>\": https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "ОС Chrome може підключити файлові системи через протокол SFTP та переглядати їх через додаток Файли. Натисніть \"Підключити через SFTP\" замість \"Під’єднатися\"."
+   },
+   "tip_5": {
+      "message": "Під’єднуйтеся за допомогою посилань ssh:// на веб-сторінках або збережіть закладку: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Позначайте вихідні дані та запити основними 16 чи 256 кольорами або повними 24-бітовими кольорами: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Скопіюйте в буфер обміну з ресурсу emacs/vim/etc... за допомогою послідовності OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Спілкуйтеся в чаті з іншими користувачами hterm/Secure Shell на сторінці chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Виявили помилку? Хочете запропонувати нову функцію? Повідомте нас: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Сталася неочікувана помилка. Щоб дізнатися більше, перегляньте консоль JavaScript."
+   },
+   "unmount_button_label": {
+      "message": "Відключити протокол SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Доступне оновлення. Закрийте всі вікна."
+   },
+   "welcome_changelog": {
+      "message": "ChangeLog/примітки до випуску: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Відповіді на поширені запитання: $1 (щоб відкрити посилання, натисніть його, утримуючи клавішу ctrl)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Основні зміни після випуску версії $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Випадкова порада професіонала №$1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Вітаємо в додатку $1 версії $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Виберіть меню Chrome -> Масштаб 100%"
+   }
+}

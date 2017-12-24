@@ -1,0 +1,20 @@
+{
+   "app": {
+      "launch": {
+         "container": "tab",
+         "web_url": "http://s1.daumcdn.net/editor/fp/service_nc/pencil/Pencil_chromestore.html"
+      },
+      "urls": [ "http://s1.daumcdn.net/editor/fp/service_nc/pencil/" ]
+   },
+   "default_locale": "en",
+   "description": "__MSG_desc__",
+   "icons": {
+      "128": "assets/pencil_icon_128.png",
+      "16": "assets/pencil_icon_16.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjt9+v32/cNl2lX4RQfFiFCwJ2HJv/H+b4cdz5E2PeoS7ES/7N5QlCqp/wcXuZjW0k+cevX4kxFG7N/eb7FcBibPDYcbjzSFJ4fpFEgvjqqx09G2UkjeiKvJxgzdUUwWhZeGQMYtiUGNcSwrf//0myqpx+45G3EDl8Glvcys/gUQIDAQAB",
+   "manifest_version": 2,
+   "name": "Daum Equation Editor",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.0.1"
+}

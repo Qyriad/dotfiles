@@ -1,0 +1,221 @@
+html, body
+{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+iframe
+{
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#page
+{
+  height: 100%;
+  width: 100%;
+}
+
+#content
+{
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+#content.fullscreen
+{
+  top: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+#tab-bar-container
+{
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+#tab-bar-container.mac-fullscreen
+{
+  height: 58px; /* tab-bar height + mac system bar height */
+}
+
+#tab-bar-border-mask
+{
+  position: absolute;
+  height: 1px;
+  background-color: white;
+  margin-bottom: -1px;
+}
+
+#tab-bar-bottom
+{
+  background-color: #fff;
+  opacity: 0.001;
+  position: absolute;
+  top: 36px;
+  width: 100%;
+  height: 1px;
+  z-index: 20;
+}
+
+.mac-fullscreen > #tab-bar
+{
+  position: relative;
+  top: 19px; /* mac system bar height (roughly...) */
+}
+
+.tab-bar-button
+{
+  height: 22px;
+  width: 22px;
+  margin: 10px 6px 0 2px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  float: right;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+#tab-bar-help
+{
+  background-image: url('../images/tab-bar/help-button@x1.png');
+}
+
+#tab-bar-help:hover,
+#tab-bar-help:focus
+{
+  background-image: url('../images/tab-bar/help-button-hover@x1.png');
+}
+
+#tab-bar-fullscreen
+{
+  background-image: url('../images/tab-bar/full-screen-up@x1.png');
+}
+
+#tab-bar-fullscreen:hover,
+#tab-bar-fullscreen:focus
+{
+  background-image: url('../images/tab-bar/full-screen-up-hover@x1.png');
+}
+
+#tab-bar-fullscreen.selected
+{
+  background-image: url('../images/tab-bar/full-screen-down@x1.png');
+}
+
+#tab-bar-fullscreen.selected:hover,
+#tab-bar-fullscreen.selected:focus
+{
+  background-image: url('../images/tab-bar/full-screen-down-hover@x1.png');
+}
+
+.chrome-tabs-shell {
+  position: relative;
+  padding: 10px 10px 2px 2px;
+  height: 27px;
+  z-index: 2;
+  overflow: hidden;
+}
+  .chrome-tabs-shell .chrome-tabs-new {
+    position: absolute;
+    top: 12px;
+    margin: 5px 13px;
+    height: 16px;
+    width: 16px;
+    background-image: url('../images/tab-bar/new-window@x1.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 15;
+  }
+    .chrome-tabs-shell .chrome-tabs-new:hover,
+    .chrome-tabs-shell .chrome-tabs-new:focus {
+      background-image: url('../images/tab-bar/new-window-hover@x1.png');
+    }
+
+.chrome-tabs {
+  *zoom: 1;
+  width: 99999px;
+}
+  .chrome-tabs:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .chrome-tabs * {
+    -webkit-user-select: none;
+    cursor: default;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  .chrome-tabs .chrome-tab {
+    float: left;
+    position: relative;
+    height: 28px;
+    width: 180px;
+    border: 0px;
+    margin: 0px -1px 0px 0px;
+    z-index: 3;
+    background-color: #e3e3e3;
+    border-top: 1px solid #a4a4a4;
+    border-right: 1px solid #a4a4a4;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+    border-left: 1px solid #a4a4a4;
+  }
+    .chrome-tabs .chrome-tab:hover {
+      background-color: #f5f5f5;
+      transition: background-color 0.5s;
+    }
+    .chrome-tabs .chrome-tab.chrome-tab-current {
+      z-index: 999;
+      background-color: white;
+      border-top: 1px solid rgba(0, 0, 0, 0.7);
+      border-right: 1px solid rgba(0, 0, 0, 0.7);
+      border-bottom: 1px solid white;
+      border-left: 1px solid rgba(0, 0, 0, 0.7);
+    }
+    .chrome-tabs .chrome-tab .chrome-tab-title {
+      color: #444444;
+      padding: 8px 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .chrome-tabs .chrome-tab .chrome-tab-close {
+      position: absolute;
+      top: 6px;
+      right: 7px;
+      width: 16px;
+      height: 16px;
+      border: none;
+      background-image: url('../images/tab-bar/close-window@x1.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      z-index: 4;
+    }
+      .chrome-tabs .chrome-tab .chrome-tab-close:hover,
+      .chrome-tabs .chrome-tab .chrome-tab-close:active {
+        background-image: url('../images/tab-bar/close-window-hover@x1.png');
+      }
+
+.ui-sortable-iframeFix {
+  background-color: #fff;
+  opacity: 0.001;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: none;
+}

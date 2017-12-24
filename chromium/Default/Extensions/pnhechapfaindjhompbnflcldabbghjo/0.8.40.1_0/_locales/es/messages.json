@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "El sistema de archivos ya está activado."
+   },
+   "backup_prefs": {
+      "message": "Guardar copia de seguridad"
+   },
+   "bad_destination": {
+      "message": "No se puede analizar el siguiente destino: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "La sesión finalizará si cierras esta pestaña."
+   },
+   "cancel_button_label": {
+      "message": "Cancelar"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Este comando muestra un menú de hosts conocidos y pide que se indique el host que se quiere eliminar."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Elimina un host SSH del registro de hosts conocidos."
+   },
+   "cmd_ssh_help": {
+      "message": "Los parámetros |username| y |hostname| son obligatorios, mientras que el parámetro |port| es opcional. Si no se especifica el puerto, se utilizará de forma predeterminada el puerto 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Abre una nueva sesión SSH."
+   },
+   "command_complete": {
+      "message": "El comando $1 se ha cerrado con el código de estado $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Conectar"
+   },
+   "connect_or_exit_message": {
+      "message": "¿Quieres elegir otra conexión (C) o salir (X)?"
+   },
+   "connecting": {
+      "message": "Conectando a $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "¿Sabías que hay una página dedicada a las opciones?\nYa no es necesario utilizar term_ directly.\nPulsa $1 o haz clic en el siguiente enlace para abrirla:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "¿Sabías que hay una página dedicada a las opciones?\nYa no es necesario utilizar term_ directly.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[Supr]"
+   },
+   "delete_button_label": {
+      "message": "Eliminar"
+   },
+   "disconnect_message": {
+      "message": "El complemento NaCl se ha cerrado con el código de estado $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[INTRO]"
+   },
+   "field_argstr_placeholder": {
+      "message": "argumentos de línea de comandos adicionales"
+   },
+   "field_description_aria_label": {
+      "message": "descripción"
+   },
+   "field_description_placeholder": {
+      "message": "nombredeusuario@nombredehost o cualquier otro texto"
+   },
+   "field_hostname_aria_label": {
+      "message": "nombre de host"
+   },
+   "field_hostname_placeholder": {
+      "message": "nombre de host"
+   },
+   "field_mount_path_placeholder": {
+      "message": "la ruta predeterminada es el directorio principal del usuario"
+   },
+   "field_port_aria_label": {
+      "message": "puerto"
+   },
+   "field_port_placeholder": {
+      "message": "puerto"
+   },
+   "field_relay_options_aria_label": {
+      "message": "opciones de transmisión"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Opciones del servidor de transmisión SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "predeterminado"
+   },
+   "field_username_aria_label": {
+      "message": "nombre de usuario"
+   },
+   "field_username_placeholder": {
+      "message": "nombre de usuario"
+   },
+   "found_relay": {
+      "message": "Se ha encontrado un servidor de transmisión: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identidad"
+   },
+   "import_link_aria_label": {
+      "message": "importación de archivos"
+   },
+   "import_link_label": {
+      "message": "Importar..."
+   },
+   "initializing_relay": {
+      "message": "Se está buscando el servidor de transmisión con: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "No se ha podido analizar el archivo JSON en \"$1\": $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "No existen hosts conocidos. Por tanto, no hay hosts que eliminar."
+   },
+   "known_hosts_prompt": {
+      "message": "Selecciona el host que quieras eliminar [entre 1 y $1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Hosts conocidos:"
+   },
+   "loading_label": {
+      "message": "Cargando..."
+   },
+   "missing_param": {
+      "message": "Falta el siguiente parámetro: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Activación de SFTP"
+   },
+   "mount_path_label": {
+      "message": "Activar ruta"
+   },
+   "mounted_message": {
+      "message": "Activado."
+   },
+   "notify_copy": {
+      "message": "Selección copiada"
+   },
+   "ok_button_label": {
+      "message": "Aceptar"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>usuario@nombredehost[:port]\u003C/match>\u003C/url> Conéctate a un perfil guardado o a un nuevo sistema ssh"
+   },
+   "open_as_window_tip": {
+      "message": "[Consejo] Utiliza la opción Abrir como ventana para evitar que la ventana de terminal se cierre al pulsar Ctrl + W.\n[Consejo] Consulta la página $1 para obtener más información.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Opciones"
+   },
+   "plugin_loading": {
+      "message": "Cargando complemento NaCi..."
+   },
+   "plugin_loading_complete": {
+      "message": " carga completada"
+   },
+   "plugin_loading_failed": {
+      "message": " ha fallado."
+   },
+   "pref_backup_filename": {
+      "message": "preferencias de copia de seguridad.json"
+   },
+   "preferences_header": {
+      "message": "Configuración del perfil"
+   },
+   "preferences_reset": {
+      "message": "Se han recuperado todas las preferencias."
+   },
+   "reconnect_message": {
+      "message": "¿Quieres volver a establecer conexión (R), elegir otra conexión (C) o salir (X)?"
+   },
+   "relay_retry": {
+      "message": "Reintentando..."
+   },
+   "restore_prefs": {
+      "message": "Restaurar copia de seguridad"
+   },
+   "shortcut_list_aria_label": {
+      "message": "conexiones guardadas"
+   },
+   "ssh_argstr_label": {
+      "message": "Argumentos SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Vista previa"
+   },
+   "terminal_profile_label": {
+      "message": "Perfil actual"
+   },
+   "tip_1": {
+      "message": "Puedes mantener pulsada la tecla Ctrl (Cmd en Mac OS) al hacer clic en los enlaces para abrirlos."
+   },
+   "tip_10": {
+      "message": "Cuando una ventana se está ejecutando, puedes pulsar Ctrl + Mayús + N para abrir otra sesión."
+   },
+   "tip_11": {
+      "message": "Puedes reasignar teclas/combinaciones de teclas a distintas acciones: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Utiliza hterm-notify para mostrar notificaciones en el navegador: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Escribe \"ssh \u003Cprofile name>\" para conectarte desde el omnibox: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS puede activar sistemas de archivos a través de SFTP y explorar a través de los archivos de la aplicación. Utiliza la opción Activación por SFTP en lugar de Conectar."
+   },
+   "tip_5": {
+      "message": "Utiliza enlaces ssh:// en las páginas web para conectarte o guarda un marcador: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Da color a los mensajes que envías y recibes con 16 colores básicos, 256 colores o colores de 24 bits: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Utiliza OSC-52 para copiar contenido en el portapapeles desde emacs/vim/etc...: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Chatea con otros usuarios de hterm/Secure Shell a través de chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Si detectas un error o quieres solicitar una nueva función, ponte en contacto con nosotros: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Se ha producido un error inesperado. Para obtener más información, accede a la consola de JavaScript."
+   },
+   "unmount_button_label": {
+      "message": "Desconectar SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Hay una actualización disponible. Cierra todas las ventanas."
+   },
+   "welcome_changelog": {
+      "message": "ChangeLog/notas de la versión: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Respuestas a preguntas frecuentes: $1 (Ctrl + hacer clic en los enlaces para abrirlos)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Ha habido cambios importantes desde la versión $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Consejo aleatorio n.º $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Te damos la bienvenida a la versión $2 de $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Ve al menú de Chrome y fija el zoom al 100%"
+   }
+}

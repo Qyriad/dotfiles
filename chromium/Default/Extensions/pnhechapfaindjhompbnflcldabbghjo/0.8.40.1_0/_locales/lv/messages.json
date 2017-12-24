@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Failu sistēma jau ir iekļauta!"
+   },
+   "backup_prefs": {
+      "message": "Saglabāt dublējumu"
+   },
+   "bad_destination": {
+      "message": "Nevar parsēt mērķi: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Aizverot šo cilni, sesija tiks pārtraukta."
+   },
+   "cancel_button_label": {
+      "message": "Atcelt"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Šī komanda parāda zināmo saimniekdatoru sarakstu un pieprasa norādīt saimniekdatoru, kas jāaizmirst."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Aizmirst zināmo ssh saimniekdatoru."
+   },
+   "cmd_ssh_help": {
+      "message": "Parametri |username| un |hostname| ir obligāti, |port| ir izvēles. Ja pieslēgvieta netiek norādīta, tās noklusējuma vērtība ir 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Atver jaunu SSH sesiju."
+   },
+   "command_complete": {
+      "message": "Komanda “$1” tika aizvērta ar statusa kodu $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Izveidot savienojumu"
+   },
+   "connect_or_exit_message": {
+      "message": "Vai izvēlēties citu savienojumu (C) vai iziet (X)?"
+   },
+   "connecting": {
+      "message": "Notiek savienojuma izveide ar $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Vai zinājāt, ka ir pieejama atsevišķa opciju lapa?\nVairs nav jāveic tiešas darbības ar parametru term_.\nNospiediet $1, lai atvērtu lapu, vai noklikšķiniet uz šīs saites:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Vai zinājāt, ka ir pieejama atsevišķa opciju lapa?\nVairs nav jāveic tiešas darbības ar parametru term_.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DZĒST]"
+   },
+   "delete_button_label": {
+      "message": "Dzēst"
+   },
+   "disconnect_message": {
+      "message": "NaCl spraudnis tika aizvērts ar statusa kodu $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[IEVADĪT]"
+   },
+   "field_argstr_placeholder": {
+      "message": "papildu komandrindas argumenti"
+   },
+   "field_description_aria_label": {
+      "message": "apraksts"
+   },
+   "field_description_placeholder": {
+      "message": "lietotājvārds@saimniekdatoranosaukums vai brīvas formas teksts"
+   },
+   "field_hostname_aria_label": {
+      "message": "saimniekdatora nosaukums"
+   },
+   "field_hostname_placeholder": {
+      "message": "saimniekdatora nosaukums"
+   },
+   "field_mount_path_placeholder": {
+      "message": "noklusējuma ceļš ir lietotāja sākumdirektorijs"
+   },
+   "field_port_aria_label": {
+      "message": "ports"
+   },
+   "field_port_placeholder": {
+      "message": "ports"
+   },
+   "field_relay_options_aria_label": {
+      "message": "pārraides opcijas"
+   },
+   "field_relay_options_placeholder": {
+      "message": "SSH pārraides servera opcijas"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "noklusējums"
+   },
+   "field_username_aria_label": {
+      "message": "lietotājvārds"
+   },
+   "field_username_placeholder": {
+      "message": "lietotājvārds"
+   },
+   "found_relay": {
+      "message": "Atrasts pārraides serveris: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identitāte"
+   },
+   "import_link_aria_label": {
+      "message": "faila importēšana"
+   },
+   "import_link_label": {
+      "message": "Importēt..."
+   },
+   "initializing_relay": {
+      "message": "Tiek meklēts pārraides serveris, kas izmanto: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Nevarēja parsēt JSON ievadē “$1”: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Nav neviena zināma saimniekdatora; nav, ko aizmirst."
+   },
+   "known_hosts_prompt": {
+      "message": "Atlasiet saimniekdatoru, kas jāaizmirst [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Zināmie saimniekdatori:"
+   },
+   "loading_label": {
+      "message": "Notiek ielāde..."
+   },
+   "missing_param": {
+      "message": "Trūkstošais parametrs: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Iekļaut SFTP"
+   },
+   "mount_path_label": {
+      "message": "iekļaušanas ceļš"
+   },
+   "mounted_message": {
+      "message": "Iekļauta!"
+   },
+   "notify_copy": {
+      "message": "Atlase nokopēta"
+   },
+   "ok_button_label": {
+      "message": "Labi"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Izveidojiet savienojumu ar saglabātu profilu vai jaunu SSH sistēmu."
+   },
+   "open_as_window_tip": {
+      "message": "[Profesionāļa padoms] Izmantojiet “Atvērt kā logu”, lai ar vadīšanas taustiņa un taustiņa W kombināciju (Control-W) neaizvērtu termināli.\n[Profesionāļa padoms] Plašāku informāciju skatiet vietnē $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Opcijas"
+   },
+   "plugin_loading": {
+      "message": "Notiek NaCl spraudņa ielāde..."
+   },
+   "plugin_loading_complete": {
+      "message": " pabeigta."
+   },
+   "plugin_loading_failed": {
+      "message": " Neizdevās"
+   },
+   "pref_backup_filename": {
+      "message": "Drošās čaulas preferenču dublējuma fails Backup.json"
+   },
+   "preferences_header": {
+      "message": "Profila iestatījumi"
+   },
+   "preferences_reset": {
+      "message": "Visas preferences atiestatītas!"
+   },
+   "reconnect_message": {
+      "message": "Vai atkārtoti izveidot savienojumu (R), izvēlēties citu savienojumu (C) vai iziet (X)?"
+   },
+   "relay_retry": {
+      "message": "Notiek atkārtots mēģinājums..."
+   },
+   "restore_prefs": {
+      "message": "Atjaunot dublējumu"
+   },
+   "shortcut_list_aria_label": {
+      "message": "saglabātie savienojumi"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH argumenti"
+   },
+   "terminal_preview_label": {
+      "message": "Priekšskatījums"
+   },
+   "terminal_profile_label": {
+      "message": "Pašreizējais profils"
+   },
+   "tip_1": {
+      "message": "Lai atvērtu saiti, turiet nospiestu taustiņu Ctrl (taustiņu Cmd macOS datorā), vienlaikus noklikšķinot uz attiecīgās saites."
+   },
+   "tip_10": {
+      "message": "Nospiežot Ctrl-Shift-N atvērtā logā, varat atvērt jaunu sesiju."
+   },
+   "tip_11": {
+      "message": "Varat atkārtoti saistīt īsinājumtaustiņus šeit: https://goo.gl/LWRndr."
+   },
+   "tip_2": {
+      "message": "Rādiet paziņojumus pārlūkprogrammā, izmantojot hterm-notify: https://goo.gl/ZNxGdF."
+   },
+   "tip_3": {
+      "message": "Izveidojiet savienojumu no universālā lodziņa, ierakstot “ssh \u003Cprofila nosaukums>”: https://goo.gl/V7o8ki."
+   },
+   "tip_4": {
+      "message": "Operētājsistēmā Chrome OS var iekļaut failu sistēmas, izmantojot SFTP, un veikt pārlūkošanu, izmantojot lietotni Faili. Izmantojiet funkciju “SFTP iekļaušana”, nevis “Savienojuma izveide”."
+   },
+   "tip_5": {
+      "message": "Izveidojiet savienojumu, izmantojot ssh:// saites tīmekļa lapās, vai saglabājiet grāmatzīmi: https://goo.gl/zS8EZD."
+   },
+   "tip_6": {
+      "message": "Iekrāsojiet izvadi/uzvedni, izmantojot 16 pamatkrāsas, 256 krāsas un pilnas 24 bitu krāsas: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html."
+   },
+   "tip_7": {
+      "message": "Kopējiet saturu starpliktuvē no emacs/vim/etc..., izmantojot OSC-52: https://goo.gl/XSnyLo."
+   },
+   "tip_8": {
+      "message": "Tērzējiet ar citiem hterm/Secure Shell lietotājiem, izmantojot chromium-hterm@chromium.org: https://goo.gl/RYHiK."
+   },
+   "tip_9": {
+      "message": "Vai atradāt kļūdu? Vai vēlaties pieprasīt jaunu funkciju? Informējiet mūs: https://goo.gl/vb94JY."
+   },
+   "unexpected_error": {
+      "message": "Radās neparedzēta kļūda. Plašāku informāciju, lūdzu, skatiet JavaScript konsolē."
+   },
+   "unmount_button_label": {
+      "message": "Neiekļaut SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Ir pieejams atjauninājums. Lūdzu, aizveriet visus logus."
+   },
+   "welcome_changelog": {
+      "message": "ChangeLog/piezīmes par izdevumu: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Atbildes uz bieži uzdotajiem jautājumiem: $1 (nospiediet vadīšanas taustiņu (Ctrl) un noklikšķiniet uz saitēm, kuras vēlaties atvērt)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Ievērojamas izmaiņas kopš versijas $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "$1. nejauši izvēlēts profesionāļa padoms. $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Laipni lūdzam $1 versijā $2!",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Lūdzu, iestatiet vienumu Chrome izvēlne -> Tālummaiņa līdz 100%."
+   }
+}

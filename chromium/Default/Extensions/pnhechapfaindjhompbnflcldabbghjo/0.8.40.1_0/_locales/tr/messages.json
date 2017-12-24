@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Dosya sistemi zaten eklendi!"
+   },
+   "backup_prefs": {
+      "message": "Yedeği Kaydet"
+   },
+   "bad_destination": {
+      "message": "Hedef ayrıştırılamıyor: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Bu sekmenin kapatılması oturumun bağlantısını keser."
+   },
+   "cancel_button_label": {
+      "message": "İptal"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Bu komut bilinen ana makinelerin bulunduğu bir menüyü görüntüler ve unutulacak ana makinenin belirtilmesini ister."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Bilinen bir ssh ana makinesini unut."
+   },
+   "cmd_ssh_help": {
+      "message": "|kullanıcıadı| ve |anabilgisayaradı| parametreleri gereklidir. |bağlantınoktası| isteğe bağlıdır. Bağlantı noktası belirtilmezse varsayılan olarak 22 kullanılır."
+   },
+   "cmd_ssh_title": {
+      "message": "Yeni SSH oturumu açar."
+   },
+   "command_complete": {
+      "message": "$1 komutu kullanılarak $2 durum koduyla çıkış yapıldı.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Bağlan"
+   },
+   "connect_or_exit_message": {
+      "message": "(C) Başka bir bağlantı seç veya (X) Çık?"
+   },
+   "connecting": {
+      "message": "$1 ile bağlantı kuruluyor...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Seçenekler için özel bir sayfa olduğunu biliyor muydunuz?\nArtık doğrudan term_ ile uğraşmanıza gerek yok!\nAçmak için $1 tuşuna basın veya şu adresi tıklayın:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Seçenekler için özel bir sayfa olduğunu biliyor muydunuz?\nArtık doğrudan term_ ile uğraşmanıza gerek yok!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Sil"
+   },
+   "disconnect_message": {
+      "message": "NaCl eklentisinden $1 koduyla çıkıldı.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "ekstra komut satırı bağımsız değişkenleri"
+   },
+   "field_description_aria_label": {
+      "message": "açıklama"
+   },
+   "field_description_placeholder": {
+      "message": "kullanıcıadı@anamakineadı veya serbest biçimli metin"
+   },
+   "field_hostname_aria_label": {
+      "message": "ana makine adı"
+   },
+   "field_hostname_placeholder": {
+      "message": "ana makine adı"
+   },
+   "field_mount_path_placeholder": {
+      "message": "varsayılan yol, kullanıcının ana dizinidir"
+   },
+   "field_port_aria_label": {
+      "message": "bağlantı noktası"
+   },
+   "field_port_placeholder": {
+      "message": "bağlantı noktası"
+   },
+   "field_relay_options_aria_label": {
+      "message": "geçiş seçenekleri"
+   },
+   "field_relay_options_placeholder": {
+      "message": "SSH geçiş sunucusu seçenekleri"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "varsayılan"
+   },
+   "field_username_aria_label": {
+      "message": "kullanıcı adı"
+   },
+   "field_username_placeholder": {
+      "message": "kullanıcı adı"
+   },
+   "found_relay": {
+      "message": "Bulunan geçiş sunucusu: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Kimlik"
+   },
+   "import_link_aria_label": {
+      "message": "dosya içe aktarma"
+   },
+   "import_link_label": {
+      "message": "İçe aktar..."
+   },
+   "initializing_relay": {
+      "message": "Şu ana makine kullanılarak geçiş sunucusu aranıyor: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "\"$1\" içindeki JSON ayrıştırılamadı: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Hiçbir ana makine bilinmiyor, unutulacak bir şey yok."
+   },
+   "known_hosts_prompt": {
+      "message": "Lütfen unutulacak ana makineyi seçin [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Bilinen ana makineler:"
+   },
+   "loading_label": {
+      "message": "Yükleniyor..."
+   },
+   "missing_param": {
+      "message": "Eksik parametre: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "SFTP Ekle"
+   },
+   "mount_path_label": {
+      "message": "Ekleme Yolu"
+   },
+   "mounted_message": {
+      "message": "Eklendi!"
+   },
+   "notify_copy": {
+      "message": "Seçim Kopyalandı"
+   },
+   "ok_button_label": {
+      "message": "Tamam"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>kullanıcı@anamakineadı[:bağlantinoktasi]\u003C/match>\u003C/url> Kayıtlı bir profile veya yeni bir ssh sistemine bağlan"
+   },
+   "open_as_window_tip": {
+      "message": "[Uzmandan İpucu] Control-W tuşlarının terminalinizi kapatmasını önlemek için \"Pencere Olarak Aç\" seçeneğini kullanın!\n[Uzmandan İpucu] Daha fazla bilgi için $1 adresine bakın.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Seçenekler"
+   },
+   "plugin_loading": {
+      "message": "NaCl eklentisi yükleniyor..."
+   },
+   "plugin_loading_complete": {
+      "message": " tamamlandı."
+   },
+   "plugin_loading_failed": {
+      "message": " başarısız oldu! :("
+   },
+   "pref_backup_filename": {
+      "message": "Güvenli Kabuk Tercihleri Yedeği.json"
+   },
+   "preferences_header": {
+      "message": "Profil Ayarları"
+   },
+   "preferences_reset": {
+      "message": "Tüm tercihler sıfırlandı!"
+   },
+   "reconnect_message": {
+      "message": "(R) Yeniden bağlan, (C) Başka bir bağlantı seç veya (X) Çık?"
+   },
+   "relay_retry": {
+      "message": "Yeniden deneniyor..."
+   },
+   "restore_prefs": {
+      "message": "Yedeği Geri Yükle"
+   },
+   "shortcut_list_aria_label": {
+      "message": "kaydedilen bağlantılar"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH Bağımsız Değişkenleri"
+   },
+   "terminal_preview_label": {
+      "message": "Önizleme"
+   },
+   "terminal_profile_label": {
+      "message": "Geçerli profil"
+   },
+   "tip_1": {
+      "message": "Bağlantıları açmak için, tıklarken Ctrl tuşunu (macOS'de Cmd tuşu) basılı tutabilirsiniz!"
+   },
+   "tip_10": {
+      "message": "Bir pencerede çalışırken, Ctrl-ÜstKrkt-N tuşlarını kullanarak başka bir oturum açabilirsiniz."
+   },
+   "tip_11": {
+      "message": "Tuşları/kısayolları yeniden birleştirebilirsiniz: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "hterm-notify kullanarak tarayıcıda bildirimleri gösterin: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "\"ssh \u003Cprofil adı>\" yazarak çok amaçlı adres çubuğundan bağlanın: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS, dosya sistemlerini SFTP aracılığıyla ekleyebilir ve Dosyalar uygulaması üzerinden göz atabilir. \"Bağlan\" yerine \"SFTP Ekle\"yi kullanın."
+   },
+   "tip_5": {
+      "message": "Web sayfalarında ssh:// bağlantılarını kullanarak bağlanın veya yer işareti kaydedin: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Temel 16 rengi, 256 rengi ve tam 24 bit renkleri kullanarak çıktınızı/isteminizi renklendirin: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "OSC-52 kullanarak emacs/vim/vb.den panonuza kopyalayın: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Diğer hterm/Secure Shell kullanıcılarıyla chromium-hterm@chromium.org üzerinden sohbet edin: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Hata mı buldunuz? Yeni bir özellik mi istiyorsunuz? Bize bildirin: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Beklenmeyen bir hata oluştu, lütfen daha fazla ayrıntı için JavaScript konsolunu kontrol edin."
+   },
+   "unmount_button_label": {
+      "message": "SFTP Bağlantısını Kes"
+   },
+   "update_available_tooltip": {
+      "message": "Bir güncelleme var. Lütfen tüm pencereleri kapatın."
+   },
+   "welcome_changelog": {
+      "message": "Değişiklik Günlüğü/sürüm notları: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Sık Sorulan Soruların Yanıtları: $1 (açmak için ctrl tuşunu basılı tutarken bağlantıları tıklayın)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "$1 sürümünden beri yapılan önemli değişiklikler:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Uzmandan Rastgele İpucu No. $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "$1 $2 sürümüne hoş geldiniz.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Lütfen Chrome Menüsü->%100'e Yakınlaştır seçeneğini ayarlayın"
+   }
+}

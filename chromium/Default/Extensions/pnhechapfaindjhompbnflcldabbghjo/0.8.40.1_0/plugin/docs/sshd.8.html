@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    div.Pp { margin: 1ex 0ex; }
+  </style>
+  <title>SSHD(8)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">SSHD(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">SSHD(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<h1 class="Sh" title="Sh" id="NAME"><a class="selflink" href="#NAME">NAME</a></h1>
+<b class="Nm" title="Nm">sshd</b> &#x2014; <span class="Nd" title="Nd">OpenSSH
+  SSH daemon</span>
+<h1 class="Sh" title="Sh" id="SYNOPSIS"><a class="selflink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<table class="Nm">
+  <tr>
+    <td><b class="Nm" title="Nm">sshd</b></td>
+    <td>[<span class="Op"><b class="Fl" title="Fl">-46DdeiqTt</b></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-C</b>&#x00A0;<var class="Ar" title="Ar">connection_spec</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-c</b>&#x00A0;<var class="Ar" title="Ar">host_certificate_file</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-E</b>&#x00A0;<var class="Ar" title="Ar">log_file</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-f</b>&#x00A0;<var class="Ar" title="Ar">config_file</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-g</b>&#x00A0;<var class="Ar" title="Ar">login_grace_time</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-h</b>&#x00A0;<var class="Ar" title="Ar">host_key_file</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-o</b>&#x00A0;<var class="Ar" title="Ar">option</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-p</b>&#x00A0;<var class="Ar" title="Ar">port</var></span>]
+      [<span class="Op"><b class="Fl" title="Fl">-u</b>&#x00A0;<var class="Ar" title="Ar">len</var></span>]</td>
+  </tr>
+</table>
+<h1 class="Sh" title="Sh" id="DESCRIPTION"><a class="selflink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<b class="Nm" title="Nm">sshd</b> (OpenSSH Daemon) is the daemon program for
+  <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>. Together these programs
+  replace rlogin and rsh, and provide secure encrypted communications between
+  two untrusted hosts over an insecure network.
+<div class="Pp"></div>
+<b class="Nm" title="Nm">sshd</b> listens for connections from clients. It is
+  normally started at boot from <i class="Pa" title="Pa">/etc/rc</i>. It forks a
+  new daemon for each incoming connection. The forked daemons handle key
+  exchange, encryption, authentication, command execution, and data exchange.
+<div class="Pp"></div>
+<b class="Nm" title="Nm">sshd</b> can be configured using command-line options
+  or a configuration file (by default
+  <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>);
+  command-line options override values specified in the configuration file.
+  <b class="Nm" title="Nm">sshd</b> rereads its configuration file when it
+  receives a hangup signal, <code class="Dv" title="Dv">SIGHUP</code>, by
+  executing itself with the name and options it was started with, e.g.
+  <i class="Pa" title="Pa">/usr/sbin/sshd</i>.
+<div class="Pp"></div>
+The options are as follows:
+<dl class="Bl-tag">
+  <dt class="It-tag"><a class="selflink" href="#4"><b class="Fl" title="Fl" id="4">-4</b></a></dt>
+  <dd class="It-tag">Forces <b class="Nm" title="Nm">sshd</b> to use IPv4
+      addresses only.</dd>
+  <dt class="It-tag"><a class="selflink" href="#6"><b class="Fl" title="Fl" id="6">-6</b></a></dt>
+  <dd class="It-tag">Forces <b class="Nm" title="Nm">sshd</b> to use IPv6
+      addresses only.</dd>
+  <dt class="It-tag"><a class="selflink" href="#C"><b class="Fl" title="Fl" id="C">-C</b></a>
+    <var class="Ar" title="Ar">connection_spec</var></dt>
+  <dd class="It-tag">Specify the connection parameters to use for the
+      <b class="Fl" title="Fl">-T</b> extended test mode. If provided, any
+      <b class="Cm" title="Cm">Match</b> directives in the configuration file
+      that would apply to the specified user, host, and address will be set
+      before the configuration is written to standard output. The connection
+      parameters are supplied as keyword=value pairs. The keywords are
+      &#x201C;user&#x201D;, &#x201C;host&#x201D;, &#x201C;laddr&#x201D;,
+      &#x201C;lport&#x201D;, and &#x201C;addr&#x201D;. All are required and may
+      be supplied in any order, either with multiple
+      <b class="Fl" title="Fl">-C</b> options or as a comma-separated list.</dd>
+  <dt class="It-tag"><a class="selflink" href="#c"><b class="Fl" title="Fl" id="c">-c</b></a>
+    <var class="Ar" title="Ar">host_certificate_file</var></dt>
+  <dd class="It-tag">Specifies a path to a certificate file to identify
+      <b class="Nm" title="Nm">sshd</b> during key exchange. The certificate
+      file must match a host key file specified using the
+      <b class="Fl" title="Fl">-h</b> option or the
+      <b class="Cm" title="Cm">HostKey</b> configuration directive.</dd>
+  <dt class="It-tag"><a class="selflink" href="#D"><b class="Fl" title="Fl" id="D">-D</b></a></dt>
+  <dd class="It-tag">When this option is specified,
+      <b class="Nm" title="Nm">sshd</b> will not detach and does not become a
+      daemon. This allows easy monitoring of
+    <b class="Nm" title="Nm">sshd</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#d"><b class="Fl" title="Fl" id="d">-d</b></a></dt>
+  <dd class="It-tag">Debug mode. The server sends verbose debug output to
+      standard error, and does not put itself in the background. The server also
+      will not fork and will only process one connection. This option is only
+      intended for debugging for the server. Multiple
+      <b class="Fl" title="Fl">-d</b> options increase the debugging level.
+      Maximum is 3.</dd>
+  <dt class="It-tag"><a class="selflink" href="#E"><b class="Fl" title="Fl" id="E">-E</b></a>
+    <var class="Ar" title="Ar">log_file</var></dt>
+  <dd class="It-tag">Append debug logs to
+      <var class="Ar" title="Ar">log_file</var> instead of the system log.</dd>
+  <dt class="It-tag"><a class="selflink" href="#e"><b class="Fl" title="Fl" id="e">-e</b></a></dt>
+  <dd class="It-tag">Write debug logs to standard error instead of the system
+      log.</dd>
+  <dt class="It-tag"><a class="selflink" href="#f"><b class="Fl" title="Fl" id="f">-f</b></a>
+    <var class="Ar" title="Ar">config_file</var></dt>
+  <dd class="It-tag">Specifies the name of the configuration file. The default
+      is <i class="Pa" title="Pa">/etc/ssh/sshd_config</i>.
+      <b class="Nm" title="Nm">sshd</b> refuses to start if there is no
+      configuration file.</dd>
+  <dt class="It-tag"><a class="selflink" href="#g"><b class="Fl" title="Fl" id="g">-g</b></a>
+    <var class="Ar" title="Ar">login_grace_time</var></dt>
+  <dd class="It-tag">Gives the grace time for clients to authenticate themselves
+      (default 120 seconds). If the client fails to authenticate the user within
+      this many seconds, the server disconnects and exits. A value of zero
+      indicates no limit.</dd>
+  <dt class="It-tag"><a class="selflink" href="#h"><b class="Fl" title="Fl" id="h">-h</b></a>
+    <var class="Ar" title="Ar">host_key_file</var></dt>
+  <dd class="It-tag">Specifies a file from which a host key is read. This option
+      must be given if <b class="Nm" title="Nm">sshd</b> is not run as root (as
+      the normal host key files are normally not readable by anyone but root).
+      The default is <i class="Pa" title="Pa">/etc/ssh/ssh_host_dsa_key</i>,
+      <i class="Pa" title="Pa">/etc/ssh/ssh_host_ecdsa_key</i>,
+      <i class="Pa" title="Pa">/etc/ssh/ssh_host_ed25519_key</i> and
+      <i class="Pa" title="Pa">/etc/ssh/ssh_host_rsa_key</i>. It is possible to
+      have multiple host key files for the different host key algorithms.</dd>
+  <dt class="It-tag"><a class="selflink" href="#i"><b class="Fl" title="Fl" id="i">-i</b></a></dt>
+  <dd class="It-tag">Specifies that <b class="Nm" title="Nm">sshd</b> is being
+      run from <a class="Xr" title="Xr" href="inetd.8.html">inetd(8)</a>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#o"><b class="Fl" title="Fl" id="o">-o</b></a>
+    <var class="Ar" title="Ar">option</var></dt>
+  <dd class="It-tag">Can be used to give options in the format used in the
+      configuration file. This is useful for specifying options for which there
+      is no separate command-line flag. For full details of the options, and
+      their values, see
+      <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#p"><b class="Fl" title="Fl" id="p">-p</b></a>
+    <var class="Ar" title="Ar">port</var></dt>
+  <dd class="It-tag">Specifies the port on which the server listens for
+      connections (default 22). Multiple port options are permitted. Ports
+      specified in the configuration file with the
+      <b class="Cm" title="Cm">Port</b> option are ignored when a command-line
+      port is specified. Ports specified using the
+      <b class="Cm" title="Cm">ListenAddress</b> option override command-line
+      ports.</dd>
+  <dt class="It-tag"><a class="selflink" href="#q"><b class="Fl" title="Fl" id="q">-q</b></a></dt>
+  <dd class="It-tag">Quiet mode. Nothing is sent to the system log. Normally the
+      beginning, authentication, and termination of each connection is
+    logged.</dd>
+  <dt class="It-tag"><a class="selflink" href="#T"><b class="Fl" title="Fl" id="T">-T</b></a></dt>
+  <dd class="It-tag">Extended test mode. Check the validity of the configuration
+      file, output the effective configuration to stdout and then exit.
+      Optionally, <b class="Cm" title="Cm">Match</b> rules may be applied by
+      specifying the connection parameters using one or more
+      <b class="Fl" title="Fl">-C</b> options.</dd>
+  <dt class="It-tag"><a class="selflink" href="#t"><b class="Fl" title="Fl" id="t">-t</b></a></dt>
+  <dd class="It-tag">Test mode. Only check the validity of the configuration
+      file and sanity of the keys. This is useful for updating
+      <b class="Nm" title="Nm">sshd</b> reliably as configuration options may
+      change.</dd>
+  <dt class="It-tag"><a class="selflink" href="#u"><b class="Fl" title="Fl" id="u">-u</b></a>
+    <var class="Ar" title="Ar">len</var></dt>
+  <dd class="It-tag">This option is used to specify the size of the field in the
+      <code class="Li">utmp</code> structure that holds the remote host name. If
+      the resolved host name is longer than
+      <var class="Ar" title="Ar">len</var>, the dotted decimal value will be
+      used instead. This allows hosts with very long host names that overflow
+      this field to still be uniquely identified. Specifying
+      <b class="Fl" title="Fl">-u0</b> indicates that only dotted decimal
+      addresses should be put into the <i class="Pa" title="Pa">utmp</i> file.
+      <b class="Fl" title="Fl">-u0</b> may also be used to prevent
+      <b class="Nm" title="Nm">sshd</b> from making DNS requests unless the
+      authentication mechanism or configuration requires it. Authentication
+      mechanisms that may require DNS include
+      <b class="Cm" title="Cm">HostbasedAuthentication</b> and using a
+      <b class="Cm" title="Cm">from=&quot;pattern-list&quot;</b> option in a key
+      file. Configuration options that require DNS include using a USER@HOST
+      pattern in <b class="Cm" title="Cm">AllowUsers</b> or
+      <b class="Cm" title="Cm">DenyUsers</b>.</dd>
+</dl>
+<h1 class="Sh" title="Sh" id="AUTHENTICATION"><a class="selflink" href="#AUTHENTICATION">AUTHENTICATION</a></h1>
+The OpenSSH SSH daemon supports SSH protocol 2 only. Each host has a
+  host-specific key, used to identify the host. Whenever a client connects, the
+  daemon responds with its public host key. The client compares the host key
+  against its own database to verify that it has not changed. Forward security
+  is provided through a Diffie-Hellman key agreement. This key agreement results
+  in a shared session key. The rest of the session is encrypted using a
+  symmetric cipher, currently 128-bit AES, Blowfish, 3DES, CAST128, Arcfour,
+  192-bit AES, or 256-bit AES. The client selects the encryption algorithm to
+  use from those offered by the server. Additionally, session integrity is
+  provided through a cryptographic message authentication code (hmac-md5,
+  hmac-sha1, umac-64, umac-128, hmac-sha2-256 or hmac-sha2-512).
+<div class="Pp"></div>
+Finally, the server and the client enter an authentication dialog. The client
+  tries to authenticate itself using host-based authentication, public key
+  authentication, challenge-response authentication, or password authentication.
+<div class="Pp"></div>
+Regardless of the authentication type, the account is checked to ensure that it
+  is accessible. An account is not accessible if it is locked, listed in
+  <b class="Cm" title="Cm">DenyUsers</b> or its group is listed in
+  <b class="Cm" title="Cm">DenyGroups</b> . The definition of a locked account
+  is system dependant. Some platforms have their own account database (eg AIX)
+  and some modify the passwd field (
+  &#x2018;<code class="Li">*LK*</code>&#x2019; on Solaris and UnixWare,
+  &#x2018;<code class="Li">*</code>&#x2019; on HP-UX, containing
+  &#x2018;<code class="Li">Nologin</code>&#x2019; on Tru64, a leading
+  &#x2018;<code class="Li">*LOCKED*</code>&#x2019; on FreeBSD and a leading
+  &#x2018;<code class="Li">!</code>&#x2019; on most Linuxes). If there is a
+  requirement to disable password authentication for the account while allowing
+  still public-key, then the passwd field should be set to something other than
+  these values (eg &#x2018;<code class="Li">NP</code>&#x2019; or
+  &#x2018;<code class="Li">*NP*</code>&#x2019; ).
+<div class="Pp"></div>
+If the client successfully authenticates itself, a dialog for preparing the
+  session is entered. At this time the client may request things like allocating
+  a pseudo-tty, forwarding X11 connections, forwarding TCP connections, or
+  forwarding the authentication agent connection over the secure channel.
+<div class="Pp"></div>
+After this, the client either requests a shell or execution of a command. The
+  sides then enter session mode. In this mode, either side may send data at any
+  time, and such data is forwarded to/from the shell or command on the server
+  side, and the user terminal in the client side.
+<div class="Pp"></div>
+When the user program terminates and all forwarded X11 and other connections
+  have been closed, the server sends command exit status to the client, and both
+  sides exit.
+<h1 class="Sh" title="Sh" id="LOGIN_PROCESS"><a class="selflink" href="#LOGIN_PROCESS">LOGIN
+  PROCESS</a></h1>
+When a user successfully logs in, <b class="Nm" title="Nm">sshd</b> does the
+  following:
+<ol class="Bl-enum" style="margin-left: 6.00ex;">
+  <li class="It-enum">If the login is on a tty, and no command has been
+      specified, prints last login time and
+      <i class="Pa" title="Pa">/etc/motd</i> (unless prevented in the
+      configuration file or by <i class="Pa" title="Pa">~/.hushlogin</i>; see
+      the <a class="Sx" title="Sx" href="#FILES">FILES</a> section).</li>
+  <li class="It-enum">If the login is on a tty, records login time.</li>
+  <li class="It-enum">Checks <i class="Pa" title="Pa">/etc/nologin</i>; if it
+      exists, prints contents and quits (unless root).</li>
+  <li class="It-enum">Changes to run with normal user privileges.</li>
+  <li class="It-enum">Sets up basic environment.</li>
+  <li class="It-enum">Reads the file
+      <i class="Pa" title="Pa">~/.ssh/environment</i>, if it exists, and users
+      are allowed to change their environment. See the
+      <b class="Cm" title="Cm">PermitUserEnvironment</b> option in
+      <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>.</li>
+  <li class="It-enum">Changes to user's home directory.</li>
+  <li class="It-enum">If <i class="Pa" title="Pa">~/.ssh/rc</i> exists and the
+      <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>
+      <b class="Cm" title="Cm">PermitUserRC</b> option is set, runs it; else if
+      <i class="Pa" title="Pa">/etc/ssh/sshrc</i> exists, runs it; otherwise
+      runs xauth. The &#x201C;rc&#x201D; files are given the X11 authentication
+      protocol and cookie in standard input. See
+      <a class="Sx" title="Sx" href="#SSHRC">SSHRC</a>, below.</li>
+  <li class="It-enum">Runs user's shell or command. All commands are run under
+      the user's login shell as specified in the system password database.</li>
+</ol>
+<h1 class="Sh" title="Sh" id="SSHRC"><a class="selflink" href="#SSHRC">SSHRC</a></h1>
+If the file <i class="Pa" title="Pa">~/.ssh/rc</i> exists,
+  <a class="Xr" title="Xr" href="sh.1.html">sh(1)</a> runs it after reading the
+  environment files but before starting the user's shell or command. It must not
+  produce any output on stdout; stderr must be used instead. If X11 forwarding
+  is in use, it will receive the &quot;proto cookie&quot; pair in its standard
+  input (and <code class="Ev" title="Ev">DISPLAY</code> in its environment). The
+  script must call <a class="Xr" title="Xr" href="xauth.1.html">xauth(1)</a>
+  because <b class="Nm" title="Nm">sshd</b> will not run xauth automatically to
+  add X11 cookies.
+<div class="Pp"></div>
+The primary purpose of this file is to run any initialization routines which may
+  be needed before the user's home directory becomes accessible; AFS is a
+  particular example of such an environment.
+<div class="Pp"></div>
+This file will probably contain some initialization code followed by something
+  similar to:
+<div class="Pp"></div>
+<div class="Bd" style="margin-left: 3.00ex;">
+<pre class="Li">
+if read proto cookie &amp;&amp; [ -n &quot;$DISPLAY&quot; ]; then 
+	if [ `echo $DISPLAY | cut -c1-10` = 'localhost:' ]; then 
+		# X11UseLocalhost=yes 
+		echo add unix:`echo $DISPLAY | 
+		    cut -c11-` $proto $cookie 
+	else 
+		# X11UseLocalhost=no 
+		echo add $DISPLAY $proto $cookie 
+	fi | xauth -q - 
+fi
+</pre>
+</div>
+<div class="Pp"></div>
+If this file does not exist, <i class="Pa" title="Pa">/etc/ssh/sshrc</i> is run,
+  and if that does not exist either, xauth is used to add the cookie.
+<h1 class="Sh" title="Sh" id="AUTHORIZED_KEYS_FILE_FORMAT"><a class="selflink" href="#AUTHORIZED_KEYS_FILE_FORMAT">AUTHORIZED_KEYS
+  FILE FORMAT</a></h1>
+<b class="Cm" title="Cm">AuthorizedKeysFile</b> specifies the files containing
+  public keys for public key authentication; if this option is not specified,
+  the default is <i class="Pa" title="Pa">~/.ssh/authorized_keys</i> and
+  <i class="Pa" title="Pa">~/.ssh/authorized_keys2</i>. Each line of the file
+  contains one key (empty lines and lines starting with a
+  &#x2018;<code class="Li">#</code>&#x2019; are ignored as comments). Public
+  keys consist of the following space-separated fields: options, keytype,
+  base64-encoded key, comment. The options field is optional. The keytype is
+  &#x201C;ecdsa-sha2-nistp256&#x201D;, &#x201C;ecdsa-sha2-nistp384&#x201D;,
+  &#x201C;ecdsa-sha2-nistp521&#x201D;, &#x201C;ssh-ed25519&#x201D;,
+  &#x201C;ssh-dss&#x201D; or &#x201C;ssh-rsa&#x201D;; the comment field is not
+  used for anything (but may be convenient for the user to identify the key).
+<div class="Pp"></div>
+Note that lines in this file can be several hundred bytes long (because of the
+  size of the public key encoding) up to a limit of 8 kilobytes, which permits
+  DSA keys up to 8 kilobits and RSA keys up to 16 kilobits. You don't want to
+  type them in; instead, copy the <i class="Pa" title="Pa">id_dsa.pub</i>,
+  <i class="Pa" title="Pa">id_ecdsa.pub</i>,
+  <i class="Pa" title="Pa">id_ed25519.pub</i>, or the
+  <i class="Pa" title="Pa">id_rsa.pub</i> file and edit it.
+<div class="Pp"></div>
+<b class="Nm" title="Nm">sshd</b> enforces a minimum RSA key modulus size of 768
+  bits.
+<div class="Pp"></div>
+The options (if present) consist of comma-separated option specifications. No
+  spaces are permitted, except within double quotes. The following option
+  specifications are supported (note that option keywords are case-insensitive):
+<dl class="Bl-tag">
+  <dt class="It-tag"><a class="selflink" href="#agent-forwarding"><b class="Cm" title="Cm" id="agent-forwarding">agent-forwarding</b></a></dt>
+  <dd class="It-tag">Enable authentication agent forwarding previously disabled
+      by the <b class="Cm" title="Cm">restrict</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#cert-authority"><b class="Cm" title="Cm" id="cert-authority">cert-authority</b></a></dt>
+  <dd class="It-tag">Specifies that the listed key is a certification authority
+      (CA) that is trusted to validate signed certificates for user
+      authentication.
+    <div class="Pp"></div>
+    Certificates may encode access restrictions similar to these key options. If
+      both certificate restrictions and key options are present, the most
+      restrictive union of the two is applied.</dd>
+  <dt class="It-tag"><a class="selflink" href="#command=&quot;command&quot;"><b class="Cm" title="Cm" id="command=&quot;command&quot;">command=&quot;command&quot;</b></a></dt>
+  <dd class="It-tag">Specifies that the command is executed whenever this key is
+      used for authentication. The command supplied by the user (if any) is
+      ignored. The command is run on a pty if the client requests a pty;
+      otherwise it is run without a tty. If an 8-bit clean channel is required,
+      one must not request a pty or should specify
+      <b class="Cm" title="Cm">no-pty</b>. A quote may be included in the
+      command by quoting it with a backslash.
+    <div class="Pp"></div>
+    This option might be useful to restrict certain public keys to perform just
+      a specific operation. An example might be a key that permits remote
+      backups but nothing else. Note that the client may specify TCP and/or X11
+      forwarding unless they are explicitly prohibited, e.g. using the
+      <b class="Cm" title="Cm">restrict</b> key option.
+    <div class="Pp"></div>
+    The command originally supplied by the client is available in the
+      <code class="Ev" title="Ev">SSH_ORIGINAL_COMMAND</code> environment
+      variable. Note that this option applies to shell, command or subsystem
+      execution. Also note that this command may be superseded by a
+      <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>
+      <b class="Cm" title="Cm">ForceCommand</b> directive.
+    <div class="Pp"></div>
+    If a command is specified and a forced-command is embedded in a certificate
+      used for authentication, then the certificate will be accepted only if the
+      two commands are identical.</dd>
+  <dt class="It-tag"><a class="selflink" href="#environment=&quot;NAME=value&quot;"><b class="Cm" title="Cm" id="environment=&quot;NAME=value&quot;">environment=&quot;NAME=value&quot;</b></a></dt>
+  <dd class="It-tag">Specifies that the string is to be added to the environment
+      when logging in using this key. Environment variables set this way
+      override other default environment values. Multiple options of this type
+      are permitted. Environment processing is disabled by default and is
+      controlled via the <b class="Cm" title="Cm">PermitUserEnvironment</b>
+      option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#from=&quot;pattern-list&quot;"><b class="Cm" title="Cm" id="from=&quot;pattern-list&quot;">from=&quot;pattern-list&quot;</b></a></dt>
+  <dd class="It-tag">Specifies that in addition to public key authentication,
+      either the canonical name of the remote host or its IP address must be
+      present in the comma-separated list of patterns. See PATTERNS in
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a> for
+      more information on patterns.
+    <div class="Pp"></div>
+    In addition to the wildcard matching that may be applied to hostnames or
+      addresses, a <b class="Cm" title="Cm">from</b> stanza may match IP
+      addresses using CIDR address/masklen notation.
+    <div class="Pp"></div>
+    The purpose of this option is to optionally increase security: public key
+      authentication by itself does not trust the network or name servers or
+      anything (but the key); however, if somebody somehow steals the key, the
+      key permits an intruder to log in from anywhere in the world. This
+      additional option makes using a stolen key more difficult (name servers
+      and/or routers would have to be compromised in addition to just the
+    key).</dd>
+  <dt class="It-tag"><a class="selflink" href="#no-agent-forwarding"><b class="Cm" title="Cm" id="no-agent-forwarding">no-agent-forwarding</b></a></dt>
+  <dd class="It-tag">Forbids authentication agent forwarding when this key is
+      used for authentication.</dd>
+  <dt class="It-tag"><a class="selflink" href="#no-port-forwarding"><b class="Cm" title="Cm" id="no-port-forwarding">no-port-forwarding</b></a></dt>
+  <dd class="It-tag">Forbids TCP forwarding when this key is used for
+      authentication. Any port forward requests by the client will return an
+      error. This might be used, e.g. in connection with the
+      <b class="Cm" title="Cm">command</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#no-pty"><b class="Cm" title="Cm" id="no-pty">no-pty</b></a></dt>
+  <dd class="It-tag">Prevents tty allocation (a request to allocate a pty will
+      fail).</dd>
+  <dt class="It-tag"><a class="selflink" href="#no-user-rc"><b class="Cm" title="Cm" id="no-user-rc">no-user-rc</b></a></dt>
+  <dd class="It-tag">Disables execution of
+      <i class="Pa" title="Pa">~/.ssh/rc</i>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#no-X11-forwarding"><b class="Cm" title="Cm" id="no-X11-forwarding">no-X11-forwarding</b></a></dt>
+  <dd class="It-tag">Forbids X11 forwarding when this key is used for
+      authentication. Any X11 forward requests by the client will return an
+      error.</dd>
+  <dt class="It-tag"><a class="selflink" href="#permitopen=&quot;host:port&quot;"><b class="Cm" title="Cm" id="permitopen=&quot;host:port&quot;">permitopen=&quot;host:port&quot;</b></a></dt>
+  <dd class="It-tag">Limit local port forwarding with
+      <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>
+      <b class="Fl" title="Fl">-L</b> such that it may only connect to the
+      specified host and port. IPv6 addresses can be specified by enclosing the
+      address in square brackets. Multiple
+      <b class="Cm" title="Cm">permitopen</b> options may be applied separated
+      by commas. No pattern matching is performed on the specified hostnames,
+      they must be literal domains or addresses. A port specification of
+      <b class="Cm" title="Cm">*</b> matches any port.</dd>
+  <dt class="It-tag"><a class="selflink" href="#port-forwarding"><b class="Cm" title="Cm" id="port-forwarding">port-forwarding</b></a></dt>
+  <dd class="It-tag">Enable port forwarding previously disabled by the
+      <b class="Cm" title="Cm">restrict</b></dd>
+  <dt class="It-tag"><a class="selflink" href="#principals=&quot;principals&quot;"><b class="Cm" title="Cm" id="principals=&quot;principals&quot;">principals=&quot;principals&quot;</b></a></dt>
+  <dd class="It-tag">On a <b class="Cm" title="Cm">cert-authority</b> line,
+      specifies allowed principals for certificate authentication as a
+      comma-separated list. At least one name from the list must appear in the
+      certificate's list of principals for the certificate to be accepted. This
+      option is ignored for keys that are not marked as trusted certificate
+      signers using the <b class="Cm" title="Cm">cert-authority</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#pty"><b class="Cm" title="Cm" id="pty">pty</b></a></dt>
+  <dd class="It-tag">Permits tty allocation previously disabled by the
+      <b class="Cm" title="Cm">restrict</b> option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#restrict"><b class="Cm" title="Cm" id="restrict">restrict</b></a></dt>
+  <dd class="It-tag">Enable all restrictions, i.e. disable port, agent and X11
+      forwarding, as well as disabling PTY allocation and execution of
+      <i class="Pa" title="Pa">~/.ssh/rc</i>. If any future restriction
+      capabilities are added to authorized_keys files they will be included in
+      this set.</dd>
+  <dt class="It-tag"><a class="selflink" href="#tunnel=&quot;n&quot;"><b class="Cm" title="Cm" id="tunnel=&quot;n&quot;">tunnel=&quot;n&quot;</b></a></dt>
+  <dd class="It-tag">Force a
+      <a class="Xr" title="Xr" href="tun.4.html">tun(4)</a> device on the
+      server. Without this option, the next available device will be used if the
+      client requests a tunnel.</dd>
+  <dt class="It-tag"><a class="selflink" href="#user-rc"><b class="Cm" title="Cm" id="user-rc">user-rc</b></a></dt>
+  <dd class="It-tag">Enables execution of <i class="Pa" title="Pa">~/.ssh/rc</i>
+      previously disabled by the <b class="Cm" title="Cm">restrict</b>
+    option.</dd>
+  <dt class="It-tag"><a class="selflink" href="#X11-forwarding"><b class="Cm" title="Cm" id="X11-forwarding">X11-forwarding</b></a></dt>
+  <dd class="It-tag">Permits X11 forwarding previously disabled by the
+      <b class="Cm" title="Cm">restrict</b> option.</dd>
+</dl>
+<div class="Pp"></div>
+An example authorized_keys file:
+<div class="Pp"></div>
+<div class="Bd" style="margin-left: 3.00ex;">
+<pre class="Li">
+# Comments allowed at start of line 
+ssh-rsa AAAAB3Nza...LiPk== user@example.net 
+from=&quot;*.sales.example.net,!pc.sales.example.net&quot; ssh-rsa 
+AAAAB2...19Q== john@example.net 
+command=&quot;dump /home&quot;,no-pty,no-port-forwarding ssh-dss 
+AAAAC3...51R== example.net 
+permitopen=&quot;192.0.2.1:80&quot;,permitopen=&quot;192.0.2.2:25&quot; ssh-dss 
+AAAAB5...21S== 
+tunnel=&quot;0&quot;,command=&quot;sh /etc/netstart tun0&quot; ssh-rsa AAAA...== 
+jane@example.net 
+restrict,command=&quot;uptime&quot; ssh-rsa AAAA1C8...32Tv== 
+user@example.net 
+restrict,pty,command=&quot;nethack&quot; ssh-rsa AAAA1f8...IrrC5== 
+user@example.net
+</pre>
+</div>
+<h1 class="Sh" title="Sh" id="SSH_KNOWN_HOSTS_FILE_FORMAT"><a class="selflink" href="#SSH_KNOWN_HOSTS_FILE_FORMAT">SSH_KNOWN_HOSTS
+  FILE FORMAT</a></h1>
+The <i class="Pa" title="Pa">/etc/ssh/ssh_known_hosts</i> and
+  <i class="Pa" title="Pa">~/.ssh/known_hosts</i> files contain host public keys
+  for all known hosts. The global file should be prepared by the administrator
+  (optional), and the per-user file is maintained automatically: whenever the
+  user connects to an unknown host, its key is added to the per-user file.
+<div class="Pp"></div>
+Each line in these files contains the following fields: markers (optional),
+  hostnames, keytype, base64-encoded key, comment. The fields are separated by
+  spaces.
+<div class="Pp"></div>
+The marker is optional, but if it is present then it must be one of
+  &#x201C;@cert-authority&#x201D;, to indicate that the line contains a
+  certification authority (CA) key, or &#x201C;@revoked&#x201D;, to indicate
+  that the key contained on the line is revoked and must not ever be accepted.
+  Only one marker should be used on a key line.
+<div class="Pp"></div>
+Hostnames is a comma-separated list of patterns
+  (&#x2018;<code class="Li">*</code>&#x2019; and
+  &#x2018;<code class="Li">?</code>&#x2019; act as wildcards); each pattern in
+  turn is matched against the host name. When <b class="Nm" title="Nm">sshd</b>
+  is authenticating a client, such as when using
+  <b class="Cm" title="Cm">HostbasedAuthentication</b>, this will be the
+  canonical client host name. When
+  <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a> is authenticating a
+  server, this will be the host name given by the user, the value of the
+  <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>
+  <b class="Cm" title="Cm">HostkeyAlias</b> if it was specified, or the
+  canonical server hostname if the
+  <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>
+  <b class="Cm" title="Cm">CanonicalizeHostname</b> option was used.
+<div class="Pp"></div>
+A pattern may also be preceded by &#x2018;<code class="Li">!</code>&#x2019; to
+  indicate negation: if the host name matches a negated pattern, it is not
+  accepted (by that line) even if it matched another pattern on the line. A
+  hostname or address may optionally be enclosed within
+  &#x2018;<code class="Li">[</code>&#x2019; and
+  &#x2018;<code class="Li">]</code>&#x2019; brackets then followed by
+  &#x2018;<code class="Li">:</code>&#x2019; and a non-standard port number.
+<div class="Pp"></div>
+Alternately, hostnames may be stored in a hashed form which hides host names and
+  addresses should the file's contents be disclosed. Hashed hostnames start with
+  a &#x2018;<code class="Li">|</code>&#x2019; character. Only one hashed
+  hostname may appear on a single line and none of the above negation or
+  wildcard operators may be applied.
+<div class="Pp"></div>
+The keytype and base64-encoded key are taken directly from the host key; they
+  can be obtained, for example, from
+  <i class="Pa" title="Pa">/etc/ssh/ssh_host_rsa_key.pub</i>. The optional
+  comment field continues to the end of the line, and is not used.
+<div class="Pp"></div>
+Lines starting with &#x2018;<code class="Li">#</code>&#x2019; and empty lines
+  are ignored as comments.
+<div class="Pp"></div>
+When performing host authentication, authentication is accepted if any matching
+  line has the proper key; either one that matches exactly or, if the server has
+  presented a certificate for authentication, the key of the certification
+  authority that signed the certificate. For a key to be trusted as a
+  certification authority, it must use the &#x201C;@cert-authority&#x201D;
+  marker described above.
+<div class="Pp"></div>
+The known hosts file also provides a facility to mark keys as revoked, for
+  example when it is known that the associated private key has been stolen.
+  Revoked keys are specified by including the &#x201C;@revoked&#x201D; marker at
+  the beginning of the key line, and are never accepted for authentication or as
+  certification authorities, but instead will produce a warning from
+  <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a> when they are
+  encountered.
+<div class="Pp"></div>
+It is permissible (but not recommended) to have several lines or different host
+  keys for the same names. This will inevitably happen when short forms of host
+  names from different domains are put in the file. It is possible that the
+  files contain conflicting information; authentication is accepted if valid
+  information can be found from either file.
+<div class="Pp"></div>
+Note that the lines in these files are typically hundreds of characters long,
+  and you definitely don't want to type in the host keys by hand. Rather,
+  generate them by a script,
+  <a class="Xr" title="Xr" href="ssh-keyscan.1.html">ssh-keyscan(1)</a> or by
+  taking, for example,
+  <i class="Pa" title="Pa">/etc/ssh/ssh_host_rsa_key.pub</i> and adding the host
+  names at the front.
+  <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a> also
+  offers some basic automated editing for
+  <i class="Pa" title="Pa">~/.ssh/known_hosts</i> including removing hosts
+  matching a host name and converting all host names to their hashed
+  representations.
+<div class="Pp"></div>
+An example ssh_known_hosts file:
+<div class="Pp"></div>
+<div class="Bd" style="margin-left: 3.00ex;">
+<pre class="Li">
+# Comments allowed at start of line 
+closenet,...,192.0.2.53 1024 37 159...93 closenet.example.net 
+cvs.example.net,192.0.2.10 ssh-rsa AAAA1234.....= 
+# A hashed hostname 
+|1|JfKTdBh7rNbXkVAQCRp4OQoPfmI=|USECr3SWf1JUPsms5AqfD5QfxkM= ssh-rsa 
+AAAA1234.....= 
+# A revoked key 
+@revoked * ssh-rsa AAAAB5W... 
+# A CA key, accepted for any host in *.mydomain.com or *.mydomain.org 
+@cert-authority *.mydomain.org,*.mydomain.com ssh-rsa AAAAB5W...
+</pre>
+</div>
+<h1 class="Sh" title="Sh" id="FILES"><a class="selflink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag Bl-compact">
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.hushlogin</i></dt>
+  <dd class="It-tag">This file is used to suppress printing the last login time
+      and <i class="Pa" title="Pa">/etc/motd</i>, if
+      <b class="Cm" title="Cm">PrintLastLog</b> and
+      <b class="Cm" title="Cm">PrintMotd</b>, respectively, are enabled. It does
+      not suppress printing of the banner specified by
+      <b class="Cm" title="Cm">Banner</b>.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.rhosts</i></dt>
+  <dd class="It-tag">This file is used for host-based authentication (see
+      <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a> for more
+      information). On some machines this file may need to be world-readable if
+      the user's home directory is on an NFS partition, because
+      <b class="Nm" title="Nm">sshd</b> reads it as root. Additionally, this
+      file must be owned by the user, and must not have write permissions for
+      anyone else. The recommended permission for most machines is read/write
+      for the user, and not accessible by others.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.shosts</i></dt>
+  <dd class="It-tag">This file is used in exactly the same way as
+      <i class="Pa" title="Pa">.rhosts</i>, but allows host-based authentication
+      without permitting login with rlogin/rsh.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/</i></dt>
+  <dd class="It-tag">This directory is the default location for all
+      user-specific configuration and authentication information. There is no
+      general requirement to keep the entire contents of this directory secret,
+      but the recommended permissions are read/write/execute for the user, and
+      not accessible by others.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/authorized_keys</i></dt>
+  <dd class="It-tag">Lists the public keys (DSA, ECDSA, Ed25519, RSA) that can
+      be used for logging in as this user. The format of this file is described
+      above. The content of the file is not highly sensitive, but the
+      recommended permissions are read/write for the user, and not accessible by
+      others.
+    <div class="Pp"></div>
+    If this file, the <i class="Pa" title="Pa">~/.ssh</i> directory, or the
+      user's home directory are writable by other users, then the file could be
+      modified or replaced by unauthorized users. In this case,
+      <b class="Nm" title="Nm">sshd</b> will not allow it to be used unless the
+      <b class="Cm" title="Cm">StrictModes</b> option has been set to
+      &#x201C;no&#x201D;.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/environment</i></dt>
+  <dd class="It-tag">This file is read into the environment at login (if it
+      exists). It can only contain empty lines, comment lines (that start with
+      &#x2018;<code class="Li">#</code>&#x2019;), and assignment lines of the
+      form name=value. The file should be writable only by the user; it need not
+      be readable by anyone else. Environment processing is disabled by default
+      and is controlled via the
+      <b class="Cm" title="Cm">PermitUserEnvironment</b> option.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/known_hosts</i></dt>
+  <dd class="It-tag">Contains a list of host keys for all hosts the user has
+      logged into that are not already in the systemwide list of known host
+      keys. The format of this file is described above. This file should be
+      writable only by root/the owner and can, but need not be, world-readable.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">~/.ssh/rc</i></dt>
+  <dd class="It-tag">Contains initialization routines to be run before the
+      user's home directory becomes accessible. This file should be writable
+      only by the user, and need not be readable by anyone else.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/hosts.equiv</i></dt>
+  <dd class="It-tag">This file is for host-based authentication (see
+      <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>). It should only be
+      writable by root.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/moduli</i></dt>
+  <dd class="It-tag">Contains Diffie-Hellman groups used for the
+      &quot;Diffie-Hellman Group Exchange&quot; key exchange method. The file
+      format is described in
+      <a class="Xr" title="Xr" href="moduli.5.html">moduli(5)</a>. If no usable
+      groups are found in this file then fixed internal groups will be used.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/motd</i></dt>
+  <dd class="It-tag">See
+      <a class="Xr" title="Xr" href="motd.5.html">motd(5)</a>.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/nologin</i></dt>
+  <dd class="It-tag">If this file exists, <b class="Nm" title="Nm">sshd</b>
+      refuses to let anyone except root log in. The contents of the file are
+      displayed to anyone trying to log in, and non-root connections are
+      refused. The file should be world-readable.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/shosts.equiv</i></dt>
+  <dd class="It-tag">This file is used in exactly the same way as
+      <i class="Pa" title="Pa">hosts.equiv</i>, but allows host-based
+      authentication without permitting login with rlogin/rsh.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_dsa_key</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_ecdsa_key</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_ed25519_key</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_rsa_key</i></dt>
+  <dd class="It-tag">These files contain the private parts of the host keys.
+      These files should only be owned by root, readable only by root, and not
+      accessible to others. Note that <b class="Nm" title="Nm">sshd</b> does not
+      start if these files are group/world-accessible.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_dsa_key.pub</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_ecdsa_key.pub</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_ed25519_key.pub</i></dt>
+  <dd class="It-tag" style="width: auto;">&#x00A0;</dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_host_rsa_key.pub</i></dt>
+  <dd class="It-tag">These files contain the public parts of the host keys.
+      These files should be world-readable but writable only by root. Their
+      contents should match the respective private parts. These files are not
+      really used for anything; they are provided for the convenience of the
+      user so their contents can be copied to known hosts files. These files are
+      created using
+      <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/ssh_known_hosts</i></dt>
+  <dd class="It-tag">Systemwide list of known host keys. This file should be
+      prepared by the system administrator to contain the public host keys of
+      all machines in the organization. The format of this file is described
+      above. This file should be writable only by root/the owner and should be
+      world-readable.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/sshd_config</i></dt>
+  <dd class="It-tag">Contains configuration data for
+      <b class="Nm" title="Nm">sshd</b>. The file format and configuration
+      options are described in
+      <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/sshrc</i></dt>
+  <dd class="It-tag">Similar to <i class="Pa" title="Pa">~/.ssh/rc</i>, it can
+      be used to specify machine-specific login-time initializations globally.
+      This file should be writable only by root, and should be world-readable.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/var/empty</i></dt>
+  <dd class="It-tag"><a class="Xr" title="Xr" href="chroot.2.html">chroot(2)</a>
+      directory used by <b class="Nm" title="Nm">sshd</b> during privilege
+      separation in the pre-authentication phase. The directory should not
+      contain any files and must be owned by root and not group or
+      world-writable.
+    <div class="Pp"></div>
+  </dd>
+  <dt class="It-tag"><i class="Pa" title="Pa">/var/run/sshd.pid</i></dt>
+  <dd class="It-tag">Contains the process ID of the
+      <b class="Nm" title="Nm">sshd</b> listening for connections (if there are
+      several daemons running concurrently for different ports, this contains
+      the process ID of the one started last). The content of this file is not
+      sensitive; it can be world-readable.</dd>
+</dl>
+<h1 class="Sh" title="Sh" id="SEE_ALSO"><a class="selflink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<a class="Xr" title="Xr" href="scp.1.html">scp(1)</a>,
+  <a class="Xr" title="Xr" href="sftp.1.html">sftp(1)</a>,
+  <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>,
+  <a class="Xr" title="Xr" href="ssh-add.1.html">ssh-add(1)</a>,
+  <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>,
+  <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>,
+  <a class="Xr" title="Xr" href="ssh-keyscan.1.html">ssh-keyscan(1)</a>,
+  <a class="Xr" title="Xr" href="chroot.2.html">chroot(2)</a>,
+  <a class="Xr" title="Xr" href="login.conf.5.html">login.conf(5)</a>,
+  <a class="Xr" title="Xr" href="moduli.5.html">moduli(5)</a>,
+  <a class="Xr" title="Xr" href="sshd_config.5.html">sshd_config(5)</a>,
+  <a class="Xr" title="Xr" href="inetd.8.html">inetd(8)</a>,
+  <a class="Xr" title="Xr" href="sftp-server.8.html">sftp-server(8)</a>
+<h1 class="Sh" title="Sh" id="AUTHORS"><a class="selflink" href="#AUTHORS">AUTHORS</a></h1>
+OpenSSH is a derivative of the original and free ssh 1.2.12 release by Tatu
+  Ylonen. Aaron Campbell, Bob Beck, Markus Friedl, Niels Provos, Theo de Raadt
+  and Dug Song removed many bugs, re-added newer features and created OpenSSH.
+  Markus Friedl contributed the support for SSH protocol versions 1.5 and 2.0.
+  Niels Provos and Markus Friedl contributed support for privilege
+  separation.</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">June 24, 2017</td>
+    <td class="foot-os">openssh-7.6p1</td>
+  </tr>
+</table>
+</body>
+</html>

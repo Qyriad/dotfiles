@@ -1,0 +1,38 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Bookmark Favicon Changer - Tab Icon Rule Help</title>
+		<script src="nocontext.js"></script>
+	</head>
+	<body bgcolor="yellow">
+		<h1><center>Bookmark Favicon Changer - Tab Icon Rule Help</center></h1>
+		<ul>
+			<li>Tab icon rules are used to change icons for the whole domain or sub domain.</li>
+			<li>URL that can use <u>must begin with http, https or file</u>.</li>
+			<ul>
+				<li>Wildcard * in the rule is accepted as a usual meaning except one thing.</li>
+				<li>If * is not at the last position, it will represent any character except <b>"/"</b> at any length.</li>
+				<li>But if * is at the last position, the meaning is the same as usual (any character at any length).</li>
+				<li>Example...</li>
+				<ul>
+					<li><b>http*://www.example.com/*</b></li>
+					<li>This will represent the <font color="blue"><b>whole domain of www.example.com including https and http</b></font>.</li>
+				</ul>
+				<ul>
+					<li><b>http//*.google.com/*</b></li>
+					<li>This will match <font color="blue"><b>http://mail.google.com</b></font> but not match <font color="red"><b>http://google.com</b></font> and not match <font color="red"><b>http://www.yahoo.com/search?mail.google.com</b></font></li>
+				</ul>
+			</ul>
+			<li>You can change tab icon to your custom icon by click the icon at the left most of the row.</li>
+			<li>Any size and type of image files can be use as custom tab icon. "Bookmark Favicon Changer" will resize and change it to 16x16 pixel PNG image file and then save. After changing icon, there is no need for original file to exist.</li>
+			<li>Tab icon rule only applied when there is no match in custom favicon database for bookmark.</li>
+			<li>Ordering of tab icon rules is also important. The first rule that match will be use as tab icon. You can drag-drop the rule to change the rule ordering.</li>
+			<li>Despite you can use tab icon rule to change bookmark favicon, it is not recommended. The bookmark favicon protection mechanism is weaker.</li>
+		</ul>
+	</body>
+</html>

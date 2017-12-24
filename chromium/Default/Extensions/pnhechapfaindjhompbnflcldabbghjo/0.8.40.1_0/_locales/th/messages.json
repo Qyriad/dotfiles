@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "ต่อเชื่อมระบบไฟล์ไว้แล้ว!"
+   },
+   "backup_prefs": {
+      "message": "บันทึกข้อมูลสำรอง"
+   },
+   "bad_destination": {
+      "message": "ไม่สามารถแยกวิเคราะห์ปลายทาง: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "การปิดแท็บนี้จะยกเลิกการเชื่อมต่อเซสชันนี้"
+   },
+   "cancel_button_label": {
+      "message": "ยกเลิก"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "คำสั่งนี้จะแสดงเมนูของโฮสต์ที่รู้จักและแจ้งให้ระบุโฮสต์ที่จะไม่จดจำ"
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "ไม่จำโฮสต์ SSH ที่รู้จัก"
+   },
+   "cmd_ssh_help": {
+      "message": "ต้องมีพารามิเตอร์ |username| และ |hostname| จะระบุ |port| หรือไม่ก็ได้ ถ้าไม่ระบุพอร์ต ค่าเริ่มต้นจะเป็น 22"
+   },
+   "cmd_ssh_title": {
+      "message": "เปิดเซสชัน SSH ใหม่"
+   },
+   "command_complete": {
+      "message": "ออกจากคำสั่ง $1 แล้วโดยมีรหัสสถานะ $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "เชื่อมต่อ"
+   },
+   "connect_or_exit_message": {
+      "message": "ต้องการเลือกการเชื่อมต่ออื่น (C) หรือออก (X)"
+   },
+   "connecting": {
+      "message": "กำลังเชื่อมต่อ $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "คุณทราบไหมว่ามีหน้าสำหรับตัวเลือกโดยเฉพาะ\nไม่ต้องจัดการกับ term_ โดยตรงให้ยุ่งยากอีกต่อไป!\nกด $1 เพื่อเปิด หรือคลิก\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "คุณทราบไหมว่ามีหน้าสำหรับตัวเลือกโดยเฉพาะ\nไม่ต้องจัดการกับ term_ โดยตรงให้ยุ่งยากอีกต่อไป!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[ลบ]"
+   },
+   "delete_button_label": {
+      "message": "ลบ"
+   },
+   "disconnect_message": {
+      "message": "ออกจากปลั๊กอิน NaCl แล้วโดยมีรหัสสถานะ $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "อาร์กิวเมนต์บรรทัดคำสั่งพิเศษ"
+   },
+   "field_description_aria_label": {
+      "message": "รายละเอียด"
+   },
+   "field_description_placeholder": {
+      "message": "username@hostname หรือข้อความรูปแบบอิสระ"
+   },
+   "field_hostname_aria_label": {
+      "message": "ชื่อโฮสต์"
+   },
+   "field_hostname_placeholder": {
+      "message": "ชื่อโฮสต์"
+   },
+   "field_mount_path_placeholder": {
+      "message": "เส้นทางเริ่มต้นคือไดเรกทอรีหลักของผู้ใช้"
+   },
+   "field_port_aria_label": {
+      "message": "พอร์ต"
+   },
+   "field_port_placeholder": {
+      "message": "พอร์ต"
+   },
+   "field_relay_options_aria_label": {
+      "message": "ตัวเลือกของรีเลย์"
+   },
+   "field_relay_options_placeholder": {
+      "message": "ตัวเลือกรีเลย์เซิร์ฟเวอร์ SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "ค่าเริ่มต้น"
+   },
+   "field_username_aria_label": {
+      "message": "ชื่อผู้ใช้"
+   },
+   "field_username_placeholder": {
+      "message": "ชื่อผู้ใช้"
+   },
+   "found_relay": {
+      "message": "รีเลย์เซิร์ฟเวอร์ที่พบ: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "ข้อมูลประจำตัว"
+   },
+   "import_link_aria_label": {
+      "message": "นำเข้าไฟล์"
+   },
+   "import_link_label": {
+      "message": "นำเข้า..."
+   },
+   "initializing_relay": {
+      "message": "กำลังค้นหารีเลย์เซิร์ฟเวอร์โดยใช้ $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "ไม่สามารถแยกวิเคราะห์ JSON ใน \"$1\": $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "ไม่มีโฮสต์ที่รู้จัก ไม่มีโฮสต์ใดที่จะไม่จำ"
+   },
+   "known_hosts_prompt": {
+      "message": "โปรดเลือกโฮสต์ที่จะไม่จำ [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "โฮสต์ที่รู้จัก:"
+   },
+   "loading_label": {
+      "message": "กำลังโหลด..."
+   },
+   "missing_param": {
+      "message": "พารามิเตอร์ที่ขาด: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "ต่อเชื่อม SFTP"
+   },
+   "mount_path_label": {
+      "message": "เส้นทางต่อเชื่อม"
+   },
+   "mounted_message": {
+      "message": "ต่อเชื่อมแล้ว!"
+   },
+   "notify_copy": {
+      "message": "คัดลอกสิ่งที่เลือกแล้ว"
+   },
+   "ok_button_label": {
+      "message": "ตกลง"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> เชื่อมต่อกับโปรไฟล์ที่บันทึกไว้หรือระบบ SSH ใหม่"
+   },
+   "open_as_window_tip": {
+      "message": "[เคล็ดลับสำหรับมือโปร] ใช้ \"เปิดเป็นหน้าต่าง\" เพื่อป้องกันไม่ให้ Control-W ปิดเทอร์มินัล!\n[เคล็ดลับสำหรับมือโปร] ดูข้อมูลเพิ่มเติมใน $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "ตัวเลือก"
+   },
+   "plugin_loading": {
+      "message": "กำลังโหลดปลั๊กอิน NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " เสร็จสิ้น"
+   },
+   "plugin_loading_failed": {
+      "message": " ล้มเหลว! :("
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "การตั้งค่าโปรไฟล์"
+   },
+   "preferences_reset": {
+      "message": "รีเซ็ตค่ากำหนดทั้งหมดแล้ว!"
+   },
+   "reconnect_message": {
+      "message": "ต้องการเชื่อมต่ออีกครั้ง (R) เลือกการเชื่อมต่ออื่น (C) หรือออก (X)"
+   },
+   "relay_retry": {
+      "message": "กำลังลองใหม่..."
+   },
+   "restore_prefs": {
+      "message": "คืนค่าข้อมูลสำรอง"
+   },
+   "shortcut_list_aria_label": {
+      "message": "การเชื่อมต่อที่บันทึกไว้"
+   },
+   "ssh_argstr_label": {
+      "message": "อาร์กิวเมนต์ SSH"
+   },
+   "terminal_preview_label": {
+      "message": "แสดงตัวอย่าง"
+   },
+   "terminal_profile_label": {
+      "message": "โปรไฟล์ปัจจุบัน"
+   },
+   "tip_1": {
+      "message": "คุณสามารถกด Ctrl (Cmd ใน macOS) พร้อมคลิกลิงก์เพื่อเปิดลิงก์นั้นได้"
+   },
+   "tip_10": {
+      "message": "เมื่อเรียกใช้ในหน้าต่าง การกดปุ่ม Ctrl-Shift-N จะเปิดอีกเซสชันหนึ่งขึ้นมา"
+   },
+   "tip_11": {
+      "message": "คุณสามารถรวมคีย์/แป้นพิมพ์ลัดอีกครั้งได้ที่ https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "แสดงการแจ้งเตือนในเบราว์เซอร์โดยใช้ hterm-notify ได้ที่ https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "เชื่อมต่อจากแถบอเนกประสงค์ด้วยการพิมพ์ \"ssh \u003Cprofile name>\": https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS ต่อเชื่อมระบบไฟล์ได้ผ่าน SFTP และเรียกดูได้ผ่านแอปไฟล์ ใช้ \"ต่อเชื่อม SFTP\" แทน \"เชื่อมต่อ\""
+   },
+   "tip_5": {
+      "message": "เชื่อมต่อโดยใช้ลิงก์ ssh:// ในหน้าเว็บ หรือบันทึกบุ๊กมาร์กที่ https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "ให้สีเอาต์พุต/ข้อความแจ้งโดยใช้สีหลัก 16 สี 256 สี และสี 24 บิตแบบเต็มได้ที่ http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "คัดลอกจาก emacs/vim/ฯลฯ ไปที่คลิปบอร์ด... โดยใช้ OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "แชทกับผู้ใช้ hterm/Secure Shell ผ่าน chromium-hterm@chromium.org ได้ที่ https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "หากพบข้อบกพร่องหรือต้องการส่งคำขอฟีเจอร์ใหม่ บอกเราได้ที่ https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "เกิดข้อผิดพลาดที่ไม่คาดคิด โปรดตรวจสอบคอนโซล JavaScript สำหรับรายละเอียดเพิ่มเติม"
+   },
+   "unmount_button_label": {
+      "message": "ยกเลิกการต่อเชื่อม SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "มีอัปเดตให้ใช้งาน โปรดปิดหน้าต่างทั้งหมด"
+   },
+   "welcome_changelog": {
+      "message": "บันทึกการเปลี่ยนแปลง/บันทึกประจำรุ่น: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "คำตอบสำหรับคำถามที่พบบ่อย: $1 (กด Ctrl ค้างไว้แล้วคลิกบนลิงก์เพื่อเปิด)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "การเปลี่ยนแปลงที่สำคัญตั้งแต่ $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "เคล็ดลับสำหรับมือโปร #$1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "ยินดีต้อนรับสู่ $1 เวอร์ชัน $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "โปรดตั้งค่าเมนู Chrome->ซูมเป็น 100%"
+   }
+}

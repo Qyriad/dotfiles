@@ -1,0 +1,120 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="bookmarkList.js"></script>
+		<style type="text/css">
+			div.divRow {
+				color: black;
+				padding-left: 3px;
+				padding-right: 10px;
+				white-space: nowrap;
+				border-bottom: 1px solid #CFECEC;
+				border-top: 1px solid #CFECEC;
+				height: 19px;
+				overflow: hidden;
+			}
+			div.divRow:hover {
+				cursor: pointer;
+			}
+			div.divRow[data-selected] {
+				color: yellow;
+				background-color: gray;
+				border-bottom: 1px solid gray;
+				border-top: 1px solid gray;
+			}
+			div.first {
+				padding-left: 3px;
+				padding-right: 10px;
+				border-bottom: 1px solid #CFECEC;
+				height: 1px;
+			}
+			div.last {
+				padding-left: 3px;
+				padding-right: 10px;
+				border-top: 1px solid #CFECEC;
+				height: 19px;
+			}
+			div[data-insert="before"] {
+				border-top: 1px solid red;
+			}
+			div[data-insert="after"] {
+				border-bottom: 1px solid red;
+			}
+			img.favicon {
+				width: 16px;
+				height: 16px;
+				position: relative;
+				left: 0px;
+				top: 2px;
+			}
+			font.fontURL {
+				color: #CFECEC;
+				padding-left: 20px;
+				font-family: Times New Roman;
+				font-size: 16px;
+			}
+			font.fontEdit {
+				font-family: Times New Roman;
+				font-size: 16px;
+			}
+			td.customButton {
+				color: silver;
+				background-color: white;
+				padding-left: 10px;
+				padding-right: 10px;
+				white-space: nowrap;
+			}
+			td.customButton[data-clickable] {
+				color: black;
+			}
+			td.customButton[data-clickable]:hover {
+				background-color: silver;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body bgcolor="#CFECEC" style="overflow-x:hidden; overflow-y:hidden; margin:0; font-family:Times New Roman; font-size:16px;">
+		<button id="selectAll">Select All</button>
+		<button id="selectNonFolder">Select non-folder</button>
+		<button id="selectResetable">Select resetable</button>
+		<button id="selectNone">Select None</button>
+		<button id="refresh">Refresh</button>
+		<button id="help">Help</button>
+		<hr style="margin-bottom:0px"></hr>
+		<table style="border-spacing:2px;">
+			<tr>
+				<td style="padding:0px;">
+					<div id="0" style="padding:0; margin:0; overflow-x:hidden; overflow-y:auto;">
+						<div id="firstRow" class="first"></div>
+						<div id="lastRow" class="last"></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div id="myContextMenu" style="border:1px solid silver; display:block; position:absolute; opacity:0; z-index:10; left:0; top:0;">
+			<input type="file" accept="image/*" id="changeFaviconInput" style="display:none;"></input>
+			<table bgcolor="white" border="0" margin="0">
+				<tr><td id="changeFavicon" class="customButton">Change Favicon</td></tr>
+				<tr><td id="pinFavicon" class="customButton">Pin Favicon</td></tr>
+				<tr><td id="resetFavicon" class="customButton">Reset Favicon</td></tr>
+				<tr><td id="removeFavicon" class="customButton">Remove Favicon</td></tr>
+				<tr><td id="exportFavicon" class="customButton">Export Favicon</td></tr>
+				<tr><td><hr></hr></td></tr>
+				<tr><td id="editTitle" class="customButton">Edit...</td></tr>
+				<tr><td id="deleteBookmark" class="customButton">Delete</td></tr>
+				<tr><td id="undoDeleteBookmark" class="customButton">Undo Delete</td></tr>
+				<tr><td id="addFolder" class="customButton" data-clickable="true">Add Folder...</td></tr>
+			</table>
+		</div>
+		<div id="transparentGlass" style="z-index:20; display:none; opacity:0; background-color:white; overflow:hidden; position:absolute; left:0px; top:0px; width:100%; min-height:100%;">
+		</div>
+		<div id="myEditBoxDiv" style="border:0px; position:absolute; opacity:1; z-index:30; left:0; top:0; height:21px; display:none;">
+			<input type="text" id="myEditBox" style="border:0; height:17px; font-family:Times New Roman; font-size:16px;"></input>
+		</div>
+	</body>
+</html>

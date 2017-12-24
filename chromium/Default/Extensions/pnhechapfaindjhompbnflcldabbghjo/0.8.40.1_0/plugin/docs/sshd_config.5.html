@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    div.Pp { margin: 1ex 0ex; }
+  </style>
+  <title>SSHD_CONFIG(5)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">SSHD_CONFIG(5)</td>
+    <td class="head-vol">File Formats Manual</td>
+    <td class="head-rtitle">SSHD_CONFIG(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<h1 class="Sh" title="Sh" id="NAME"><a class="selflink" href="#NAME">NAME</a></h1>
+<b class="Nm" title="Nm">sshd_config</b> &#x2014;
+  <span class="Nd" title="Nd">OpenSSH SSH daemon configuration file</span>
+<h1 class="Sh" title="Sh" id="DESCRIPTION"><a class="selflink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> reads configuration data
+  from <i class="Pa" title="Pa">/etc/ssh/sshd_config</i> (or the file specified
+  with <b class="Fl" title="Fl">-f</b> on the command line). The file contains
+  keyword-argument pairs, one per line. Lines starting with
+  &#x2018;<code class="Li">#</code>&#x2019; and empty lines are interpreted as
+  comments. Arguments may optionally be enclosed in double quotes (&quot;) in
+  order to represent arguments containing spaces.
+<div class="Pp"></div>
+The possible keywords and their meanings are as follows (note that keywords are
+  case-insensitive and arguments are case-sensitive):
+<dl class="Bl-tag">
+  <dt class="It-tag"><a class="selflink" href="#AcceptEnv"><b class="Cm" title="Cm" id="AcceptEnv">AcceptEnv</b></a></dt>
+  <dd class="It-tag">Specifies what environment variables sent by the client
+      will be copied into the session's
+      <a class="Xr" title="Xr" href="environ.7.html">environ(7)</a>. See
+      <b class="Cm" title="Cm">SendEnv</b> in
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a> for
+      how to configure the client. The <code class="Ev" title="Ev">TERM</code>
+      environment variable is always sent whenever the client requests a
+      pseudo-terminal as it is required by the protocol. Variables are specified
+      by name, which may contain the wildcard characters
+      &#x2018;<code class="Li">*</code>&#x2019; and
+      &#x2018;<code class="Li">?</code>&#x2019;. Multiple environment variables
+      may be separated by whitespace or spread across multiple
+      <b class="Cm" title="Cm">AcceptEnv</b> directives. Be warned that some
+      environment variables could be used to bypass restricted user
+      environments. For this reason, care should be taken in the use of this
+      directive. The default is not to accept any environment variables.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AddressFamily"><b class="Cm" title="Cm" id="AddressFamily">AddressFamily</b></a></dt>
+  <dd class="It-tag">Specifies which address family should be used by
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. Valid arguments
+      are <b class="Cm" title="Cm">any</b> (the default),
+      <b class="Cm" title="Cm">inet</b> (use IPv4 only), or
+      <b class="Cm" title="Cm">inet6</b> (use IPv6 only).</dd>
+  <dt class="It-tag"><a class="selflink" href="#AllowAgentForwarding"><b class="Cm" title="Cm" id="AllowAgentForwarding">AllowAgentForwarding</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>
+      forwarding is permitted. The default is <b class="Cm" title="Cm">yes</b>.
+      Note that disabling agent forwarding does not improve security unless
+      users are also denied shell access, as they can always install their own
+      forwarders.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AllowGroups"><b class="Cm" title="Cm" id="AllowGroups">AllowGroups</b></a></dt>
+  <dd class="It-tag">This keyword can be followed by a list of group name
+      patterns, separated by spaces. If specified, login is allowed only for
+      users whose primary group or supplementary group list matches one of the
+      patterns. Only group names are valid; a numerical group ID is not
+      recognized. By default, login is allowed for all groups. The allow/deny
+      directives are processed in the following order:
+      <b class="Cm" title="Cm">DenyUsers</b>,
+      <b class="Cm" title="Cm">AllowUsers</b>,
+      <b class="Cm" title="Cm">DenyGroups</b>, and finally
+      <b class="Cm" title="Cm">AllowGroups</b>.
+    <div class="Pp"></div>
+    See PATTERNS in
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a> for
+      more information on patterns.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AllowStreamLocalForwarding"><b class="Cm" title="Cm" id="AllowStreamLocalForwarding">AllowStreamLocalForwarding</b></a></dt>
+  <dd class="It-tag">Specifies whether StreamLocal (Unix-domain socket)
+      forwarding is permitted. The available options are
+      <b class="Cm" title="Cm">yes</b> (the default) or
+      <b class="Cm" title="Cm">all</b> to allow StreamLocal forwarding,
+      <b class="Cm" title="Cm">no</b> to prevent all StreamLocal forwarding,
+      <b class="Cm" title="Cm">local</b> to allow local (from the perspective of
+      <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>) forwarding only or
+      <b class="Cm" title="Cm">remote</b> to allow remote forwarding only. Note
+      that disabling StreamLocal forwarding does not improve security unless
+      users are also denied shell access, as they can always install their own
+      forwarders.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AllowTcpForwarding"><b class="Cm" title="Cm" id="AllowTcpForwarding">AllowTcpForwarding</b></a></dt>
+  <dd class="It-tag">Specifies whether TCP forwarding is permitted. The
+      available options are <b class="Cm" title="Cm">yes</b> (the default) or
+      <b class="Cm" title="Cm">all</b> to allow TCP forwarding,
+      <b class="Cm" title="Cm">no</b> to prevent all TCP forwarding,
+      <b class="Cm" title="Cm">local</b> to allow local (from the perspective of
+      <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>) forwarding only or
+      <b class="Cm" title="Cm">remote</b> to allow remote forwarding only. Note
+      that disabling TCP forwarding does not improve security unless users are
+      also denied shell access, as they can always install their own
+    forwarders.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AllowUsers"><b class="Cm" title="Cm" id="AllowUsers">AllowUsers</b></a></dt>
+  <dd class="It-tag">This keyword can be followed by a list of user name
+      patterns, separated by spaces. If specified, login is allowed only for
+      user names that match one of the patterns. Only user names are valid; a
+      numerical user ID is not recognized. By default, login is allowed for all
+      users. If the pattern takes the form USER@HOST then USER and HOST are
+      separately checked, restricting logins to particular users from particular
+      hosts. HOST criteria may additionally contain addresses to match in CIDR
+      address/masklen format. The allow/deny directives are processed in the
+      following order: <b class="Cm" title="Cm">DenyUsers</b>,
+      <b class="Cm" title="Cm">AllowUsers</b>,
+      <b class="Cm" title="Cm">DenyGroups</b>, and finally
+      <b class="Cm" title="Cm">AllowGroups</b>.
+    <div class="Pp"></div>
+    See PATTERNS in
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a> for
+      more information on patterns.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AuthenticationMethods"><b class="Cm" title="Cm" id="AuthenticationMethods">AuthenticationMethods</b></a></dt>
+  <dd class="It-tag">Specifies the authentication methods that must be
+      successfully completed for a user to be granted access. This option must
+      be followed by one or more comma-separated lists of authentication method
+      names, or by the single string <b class="Cm" title="Cm">any</b> to
+      indicate the default behaviour of accepting any single authentication
+      method. If the default is overridden, then successful authentication
+      requires completion of every method in at least one of these lists.
+    <div class="Pp"></div>
+    For example, &#x201C;publickey,password
+      publickey,keyboard-interactive&#x201D; would require the user to complete
+      public key authentication, followed by either password or keyboard
+      interactive authentication. Only methods that are next in one or more
+      lists are offered at each stage, so for this example it would not be
+      possible to attempt password or keyboard-interactive authentication before
+      public key.
+    <div class="Pp"></div>
+    For keyboard interactive authentication it is also possible to restrict
+      authentication to a specific device by appending a colon followed by the
+      device identifier <b class="Cm" title="Cm">bsdauth</b>,
+      <b class="Cm" title="Cm">pam</b>, or <b class="Cm" title="Cm">skey</b>,
+      depending on the server configuration. For example,
+      &#x201C;keyboard-interactive:bsdauth&#x201D; would restrict keyboard
+      interactive authentication to the <b class="Cm" title="Cm">bsdauth</b>
+      device.
+    <div class="Pp"></div>
+    If the publickey method is listed more than once,
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> verifies that keys
+      that have been used successfully are not reused for subsequent
+      authentications. For example, &#x201C;publickey,publickey&#x201D; requires
+      successful authentication using two different public keys.
+    <div class="Pp"></div>
+    Note that each authentication method listed should also be explicitly
+      enabled in the configuration.
+    <div class="Pp"></div>
+    The available authentication methods are: &#x201C;gssapi-with-mic&#x201D;,
+      &#x201C;hostbased&#x201D;, &#x201C;keyboard-interactive&#x201D;,
+      &#x201C;none&#x201D; (used for access to password-less accounts when
+      <b class="Cm" title="Cm">PermitEmptyPassword</b> is enabled),
+      &#x201C;password&#x201D; and &#x201C;publickey&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AuthorizedKeysCommand"><b class="Cm" title="Cm" id="AuthorizedKeysCommand">AuthorizedKeysCommand</b></a></dt>
+  <dd class="It-tag">Specifies a program to be used to look up the user's public
+      keys. The program must be owned by root, not writable by group or others
+      and specified by an absolute path. Arguments to
+      <b class="Cm" title="Cm">AuthorizedKeysCommand</b> accept the tokens
+      described in the <a class="Sx" title="Sx" href="#TOKENS">TOKENS</a>
+      section. If no arguments are specified then the username of the target
+      user is used.
+    <div class="Pp"></div>
+    The program should produce on standard output zero or more lines of
+      authorized_keys output (see
+      <a class="Sx" title="Sx" href="#AUTHORIZED_KEYS">AUTHORIZED_KEYS</a> in
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>). If a key
+      supplied by <b class="Cm" title="Cm">AuthorizedKeysCommand</b> does not
+      successfully authenticate and authorize the user then public key
+      authentication continues using the usual
+      <b class="Cm" title="Cm">AuthorizedKeysFile</b> files. By default, no
+      <b class="Cm" title="Cm">AuthorizedKeysCommand</b> is run.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AuthorizedKeysCommandUser"><b class="Cm" title="Cm" id="AuthorizedKeysCommandUser">AuthorizedKeysCommandUser</b></a></dt>
+  <dd class="It-tag">Specifies the user under whose account the
+      <b class="Cm" title="Cm">AuthorizedKeysCommand</b> is run. It is
+      recommended to use a dedicated user that has no other role on the host
+      than running authorized keys commands. If
+      <b class="Cm" title="Cm">AuthorizedKeysCommand</b> is specified but
+      <b class="Cm" title="Cm">AuthorizedKeysCommandUser</b> is not, then
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> will refuse to
+      start.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AuthorizedKeysFile"><b class="Cm" title="Cm" id="AuthorizedKeysFile">AuthorizedKeysFile</b></a></dt>
+  <dd class="It-tag">Specifies the file that contains the public keys used for
+      user authentication. The format is described in the
+      <a class="Sx" title="Sx" href="#AUTHORIZED_KEYS_FILE_FORMAT">AUTHORIZED_KEYS
+      FILE FORMAT</a> section of
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. Arguments to
+      <b class="Cm" title="Cm">AuthorizedKeysFile</b> accept the tokens
+      described in the <a class="Sx" title="Sx" href="#TOKENS">TOKENS</a>
+      section. After expansion, <b class="Cm" title="Cm">AuthorizedKeysFile</b>
+      is taken to be an absolute path or one relative to the user's home
+      directory. Multiple files may be listed, separated by whitespace.
+      Alternately this option may be set to <b class="Cm" title="Cm">none</b> to
+      skip checking for user keys in files. The default is
+      &#x201C;.ssh/authorized_keys .ssh/authorized_keys2&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AuthorizedPrincipalsCommand"><b class="Cm" title="Cm" id="AuthorizedPrincipalsCommand">AuthorizedPrincipalsCommand</b></a></dt>
+  <dd class="It-tag">Specifies a program to be used to generate the list of
+      allowed certificate principals as per
+      <b class="Cm" title="Cm">AuthorizedPrincipalsFile</b>. The program must be
+      owned by root, not writable by group or others and specified by an
+      absolute path. Arguments to
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommand</b> accept the tokens
+      described in the <a class="Sx" title="Sx" href="#TOKENS">TOKENS</a>
+      section. If no arguments are specified then the username of the target
+      user is used.
+    <div class="Pp"></div>
+    The program should produce on standard output zero or more lines of
+      <b class="Cm" title="Cm">AuthorizedPrincipalsFile</b> output. If either
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommand</b> or
+      <b class="Cm" title="Cm">AuthorizedPrincipalsFile</b> is specified, then
+      certificates offered by the client for authentication must contain a
+      principal that is listed. By default, no
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommand</b> is run.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AuthorizedPrincipalsCommandUser"><b class="Cm" title="Cm" id="AuthorizedPrincipalsCommandUser">AuthorizedPrincipalsCommandUser</b></a></dt>
+  <dd class="It-tag">Specifies the user under whose account the
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommand</b> is run. It is
+      recommended to use a dedicated user that has no other role on the host
+      than running authorized principals commands. If
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommand</b> is specified but
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommandUser</b> is not, then
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> will refuse to
+      start.</dd>
+  <dt class="It-tag"><a class="selflink" href="#AuthorizedPrincipalsFile"><b class="Cm" title="Cm" id="AuthorizedPrincipalsFile">AuthorizedPrincipalsFile</b></a></dt>
+  <dd class="It-tag">Specifies a file that lists principal names that are
+      accepted for certificate authentication. When using certificates signed by
+      a key listed in <b class="Cm" title="Cm">TrustedUserCAKeys</b>, this file
+      lists names, one of which must appear in the certificate for it to be
+      accepted for authentication. Names are listed one per line preceded by key
+      options (as described in
+      <a class="Sx" title="Sx" href="#AUTHORIZED_KEYS_FILE_FORMAT">AUTHORIZED_KEYS
+      FILE FORMAT</a> in
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>). Empty lines and
+      comments starting with &#x2018;<code class="Li">#</code>&#x2019; are
+      ignored.
+    <div class="Pp"></div>
+    Arguments to <b class="Cm" title="Cm">AuthorizedPrincipalsFile</b> accept
+      the tokens described in the
+      <a class="Sx" title="Sx" href="#TOKENS">TOKENS</a> section. After
+      expansion, <b class="Cm" title="Cm">AuthorizedPrincipalsFile</b> is taken
+      to be an absolute path or one relative to the user's home directory. The
+      default is <b class="Cm" title="Cm">none</b>, i.e. not to use a principals
+      file &#x2013; in this case, the username of the user must appear in a
+      certificate's principals list for it to be accepted.
+    <div class="Pp"></div>
+    Note that <b class="Cm" title="Cm">AuthorizedPrincipalsFile</b> is only used
+      when authentication proceeds using a CA listed in
+      <b class="Cm" title="Cm">TrustedUserCAKeys</b> and is not consulted for
+      certification authorities trusted via
+      <i class="Pa" title="Pa">~/.ssh/authorized_keys</i>, though the
+      <b class="Cm" title="Cm">principals=</b> key option offers a similar
+      facility (see <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> for
+      details).</dd>
+  <dt class="It-tag"><a class="selflink" href="#Banner"><b class="Cm" title="Cm" id="Banner">Banner</b></a></dt>
+  <dd class="It-tag">The contents of the specified file are sent to the remote
+      user before authentication is allowed. If the argument is
+      <b class="Cm" title="Cm">none</b> then no banner is displayed. By default,
+      no banner is displayed.</dd>
+  <dt class="It-tag"><a class="selflink" href="#ChallengeResponseAuthentication"><b class="Cm" title="Cm" id="ChallengeResponseAuthentication">ChallengeResponseAuthentication</b></a></dt>
+  <dd class="It-tag">Specifies whether challenge-response authentication is
+      allowed (e.g. via PAM or through authentication styles supported in
+      <a class="Xr" title="Xr" href="login.conf.5.html">login.conf(5)</a>) The
+      default is <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#ChrootDirectory"><b class="Cm" title="Cm" id="ChrootDirectory">ChrootDirectory</b></a></dt>
+  <dd class="It-tag">Specifies the pathname of a directory to
+      <a class="Xr" title="Xr" href="chroot.2.html">chroot(2)</a> to after
+      authentication. At session startup
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> checks that all
+      components of the pathname are root-owned directories which are not
+      writable by any other user or group. After the chroot,
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> changes the
+      working directory to the user's home directory. Arguments to
+      <b class="Cm" title="Cm">ChrootDirectory</b> accept the tokens described
+      in the <a class="Sx" title="Sx" href="#TOKENS">TOKENS</a> section.
+    <div class="Pp"></div>
+    The <b class="Cm" title="Cm">ChrootDirectory</b> must contain the necessary
+      files and directories to support the user's session. For an interactive
+      session this requires at least a shell, typically
+      <a class="Xr" title="Xr" href="sh.1.html">sh(1)</a>, and basic
+      <i class="Pa" title="Pa">/dev</i> nodes such as
+      <a class="Xr" title="Xr" href="null.4.html">null(4)</a>,
+      <a class="Xr" title="Xr" href="zero.4.html">zero(4)</a>,
+      <a class="Xr" title="Xr" href="stdin.4.html">stdin(4)</a>,
+      <a class="Xr" title="Xr" href="stdout.4.html">stdout(4)</a>,
+      <a class="Xr" title="Xr" href="stderr.4.html">stderr(4)</a>, and
+      <a class="Xr" title="Xr" href="tty.4.html">tty(4)</a> devices. For file
+      transfer sessions using SFTP no additional configuration of the
+      environment is necessary if the in-process sftp-server is used, though
+      sessions which use logging may require
+      <i class="Pa" title="Pa">/dev/log</i> inside the chroot directory on some
+      operating systems (see
+      <a class="Xr" title="Xr" href="sftp-server.8.html">sftp-server(8)</a> for
+      details).
+    <div class="Pp"></div>
+    For safety, it is very important that the directory hierarchy be prevented
+      from modification by other processes on the system (especially those
+      outside the jail). Misconfiguration can lead to unsafe environments which
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> cannot detect.
+    <div class="Pp"></div>
+    The default is <b class="Cm" title="Cm">none</b>, indicating not to
+      <a class="Xr" title="Xr" href="chroot.2.html">chroot(2)</a>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#Ciphers"><b class="Cm" title="Cm" id="Ciphers">Ciphers</b></a></dt>
+  <dd class="It-tag">Specifies the ciphers allowed. Multiple ciphers must be
+      comma-separated. If the specified value begins with a &#x2018;+&#x2019;
+      character, then the specified ciphers will be appended to the default set
+      instead of replacing them. If the specified value begins with a
+      &#x2018;-&#x2019; character, then the specified ciphers (including
+      wildcards) will be removed from the default set instead of replacing them.
+    <div class="Pp"></div>
+    The supported ciphers are:
+    <div class="Pp"></div>
+    <ul class="Bl-item Bl-compact" style="margin-left: 6.00ex;">
+      <li class="It-item">3des-cbc</li>
+      <li class="It-item">aes128-cbc</li>
+      <li class="It-item">aes192-cbc</li>
+      <li class="It-item">aes256-cbc</li>
+      <li class="It-item">aes128-ctr</li>
+      <li class="It-item">aes192-ctr</li>
+      <li class="It-item">aes256-ctr</li>
+      <li class="It-item">aes128-gcm@openssh.com</li>
+      <li class="It-item">aes256-gcm@openssh.com</li>
+      <li class="It-item">chacha20-poly1305@openssh.com</li>
+    </ul>
+    <div class="Pp"></div>
+    The default is:
+    <div class="Pp"></div>
+    <div class="Bd" style="margin-left: 5.00ex;">
+    <pre class="Li">
+chacha20-poly1305@openssh.com, 
+aes128-ctr,aes192-ctr,aes256-ctr, 
+aes128-gcm@openssh.com,aes256-gcm@openssh.com
+    </pre>
+    </div>
+    <div class="Pp"></div>
+    The list of available ciphers may also be obtained using &#x201C;ssh -Q
+      cipher&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#ClientAliveCountMax"><b class="Cm" title="Cm" id="ClientAliveCountMax">ClientAliveCountMax</b></a></dt>
+  <dd class="It-tag">Sets the number of client alive messages which may be sent
+      without <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> receiving
+      any messages back from the client. If this threshold is reached while
+      client alive messages are being sent, sshd will disconnect the client,
+      terminating the session. It is important to note that the use of client
+      alive messages is very different from
+      <b class="Cm" title="Cm">TCPKeepAlive</b>. The client alive messages are
+      sent through the encrypted channel and therefore will not be spoofable.
+      The TCP keepalive option enabled by
+      <b class="Cm" title="Cm">TCPKeepAlive</b> is spoofable. The client alive
+      mechanism is valuable when the client or server depend on knowing when a
+      connection has become inactive.
+    <div class="Pp"></div>
+    The default value is 3. If <b class="Cm" title="Cm">ClientAliveInterval</b>
+      is set to 15, and <b class="Cm" title="Cm">ClientAliveCountMax</b> is left
+      at the default, unresponsive SSH clients will be disconnected after
+      approximately 45 seconds.</dd>
+  <dt class="It-tag"><a class="selflink" href="#ClientAliveInterval"><b class="Cm" title="Cm" id="ClientAliveInterval">ClientAliveInterval</b></a></dt>
+  <dd class="It-tag">Sets a timeout interval in seconds after which if no data
+      has been received from the client,
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> will send a
+      message through the encrypted channel to request a response from the
+      client. The default is 0, indicating that these messages will not be sent
+      to the client.</dd>
+  <dt class="It-tag"><a class="selflink" href="#Compression"><b class="Cm" title="Cm" id="Compression">Compression</b></a></dt>
+  <dd class="It-tag">Specifies whether compression is enabled after the user has
+      authenticated successfully. The argument must be
+      <b class="Cm" title="Cm">yes</b>, <b class="Cm" title="Cm">delayed</b> (a
+      legacy synonym for <b class="Cm" title="Cm">yes</b>) or
+      <b class="Cm" title="Cm">no</b>. The default is
+      <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#DenyGroups"><b class="Cm" title="Cm" id="DenyGroups">DenyGroups</b></a></dt>
+  <dd class="It-tag">This keyword can be followed by a list of group name
+      patterns, separated by spaces. Login is disallowed for users whose primary
+      group or supplementary group list matches one of the patterns. Only group
+      names are valid; a numerical group ID is not recognized. By default, login
+      is allowed for all groups. The allow/deny directives are processed in the
+      following order: <b class="Cm" title="Cm">DenyUsers</b>,
+      <b class="Cm" title="Cm">AllowUsers</b>,
+      <b class="Cm" title="Cm">DenyGroups</b>, and finally
+      <b class="Cm" title="Cm">AllowGroups</b>.
+    <div class="Pp"></div>
+    See PATTERNS in
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a> for
+      more information on patterns.</dd>
+  <dt class="It-tag"><a class="selflink" href="#DenyUsers"><b class="Cm" title="Cm" id="DenyUsers">DenyUsers</b></a></dt>
+  <dd class="It-tag">This keyword can be followed by a list of user name
+      patterns, separated by spaces. Login is disallowed for user names that
+      match one of the patterns. Only user names are valid; a numerical user ID
+      is not recognized. By default, login is allowed for all users. If the
+      pattern takes the form USER@HOST then USER and HOST are separately
+      checked, restricting logins to particular users from particular hosts.
+      HOST criteria may additionally contain addresses to match in CIDR
+      address/masklen format. The allow/deny directives are processed in the
+      following order: <b class="Cm" title="Cm">DenyUsers</b>,
+      <b class="Cm" title="Cm">AllowUsers</b>,
+      <b class="Cm" title="Cm">DenyGroups</b>, and finally
+      <b class="Cm" title="Cm">AllowGroups</b>.
+    <div class="Pp"></div>
+    See PATTERNS in
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a> for
+      more information on patterns.</dd>
+  <dt class="It-tag"><a class="selflink" href="#DisableForwarding"><b class="Cm" title="Cm" id="DisableForwarding">DisableForwarding</b></a></dt>
+  <dd class="It-tag">Disables all forwarding features, including X11,
+      <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>, TCP and
+      StreamLocal. This option overrides all other forwarding-related options
+      and may simplify restricted configurations.</dd>
+  <dt class="It-tag"><a class="selflink" href="#ExposeAuthInfo"><b class="Cm" title="Cm" id="ExposeAuthInfo">ExposeAuthInfo</b></a></dt>
+  <dd class="It-tag">Writes a temporary file containing a list of authentication
+      methods and public credentials (e.g. keys) used to authenticate the user.
+      The location of the file is exposed to the user session through the
+      <code class="Ev" title="Ev">SSH_USER_AUTH</code> environment variable. The
+      default is <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#FingerprintHash"><b class="Cm" title="Cm" id="FingerprintHash">FingerprintHash</b></a></dt>
+  <dd class="It-tag">Specifies the hash algorithm used when logging key
+      fingerprints. Valid options are: <b class="Cm" title="Cm">md5</b> and
+      <b class="Cm" title="Cm">sha256</b>. The default is
+      <b class="Cm" title="Cm">sha256</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#ForceCommand"><b class="Cm" title="Cm" id="ForceCommand">ForceCommand</b></a></dt>
+  <dd class="It-tag">Forces the execution of the command specified by
+      <b class="Cm" title="Cm">ForceCommand</b>, ignoring any command supplied
+      by the client and <i class="Pa" title="Pa">~/.ssh/rc</i> if present. The
+      command is invoked by using the user's login shell with the -c option.
+      This applies to shell, command, or subsystem execution. It is most useful
+      inside a <b class="Cm" title="Cm">Match</b> block. The command originally
+      supplied by the client is available in the
+      <code class="Ev" title="Ev">SSH_ORIGINAL_COMMAND</code> environment
+      variable. Specifying a command of
+      <b class="Cm" title="Cm">internal-sftp</b> will force the use of an
+      in-process SFTP server that requires no support files when used with
+      <b class="Cm" title="Cm">ChrootDirectory</b>. The default is
+      <b class="Cm" title="Cm">none</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#GatewayPorts"><b class="Cm" title="Cm" id="GatewayPorts">GatewayPorts</b></a></dt>
+  <dd class="It-tag">Specifies whether remote hosts are allowed to connect to
+      ports forwarded for the client. By default,
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> binds remote port
+      forwardings to the loopback address. This prevents other remote hosts from
+      connecting to forwarded ports. <b class="Cm" title="Cm">GatewayPorts</b>
+      can be used to specify that sshd should allow remote port forwardings to
+      bind to non-loopback addresses, thus allowing other hosts to connect. The
+      argument may be <b class="Cm" title="Cm">no</b> to force remote port
+      forwardings to be available to the local host only,
+      <b class="Cm" title="Cm">yes</b> to force remote port forwardings to bind
+      to the wildcard address, or <b class="Cm" title="Cm">clientspecified</b>
+      to allow the client to select the address to which the forwarding is
+      bound. The default is <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#GSSAPIAuthentication"><b class="Cm" title="Cm" id="GSSAPIAuthentication">GSSAPIAuthentication</b></a></dt>
+  <dd class="It-tag">Specifies whether user authentication based on GSSAPI is
+      allowed. The default is <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#GSSAPICleanupCredentials"><b class="Cm" title="Cm" id="GSSAPICleanupCredentials">GSSAPICleanupCredentials</b></a></dt>
+  <dd class="It-tag">Specifies whether to automatically destroy the user's
+      credentials cache on logout. The default is
+      <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#GSSAPIStrictAcceptorCheck"><b class="Cm" title="Cm" id="GSSAPIStrictAcceptorCheck">GSSAPIStrictAcceptorCheck</b></a></dt>
+  <dd class="It-tag">Determines whether to be strict about the identity of the
+      GSSAPI acceptor a client authenticates against. If set to
+      <b class="Cm" title="Cm">yes</b> then the client must authenticate against
+      the host service on the current hostname. If set to
+      <b class="Cm" title="Cm">no</b> then the client may authenticate against
+      any service key stored in the machine's default store. This facility is
+      provided to assist with operation on multi homed machines. The default is
+      <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#HostbasedAcceptedKeyTypes"><b class="Cm" title="Cm" id="HostbasedAcceptedKeyTypes">HostbasedAcceptedKeyTypes</b></a></dt>
+  <dd class="It-tag">Specifies the key types that will be accepted for hostbased
+      authentication as a comma-separated pattern list. Alternately if the
+      specified value begins with a &#x2018;+&#x2019; character, then the
+      specified key types will be appended to the default set instead of
+      replacing them. If the specified value begins with a &#x2018;-&#x2019;
+      character, then the specified key types (including wildcards) will be
+      removed from the default set instead of replacing them. The default for
+      this option is:
+    <div class="Pp"></div>
+    <div class="Bd" style="margin-left: 3.00ex;">
+    <pre class="Li">
+ecdsa-sha2-nistp256-cert-v01@openssh.com, 
+ecdsa-sha2-nistp384-cert-v01@openssh.com, 
+ecdsa-sha2-nistp521-cert-v01@openssh.com, 
+ssh-ed25519-cert-v01@openssh.com, 
+ssh-rsa-cert-v01@openssh.com, 
+ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521, 
+ssh-ed25519,ssh-rsa
+    </pre>
+    </div>
+    <div class="Pp"></div>
+    The list of available key types may also be obtained using &#x201C;ssh -Q
+      key&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#HostbasedAuthentication"><b class="Cm" title="Cm" id="HostbasedAuthentication">HostbasedAuthentication</b></a></dt>
+  <dd class="It-tag">Specifies whether rhosts or /etc/hosts.equiv authentication
+      together with successful public key client host authentication is allowed
+      (host-based authentication). The default is
+      <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#HostbasedUsesNameFromPacketOnly"><b class="Cm" title="Cm" id="HostbasedUsesNameFromPacketOnly">HostbasedUsesNameFromPacketOnly</b></a></dt>
+  <dd class="It-tag">Specifies whether or not the server will attempt to perform
+      a reverse name lookup when matching the name in the
+      <i class="Pa" title="Pa">~/.shosts</i>,
+      <i class="Pa" title="Pa">~/.rhosts</i>, and
+      <i class="Pa" title="Pa">/etc/hosts.equiv</i> files during
+      <b class="Cm" title="Cm">HostbasedAuthentication</b>. A setting of
+      <b class="Cm" title="Cm">yes</b> means that
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> uses the name
+      supplied by the client rather than attempting to resolve the name from the
+      TCP connection itself. The default is
+    <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#HostCertificate"><b class="Cm" title="Cm" id="HostCertificate">HostCertificate</b></a></dt>
+  <dd class="It-tag">Specifies a file containing a public host certificate. The
+      certificate's public key must match a private host key already specified
+      by <b class="Cm" title="Cm">HostKey</b>. The default behaviour of
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> is not to load any
+      certificates.</dd>
+  <dt class="It-tag"><a class="selflink" href="#HostKey"><b class="Cm" title="Cm" id="HostKey">HostKey</b></a></dt>
+  <dd class="It-tag">Specifies a file containing a private host key used by SSH.
+      The defaults are <i class="Pa" title="Pa">/etc/ssh/ssh_host_dsa_key</i>,
+      <i class="Pa" title="Pa">/etc/ssh/ssh_host_ecdsa_key</i>,
+      <i class="Pa" title="Pa">/etc/ssh/ssh_host_ed25519_key</i> and
+      <i class="Pa" title="Pa">/etc/ssh/ssh_host_rsa_key</i>.
+    <div class="Pp"></div>
+    Note that <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> will
+      refuse to use a file if it is group/world-accessible and that the
+      <b class="Cm" title="Cm">HostKeyAlgorithms</b> option restricts which of
+      the keys are actually used by
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>.
+    <div class="Pp"></div>
+    It is possible to have multiple host key files. It is also possible to
+      specify public host key files instead. In this case operations on the
+      private key will be delegated to an
+      <a class="Xr" title="Xr" href="ssh-agent.1.html">ssh-agent(1)</a>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#HostKeyAgent"><b class="Cm" title="Cm" id="HostKeyAgent">HostKeyAgent</b></a></dt>
+  <dd class="It-tag">Identifies the UNIX-domain socket used to communicate with
+      an agent that has access to the private host keys. If the string
+      &#x201C;SSH_AUTH_SOCK&#x201D; is specified, the location of the socket
+      will be read from the <code class="Ev" title="Ev">SSH_AUTH_SOCK</code>
+      environment variable.</dd>
+  <dt class="It-tag"><a class="selflink" href="#HostKeyAlgorithms"><b class="Cm" title="Cm" id="HostKeyAlgorithms">HostKeyAlgorithms</b></a></dt>
+  <dd class="It-tag">Specifies the host key algorithms that the server offers.
+      The default for this option is:
+    <div class="Pp"></div>
+    <div class="Bd" style="margin-left: 3.00ex;">
+    <pre class="Li">
+ecdsa-sha2-nistp256-cert-v01@openssh.com, 
+ecdsa-sha2-nistp384-cert-v01@openssh.com, 
+ecdsa-sha2-nistp521-cert-v01@openssh.com, 
+ssh-ed25519-cert-v01@openssh.com, 
+ssh-rsa-cert-v01@openssh.com, 
+ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521, 
+ssh-ed25519,ssh-rsa
+    </pre>
+    </div>
+    <div class="Pp"></div>
+    The list of available key types may also be obtained using &#x201C;ssh -Q
+      key&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#IgnoreRhosts"><b class="Cm" title="Cm" id="IgnoreRhosts">IgnoreRhosts</b></a></dt>
+  <dd class="It-tag">Specifies that <i class="Pa" title="Pa">.rhosts</i> and
+      <i class="Pa" title="Pa">.shosts</i> files will not be used in
+      <b class="Cm" title="Cm">HostbasedAuthentication</b>.
+    <div class="Pp"></div>
+    <i class="Pa" title="Pa">/etc/hosts.equiv</i> and
+      <i class="Pa" title="Pa">/etc/shosts.equiv</i> are still used. The default
+      is <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#IgnoreUserKnownHosts"><b class="Cm" title="Cm" id="IgnoreUserKnownHosts">IgnoreUserKnownHosts</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> should ignore the
+      user's <i class="Pa" title="Pa">~/.ssh/known_hosts</i> during
+      <b class="Cm" title="Cm">HostbasedAuthentication</b>. The default is
+      <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#IPQoS"><b class="Cm" title="Cm" id="IPQoS">IPQoS</b></a></dt>
+  <dd class="It-tag">Specifies the IPv4 type-of-service or DSCP class for the
+      connection. Accepted values are <b class="Cm" title="Cm">af11</b>,
+      <b class="Cm" title="Cm">af12</b>, <b class="Cm" title="Cm">af13</b>,
+      <b class="Cm" title="Cm">af21</b>, <b class="Cm" title="Cm">af22</b>,
+      <b class="Cm" title="Cm">af23</b>, <b class="Cm" title="Cm">af31</b>,
+      <b class="Cm" title="Cm">af32</b>, <b class="Cm" title="Cm">af33</b>,
+      <b class="Cm" title="Cm">af41</b>, <b class="Cm" title="Cm">af42</b>,
+      <b class="Cm" title="Cm">af43</b>, <b class="Cm" title="Cm">cs0</b>,
+      <b class="Cm" title="Cm">cs1</b>, <b class="Cm" title="Cm">cs2</b>,
+      <b class="Cm" title="Cm">cs3</b>, <b class="Cm" title="Cm">cs4</b>,
+      <b class="Cm" title="Cm">cs5</b>, <b class="Cm" title="Cm">cs6</b>,
+      <b class="Cm" title="Cm">cs7</b>, <b class="Cm" title="Cm">ef</b>,
+      <b class="Cm" title="Cm">lowdelay</b>,
+      <b class="Cm" title="Cm">throughput</b>,
+      <b class="Cm" title="Cm">reliability</b>, a numeric value, or
+      <b class="Cm" title="Cm">none</b> to use the operating system default.
+      This option may take one or two arguments, separated by whitespace. If one
+      argument is specified, it is used as the packet class unconditionally. If
+      two values are specified, the first is automatically selected for
+      interactive sessions and the second for non-interactive sessions. The
+      default is <b class="Cm" title="Cm">lowdelay</b> for interactive sessions
+      and <b class="Cm" title="Cm">throughput</b> for non-interactive
+    sessions.</dd>
+  <dt class="It-tag"><a class="selflink" href="#KbdInteractiveAuthentication"><b class="Cm" title="Cm" id="KbdInteractiveAuthentication">KbdInteractiveAuthentication</b></a></dt>
+  <dd class="It-tag">Specifies whether to allow keyboard-interactive
+      authentication. The argument to this keyword must be
+      <b class="Cm" title="Cm">yes</b> or <b class="Cm" title="Cm">no</b>. The
+      default is to use whatever value
+      <b class="Cm" title="Cm">ChallengeResponseAuthentication</b> is set to (by
+      default <b class="Cm" title="Cm">yes</b>).</dd>
+  <dt class="It-tag"><a class="selflink" href="#KerberosAuthentication"><b class="Cm" title="Cm" id="KerberosAuthentication">KerberosAuthentication</b></a></dt>
+  <dd class="It-tag">Specifies whether the password provided by the user for
+      <b class="Cm" title="Cm">PasswordAuthentication</b> will be validated
+      through the Kerberos KDC. To use this option, the server needs a Kerberos
+      servtab which allows the verification of the KDC's identity. The default
+      is <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#KerberosGetAFSToken"><b class="Cm" title="Cm" id="KerberosGetAFSToken">KerberosGetAFSToken</b></a></dt>
+  <dd class="It-tag">If AFS is active and the user has a Kerberos 5 TGT, attempt
+      to acquire an AFS token before accessing the user's home directory. The
+      default is <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#KerberosOrLocalPasswd"><b class="Cm" title="Cm" id="KerberosOrLocalPasswd">KerberosOrLocalPasswd</b></a></dt>
+  <dd class="It-tag">If password authentication through Kerberos fails then the
+      password will be validated via any additional local mechanism such as
+      <i class="Pa" title="Pa">/etc/passwd</i>. The default is
+      <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#KerberosTicketCleanup"><b class="Cm" title="Cm" id="KerberosTicketCleanup">KerberosTicketCleanup</b></a></dt>
+  <dd class="It-tag">Specifies whether to automatically destroy the user's
+      ticket cache file on logout. The default is
+      <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#KexAlgorithms"><b class="Cm" title="Cm" id="KexAlgorithms">KexAlgorithms</b></a></dt>
+  <dd class="It-tag">Specifies the available KEX (Key Exchange) algorithms.
+      Multiple algorithms must be comma-separated. Alternately if the specified
+      value begins with a &#x2018;+&#x2019; character, then the specified
+      methods will be appended to the default set instead of replacing them. If
+      the specified value begins with a &#x2018;-&#x2019; character, then the
+      specified methods (including wildcards) will be removed from the default
+      set instead of replacing them. The supported algorithms are:
+    <div class="Pp"></div>
+    <ul class="Bl-item Bl-compact" style="margin-left: 6.00ex;">
+      <li class="It-item">curve25519-sha256</li>
+      <li class="It-item">curve25519-sha256@libssh.org</li>
+      <li class="It-item">diffie-hellman-group1-sha1</li>
+      <li class="It-item">diffie-hellman-group14-sha1</li>
+      <li class="It-item">diffie-hellman-group-exchange-sha1</li>
+      <li class="It-item">diffie-hellman-group-exchange-sha256</li>
+      <li class="It-item">ecdh-sha2-nistp256</li>
+      <li class="It-item">ecdh-sha2-nistp384</li>
+      <li class="It-item">ecdh-sha2-nistp521</li>
+    </ul>
+    <div class="Pp"></div>
+    The default is:
+    <div class="Pp"></div>
+    <div class="Bd" style="margin-left: 5.00ex;">
+    <pre class="Li">
+curve25519-sha256,curve25519-sha256@libssh.org, 
+ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521, 
+diffie-hellman-group-exchange-sha256, 
+diffie-hellman-group14-sha1
+    </pre>
+    </div>
+    <div class="Pp"></div>
+    The list of available key exchange algorithms may also be obtained using
+      &#x201C;ssh -Q kex&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#ListenAddress"><b class="Cm" title="Cm" id="ListenAddress">ListenAddress</b></a></dt>
+  <dd class="It-tag">Specifies the local addresses
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> should listen on.
+      The following forms may be used:
+    <div class="Pp"></div>
+    <ul class="Bl-item Bl-compact" style="margin-left: 6.00ex;">
+      <li class="It-item"><a class="selflink" href="#ListenAddress"><b class="Cm" title="Cm" id="ListenAddress">ListenAddress</b></a>
+          <var class="Ar" title="Ar">host</var>|<var class="Ar" title="Ar">IPv4_addr</var>|<var class="Ar" title="Ar">IPv6_addr</var></li>
+      <li class="It-item"><a class="selflink" href="#ListenAddress"><b class="Cm" title="Cm" id="ListenAddress">ListenAddress</b></a>
+          <var class="Ar" title="Ar">host</var>|<var class="Ar" title="Ar">IPv4_addr</var>:<var class="Ar" title="Ar">port</var></li>
+      <li class="It-item"><a class="selflink" href="#ListenAddress"><b class="Cm" title="Cm" id="ListenAddress">ListenAddress</b></a>
+          [<span class="Op"><var class="Ar" title="Ar">host</var>|<var class="Ar" title="Ar">IPv6_addr</var></span>]:<var class="Ar" title="Ar">port</var></li>
+    </ul>
+    <div class="Pp"></div>
+    If <var class="Ar" title="Ar">port</var> is not specified, sshd will listen
+      on the address and all <b class="Cm" title="Cm">Port</b> options
+      specified. The default is to listen on all local addresses. Multiple
+      <b class="Cm" title="Cm">ListenAddress</b> options are permitted.</dd>
+  <dt class="It-tag"><a class="selflink" href="#LoginGraceTime"><b class="Cm" title="Cm" id="LoginGraceTime">LoginGraceTime</b></a></dt>
+  <dd class="It-tag">The server disconnects after this time if the user has not
+      successfully logged in. If the value is 0, there is no time limit. The
+      default is 120 seconds.</dd>
+  <dt class="It-tag"><a class="selflink" href="#LogLevel"><b class="Cm" title="Cm" id="LogLevel">LogLevel</b></a></dt>
+  <dd class="It-tag">Gives the verbosity level that is used when logging
+      messages from <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. The
+      possible values are: QUIET, FATAL, ERROR, INFO, VERBOSE, DEBUG, DEBUG1,
+      DEBUG2, and DEBUG3. The default is INFO. DEBUG and DEBUG1 are equivalent.
+      DEBUG2 and DEBUG3 each specify higher levels of debugging output. Logging
+      with a DEBUG level violates the privacy of users and is not
+    recommended.</dd>
+  <dt class="It-tag"><a class="selflink" href="#MACs"><b class="Cm" title="Cm" id="MACs">MACs</b></a></dt>
+  <dd class="It-tag">Specifies the available MAC (message authentication code)
+      algorithms. The MAC algorithm is used for data integrity protection.
+      Multiple algorithms must be comma-separated. If the specified value begins
+      with a &#x2018;+&#x2019; character, then the specified algorithms will be
+      appended to the default set instead of replacing them. If the specified
+      value begins with a &#x2018;-&#x2019; character, then the specified
+      algorithms (including wildcards) will be removed from the default set
+      instead of replacing them.
+    <div class="Pp"></div>
+    The algorithms that contain &#x201C;-etm&#x201D; calculate the MAC after
+      encryption (encrypt-then-mac). These are considered safer and their use
+      recommended. The supported MACs are:
+    <div class="Pp"></div>
+    <ul class="Bl-item Bl-compact" style="margin-left: 6.00ex;">
+      <li class="It-item">hmac-md5</li>
+      <li class="It-item">hmac-md5-96</li>
+      <li class="It-item">hmac-sha1</li>
+      <li class="It-item">hmac-sha1-96</li>
+      <li class="It-item">hmac-sha2-256</li>
+      <li class="It-item">hmac-sha2-512</li>
+      <li class="It-item">umac-64@openssh.com</li>
+      <li class="It-item">umac-128@openssh.com</li>
+      <li class="It-item">hmac-md5-etm@openssh.com</li>
+      <li class="It-item">hmac-md5-96-etm@openssh.com</li>
+      <li class="It-item">hmac-sha1-etm@openssh.com</li>
+      <li class="It-item">hmac-sha1-96-etm@openssh.com</li>
+      <li class="It-item">hmac-sha2-256-etm@openssh.com</li>
+      <li class="It-item">hmac-sha2-512-etm@openssh.com</li>
+      <li class="It-item">umac-64-etm@openssh.com</li>
+      <li class="It-item">umac-128-etm@openssh.com</li>
+    </ul>
+    <div class="Pp"></div>
+    The default is:
+    <div class="Pp"></div>
+    <div class="Bd" style="margin-left: 5.00ex;">
+    <pre class="Li">
+umac-64-etm@openssh.com,umac-128-etm@openssh.com, 
+hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com, 
+hmac-sha1-etm@openssh.com, 
+umac-64@openssh.com,umac-128@openssh.com, 
+hmac-sha2-256,hmac-sha2-512,hmac-sha1
+    </pre>
+    </div>
+    <div class="Pp"></div>
+    The list of available MAC algorithms may also be obtained using &#x201C;ssh
+      -Q mac&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#Match"><b class="Cm" title="Cm" id="Match">Match</b></a></dt>
+  <dd class="It-tag">Introduces a conditional block. If all of the criteria on
+      the <b class="Cm" title="Cm">Match</b> line are satisfied, the keywords on
+      the following lines override those set in the global section of the config
+      file, until either another <b class="Cm" title="Cm">Match</b> line or the
+      end of the file. If a keyword appears in multiple
+      <b class="Cm" title="Cm">Match</b> blocks that are satisfied, only the
+      first instance of the keyword is applied.
+    <div class="Pp"></div>
+    The arguments to <b class="Cm" title="Cm">Match</b> are one or more
+      criteria-pattern pairs or the single token
+      <b class="Cm" title="Cm">All</b> which matches all criteria. The available
+      criteria are <b class="Cm" title="Cm">User</b>,
+      <b class="Cm" title="Cm">Group</b>, <b class="Cm" title="Cm">Host</b>,
+      <b class="Cm" title="Cm">LocalAddress</b>,
+      <b class="Cm" title="Cm">LocalPort</b>, and
+      <b class="Cm" title="Cm">Address</b>. The match patterns may consist of
+      single entries or comma-separated lists and may use the wildcard and
+      negation operators described in the
+      <a class="Sx" title="Sx" href="#PATTERNS">PATTERNS</a> section of
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a>.
+    <div class="Pp"></div>
+    The patterns in an <b class="Cm" title="Cm">Address</b> criteria may
+      additionally contain addresses to match in CIDR address/masklen format,
+      such as 192.0.2.0/24 or 2001:db8::/32. Note that the mask length provided
+      must be consistent with the address - it is an error to specify a mask
+      length that is too long for the address or one with bits set in this host
+      portion of the address. For example, 192.0.2.0/33 and 192.0.2.0/8,
+      respectively.
+    <div class="Pp"></div>
+    Only a subset of keywords may be used on the lines following a
+      <b class="Cm" title="Cm">Match</b> keyword. Available keywords are
+      <b class="Cm" title="Cm">AcceptEnv</b>,
+      <b class="Cm" title="Cm">AllowAgentForwarding</b>,
+      <b class="Cm" title="Cm">AllowGroups</b>,
+      <b class="Cm" title="Cm">AllowStreamLocalForwarding</b>,
+      <b class="Cm" title="Cm">AllowTcpForwarding</b>,
+      <b class="Cm" title="Cm">AllowUsers</b>,
+      <b class="Cm" title="Cm">AuthenticationMethods</b>,
+      <b class="Cm" title="Cm">AuthorizedKeysCommand</b>,
+      <b class="Cm" title="Cm">AuthorizedKeysCommandUser</b>,
+      <b class="Cm" title="Cm">AuthorizedKeysFile</b>,
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommand</b>,
+      <b class="Cm" title="Cm">AuthorizedPrincipalsCommandUser</b>,
+      <b class="Cm" title="Cm">AuthorizedPrincipalsFile</b>,
+      <b class="Cm" title="Cm">Banner</b>,
+      <b class="Cm" title="Cm">ChrootDirectory</b>,
+      <b class="Cm" title="Cm">ClientAliveCountMax</b>,
+      <b class="Cm" title="Cm">ClientAliveInterval</b>,
+      <b class="Cm" title="Cm">DenyGroups</b>,
+      <b class="Cm" title="Cm">DenyUsers</b>,
+      <b class="Cm" title="Cm">ForceCommand</b>,
+      <b class="Cm" title="Cm">GatewayPorts</b>,
+      <b class="Cm" title="Cm">GSSAPIAuthentication</b>,
+      <b class="Cm" title="Cm">HostbasedAcceptedKeyTypes</b>,
+      <b class="Cm" title="Cm">HostbasedAuthentication</b>,
+      <b class="Cm" title="Cm">HostbasedUsesNameFromPacketOnly</b>,
+      <b class="Cm" title="Cm">IPQoS</b>,
+      <b class="Cm" title="Cm">KbdInteractiveAuthentication</b>,
+      <b class="Cm" title="Cm">KerberosAuthentication</b>,
+      <b class="Cm" title="Cm">LogLevel</b>,
+      <b class="Cm" title="Cm">MaxAuthTries</b>,
+      <b class="Cm" title="Cm">MaxSessions</b>,
+      <b class="Cm" title="Cm">PasswordAuthentication</b>,
+      <b class="Cm" title="Cm">PermitEmptyPasswords</b>,
+      <b class="Cm" title="Cm">PermitOpen</b>,
+      <b class="Cm" title="Cm">PermitRootLogin</b>,
+      <b class="Cm" title="Cm">PermitTTY</b>,
+      <b class="Cm" title="Cm">PermitTunnel</b>,
+      <b class="Cm" title="Cm">PermitUserRC</b>,
+      <b class="Cm" title="Cm">PubkeyAcceptedKeyTypes</b>,
+      <b class="Cm" title="Cm">PubkeyAuthentication</b>,
+      <b class="Cm" title="Cm">RekeyLimit</b>,
+      <b class="Cm" title="Cm">RevokedKeys</b>,
+      <b class="Cm" title="Cm">StreamLocalBindMask</b>,
+      <b class="Cm" title="Cm">StreamLocalBindUnlink</b>,
+      <b class="Cm" title="Cm">TrustedUserCAKeys</b>,
+      <b class="Cm" title="Cm">X11DisplayOffset</b>,
+      <b class="Cm" title="Cm">X11Forwarding</b> and
+      <b class="Cm" title="Cm">X11UseLocalHost</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#MaxAuthTries"><b class="Cm" title="Cm" id="MaxAuthTries">MaxAuthTries</b></a></dt>
+  <dd class="It-tag">Specifies the maximum number of authentication attempts
+      permitted per connection. Once the number of failures reaches half this
+      value, additional failures are logged. The default is 6.</dd>
+  <dt class="It-tag"><a class="selflink" href="#MaxSessions"><b class="Cm" title="Cm" id="MaxSessions">MaxSessions</b></a></dt>
+  <dd class="It-tag">Specifies the maximum number of open shell, login or
+      subsystem (e.g. sftp) sessions permitted per network connection. Multiple
+      sessions may be established by clients that support connection
+      multiplexing. Setting <b class="Cm" title="Cm">MaxSessions</b> to 1 will
+      effectively disable session multiplexing, whereas setting it to 0 will
+      prevent all shell, login and subsystem sessions while still permitting
+      forwarding. The default is 10.</dd>
+  <dt class="It-tag"><a class="selflink" href="#MaxStartups"><b class="Cm" title="Cm" id="MaxStartups">MaxStartups</b></a></dt>
+  <dd class="It-tag">Specifies the maximum number of concurrent unauthenticated
+      connections to the SSH daemon. Additional connections will be dropped
+      until authentication succeeds or the
+      <b class="Cm" title="Cm">LoginGraceTime</b> expires for a connection. The
+      default is 10:30:100.
+    <div class="Pp"></div>
+    Alternatively, random early drop can be enabled by specifying the three
+      colon separated values start:rate:full (e.g. &quot;10:30:60&quot;).
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> will refuse
+      connection attempts with a probability of rate/100 (30%) if there are
+      currently start (10) unauthenticated connections. The probability
+      increases linearly and all connection attempts are refused if the number
+      of unauthenticated connections reaches full (60).</dd>
+  <dt class="It-tag"><a class="selflink" href="#PasswordAuthentication"><b class="Cm" title="Cm" id="PasswordAuthentication">PasswordAuthentication</b></a></dt>
+  <dd class="It-tag">Specifies whether password authentication is allowed. The
+      default is <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PermitEmptyPasswords"><b class="Cm" title="Cm" id="PermitEmptyPasswords">PermitEmptyPasswords</b></a></dt>
+  <dd class="It-tag">When password authentication is allowed, it specifies
+      whether the server allows login to accounts with empty password strings.
+      The default is <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PermitOpen"><b class="Cm" title="Cm" id="PermitOpen">PermitOpen</b></a></dt>
+  <dd class="It-tag">Specifies the destinations to which TCP port forwarding is
+      permitted. The forwarding specification must be one of the following
+      forms:
+    <div class="Pp"></div>
+    <ul class="Bl-item Bl-compact" style="margin-left: 6.00ex;">
+      <li class="It-item"><a class="selflink" href="#PermitOpen"><b class="Cm" title="Cm" id="PermitOpen">PermitOpen</b></a>
+          <var class="Ar" title="Ar">host</var>:<var class="Ar" title="Ar">port</var></li>
+      <li class="It-item"><a class="selflink" href="#PermitOpen"><b class="Cm" title="Cm" id="PermitOpen">PermitOpen</b></a>
+          <var class="Ar" title="Ar">IPv4_addr</var>:<var class="Ar" title="Ar">port</var></li>
+      <li class="It-item"><a class="selflink" href="#PermitOpen"><b class="Cm" title="Cm" id="PermitOpen">PermitOpen</b></a>
+          <var class="Ar" title="Ar">[IPv6_addr]</var>:<var class="Ar" title="Ar">port</var></li>
+    </ul>
+    <div class="Pp"></div>
+    Multiple forwards may be specified by separating them with whitespace. An
+      argument of <b class="Cm" title="Cm">any</b> can be used to remove all
+      restrictions and permit any forwarding requests. An argument of
+      <b class="Cm" title="Cm">none</b> can be used to prohibit all forwarding
+      requests. The wildcard &#x2018;*&#x2019; can be used for host or port to
+      allow all hosts or ports, respectively. By default all port forwarding
+      requests are permitted.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PermitRootLogin"><b class="Cm" title="Cm" id="PermitRootLogin">PermitRootLogin</b></a></dt>
+  <dd class="It-tag">Specifies whether root can log in using
+      <a class="Xr" title="Xr" href="ssh.1.html">ssh(1)</a>. The argument must
+      be <b class="Cm" title="Cm">yes</b>,
+      <b class="Cm" title="Cm">prohibit-password</b>,
+      <b class="Cm" title="Cm">without-password</b>,
+      <b class="Cm" title="Cm">forced-commands-only</b>, or
+      <b class="Cm" title="Cm">no</b>. The default is
+      <b class="Cm" title="Cm">prohibit-password</b>.
+    <div class="Pp"></div>
+    If this option is set to <b class="Cm" title="Cm">prohibit-password</b> or
+      <b class="Cm" title="Cm">without-password</b>, password and
+      keyboard-interactive authentication are disabled for root.
+    <div class="Pp"></div>
+    If this option is set to <b class="Cm" title="Cm">forced-commands-only</b>,
+      root login with public key authentication will be allowed, but only if the
+      <var class="Ar" title="Ar">command</var> option has been specified (which
+      may be useful for taking remote backups even if root login is normally not
+      allowed). All other authentication methods are disabled for root.
+    <div class="Pp"></div>
+    If this option is set to <b class="Cm" title="Cm">no</b>, root is not
+      allowed to log in.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PermitTTY"><b class="Cm" title="Cm" id="PermitTTY">PermitTTY</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="pty.4.html">pty(4)</a> allocation is
+      permitted. The default is <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PermitTunnel"><b class="Cm" title="Cm" id="PermitTunnel">PermitTunnel</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="tun.4.html">tun(4)</a> device forwarding is
+      allowed. The argument must be <b class="Cm" title="Cm">yes</b>,
+      <b class="Cm" title="Cm">point-to-point</b> (layer 3),
+      <b class="Cm" title="Cm">ethernet</b> (layer 2), or
+      <b class="Cm" title="Cm">no</b>. Specifying
+      <b class="Cm" title="Cm">yes</b> permits both
+      <b class="Cm" title="Cm">point-to-point</b> and
+      <b class="Cm" title="Cm">ethernet</b>. The default is
+      <b class="Cm" title="Cm">no</b>.
+    <div class="Pp"></div>
+    Independent of this setting, the permissions of the selected
+      <a class="Xr" title="Xr" href="tun.4.html">tun(4)</a> device must allow
+      access to the user.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PermitUserEnvironment"><b class="Cm" title="Cm" id="PermitUserEnvironment">PermitUserEnvironment</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <i class="Pa" title="Pa">~/.ssh/environment</i> and
+      <b class="Cm" title="Cm">environment=</b> options in
+      <i class="Pa" title="Pa">~/.ssh/authorized_keys</i> are processed by
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. The default is
+      <b class="Cm" title="Cm">no</b>. Enabling environment processing may
+      enable users to bypass access restrictions in some configurations using
+      mechanisms such as <code class="Ev" title="Ev">LD_PRELOAD</code>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PermitUserRC"><b class="Cm" title="Cm" id="PermitUserRC">PermitUserRC</b></a></dt>
+  <dd class="It-tag">Specifies whether any
+      <i class="Pa" title="Pa">~/.ssh/rc</i> file is executed. The default is
+      <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PidFile"><b class="Cm" title="Cm" id="PidFile">PidFile</b></a></dt>
+  <dd class="It-tag">Specifies the file that contains the process ID of the SSH
+      daemon, or <b class="Cm" title="Cm">none</b> to not write one. The default
+      is <i class="Pa" title="Pa">/var/run/sshd.pid</i>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#Port"><b class="Cm" title="Cm" id="Port">Port</b></a></dt>
+  <dd class="It-tag">Specifies the port number that
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> listens on. The
+      default is 22. Multiple options of this type are permitted. See also
+      <b class="Cm" title="Cm">ListenAddress</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PrintLastLog"><b class="Cm" title="Cm" id="PrintLastLog">PrintLastLog</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> should print the
+      date and time of the last user login when a user logs in interactively.
+      The default is <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PrintMotd"><b class="Cm" title="Cm" id="PrintMotd">PrintMotd</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> should print
+      <i class="Pa" title="Pa">/etc/motd</i> when a user logs in interactively.
+      (On some systems it is also printed by the shell,
+      <i class="Pa" title="Pa">/etc/profile</i>, or equivalent.) The default is
+      <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PubkeyAcceptedKeyTypes"><b class="Cm" title="Cm" id="PubkeyAcceptedKeyTypes">PubkeyAcceptedKeyTypes</b></a></dt>
+  <dd class="It-tag">Specifies the key types that will be accepted for public
+      key authentication as a comma-separated pattern list. Alternately if the
+      specified value begins with a &#x2018;+&#x2019; character, then the
+      specified key types will be appended to the default set instead of
+      replacing them. If the specified value begins with a &#x2018;-&#x2019;
+      character, then the specified key types (including wildcards) will be
+      removed from the default set instead of replacing them. The default for
+      this option is:
+    <div class="Pp"></div>
+    <div class="Bd" style="margin-left: 3.00ex;">
+    <pre class="Li">
+ecdsa-sha2-nistp256-cert-v01@openssh.com, 
+ecdsa-sha2-nistp384-cert-v01@openssh.com, 
+ecdsa-sha2-nistp521-cert-v01@openssh.com, 
+ssh-ed25519-cert-v01@openssh.com, 
+ssh-rsa-cert-v01@openssh.com, 
+ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521, 
+ssh-ed25519,ssh-rsa
+    </pre>
+    </div>
+    <div class="Pp"></div>
+    The list of available key types may also be obtained using &#x201C;ssh -Q
+      key&#x201D;.</dd>
+  <dt class="It-tag"><a class="selflink" href="#PubkeyAuthentication"><b class="Cm" title="Cm" id="PubkeyAuthentication">PubkeyAuthentication</b></a></dt>
+  <dd class="It-tag">Specifies whether public key authentication is allowed. The
+      default is <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#RekeyLimit"><b class="Cm" title="Cm" id="RekeyLimit">RekeyLimit</b></a></dt>
+  <dd class="It-tag">Specifies the maximum amount of data that may be
+      transmitted before the session key is renegotiated, optionally followed a
+      maximum amount of time that may pass before the session key is
+      renegotiated. The first argument is specified in bytes and may have a
+      suffix of &#x2018;K&#x2019;, &#x2018;M&#x2019;, or &#x2018;G&#x2019; to
+      indicate Kilobytes, Megabytes, or Gigabytes, respectively. The default is
+      between &#x2018;1G&#x2019; and &#x2018;4G&#x2019;, depending on the
+      cipher. The optional second value is specified in seconds and may use any
+      of the units documented in the
+      <a class="Sx" title="Sx" href="#TIME_FORMATS">TIME FORMATS</a> section.
+      The default value for <b class="Cm" title="Cm">RekeyLimit</b> is
+      <b class="Cm" title="Cm">default none</b>, which means that rekeying is
+      performed after the cipher's default amount of data has been sent or
+      received and no time based rekeying is done.</dd>
+  <dt class="It-tag"><a class="selflink" href="#RevokedKeys"><b class="Cm" title="Cm" id="RevokedKeys">RevokedKeys</b></a></dt>
+  <dd class="It-tag">Specifies revoked public keys file, or
+      <b class="Cm" title="Cm">none</b> to not use one. Keys listed in this file
+      will be refused for public key authentication. Note that if this file is
+      not readable, then public key authentication will be refused for all
+      users. Keys may be specified as a text file, listing one public key per
+      line, or as an OpenSSH Key Revocation List (KRL) as generated by
+      <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>. For
+      more information on KRLs, see the KEY REVOCATION LISTS section in
+      <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#StreamLocalBindMask"><b class="Cm" title="Cm" id="StreamLocalBindMask">StreamLocalBindMask</b></a></dt>
+  <dd class="It-tag">Sets the octal file creation mode mask (umask) used when
+      creating a Unix-domain socket file for local or remote port forwarding.
+      This option is only used for port forwarding to a Unix-domain socket file.
+    <div class="Pp"></div>
+    The default value is 0177, which creates a Unix-domain socket file that is
+      readable and writable only by the owner. Note that not all operating
+      systems honor the file mode on Unix-domain socket files.</dd>
+  <dt class="It-tag"><a class="selflink" href="#StreamLocalBindUnlink"><b class="Cm" title="Cm" id="StreamLocalBindUnlink">StreamLocalBindUnlink</b></a></dt>
+  <dd class="It-tag">Specifies whether to remove an existing Unix-domain socket
+      file for local or remote port forwarding before creating a new one. If the
+      socket file already exists and
+      <b class="Cm" title="Cm">StreamLocalBindUnlink</b> is not enabled,
+      <b class="Nm" title="Nm">sshd</b> will be unable to forward the port to
+      the Unix-domain socket file. This option is only used for port forwarding
+      to a Unix-domain socket file.
+    <div class="Pp"></div>
+    The argument must be <b class="Cm" title="Cm">yes</b> or
+      <b class="Cm" title="Cm">no</b>. The default is
+      <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#StrictModes"><b class="Cm" title="Cm" id="StrictModes">StrictModes</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> should check file
+      modes and ownership of the user's files and home directory before
+      accepting login. This is normally desirable because novices sometimes
+      accidentally leave their directory or files world-writable. The default is
+      <b class="Cm" title="Cm">yes</b>. Note that this does not apply to
+      <b class="Cm" title="Cm">ChrootDirectory</b>, whose permissions and
+      ownership are checked unconditionally.</dd>
+  <dt class="It-tag"><a class="selflink" href="#Subsystem"><b class="Cm" title="Cm" id="Subsystem">Subsystem</b></a></dt>
+  <dd class="It-tag">Configures an external subsystem (e.g. file transfer
+      daemon). Arguments should be a subsystem name and a command (with optional
+      arguments) to execute upon subsystem request.
+    <div class="Pp"></div>
+    The command <b class="Cm" title="Cm">sftp-server</b> implements the SFTP
+      file transfer subsystem.
+    <div class="Pp"></div>
+    Alternately the name <b class="Cm" title="Cm">internal-sftp</b> implements
+      an in-process SFTP server. This may simplify configurations using
+      <b class="Cm" title="Cm">ChrootDirectory</b> to force a different
+      filesystem root on clients.
+    <div class="Pp"></div>
+    By default no subsystems are defined.</dd>
+  <dt class="It-tag"><a class="selflink" href="#SyslogFacility"><b class="Cm" title="Cm" id="SyslogFacility">SyslogFacility</b></a></dt>
+  <dd class="It-tag">Gives the facility code that is used when logging messages
+      from <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. The possible
+      values are: DAEMON, USER, AUTH, LOCAL0, LOCAL1, LOCAL2, LOCAL3, LOCAL4,
+      LOCAL5, LOCAL6, LOCAL7. The default is AUTH.</dd>
+  <dt class="It-tag"><a class="selflink" href="#TCPKeepAlive"><b class="Cm" title="Cm" id="TCPKeepAlive">TCPKeepAlive</b></a></dt>
+  <dd class="It-tag">Specifies whether the system should send TCP keepalive
+      messages to the other side. If they are sent, death of the connection or
+      crash of one of the machines will be properly noticed. However, this means
+      that connections will die if the route is down temporarily, and some
+      people find it annoying. On the other hand, if TCP keepalives are not
+      sent, sessions may hang indefinitely on the server, leaving
+      &#x201C;ghost&#x201D; users and consuming server resources.
+    <div class="Pp"></div>
+    The default is <b class="Cm" title="Cm">yes</b> (to send TCP keepalive
+      messages), and the server will notice if the network goes down or the
+      client host crashes. This avoids infinitely hanging sessions.
+    <div class="Pp"></div>
+    To disable TCP keepalive messages, the value should be set to
+      <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#TrustedUserCAKeys"><b class="Cm" title="Cm" id="TrustedUserCAKeys">TrustedUserCAKeys</b></a></dt>
+  <dd class="It-tag">Specifies a file containing public keys of certificate
+      authorities that are trusted to sign user certificates for authentication,
+      or <b class="Cm" title="Cm">none</b> to not use one. Keys are listed one
+      per line; empty lines and comments starting with
+      &#x2018;<code class="Li">#</code>&#x2019; are allowed. If a certificate is
+      presented for authentication and has its signing CA key listed in this
+      file, then it may be used for authentication for any user listed in the
+      certificate's principals list. Note that certificates that lack a list of
+      principals will not be permitted for authentication using
+      <b class="Cm" title="Cm">TrustedUserCAKeys</b>. For more details on
+      certificates, see the CERTIFICATES section in
+      <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#UseDNS"><b class="Cm" title="Cm" id="UseDNS">UseDNS</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> should look up the
+      remote host name, and to check that the resolved host name for the remote
+      IP address maps back to the very same IP address.
+    <div class="Pp"></div>
+    If this option is set to <b class="Cm" title="Cm">no</b> (the default) then
+      only addresses and not host names may be used in
+      <i class="Pa" title="Pa">~/.ssh/authorized_keys</i>
+      <b class="Cm" title="Cm">from</b> and
+      <b class="Nm" title="Nm">sshd_config</b>
+      <b class="Cm" title="Cm">Match</b> <b class="Cm" title="Cm">Host</b>
+      directives.</dd>
+  <dt class="It-tag"><a class="selflink" href="#UsePAM"><b class="Cm" title="Cm" id="UsePAM">UsePAM</b></a></dt>
+  <dd class="It-tag">Enables the Pluggable Authentication Module interface. If
+      set to <b class="Cm" title="Cm">yes</b> this will enable PAM
+      authentication using
+      <b class="Cm" title="Cm">ChallengeResponseAuthentication</b> and
+      <b class="Cm" title="Cm">PasswordAuthentication</b> in addition to PAM
+      account and session module processing for all authentication types.
+    <div class="Pp"></div>
+    Because PAM challenge-response authentication usually serves an equivalent
+      role to password authentication, you should disable either
+      <b class="Cm" title="Cm">PasswordAuthentication</b> or
+      <b class="Cm" title="Cm">ChallengeResponseAuthentication.</b>
+    <div class="Pp"></div>
+    If <b class="Cm" title="Cm">UsePAM</b> is enabled, you will not be able to
+      run <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> as a non-root
+      user. The default is <b class="Cm" title="Cm">no</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#VersionAddendum"><b class="Cm" title="Cm" id="VersionAddendum">VersionAddendum</b></a></dt>
+  <dd class="It-tag">Optionally specifies additional text to append to the SSH
+      protocol banner sent by the server upon connection. The default is
+      <b class="Cm" title="Cm">none</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#X11DisplayOffset"><b class="Cm" title="Cm" id="X11DisplayOffset">X11DisplayOffset</b></a></dt>
+  <dd class="It-tag">Specifies the first display number available for
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>'s X11 forwarding.
+      This prevents sshd from interfering with real X11 servers. The default is
+      10.</dd>
+  <dt class="It-tag"><a class="selflink" href="#X11Forwarding"><b class="Cm" title="Cm" id="X11Forwarding">X11Forwarding</b></a></dt>
+  <dd class="It-tag">Specifies whether X11 forwarding is permitted. The argument
+      must be <b class="Cm" title="Cm">yes</b> or
+      <b class="Cm" title="Cm">no</b>. The default is
+      <b class="Cm" title="Cm">no</b>.
+    <div class="Pp"></div>
+    When X11 forwarding is enabled, there may be additional exposure to the
+      server and to client displays if the
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> proxy display is
+      configured to listen on the wildcard address (see
+      <b class="Cm" title="Cm">X11UseLocalhost</b>), though this is not the
+      default. Additionally, the authentication spoofing and authentication data
+      verification and substitution occur on the client side. The security risk
+      of using X11 forwarding is that the client's X11 display server may be
+      exposed to attack when the SSH client requests forwarding (see the
+      warnings for <b class="Cm" title="Cm">ForwardX11</b> in
+      <a class="Xr" title="Xr" href="ssh_config.5.html">ssh_config(5)</a>). A
+      system administrator may have a stance in which they want to protect
+      clients that may expose themselves to attack by unwittingly requesting X11
+      forwarding, which can warrant a <b class="Cm" title="Cm">no</b> setting.
+    <div class="Pp"></div>
+    Note that disabling X11 forwarding does not prevent users from forwarding
+      X11 traffic, as users can always install their own forwarders.</dd>
+  <dt class="It-tag"><a class="selflink" href="#X11UseLocalhost"><b class="Cm" title="Cm" id="X11UseLocalhost">X11UseLocalhost</b></a></dt>
+  <dd class="It-tag">Specifies whether
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> should bind the
+      X11 forwarding server to the loopback address or to the wildcard address.
+      By default, sshd binds the forwarding server to the loopback address and
+      sets the hostname part of the <code class="Ev" title="Ev">DISPLAY</code>
+      environment variable to <b class="Cm" title="Cm">localhost</b>. This
+      prevents remote hosts from connecting to the proxy display. However, some
+      older X11 clients may not function with this configuration.
+      <b class="Cm" title="Cm">X11UseLocalhost</b> may be set to
+      <b class="Cm" title="Cm">no</b> to specify that the forwarding server
+      should be bound to the wildcard address. The argument must be
+      <b class="Cm" title="Cm">yes</b> or <b class="Cm" title="Cm">no</b>. The
+      default is <b class="Cm" title="Cm">yes</b>.</dd>
+  <dt class="It-tag"><a class="selflink" href="#XAuthLocation"><b class="Cm" title="Cm" id="XAuthLocation">XAuthLocation</b></a></dt>
+  <dd class="It-tag">Specifies the full pathname of the
+      <a class="Xr" title="Xr" href="xauth.1.html">xauth(1)</a> program, or
+      <b class="Cm" title="Cm">none</b> to not use one. The default is
+      <i class="Pa" title="Pa">/usr/X11R6/bin/xauth</i>.</dd>
+</dl>
+<h1 class="Sh" title="Sh" id="TIME_FORMATS"><a class="selflink" href="#TIME_FORMATS">TIME
+  FORMATS</a></h1>
+<a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> command-line arguments
+  and configuration file options that specify time may be expressed using a
+  sequence of the form:
+  <var class="Ar" title="Ar">time</var>[<span class="Op"><var class="Ar" title="Ar">qualifier</var></span>],
+  where <var class="Ar" title="Ar">time</var> is a positive integer value and
+  <var class="Ar" title="Ar">qualifier</var> is one of the following:
+<div class="Pp"></div>
+<div class="Bl-tag" style="margin-left: 6.00ex;">
+<dl class="Bl-tag Bl-compact">
+  <dt class="It-tag">&#x27E8;<b class="Cm" title="Cm">none</b>&#x27E9;</dt>
+  <dd class="It-tag">seconds</dd>
+  <dt class="It-tag"><a class="selflink" href="#s"><b class="Cm" title="Cm" id="s">s</b></a>
+    |
+    <a class="selflink" href="#S"><b class="Cm" title="Cm" id="S">S</b></a></dt>
+  <dd class="It-tag">seconds</dd>
+  <dt class="It-tag"><a class="selflink" href="#m"><b class="Cm" title="Cm" id="m">m</b></a>
+    |
+    <a class="selflink" href="#M"><b class="Cm" title="Cm" id="M">M</b></a></dt>
+  <dd class="It-tag">minutes</dd>
+  <dt class="It-tag"><a class="selflink" href="#h"><b class="Cm" title="Cm" id="h">h</b></a>
+    |
+    <a class="selflink" href="#H"><b class="Cm" title="Cm" id="H">H</b></a></dt>
+  <dd class="It-tag">hours</dd>
+  <dt class="It-tag"><a class="selflink" href="#d"><b class="Cm" title="Cm" id="d">d</b></a>
+    |
+    <a class="selflink" href="#D"><b class="Cm" title="Cm" id="D">D</b></a></dt>
+  <dd class="It-tag">days</dd>
+  <dt class="It-tag"><a class="selflink" href="#w"><b class="Cm" title="Cm" id="w">w</b></a>
+    |
+    <a class="selflink" href="#W"><b class="Cm" title="Cm" id="W">W</b></a></dt>
+  <dd class="It-tag">weeks</dd>
+</dl>
+</div>
+<div class="Pp"></div>
+Each member of the sequence is added together to calculate the total time value.
+<div class="Pp"></div>
+Time format examples:
+<div class="Pp"></div>
+<div class="Bl-tag" style="margin-left: 6.00ex;">
+<dl class="Bl-tag Bl-compact">
+  <dt class="It-tag">600</dt>
+  <dd class="It-tag">600 seconds (10 minutes)</dd>
+  <dt class="It-tag">10m</dt>
+  <dd class="It-tag">10 minutes</dd>
+  <dt class="It-tag">1h30m</dt>
+  <dd class="It-tag">1 hour 30 minutes (90 minutes)</dd>
+</dl>
+</div>
+<h1 class="Sh" title="Sh" id="TOKENS"><a class="selflink" href="#TOKENS">TOKENS</a></h1>
+Arguments to some keywords can make use of tokens, which are expanded at
+  runtime:
+<div class="Pp"></div>
+<div class="Bl-tag" style="margin-left: 6.00ex;">
+<dl class="Bl-tag Bl-compact" style="margin-left: 7.80ex;">
+  <dt class="It-tag" style="margin-left: -7.80ex;">%%</dt>
+  <dd class="It-tag">A literal &#x2018;%&#x2019;.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%F</dt>
+  <dd class="It-tag">The fingerprint of the CA key.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%f</dt>
+  <dd class="It-tag">The fingerprint of the key or certificate.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%h</dt>
+  <dd class="It-tag">The home directory of the user.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%i</dt>
+  <dd class="It-tag">The key ID in the certificate.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%K</dt>
+  <dd class="It-tag">The base64-encoded CA key.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%k</dt>
+  <dd class="It-tag">The base64-encoded key or certificate for
+    authentication.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%s</dt>
+  <dd class="It-tag">The serial number of the certificate.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%T</dt>
+  <dd class="It-tag">The type of the CA key.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%t</dt>
+  <dd class="It-tag">The key or certificate type.</dd>
+  <dt class="It-tag" style="margin-left: -7.80ex;">%u</dt>
+  <dd class="It-tag">The username.</dd>
+</dl>
+</div>
+<div class="Pp"></div>
+<b class="Cm" title="Cm">AuthorizedKeysCommand</b> accepts the tokens %%, %f,
+  %h, %k, %t, and %u.
+<div class="Pp"></div>
+<b class="Cm" title="Cm">AuthorizedKeysFile</b> accepts the tokens %%, %h, and
+  %u.
+<div class="Pp"></div>
+<b class="Cm" title="Cm">AuthorizedPrincipalsCommand</b> accepts the tokens %%,
+  %F, %f, %h, %i, %K, %k, %s, %T, %t, and %u.
+<div class="Pp"></div>
+<b class="Cm" title="Cm">AuthorizedPrincipalsFile</b> accepts the tokens %%, %h,
+  and %u.
+<div class="Pp"></div>
+<b class="Cm" title="Cm">ChrootDirectory</b> accepts the tokens %%, %h, and %u.
+<h1 class="Sh" title="Sh" id="FILES"><a class="selflink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag">
+  <dt class="It-tag"><i class="Pa" title="Pa">/etc/ssh/sshd_config</i></dt>
+  <dd class="It-tag">Contains configuration data for
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. This file should
+      be writable by root only, but it is recommended (though not necessary)
+      that it be world-readable.</dd>
+</dl>
+<h1 class="Sh" title="Sh" id="SEE_ALSO"><a class="selflink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<a class="Xr" title="Xr" href="sftp-server.8.html">sftp-server(8)</a>,
+  <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>
+<h1 class="Sh" title="Sh" id="AUTHORS"><a class="selflink" href="#AUTHORS">AUTHORS</a></h1>
+OpenSSH is a derivative of the original and free ssh 1.2.12 release by
+  <span class="An" title="An">Tatu Ylonen</span>.
+  <span class="An" title="An">Aaron Campbell</span>,
+  <span class="An" title="An">Bob Beck</span>,
+  <span class="An" title="An">Markus Friedl</span>,
+  <span class="An" title="An">Niels Provos</span>,
+  <span class="An" title="An">Theo de Raadt</span> and
+  <span class="An" title="An">Dug Song</span> removed many bugs, re-added newer
+  features and created OpenSSH. <span class="An" title="An">Markus Friedl</span>
+  contributed the support for SSH protocol versions 1.5 and 2.0.
+  <span class="An" title="An">Niels Provos</span> and
+  <span class="An" title="An">Markus Friedl</span> contributed support for
+  privilege separation.</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 27, 2017</td>
+    <td class="foot-os">openssh-7.6p1</td>
+  </tr>
+</table>
+</body>
+</html>

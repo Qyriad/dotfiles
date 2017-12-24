@@ -1,0 +1,174 @@
+﻿.isHiddenVal {
+    position: relative;
+    font-size: 12px;
+    padding: 8px 0 20px;
+    min-width: 50px;
+    -webkit-user-select: none;
+    outline: none;
+}
+
+.sbWindow {
+    padding: 15px 4px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    color: hsl(0, 0%, 40%);
+}
+
+.sbWindow ~ .sbWindow {
+    padding-top: 38px;
+}
+
+.actionNmVal {
+    font-size: 11px;
+    color: hsl(0, 0%, 62%);
+    padding-left: 12px;
+    top: -1px;
+    position: relative;
+}
+
+.iAnnotationCls {
+    margin-top: 4px;
+    float: right;
+    color: hsl(0, 0%, 54%);
+    font-size: 10px;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 23px;
+    cursor: pointer;
+    opacity: .7;
+    letter-spacing: 1px;
+}
+
+.iAnnotationCls:hover {
+    opacity: 1;
+}
+
+.serializeWindowArray {
+    background-image: url(/images/do.gif);
+}
+
+.iCreationDateTimeVal {
+    background-image: url(/images/upo.gif);
+}
+
+.createSessionRoot {
+    display: none;
+}
+
+.nto {
+    position: relative;
+    cursor: pointer;
+    margin-top: 8px;
+    background: hsl(0, 0%, 94%);
+    padding: 16px 19px 16px 17px;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.09);
+}
+
+.flashCountVal .nto {
+    color: hsl(0, 0%, 30%);
+}
+
+.iExpr,
+.iTitle {
+    background: hsl(205, 83%, 59%);
+    color: hsl(0, 0%, 100%) !important;
+    font-weight: 400;
+    border-color: hsl(205, 83%, 59%);
+}
+
+.brchNodePropertyIdVal {
+    border: 5px solid hsl(0, 0%, 70%);
+    padding: 11px 14px 12px 12px;
+}
+
+.iExpr.brchNodePropertyIdVal,
+.iTitle.brchNodePropertyIdVal {
+    border-color: hsl(205, 83%, 46%);
+}
+
+.hideCurrentWindow {
+    background: hsl(0, 0%, 44%) !important;
+    border-color: hsl(0, 0%, 44%) !important;
+}
+
+.nto_static {
+    display: none;
+}
+
+.updateTab {
+    margin-right: 12px;
+    padding-right: 5px;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 18px;
+    font-size: 14px;
+}
+
+.iFlashCountVal {
+    font-weight: 400;
+    color: hsl(223, 26%, 56%);
+    color: hsl(0, 0%, 57%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    height: 17px;
+    line-height: 17px;
+    padding-top: 5px;
+}
+
+.selectedLineitems {
+    display: inline-block;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 13px;
+    background-size: 13px;
+    height: 11px;
+    opacity: 0;
+    /*transition: opacity .25s linear;*/
+    background-image: url(/images/xn.gif);
+}
+
+.iTitle > .selectedLineitems,
+.iExpr > .selectedLineitems {
+    background-image: url(/images/xs.gif);
+}
+
+.nto:hover > .selectedLineitems {
+    opacity: 1;
+}
+
+.brchNodePropertyIdVal > .selectedLineitems {
+    right: 3px;
+    top: 3px;
+}
+
+.headerDataSaved {
+    opacity: 0;
+    transition: opacity .1s linear;
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+    .serializeWindowArray {
+        background-image: url(/images/retina/do.gif);
+        background-size: 17px;
+    }
+    .iCreationDateTimeVal {
+        background-image: url(/images/retina/upo.gif);
+        background-size: 17px;
+    }
+    .selectedLineitems {
+        background-image: url(/images/retina/xn.gif);
+    }
+    .iTitle > .selectedLineitems,
+    .iExpr > .selectedLineitems {
+        background-image: url(/images/retina/xs.gif);
+    }
+}

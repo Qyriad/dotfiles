@@ -1,0 +1,896 @@
+{
+   "1": {
+      "description": "the number",
+      "message": "1"
+   },
+   "10": {
+      "description": "the number",
+      "message": "10"
+   },
+   "11": {
+      "description": "the number",
+      "message": "11"
+   },
+   "12": {
+      "description": "the number",
+      "message": "12"
+   },
+   "12_hours_option": {
+      "description": "12 hour time format, example: 3:00 PM",
+      "message": "12小时制"
+   },
+   "13": {
+      "description": "the number",
+      "message": "13"
+   },
+   "14": {
+      "description": "the number",
+      "message": "14"
+   },
+   "15": {
+      "description": "the number",
+      "message": "15"
+   },
+   "15_minutes_option": {
+      "description": "Time amount",
+      "message": "每15分钟"
+   },
+   "16": {
+      "description": "the number",
+      "message": "16"
+   },
+   "17": {
+      "description": "the number",
+      "message": "17"
+   },
+   "18": {
+      "description": "the number",
+      "message": "18"
+   },
+   "19": {
+      "description": "the number",
+      "message": "19"
+   },
+   "2": {
+      "description": "the number",
+      "message": "2"
+   },
+   "20": {
+      "description": "the number",
+      "message": "20"
+   },
+   "21": {
+      "description": "the number",
+      "message": "21"
+   },
+   "22": {
+      "description": "the number",
+      "message": "22"
+   },
+   "23": {
+      "description": "the number",
+      "message": "23"
+   },
+   "24": {
+      "description": "the number",
+      "message": "24"
+   },
+   "24_hours_option": {
+      "description": "24 hour time format, example: 14:00",
+      "message": "24小时制"
+   },
+   "25": {
+      "description": "the number",
+      "message": "25"
+   },
+   "26": {
+      "description": "the number",
+      "message": "26"
+   },
+   "27": {
+      "description": "the number",
+      "message": "27"
+   },
+   "28": {
+      "description": "the number",
+      "message": "28"
+   },
+   "29": {
+      "description": "the number",
+      "message": "29"
+   },
+   "3": {
+      "description": "the number",
+      "message": "3"
+   },
+   "30": {
+      "description": "the number",
+      "message": "30"
+   },
+   "30_minutes_option": {
+      "description": "Time amount",
+      "message": "每30分钟"
+   },
+   "31": {
+      "description": "the number",
+      "message": "31"
+   },
+   "4": {
+      "description": "the number",
+      "message": "4"
+   },
+   "5": {
+      "description": "the number",
+      "message": "5"
+   },
+   "6": {
+      "description": "the number",
+      "message": "6"
+   },
+   "60_minutes_option": {
+      "description": "Time amount",
+      "message": "每60分钟"
+   },
+   "7": {
+      "description": "the number",
+      "message": "7"
+   },
+   "8": {
+      "description": "the number",
+      "message": "8"
+   },
+   "9": {
+      "description": "the number",
+      "message": "9"
+   },
+   "Whats_new_section_title": {
+      "description": "Section heading in Settings",
+      "message": "更新内容"
+   },
+   "afternoon": {
+      "description": "The afternoon abbreviation when using 12 hour time",
+      "message": "下午"
+   },
+   "and": {
+      "description": "The word and",
+      "message": "和"
+   },
+   "april": {
+      "description": "The month",
+      "message": "四月"
+   },
+   "arabic": {
+      "description": "The language",
+      "message": "阿拉伯语"
+   },
+   "ascending": {
+      "description": "ascending week day order",
+      "message": "升序"
+   },
+   "august": {
+      "description": "The month",
+      "message": "八月"
+   },
+   "back_arrow": {
+      "description": "ascii arrow",
+      "message": "&larr;"
+   },
+   "back_to_week_link": {
+      "description": "back to week link",
+      "message": "$arrow$ 返回周视图",
+      "placeholders": {
+         "arrow": {
+            "content": "$1",
+            "example": "an arrow"
+         }
+      }
+   },
+   "catalonian": {
+      "description": "The language",
+      "message": "加泰罗尼亚语"
+   },
+   "chinese_simplified": {
+      "description": "The language",
+      "message": "简体中文"
+   },
+   "chrome_language": {
+      "description": "language identifier used by Chrome",
+      "message": "zh_CN"
+   },
+   "clear_history_button": {
+      "description": "Button text for clear history button in Settings",
+      "message": "清除浏览历史记录..."
+   },
+   "clearing_history_section_title": {
+      "description": "Section heading in Settings",
+      "message": "清除历史"
+   },
+   "close_button": {
+      "description": "Button to close modal",
+      "message": "好"
+   },
+   "collapse_button": {
+      "description": "Text for collapse button",
+      "message": "收拢"
+   },
+   "confirm_delete_all_search_results": {
+      "description": "Confirmation text to delete all search results",
+      "message": "删除所有的搜索结果？"
+   },
+   "confirm_delete_all_visits": {
+      "description": "Confirmation text to delete all visits from a specific date",
+      "message": "清除自$formal_date$以来的历史记录？",
+      "placeholders": {
+         "formal_date": {
+            "content": "$1",
+            "example": "January 2, 2011"
+         }
+      }
+   },
+   "credits_link": {
+      "description": "The link to credits",
+      "message": "$open$Better History$close$ 鸣谢",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "strong close"
+         },
+         "open": {
+            "content": "$1",
+            "example": "strong open"
+         }
+      }
+   },
+   "credits_title": {
+      "description": "Title for credits modal",
+      "message": "Better History 鸣谢"
+   },
+   "current_day": {
+      "description": "the current day's visits",
+      "message": "当日记录"
+   },
+   "current_version_label": {
+      "description": "label for the current version",
+      "message": "当前版本"
+   },
+   "current_week": {
+      "description": "the current week's visits",
+      "message": "当周记录"
+   },
+   "czech": {
+      "description": "The language",
+      "message": "捷克斯洛伐克语"
+   },
+   "date_week_label": {
+      "description": "short week w/ label",
+      "message": "$week$ 所在星期",
+      "placeholders": {
+         "week": {
+            "content": "$1",
+            "example": "date"
+         }
+      }
+   },
+   "december": {
+      "description": "The month",
+      "message": "十二月"
+   },
+   "default_time_format": {
+      "description": "12 or 24 hour based",
+      "message": "12"
+   },
+   "delete_all_visits_for_filter_button": {
+      "description": "Text for delete all visits for a day filter button",
+      "message": "删除..."
+   },
+   "delete_all_visits_for_search_button": {
+      "description": "Text for delete all visits from search button",
+      "message": "删除..."
+   },
+   "delete_grouped_visits": {
+      "description": "Tooltip for the delete button on grouped visits",
+      "message": "删除本组访问"
+   },
+   "delete_time_interval_button": {
+      "description": "delete button label",
+      "message": "删除"
+   },
+   "delete_time_interval_button_tooltip": {
+      "description": "delete button tooltip",
+      "message": "删除"
+   },
+   "delete_visit": {
+      "description": "Tooltip for the delete button on a page visit",
+      "message": "删除访问"
+   },
+   "descending": {
+      "description": "descending week day order",
+      "message": "降序"
+   },
+   "developed_by": {
+      "description": "Developer label",
+      "message": "开发人员 $link_open$$name$$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2",
+            "example": "Closing link"
+         },
+         "link_open": {
+            "content": "$1",
+            "example": "Opening link"
+         },
+         "name": {
+            "content": "$3",
+            "example": "Developer name"
+         }
+      }
+   },
+   "dutch": {
+      "description": "The language",
+      "message": "荷兰语"
+   },
+   "evening": {
+      "description": "The evening abbreviation when using 12 hour time",
+      "message": "晚上"
+   },
+   "expand_button": {
+      "description": "Text for expand button",
+      "message": "展开"
+   },
+   "extended_formal_date": {
+      "description": "The order of a full extended date，",
+      "message": " YYYY年MMMMD日，dddd"
+   },
+   "february": {
+      "description": "The month",
+      "message": "二月"
+   },
+   "feedback_section_title": {
+      "description": "Section heading in Settings",
+      "message": "反馈信息"
+   },
+   "formal_date": {
+      "description": "The order of a full date",
+      "message": "YYYY年MMMMD日"
+   },
+   "french": {
+      "description": "The language",
+      "message": "法语"
+   },
+   "friday": {
+      "description": "The day of the week",
+      "message": "星期五"
+   },
+   "general_section_title": {
+      "description": "General section title in settings",
+      "message": "常规"
+   },
+   "german": {
+      "description": "The language",
+      "message": "德语"
+   },
+   "google_plus_language": {
+      "description": "Google plus language abbreviation",
+      "message": "zh-CN"
+   },
+   "group_visits_by_domain_label": {
+      "description": "Label for check box to group visits by domain",
+      "message": "按网站域名分组历史"
+   },
+   "group_visits_by_label": {
+      "description": "Label for select box to set the time grouping interval for visits",
+      "message": "分组方式"
+   },
+   "hindi": {
+      "description": "The language",
+      "message": "印地语"
+   },
+   "history_title": {
+      "description": "Extension title",
+      "message": "历史记录"
+   },
+   "hungarian": {
+      "description": "The language",
+      "message": "匈牙利语"
+   },
+   "italian": {
+      "description": "The language",
+      "message": "意大利语"
+   },
+   "january": {
+      "description": "The month",
+      "message": "一月"
+   },
+   "japanese": {
+      "description": "The language",
+      "message": "日语"
+   },
+   "july": {
+      "description": "The month",
+      "message": "七月"
+   },
+   "june": {
+      "description": "The month",
+      "message": "六月"
+   },
+   "last_visit": {
+      "description": "last visited page",
+      "message": "上次访问页面"
+   },
+   "last_week": {
+      "description": "last week",
+      "message": "上周"
+   },
+   "latvian": {
+      "description": "The language",
+      "message": "拉脱维亚语"
+   },
+   "leave_a_review": {
+      "description": "Link text to leave a review",
+      "message": "留下评论"
+   },
+   "local_time": {
+      "description": "local time format",
+      "message": "Ah点mm"
+   },
+   "manifest_browser_action_title": {
+      "description": "Manifest browser action title",
+      "message": "查看历史"
+   },
+   "manifest_description": {
+      "description": "Manifest description",
+      "message": "更好地查看您的历史记录。为查看您的历史记录带来最好的搜索体验，最清晰的界面和最有帮助的筛选。"
+   },
+   "manifest_name": {
+      "description": "Manifest name",
+      "message": "Better History"
+   },
+   "march": {
+      "description": "The month",
+      "message": "三月"
+   },
+   "max_number_of_search_results": {
+      "description": "number of search results found",
+      "message": "找到超过 $number$ 条结果",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "may": {
+      "description": "The month",
+      "message": "五月"
+   },
+   "monday": {
+      "description": "The day of the week",
+      "message": "星期一"
+   },
+   "morning": {
+      "description": "The morning abbreviation when using 12 hour time",
+      "message": "上午"
+   },
+   "no_visits_found": {
+      "description": "Text for no visits found message",
+      "message": "抱歉，未找到相关的访问"
+   },
+   "november": {
+      "description": "The month",
+      "message": "十一月"
+   },
+   "number_of_search_results": {
+      "description": "number of search results found",
+      "message": "找到$number$条历史记录",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "number_of_visits": {
+      "description": "Label to a number representing a number of visits",
+      "message": "$number_open$$number$$number_close$次访问",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "the number of visits"
+         },
+         "number_close": {
+            "content": "$3",
+            "example": "number tag close"
+         },
+         "number_open": {
+            "content": "$2",
+            "example": "number tag open"
+         }
+      }
+   },
+   "october": {
+      "description": "The month",
+      "message": "十月"
+   },
+   "open_location": {
+      "description": "open to \u003Cpage>",
+      "message": "启动时显示"
+   },
+   "ordinal_1": {
+      "description": "the ordinal for 1",
+      "message": "第"
+   },
+   "ordinal_10": {
+      "description": "the ordinal for 10",
+      "message": "第"
+   },
+   "ordinal_11": {
+      "description": "the ordinal for 11",
+      "message": "第"
+   },
+   "ordinal_12": {
+      "description": "the ordinal for 12",
+      "message": "第"
+   },
+   "ordinal_13": {
+      "description": "the ordinal for 13",
+      "message": "第"
+   },
+   "ordinal_14": {
+      "description": "the ordinal for 14",
+      "message": "第"
+   },
+   "ordinal_15": {
+      "description": "the ordinal for 15",
+      "message": "第"
+   },
+   "ordinal_16": {
+      "description": "the ordinal for 16",
+      "message": "第"
+   },
+   "ordinal_17": {
+      "description": "the ordinal for 17",
+      "message": "第"
+   },
+   "ordinal_18": {
+      "description": "the ordinal for 18",
+      "message": "第"
+   },
+   "ordinal_19": {
+      "description": "the ordinal for 19",
+      "message": "第"
+   },
+   "ordinal_2": {
+      "description": "the ordinal for 2",
+      "message": "第"
+   },
+   "ordinal_20": {
+      "description": "the ordinal for 20",
+      "message": "第"
+   },
+   "ordinal_21": {
+      "description": "the ordinal for 21",
+      "message": "第"
+   },
+   "ordinal_22": {
+      "description": "the ordinal for 22",
+      "message": "第"
+   },
+   "ordinal_23": {
+      "description": "the ordinal for 23",
+      "message": "第"
+   },
+   "ordinal_24": {
+      "description": "the ordinal for 24",
+      "message": "第"
+   },
+   "ordinal_25": {
+      "description": "the ordinal for 25",
+      "message": "第"
+   },
+   "ordinal_26": {
+      "description": "the ordinal for 26",
+      "message": "第"
+   },
+   "ordinal_27": {
+      "description": "the ordinal for 27",
+      "message": "第"
+   },
+   "ordinal_28": {
+      "description": "the ordinal for 28",
+      "message": "第"
+   },
+   "ordinal_29": {
+      "description": "the ordinal for 29",
+      "message": "第"
+   },
+   "ordinal_3": {
+      "description": "the ordinal for 3",
+      "message": "第"
+   },
+   "ordinal_30": {
+      "description": "the ordinal for 30",
+      "message": "第"
+   },
+   "ordinal_31": {
+      "description": "the ordinal for 31",
+      "message": "第"
+   },
+   "ordinal_4": {
+      "description": "the ordinal for 4",
+      "message": "第"
+   },
+   "ordinal_5": {
+      "description": "the ordinal for 5",
+      "message": "第"
+   },
+   "ordinal_6": {
+      "description": "the ordinal for 6",
+      "message": "第"
+   },
+   "ordinal_7": {
+      "description": "the ordinal for 7",
+      "message": "第"
+   },
+   "ordinal_8": {
+      "description": "the ordinal for 8",
+      "message": "第"
+   },
+   "ordinal_9": {
+      "description": "the ordinal for 9",
+      "message": "第"
+   },
+   "polish": {
+      "description": "The language",
+      "message": "波兰语"
+   },
+   "portuguese": {
+      "description": "The language",
+      "message": "葡萄牙语"
+   },
+   "prompt_cancel_button": {
+      "description": "Button to close modal",
+      "message": "取消"
+   },
+   "prompt_delete_button": {
+      "description": "Button to delete history",
+      "message": "删除"
+   },
+   "prompt_title": {
+      "description": "Title of prompt",
+      "message": "确认"
+   },
+   "right_click_options_section_title": {
+      "description": "Section heading in Settings",
+      "message": "右键菜单"
+   },
+   "romanian": {
+      "description": "The language",
+      "message": "罗马尼亚语"
+   },
+   "russian": {
+      "description": "The language",
+      "message": "俄语"
+   },
+   "saturday": {
+      "description": "The day of the week",
+      "message": "星期六"
+   },
+   "search_by_domain": {
+      "description": "search by domain of visit",
+      "message": "更多此站点的记录"
+   },
+   "search_by_domain_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "按域名搜索"
+   },
+   "search_by_text_selection_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "搜索所选文字"
+   },
+   "search_in_history": {
+      "description": "Label for search in history context menu item",
+      "message": "在历史记录里搜索"
+   },
+   "search_input_placeholder_text": {
+      "description": "Placeholder text in the search input box",
+      "message": "按标题、网址或日期搜索"
+   },
+   "search_time_frame": {
+      "description": "Time frame relating to Search",
+      "message": "最近几个月"
+   },
+   "search_title": {
+      "description": "title for the search page",
+      "message": "搜索"
+   },
+   "searching_title": {
+      "description": "Searching title",
+      "message": "正在搜索"
+   },
+   "september": {
+      "description": "The month",
+      "message": "九月"
+   },
+   "settings_link": {
+      "description": "Text for the link to Settings",
+      "message": "设置"
+   },
+   "settings_title": {
+      "description": "Settings title for Settings page",
+      "message": "设置"
+   },
+   "short_date": {
+      "description": "for Moment.js",
+      "message": "MMMMD日"
+   },
+   "short_date_with_day": {
+      "description": "for Moment.js",
+      "message": "dddd, MMMMD日"
+   },
+   "slovak": {
+      "description": "The language",
+      "message": "斯洛伐克语"
+   },
+   "spanish": {
+      "description": "The language",
+      "message": "西班牙语"
+   },
+   "spread_the_word_section_title": {
+      "description": "Section heading in Settings",
+      "message": "口耳相传"
+   },
+   "starting_week_day": {
+      "description": "day that the week starts on",
+      "message": "一周起始"
+   },
+   "suggestions_bugs_comments": {
+      "description": "Link text to give feedback",
+      "message": "建议，不足，意见？发推$link_open$@Better_History$link_close$！",
+      "placeholders": {
+         "link_close": {
+            "content": "$2"
+         },
+         "link_open": {
+            "content": "$1"
+         }
+      }
+   },
+   "sunday": {
+      "description": "The day of the week",
+      "message": "星期日"
+   },
+   "swedish": {
+      "description": "The language",
+      "message": "瑞典语"
+   },
+   "this_week": {
+      "description": "this week",
+      "message": "本周"
+   },
+   "thursday": {
+      "description": "The day of the week",
+      "message": "星期四"
+   },
+   "time_format_label": {
+      "description": "Label for select box to set the time format (12 or 24 hours)",
+      "message": "时间格式"
+   },
+   "today_link": {
+      "description": "Link for today",
+      "message": "今天"
+   },
+   "translation_help_heading": {
+      "description": "Heading to recruit translators",
+      "message": "没有见到您熟悉的语言？"
+   },
+   "translation_instructions": {
+      "description": "Instructions on how to help translate",
+      "message": "你会讲英语并且想把Better History翻译到一种新的语言？太棒了！请发Email到 $link_open$$email$$link_close$",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "Contact email address"
+         },
+         "link_close": {
+            "content": "$3",
+            "example": "close tag for email link"
+         },
+         "link_open": {
+            "content": "$2",
+            "example": "open tag for email link"
+         }
+      }
+   },
+   "translators_heading": {
+      "description": "Heading for translators",
+      "message": "翻译人员"
+   },
+   "tuesday": {
+      "description": "The day of the week",
+      "message": "星期二"
+   },
+   "turkish": {
+      "description": "The language",
+      "message": "土耳其语"
+   },
+   "twitter_language": {
+      "description": "Twitter language abbreviation",
+      "message": "zh-cn"
+   },
+   "twitter_template": {
+      "description": "Default message for Twitter sharing",
+      "message": "试用Chrome的扩展Better History，看看你错过了什么！"
+   },
+   "use_24_hour_clock_label": {
+      "description": "Label for check box to show hours as 24 hours",
+      "message": "24小时制"
+   },
+   "version_description": {
+      "description": "Version description",
+      "message": ""
+   },
+   "version_important_note": {
+      "description": "Heading for an important note",
+      "message": "重要注意事项"
+   },
+   "version_items": {
+      "description": "Release bulletpoints",
+      "message": "$open$轻松查看最近10周的访问$close$ $open$访问按星期间隔组织$close$ $open$浏览行为一周汇总$close$ $open$迅速启动$close$ $open$优化访问搜索和分组$close$ $open$一键搜索访问过的域名$close$",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "\u003C/li>"
+         },
+         "open": {
+            "content": "$1",
+            "example": "\u003Cli>"
+         }
+      }
+   },
+   "version_note": {
+      "descriotion": "Feedback and support note",
+      "message": ""
+   },
+   "version_title": {
+      "description": "Title of the version modal",
+      "message": "重要的里程碑：访问按星期组织！"
+   },
+   "version_whats_new": {
+      "description": "Heading for what's new in version",
+      "message": "更新内容"
+   },
+   "vietnamese": {
+      "description": "The language",
+      "message": "越南语"
+   },
+   "view_release_announcement_link": {
+      "description": "Link text to view the release announcement",
+      "message": "查看发布公告"
+   },
+   "visit_grouping_section_title": {
+      "description": "Section heading in Settings",
+      "message": "历史分组"
+   },
+   "visits_to_domain": {
+      "description": "Label for visits to domain context menu item",
+      "message": "$domain$下的访问",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "google.com"
+         }
+      }
+   },
+   "wednesday": {
+      "description": "The day of the week",
+      "message": "星期三"
+   },
+   "week_day_order": {
+      "description": "the week day order",
+      "message": "一周日期排序"
+   },
+   "yesterday_link": {
+      "description": "Link for yesterday",
+      "message": "昨天"
+   }
+}

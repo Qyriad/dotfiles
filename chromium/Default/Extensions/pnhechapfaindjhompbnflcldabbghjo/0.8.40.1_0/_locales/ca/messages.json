@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "El sistema de fitxers ja està activat."
+   },
+   "backup_prefs": {
+      "message": "Desa la còpia de seguretat"
+   },
+   "bad_destination": {
+      "message": "No es pot analitzar la destinació: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Si tanqueu aquesta pestanya es desconnectarà la sessió."
+   },
+   "cancel_button_label": {
+      "message": "Cancel·la"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Aquesta comanda mostra un menú d'amfitrions coneguts i sol·licita l'amfitrió que s'ha d'oblidar."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Oblida un amfitrió SSH conegut."
+   },
+   "cmd_ssh_help": {
+      "message": "Els paràmetres |username| i |hostname| són obligatoris, |port| és opcional. Si no s'especifica el port, el valor predeterminat és 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Obre una sessió de SSH nova."
+   },
+   "command_complete": {
+      "message": "S'ha sortit de l'ordre $1 amb el codi d'estat $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Connecta"
+   },
+   "connect_or_exit_message": {
+      "message": "Vols triar (c) una altra connexió o sortir (x)?"
+   },
+   "connecting": {
+      "message": "S'està connectant amb $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Sabies que hi ha una pàgina d'opcions dedicada?\nJa no caldrà modificar term_ directament.\nPrem $1 per obrir-la o fes clic a:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Sabies que hi ha una pàgina d'opcions dedicada?\nJa no caldrà modificar term_ directament.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[SUPR]"
+   },
+   "delete_button_label": {
+      "message": "Suprimeix"
+   },
+   "disconnect_message": {
+      "message": "S'ha sortit del connector NaCl amb el codi d'estat $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[RETORN]"
+   },
+   "field_argstr_placeholder": {
+      "message": "arguments addicionals de la línia d'ordres"
+   },
+   "field_description_aria_label": {
+      "message": "descripció"
+   },
+   "field_description_placeholder": {
+      "message": "nomdusuari@nomdamfitrio o text sense format"
+   },
+   "field_hostname_aria_label": {
+      "message": "nom d'amfitrió"
+   },
+   "field_hostname_placeholder": {
+      "message": "nom d'amfitrió"
+   },
+   "field_mount_path_placeholder": {
+      "message": "la ruta predeterminada és el directori d'inici de l'usuari"
+   },
+   "field_port_aria_label": {
+      "message": "port"
+   },
+   "field_port_placeholder": {
+      "message": "port"
+   },
+   "field_relay_options_aria_label": {
+      "message": "opcions de tramesa"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Opcions del servidor de tramesa SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "opció predeterminada"
+   },
+   "field_username_aria_label": {
+      "message": "nom d'usuari"
+   },
+   "field_username_placeholder": {
+      "message": "nom d'usuari"
+   },
+   "found_relay": {
+      "message": "S'ha trobat el servidor de tramesa: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identitat"
+   },
+   "import_link_aria_label": {
+      "message": "importa el fitxer"
+   },
+   "import_link_label": {
+      "message": "Importa..."
+   },
+   "initializing_relay": {
+      "message": "S'està cercant el servidor de tramesa mitjançant: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "No s'han pogut analitzar les dades JSON a '$1': $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "No hi ha amfitrions coneguts; res per oblidar."
+   },
+   "known_hosts_prompt": {
+      "message": "Seleccioneu un amfitrió per oblidar [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Amfitrions coneguts:"
+   },
+   "loading_label": {
+      "message": "S'està carregant..."
+   },
+   "missing_param": {
+      "message": "Falta el paràmetre: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Activa l'SFTP"
+   },
+   "mount_path_label": {
+      "message": "Activa el camí"
+   },
+   "mounted_message": {
+      "message": "S'ha activat."
+   },
+   "notify_copy": {
+      "message": "S'ha copiat la selecció"
+   },
+   "ok_button_label": {
+      "message": "D'acord"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Connecta't a un perfil desat o a un sistema ssh nou"
+   },
+   "open_as_window_tip": {
+      "message": "[Consell professional] Utilitza Obre com a finestra per evitar que s'apagui el terminal amb les tecles Control+W.\n[Consell professional] Consulta $1 per obtenir més informació.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Opcions"
+   },
+   "plugin_loading": {
+      "message": "S'està carregant el connector NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " fet."
+   },
+   "plugin_loading_failed": {
+      "message": " S'ha produït un error."
+   },
+   "pref_backup_filename": {
+      "message": "Còpia de seguretat de les preferències de Secure Shell.json"
+   },
+   "preferences_header": {
+      "message": "Configuració del perfil"
+   },
+   "preferences_reset": {
+      "message": "S'han restablert totes les preferències."
+   },
+   "reconnect_message": {
+      "message": "Vols torna(r) a connectar, triar una altra (c)onnexió o sortir (x)?"
+   },
+   "relay_retry": {
+      "message": "S'està tornant a provar..."
+   },
+   "restore_prefs": {
+      "message": "Restaura la còpia de seguretat"
+   },
+   "shortcut_list_aria_label": {
+      "message": "s'han desat les connexions"
+   },
+   "ssh_argstr_label": {
+      "message": "Arguments SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Previsualització"
+   },
+   "terminal_profile_label": {
+      "message": "Perfil actual"
+   },
+   "tip_1": {
+      "message": "Pots prémer Ctrl (Cmd a macOS) i alhora fer clic als enllaços perquè s'obrin."
+   },
+   "tip_10": {
+      "message": "Quan s'executi en una finestra, la combinació de tecles Ctrl+Maj+N pot obrir una altra sessió."
+   },
+   "tip_11": {
+      "message": "Pots reassignar les tecles o dreceres: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Utilitza hterm-notify per mostrar notificacions al navegador: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Escriu \"ssh \u003Cnom del perfil>\" per connectar-te des de l'omnibox: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS pot activar sistemes de fitxers a través de SFTP i navegar a través de l'aplicació Fitxers. Utilitza Activa l'SFTP en lloc de Connecta."
+   },
+   "tip_5": {
+      "message": "Connecta't utilitzant enllaços ssh:// a les pàgines web, o desa una adreça d'interès: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Dona-li color a la sortida o els advertiments amb els 16 colors bàsics, 256 colors addicionals i els colors de 24 bits: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Utilitza OSC-52 per copiar al porta-retalls des d'emacs/vim/etc.: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Xateja amb altres usuaris hterm i Secure Shell a través de chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Has trobat un error? Vols una nova funció? Fes-nos-ho saber: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "S'ha produït un error inesperat. Consulta la Consola de JavaScript per obtenir més detalls."
+   },
+   "unmount_button_label": {
+      "message": "Desactiva l'SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Hi ha una actualització disponible. Tanca totes les finestres."
+   },
+   "welcome_changelog": {
+      "message": "Registre de canvis i notes de la versió: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Respostes a preguntes freqüents: $1 (fes Ctrl+clic en els enllaços per obrir-los)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Canvis importants des de la versió $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Consell aleatori núm. $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Et donem la benvinguda a $1 versió $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Al menú de Chrome, estableix l'opció Zoom al 100%"
+   }
+}

@@ -1,0 +1,1946 @@
+﻿.footer_message_img {
+    height: 22px;
+    margin-right: 15px;
+}
+
+.footer_message_body {
+    padding: 8px 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.footer_message_body:hover {
+    text-decoration: underline;
+}
+
+.footer_message_button {
+    background: hsla(0, 0%, 0%, 0.2);
+    padding: 6px 20px;
+    cursor: pointer;
+}
+
+.footer_message_button:hover {
+    background: hsla(0, 0%, 0%, 0.4);
+}
+
+.footer_message_close {
+    height: 28px;
+    width: 28px;
+    background-image: url(/images/x.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 10px;
+    background-size: 13px;
+}
+
+.footer_message_close:hover {
+    /*background-image: url(/images/x.svg);*/
+    /*background-color: #8a8a8a;*/
+    background-color: hsla(0, 0%, 0%, 0.25);
+}
+
+#footer_message {
+    font-family: Montserrat;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-left: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    z-index: 99999999;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    /*background-color: #f0f0f0;*/
+    /*background-color: #717171;*/
+    background-color: #da552f;
+    color: #fff;
+    transform: translateY(40px);
+    transition: transform 300ms;
+}
+
+.show_footer_message #footer_message {
+    transform: translateY(0);
+    box-shadow: 0 9px 70px 40px hsla(0, 0%, 100%, 0.85);
+}
+
+.iUrlVal:hover .evalSearchTermVal {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+input[type="checkbox"][disabled] ~ .evalSearchTermVal {
+    cursor: default;
+    text-decoration: none;
+    color: #aaa;
+}
+
+.big_message_content {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-shadow: none;
+    padding: 16px 19px 10px;
+}
+
+.status_low {
+    color: hsl(0, 0%, 66%);
+}
+
+#refreshCurrentSession {
+    right: 0;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    left: 271px;
+    top: 0;
+    bottom: 0;
+}
+
+#resetCurrentSessionCache {
+    left: 0;
+    -webkit-user-select: none;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    vertical-align: top;
+}
+
+#iSessionConfigHead {
+    display: block;
+    position: absolute;
+    -webkit-user-select: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#suppressOpts {
+    position: absolute;
+    /*overflow-x: hidden;*/
+    /*overflow-y: hidden;*/
+    left: 0;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    padding-left: 10px;
+}
+
+#iCountVal {
+    top: 69px;
+    right: 11px;
+}
+
+#iUrl {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    white-space: nowrap;
+}
+
+#initTabLayout {
+    top: 131px;
+    right: 80px;
+}
+
+#iBaseDate {
+    top: 131px;
+    right: 14px;
+}
+
+#sbDialogs,
+#evalSbNm,
+#assessStyleVal {
+    transition: opacity 100ms;
+}
+
+.tob_url_inner {
+    vertical-align: middle;
+}
+
+#qlift5 {
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 35px;
+    color: hsl(125, 54%, 81%);
+    /*background-color: hsla(0, 0%, 0%, 0.15);*/
+    background-color: transparent;
+    text-decoration: underline;
+    outline: none;
+}
+
+#qlift5:hover,
+#qlift5.qlift6 {
+    color: #fff;
+    background-color: hsla(0, 0%, 0%, 0.25);
+    text-decoration: none;
+}
+
+.tabsUnder {
+    margin-right: 15px;
+    transform: translateY(-8px);
+    padding: 20px 20px 20px 70px;
+    color: hsla(0, 0%, 0%, 0.8);
+    background: #f3f3f3;
+    font-size: 14px;
+    margin-bottom: 30px;
+    background-image: url(/images/info.png);
+    background-repeat: no-repeat;
+    background-position: 23px 18px;
+}
+
+#mbox {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    /*background-color: #fff;*/
+    /*background-color: #503824;*/
+    /*background-color: #e7515f;*/
+    /*background-color: #53a3c9;*/
+    background-color: #3ea5ed;
+    margin: 20px;
+    animation: sessionTabReveal 200ms;
+    box-shadow: 0 0 23px rgba(0, 0, 0, 0.22), 0 0 15px rgba(0, 0, 0, 0.24);
+}
+
+.mboxBtn {
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-image: url(/images/xs.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    cursor: pointer;
+}
+
+.mboxBtn:hover {
+    background-color: hsla(0, 0%, 0%, 0.15);
+}
+
+.mboxImg {
+    display: block;
+    width: 155px;
+    margin: 0 auto;
+    margin-top: 44px;
+    margin-bottom: 10px;
+}
+
+.mboxBody {
+    width: 270px;
+    overflow: hidden;
+    cursor: pointer;
+    /*background-color: #503824;*/
+    /*color: #fe6c00;*/
+    color: #fff;
+    text-align: center;
+    font-family: 'Lobster', Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    text-shadow: 3px 4px hsla(0, 0%, 0%, .20);
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+.mboxFtr {
+    display: flex;
+    height: 40px;
+    margin-top: 10px;
+    align-items: stretch;
+}
+
+.mboxFtrWrap {
+    cursor: pointer;
+    flex: 1 0 0px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #286459;*/
+    color: #fff;
+    /*border: 1px solid #967356;*/
+    /*color: hsl(27, 38%, 68%);*/
+    font-size: 14px;
+}
+
+.mboxFtrWrap:first-child {
+    /*background-color: #1c98bd;*/
+    /*background-color: #128ce4;*/
+    background-color: hsla(0, 0%, 0%, 0.15);
+    /*color: #fff;*/
+    /*border: none;*/
+    margin-left: 0;
+}
+
+.mboxFtrWrap:hover {
+    /*background-color: #3493d6;*/
+    /*background-color: #3078aa;*/
+    background-color: #bd212c;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-weight: 300;
+}
+
+tr > td {
+    padding: 0 0 5px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    border: 1px solid hsl(0, 0%, 77%);
+    outline: none;
+    padding: 4px 5px;
+}
+
+
+/*input[type="text"]:focus {
+    border-color: hsl(0, 0%, 70%);
+}
+*/
+
+input.evalSbGroupVal {
+    outline: none;
+    color: #fff;
+    border: 1px solid transparent;
+    padding: 5px 9px;
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    width: 220px;
+    background-color: hsla(0, 0%, 100%, 0.2);
+    background-repeat: no-repeat;
+    background-position: right 13px top 50%;
+    padding-right: 35px;
+    background-size: 14px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmYiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgdmlld0JveD0iMCAwIDE3IDE3Ij48cGF0aCBkPSJNIDkuMTgsMCBDIDQuODcsMCAxLjM2LDMuNSAxLjM2LDcuODIgYyAwLDEuODcgMC42NTYsMy41OSAxLjc2LDQuOTMgTCAwLDE1Ljg3IDEuMTYsMTcgNC4yNDUsMTMuODcgYyAxLjM1LDEuMTA1IDMuMDY1LDEuNzYgNC45MzUsMS43NiA0LjMxLDAgNy44MiwtMy41MSA3LjgyLC03LjgxNSAwLC00LjMgLTMuNTEsLTcuODE1IC03LjgyLC03LjgxNSB6IG0gMCwxLjU2IGMgMy40NiwwIDYuMjU2LDIuNzkgNi4yNTYsNi4yNSAwLDMuNDYgLTIuNzksNi4yNSAtNi4yNTYsNi4yNSAtMy40NiwwIC02LjI1NiwtMi43OSAtNi4yNTYsLTYuMjUgMCwtMy40NiAyLjc5LC02LjI1IDYuMjU2LC02LjI1MiB6Ij48L3BhdGg+PC9zdmc+);
+    height: 29px;
+    line-height: 29px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+input.evalSbGroupVal.ptab6 {
+    background-image: none;
+}
+
+input.evalSbGroupVal.ptab6 + #brchLineitemRenderDelegate {
+    display: block;
+}
+
+input.evalSbGroupVal::-webkit-input-placeholder {
+    color: hsl(205, 83%, 85%);
+}
+
+textarea {
+    font-size: 12px;
+    outline: none;
+    padding: 7px;
+    color: #555;
+    background-color: hsl(0, 0%, 95%);
+    border-color: hsl(0, 0%, 85%);
+}
+
+textarea:focus {
+    border-color: hsl(13, 0%, 67%);
+}
+
+.tabTitleCase {
+    /*color: #0094e1;*/
+    font-weight: 400;
+}
+
+
+/*.serializeSessionTransactions:not([disabled]):hover .tabTitleCase {
+    color: #fff;
+}
+*/
+
+.openWindowConfirm {
+    padding: 10px 15px;
+    background: hsl(0, 0%, 93%);
+    text-align: center;
+    margin: 8px 12px 11px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+#tabSyncProgress {
+    text-align: center;
+    padding: 20px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 23px;
+}
+
+.syncArea {
+    padding: 10px 15px;
+    background: hsl(0, 0%, 93%);
+    text-align: center;
+    margin: 8px 12px 11px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+#targetNewSimpleTab {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#primaryTabOuterButton {
+    position: absolute;
+    left: 100%;
+    top: -9px;
+}
+
+#primaryTabOuterButton:hover ~ .bypassSessionMode {
+    background-color: #eee;
+}
+
+.sEnabled #primaryTabOuterButton:hover ~ .bypassSessionMode {
+    background-color: hsl(205, 83%, 93%);
+}
+
+#primaryTabOuterButton::before {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: -12px;
+    border-bottom: 11px solid transparent;
+    border-right: 11px solid #ccc;
+    border-top: 11px solid transparent;
+    border-left-color: rgba(0, 0, 0, 0.2);
+}
+
+#primaryTabOuterButton::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: -10px;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #fff;
+    border-top: 10px solid transparent;
+}
+
+#primaryTabOuterButton.addTabImageCounts {
+    top: initial;
+    bottom: -9px;
+}
+
+#primaryTabOuterButton.addTabImageCounts::before {
+    top: initial;
+    bottom: 13px;
+}
+
+#primaryTabOuterButton.addTabImageCounts::after {
+    top: initial;
+    bottom: 14px;
+}
+
+#session2WindowIdx div,
+#iUrl > div {
+    margin-left: 22px;
+}
+
+#sessionVariationIdx {
+    position: relative;
+    text-align: center;
+    padding: 15px 15px;
+    font-weight: 400;
+    line-height: 21px;
+    font-size: 13px;
+}
+
+#confirmOriginTab {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+}
+
+#processSessionState {
+    margin-left: 35px;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 70px;
+    position: relative;
+}
+
+#session2WindowIdx {
+    position: absolute;
+    right: 13px;
+}
+
+.evalSessionId {
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main {
+    position: absolute;
+    top: 86px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: -webkit-box;
+}
+
+.main > * {
+    height: 100%;
+}
+
+.resp {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    -webkit-user-select: none;
+}
+
+.tabDetail {
+    text-decoration: none;
+}
+
+.tabDetail:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.syncDesc {
+    display: inline-block;
+    position: relative;
+    z-index: 1000;
+    width: 14px;
+    height: 14px;
+    background: transparent;
+}
+
+
+/*.val1.sEnabled {
+    transform: translateX(25px);
+}
+*/
+
+
+/*.val1.sEnabled::before {
+    content: "";
+    position: absolute;
+    z-index: 500;
+    background: hsl(223, 100%, 61%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 10px;
+    left: 5px;
+}
+*/
+
+.modelConfigVal {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    vertical-align: middle;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+}
+
+._windowOffset {
+    background-image: url(/images/xto.png);
+}
+
+._windowOffset:hover {
+    background-image: url(/images/xt.png);
+}
+
+._tabOffset {
+    background-image: url(/images/cto.png);
+}
+
+._tabOffset:hover {
+    background-image: url(/images/ct.png);
+}
+
+.splitter {
+    -webkit-user-select: none;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    top: 0;
+    bottom: 0;
+    width: 11px;
+    cursor: e-resize;
+}
+
+.setSessionTab {
+    cursor: col-resize;
+}
+
+#keyVal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#keyVal:hover {
+    background-color: hsla(0, 0%, 0%, 0.1);
+}
+
+.evalSelTypeVal #keyVal {
+    background-image: url(/images/x2.gif);
+}
+
+.removeTabUrl #keyVal {
+    background-image: url(/images/x3.gif);
+}
+
+.val6 #keyVal {
+    background-image: url(/images/x0.gif);
+}
+
+.vista #keyVal {
+    background-image: url(/images/x4.gif);
+}
+
+.singleTabTarget #keyVal {
+    background-image: url(/images/xs.gif);
+}
+
+.allowUserIntActionVal:hover > .modelConfigVal,
+.val1:hover > .modelConfigVal {
+    opacity: 1;
+}
+
+.compressOpts {
+    /*top: 25%;*/
+    left: 100px;
+    /*width: 50%;*/
+    padding: 0;
+    background: #fff;
+    z-index: 6002;
+    transition: opacity .2s linear;
+    position: absolute;
+    box-shadow: 0 0 20px hsl(0, 0%, 26%);
+    -webkit-user-select: none;
+}
+
+.getDisplayedSession {
+    display: none;
+    opacity: 0;
+}
+
+.iUrlVal {
+    display: inline-block;
+    margin-top: 12px;
+    cursor: default;
+    font-size: 13px;
+    height: 25px;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.upElement {
+    display: inline-block;
+    cursor: default;
+}
+
+.iWindowsVal {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    height: 24px;
+    font-size: 13px;
+    font-weight: 300;
+    -webkit-appearance: button;
+    background-image: url(/images/d.gif);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    border: 1px solid hsl(0, 0%, 92%);
+    padding-right: 26px;
+    padding-left: 6px;
+    background-color: hsl(0, 0%, 92%);
+    outline: none;
+}
+
+.iWindowsVal[disabled] {
+    background-image: url(/images/do.gif);
+}
+
+.iWindowsVal:focus,
+.iWindowsVal:hover {
+    border-color: hsl(0, 0%, 80%);
+}
+
+.requestTabAction {
+    position: absolute;
+    z-index: 100;
+    top: 6px;
+    left: 100%;
+    font-weight: 100;
+    font-size: 14px;
+    color: hsl(0, 0%, 66%);
+}
+
+#lnkClearSearch {
+    padding-right: 5px;
+    margin-right: 0;
+    display: block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+#evalSbNm {
+    bottom: 0;
+    left: 0;
+    outline: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-left: 35px;
+    padding-right: 10px;
+    padding-top: 30px;
+    position: absolute;
+    right: 0;
+    top: 183px;
+    transition: bottom 300ms;
+}
+
+.show_footer_message #evalSbNm {
+    bottom: 40px;
+}
+
+#evalSbNm.iSelLengthVal {
+    color: hsl(205, 83%, 59%);
+    font-size: 15px;
+    font-weight: 400;
+    overflow: auto;
+    padding-top: 60px;
+    text-align: center;
+}
+
+#iFinalCssClsVal {
+    cursor: default;
+    padding-right: 8px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*white-space: nowrap; */
+    white-space: pre;
+    /*color: hsl(0, 0%, 0%);*/
+    color: hsl(0, 0%, 30%);
+    font-size: 18px;
+    text-decoration: none;
+    margin-right: 6px;
+    font-weight: bold;
+}
+
+.flashCountVal #iFinalCssClsVal {
+    color: hsl(0, 0%, 40%);
+    padding-top: 4px;
+}
+
+#iFinalCssClsVal.iWindowId:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.val1 {
+    display: inline-block;
+    position: relative;
+    padding-left: 1px;
+    /*height: 20px;*/
+    color: #000;
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding-right: 20px;
+    white-space: nowrap;
+    max-width: calc(100% - 305px);
+}
+
+.val1 ~ .val1 {
+    margin-top: 35px;
+}
+
+.bypassSessionMode {
+    position: relative;
+    z-index: 200;
+    background-color: #fff;
+    min-width: 60px;
+    padding: 4px 8px;
+    margin-left: 5px;
+    border: 1px solid transparent;
+    display: inline-block;
+    /*text-decoration: none;*/
+    font-weight: 400;
+    vertical-align: middle;
+    /*white-space: nowrap;*/
+    white-space: pre;
+    cursor: pointer;
+    width: calc(100% - 37px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.bypassSessionMode:hover {
+    /*text-decoration: underline;*/
+    background-color: #eee;
+}
+
+.sEnabled .bypassSessionMode:hover {
+    background-color: hsl(205, 83%, 93%);
+}
+
+.tabTruncateIdx .bypassSessionMode {
+    outline: none;
+    border-color: hsl(0, 0%, 70%);
+    /*text-decoration: none;*/
+    cursor: text;
+    background-color: #eee;
+    text-overflow: initial;
+}
+
+.tabTruncateIdx .modelConfigVal {
+    background-image: none;
+    cursor: default;
+}
+
+.allowUserIntActionVal {
+    display: inline-block;
+    color: #000;
+    padding-left: 29px;
+}
+
+.allowUserIntActionVal.tob-url-muted {
+    opacity: 0.5;
+}
+
+.allowUserIntActionVal.tob-url-muted:hover {
+    opacity: 1;
+}
+
+.popActiveWindow {
+    padding-left: 12px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.childCountVal {
+    width: 16px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.iFirstInList {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 12px;
+    width: 16px;
+    height: 16px;
+    background-image: url(/images/i.png);
+}
+
+.pinnedTabsUnder {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 12px;
+    width: 16px;
+    height: 16px;
+    background-image: url(/images/win.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.val1.sEnabled .pinnedTabsUnder {
+    background-image: url(/images/cwin.png);
+}
+
+.val1.sEnabled .pinnedTabsUnder + .bypassSessionMode {
+    color: hsl(205, 83%, 54%);
+}
+
+.revise {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 14px;
+    width: 9px;
+    height: 16px;
+    background-image: url(/images/p.gif);
+}
+
+.trackActiveSessionTab {
+    position: absolute;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+}
+
+.registerValue2Val {
+    outline: none;
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis; */
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 14px;
+    -webkit-user-select: text;
+    color: #000;
+    text-decoration: none;
+    /*white-space: nowrap;*/
+    white-space: pre;
+}
+
+.registerValue2Val:hover,
+.registerValue2Val:focus {
+    text-decoration: underline;
+}
+
+.topWindowIdx {
+    text-decoration: none !important;
+    cursor: default !important;
+    color: hsl(0, 0%, 65%);
+    /*color: hsl(223, 100%, 61%);*/
+    /*color: hsl(223, 76%, 61%);*/
+}
+
+.updateSessionConfig {
+    -webkit-user-select: text;
+    /*white-space: nowrap;*/
+    white-space: pre;
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    padding: 2px 0 6px 85px;
+    /*color: hsl(0, 0%, 60%);*/
+    color: hsl(205, 84%, 52%);
+}
+
+.formatImportedSession.tic4 .updateSessionConfig {
+    display: none;
+    padding: 0 0 0 25px;
+}
+
+.formatImportedSession.tic4 .allowUserIntActionVal:hover + .updateSessionConfig,
+.formatImportedSession.tic4 .allowUserIntActionVal:focus + .updateSessionConfig {
+    display: inline-block;
+}
+
+.footer {
+    vertical-align: top;
+    height: 50px;
+    font-size: 12px;
+    color: #bbb;
+}
+
+.highlight {
+    font-weight: bold;
+}
+
+.iConcatenateVal {
+    text-decoration: none;
+    line-height: 18px;
+    vertical-align: bottom;
+    color: #999;
+    cursor: default;
+}
+
+.localeListVal {
+    cursor: default;
+    font-size: 12px;
+}
+
+.parseScheme {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity .1s linear;
+}
+
+.iAdditiveVal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    z-index: 1001;
+    opacity: 0.3;
+    transition: opacity .1s linear;
+}
+
+.setSessionConfig {
+    font-size: 11px;
+    font-family: monospace;
+}
+
+#evalSelectedLineitemsVal::-webkit-input-placeholder {
+    text-align: center;
+    padding-top: 30px;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+#copyTabArray::-webkit-input-placeholder {
+    text-align: center;
+    padding-top: 10px;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+#assessStyleVal {
+    display: flex;
+    align-items: center;
+    margin: 0 11px 0 35px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmYiIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgdmlld0JveD0iMCAwIDE3IDE3Ij48cGF0aCBkPSJNIDkuMTgsMCBDIDQuODcsMCAxLjM2LDMuNSAxLjM2LDcuODIgYyAwLDEuODcgMC42NTYsMy41OSAxLjc2LDQuOTMgTCAwLDE1Ljg3IDEuMTYsMTcgNC4yNDUsMTMuODcgYyAxLjM1LDEuMTA1IDMuMDY1LDEuNzYgNC45MzUsMS43NiA0LjMxLDAgNy44MiwtMy41MSA3LjgyLC03LjgxNSAwLC00LjMgLTMuNTEsLTcuODE1IC03LjgyLC03LjgxNSB6IG0gMCwxLjU2IGMgMy40NiwwIDYuMjU2LDIuNzkgNi4yNTYsNi4yNSAwLDMuNDYgLTIuNzksNi4yNSAtNi4yNTYsNi4yNSAtMy40NiwwIC02LjI1NiwtMi43OSAtNi4yNTYsLTYuMjUgMCwtMy40NiAyLjc5LC02LjI1IDYuMjU2LC02LjI1MiB6Ij48L3BhdGg+PC9zdmc+);
+    background-repeat: no-repeat;
+    background-position: 15px 50%;
+    background-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 38px;
+    line-height: 38px;
+    background-color: hsl(125, 54%, 46%);
+    font-size: 13px;
+    color: #fff;
+}
+
+#assessStyleVal.val8 {
+    background-color: hsl(0, 82%, 59%);
+}
+
+.iSession1 {
+    margin-left: 5px;
+    height: 38px;
+    line-height: 38px;
+    vertical-align: top;
+    padding-right: 6px;
+    padding-left: 39px;
+}
+
+#iSpeed {
+    /*color: #676767;*/
+    color: #000;
+    height: 53px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    line-height: 53px;
+    font-size: 14px;
+    margin-right: 11px;
+    margin-left: 35px;
+}
+
+.flashCountVal #iSpeed {
+    color: hsl(0, 0%, 47%);
+}
+
+.currentTime {
+    float: left;
+}
+
+.evalSClickOriginDelete {
+    float: right;
+    padding: 0 14px 0 40px;
+}
+
+.formatImportedSession {
+    white-space: nowrap;
+    padding: 2px 0 3px;
+    font-size: 14px;
+}
+
+.flashCountVal .formatImportedSession {
+    padding: 4px 0 3px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+textarea::-webkit-scrollbar {}
+
+.extractActiveSessionTab {
+    padding-right: 10px;
+    padding-left: 10px;
+    -webkit-user-select: auto;
+    /*resize:vertical;*/
+    font-size: 11px;
+    color: hsl(0, 0%, 30%);
+    text-align: left;
+    overflow-y: auto;
+}
+
+.extractActiveSessionTab::-webkit-scrollbar {
+    background-color: hsl(0, 0%, 100%);
+    width: 12px;
+}
+
+#lnkClearSearch::-webkit-scrollbar {
+    width: 10px;
+}
+
+#evalSbNm::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: hsl(0, 0%, 93%);
+    /*border-radius: 3px;*/
+    /*border-top-left-radius: 3px;*/
+    /*border-top-right-radius: 3px;*/
+    /*border-bottom-right-radius: 3px;*/
+    /*border-bottom-left-radius: 3px; */
+    border: 0 solid hsl(0, 0%, 100%);
+}
+
+textarea::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+textarea::-webkit-scrollbar-track-piece {
+    background-color: hsl(0, 0%, 95%);
+}
+
+.extractActiveSessionTab::-webkit-scrollbar-track-piece {
+    background-color: hsl(0, 0%, 92%);
+}
+
+#lnkClearSearch::-webkit-scrollbar-track-piece {
+    /*background-color: hsl(0, 0%, 91%);*/
+    background-color: #fff;
+}
+
+#evalSbNm::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background-color: hsl(0, 0%, 95%);
+    /*border-top-left-radius: 4px;*/
+    /*border-top-right-radius: 0;*/
+    /*border-bottom-right-radius: 0;*/
+    /*border-bottom-left-radius: 4px; */
+}
+
+textarea::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+textarea:focus::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: hsl(0, 0%, 80%);
+    border: 1px solid hsl(0, 0%, 80%);
+    display: inline-block;
+}
+
+.extractActiveSessionTab::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 82%);
+    border-radius: 3px;
+    width: 10px;
+    display: inline-block;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#lnkClearSearch::-webkit-scrollbar-thumb:vertical {
+    cursor: pointer;
+    /*background-color: hsl(0, 0%, 91%);*/
+    background-color: #fff;
+    /*border-left: 4px solid hsl(0, 0%, 91%);*/
+}
+
+#lnkClearSearch[scrolling="5"]::-webkit-scrollbar-thumb:vertical {
+    background-color: hsl(0, 0%, 87%);
+    /*border-left: 4px solid hsl(0, 0%, 91%);*/
+    border-left: 4px solid #fff;
+}
+
+#evalSbNm::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 87%);
+}
+
+#evalSbNm[scrolling="5"]::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 88%);
+}
+
+#evalSbNm::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(0, 0%, 75%);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: hsl(0, 0%, 90%);
+    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#lnkClearSearch::-webkit-scrollbar-thumb:horizontal {
+    background-color: hsl(0, 0%, 90%);
+}
+
+#activeSessionTabVal {
+    float: right;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    background-image: url(/images/x.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#activeSessionTabVal:hover {
+    background-color: hsla(0, 0%, 0%, 0.07);
+}
+
+#tokenComponentVal {
+    margin-left: auto;
+    cursor: pointer;
+    width: 40px;
+    height: 100%;
+    background-size: 13px;
+    background-image: url(/images/x.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#tokenComponentVal:hover {
+    background-color: hsla(0, 0%, 0%, 0.15);
+}
+
+.sCtrlKey {
+    background-color: #fff;
+    padding: 1px 3px;
+    color: hsl(0, 0%, 30%);
+    display: inline-block;
+    text-align: center;
+    width: 12px;
+}
+
+.iStartCountingAtVal {
+    margin-left: 10px;
+}
+
+.altMsg {
+    margin-bottom: 6px;
+}
+
+.sessionConfigHeadVal {
+    opacity: .5;
+}
+
+.iSessionConfig {
+    z-index: 0;
+    width: 100%;
+    margin-right: 0;
+    height: 8px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .25)), to(rgba(0, 0, 0, 0)));
+    -webkit-mask-box-image: -webkit-gradient(linear, left top, right top, color-stop(0.0, rgba(0, 0, 0, 0)), color-stop(0.1, rgba(0, 0, 0, 1)), color-stop(0.90, rgba(0, 0, 0, 1)), color-stop(1.0, rgba(0, 0, 0, 0)));
+    transition: opacity .25s linear;
+}
+
+.restoreTypeVal {
+    z-index: 0;
+    width: 100%;
+    margin-right: 0;
+    height: 7px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .17)), to(rgba(0, 0, 0, 0)));
+    -webkit-mask-box-image: -webkit-gradient(linear, left top, right top, color-stop(0.0, rgba(0, 0, 0, 0)), color-stop(0.1, rgba(0, 0, 0, 1)), color-stop(0.90, rgba(0, 0, 0, 1)), color-stop(1.0, rgba(0, 0, 0, 0)));
+    transition: opacity .25s linear;
+}
+
+.iRemoveSessionConfigs {
+    z-index: 5000;
+    opacity: 1;
+    transition: opacity .15s linear;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 0;
+}
+
+input[type="radio"]:disabled,
+input[type="checkbox"]:disabled {
+    cursor: default;
+}
+
+.evalSearchTermVal {
+    vertical-align: middle;
+    padding-left: 8px;
+}
+
+.registerSessionTab {
+    color: hsl(0, 0%, 60%);
+    vertical-align: top;
+    padding-right: 35px;
+    text-align: right;
+}
+
+#iNumberVal {
+    display: inline-block;
+    text-align: center;
+    /*background: #fff;*/
+    background: #3ea5ed;
+    z-index: 500;
+    position: relative;
+    height: 100%;
+}
+
+#finalCssClsVal {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 314px;
+    padding: 0 5px;
+    line-height: 37px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    vertical-align: middle;
+    /*-webkit-user-select: all;*/
+}
+
+#finalCssClsVal.refreshTabCache {
+    line-height: 21px;
+}
+
+#val7 {
+    display: inline-block;
+    padding: 9px;
+}
+
+.evalSelTypeVal {
+    color: hsl(0, 61%, 33%);
+    background: hsl(0, 60%, 88%);
+}
+
+.removeTabUrl {
+    color: hsl(50, 100%, 23%);
+    background: hsl(50, 100%, 70%);
+}
+
+.val6 {
+    color: hsl(120, 52%, 32%);
+    background: hsl(110, 65%, 83%);
+}
+
+.vista {
+    color: hsl(205, 83%, 25%);
+    background: hsl(205, 83%, 89%);
+}
+
+.singleTabTarget {
+    color: hsl(0, 0%, 100%);
+    background: hsl(0, 0%, 24%);
+}
+
+.currentTimeVal {
+    position: absolute;
+    bottom: 4px;
+    background-color: hsl(120, 45%, 40%) !important;
+    padding: 1px 4px;
+    color: #fff;
+    font-size: 11px;
+}
+
+.iPos {
+    right: 4px;
+}
+
+.sbTokenAddedCb {
+    left: 4px;
+}
+
+.requestWindowTab {
+    display: inline-block;
+    background: hsl(50, 97%, 78%);
+    /*background-color: hsl(125, 54%, 84%);*/
+}
+
+.refreshSessionWindow {
+    display: inline-block;
+    /*background: hsl(125, 100%, 91%);*/
+    /*color: hsl(0, 0%, 32%);*/
+    background: hsl(205, 100%, 93%);
+    color: hsl(205, 83%, 39%);
+}
+
+.enableSel {
+    display: inline;
+    /*background: hsl(50, 97%, 78%);*/
+    /*color: hsl(50, 91%, 18%);*/
+    background: hsl(50, 97%, 78%);
+    color: hsl(0, 0%, 0%);
+}
+
+.iTitle .enableSel,
+.iExpr .enableSel {
+    color: #fff;
+    /*background: #63801d;*/
+    background: #449e00;
+}
+
+.iTitle.hideCurrentWindow .enableSel,
+.iExpr.hideCurrentWindow .enableSel {
+    color: #fff;
+    /*background: #a89d1a;*/
+    background: #343434;
+}
+
+.sbRegExp .updateSessionConfig {
+    color: hsl(226, 16%, 65%);
+}
+
+.evalSBSaveRelevant {
+    display: none;
+}
+
+.countTabLineItems,
+.addCurrentSession {
+    display: inline-block;
+}
+
+.addCurrentSession + .countTabLineItems {
+    float: right;
+    padding-left: 15px;
+}
+
+#revisionIdx {
+    padding-bottom: 50px;
+    display: inline-block;
+    width: 100%;
+}
+
+.iPropNm {
+    background-image: url(/images/cm.png);
+    background-repeat: no-repeat;
+    background-position: 8px 50%;
+    display: none;
+    top: 10px;
+    left: 11px;
+    position: absolute;
+    color: hsl(120, 52%, 30%);
+    background-color: hsl(110, 65%, 83%);
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 0 14px 0 31px;
+    border: 1px transparent solid;
+    font-size: 12px;
+    word-spacing: 2px;
+}
+
+.requestHonoredVal {
+    color: transparent;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    outline: none;
+    z-index: 10;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.requestHonoredVal::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.requestHonoredVal::before {
+    -webkit-user-select: none;
+    background-color: #eee;
+    color: hsl(0, 0%, 20%);
+    content: 'Select file';
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    outline: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 85px;
+}
+
+.requestHonoredVal:hover::before {
+    background-color: #ddd;
+}
+
+.requestHonoredVal:active {
+    outline: 0;
+}
+
+.requestHonoredVal:active::before {
+    outline: 0;
+    background-color: #ccc;
+}
+
+.iShowSuccessStatus {
+    z-index: 50000;
+    position: absolute;
+    top: 3px;
+    left: 90px;
+    width: 300px;
+    height: 44px;
+}
+
+.extendedSessionConfig {
+    word-spacing: 2px;
+    display: none;
+    z-index: 50001;
+    position: absolute;
+    top: 10px;
+    left: 11px;
+    color: hsl(120, 52%, 32%);
+    background: hsl(110, 65%, 83%);
+    height: 30px;
+    line-height: 30px;
+    padding: 0 14px;
+    font-size: 12px;
+    overflow-x: hidden;
+    max-width: 278px;
+    text-align: left;
+}
+
+.inferTypes {
+    color: hsl(0, 61%, 33%);
+    background: hsl(0, 60%, 88%);
+}
+
+.evalSelectedLineitemsVal-dragover {
+    border: 2px dashed hsl(222, 30%, 43%);
+    color: hsl(0, 0%, 95%);
+    padding: 6px;
+}
+
+textarea.evalSelectedLineitemsVal-dragover:focus::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+#sessionTypeQualifier > div > span {
+    padding-left: 6px;
+}
+
+#sessionTypeQualifier input {
+    position: relative;
+    top: -1px;
+}
+
+#sessionTypeQualifier > div {
+    margin-left: 16px;
+}
+
+.contentSepVal {
+    margin-top: 6px;
+}
+
+.iPosition {
+    margin-top: 10px;
+}
+
+.parseTabAction {
+    text-decoration: underline;
+    color: hsl(0, 0%, 30%);
+}
+
+.sessionCreateStat {
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.sessionCreateStatDetail {
+    margin-left: 10px;
+}
+
+ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.flashCountVal {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+#brchLineitemRenderDelegate {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background-image: url(/images/x.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 12px;
+}
+
+#brchLineitemRenderDelegate:hover {
+    background-color: #3284be;
+}
+
+.isRemoveSubheaderVal {
+    padding-left: 31px;
+    background-image: url(/images/r.gif);
+    background-repeat: no-repeat;
+    background-position-y: -89px;
+}
+
+.cfAlias {
+    background-image: url(/images/rs.gif);
+}
+
+.getActiveWindow {
+    background-image: url(/images/rc.gif);
+}
+
+.iWidthOverride {
+    background-image: url(/images/r.gif);
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+    .cfAlias {
+        background-image: url(/images/retina/rs.gif);
+        background-size: 20px;
+    }
+    .getActiveWindow {
+        background-image: url(/images/retina/rc.gif);
+        background-size: 20px;
+    }
+    .iWidthOverride {
+        background-image: url(/images/retina/r.gif);
+        background-size: 20px;
+    }
+}
+
+#val7 a {
+    /*text-decoration:underline;*/
+    font-weight: 400;
+    color: inherit;
+}
+
+.flashCountVal #val7 a {
+    text-decoration: underline;
+}
+
+#val7 a:hover {
+    text-decoration: underline;
+}
+
+#evalOnlyCountDupesVal,
+#refreshWindowCount {
+    background-image: url(/images/sv.gif);
+}
+
+#runningVal {
+    background-image: url(/images/mba.png);
+    padding: 0 14px 0 39px;
+}
+
+#headerErrVal {
+    background-image: url(/images/r.gif);
+    padding: 0 12px 0 41px;
+}
+
+#initTabLayout > .serializeSessionTransactions {
+    background-repeat: no-repeat;
+    background-position-y: -13px;
+    background-position-x: 11px;
+}
+
+#initTabLayout > .serializeSessionTransactions:hover {
+    background-position-y: -77.5px;
+}
+
+#syncTabLineItems {
+    background-image: url(/images/r.gif);
+}
+
+#recordDateTimeVal {
+    background-image: url(/images/rs.gif);
+}
+
+#evalSearchTermsVal {
+    background-image: url(/images/rc.gif);
+}
+
+#btnDonate {
+    background-image: url(/images/hts.svg);
+    background-size: 14px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 18px;
+    margin-left: 12px;
+    margin-right: 17px;
+    border-color: transparent !important;
+}
+
+#btnDonate.iTitleTextVal {
+    background-image: url(/images/htsh.svg);
+    background-color: #ff9fb0;
+}
+
+#bMergeSaveElVal {
+    background-image: url(/images/cfg.svg);
+    background-size: 16px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 18px;
+    margin-left: 20px !important;
+}
+
+#appExceptionVal {
+    z-index: 301;
+    width: 18px;
+    background-image: url(/images/u.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#rArrayVal {
+    z-index: 300;
+    width: 18px;
+    background-image: url(/images/uo.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+#txtSortBasic {
+    display: inline-block;
+    margin: 0 6px;
+    vertical-align: middle;
+    width: 20px;
+    height: 14px;
+    background-image: url(/images/sv.gif);
+    background-repeat: no-repeat;
+    background-position-y: -26px;
+}
+
+#iMsg {
+    width: 45px;
+    padding: 0;
+    background-image: url(/images/kabob.svg);
+    background-position: 50% 50%;
+    background-size: 16px;
+}
+
+#requireMove {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    left: 3px;
+    width: 16px;
+    background-size: 16px;
+    height: 16px;
+    margin-right: 10px;
+    opacity: 0;
+    transition: opacity .3s linear;
+    background-image: url(/images/cm.png);
+}
+
+#normalizeImportedSession {
+    background-image: url(/images/mla.png);
+    display: inline-block;
+    width: 49px;
+    background-size: 49px;
+    height: 47px;
+    vertical-align: middle;
+    position: relative;
+    top: 5px;
+}
+
+#originWindow {
+    background-image: url(/images/close.png);
+    display: inline-block;
+    width: 48px;
+    background-size: 48px;
+    height: 48px;
+    vertical-align: middle;
+    position: relative;
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+    #appExceptionVal {
+        background-image: url(/images/retina/u.gif);
+        background-size: 14px;
+    }
+    #rArrayVal {
+        background-image: url(/images/retina/uo.gif);
+        background-size: 14px;
+    }
+    #headerErrVal {
+        background-image: url(/images/retina/r.gif);
+        background-size: 20px;
+    }
+    #syncTabLineItems {
+        background-image: url(/images/retina/r.gif);
+        background-size: 20px;
+    }
+    #recordDateTimeVal {
+        background-image: url(/images/retina/rs.gif);
+        background-size: 20px;
+    }
+    #evalSearchTermsVal {
+        background-image: url(/images/retina/rc.gif);
+        background-size: 20px;
+    }
+    .iFirstInList {
+        background-image: url(/images/retina/i.png);
+        background-size: 16px;
+    }
+    .pinnedTabsUnder {
+        background-image: url(/images/retina/win.png);
+        background-size: 15px 13px;
+    }
+    .val1.sEnabled .pinnedTabsUnder {
+        background-image: url(/images/retina/cwin.png);
+    }
+    .revise {
+        background-image: url(/images/retina/p.gif);
+        background-size: 9px;
+    }
+    .iWindowsVal {
+        background-image: url(/images/retina/d.gif);
+        background-size: 17px;
+    }
+    .iWindowsVal[disabled] {
+        background-image: url(/images/retina/do.gif);
+        background-size: 17px;
+    }
+    #txtSortBasic {
+        background-image: url(/images/retina/sv.gif);
+        background-size: 20px;
+    }
+    #evalOnlyCountDupesVal,
+    #refreshWindowCount {
+        background-image: url(/images/retina/sv.gif);
+        background-size: 20px;
+    }
+    #activeSessionTabVal {
+        background-image: url(/images/retina/x.gif);
+        background-size: 10px;
+    }
+    .evalSelTypeVal #keyVal {
+        background-image: url(/images/retina/x2.gif);
+    }
+    .removeTabUrl #keyVal {
+        background-image: url(/images/retina/x3.gif);
+    }
+    .val6 #keyVal {
+        background-image: url(/images/retina/x0.gif);
+    }
+    .vista #keyVal {
+        background-image: url(/images/retina/x4.gif);
+    }
+    .singleTabTarget #keyVal {
+        background-image: url(/images/retina/xs.gif);
+    }
+    #requireMove {
+        background-image: url(/images/retina/cm.png);
+    }
+    .iPropNm {
+        background-image: url(/images/retina/cm.png);
+        background-size: 16px;
+    }
+    #runningVal {
+        background-image: url(/images/retina/mba.png);
+        background-size: 20px;
+    }
+    #normalizeImportedSession {
+        background-image: url(/images/retina/mla.png);
+    }
+    #originWindow {
+        background-image: url(/images/retina/close.png);
+    }
+    ._windowOffset {
+        background-image: url(/images/retina/xto.png);
+    }
+    ._windowOffset:hover {
+        background-image: url(/images/retina/xt.png);
+    }
+    ._tabOffset {
+        background-image: url(/images/retina/cto.png);
+    }
+    ._tabOffset:hover {
+        background-image: url(/images/retina/ct.png);
+    }
+    .tabsUnder {
+        background-image: url(/images/retina/info.png);
+        background-size: 24px;
+    }
+}
+
+@keyframes sessionTabReveal {
+    0% {
+        transform: translateY(calc(100% + 20px));
+    }
+}

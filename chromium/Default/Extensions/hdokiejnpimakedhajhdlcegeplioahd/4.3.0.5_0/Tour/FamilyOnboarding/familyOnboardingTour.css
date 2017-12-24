@@ -1,0 +1,142 @@
+.family-onboarding-header {
+  display: none; }
+
+.family-onboarding-header-image {
+  display: none; }
+
+.family-onboarding-final-header-image {
+  display: none; }
+
+.family-onboarding-override {
+  font-family: 'Open Sans', sans-serif; }
+  .family-onboarding-override.family-onboarding-welcome-step {
+    height: 380px;
+    width: 550px; }
+    .family-onboarding-override.family-onboarding-welcome-step .family-onboarding-header {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 60px;
+      width: 100%;
+      background-color: #f7f9fa;
+      box-shadow: 0 1px 0 0 #e7e8ea; }
+    .family-onboarding-override.family-onboarding-welcome-step .family-onboarding-header-image {
+      display: block;
+      margin: 37px auto 12px; }
+    .family-onboarding-override.family-onboarding-welcome-step #contentText1 {
+      color: #22303a; }
+    .family-onboarding-override.family-onboarding-welcome-step .intro-tour {
+      margin: 0 !important;
+      padding: 16px 24px;
+      width: 91.2%; }
+    .family-onboarding-override.family-onboarding-welcome-step .row:first-child {
+      margin-bottom: 16px; }
+    .family-onboarding-override.family-onboarding-welcome-step #mainTitle {
+      font-size: 20px;
+      margin-top: 4px;
+      color: #646d73; }
+    .family-onboarding-override.family-onboarding-welcome-step #btnClose {
+      position: absolute;
+      top: 9px;
+      right: 6px; }
+    .family-onboarding-override.family-onboarding-welcome-step .btn-primary {
+      width: 151px;
+      float: right; }
+    .family-onboarding-override.family-onboarding-welcome-step .buttons {
+      padding-right: 0; }
+  .family-onboarding-override .buttons {
+    margin-top: 20px;
+    float: right; }
+  .family-onboarding-override .btn-base {
+    background-color: #ffffff;
+    border: 1px solid #e7e8ea;
+    border-radius: 50px;
+    box-shadow: 0 1px 1px rgba(59, 74, 84, 0.1);
+    color: #646d73;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: -0.3px;
+    line-height: 1.6;
+    height: 36px;
+    margin: 6px;
+    padding: 6px 24px;
+    outline: 0;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1), border-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1), background-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    -moz-transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1), border-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1), background-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    -ms-transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1), border-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1), background-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    -o-transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1), border-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1), background-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: box-shadow 225ms cubic-bezier(0.25, 0.8, 0.25, 1), border-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1), background-color 225ms cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .family-onboarding-override .btn-primary {
+    color: #ffffff;
+    background-color: #d22d27;
+    border-color: #d22d27;
+    box-shadow: 0 1px 1px rgba(59, 74, 84, 0.1), 0 1px 6px rgba(59, 74, 84, 0.2); }
+  .family-onboarding-override .btn-link {
+    color: #646d73;
+    font-weight: 600;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none; }
+  .family-onboarding-override.family-onboarding-last-step {
+    height: 380px;
+    width: 550px;
+    max-height: 400px !important; }
+    .family-onboarding-override.family-onboarding-last-step .family-onboarding-header {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 60px;
+      width: 100%;
+      background-color: #f7f9fa;
+      box-shadow: 0 1px 0 0 #e7e8ea; }
+    .family-onboarding-override.family-onboarding-last-step #contentText1 {
+      color: #22303a; }
+    .family-onboarding-override.family-onboarding-last-step .intro-tour {
+      margin: 0 !important;
+      padding: 16px 24px;
+      width: 91.2%; }
+    .family-onboarding-override.family-onboarding-last-step .row:first-child {
+      margin-bottom: 16px; }
+    .family-onboarding-override.family-onboarding-last-step #mainTitle {
+      font-size: 20px;
+      margin-top: 4px;
+      color: #646d73; }
+    .family-onboarding-override.family-onboarding-last-step #btnClose {
+      position: absolute;
+      top: 9px;
+      right: 6px; }
+    .family-onboarding-override.family-onboarding-last-step .buttons {
+      padding-right: 0; }
+    .family-onboarding-override.family-onboarding-last-step .family-onboarding-final-header-image {
+      display: block;
+      margin: 49px auto 48px; }
+    .family-onboarding-override.family-onboarding-last-step .get-started {
+      padding: 6px 12px !important;
+      width: 161px; }
+
+.family-onboarding-welcome-step {
+  width: 550px;
+  height: 359px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2); }
+
+.family-onboarding-step {
+  width: 423.6px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 2px 0 rgba(188, 202, 212, 0.7); }
+
+.family-onboarding-step-two {
+  height: 162px; }
+
+.invite-family-members {
+  padding: 6px 12px !important;
+  width: 161px; }

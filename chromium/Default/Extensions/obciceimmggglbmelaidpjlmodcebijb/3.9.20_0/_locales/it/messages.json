@@ -1,0 +1,896 @@
+{
+   "1": {
+      "description": "the number",
+      "message": "1"
+   },
+   "10": {
+      "description": "the number",
+      "message": "10"
+   },
+   "11": {
+      "description": "the number",
+      "message": "11"
+   },
+   "12": {
+      "description": "the number",
+      "message": "12"
+   },
+   "12_hours_option": {
+      "description": "12 hour time format, example: 3:00 PM",
+      "message": "12 ore"
+   },
+   "13": {
+      "description": "the number",
+      "message": "13"
+   },
+   "14": {
+      "description": "the number",
+      "message": "14"
+   },
+   "15": {
+      "description": "the number",
+      "message": "15"
+   },
+   "15_minutes_option": {
+      "description": "Time amount",
+      "message": "15 minuti"
+   },
+   "16": {
+      "description": "the number",
+      "message": "16"
+   },
+   "17": {
+      "description": "the number",
+      "message": "17"
+   },
+   "18": {
+      "description": "the number",
+      "message": "18"
+   },
+   "19": {
+      "description": "the number",
+      "message": "19"
+   },
+   "2": {
+      "description": "the number",
+      "message": "2"
+   },
+   "20": {
+      "description": "the number",
+      "message": "20"
+   },
+   "21": {
+      "description": "the number",
+      "message": "21"
+   },
+   "22": {
+      "description": "the number",
+      "message": "22"
+   },
+   "23": {
+      "description": "the number",
+      "message": "23"
+   },
+   "24": {
+      "description": "the number",
+      "message": "24"
+   },
+   "24_hours_option": {
+      "description": "24 hour time format, example: 14:00",
+      "message": "24 ore"
+   },
+   "25": {
+      "description": "the number",
+      "message": "25"
+   },
+   "26": {
+      "description": "the number",
+      "message": "26"
+   },
+   "27": {
+      "description": "the number",
+      "message": "27"
+   },
+   "28": {
+      "description": "the number",
+      "message": "28"
+   },
+   "29": {
+      "description": "the number",
+      "message": "29"
+   },
+   "3": {
+      "description": "the number",
+      "message": "3"
+   },
+   "30": {
+      "description": "the number",
+      "message": "30"
+   },
+   "30_minutes_option": {
+      "description": "Time amount",
+      "message": "30 minuti"
+   },
+   "31": {
+      "description": "the number",
+      "message": "31"
+   },
+   "4": {
+      "description": "the number",
+      "message": "4"
+   },
+   "5": {
+      "description": "the number",
+      "message": "5"
+   },
+   "6": {
+      "description": "the number",
+      "message": "6"
+   },
+   "60_minutes_option": {
+      "description": "Time amount",
+      "message": "60 minuti"
+   },
+   "7": {
+      "description": "the number",
+      "message": "7"
+   },
+   "8": {
+      "description": "the number",
+      "message": "8"
+   },
+   "9": {
+      "description": "the number",
+      "message": "9"
+   },
+   "Whats_new_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Novità"
+   },
+   "afternoon": {
+      "description": "The afternoon abbreviation when using 12 hour time",
+      "message": "PM"
+   },
+   "and": {
+      "description": "The word and",
+      "message": "e"
+   },
+   "april": {
+      "description": "The month",
+      "message": "aprile"
+   },
+   "arabic": {
+      "description": "The language",
+      "message": "Arabo"
+   },
+   "ascending": {
+      "description": "ascending week day order",
+      "message": "Crescente"
+   },
+   "august": {
+      "description": "The month",
+      "message": "agosto"
+   },
+   "back_arrow": {
+      "description": "ascii arrow",
+      "message": "&larr;"
+   },
+   "back_to_week_link": {
+      "description": "back to week link",
+      "message": "$arrow$ Torna indietro",
+      "placeholders": {
+         "arrow": {
+            "content": "$1",
+            "example": "an arrow"
+         }
+      }
+   },
+   "catalonian": {
+      "description": "The language",
+      "message": "Catalano"
+   },
+   "chinese_simplified": {
+      "description": "The language",
+      "message": "Cinese (Semplificato)"
+   },
+   "chrome_language": {
+      "description": "language identifier used by Chrome",
+      "message": "it"
+   },
+   "clear_history_button": {
+      "description": "Button text for clear history button in Settings",
+      "message": "Cancella cronologia..."
+   },
+   "clearing_history_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Cancella cronologia"
+   },
+   "close_button": {
+      "description": "Button to close modal",
+      "message": "Ok!"
+   },
+   "collapse_button": {
+      "description": "Text for collapse button",
+      "message": "Comprimi"
+   },
+   "confirm_delete_all_search_results": {
+      "description": "Confirmation text to delete all search results",
+      "message": "Cancellare tutti i risultati della ricerca?"
+   },
+   "confirm_delete_all_visits": {
+      "description": "Confirmation text to delete all visits from a specific date",
+      "message": "Elimina tutte le visite dal $formal_date$?",
+      "placeholders": {
+         "formal_date": {
+            "content": "$1",
+            "example": "January 2, 2011"
+         }
+      }
+   },
+   "credits_link": {
+      "description": "The link to credits",
+      "message": "$open$Better History$close$ riconoscimenti",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "strong close"
+         },
+         "open": {
+            "content": "$1",
+            "example": "strong open"
+         }
+      }
+   },
+   "credits_title": {
+      "description": "Title for credits modal",
+      "message": "Better History Riconoscimenti"
+   },
+   "current_day": {
+      "description": "the current day's visits",
+      "message": "Oggi"
+   },
+   "current_version_label": {
+      "description": "label for the current version",
+      "message": "Versione attuale"
+   },
+   "current_week": {
+      "description": "the current week's visits",
+      "message": "Settimana corrente"
+   },
+   "czech": {
+      "description": "The language",
+      "message": "Ceco"
+   },
+   "date_week_label": {
+      "description": "short week w/ label",
+      "message": "Settimana del $week$",
+      "placeholders": {
+         "week": {
+            "content": "$1",
+            "example": "date"
+         }
+      }
+   },
+   "december": {
+      "description": "The month",
+      "message": "dicembre"
+   },
+   "default_time_format": {
+      "description": "12 or 24 hour based",
+      "message": "24"
+   },
+   "delete_all_visits_for_filter_button": {
+      "description": "Text for delete all visits for a day filter button",
+      "message": "Elimina..."
+   },
+   "delete_all_visits_for_search_button": {
+      "description": "Text for delete all visits from search button",
+      "message": "Elimina..."
+   },
+   "delete_grouped_visits": {
+      "description": "Tooltip for the delete button on grouped visits",
+      "message": "Elimina il gruppo di visite selezionato"
+   },
+   "delete_time_interval_button": {
+      "description": "delete button label",
+      "message": "Elimina"
+   },
+   "delete_time_interval_button_tooltip": {
+      "description": "delete button tooltip",
+      "message": "Elimina"
+   },
+   "delete_visit": {
+      "description": "Tooltip for the delete button on a page visit",
+      "message": "Elimina questa visita"
+   },
+   "descending": {
+      "description": "descending week day order",
+      "message": "Decrescente"
+   },
+   "developed_by": {
+      "description": "Developer label",
+      "message": "Creato e sviluppato da $link_open$$name$$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2",
+            "example": "Closing link"
+         },
+         "link_open": {
+            "content": "$1",
+            "example": "Opening link"
+         },
+         "name": {
+            "content": "$3",
+            "example": "Developer name"
+         }
+      }
+   },
+   "dutch": {
+      "description": "The language",
+      "message": "Olandese"
+   },
+   "evening": {
+      "description": "The evening abbreviation when using 12 hour time",
+      "message": "PM"
+   },
+   "expand_button": {
+      "description": "Text for expand button",
+      "message": "Espandi"
+   },
+   "extended_formal_date": {
+      "description": "The order of a full extended date",
+      "message": "dddd, Do MMMM YYYY"
+   },
+   "february": {
+      "description": "The month",
+      "message": "febbraio"
+   },
+   "feedback_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Commenti"
+   },
+   "formal_date": {
+      "description": "The order of a full date",
+      "message": "Do MMMM YYYY"
+   },
+   "french": {
+      "description": "The language",
+      "message": "Francese"
+   },
+   "friday": {
+      "description": "The day of the week",
+      "message": "venerdì"
+   },
+   "general_section_title": {
+      "description": "General section title in settings",
+      "message": "Generale"
+   },
+   "german": {
+      "description": "The language",
+      "message": "Tedesco"
+   },
+   "google_plus_language": {
+      "description": "Google plus language abbreviation",
+      "message": "it"
+   },
+   "group_visits_by_domain_label": {
+      "description": "Label for check box to group visits by domain",
+      "message": "Raggruppa le visite per dominio"
+   },
+   "group_visits_by_label": {
+      "description": "Label for select box to set the time grouping interval for visits",
+      "message": "Raggruppa le visite per"
+   },
+   "hindi": {
+      "description": "The language",
+      "message": "Indiano"
+   },
+   "history_title": {
+      "description": "History",
+      "message": "Cronologia"
+   },
+   "hungarian": {
+      "description": "The language",
+      "message": "Ungherese"
+   },
+   "italian": {
+      "description": "The language",
+      "message": "Italiano"
+   },
+   "january": {
+      "description": "The month",
+      "message": "gennaio"
+   },
+   "japanese": {
+      "description": "The language",
+      "message": "Giapponese"
+   },
+   "july": {
+      "description": "The month",
+      "message": "luglio"
+   },
+   "june": {
+      "description": "The month",
+      "message": "giugno"
+   },
+   "last_visit": {
+      "description": "last visited page",
+      "message": "Ultima pagina visitata"
+   },
+   "last_week": {
+      "description": "last week",
+      "message": "Settimana scorsa"
+   },
+   "latvian": {
+      "description": "The language",
+      "message": "Lettone"
+   },
+   "leave_a_review": {
+      "description": "Link text to leave a review",
+      "message": "Scrivi una recensione"
+   },
+   "local_time": {
+      "description": "local time format",
+      "message": "HH:mm"
+   },
+   "manifest_browser_action_title": {
+      "description": "Manifest browser action title",
+      "message": "Sfoglia cronologia"
+   },
+   "manifest_description": {
+      "description": "Manifest description",
+      "message": "Un migliore approccio alla tua cronologia di navigazione. Ricerche migliori, interfaccia più nitida e filtri più utili."
+   },
+   "manifest_name": {
+      "description": "Manifest name",
+      "message": "Better History"
+   },
+   "march": {
+      "description": "The month",
+      "message": "marzo"
+   },
+   "max_number_of_search_results": {
+      "description": "number of search results found",
+      "message": "Trovati più di $number$ risultati",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "may": {
+      "description": "The month",
+      "message": "maggio"
+   },
+   "monday": {
+      "description": "The day of the week",
+      "message": "lunedì"
+   },
+   "morning": {
+      "description": "The morning abbreviation when using 12 hour time",
+      "message": "AM"
+   },
+   "no_visits_found": {
+      "description": "Text for no visits found message",
+      "message": "Spiacente, nessuna pagina trovata"
+   },
+   "november": {
+      "description": "The month",
+      "message": "novembre"
+   },
+   "number_of_search_results": {
+      "description": "number of search results found",
+      "message": "Trovati $number$ risultati",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "number_of_visits": {
+      "description": "Label to a number representing a number of visits",
+      "message": "$number_open$$number$$number_close$ visite",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "the number of visits"
+         },
+         "number_close": {
+            "content": "$3",
+            "example": "number tag close"
+         },
+         "number_open": {
+            "content": "$2",
+            "example": "number tag open"
+         }
+      }
+   },
+   "october": {
+      "description": "The month",
+      "message": "ottobre"
+   },
+   "open_location": {
+      "description": "open to \u003Cpage>",
+      "message": "Apri in"
+   },
+   "ordinal_1": {
+      "description": "the ordinal for 1",
+      "message": " "
+   },
+   "ordinal_10": {
+      "description": "the ordinal for 10",
+      "message": " "
+   },
+   "ordinal_11": {
+      "description": "the ordinal for 11",
+      "message": " "
+   },
+   "ordinal_12": {
+      "description": "the ordinal for 12",
+      "message": " "
+   },
+   "ordinal_13": {
+      "description": "the ordinal for 13",
+      "message": " "
+   },
+   "ordinal_14": {
+      "description": "the ordinal for 14",
+      "message": " "
+   },
+   "ordinal_15": {
+      "description": "the ordinal for 15",
+      "message": " "
+   },
+   "ordinal_16": {
+      "description": "the ordinal for 16",
+      "message": " "
+   },
+   "ordinal_17": {
+      "description": "the ordinal for 17",
+      "message": " "
+   },
+   "ordinal_18": {
+      "description": "the ordinal for 18",
+      "message": " "
+   },
+   "ordinal_19": {
+      "description": "the ordinal for 19",
+      "message": " "
+   },
+   "ordinal_2": {
+      "description": "the ordinal for 2",
+      "message": " "
+   },
+   "ordinal_20": {
+      "description": "the ordinal for 20",
+      "message": " "
+   },
+   "ordinal_21": {
+      "description": "the ordinal for 21",
+      "message": " "
+   },
+   "ordinal_22": {
+      "description": "the ordinal for 22",
+      "message": " "
+   },
+   "ordinal_23": {
+      "description": "the ordinal for 23",
+      "message": " "
+   },
+   "ordinal_24": {
+      "description": "the ordinal for 24",
+      "message": " "
+   },
+   "ordinal_25": {
+      "description": "the ordinal for 25",
+      "message": " "
+   },
+   "ordinal_26": {
+      "description": "the ordinal for 26",
+      "message": " "
+   },
+   "ordinal_27": {
+      "description": "the ordinal for 27",
+      "message": " "
+   },
+   "ordinal_28": {
+      "description": "the ordinal for 28",
+      "message": " "
+   },
+   "ordinal_29": {
+      "description": "the ordinal for 29",
+      "message": " "
+   },
+   "ordinal_3": {
+      "description": "the ordinal for 3",
+      "message": " "
+   },
+   "ordinal_30": {
+      "description": "the ordinal for 30",
+      "message": " "
+   },
+   "ordinal_31": {
+      "description": "the ordinal for 31",
+      "message": " "
+   },
+   "ordinal_4": {
+      "description": "the ordinal for 4",
+      "message": " "
+   },
+   "ordinal_5": {
+      "description": "the ordinal for 5",
+      "message": " "
+   },
+   "ordinal_6": {
+      "description": "the ordinal for 6",
+      "message": " "
+   },
+   "ordinal_7": {
+      "description": "the ordinal for 7",
+      "message": " "
+   },
+   "ordinal_8": {
+      "description": "the ordinal for 8",
+      "message": " "
+   },
+   "ordinal_9": {
+      "description": "the ordinal for 9",
+      "message": " "
+   },
+   "polish": {
+      "description": "The language",
+      "message": "Polacco"
+   },
+   "portuguese": {
+      "description": "The language",
+      "message": "Portoghese"
+   },
+   "prompt_cancel_button": {
+      "description": "Button to close modal",
+      "message": "Annulla"
+   },
+   "prompt_delete_button": {
+      "description": "Button to delete history",
+      "message": "Elimina"
+   },
+   "prompt_title": {
+      "description": "Title of prompt",
+      "message": "Conferma"
+   },
+   "right_click_options_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Opzioni click con tasto destro"
+   },
+   "romanian": {
+      "description": "The language",
+      "message": "Rumeno"
+   },
+   "russian": {
+      "description": "The language",
+      "message": "Russo"
+   },
+   "saturday": {
+      "description": "The day of the week",
+      "message": "sabato"
+   },
+   "search_by_domain": {
+      "description": "search by domain of visit",
+      "message": "Altri risultati dal sito"
+   },
+   "search_by_domain_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "Cerca per dominio"
+   },
+   "search_by_text_selection_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "Cerca per testo selezionato"
+   },
+   "search_in_history": {
+      "description": "Label for search in history context menu item",
+      "message": "Cerca nella cronologia"
+   },
+   "search_input_placeholder_text": {
+      "description": "Placeholder text in the search input box",
+      "message": "Ricerca per titolo, url o data"
+   },
+   "search_time_frame": {
+      "description": "Time frame relating to Search",
+      "message": "Negli ultimi mesi"
+   },
+   "search_title": {
+      "description": "title for the search page",
+      "message": "Ricerca"
+   },
+   "searching_title": {
+      "description": "Searching title",
+      "message": "Ricerca"
+   },
+   "september": {
+      "description": "The month",
+      "message": "settembre"
+   },
+   "settings_link": {
+      "description": "Text for the link to Settings",
+      "message": "Opzioni"
+   },
+   "settings_title": {
+      "description": "Settings title for Settings page",
+      "message": "Opzioni"
+   },
+   "short_date": {
+      "description": "for Moment.js",
+      "message": "Do MMMM"
+   },
+   "short_date_with_day": {
+      "description": "for Moment.js",
+      "message": "dddd, Do MMMM"
+   },
+   "slovak": {
+      "description": "The language",
+      "message": "Slovacco"
+   },
+   "spanish": {
+      "description": "The language",
+      "message": "Spagnolo"
+   },
+   "spread_the_word_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Dillo agli amici"
+   },
+   "starting_week_day": {
+      "description": "day that the week starts on",
+      "message": "Primo giorno della settimana"
+   },
+   "suggestions_bugs_comments": {
+      "description": "Link text to give feedback",
+      "message": "Suggerimenti, errori, commenti? Manda un tweet $link_open$@Better_History!$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2"
+         },
+         "link_open": {
+            "content": "$1"
+         }
+      }
+   },
+   "sunday": {
+      "description": "The day of the week",
+      "message": "domenica"
+   },
+   "swedish": {
+      "description": "The language",
+      "message": "Svedese"
+   },
+   "this_week": {
+      "description": "this week",
+      "message": "Questa settimana"
+   },
+   "thursday": {
+      "description": "The day of the week",
+      "message": "giovedì"
+   },
+   "time_format_label": {
+      "description": "Label for select box to set the time format (12 or 24 hours)",
+      "message": "Formato ora"
+   },
+   "today_link": {
+      "description": "Link for today",
+      "message": "Oggi"
+   },
+   "translation_help_heading": {
+      "description": "Heading to recruit translators",
+      "message": "Non trovi la tua lingua?"
+   },
+   "translation_instructions": {
+      "description": "Instructions on how to help translate",
+      "message": "Conosci l'inglese e vuoi tradurre Better History in una nuova lingua? Grande! Manda semplicemente un'email ai $link_open$$email$$link_close$",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "Contact email address"
+         },
+         "link_close": {
+            "content": "$3",
+            "example": "close tag for email link"
+         },
+         "link_open": {
+            "content": "$2",
+            "example": "open tag for email link"
+         }
+      }
+   },
+   "translators_heading": {
+      "description": "Heading for translators",
+      "message": "Traduttori"
+   },
+   "tuesday": {
+      "description": "The day of the week",
+      "message": "martedì"
+   },
+   "turkish": {
+      "description": "The language",
+      "message": "Turco"
+   },
+   "twitter_language": {
+      "description": "Twitter language abbreviation",
+      "message": "it"
+   },
+   "twitter_template": {
+      "description": "Default message for Twitter sharing",
+      "message": "Better History per Google Chrome, non sai cosa ti perdi!"
+   },
+   "use_24_hour_clock_label": {
+      "description": "Label for check box to show hours as 24 hours",
+      "message": "24 ore"
+   },
+   "version_description": {
+      "description": "Version description",
+      "message": ""
+   },
+   "version_important_note": {
+      "description": "Heading for an important note",
+      "message": "Nota importante"
+   },
+   "version_items": {
+      "description": "Release bulletpoints",
+      "message": "$open$Consulta comodamente le ultime 10 settimane di visite$close$ $open$Visite organizzate in intervalli di settimane$close$ $open$Sommario delle visite raggruppate per settimana$close$ $open$Avvio più rapido$close$ $open$Ricerca e raggruppamento delle visite ottimizzati$close$$open$Ricerca in base ad un dominio visitato con un click$close$",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "\u003C/li>"
+         },
+         "open": {
+            "content": "$1",
+            "example": "\u003Cli>"
+         }
+      }
+   },
+   "version_note": {
+      "descriotion": "Feedback and support note",
+      "message": ""
+   },
+   "version_title": {
+      "description": "Title of the version modal",
+      "message": "Un importante aggiornamento: Visite organizzate per settimana!"
+   },
+   "version_whats_new": {
+      "description": "Heading for what's new in version",
+      "message": "Novità"
+   },
+   "vietnamese": {
+      "description": "The language",
+      "message": "Vietnamita"
+   },
+   "view_release_announcement_link": {
+      "description": "Link text to view the release announcement",
+      "message": "Leggi l'annuncio del rilascio"
+   },
+   "visit_grouping_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Raggruppamento"
+   },
+   "visits_to_domain": {
+      "description": "Label for visits to domain context menu item",
+      "message": "Visite a $domain$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "google.com"
+         }
+      }
+   },
+   "wednesday": {
+      "description": "The day of the week",
+      "message": "mercoledì"
+   },
+   "week_day_order": {
+      "description": "the week day order",
+      "message": "Ordinamento dei giorni della settimana"
+   },
+   "yesterday_link": {
+      "description": "Link for yesterday",
+      "message": "Ieri"
+   }
+}

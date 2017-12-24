@@ -1,0 +1,39 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "images/icon/client_128.png",
+      "default_popup": "restlet_client_launcher.html"
+   },
+   "content_scripts": [ {
+      "js": [ "loginContentScript.js" ],
+      "matches": [ "http://localhost:9001/static/client/login", "https://account.rest-let.com/static/client/login", "https://account.preprod.rest-let.com/static/client/login", "https://account.restlet.com/static/client/login" ]
+   }, {
+      "js": [ "contentScript.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src https://widget.intercom.io/widget/ https://js.intercomcdn.com 'self' 'unsafe-eval' chrome-extension-resource: http://localhost:9876/ https://www.google-analytics.com/ https://js.stripe.com/;  object-src 'self'; img-src 'self' https://js.intercomcdn.com https://static.intercomassets.com https://*.intercomcdn.com data: https://*.gravatar.com/ https://*.googleusercontent.com/ https://*.githubusercontent.com/ https://*.wp.com/ https://q.stripe.com/; frame-src 'self' data: https://js.stripe.com http://localhost:9876;",
+   "default_locale": "en",
+   "description": "Visually create and run single HTTP requests as well as complex scenarios. Automate your API tests with our CI/CD plugin.",
+   "icons": {
+      "128": "images/icon/client_128.png",
+      "16": "images/icon/client_16.png",
+      "24": "images/icon/client_24.png",
+      "32": "images/icon/client_32.png",
+      "48": "images/icon/client_48.png",
+      "64": "images/icon/client_64.png"
+   },
+   "incognito": "not_allowed",
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2faMKJh5j5VmJA87NQUC0eXqnmySUwlsUdCcDHWkVMNp5bEgmUbjsox25/hsQjLL6swQsb3TSxzVw/QlS+FpR1x6DKR4ef1NvFKnAifbRsNN6hu+ttwEOdc4xK4+HSIWME0JkL5jdrsqzz+W+JWPaG4nDG5MwINQfzeC/InLlKQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "49",
+   "name": "Restlet Client - REST API Testing",
+   "offline_enabled": true,
+   "options_page": "restlet_client_launcher.html#settings",
+   "permissions": [ "webNavigation", "storage", "unlimitedStorage", "webRequest", "webRequestBlocking", "cookies", "\u003Call_urls>", "clipboardWrite", "identity" ],
+   "short_name": "Restlet Client",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.13.1"
+}

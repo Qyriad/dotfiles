@@ -1,0 +1,277 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="popup.js"></script>
+		<script src="common.js"></script>
+		<script src="nocontext.js"></script>
+		<style type="text/css">
+			div.customButton {
+				color: black;
+				background-color: white;
+				border-color: black;
+				border-radius: 10px;
+				border-style: solid;
+				border-width: 1px;
+				text-align: center;
+				padding-left: 10px;
+				padding-right: 10px;
+				white-space: nowrap;
+			}
+			div.customButton:hover {
+				background-color: cyan;
+				cursor: pointer;
+			}
+			div.rule {
+				white-space: nowrap;
+				overflow: hidden;
+				max-width: 600px;
+			}
+			.hide {
+				display: none;
+			}
+		</style>
+	</head>
+	<body style="background-color:black; color:white; max-width:630px; font-family:Times New Roman; font-size:16px;">
+		<a id="saveAs" style="display:none;"></a>
+		<table>
+			<tr>
+				<td style="white-space: nowrap;">
+					<center>
+						<table>
+							<tr>
+								<td>
+									<img src="icon48.png"></img>
+								</td>
+								<td>
+									<h2><b>&nbsp;Bookmark Favicon Changer</b></h2>
+								</td>
+							</tr>
+						</table>
+					</center>
+				</td>
+			</tr>
+			<tr id="banned" class="hide">
+				<td>
+					<hr></hr>
+					<center style="white-space: nowrap; color:red; font-weight:bold;">Oops! "Bookmark Favicon Changer" is banned!</center>
+					<p>Due to excessive bookmark manipulation, browser has inhibited some functions of "Bookmark Favicon Changer" especially making change on bookmarks. This is a protective mechanism of browser. Because bookmarks may need to go online to sync, excessive bookmark manipulation can load the sync server which looks like an attack.</p>
+					<p>You need to restart browser to make "Bookmark Favicon Changer" work again.</p>
+				</td>
+			</tr>
+			<tr id="bookmarkedAndCustomFavicon" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page had been <u>bookmarked</u> and use <u>custom favicon</u>.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="bookmarkedAndTabIcon" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page had been <u>bookmarked</u> and match <u>tab icon rule</u>.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="bookmarked" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page had been <u>bookmarked</u>.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="redirectAndCustomFavicon" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page is <u>redirected</u> from bookmark and use <u>custom favicon</u>.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="redirectAndTabIcon" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page is <u>redirected</u> from bookmark and match <u>tab icon rule</u>.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="redirect" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page is <u>redirected</u> from bookmark.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="tabIcon" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page match <u>tab icon rule</u>.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="normalPage" class="hide">
+				<td>
+					<center style="white-space: nowrap; color:cyan; font-weight:bold;">This page is not bookmarked and do not match tab icon rule.</center>
+					<hr></hr>
+				</td>
+			</tr>
+			<tr id="bookmarkFavicon" class="hide">
+				<td>
+					<table>
+						<tr>
+							<td>
+								<center id="canChange" class="hide" style="white-space: nowrap;">You can change favicon of this page and bookmark.</center>
+								<center id="possiblyChange" class="hide" style="white-space: nowrap;">You can <b><u>possibly</u></b> change favicon of this page and bookmark.</center>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<center>
+									<table id="tableFavicon" border="1" cellpadding="5px" cellspacing="0" style="color:black; background-color:lime;">
+										<tr>
+											<td>
+												<center>
+													<table>
+														<tr>
+															<td id="changeFaviconCell">
+																<div class="customButton">Change Favicon</div>
+																<input type="file" accept="image/*" id="changeFaviconInput" style="display:none;"></input>
+															</td>
+															<td id="pinFaviconCell" class="hide"><div class="customButton">Pin Favicon</div></td>
+															<td id="resetFaviconCell"><div class="customButton">Reset Favicon</div></td>
+															<td id="removeFaviconCell"><div class="customButton">Remove Favicon</div></td>
+															<td id="exportFaviconCell"><div class="customButton">Export Favicon</div></td>
+														</tr>
+													</table>
+												</center>
+											</td>
+										</tr>
+									</table>
+								</center>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr id="exportOnly" class="hide">
+				<td>
+					<center style="white-space: nowrap;">You can export this favicon.</center>
+					<table id="tableExportOnly" border="1" cellpadding="5px" cellspacing="0" style="color:black; background-color:lime;">
+						<tr>
+							<td>
+								<center>
+									<table>
+										<tr>
+											<td id="exportOnlyFaviconCell">
+												<div class="customButton">Export Favicon</div>
+											</td>
+										</tr>
+									</table>
+								</center>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr id="editRule" class="hide">
+				<td>
+					<center style="white-space: nowrap;">You can edit tab icon rule that match this URL.</center>
+					<center>
+						<table id="tableEditTabIcon" border="1" cellpadding="0" cellspacing="0" style="color:black; background-color:pink;">
+							<tr>
+								<td>
+									<table>
+										<tr>
+											<td>
+												<center>
+													<font id="editTabIconURLRule" data-URLRule=""></font>
+												</center>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<center>
+													<table>
+														<tr>
+															<td><img id="editTabIconImage" src=""></img></td>
+															<td>&nbsp;</td>
+															<td>
+																<div id="changeIconEditCell" class="customButton">Change Icon</div>
+																<input class="hide" type="file" accept="image/*" id="openEditTabIconFile"></input>
+															</td>
+															<td><div id="OKExportRule" class="customButton">Export Icon</div></td>
+															<td id="editBlankTd"></td>
+															<td><div id="OKDeleteRule" class="customButton">Delete</div></td>
+														</tr>
+													</table>
+												</center>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</center>
+				</td>
+			</tr>
+			<tr id="addRule" class="hide">
+				<td>
+					<center style="white-space: nowrap;">You can add more tab icon rule for this domain.</center>
+					<center>
+						<table id="tableAddTabIcon" border="1" cellpadding="0" cellspacing="0" style="color:black; background-color:yellow;">
+							<tr>
+								<td>
+									<table>
+										<tr>
+											<td id="root">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<center>
+													<table>
+														<tr>
+															<td><img id="addTabIconImage" src="" data-tabIconURL=""></img></td>
+															<td>&nbsp;</td>
+															<td>
+																<div id="changeIconAddCell" class="customButton">Change Icon</div>
+																<input class="hide" type="file" accept="image/*" id="openAddTabIconFile"></input>
+															</td>
+															<td id="addBlankTd"></td>
+															<td><div id="OKAddRule" class="customButton">Add Rule</div></td>
+														</tr>
+													</table>
+												</center>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</center>
+				</td>
+			</tr>
+			<tr id="status" class="hide">
+				<td>
+					<center>
+						<font id="fontStatus" style="color:black;">Ready</font>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<hr></hr>
+					<center><input type="checkbox" id="pageActionToOptions"></input>&nbsp;&nbsp;Don't show this popup again</center>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<center>
+						<table>
+							<tr>
+								<td><div id="showPageAction" class="customButton">Change when to show Page Action Icon</div></td>
+								<td><div id="openOptions" class="customButton">Open options page</div></td>
+							</tr>
+						</table>
+					</center>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+{
+   "app": {
+      "background": {
+         "scripts": [ "main.js" ]
+      }
+   },
+   "description": "Connects to your computers anywhere in the world and lets you take control.",
+   "icons": {
+      "128": "icon_128.png",
+      "16": "icon_16.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDC3+tc9eAmhkByKzxOjryi1tHUXyn+yeRhv3Jp1U45kfua7hn6n+Lq8qZIovRY4o8xmfOHVfy3KUDZXRhrwaMd/dEHEipN175sgYWYoYmcqBhnx0vtWJRnlRbFWRt54FMJY5pjmbVvUPAtdWwNwHG7X62Tq/Js9itqvRwn2K+REQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "28",
+   "name": "VNC® Viewer for Google Chrome™",
+   "offline_enabled": true,
+   "permissions": [ "clipboardRead", "clipboardWrite", "fullscreen", "overrideEscFullscreen", "storage" ],
+   "sandbox": {
+      "pages": [ "embedded_ga_host.html" ]
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.2.2.15132"
+}

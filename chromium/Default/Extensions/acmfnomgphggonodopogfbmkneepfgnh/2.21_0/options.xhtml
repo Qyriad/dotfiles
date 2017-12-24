@@ -1,0 +1,188 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Options</title>
+		<script src="options.js"></script>
+		<script src="common.js"></script>
+		<script src="nocontext.js"></script>
+		<style type="text/css">
+			div.customButton {
+				color: black;
+				background-color: white;
+				border-color: black;
+				border-radius: 10px;
+				border-style: solid;
+				border-width: 1px;
+				text-align: center;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			div.customButton:hover {
+				background-color: cyan;
+				cursor: pointer;
+			}
+			.hide {
+				display: none;
+			}
+			div.modalGlass {
+				background-color: black;
+				opacity: 0.5;
+				overflow: hidden;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				min-height: 100%;
+				z-index: 40;
+				display: block;
+			}
+			.dialogAskModal {
+				width: 600px;
+				height: 300px;
+				color: black;
+				position: absolute;
+				margin-left: -300px;
+				margin-top: -150px;
+				top: 50%;
+				left: 50%;
+				border: 3px;
+				z-index: 50;
+				display: block;
+			}
+		</style>
+	</head>
+	<body id="body" bgcolor="#CFECEC" style="overflow-x:hidden; overflow-y:auto;">
+		<table width="100%">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td width="500px">
+								<table>
+									<tr>
+										<td><img src="icon48.png"></img></td>
+										<td style="white-space: nowrap;"><h1>Bookmark Favicon Changer</h1></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<a id="saveAs" style="display:none;"></a>
+								<table>
+									<tr>
+										<td style="white-space: nowrap;">
+											<center>
+												<input type="radio" name="logShow" id="showAllLog" checked="checked"></input>Show all logs
+												<input type="radio" name="logShow" id="showOnlyError"></input>Show only error logs
+												<input type="button" id="clearLog" value="Clear log"></input>
+											</center>
+										</td>
+									</tr>
+									<tr>
+										<td><iframe id="logIFrame" style="height:140px; overflow-x:hidden; overflow-y:scroll;" src="log.xhtml"></iframe></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td id="bookmarkFaviconCell"><div class="customButton">Bookmark Favicon</div></td>
+							<td id="shortcutCell"><div class="customButton">Shortcut</div></td>
+							<td id="tabIconCell"><div class="customButton">Tab Icon</div></td>
+							<td id="advanceSettingsCell"><div class="customButton">Advance Settings</div></td>
+							<td id="moreCell"><div class="customButton">More</div></td>
+							<td id="aboutCell"><div class="customButton">About</div></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<hr></hr>
+		<iframe id="mainIFrame" style="width:100%; border:0px; overflow-x:hidden; overflow-y:hidden;"></iframe>
+		<div id="modalGlass" class="hide"></div>
+		<table id="dialogAskForCreateBookmark" class="hide" style="background-color:lightgreen;">
+			<tr>
+				<td style="width:600px; word-break:break-all;">
+					<center>
+						<br></br><b id="createURL">DummyTextNode</b>
+						<br></br>is not in the bookmark.
+						<br></br>
+						<br></br>Do you want to add this URL to bookmark?
+						<br></br>(add to the last in "Other bookmarks" folder)
+						<br></br><br></br>
+						<button id="createYes" style="min-width:70px;">Yes</button>
+						<button id="createYesToAll" style="min-width:70px;">Yes to all</button>
+						<button id="createNo" style="min-width:70px;">No</button>
+						<button id="createNoToAll" style="min-width:70px;">No to all</button>
+						<button id="createCancel" style="min-width:70px;">Cancel</button>
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table id="dialogAskForReplaceBookmark" class="hide" style="background-color:orange;">
+			<tr>
+				<td style="width:600px; word-break:break-all;">
+					<center>
+						<br></br><b id="replaceURL">DummyTextNode</b>
+						<br></br>already has custom favicon in database.
+						<br></br><br></br>
+							<table>
+								<tr>
+									<td align="right">Database custom favicon&nbsp;&nbsp;</td>
+									<td><img id="databaseCustomFavicon" width="16px" height="16px"></img></td>
+								</tr>
+								<tr>
+									<td align="right">Import custom favicon&nbsp;&nbsp;</td>
+									<td><img id="importCustomFavicon" width="16px" height="16px"></img></td>
+								</tr>
+							</table>
+						<br></br>Do you want to overwrite this custom favicon?
+						<br></br><br></br>
+						<button id="replaceYes" style="min-width:70px;">Yes</button>
+						<button id="replaceYesToAll" style="min-width:70px;">Yes to all</button>
+						<button id="replaceNo" style="min-width:70px;">No</button>
+						<button id="replaceNoToAll" style="min-width:70px;">No to all</button>
+						<button id="replaceCancel" style="min-width:70px;">Cancel</button>
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table id="dialogAskForReplaceRule" class="hide" style="background-color:pink;">
+			<tr>
+				<td style="width:600px; word-break:break-all;">
+					<center>
+						<br></br><b id="replaceRule">DummyTextNode</b>
+						<br></br>already has tab icon in database.
+						<br></br><br></br>
+							<table>
+								<tr>
+									<td align="right">Database tab icon&nbsp;&nbsp;</td>
+									<td><img id="databaseTabIcon" width="16px" height="16px"></img></td>
+								</tr>
+								<tr>
+									<td align="right">Import tab icon&nbsp;&nbsp;</td>
+									<td><img id="importTabIcon" width="16px" height="16px"></img></td>
+								</tr>
+							</table>
+						<br></br>Do you want to overwrite this tab icon?
+						<br></br><br></br>
+						<button id="replaceRuleYes" style="min-width:70px;">Yes</button>
+						<button id="replaceRuleYesToAll" style="min-width:70px;">Yes to all</button>
+						<button id="replaceRuleNo" style="min-width:70px;">No</button>
+						<button id="replaceRuleNoToAll" style="min-width:70px;">No to all</button>
+						<button id="replaceRuleCancel" style="min-width:70px;">Cancel</button>
+					</center>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

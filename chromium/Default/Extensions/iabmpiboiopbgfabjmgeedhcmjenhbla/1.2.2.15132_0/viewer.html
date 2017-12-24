@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html class="flexfullscreen">
+  <head>
+    <meta charset="utf-8"/>
+    <title>VNC&reg; Viewer for Google Chrome&trade;</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style/viewer.css"/>
+    <link rel="icon" href="icon_128.png" sizes="128x128"/>
+
+    <!-- BEGIN ANALYTICS -->
+    <script type="text/javascript" src="javascript/analytics/ga_credentials.js"></script>
+    <script type="text/javascript" src="javascript/analytics/embedded_ga_host.js"></script>
+    <!-- END ANALYTICS -->
+
+  </head>
+  <body class="flexcontainer">
+    <div id="extension-keys-overlay-container" class="flexcontainer">
+      <div id="extension-keys-background">
+        <!--<div id="extkeys-scrollbar-gutter-vertical" class="scrollbar-gutter-vertical">
+          <div id="extkeys-scrollbar-vertical" class="scrollbar-vertical">
+            <div id="extkeys-scrollbar-puck-vertical" class="scrollbar-puck-vertical"></div>
+          </div>
+        </div>
+        <div id="extkeys-scrollview"></div>
+        <div id="extkeys-scrollbar-gutter-horizontal" class="scrollbar-gutter-horizontal">
+          <div id="extkeys-scrollbar-horizontal" class="scrollbar-horizontal">
+            <div id="extkeys-scrollbar-puck-horizontal" class="scrollbar-puck-horizontal"></div>
+          </div>
+        </div>-->
+      </div>
+      <div id="extension-keys-overlay">
+
+        <div id="extkeys">
+          <!-- <div id="extkeys-scrollview"> -->
+            <div id="extkeys-content">
+              <div id="extension-keys-modifiers-group">
+                <div id="extension-keys-modifiers-1">
+                  <div id="extension-key-shift" class="extension-key-toggle" data-keys="[16]" data-hotkeycode="[83,16]">
+                    <div class="extension-key-hotkey">S</div>
+                    <div class="extension-key-text"><img src="images/key-shift.png" alt="Shift" /></div>
+                  </div>
+                  <div id="extension-key-control" class="extension-key-toggle" data-keys="[17]" data-hotkeycode="[76,17]">
+                    <div class="extension-key-hotkey">L</div>
+                    <div class="extension-key-text">Ctrl</div>
+                  </div>
+                  <div id="extension-key-alt" class="extension-key-toggle" data-keys="[18]" data-hotkeycode="[84,18]">
+                    <div class="extension-key-hotkey">T</div>
+                    <div class="extension-key-text">Alt</div>
+                  </div>
+                </div>
+                <div id="extension-keys-modifiers-2">
+                  <div id="extension-key-windows-modifier" class="extension-key-toggle" data-keys="[91]" data-hotkeycode="[87,91]">
+                    <div class="extension-key-hotkey">W</div>
+                    <div class="extension-key-text"><img src="images/key-win.png" alt="Win" /></div>
+                  </div>
+                  <div id="extension-key-option" class="extension-key-toggle" data-keys="[18]" data-hotkeycode="[79]">
+                    <div class="extension-key-hotkey">O</div>
+                    <div class="extension-key-text"><img src="images/key-opt.png" alt="&#8997;" /></div>
+                  </div>
+                  <div id="extension-key-command" class="extension-key-toggle" data-keys="[91]" data-hotkeycode="[77]">
+                    <div class="extension-key-hotkey">M</div>
+                    <div class="extension-key-text"><img src="images/key-cmd.png" alt="&#8984;" /></div>
+                  </div>
+                </div>
+              </div>
+              <div id="extension-keys-others-group">
+                <div id="extension-keys-wdei-group">
+                  <div id="extension-keys-wd-group">
+                    <div id="extension-key-windows" class="extension-key" data-keys="[91]" data-hotkeycode="[81]">
+                      <div class="extension-key-hotkey">Q</div>
+                      <div class="extension-key-text"><img src="images/key-win-black.png" alt="Win"/></div>
+                    </div>
+                    <div id="extension-key-delete" class="extension-key" data-keys="[46]" data-hotkeycode="[68]">
+                      <div class="extension-key-hotkey">D</div>
+                      <div class="extension-key-text">Del</div>
+                    </div>
+                  </div>
+                  <div id="extension-keys-ei-group">
+                    <div id="extension-key-escape" class="extension-key" data-keys="[27]" data-hotkeycode="[67]">
+                      <div class="extension-key-hotkey">C</div>
+                      <div class="extension-key-text">Esc</div>
+                    </div>
+                    <div id="extension-key-insert" class="extension-key" data-keys="[45]" data-hotkeycode="[73]">
+                      <div class="extension-key-hotkey">I</div>
+                      <div class="extension-key-text">Ins</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="extension-keys-pgud-group">
+                  <div id="extension-keys-pgud-1">
+                    <div id="extension-key-page-up" class="extension-key" data-keys="[33]" data-hotkeycode="[85]">
+                      <div class="extension-key-hotkey">U</div>
+                      <div class="extension-key-text">
+                        <div class="centered-2line-text">Page<br/>Up</div>
+                      </div>
+                    </div>
+                    <div id="extension-key-page-down" class="extension-key" data-keys="[34]" data-hotkeycode="[78]">
+                      <div class="extension-key-hotkey">N</div>
+                      <div class="extension-key-text">
+                        <div class="centered-2line-text">Page<br/>Dn</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="extension-keys-pgud-2">
+                    <div id="extension-key-home" class="extension-key" data-keys="[36]" data-hotkeycode="[72]">
+                      <div class="extension-key-hotkey">H</div>
+                      <div class="extension-key-text">Home</div>
+                    </div>
+                    <div id="extension-key-end" class="extension-key" data-keys="[35]" data-hotkeycode="[69]">
+                      <div class="extension-key-hotkey">E</div>
+                      <div class="extension-key-text">End</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="extension-keys-function-group">
+                <div id="extension-keys-function-group-left">
+                  <div id="extension-keys-function-1">
+                    <div id="extension-key-F1" class="extension-key" data-keys="[112]" data-hotkeycode="[49]">
+                      <div class="extension-key-hotkey">1</div>
+                      <div class="extension-key-text">F1</div>
+                    </div>
+                    <div id="extension-key-F2" class="extension-key" data-keys="[113]" data-hotkeycode="[50]">
+                      <div class="extension-key-hotkey">2</div>
+                      <div class="extension-key-text">F2</div>
+                    </div>
+                    <div id="extension-key-F3" class="extension-key" data-keys="[114]" data-hotkeycode="[51]">
+                      <div class="extension-key-hotkey">3</div>
+                      <div class="extension-key-text">F3</div>
+                    </div>
+                  </div>
+                  <div id="extension-keys-function-2">
+                    <div id="extension-key-F4" class="extension-key" data-keys="[115]" data-hotkeycode="[52]">
+                      <div class="extension-key-hotkey">4</div>
+                      <div class="extension-key-text">F4</div>
+                    </div>
+                    <div id="extension-key-F5" class="extension-key" data-keys="[116]" data-hotkeycode="[53]">
+                      <div class="extension-key-hotkey">5</div>
+                      <div class="extension-key-text">F5</div>
+                    </div>
+                    <div id="extension-key-F6" class="extension-key" data-keys="[117]" data-hotkeycode="[54]">
+                      <div class="extension-key-hotkey">6</div>
+                      <div class="extension-key-text">F6</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="extension-keys-function-group-right">
+                  <div id="extension-keys-function-3">
+                    <div id="extension-key-F7" class="extension-key" data-keys="[118]" data-hotkeycode="[55]">
+                      <div class="extension-key-hotkey">7</div>
+                      <div class="extension-key-text">F7</div>
+                    </div>
+                    <div id="extension-key-F8" class="extension-key" data-keys="[119]" data-hotkeycode="[56]">
+                      <div class="extension-key-hotkey">8</div>
+                      <div class="extension-key-text">F8</div>
+                    </div>
+                    <div id="extension-key-F9" class="extension-key" data-keys="[120]" data-hotkeycode="[57]">
+                      <div class="extension-key-hotkey">9</div>
+                      <div class="extension-key-text">F9</div>
+                    </div>
+                  </div>
+                  <div id="extension-keys-function-4">
+                    <div id="extension-key-F10" class="extension-key" data-keys="[121]" data-hotkeycode="[48]">
+                      <div class="extension-key-hotkey">0</div>
+                      <div class="extension-key-text">F10</div>
+                    </div>
+                    <div id="extension-key-F11" class="extension-key" data-keys="[122]" data-hotkeycode="[189]">
+                      <div class="extension-key-hotkey">-</div>
+                      <div class="extension-key-text">F11</div>
+                    </div>
+                    <div id="extension-key-F12" class="extension-key" data-keys="[123]" data-hotkeycode="[187]">
+                      <div class="extension-key-hotkey">=</div>
+                      <div class="extension-key-text">F12</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!--</div>--> <!-- extkeys-scrollview -->
+        </div>
+        <!--<div id="extkeys-scrollbar-gutter-horizontal" class="scrollbar-gutter-horizontal">
+          <div id="extkeys-scrollbar-horizontal" class="scrollbar-horizontal">
+            <div id="extkeys-scrollbar-puck-horizontal" class="scrollbar-puck-horizontal"></div>
+          </div>
+        </div>-->
+      </div>
+    </div> <!-- extension-keys-overlay-container -->
+
+    <!-- Desktop -->
+    <div id="desktop-frame" class="fullscreen dark-background" style="display: none;">
+
+      <div id="desktop-scrollbar-gutter-vertical" class="scrollbar-gutter-vertical">
+        <div id="desktop-scrollbar-vertical" class="scrollbar-vertical">
+          <div id="desktop-scrollbar-puck-vertical" class="scrollbar-puck-vertical"></div>
+        </div>
+      </div>
+
+      <div id="desktop">
+
+        <div id="desktop-scrollview">
+          <div id="desktop-content" style="width: 1px; height: 1px;">
+
+          </div>
+          <div id="desktop-nag">
+            <div id="desktop-nag-background"></div>
+            <i id="desktop-nag-dismiss" class="icon-remove icon-white"></i>
+            <div id="desktop-nag-body">
+              <img id="desktop-nag-logo" src="images/server.png"/>
+              <div id="desktop-nag-text">For a secure connection, and a more robust and responsive experience, download and connect to the latest VNC&#174; from RealVNC.</div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div id="active-keys-overlay">
+        </div>
+
+        <div id="desktop-toolbar-container">
+          <div id="desktop-toolbar-background">
+            <ul id="desktop-toolbar">
+              <li id="toolbar-pin"><div id="toolbar-pin-icon" class="toolbar-icon selected"></div></li>
+              <li id="toolbar-information"><div id="toolbar-information-icon" class="toolbar-icon"></div></li>
+              <li id="toolbar-keys"><div id="toolbar-keys-icon" class="toolbar-icon"></div></li>
+              <li id="toolbar-help"><div id="toolbar-help-icon" class="toolbar-icon"></div></li>
+              <li id="toolbar-fullscreen"><div id="toolbar-fullscreen-icon" class="toolbar-icon"></div></li>
+              <li id="toolbar-scaling"><div id="toolbar-scaling-icon" class="toolbar-icon"></div></li>
+              <li id="toolbar-disconnect"><div id="toolbar-disconnect-icon" class="toolbar-icon"></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="toolbar-disconnect-confirm" style="display: none; width: auto">
+          <div id="disconnect-header" style="text-align: center">
+            <h6>
+              Are you sure?
+              <!--<button id="toolbar-disconnect-close" class="close" style="font-size: 11pt; float: none">&#215;</button>-->
+            </h6>
+          </div>
+          <div class="disconnect-menu" style="text-align: center">
+            <button id="toolbar-disconnect-yes" class="btn btn-danger">Disconnect</button>
+          </div>
+          <div style="clear: both"></div>
+        </div>
+
+      </div>
+      <div id="desktop-scrollbar-gutter-horizontal" class="scrollbar-gutter-horizontal">
+        <div id="desktop-scrollbar-horizontal" class="scrollbar-horizontal">
+          <div id="desktop-scrollbar-puck-horizontal" class="scrollbar-puck-horizontal"></div>
+        </div>
+      </div>
+
+      <div id="security-toolbar">
+        <p id="security-toolbar-title" class="light-text security-text"></p>
+        <div id="security-toolbar-lock"><i id="security-toolbar-lock-icon"></i></div>
+        <div id="security-toolbar-close"><i id="security-toolbar-close-icon" class="icon-remove"></i></div>
+      </div>
+
+      <div id="desktop-debug" style="display: none">empty</div>
+
+      <div id="desktop-modal" style="display: none"></div>
+
+    </div>
+
+    <!-- Reconnecting -->
+    <div id="reconnect-background" class="fullscreen dark-background" style="display: none"></div>
+    <div id="reconnect-frame" class="fullscreen" style="display: none">
+      <div id="reconnect">
+        <img id="reconnect-spinner" src="images/spinner/spinner00.png" />
+        <p id="reconnect-title" class="light-text"></p>
+      </div>
+      <div id="reconnect-buttons" style="width: 100%">
+        <button id="reconnect-button-cancel" class="btn btn-inverse"></button>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div id="progress-frame" class="fullscreen dark-background" style="display: none;">
+      <div id="progress">
+        <img src="images/spinner.gif"/>
+        <p id="progress-title" class="light-text"></p>
+      </div>
+      <div id="progress-buttons" style="width: 100%">
+        <button id="progress-button-cancel" class="btn btn-inverse"></button>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Signature -->
+    <div id="signature-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button id="signature-button-close" class="close">&#215;</button>
+        <h3 id="signature-title">Signature</h3>
+      </div>
+      <div id="signature-body" class="modal-body selectable"></div>
+      <div class="modal-footer">
+        <a id="signature-button-cancel" class="btn"></a>
+        <a id="signature-button-ok" class="btn btn-primary"></a>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Unencrypted connection -->
+    <div id="unencrypted-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button id="unencrypted-button-close" class="close">&#215;</button>
+        <h3 id="unencrypted-title"></h3>
+      </div>
+      <div id="unencrypted-body" class="modal-body"></div>
+      <div class="modal-footer">
+        <div class="left">
+          <label id="unencrypted-dontwarn-container" class="checkbox">
+            <input id="unencrypted-dontwarn" type="checkbox"/>
+            <span id="unencrypted-dontwarn-label"></span>
+          </label>
+        </div>
+        <div style="display: inline-block">
+          <a id="unencrypted-button-cancel" class="btn"></a>
+          <a id="unencrypted-button-ok" class="btn btn-danger"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Authentication -->
+    <div id="authentication-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button id="authentication-button-close" class="close">&#215;</button>
+        <h3 id="authentication-title"></h3>
+      </div>
+      <div id="authentication-body" class="modal-body">
+        <form class="form-horizontal">
+          <fieldset>
+
+            <!-- User name -->
+            <div class="control-group" id="authentication-group-username">
+              <label id="authentication-label-username" class="control-label" for="authentication-input-username"></label>
+              <div class="controls">
+                <input class="input-xlarge" id="authentication-input-username" size="16" type="text"/>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="control-group" id="authentication-group-password">
+              <label id="authentication-label-password" class="control-label" for="authentication-input-password"></label>
+              <div class="controls">
+                <input class="input-xlarge" id="authentication-input-password" size="16" type="password"/>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a id="authentication-button-cancel" class="btn">Cancel</a>
+        <a id="authentication-button-ok" class="btn btn-primary">OK</a>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Information -->
+    <div id="information-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button id="information-button-close" class="close">&#215;</button>
+        <h3 id="information-title" class="selectable"></h3>
+      </div>
+      <div id="information-body" class="modal-body">
+        <table id="information-table" class="table table-striped table-bordered selectable">
+          <tr>
+            <th id="information-application-version-title"></th>
+            <td id="information-application-version-value"></td>
+          </tr>
+          <tr>
+            <th id="information-desktop-size-title"></th>
+            <td id="information-desktop-size-value"></td>
+          </tr>
+          <tr>
+            <th id="information-encryption-level-title"></th>
+            <td id="information-encryption-level-value"></td>
+          </tr>
+          <tr>
+            <th id="information-encoding-title"></th>
+            <td id="information-encoding-value"></td>
+          </tr>
+          <tr>
+            <th id="information-estimated-speed-title"></th>
+            <td id="information-estimated-speed-value"></td>
+          </tr>
+          <tr>
+            <th id="information-protocol-version-title"></th>
+            <td id="information-protocol-version-value"></td>
+          </tr>
+        </table>
+        <table id="information-settings-table" class="table table-striped table-bordered">
+          <tr>
+            <th id="information-picture-quality-title"></th>
+            <td id="information-picture-quality-value">
+              <select id="information-picture-quality-select">
+                <option value="Automatic">Automatic</option>
+                <option value="High">High</option>
+                <option id="info-medium-quality-option" value="Medium">Medium</option>
+                <option value="Low">Low</option>
+                <option value="Let the other computer decide">Let the other computer decide</option>
+              </select>
+            </td>
+            <td id="information-picture-quality-static"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a id="information-button-ok" class="btn btn-primary"></a>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Rate Me! -->
+    <div id="rate-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button id="rate-button-close" class="close">&#215;</button>
+        <h3 id="rate-title"></h3>
+      </div>
+      <div id="rate-body" class="modal-body"></div>
+      <div class="modal-footer">
+        <a id="rate-button-never" class="btn"></a>
+        <a id="rate-button-later" class="btn"></a>
+        <a id="rate-button-go" class="btn btn-primary"></a>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Error -->
+    <div id="error-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button id="error-button-close" class="close">&#215;</button>
+        <h3 id="error-title"></h3>
+      </div>
+      <div id="error-body" class="modal-body selectable"></div>
+      <div class="modal-footer">
+        <a id="error-button-ok" class="btn btn-primary"></a>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Disconnect Modal -->
+    <div id="disconnect-modal" class="modal hide fade">
+      <div class="modal-header">
+        <button id="disconnect-button-close" class="close">&#215;</button>
+        <h3 id="disconnect-title"></h3>
+      </div>
+      <div id="disconnect-body" class="modal-body"></div>
+      <div class="modal-footer">
+        <a id="disconnect-button-cancel" class="btn"></a>
+        <a id="disconnect-button-ok" class="btn btn-primary"></a>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: Help -->
+    <div id="help-modal" class="modal hide fade">
+      <div id="help-header" class="modal-header">
+        <button id="help-button-close" class="close">&#215;</button>
+        <h3 id="help-title">Help</h3>
+      </div>
+      <div id="help-body" class="modal-body modal-contains-iframe">
+        <iframe id="help-iframe"></iframe>
+      </div>
+      <div id="help-footer" class="modal-footer">
+        <a id="help-button-ok" class="btn btn-primary">OK</a>
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div id="details-frame" class="fullscreen" style="display: none">
+      <div id="details-header">
+        <a href="#" id="details-about">Help</a>
+      </div>
+      <div id="details-zoom">
+        <div id="details-zoom-inner">
+          <img id="details-zoom-image" src="images/chrome-zoom.png" />
+          <div id="details-zoom-text">For the best experience, please change the zoom level to 100%.</div>
+        </div>
+      </div>
+      <div id="details">
+        <div id="viewerIcon"></div>
+        <form class="form-horizontal">
+          <fieldset>
+
+            <!-- Address -->
+            <div class="control-group">
+              <label class="control-label" for="details-address">Address</label>
+              <div class="controls">
+                <input class="input" id="details-address" size="16" type="text" placeholder="192.168.2.1::80" autocomplete="off"/>
+              </div>
+            </div>
+
+            <!-- Picture Quality -->
+            <div class="control-group">
+              <label class="control-label" for="details-quality">Picture Quality</label>
+              <div class="controls">
+                <select id="details-quality">
+                  <option value="Automatic">Automatic</option>
+                  <option value="High">High</option>
+                  <option id="medium-quality-option"value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                  <option value="Let the other computer decide">Let the other computer decide</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Connect -->
+            <div class="form-actions">
+              <button type="submit" id="buttonConnect" class="btn btn-large btn-primary">Connect</button>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <input id="input-handler" class="composition" type="text" value="" spellcheck="false"/>
+    <tester id="input-handler-tester" class="composition"></tester>
+
+    <textarea id="clipboard"></textarea>
+
+    <!-- Sandboxed Google Analytics iframe -->
+    <!-- BEGIN ANALYTICS -->
+    <iframe id="embedded_ga" seamless="seamless" src="embedded_ga_host.html" style="display: none;"></iframe>
+    <!-- END ANALYTICS -->
+
+<!-- BEGIN SCRIPT SECTION -->
+<script type="text/javascript" src="javascript/viewer.min.js"></script>
+<script type="text/javascript" src="javascript/parser/parser.js"></script>
+<script type="text/javascript" src="javascript/parser/address.js"></script>
+<script type="text/javascript" src="javascript/parser/commandstring.js"></script>
+<script type="text/javascript" src="javascript/parser/url.js"></script>
+<!-- END SCRIPT SECTION -->
+
+    <!-- BEGIN ANALYTICS -->
+    <script type="text/javascript" src="javascript/analytics/analytics.js"></script>
+    <!-- END ANALYTICS -->
+
+  </body>
+</html>

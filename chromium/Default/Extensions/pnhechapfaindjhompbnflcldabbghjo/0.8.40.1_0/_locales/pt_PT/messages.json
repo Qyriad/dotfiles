@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "O sistema de ficheiros já está montado!"
+   },
+   "backup_prefs": {
+      "message": "Guardar cópia de segurança"
+   },
+   "bad_destination": {
+      "message": "Não é possível analisar o destino: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Se fechar este separador, irá encerrar a sessão."
+   },
+   "cancel_button_label": {
+      "message": "Cancelar"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Este comando apresenta um menu de anfitriões conhecidos e solicita ao anfitrião que esqueça."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Esquecer um anfitrião SSH conhecido."
+   },
+   "cmd_ssh_help": {
+      "message": "Os parâmetros |username| e |hostname| são obrigatórios, |port| é opcional. Se a porta não for especificada, é aplicada a predefinição de 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Abre uma nova sessão SSH."
+   },
+   "command_complete": {
+      "message": "A instrução $1 foi concluída com o código de estado $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Ligar"
+   },
+   "connect_or_exit_message": {
+      "message": "Pretende escolher outra ligação (C) ou sair (X)?"
+   },
+   "connecting": {
+      "message": "A ligar a $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Sabia que existe uma página de opções dedicada?\nJá não precisa de trabalhar diretamente com term_!\nPrima $1 para abrir ou clique no seguinte link:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Sabia que existe uma página de opções dedicada?\nJá não precisa de trabalhar diretamente com term_!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Eliminar"
+   },
+   "disconnect_message": {
+      "message": "O plug-in NaCl foi concluído com o código de estado $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "argumentos adicionais da linha de comandos"
+   },
+   "field_description_aria_label": {
+      "message": "descrição"
+   },
+   "field_description_placeholder": {
+      "message": "username@hostname ou texto livre"
+   },
+   "field_hostname_aria_label": {
+      "message": "nome do anfitrião"
+   },
+   "field_hostname_placeholder": {
+      "message": "nome do anfitrião"
+   },
+   "field_mount_path_placeholder": {
+      "message": "o caminho predefinido é o diretório principal do utilizador"
+   },
+   "field_port_aria_label": {
+      "message": "porta"
+   },
+   "field_port_placeholder": {
+      "message": "porta"
+   },
+   "field_relay_options_aria_label": {
+      "message": "opções de retransmissão"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Opções do servidor de retransmissão SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "predefinição"
+   },
+   "field_username_aria_label": {
+      "message": "nome de utilizador"
+   },
+   "field_username_placeholder": {
+      "message": "nome de utilizador"
+   },
+   "found_relay": {
+      "message": "Foi encontrado o servidor de retransmissão: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identidade"
+   },
+   "import_link_aria_label": {
+      "message": "importação de ficheiro"
+   },
+   "import_link_label": {
+      "message": "Importar..."
+   },
+   "initializing_relay": {
+      "message": "A procurar o servidor de retransmissão através de: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Não foi possível analisar os dados JSON em \"$1\": $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Sem anfitriões conhecidos, nada a esquecer."
+   },
+   "known_hosts_prompt": {
+      "message": "Selecione um anfitrião a esquecer [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Anfitriões conhecidos:"
+   },
+   "loading_label": {
+      "message": "A carregar..."
+   },
+   "missing_param": {
+      "message": "Parâmetro em falta: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Montar SFTP"
+   },
+   "mount_path_label": {
+      "message": "Caminho de montagem"
+   },
+   "mounted_message": {
+      "message": "Montado"
+   },
+   "notify_copy": {
+      "message": "Seleção copiada"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Estabeleça ligação a um perfil guardado ou a um novo sistema SSH"
+   },
+   "open_as_window_tip": {
+      "message": "[Sugestão] Utilize a opção \"Abrir como janela\" para evitar que o comando Control-W feche o terminal!\n[Sugestão] Consulte $1 para mais informações.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Opções"
+   },
+   "plugin_loading": {
+      "message": "A carregar o plug-in NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " concluído."
+   },
+   "plugin_loading_failed": {
+      "message": " Falhou! :("
+   },
+   "pref_backup_filename": {
+      "message": "Proteger preferências de cópia de segurança de shell.json"
+   },
+   "preferences_header": {
+      "message": "Definições do perfil"
+   },
+   "preferences_reset": {
+      "message": "Todas as preferências repostas!"
+   },
+   "reconnect_message": {
+      "message": "Pretende voltar a ligar (R), escolher outra ligação (C) ou sair (X)?"
+   },
+   "relay_retry": {
+      "message": "A tentar novamente..."
+   },
+   "restore_prefs": {
+      "message": "Restaurar cópia de segurança"
+   },
+   "shortcut_list_aria_label": {
+      "message": "ligações guardadas"
+   },
+   "ssh_argstr_label": {
+      "message": "Argumentos SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Pré-visualização"
+   },
+   "terminal_profile_label": {
+      "message": "Perfil atual"
+   },
+   "tip_1": {
+      "message": "Pode premir sem soltar Ctrl (Cmd no macOS) enquanto clica nos links para os abrir."
+   },
+   "tip_10": {
+      "message": "Quando estiver em execução numa janela, premir Ctrl-Shift-N pode abrir outra sessão."
+   },
+   "tip_11": {
+      "message": "Pode voltar a vincular teclas/atalhos: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Apresente notificações no navegador através de hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Estabeleça ligação a partir da caixa geral ao introduzir \"ssh \u003Cprofile name>\": https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "O Chrome OS pode montar sistemas de ficheiros através de SFTP e procurar através da aplicação Ficheiros. Utilize \"Montar SFTP\" em vez de \"Ligar\"."
+   },
+   "tip_5": {
+      "message": "Estabeleça ligação através de links ssh:// em páginas Web ou guarde um marcador: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Dê cor à saída/pedido com 16 cores básicas, 256 cores e cores completas de 24 bits: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Copie para a área de transferência a partir de emacs/vim/etc. com OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Converse no chat com outros utilizadores de hterm/Secure Shell através de chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Encontrou um erro? Pretende solicitar uma nova funcionalidade? Informe-nos: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Ocorreu um erro inesperado. Verifique a Consola de JavaScript para obter mais detalhes."
+   },
+   "unmount_button_label": {
+      "message": "Desmontar SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Está disponível uma atualização. Feche todas as janelas."
+   },
+   "welcome_changelog": {
+      "message": "Registo de alterações/notas de lançamento: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Respostas a Perguntas frequentes: $1 (utilize a combinação ctrl + clique nos links para os abrir)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Grandes alterações desde a versão $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Sugestão aleatória n.º $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Bem-vindo à versão $2 do $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Defina o menu do Chrome->Zoom para 100%"
+   }
+}

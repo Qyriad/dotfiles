@@ -1,0 +1,30 @@
+{
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/logo/logo_19x19_disabled.png",
+         "38": "images/logo/logo_38x38_disabled.png"
+      },
+      "default_title": "Initializing Session Buddy..."
+   },
+   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+   "default_locale": "en",
+   "description": "Manage Browser Tabs and Bookmarks with Ease",
+   "icons": {
+      "128": "images/logo/logo_128x128.png",
+      "16": "images/logo/logo_16x16.png",
+      "32": "images/logo/logo_32x32.png",
+      "48": "images/logo/logo_48x48.png"
+   },
+   "incognito": "spanning",
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3VAERhYnBzageN9f5j9V/kwVPdTyArpjMwVqfj1Rsp3wn+2lyGStXJRyhCFeXyy/TC8VJqB3Apur+Qstt4qgrR0pnFp+gk32HHdKy1gw8xW7o1tJxSk8FlK9z17sDwdVsH3B8VbnEE2t1A8Bl9v8f2fQJw6KQ1o2RJI0wk/uNWQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "51",
+   "name": "Session Buddy",
+   "options_page": "options.html",
+   "permissions": [ "contextMenus", "notifications", "tabs", "clipboardWrite", "unlimitedStorage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.6.2"
+}

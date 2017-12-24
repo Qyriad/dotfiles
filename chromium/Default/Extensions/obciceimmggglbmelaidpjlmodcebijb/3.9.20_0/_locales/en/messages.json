@@ -1,0 +1,1393 @@
+{
+   "1": {
+      "description": "the number",
+      "message": "1"
+   },
+   "10": {
+      "description": "the number",
+      "message": "10"
+   },
+   "11": {
+      "description": "the number",
+      "message": "11"
+   },
+   "12": {
+      "description": "the number",
+      "message": "12"
+   },
+   "12_hours_option": {
+      "description": "12 hour time format, example: 3:00 PM",
+      "message": "12 hours"
+   },
+   "13": {
+      "description": "the number",
+      "message": "13"
+   },
+   "14": {
+      "description": "the number",
+      "message": "14"
+   },
+   "15": {
+      "description": "the number",
+      "message": "15"
+   },
+   "15_minutes_option": {
+      "description": "Time amount",
+      "message": "15 minutes"
+   },
+   "16": {
+      "description": "the number",
+      "message": "16"
+   },
+   "17": {
+      "description": "the number",
+      "message": "17"
+   },
+   "18": {
+      "description": "the number",
+      "message": "18"
+   },
+   "19": {
+      "description": "the number",
+      "message": "19"
+   },
+   "2": {
+      "description": "the number",
+      "message": "2"
+   },
+   "20": {
+      "description": "the number",
+      "message": "20"
+   },
+   "21": {
+      "description": "the number",
+      "message": "21"
+   },
+   "22": {
+      "description": "the number",
+      "message": "22"
+   },
+   "23": {
+      "description": "the number",
+      "message": "23"
+   },
+   "24": {
+      "description": "the number",
+      "message": "24"
+   },
+   "24_hours_option": {
+      "description": "24 hour time format, example: 14:00",
+      "message": "24 hours"
+   },
+   "25": {
+      "description": "the number",
+      "message": "25"
+   },
+   "26": {
+      "description": "the number",
+      "message": "26"
+   },
+   "27": {
+      "description": "the number",
+      "message": "27"
+   },
+   "28": {
+      "description": "the number",
+      "message": "28"
+   },
+   "29": {
+      "description": "the number",
+      "message": "29"
+   },
+   "3": {
+      "description": "the number",
+      "message": "3"
+   },
+   "30": {
+      "description": "the number",
+      "message": "30"
+   },
+   "30_minutes_option": {
+      "description": "Time amount",
+      "message": "30 minutes"
+   },
+   "31": {
+      "description": "the number",
+      "message": "31"
+   },
+   "4": {
+      "description": "the number",
+      "message": "4"
+   },
+   "5": {
+      "description": "the number",
+      "message": "5"
+   },
+   "6": {
+      "description": "the number",
+      "message": "6"
+   },
+   "60_minutes_option": {
+      "description": "Time amount",
+      "message": "60 minutes"
+   },
+   "7": {
+      "description": "the number",
+      "message": "7"
+   },
+   "8": {
+      "description": "the number",
+      "message": "8"
+   },
+   "9": {
+      "description": "the number",
+      "message": "9"
+   },
+   "Whats_new_section_title": {
+      "description": "Section heading in Settings",
+      "message": "What's new"
+   },
+   "about_tags_for_popup": {
+      "description": "about tags for the popup triggered by the browser action",
+      "message": "$new_open$New!$new_close$ Tag sites with Better History. $link_open$Details...$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$4",
+            "example": "close link tag"
+         },
+         "link_open": {
+            "content": "$3",
+            "example": "open link tag"
+         },
+         "new_close": {
+            "content": "$2",
+            "example": "close new tag"
+         },
+         "new_open": {
+            "content": "$1",
+            "example": "open new tag"
+         }
+      }
+   },
+   "about_tags_instructions": {
+      "description": "about tags description shown on the first visit to the tags page",
+      "message": "Checkout the example tags below. Once you get the idea, delete the tags and start creating your own! Tag sites that you visit easily by watching $link_open$How to tag$link_close$. For more tips, tricks, and general announcements, join the $mailing_open$mailing list!$mailing_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2",
+            "example": "close link tag"
+         },
+         "link_open": {
+            "content": "$1",
+            "example": "open link tag"
+         },
+         "mailing_close": {
+            "content": "$4",
+            "example": "close mailing tag"
+         },
+         "mailing_open": {
+            "content": "$3",
+            "example": "open mailing tag"
+         }
+      }
+   },
+   "about_tags_title": {
+      "description": "about tags title shown on first visit to tags page",
+      "message": "Tag your favorite sites and create your own library of topics and interests!"
+   },
+   "add_a_tag_placeholder": {
+      "description": "add a tag placeholder text",
+      "message": "Add a tag"
+   },
+   "afternoon": {
+      "description": "The afternoon abbreviation when using 12 hour time",
+      "message": "PM"
+   },
+   "and": {
+      "description": "The word and",
+      "message": "and"
+   },
+   "april": {
+      "description": "The month",
+      "message": "April"
+   },
+   "arabic": {
+      "description": "The language",
+      "message": "Arabic"
+   },
+   "ascending": {
+      "description": "ascending week day order",
+      "message": "Ascending"
+   },
+   "august": {
+      "description": "The month",
+      "message": "August"
+   },
+   "auth_error_description": {
+      "description": "auth error modal description text",
+      "message": "There was a problem logging you in. To continue syncing your tags, please log in again."
+   },
+   "auth_error_title": {
+      "description": "auth error modal title",
+      "message": "Uh oh..."
+   },
+   "auth_success_description": {
+      "description": "authorization success description",
+      "message": "Updates to your tags will be synced and safely backed up. Get organized and get tagging!"
+   },
+   "auth_success_title": {
+      "description": "authorization success title",
+      "message": "Success! You're logged in."
+   },
+   "back_arrow": {
+      "description": "ascii arrow",
+      "message": "&larr;"
+   },
+   "back_to_tags_link": {
+      "description": "back to tags link",
+      "message": "$arrow$ Back to Tags",
+      "placeholders": {
+         "arrow": {
+            "content": "$1",
+            "example": "an arrow"
+         }
+      }
+   },
+   "back_to_week_link": {
+      "description": "back to week link",
+      "message": "$arrow$ Back to Week",
+      "placeholders": {
+         "arrow": {
+            "content": "$1",
+            "example": "an arrow"
+         }
+      }
+   },
+   "calendar_link": {
+      "description": "link to view all months in main nav",
+      "message": "Calendar.."
+   },
+   "calendar_title": {
+      "message": "Calendar"
+   },
+   "catalonian": {
+      "description": "The language",
+      "message": "Catalonian"
+   },
+   "chinese_simplified": {
+      "description": "The language",
+      "message": "Chinese (Simplified)"
+   },
+   "chrome_language": {
+      "description": "language identifier used by Chrome",
+      "message": "en"
+   },
+   "clear_history_button": {
+      "description": "Button text for clear history button in Settings",
+      "message": "Clear history..."
+   },
+   "clearing_history_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Clearing History"
+   },
+   "close_button": {
+      "description": "Button to close modal",
+      "message": "Ok!"
+   },
+   "collapse_button": {
+      "description": "Text for collapse button",
+      "message": "Collapse"
+   },
+   "confirm_delete_all_search_results": {
+      "description": "Confirmation text to delete all search results",
+      "message": "Delete all search results?"
+   },
+   "confirm_delete_all_tags": {
+      "description": "Text for delete all tags",
+      "message": "Delete all tags?"
+   },
+   "confirm_delete_all_visits": {
+      "description": "Confirmation text to delete all visits from a specific date",
+      "message": "Delete all visits from $formal_date$?",
+      "placeholders": {
+         "formal_date": {
+            "content": "$1",
+            "example": "January 2, 2011"
+         }
+      }
+   },
+   "confirm_delete_tag": {
+      "description": "Text for delete all sites in a tag",
+      "message": "Delete $name$ tag and all sites in the tag?",
+      "placeholders": {
+         "name": {
+            "content": "$1",
+            "example": "recipes, news, technology, etc..."
+         }
+      }
+   },
+   "connection_required_description": {
+      "description": "connection required description",
+      "message": "It appears you are not connected to the internet. Your tags will be read only until you are connected."
+   },
+   "connection_required_title": {
+      "description": "connection required title",
+      "message": "Internet connection required..."
+   },
+   "connection_restored_description": {
+      "description": "connection restored description",
+      "message": "Your tags have been safely synced! Sorry about the downtime, we feel embarrassed..."
+   },
+   "connection_restored_title": {
+      "description": "connection restored title",
+      "message": "We're back!"
+   },
+   "continue_button": {
+      "description": "continue button",
+      "message": "Continue"
+   },
+   "create_new_tag_title": {
+      "description": "create new tag title",
+      "message": "Create new tag"
+   },
+   "credits_link": {
+      "description": "The link to credits",
+      "message": "$open$Better History$close$ credits",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "strong close"
+         },
+         "open": {
+            "content": "$1",
+            "example": "strong open"
+         }
+      }
+   },
+   "credits_title": {
+      "description": "Title for credits modal",
+      "message": "Better History Credits"
+   },
+   "current_day": {
+      "description": "the current day's visits",
+      "message": "Current day"
+   },
+   "current_version_label": {
+      "description": "label for the current version",
+      "message": "Current version"
+   },
+   "current_week": {
+      "description": "the current week's visits",
+      "message": "Current week"
+   },
+   "czech": {
+      "description": "The language",
+      "message": "Czech"
+   },
+   "date_week_label": {
+      "description": "short week w/ label",
+      "message": "Week of $week$",
+      "placeholders": {
+         "week": {
+            "content": "$1",
+            "example": "date"
+         }
+      }
+   },
+   "december": {
+      "description": "The month",
+      "message": "December"
+   },
+   "default_time_format": {
+      "description": "12 or 24 hour based",
+      "message": "12"
+   },
+   "delete_all_tags": {
+      "description": "Text for delete all sites in a tags",
+      "message": "Delete..."
+   },
+   "delete_all_visits_for_filter_button": {
+      "description": "Text for delete all visits for a day filter button",
+      "message": "Delete..."
+   },
+   "delete_all_visits_for_search_button": {
+      "description": "Text for delete all visits from search button",
+      "message": "Delete..."
+   },
+   "delete_grouped_visits": {
+      "description": "Tooltip for the delete button on grouped visits",
+      "message": "Delete grouped visits"
+   },
+   "delete_tag": {
+      "description": "Text for delete all sites in a tag",
+      "message": "Delete..."
+   },
+   "delete_time_interval_button": {
+      "description": "delete button label",
+      "message": "Delete"
+   },
+   "delete_time_interval_button_tooltip": {
+      "description": "delete button tooltip",
+      "message": "Delete"
+   },
+   "delete_visit": {
+      "description": "Tooltip for the delete button on a page visit",
+      "message": "Delete visit"
+   },
+   "descending": {
+      "description": "descending week day order",
+      "message": "Descending"
+   },
+   "developed_by": {
+      "description": "Developer label",
+      "message": "Created and developed by $link_open$$name$$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2",
+            "example": "Closing link"
+         },
+         "link_open": {
+            "content": "$1",
+            "example": "Opening link"
+         },
+         "name": {
+            "content": "$3",
+            "example": "Developer name"
+         }
+      }
+   },
+   "devices_link": {
+      "description": "devices menu link",
+      "message": "Devices"
+   },
+   "devices_title": {
+      "description": "title for devices sessions page",
+      "message": "Devices"
+   },
+   "dutch": {
+      "description": "The language",
+      "message": "Dutch"
+   },
+   "evening": {
+      "description": "The n abbreviation when using 12 hour time",
+      "message": "PM"
+   },
+   "expand_button": {
+      "description": "Text for expand button",
+      "message": "Expand"
+   },
+   "explore_tags_link": {
+      "description": "explore tags link in popup",
+      "message": "Explore tags"
+   },
+   "extended_formal_date": {
+      "description": "The order of a full extended date",
+      "message": "dddd, MMMM Do, YYYY"
+   },
+   "extra_tag_help": {
+      "description": "extra tag help",
+      "message": "Check out $how_to_tag_open$how to tag$how_to_tag_close$ or load the $example_tags_open$example tags$example_tags_close$",
+      "placeholders": {
+         "example_tags_close": {
+            "content": "$4",
+            "example": "close link tag"
+         },
+         "example_tags_open": {
+            "content": "$3",
+            "example": "open link tag"
+         },
+         "how_to_tag_close": {
+            "content": "$2",
+            "example": "close link tag"
+         },
+         "how_to_tag_open": {
+            "content": "$1",
+            "example": "open link tag"
+         }
+      }
+   },
+   "february": {
+      "description": "The month",
+      "message": "February"
+   },
+   "feedback_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Feedback"
+   },
+   "formal_date": {
+      "description": "The order of a full date",
+      "message": "MMMM Do YYYY"
+   },
+   "forward_arrow": {
+      "description": "ascii arrow",
+      "message": "&rarr;"
+   },
+   "french": {
+      "description": "The language",
+      "message": "French"
+   },
+   "friday": {
+      "description": "The day of the week",
+      "message": "Friday"
+   },
+   "friday_short": {
+      "message": "Fri"
+   },
+   "general_section_title": {
+      "description": "General section title in settings",
+      "message": "General"
+   },
+   "german": {
+      "description": "The language",
+      "message": "German"
+   },
+   "google_plus_language": {
+      "description": "Google plus language abbreviation",
+      "message": "en"
+   },
+   "group_visits_by_domain_label": {
+      "description": "Label for check box to group visits by domain",
+      "message": "Group visits by domain"
+   },
+   "group_visits_by_label": {
+      "description": "Label for select box to set the time grouping interval for visits",
+      "message": "Group visits by"
+   },
+   "hindi": {
+      "description": "The language",
+      "message": "Hindi"
+   },
+   "history_title": {
+      "description": "Extension title",
+      "message": "History"
+   },
+   "how_to_tag": {
+      "description": "link text for how to tag link",
+      "message": "How to tag"
+   },
+   "how_to_tag_title": {
+      "description": "title for how to tag content",
+      "message": "How to tag"
+   },
+   "hungarian": {
+      "description": "The language",
+      "message": "Hungarian"
+   },
+   "initial_syncing_description": {
+      "description": "initial syncing description",
+      "message": "Syncing all your tagged sites..."
+   },
+   "initial_syncing_done": {
+      "description": "initial syncing done text",
+      "message": "\u003Cstrong>Syncing complete!\u003C/strong>\u003Cbr />\u003Cbr /> Go get tagging and your changes will be backed up. View your tagged sites at \u003Cbr />$link_open$better-history.com/me$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2",
+            "example": "link close tag"
+         },
+         "link_open": {
+            "content": "$1",
+            "example": "link open tag"
+         }
+      }
+   },
+   "initial_syncing_title": {
+      "description": "title for the syncing modal on initial log in",
+      "message": "Inital sync"
+   },
+   "italian": {
+      "description": "The language",
+      "message": "Italian"
+   },
+   "january": {
+      "description": "The month",
+      "message": "January"
+   },
+   "japanese": {
+      "description": "The language",
+      "message": "Japanese"
+   },
+   "july": {
+      "description": "The month",
+      "message": "July"
+   },
+   "june": {
+      "description": "The month",
+      "message": "June"
+   },
+   "last_visit": {
+      "description": "last visited page",
+      "message": "Last visited page"
+   },
+   "last_week": {
+      "description": "last week",
+      "message": "Last week"
+   },
+   "latvian": {
+      "description": "The language",
+      "message": "Latvian"
+   },
+   "leave_a_review": {
+      "description": "Link text to leave a review",
+      "message": "Leave a review"
+   },
+   "local_time": {
+      "description": "local time format",
+      "message": "h:mm A"
+   },
+   "login_again_button": {
+      "description": "log in again button",
+      "message": "Log in again"
+   },
+   "login_error_description": {
+      "description": "login error description",
+      "message": "There was a problem logging you in. We are having some issues at the moment, please try again later."
+   },
+   "login_error_title": {
+      "description": "login error title",
+      "message": "There was a problem logging in..."
+   },
+   "mailing_list_description": {
+      "description": "description as to why it's good to join the mailing list",
+      "message": "Join the mailing list to receive updates about new features that will help you get the most out of your browsing history."
+   },
+   "mailing_list_link": {
+      "description": " link text to join the mailing list",
+      "message": "Join the mailing list"
+   },
+   "mailing_list_promise": {
+      "description": "no spamming and privacy message",
+      "message": "We respect your email privacy. No spam ever."
+   },
+   "mailing_list_title": {
+      "description": "the title for the sign up modal",
+      "message": "Big things are coming to Better History!"
+   },
+   "manifest_browser_action_title": {
+      "description": "Manifest browser action title",
+      "message": "Browse history"
+   },
+   "manifest_description": {
+      "description": "Manifest description",
+      "message": "A better look at your browsing history. The best searching, the sharpest interface, and the most useful filters - for your history."
+   },
+   "manifest_name": {
+      "description": "Manifest name",
+      "message": "Better History"
+   },
+   "manually_sync_local_link": {
+      "message": "Manually sync local tags"
+   },
+   "march": {
+      "description": "The month",
+      "message": "March"
+   },
+   "max_number_of_search_results": {
+      "description": "number of search results found",
+      "message": "Found more than $number$ results",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "may": {
+      "description": "The month",
+      "message": "May"
+   },
+   "monday": {
+      "description": "The day of the week",
+      "message": "Monday"
+   },
+   "monday_short": {
+      "message": "Mon"
+   },
+   "morning": {
+      "description": "The morning abbreviation when using 12 hour time",
+      "message": "AM"
+   },
+   "new_tag_button": {
+      "description": "create tag button",
+      "message": "Create"
+   },
+   "new_tag_placeholder": {
+      "description": "placeholder text for tag rename input",
+      "message": "New name"
+   },
+   "no_tagged_sites_found": {
+      "description": "message for a tag with no sites",
+      "message": "Sorry couldn't find any tagged sites"
+   },
+   "no_tags_found": {
+      "description": "message for no tags found",
+      "message": "No tags found, you should tag some sites!"
+   },
+   "no_visits_found": {
+      "description": "Text for no visits found message",
+      "message": "Sorry, no visits found."
+   },
+   "november": {
+      "description": "The month",
+      "message": "November"
+   },
+   "number_of_search_results": {
+      "description": "number of search results found",
+      "message": "Found $number$ results",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "number_of_tags": {
+      "description": "Number of tags",
+      "message": "$number$ tags",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "1,2,3,..."
+         }
+      }
+   },
+   "number_of_visits": {
+      "description": "Label to a number representing a number of visits",
+      "message": "$number$ visits",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "the number of visits"
+         }
+      }
+   },
+   "october": {
+      "description": "The month",
+      "message": "October"
+   },
+   "open_location": {
+      "description": "open to \u003Cpage>",
+      "message": "Open to"
+   },
+   "ordinal_1": {
+      "description": "the ordinal for 1",
+      "message": "st"
+   },
+   "ordinal_10": {
+      "description": "the ordinal for 10",
+      "message": "th"
+   },
+   "ordinal_11": {
+      "description": "the ordinal for 11",
+      "message": "th"
+   },
+   "ordinal_12": {
+      "description": "the ordinal for 12",
+      "message": "th"
+   },
+   "ordinal_13": {
+      "description": "the ordinal for 13",
+      "message": "th"
+   },
+   "ordinal_14": {
+      "description": "the ordinal for 14",
+      "message": "th"
+   },
+   "ordinal_15": {
+      "description": "the ordinal for 15",
+      "message": "th"
+   },
+   "ordinal_16": {
+      "description": "the ordinal for 16",
+      "message": "th"
+   },
+   "ordinal_17": {
+      "description": "the ordinal for 17",
+      "message": "th"
+   },
+   "ordinal_18": {
+      "description": "the ordinal for 18",
+      "message": "th"
+   },
+   "ordinal_19": {
+      "description": "the ordinal for 19",
+      "message": "th"
+   },
+   "ordinal_2": {
+      "description": "the ordinal for 2",
+      "message": "nd"
+   },
+   "ordinal_20": {
+      "description": "the ordinal for 20",
+      "message": "th"
+   },
+   "ordinal_21": {
+      "description": "the ordinal for 21",
+      "message": "st"
+   },
+   "ordinal_22": {
+      "description": "the ordinal for 22",
+      "message": "nd"
+   },
+   "ordinal_23": {
+      "description": "the ordinal for 23",
+      "message": "rd"
+   },
+   "ordinal_24": {
+      "description": "the ordinal for 24",
+      "message": "th"
+   },
+   "ordinal_25": {
+      "description": "the ordinal for 25",
+      "message": "th"
+   },
+   "ordinal_26": {
+      "description": "the ordinal for 26",
+      "message": "th"
+   },
+   "ordinal_27": {
+      "description": "the ordinal for 27",
+      "message": "th"
+   },
+   "ordinal_28": {
+      "description": "the ordinal for 28",
+      "message": "th"
+   },
+   "ordinal_29": {
+      "description": "the ordinal for 29",
+      "message": "th"
+   },
+   "ordinal_3": {
+      "description": "the ordinal for 3",
+      "message": "rd"
+   },
+   "ordinal_30": {
+      "description": "the ordinal for 30",
+      "message": "th"
+   },
+   "ordinal_31": {
+      "description": "the ordinal for 31",
+      "message": "st"
+   },
+   "ordinal_4": {
+      "description": "the ordinal for 4",
+      "message": "th"
+   },
+   "ordinal_5": {
+      "description": "the ordinal for 5",
+      "message": "th"
+   },
+   "ordinal_6": {
+      "description": "the ordinal for 6",
+      "message": "th"
+   },
+   "ordinal_7": {
+      "description": "the ordinal for 7",
+      "message": "th"
+   },
+   "ordinal_8": {
+      "description": "the ordinal for 8",
+      "message": "th"
+   },
+   "ordinal_9": {
+      "description": "the ordinal for 9",
+      "message": "th"
+   },
+   "permissions_details": {
+      "description": "permission details link",
+      "message": "Explanation of asked $link_open$permissions$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2",
+            "example": "link close tag"
+         },
+         "link_open": {
+            "content": "$1",
+            "example": "link open tag"
+         }
+      }
+   },
+   "polish": {
+      "description": "The language",
+      "message": "Polish"
+   },
+   "portuguese": {
+      "description": "The language",
+      "message": "Portuguese"
+   },
+   "prompt_cancel_button": {
+      "description": "Button to close modal",
+      "message": "Cancel"
+   },
+   "prompt_delete_button": {
+      "description": "Button to delete history",
+      "message": "Delete"
+   },
+   "prompt_done_button": {
+      "description": "Button to dismiss modal",
+      "message": "Done"
+   },
+   "prompt_okay_button": {
+      "description": "Button to dismiss modal",
+      "message": "Okay"
+   },
+   "prompt_title": {
+      "description": "Title of prompt",
+      "message": "Confirm"
+   },
+   "read_only_explanation_description": {
+      "description": "read only explanation description",
+      "message": "When you are not connected to the internet or when we are having an issue syncing your tags, your local tags are read only - you cannot make changes to them. This is to avoid any potential conflicts when syncing tags."
+   },
+   "read_only_explanation_link": {
+      "description": "read only explanation link",
+      "message": "Why can't I change my tags?"
+   },
+   "read_only_explanation_title": {
+      "description": "read only explanation title",
+      "message": "Why can't I change my tags?"
+   },
+   "rename_tag_button": {
+      "description": "rename button text",
+      "message": "Rename"
+   },
+   "rename_tag_link": {
+      "description": "rename link text from tags",
+      "message": "Rename"
+   },
+   "rename_tag_title": {
+      "description": "rename link text from tags",
+      "message": "Rename $name$ tag",
+      "placeholders": {
+         "name": {
+            "content": "$1",
+            "example": "tech, cooking, news, etc..."
+         }
+      }
+   },
+   "right_click_options_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Right click options"
+   },
+   "romanian": {
+      "description": "The language",
+      "message": "Romanian"
+   },
+   "russian": {
+      "description": "The language",
+      "message": "Russian"
+   },
+   "saturday": {
+      "description": "The day of the week",
+      "message": "Saturday"
+   },
+   "saturday_short": {
+      "message": "Sat"
+   },
+   "search_by_domain": {
+      "description": "search by domain of visit",
+      "message": "More from site"
+   },
+   "search_by_domain_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "Search by domain"
+   },
+   "search_by_text_selection_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "Search by text selection"
+   },
+   "search_domain_history_link": {
+      "description": "search domain link in popup",
+      "message": "Search $domain$ visits",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "google.com"
+         }
+      }
+   },
+   "search_in_history": {
+      "description": "Label for search in history context menu item",
+      "message": "Search in history"
+   },
+   "search_input_placeholder_text": {
+      "description": "Placeholder text in the search input box",
+      "message": "Search title or url"
+   },
+   "search_link": {
+      "description": "Text for the link to Search",
+      "message": "Search"
+   },
+   "search_suggestion_link": {
+      "message": "Have a suggestion?"
+   },
+   "search_time_frame": {
+      "description": "Time frame relating to Search",
+      "message": "Last few months"
+   },
+   "search_tips_title": {
+      "message": "Search tips"
+   },
+   "search_title": {
+      "description": "title for the search page",
+      "message": "Search"
+   },
+   "searching_title": {
+      "description": "Searching title",
+      "message": "Searching"
+   },
+   "september": {
+      "description": "The month",
+      "message": "September"
+   },
+   "server_error_description": {
+      "description": "server error description",
+      "message": "We are having a bit of trouble, but we're on it. Your tags will temporarily be read only, sorry for the inconvenience!"
+   },
+   "server_error_title": {
+      "description": "server error title",
+      "message": "Oh no! There was an error..."
+   },
+   "settings_link": {
+      "description": "Text for the link to Settings",
+      "message": "Settings"
+   },
+   "settings_title": {
+      "description": "Settings title for Settings page",
+      "message": "Settings"
+   },
+   "share_tag_link": {
+      "description": "share link text from tags",
+      "message": "Share"
+   },
+   "short_date": {
+      "description": "for Moment.js",
+      "message": "MMMM Do"
+   },
+   "short_date_with_day": {
+      "description": "for Moment.js",
+      "message": "dddd, MMMM Do"
+   },
+   "sign_up_info_bullets": {
+      "description": "sign up info",
+      "message": "$open$Linked to your Google account$close$$open$Store unlimited tags and sites$close$$open$Log into Better History when signed into Chrome$close$$open$Sync tags across Chrome browsers (when signed in)$close$$open$Safely stored in the cloud$close$$open$Access tagged sites on the go at $betterHistoryOpen$better-history.com$betterHistoryClose$$close$",
+      "placeholders": {
+         "betterHistoryClose": {
+            "content": "$4",
+            "example": "better history close link"
+         },
+         "betterHistoryOpen": {
+            "content": "$3",
+            "example": "better history open link"
+         },
+         "close": {
+            "content": "$2",
+            "example": "bullet close"
+         },
+         "open": {
+            "content": "$1",
+            "example": "bullet open"
+         }
+      }
+   },
+   "sign_up_info_description": {
+      "description": "description",
+      "message": "Tag with confidence knowing that every site that you tag is safely stored in the cloud. Access your tags from any Chrome browser running Better History!"
+   },
+   "sign_up_info_price": {
+      "description": "syncing price",
+      "message": "$$8 (a one-time fee)"
+   },
+   "sign_up_info_question": {
+      "description": "sign up questions",
+      "message": "Questions? hello@better-history.com"
+   },
+   "sign_up_info_title": {
+      "description": "sign up info modal title",
+      "message": "Keep your tags safe, Sync them!"
+   },
+   "sign_up_temporarily_closed": {
+      "description": "closed registration message",
+      "message": "Sorry, registration is temporarily closed"
+   },
+   "slovak": {
+      "description": "The language",
+      "message": "Slovak"
+   },
+   "spanish": {
+      "description": "The language",
+      "message": "Spanish"
+   },
+   "spread_the_word_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Spread the word"
+   },
+   "starting_week_day": {
+      "description": "day that the week starts on",
+      "message": "Starting week day"
+   },
+   "suggestions_bugs_comments": {
+      "description": "Link text to give feedback",
+      "message": "Suggestions, bugs, comments? Tweet to $link_open$@Better_History$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2"
+         },
+         "link_open": {
+            "content": "$1"
+         }
+      }
+   },
+   "sunday": {
+      "description": "The day of the week",
+      "message": "Sunday"
+   },
+   "sunday_short": {
+      "message": "Sun"
+   },
+   "swedish": {
+      "description": "The language",
+      "message": "Swedish"
+   },
+   "sync_enabled": {
+      "description": "sync enabled message",
+      "message": "Sync $highlight_open$ON$highlight_close$",
+      "placeholders": {
+         "highlight_close": {
+            "content": "$2",
+            "example": "highlight close tag"
+         },
+         "highlight_open": {
+            "content": "$1",
+            "example": "highlight open tag"
+         }
+      }
+   },
+   "sync_tags_link": {
+      "description": "link to sign up for syncing",
+      "message": "Sync your tags - $login_open$Login$login_close$",
+      "placeholders": {
+         "login_close": {
+            "content": "$2",
+            "example": "close login tag"
+         },
+         "login_open": {
+            "content": "$1",
+            "example": "open login tag"
+         }
+      }
+   },
+   "syncing_decision_description": {
+      "description": "syncing decision description",
+      "message": "Looks like you have $strong_open$synced tagged sites$strong_close$. You can choose to pull those sites replacing your local tags or sync your local tags. You can view your synced sites by visiting \u003Ca href='http://www.better-history.com/me' target='_blank'>better-history.com/me\u003C/a>",
+      "placeholders": {
+         "amount": {
+            "content": "$1",
+            "example": "amount of synced sites"
+         },
+         "strong_close": {
+            "content": "$3",
+            "example": "strong close tag"
+         },
+         "strong_open": {
+            "content": "$2",
+            "example": "strong open tag"
+         }
+      }
+   },
+   "syncing_decision_title": {
+      "description": "title for syncing decision modal",
+      "message": "You have previously synced sites"
+   },
+   "syncing_pull_button": {
+      "description": "pull button text",
+      "message": "Use my remote tags"
+   },
+   "syncing_push_button": {
+      "description": "push button text",
+      "message": "Use my local tags"
+   },
+   "syncing_settings_login": {
+      "description": "link to sign up for syncing",
+      "message": "Sync your tags - $login_open$Login$login_close$",
+      "placeholders": {
+         "login_close": {
+            "content": "$2",
+            "example": "close login tag"
+         },
+         "login_open": {
+            "content": "$1",
+            "example": "open login tag"
+         }
+      }
+   },
+   "syncing_settings_title": {
+      "description": "tag syncing title",
+      "message": "Tag syncing"
+   },
+   "tag_title": {
+      "description": "Individual tag title",
+      "message": "$name$ tag",
+      "placeholders": {
+         "name": {
+            "content": "$1",
+            "example": "recipes, news, technology, etc..."
+         }
+      }
+   },
+   "tag_visits_title": {
+      "description": "title for tagging visited sites modal",
+      "message": "Tag sites"
+   },
+   "tags_link": {
+      "description": "Tags link text in the main nav",
+      "message": "Tags"
+   },
+   "tags_title": {
+      "description": "Tags title text in the tags view",
+      "message": "All Tags"
+   },
+   "this_week": {
+      "description": "this week",
+      "message": "This week"
+   },
+   "thursday": {
+      "description": "The day of the week",
+      "message": "Thursday"
+   },
+   "thursday_short": {
+      "message": "Thur"
+   },
+   "time_format_label": {
+      "description": "Label for select box to set the time format (12 or 24 hours)",
+      "message": "Time format"
+   },
+   "today_link": {
+      "description": "Link for today",
+      "message": "Today"
+   },
+   "translation_help_heading": {
+      "description": "Heading to recruit translators",
+      "message": "Don't see your language?"
+   },
+   "translation_instructions": {
+      "description": "Instructions on how to help translate",
+      "message": "Do you speak english and want to translate Better History into a new lanuage? Great! Just send an email to $link_open$ $email$ $link_close$",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "Contact email address"
+         },
+         "link_close": {
+            "content": "$3",
+            "example": "close tag for email link"
+         },
+         "link_open": {
+            "content": "$2",
+            "example": "open tag for email link"
+         }
+      }
+   },
+   "translators_heading": {
+      "description": "Heading for translators",
+      "message": "Translators"
+   },
+   "tuesday": {
+      "description": "The day of the week",
+      "message": "Tuesday"
+   },
+   "tuesday_short": {
+      "message": "Tue"
+   },
+   "turkish": {
+      "description": "The language",
+      "message": "Turkish"
+   },
+   "twitter_language": {
+      "description": "Twitter language abbreviation",
+      "message": "en"
+   },
+   "twitter_template": {
+      "description": "Default message for Twitter sharing",
+      "message": "Better History for Chrome, see what you're missing!"
+   },
+   "use_24_hour_clock_label": {
+      "description": "Label for check box to show hours as 24 hours",
+      "message": "Use 24 hours time format"
+   },
+   "version_description": {
+      "description": "Version description",
+      "message": ""
+   },
+   "version_important_note": {
+      "description": "Heading for an important note",
+      "message": "Important note"
+   },
+   "version_items": {
+      "description": "Release bulletpoints",
+      "message": "$open$Visits organized into week intervals$close$ $open$Easily view the last 10 weeks of visits$close$ $open$Week summary of browsing activity$close$ $open$Speedy startup time$close$ $open$Optimized searching and grouping of visits$close$ $open$Easily search by a past visit's domain$close$",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "\u003C/li>"
+         },
+         "open": {
+            "content": "$1",
+            "example": "\u003Cli>"
+         }
+      }
+   },
+   "version_note": {
+      "descriotion": "Feedback and support note",
+      "message": ""
+   },
+   "version_title": {
+      "description": "Title of the version modal",
+      "message": "A Major Milestone: Visits organized by week!"
+   },
+   "version_whats_new": {
+      "description": "Heading for what's new in version",
+      "message": "What's new"
+   },
+   "vietnamese": {
+      "description": "The language",
+      "message": "Vietnamese"
+   },
+   "view_all_history_link": {
+      "description": "view all history link in popup",
+      "message": "View all history"
+   },
+   "view_release_announcement_link": {
+      "description": "Link text to view the release announcement",
+      "message": "View release announcement"
+   },
+   "visit_grouping_section_title": {
+      "description": "Section heading in Settings",
+      "message": "Visit grouping"
+   },
+   "visits_to_domain": {
+      "description": "Label for visits to domain context menu item",
+      "message": "Visits to $domain$",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "google.com"
+         }
+      }
+   },
+   "wednesday": {
+      "description": "The day of the week",
+      "message": "Wednesday"
+   },
+   "wednesday_short": {
+      "message": "Wed"
+   },
+   "week_day_order": {
+      "description": "the week day order",
+      "message": "Week day order"
+   },
+   "yesterday_link": {
+      "description": "Link for yesterday",
+      "message": "Yesterday"
+   }
+}

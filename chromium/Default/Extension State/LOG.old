@@ -1,0 +1,15 @@
+2017/12/21-23:02:58.733 1676 Reusing MANIFEST /home/qyriad/.config/chromium/Default/Extension State/MANIFEST-000001
+2017/12/21-23:02:58.733 1676 Recovering log #41
+2017/12/21-23:02:58.742 1676 Reusing old log /home/qyriad/.config/chromium/Default/Extension State/000041.log 
+2017/12/22-07:54:40.744 4151 Level-0 table #45: started
+2017/12/22-07:54:40.763 4151 Level-0 table #45: 1716388 bytes OK
+2017/12/22-07:54:40.766 4151 Delete type=0 #41
+2017/12/22-07:54:40.766 4151 Compacting 4@0 + 1@1 files
+2017/12/22-07:54:40.787 4151 Generated table #46@0: 11 keys, 11770 bytes
+2017/12/22-07:54:40.787 4151 Compacted 4@0 + 1@1 files => 11770 bytes
+2017/12/22-07:54:40.787 4151 compacted to: files[ 0 1 1 0 0 0 0 ]
+2017/12/22-07:54:40.787 4151 Delete type=2 #39
+2017/12/22-07:54:40.788 4151 Delete type=2 #36
+2017/12/22-07:54:40.788 4151 Delete type=2 #45
+2017/12/22-07:54:40.788 4151 Delete type=2 #42
+2017/12/22-07:54:40.788 4151 Delete type=2 #33

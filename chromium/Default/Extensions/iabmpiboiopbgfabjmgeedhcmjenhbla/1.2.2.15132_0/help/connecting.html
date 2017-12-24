@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.1//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>New Connection</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+  	<div class="breadcrumb">
+		<p><a href="index.html">Home</a> &gt; New connection</p>
+	</div>
+	<p class="heading1-top">Establishing a new connection</p>
+    <p id="address">To establish a new connection, enter an <b>Address</b> that is either:</p>
+	<ul>
+		<li>A <a href="address.html">private network address</a> if you are connecting over the same local network.</li>
+		<li>A <a href="address-public.html">public network address</a> if you are connecting over the Internet.</li>
+	</ul>
+	<p><b>Note:</b> There are circumstances in which you must <a href="address-public.html#port">qualify the network address</a> with a port number. If you see the message <code>Connection refused (10061)</code>, try appending two colons and a number to the address, for example <code>192.168.2.187::80</code>.</p>
+	<p id="quality">Change the <b>Picture Quality</b> if you want to control how the remote desktop is displayed (you can also tweak this mid-connection). Note that:</p>
+	<ul>
+		<li><code>Automatic</code> is the preferred choice, since <i>VNC Viewer</i> automatically adapts picture quality to network speed.</li>
+		<li><code>Let the other computer decide</code> may enable connections to certain third-party VNC-compatible technology (such as VMWare) that would otherwise not be possible.</li>
+	</ul>
+	<p>Click the <b>Connect</b> button. You may be asked to enter authentication credentials:</p>
+	<ul>
+		<li>If you installed <i>VNC</i> on the remote computer and chose a Free license, this is the password you specified at install-time.</li>
+		<li>If you're trialing a Personal or an Enterprise license, this is the username and password you normally use to <i>log on</i> to your account on the remote computer.</li>
+	</ul>
+	<p>You may also be asked to verify a signature uniquely identifying the remote computer. Note that only connections to <i>VNC</i> with a Personal or an Enterprise license are encrypted.</p>
+	<p><b>Note:</b> Connecting may take a few moments the first time. Subsequently, it should be faster.</p>
+	<p>To find out how to control a connected computer, read <a href="usage.html">these instructions</a>. If you cannot connect, start with the <a href="http://www.realvnc.com/products/chrome/latest/troubleshooting/" target="_blank">online guide</a>.</p>
+  </body>
+</html>

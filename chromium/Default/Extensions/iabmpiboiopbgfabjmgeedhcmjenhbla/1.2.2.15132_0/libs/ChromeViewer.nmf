@@ -1,0 +1,13 @@
+{
+  "program": {
+    "x86-32": {
+      "url": "bin/i686/ChromeViewer.nexe"
+    },
+    "x86-64": {
+      "url": "bin/x86_64/ChromeViewer.nexe"
+    },
+    "arm": {
+      "url": "bin/arm/ChromeViewer.nexe"
+    }
+  }
+}

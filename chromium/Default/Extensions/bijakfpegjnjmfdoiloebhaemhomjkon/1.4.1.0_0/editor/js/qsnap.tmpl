@@ -1,0 +1,198 @@
+<script id="dialog-template" type="text/x-handlebars-template">
+  <div class='modal hide fade' id='{{id}}' data-backdrop='static' data-keyboard='false' tabindex='-1' role='dialog' aria-labelledby='modalLabel' aria-hidden='true'>
+      <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>x</button>
+          <h3 id='modalLabel'>{{title}}</h3>
+      </div>        
+      <div class='modal-body'>               
+          {{#if isError}} 
+          <p class='errorMsg'>{{{message}}}</p>
+          {{else}}
+          {{#if isConfirm}}
+          <p class='confirmMsg'>{{{message}}}</p>
+          {{else}}
+          <p class='infoMsg'>{{{message}}}</p>
+          {{/if}}
+          {{/if}}
+      </div>
+      <div class='modal-footer center'>
+      {{#unless isConfirm}}            
+          <button class='btn' data-dismiss='modal' aria-hidden='true'>Close</button>
+      {{else}}
+          <button class='{{yesBtnClass}}' id='yes-btn'>Yes</button>
+          <button class='{{noBtnClass}}' id='no-btn'>No</button>
+      {{/unless}}
+      </div>
+  </div>
+</script>
+
+<script id="attach-file-dlg-template" type="text/x-handlebars-template">
+  <div id='attach-file-dlg' class='modal hide fade' data-backdrop='static' data-keyboard='false' tabindex='-1' role='dialog' aria-labelledby='login-dlg-label' aria-hidden='true'>
+      <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>x</button>
+          <h3 id='modalLabel'>Attach file</h3>
+      </div>        
+      <div class='modal-body'>               
+          <button type='button' class='btn btn-large btn-block btn-primary' id='select-file-btn'>Select a file</button>
+          <table class="table table-striped" id='file-list'> 
+              {{#each files}}
+              <tr id='{{this.id}}'>  
+                  <td>{{this.type}}</td>  
+                  <td>{{this.name}}</td>  
+                  <td><a data-original-title='Remove file' data-placement='bottom' rel='tooltip' href='#' id='remove-{{this.id}}'><i class="icon-remove"></i></a></td>
+              </tr> 
+              {{/each}}
+          </table>
+      </div>
+  </div>
+</script>
+
+<script id='tool-template' type='text/x-handlebars-template'>
+  <a id='{{id}}' data-original-title='{{tooltip}}' data-placement='bottom' class='btn' href='#' rel='tooltip'>
+      <i class='{{iconClass}}'></i>
+  </a>
+</script>
+
+<script id='color-picker-template' type='text/x-handlebars-template'>
+  <a id='{{id}}' data-original-title='{{tooltip}}' data-placement='bottom' rel='tooltip' class='btn' href='#'>
+      <b class='color' style='background-color: #fff'></b>
+      <span class='caret'></span>
+  </a>
+</script>
+
+<script id='size-picker-template' type='text/x-handlebars-template'>
+  <a id='{{id}}' data-original-title='{{tooltip}}' data-placement='bottom' rel='tooltip' class='btn' href='#' data-toggle='' style='padding-left: 5px; padding-right: 5px;'>
+      <i class='icon-thickness'></i>
+      <span class='caret'></span></a>
+  </a>
+  <ul class='dropdown-menu'></ul>
+</script>
+
+<script id='font-size-picker-template' type='text/x-handlebars-template'>
+  <a id='{{id}}' data-original-title='{{tooltip}}' data-placement='bottom' rel='tooltip' class='btn last-btn' href='#' data-toggle='' style='padding-left: 5px; padding-right: 5px; margin-left: -1px; width: 50px;'>
+      <i></i>
+      <span class='caret'></span></a>
+  </a>
+  <ul class='dropdown-menu'></ul>
+</script>
+
+<script id="settings-dlg-template" type="text/x-handlebars-template">
+  <div id='{{id}}' class='modal hide fade' data-backdrop='static' data-keyboard='false' tabindex='-1' role='dialog' aria-labelledby='settings-dlg-label' aria-hidden='true'>
+    <div class='modal-header'>
+      <button type='button' class='close' data-dismiss='modal' aria-hidden='true' id='x-btn'>x</button>
+      <h3 id='settings-dlg-label'>Settings</h3>
+    </div>
+    <div class='modal-body'>
+      <form action='' class='form-horizontal' id='hotkeys-form'>
+        <div class='control-group' id='capture-visible-part-settings'>
+          <label class='control-label capture-screenshot-label' for='txtKey'>Capture Visible Part:</label>
+          <div class='controls'>                        
+              <label class='checkbox inline'>
+                <input type="checkbox" id='chkCtrl' value='Ctrl' checked disabled></input> {{CtrlOrCmd}}
+              </label>
+              <label class='checkbox inline'>
+                <input type='checkbox' id='chkAlt' value='Alt'></input> Alt
+              </label>                      
+              <label class='checkbox inline'>
+                <input type='checkbox' id='chkShift' value='Shift'></input> Shift
+              </label>
+              <input type='text' id='txtKey' class='txtKey'>                
+          </div>
+        </div>
+        <div class='control-group' id='capture-full-page-settings'>
+          <label class='control-label capture-screenshot-label' for='capture-full-page-txtKey'>Capture Full Page:</label>
+          <div class='controls'>                        
+              <label class='checkbox inline'>
+                <input type="checkbox" id='capture-full-page-chkCtrl' value='Ctrl' checked disabled></input> {{CtrlOrCmd}}
+              </label>
+              <label class='checkbox inline'>
+                <input type='checkbox' id='capture-full-page-chkAlt' value='Alt'></input> Alt
+              </label>                      
+              <label class='checkbox inline'>
+                <input type='checkbox' id='capture-full-page-chkShift' value='Shift'></input> Shift
+              </label>
+              <input type='text' id='capture-full-page-txtKey' class='txtKey'>                
+          </div>
+          <div>
+            <label style='margin-left: 71px; margin-top: 15px;'>
+                <em>Please make sure the key combination is available.</em>
+            </label>
+            <em id="err-message" style="color:red;margin-left:15px;display:none;"></em>
+          </div>
+        </div>
+        <div class='control-group' id='export-image-format-settings'>
+          <label class='control-label capture-screenshot-label' for='image-format'>Export image format:</label>
+          <div class='controls'>
+            <select id="image-format">
+              <option value="jpg">JPG</option>
+              <option value="png">PNG</option>
+            </select>
+          </div>
+        </div>
+        <div class='control-group' id='export-image-quality-settings'>
+          <label class='control-label capture-screenshot-label' for='image-format'>Export image quality:</label>
+          <div class='controls'>
+            <select id="image-quality">
+              <option value="0.5">Low</option>
+              <option value="0.75" selected="selected">Medium</option>
+              <option value="1">High</option>
+            </select>
+          </div>
+        </div>
+      </form>         
+    </div>
+    <div class='modal-footer center' id='setting-dlg-footer'>
+      <button type='button' class='btn btn-primary' id='save-btn'>Save</button>
+      <button type='button' class='btn' aria-hidden='true' data-dismiss='modal' id='cancel-btn'>Cancel</button>    
+    </div>
+  </div>
+</script>
+
+<script id="save-file-dlg-template" type="text/x-handlebars-template">
+  <div id='{{id}}' class='modal hide fade' data-backdrop='static' data-keyboard='false' tabindex='-1' role='dialog' aria-labelledby='modalLabel' aria-hidden='true' style='width: 700px'>
+    <div class='modal-header'>
+      <button type='button' class='close' data-dismiss='modal' aria-hidden='true' id='x-btn'>x</button>
+      <h3 id='modalLabel'>Save file</h3>
+    </div>
+    <div class='modal-body'>     
+          <div id='exported-images' style="max-height: 400px; overflow-y: auto; overflow-x: hidden;">
+          </div>
+          <div style='margin-top: 20px; text-align: center; font-weight: bold;'>
+          <p>{{message}}</p>
+          </div>
+          <p style='clear: both;'/>
+    </div>
+    <div class='modal-footer center' id='setting-dlg-footer'>        
+      <button type='button' class='btn' aria-hidden='true' data-dismiss='modal' id='cancel-btn'>Close</button>    
+    </div>
+  </div>
+</script>
+
+<script id="upload-dlg-template" type="text/x-handlebars-template">
+  <div class='modal hide fade' id='{{id}}' data-backdrop='static' data-keyboard='false' tabindex='-1' role='dialog' aria-labelledby='modalLabel' aria-hidden='true'>
+      <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-hidden='true' id='x-btn'>x</button>
+          <h3 id='modalLabel'>Share</h3>
+      </div>
+      <div class='modal-body'>
+          <div action='' class='form-horizontal' id='upload-form'>
+            <div class='control-group'>
+              <div class='controls'>
+                <label class='control-label' for='album-list' id='selectAlbumLabel'>Folder </label>
+                <input type="text" id="album-name" autofocus/>
+              </div>
+            </div>            
+          </div>
+          <div>
+            <ul id='sharing-status'></ul>
+            <span id='album-link'></span>
+          </div>
+      </div>
+      <div class='modal-footer center'>
+          <button type='button' class='btn' id='share'>Share</button>
+          <button type='button' class='btn btn-warning' id='cancelUpload'>Cancel</button>  
+          <button class='btn' data-dismiss='modal' aria-hidden='true' id='close-btn'>Close</button> 
+          <button class='btn' id='copyToClipboard' rel="tooltip" data-title="Copy snap urls to clipboard">Copy to clipboard</button>       
+      </div>
+  </div>
+</script>

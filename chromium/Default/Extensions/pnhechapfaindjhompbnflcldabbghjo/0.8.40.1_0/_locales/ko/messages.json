@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "파일 시스템이 이미 마운트되어 있습니다."
+   },
+   "backup_prefs": {
+      "message": "백업 저장"
+   },
+   "bad_destination": {
+      "message": "다음 대상을 파싱할 수 없음: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "탭을 닫으면 세션 연결이 끊깁니다."
+   },
+   "cancel_button_label": {
+      "message": "취소"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "이 명령은 알려진 호스트의 메뉴를 표시하고 호스트를 삭제하도록 요청합니다."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "알려진 ssh 호스트는 삭제합니다."
+   },
+   "cmd_ssh_help": {
+      "message": "|username| 및 |hostname| 매개변수는 필수이며 |port|는 선택사항입니다. 포트가 지정되지 않은 경우 22로 기본 지정됩니다."
+   },
+   "cmd_ssh_title": {
+      "message": "새로운 ssh 세션을 엽니다."
+   },
+   "command_complete": {
+      "message": "$1 명령어가 상태 코드 $2(으)로 종료되었습니다.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "연결"
+   },
+   "connect_or_exit_message": {
+      "message": "다른 연결을 선택(C)하거나 종료(x)하시겠습니까?"
+   },
+   "connecting": {
+      "message": "$1에 연결 중...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "전용 옵션 페이지가 있다는 사실을 알고 계셨나요?\n이제 term_을 직접 다루지 않아도 됩니다.\n$1 키를 눌러서 열거나 다음 URL을 클릭하세요.\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "전용 옵션 페이지가 있다는 사실을 알고 계셨나요?\n이제 term_을 직접 다루지 않아도 됩니다.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "삭제"
+   },
+   "disconnect_message": {
+      "message": "NaCl 플러그인이 상태 코드 $1(으)로 종료되었습니다.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "추가 명령줄 인수"
+   },
+   "field_description_aria_label": {
+      "message": "설명"
+   },
+   "field_description_placeholder": {
+      "message": "username@hostname 또는 자유 형식 텍스트"
+   },
+   "field_hostname_aria_label": {
+      "message": "호스트 이름"
+   },
+   "field_hostname_placeholder": {
+      "message": "호스트 이름"
+   },
+   "field_mount_path_placeholder": {
+      "message": "기본 경로는 사용자의 홈 디렉토리입니다"
+   },
+   "field_port_aria_label": {
+      "message": "포트"
+   },
+   "field_port_placeholder": {
+      "message": "포트"
+   },
+   "field_relay_options_aria_label": {
+      "message": "릴레이 옵션"
+   },
+   "field_relay_options_placeholder": {
+      "message": "SSH 릴레이 서버 옵션"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "기본값"
+   },
+   "field_username_aria_label": {
+      "message": "사용자 이름"
+   },
+   "field_username_placeholder": {
+      "message": "사용자 이름"
+   },
+   "found_relay": {
+      "message": "발견된 릴레이 서버: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "ID"
+   },
+   "import_link_aria_label": {
+      "message": "파일 가져오기"
+   },
+   "import_link_label": {
+      "message": "가져오기..."
+   },
+   "initializing_relay": {
+      "message": "$1을(를) 사용하여 릴레이 서버를 찾는 중",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "'$1'에서 JSON을 파싱할 수 없음: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "알려진 호스트가 없고, 삭제할 것이 없습니다."
+   },
+   "known_hosts_prompt": {
+      "message": "[1-$1]를 삭제하려면 호스트를 선택하세요.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "알려진 호스트:"
+   },
+   "loading_label": {
+      "message": "로드 중..."
+   },
+   "missing_param": {
+      "message": "누락된 매개변수: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "SFTP 마운트"
+   },
+   "mount_path_label": {
+      "message": "마운트 경로"
+   },
+   "mounted_message": {
+      "message": "마운트가 완료되었습니다."
+   },
+   "notify_copy": {
+      "message": "선택한 텍스트가 복사됨"
+   },
+   "ok_button_label": {
+      "message": "확인"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> 저장된 프로필 또는 새 ssh 시스템에 연결하세요"
+   },
+   "open_as_window_tip": {
+      "message": "[프로 팁] Ctrl + W를 눌러도 터미널이 닫히지 않게 하려면 '창으로 열기'를 사용하세요.\n[프로 팁] 자세한 내용은 $1 페이지를 참조하세요.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "옵션"
+   },
+   "plugin_loading": {
+      "message": "NaCl 플러그인 로드 중..."
+   },
+   "plugin_loading_complete": {
+      "message": "완료되었습니다."
+   },
+   "plugin_loading_failed": {
+      "message": " 실패했습니다! :("
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "프로필 설정"
+   },
+   "preferences_reset": {
+      "message": "모든 환경설정이 재설정되었습니다."
+   },
+   "reconnect_message": {
+      "message": "다시 연결(R)하거나 다른 연결을 선택(C)하거나 종료(x)하시겠습니까?"
+   },
+   "relay_retry": {
+      "message": "다시 시도하는 중..."
+   },
+   "restore_prefs": {
+      "message": "백업 복원"
+   },
+   "shortcut_list_aria_label": {
+      "message": "저장된 연결"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH 인수"
+   },
+   "terminal_preview_label": {
+      "message": "미리보기"
+   },
+   "terminal_profile_label": {
+      "message": "현재 프로필"
+   },
+   "tip_1": {
+      "message": "링크를 열려면 Ctrl(macOS의 경우 Cmd)을 누른 상태로 링크를 클릭하세요."
+   },
+   "tip_10": {
+      "message": "창에서 실행 중인 경우, Ctrl + Shift + N을 눌러서 다른 세션을 열 수 있습니다."
+   },
+   "tip_11": {
+      "message": "키/단축키를 다시 바인딩할 수 있습니다. https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "hterm-notify를 사용하여 브라우저에 알림을 표시하세요. https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "검색주소창에 'ssh \u003C프로필 이름>'을 입력하여 연결하세요. https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS에서 SFTP를 통해 파일 시스템을 마운트하고 파일 앱을 통해 탐색할 수 있습니다. 'Connect' 대신 'SFTP Mount'를 사용하세요."
+   },
+   "tip_5": {
+      "message": "웹페이지에서 ssh:// 링크를 사용하여 연결하거나 북마크를 저장하세요. https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "기본 16색, 256색 및 전체 24비트 색상을 사용하여 출력/프롬프트 색상을 지정하세요. http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "OSC-52를 사용하여 emacs/vim 등의 내용을 클립보드에 복사하세요. https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "chromium-hterm@chromium.org를 통해 다른 hterm/Secure Shell 사용자와 채팅하세요. https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "버그를 발견하셨나요? 아니면 새로운 기능을 요청하고 싶으신가요? Google에 알려 주세요. https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "예기치 않은 오류가 발생했습니다. 더 자세한 정보를 보려면 자바스크립트 콘솔을 확인하시기 바랍니다."
+   },
+   "unmount_button_label": {
+      "message": "SFTP 마운트 해제"
+   },
+   "update_available_tooltip": {
+      "message": "업데이트가 있습니다. 모든 창을 닫아 주세요."
+   },
+   "welcome_changelog": {
+      "message": "변경 기록/출시 노트: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "자주 묻는 질문(FAQ)의 답변: $1(Ctrl을 누른 상태로 클릭하여 열기)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "$1 이후 주요 변경사항:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "랜덤 프로 팁 #$1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "$1 버전 $2에 오신 것을 환영합니다.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Chrome 메뉴에서 확대/축소 설정을 100%로 변경하세요."
+   }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright 2010-2017 Restlet S.A.S. All rights reserved.
+  ~ Restlet is registered trademark of Restlet S.A.S.
+  -->
+
+<html lang="en">
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="initial-scale=1, minimum-scale=1, width=device-width">
+    <meta name="twitter:widgets:csp" content="on">
+    <link rel="stylesheet" type="text/css" href="css/prism.css">
+    <link rel="stylesheet" type="text/css" href="css/simple-line-icons-2.4.1.min.css">
+    <link rel="stylesheet" type="text/css" href="css/select2-4.0.3.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/restlet-client/style.css">
+    <!-- the following order is very important -->
+    <link rel="stylesheet" type="text/css" href="css/chromeapp.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.4.2.0.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.3.2.1.enriched-for-dhc.css">
+    <title>Restlet Client</title>
+</head>
+
+<body class="main chromeapp" id="console">
+<div class="notification-container">
+    <div id="notification" class="notification-area">
+        <div>
+            <i class="fa fa-spinner fa-spin " id="spinner"></i>
+        </div>
+        <div>
+            Loading...
+        </div>
+    </div>
+</div>
+
+<div id="migration-message-container" class="hidden">
+    <div id="migration-message-body" class="well">
+        <h3>Restlet Client is upgrading!</h3>
+        <div>
+            <p>
+                To provide you with more cutting-edge features, Restlet Client must evolve, so does your data.
+            </p>
+            <p class="backed-up-migration-message">
+                As a security measure we've generated a backup file, please make sure you download it.
+            </p>
+            <p class="backed-up-migration-message">
+                In case anything goes wrong, the support (support@restlet.com) will help you fix any issue you might
+                encounter.
+            </p>
+            <p>
+                Please wait until the migration has passed to close or reload the tab.
+            </p>
+            <div id="buttons">
+                <div id="not-backed-up-action" class="r-btn r-btn-primary not-backed-up-migration-message">
+                    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    Upgrade now!
+                </div>
+                <div id="backed-up-action" class="r-btn r-btn-primary backed-up-migration-message">
+                    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    Upgrade now!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<iframe id="__gwt_historyFrame" style="width:0;height:0;border:0;display:none"></iframe>
+<input type="file" id="filePicker" style="display: none"/>
+
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-2.3.2.min.js"></script>
+<script type="text/javascript" src="js/select2-4.0.3.min.js"></script>
+<!-- lodash before `restlet.js` in order store it on `RESTLET` namespace -->
+<script type="text/javascript" src="js/lodash.4.17.4.min.js"></script>
+<script type="text/javascript" src="js/restlet.js"></script>
+
+<!--Compress code mirror files for prod distribution -->
+<script type="text/javascript" src="js/codemirror/codemirror.js"></script>
+<script type="text/javascript" src="js/codemirror/mode/javascript/javascript.js"></script>
+<script type="text/javascript" src="js/codemirror/mode/xml/xml.js"></script>
+<script type="text/javascript" src="js/codemirror/mode/css/css.js"></script>
+
+<script type="text/javascript" src="js/stripe.js"></script>
+<!--
+<script type="text/javascript" src="js/codemirror/mode/http/http.js"></script>
+-->
+<script type="text/javascript" src="js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script type="text/javascript" src="js/sha.js"></script>
+<script type="text/javascript" src="js/crypto/md5.js"></script>
+<script type="text/javascript" src="js/crypto/aes.js"></script>
+<script type="text/javascript" src="js/jsonpath.js"></script>
+<script type="text/javascript" src="js/markdown.js"></script>
+<script type="text/javascript" src="js/zip/zip.js"></script>
+<script type="text/javascript" src="js/base64.min.js"></script>
+<script type="text/javascript" src="js/prism.js"></script>
+<script type="text/javascript" src="js/r-popover.js"></script>
+<script type="text/javascript" src="js/r-tooltip.js"></script>
+<script type="text/javascript" src="js/insitu.js"></script>
+<script type="text/javascript" src="js/import.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/github_oauth.js"></script>
+<script type="text/javascript" src="js/mixpanel.js"></script>
+<script type="text/javascript" src="js/auth.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+
+<!-- Part that differs between dev and prod -->
+<script type="text/javascript" src="js/google-analytics-bundle.js"></script>
+<script type="text/javascript" src="devhttpclient/devhttpclient.nocache.js"></script>
+</body>
+</html>

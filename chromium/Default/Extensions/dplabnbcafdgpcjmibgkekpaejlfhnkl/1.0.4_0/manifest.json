@@ -1,0 +1,34 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "extension.js" ]
+   },
+   "browser_action": {
+      "default_popup": "popup.html",
+      "default_title": "Share on Rabbit"
+   },
+   "content_scripts": [ {
+      "js": [ "presence.js" ],
+      "matches": [ "https://www.rabb.it/*" ]
+   } ],
+   "description": "The best way to watch tv, movies, Netflix and more with friends",
+   "externally_connectable": {
+      "matches": [ "https://www.rabb.it/*" ]
+   },
+   "icons": {
+      "128": "images/rabbit-128px.png",
+      "16": "images/rabbit-16px.png",
+      "19": "images/rabbit-19px.png",
+      "32": "images/rabbit-32px.png",
+      "48": "images/rabbit-48px.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3lX/HcSoInKtqID2avbzmi4Yqr6BusYNaROpNeUnSluP3L2+zfLPBQaA4CYqhB3YuU7QikYtDkIEK5SPrlKux/L3fVQRV1Xh2TStkR3rENIDCaxY+wSMhsq02XBjPAZ6pzz+4ZLkZozn1BHf//WUiY8/bH/sYOvCtXu9xZx1RahRA+4TqGqCYbMI1locmMBys6xwM0TRSFRAzhMVdSDv1uv9lq4TizsbJ8Oqmwn7HCUwJkAwFpxntdsNWQlBOirapLqvuNlpVcM5kTKTHSO1znHXOu0m7sDXlWxRoTuQTA2W0HHg0CxlBpvhZ4robhIjJnMTw11iFsTzDrFSoSlr9wIDAQAB",
+   "manifest_version": 2,
+   "name": "Share on Rabbit",
+   "options_ui": {
+      "page": "options.html"
+   },
+   "permissions": [ "tabCapture", "tabs", "storage", "\u003Call_urls>" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.4"
+}

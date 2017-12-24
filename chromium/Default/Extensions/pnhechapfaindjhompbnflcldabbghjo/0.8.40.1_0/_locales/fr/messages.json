@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Le système de fichiers est déjà installé."
+   },
+   "backup_prefs": {
+      "message": "Enregistrer une sauvegarde"
+   },
+   "bad_destination": {
+      "message": "Impossible d'analyser la destination $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "La fermeture de cet onglet va mettre fin à cette session."
+   },
+   "cancel_button_label": {
+      "message": "Annuler"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Cette commande permet d'afficher un menu répertoriant les invites et les hôtes connus que l'hôte doit supprimer."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Supprimer un hôte SSH connu"
+   },
+   "cmd_ssh_help": {
+      "message": "Les paramètres |username| et |hostname| sont obligatoires. Le paramètre |port| est facultatif. Si celui-ci n'est pas spécifié, la valeur 22 est utilisée par défaut."
+   },
+   "cmd_ssh_title": {
+      "message": "Ouvrir une nouvelle session SSH"
+   },
+   "command_complete": {
+      "message": "La commande \"$1\" s'est terminée avec le code d'état $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Se connecter"
+   },
+   "connect_or_exit_message": {
+      "message": "Sélectionner (c) une autre connexion ou quitter (x) ?"
+   },
+   "connecting": {
+      "message": "Connexion à $1…",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Saviez-vous qu'il existe une page d'options dédiée ?\nCe n'est plus la peine de modifier \"term_\" directement.\nAppuyez sur $1 pour l'ouvrir ou cliquez sur :\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Saviez-vous qu'il existe une page d'options dédiée ?\nCe n'est plus la peine de modifier \"term_\" directement.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[SUPPR]"
+   },
+   "delete_button_label": {
+      "message": "Supprimer"
+   },
+   "disconnect_message": {
+      "message": "Le plug-in NaCl s'est terminé avec le code d'état $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTRÉE]"
+   },
+   "field_argstr_placeholder": {
+      "message": "arguments de ligne de commande supplémentaires"
+   },
+   "field_description_aria_label": {
+      "message": "description"
+   },
+   "field_description_placeholder": {
+      "message": "nomdutilisateur@nomdhôte ou texte libre"
+   },
+   "field_hostname_aria_label": {
+      "message": "nom d'hôte"
+   },
+   "field_hostname_placeholder": {
+      "message": "nom d'hôte"
+   },
+   "field_mount_path_placeholder": {
+      "message": "le chemin par défaut est le répertoire d'accueil de l'utilisateur"
+   },
+   "field_port_aria_label": {
+      "message": "port"
+   },
+   "field_port_placeholder": {
+      "message": "port"
+   },
+   "field_relay_options_aria_label": {
+      "message": "options de relais"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Options du serveur de relais SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "par défaut"
+   },
+   "field_username_aria_label": {
+      "message": "nom d'utilisateur"
+   },
+   "field_username_placeholder": {
+      "message": "nom d'utilisateur"
+   },
+   "found_relay": {
+      "message": "Serveur de relais trouvé : $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identité"
+   },
+   "import_link_aria_label": {
+      "message": "importation de fichier"
+   },
+   "import_link_label": {
+      "message": "Importer…"
+   },
+   "initializing_relay": {
+      "message": "Recherche du serveur de relais à l'aide de l'hôte $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Impossible d'analyser le fichier JSON dans $1 : $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Impossible de procéder à la suppression, car il n'existe aucun hôte connu."
+   },
+   "known_hosts_prompt": {
+      "message": "Veuillez sélectionner un hôte à supprimer [1-$1] :",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Hôtes connus :"
+   },
+   "loading_label": {
+      "message": "Chargement…"
+   },
+   "missing_param": {
+      "message": "Paramètre manquant : $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Installation SFTP"
+   },
+   "mount_path_label": {
+      "message": "Répertoire de montage"
+   },
+   "mounted_message": {
+      "message": "Le système de fichiers a bien été installé."
+   },
+   "notify_copy": {
+      "message": "Sélection copiée"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Connectez-vous à un profil enregistré ou à un nouveau système SSH"
+   },
+   "open_as_window_tip": {
+      "message": "[Conseil de pro] Utilisez \"Ouvrir dans une fenêtre\" pour éviter que le raccourci Ctrl+W ferme votre terminal.\n[Conseil de pro] Voir $1 pour plus d'informations.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Options"
+   },
+   "plugin_loading": {
+      "message": "Chargement du plug-in NaCl en cours…"
+   },
+   "plugin_loading_complete": {
+      "message": " terminé."
+   },
+   "plugin_loading_failed": {
+      "message": " échec ! :("
+   },
+   "pref_backup_filename": {
+      "message": "Fichier JSON de sauvegarde (Backup.json) des préférences Secure Shell"
+   },
+   "preferences_header": {
+      "message": "Paramètres du profil"
+   },
+   "preferences_reset": {
+      "message": "Toutes les préférences ont été réinitialisées."
+   },
+   "reconnect_message": {
+      "message": "Reconnecter (r), sélectionner (c) une autre connexion ou quitter (x) ?"
+   },
+   "relay_retry": {
+      "message": "Nouvelle tentative…"
+   },
+   "restore_prefs": {
+      "message": "Restaurer la sauvegarde"
+   },
+   "shortcut_list_aria_label": {
+      "message": "connexions enregistrées"
+   },
+   "ssh_argstr_label": {
+      "message": "Arguments SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Aperçu"
+   },
+   "terminal_profile_label": {
+      "message": "Profil actuel"
+   },
+   "tip_1": {
+      "message": "Vous pouvez maintenir la touche Ctrl (Cmd sur macOS) enfoncée pendant que vous cliquez sur les liens pour les ouvrir."
+   },
+   "tip_10": {
+      "message": "Lorsqu'une fenêtre est active, utilisez le raccourci Ctrl+Maj+N pour ouvrir une autre session."
+   },
+   "tip_11": {
+      "message": "Vous pouvez associer de nouvelles fonctionnalités aux raccourcis (https://goo.gl/LWRndr)"
+   },
+   "tip_2": {
+      "message": "Affichez les notifications dans le navigateur à l'aide de la commande \"hterm-notify\" (https://goo.gl/ZNxGdF)"
+   },
+   "tip_3": {
+      "message": "Connectez-vous à partir de l'omnibox en saisissant \"ssh \u003Cnom de profil>\" (https://goo.gl/V7o8ki)"
+   },
+   "tip_4": {
+      "message": "Chrome OS peut monter des systèmes de fichiers via SFTP et les parcourir via l'application Files. Utilisez \"SFTP Mount\" au lieu de \"Connect\"."
+   },
+   "tip_5": {
+      "message": "Connectez-vous à l'aide des liens \"ssh://\" dans des pages Web ou enregistrez un favori (https://goo.gl/zS8EZD)"
+   },
+   "tip_6": {
+      "message": "Colorez votre invite à l'aide des 16 couleurs de base, des 256 couleurs ou de l'ensemble de couleurs 24 bits (http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html)"
+   },
+   "tip_7": {
+      "message": "Copiez du contenu dans votre presse-papiers à partir d'emacs, de vim ou d'autres éditeurs de texte à l'aide de la commande OSC-52 (https://goo.gl/XSnyLo)"
+   },
+   "tip_8": {
+      "message": "Communiquez avec les autres utilisateurs de hterm ou de Secure Shell via l'adresse chromium-hterm@chromium.org (https://goo.gl/RYHiK)"
+   },
+   "tip_9": {
+      "message": "Vous avez trouvé un bug ? Vous avez besoin d'une nouvelle fonctionnalité ? Faites-le-nous savoir sur https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Une erreur inattendue s'est produite. Pour en savoir plus, veuillez consulter la console JavaScript."
+   },
+   "unmount_button_label": {
+      "message": "Désinstaller SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Une mise à jour est disponible. Veuillez fermer toutes les fenêtres."
+   },
+   "welcome_changelog": {
+      "message": "Journal des modifications/Notes de version : $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Réponses aux questions fréquentes : $1 (Ctrl+clic sur les liens pour les ouvrir)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Principales mises à jour depuis la version $1 :",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Conseil de pro aléatoire n° $1 : $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Bienvenue sur $1, version $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Dans le menu Chrome, veuillez définir le zoom sur 100 %"
+   }
+}

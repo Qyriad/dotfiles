@@ -1,0 +1,61 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="nocontext.js"></script>
+		<script src="shortcut.js"></script>
+	</head>
+	<body style="overflow-x:hidden; overflow-y:auto;">
+		<p>For some bookmarks that are difficult to change favicon, you can use the "<b>shortcut technique</b>". "Bookmark Favicon Changer" will create a new bookmark. This bookmark behaves like a shortcut. If you click it, it will immediately redirect to your target URL. But the advantage is... it has your own custom favicon. Your target URL can be http, https, ftp, file, etc...(Just try it). This shortcut is <u>very special</u>, it does not need "<b>Bookmark Favicon Changer</b>" to be active and it does not create any file on your hard drive. It will work forever just like a normal bookmark.</p>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td><b>Step 1:</b> Input full target URL (e.g. http://www.google.com).</td>
+				<td><input type="text" id="targetURL" size="100" value="http://"></input></td>
+			</tr>
+			<tr>
+				<td><b>Step 2:</b> Input bookmark name (optional)</td>
+				<td><input type="text" id="bookmarkName" size="100" value=""></input></td>
+			</tr>
+			<tr>
+				<td><b>Step 3:</b> Select custom favicon</td>
+				<td>
+					<input type="file" accept="image/*" id="openFile"></input>
+					<img id="selectFaviconImage" src=""></img>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Step 4:</b> Test redirect to target URL</td>
+				<td>
+					<button id="testShortcut">Test</button>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Step 5:</b> Choose where to add shortcut</td>
+				<td>
+					<form>
+						<table>
+							<tr>
+								<td><input type="radio" name="where" id="barFirst"></input>&nbsp;First bookmark in "Bookmarks Bar"</td>
+								<td>&nbsp;&nbsp;&nbsp;<input type="radio" name="where" id="otherFirst"></input>&nbsp;First bookmark in "Other Bookmarks" folder</td>
+							</tr>
+							<tr>
+								<td><input type="radio" name="where" id="barLast" checked="checked"></input>&nbsp;Last bookmark in "Bookmarks Bar"</td>
+								<td>&nbsp;&nbsp;&nbsp;<input type="radio" name="where" id="otherLast"></input>&nbsp;Last bookmark in "Other Bookmarks" folder</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Step 6:</b> Add shortcut</td>
+				<td>
+					<button id="createShortcut" disabled="disabled">Add</button>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

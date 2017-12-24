@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Whatruns Popup</title>
+		<link href='css/font-lato.css' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/popup.css">
+		<script src="js/browser-polyfill.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/bootstrap-tooltip.js"></script>
+		<script src="js/global.constants.js"></script>
+		<script src="js/popup_final.js"></script>
+		<script src="js/popup_final_extension.js"></script>
+	</head>
+	<body>
+		<div class="body-header">
+				<div class=""  style="border-bottom: 1px solid #ddd;padding: 10px 0px 10px 20px;">
+					<div class="inline-block">
+						<h3> What runs <span class="current-site-name"  id="current-site-name" style="font-weight:normal;"></span>?</h3>
+					</div>
+					<div class="inline-block header-btn margin-left-10 user-already-following" data-toggle="tooltip" data-placement="bottom" title="Following">
+						<img src="images/already-following.png" class="btn-already-following">
+					</div>
+					<div class="inline-block margin-left-10 header-btn user-follow" data-toggle="tooltip" data-placement="bottom" title="Follow">	
+						<img src="images/Follow.png" class="btn-follow">
+					</div>
+					<div class="inline-block margin-left-10 header-btn user-following" data-toggle="tooltip" data-placement="bottom" title="Your Sites">	
+						<img src="images/Following.png" class="btn-following">
+					</div>
+					<div class="inline-block margin-left-10 header-btn share-url share-url-header-icon" data-toggle="tooltip" data-placement="bottom" title="">
+						<img src="images/Share.png" class="btn-share">
+					</div>
+					<div class="inline-block margin-left-10 header-btn back" data-toggle="tooltip" data-placement="bottom" title="Back">	
+						<img src="images/back.png" class="btn-back">
+					</div>
+				</div>
+		</div>
+		<img class="image-loader" src="images/spinner.gif">
+		<div class="content">
+		  <div class="container current-app-info active">
+			  <div class="list" id="tech-info">	
+				  <div id="even" class="even"></div>
+				  <div id="odd" class="odd"></div>
+			  </div>
+		  </div>
+		  <div class="container block signup">
+		  	<form class="form signup-form" url="register" method="POST">
+		  		<div class="form-heading">
+		  			Sign up
+		  		</div>
+		  		<div class="form-group">
+		  			
+		  			<input type="email" class="form-control" name="email" placeholder="Email" autocomplete="off" >
+		  		</div>
+		  		<div class="form-group">
+		  			
+		  			<input type="password" class="form-control" name="password" placeholder="Password" autocomplete="off" >
+		  		</div>
+		  		<div>By clicking this button, you agree to our <a href="http://whatruns.com/terms" target="_blank">terms of service.</a></div>
+		  		<div class="result"></div>
+		  		<input type="text" class="form-control hide" name="source" value="extension" style="display:none;">
+		  		<button type="submit" class="btn btn-sm btn-primary">Sign up</button>
+		  		<div class="form-bottom">
+		  			<div class="">Already have an account? <a class="btn-signin">Sign in</a></div>
+		  		</div>
+		  	</form>
+		  </div>
+		  <div class="container block signin">
+		  	<form class="form signin-form" url="extension_signin" method="POST">	
+		  		<div class="form-heading">
+		  			Sign in to follow <span class="current-site-name"></span>
+		  		</div>
+		  		<div class="form-group">
+		  			
+		  			<input type="email" class="form-control" name="email" placeholder="Email" autocomplete="off" >
+		  		</div>
+		  		<div class="form-group">
+		  			
+		  			<input type="password" class="form-control" name="password" placeholder="Password" autocomplete="off" >
+		  		</div>
+		  		<div class="result"></div>
+		  		<button type="submit" class="btn btn-sm btn-primary">Sign in</button>
+		  		<div class="form-bottom">Don’t have an account? Sign up <a class="btn-signup">here</a></div>
+		  	</form>
+		  </div>
+		  <div class="container block following">
+				<div class="following-sites">
+					<div class="following-sites-list"></div>
+				</div>
+		  </div>
+		  <div class="container block share-container">
+		  		<div style="padding:20px;">
+				   <div class="share-url-heading">
+					   <h4>Share what runs <span class="current-site-name"></span></h4>
+				   </div>
+				   <div class="share-url-body">	
+					   <div class="form-group">
+					   		<div class="inner-addon left-addon">
+					   			<img src="images/copy-link.png" style="position: absolute;max-width: 18px;padding: 12px 7px;">
+						   		<input type="text" class="form-control share-url-original" readonly autocomplete="off" >
+						   	</div>
+					   </div>
+				   </div>
+				   <div class="share-url-footer text-center">
+					   <div class="inline-block share-facebook share-common" data-toggle="tooltip" data-placement="bottom" title="Share on Facebook">
+						 <button class="btn btn-default btn-sm share-btn ">  <img src="images/Facebook.png"> </button>
+					   </div>
+					   <div class="inline-block share-twitter share-common" data-toggle="tooltip" data-placement="bottom" title="Share on Twitter">
+						<a href="" target="_blank" class="twitter-share-href"><button class="btn btn-default btn-sm share-btn">    <img src="images/Twitter.png"> </button></a>
+					   </div>
+					   <div class="inline-block share-email share-common" data-toggle="tooltip" data-placement="bottom" title="Send as an Email">
+						  <button class="btn btn-default btn-sm share-btn">  <img src="images/Email.png"> </button>
+					   </div>
+				   </div>
+			</div>
+		  </div>
+		  <div class="container block email-share-container">
+		  	<div class="share-email-container">
+				  <form id="email-share-form">
+				  		<h4>Share as an Email</h4>
+					  <div class="form-group">
+						  <input type="text" class="form-control" name="name" placeholder="Your name" autocomplete="off" >
+					  </div>
+					  <div class="form-group">
+						  <input type="text" class="form-control" name="email" placeholder="Email address you want to share" autocomplete="off" >
+					  </div>
+					  <div class="form-group">
+						  <button type="submit" class="btn btn-primary share-email-submit btn-sm btn-success">Share</button>
+					  </div>
+					  <div class="result" style="margin:5px 0px;"></div>
+				  </form>
+				</div>
+		  </div>
+		</div>
+		<div class="footer">
+			  <p><a href="https://www.whatruns.com/" target="_blank"><img src="images/Logo.png"></a></p>
+		</div>
+	</body>
+</html>

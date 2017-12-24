@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Систем датотека је већ учитан!"
+   },
+   "backup_prefs": {
+      "message": "Сачувај резервну копију"
+   },
+   "bad_destination": {
+      "message": "Није могуће рашчланити одредиште: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Затварањем ове картице прекинућете сесију."
+   },
+   "cancel_button_label": {
+      "message": "Откажи"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Ова команда приказује мени познатих хостова и упита за хост које желите да избришете."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Брисање познатог ssh хоста."
+   },
+   "cmd_ssh_help": {
+      "message": "Параметри |username| и |hostname| су обавезни, а параметар |port| је опционалан. Ако није наведен порт, додељује се подразумевана вредност 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Отварање нове SSH сесије."
+   },
+   "command_complete": {
+      "message": "Извршавање команде $1 је прекинуто уз кôд статуса $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Повежи"
+   },
+   "connect_or_exit_message": {
+      "message": "Желите ли да изаберете неку другу везу (C) или да изађете из процеса (x)?"
+   },
+   "connecting": {
+      "message": "Повезујемо се са $1…",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Да ли сте знали да постоји посебна страница са опцијама?\nВише не морате да користите term_ directly!\nПритисните $1 да бисте је отворили или кликните на:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Да ли сте знали да постоји посебна страница са опцијама?\nВише не морате да користите term_ directly!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Избриши"
+   },
+   "disconnect_message": {
+      "message": "Рад додатне компоненте NaCl је прекинут уз кôд статуса $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "додатни аргументи командне линије"
+   },
+   "field_description_aria_label": {
+      "message": "опис"
+   },
+   "field_description_placeholder": {
+      "message": "korisnickoime@imehosta или текст слободног облика"
+   },
+   "field_hostname_aria_label": {
+      "message": "име хоста"
+   },
+   "field_hostname_placeholder": {
+      "message": "име хоста"
+   },
+   "field_mount_path_placeholder": {
+      "message": "подразумевана путања је матични директоријум корисника"
+   },
+   "field_port_aria_label": {
+      "message": "порт"
+   },
+   "field_port_placeholder": {
+      "message": "порт"
+   },
+   "field_relay_options_aria_label": {
+      "message": "опције прослеђивања"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Опције SSH сервера за прослеђивање"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "подразумевано"
+   },
+   "field_username_aria_label": {
+      "message": "корисничко име"
+   },
+   "field_username_placeholder": {
+      "message": "корисничко име"
+   },
+   "found_relay": {
+      "message": "Пронађени сервер за прослеђивање: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Идентитет"
+   },
+   "import_link_aria_label": {
+      "message": "увоз датотека"
+   },
+   "import_link_label": {
+      "message": "Увоз..."
+   },
+   "initializing_relay": {
+      "message": "Сервер за прослеђивање се тражи помоћу: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Рашчлањивање JSON датотеке у „$1“ није успело: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Нема познатих хостова, нема ничега за брисање."
+   },
+   "known_hosts_prompt": {
+      "message": "Изаберите хост који желите да избришете [1–$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Познати хостови:"
+   },
+   "loading_label": {
+      "message": "Учитава се..."
+   },
+   "missing_param": {
+      "message": "Недостаје параметар: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Учитавање протокола SFTP није успело"
+   },
+   "mount_path_label": {
+      "message": "Путања прикључивања"
+   },
+   "mounted_message": {
+      "message": "Учитан је!"
+   },
+   "notify_copy": {
+      "message": "Избор је копиран"
+   },
+   "ok_button_label": {
+      "message": "Потврди"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Повежите сачувани профил или нови SSH систем"
+   },
+   "open_as_window_tip": {
+      "message": "[Професионални савет] Користите опцију „Отвори као прозор“ да комбинација Control-W не би затворила терминал!\n[Професионални савет] Погледајте $1 за више информација.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Опције"
+   },
+   "plugin_loading": {
+      "message": "Учитавање додатне компоненте NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " готово."
+   },
+   "plugin_loading_failed": {
+      "message": " није успело! :("
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "Подешавања профила"
+   },
+   "preferences_reset": {
+      "message": "Сва подешавања су ресетована!"
+   },
+   "reconnect_message": {
+      "message": "Желите ли поново да се повежете (R), да изаберете неку другу везу (C) или да изађете из процеса (x)?"
+   },
+   "relay_retry": {
+      "message": "Поновни покушај..."
+   },
+   "restore_prefs": {
+      "message": "Врати резервну копију"
+   },
+   "shortcut_list_aria_label": {
+      "message": "сачуване везе"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH аргументи"
+   },
+   "terminal_preview_label": {
+      "message": "Преглед"
+   },
+   "terminal_profile_label": {
+      "message": "Актуелни профил"
+   },
+   "tip_1": {
+      "message": "Можете да задржите Ctrl (Cmd на macOS-у) док кликћете на линкове да бисте их отворили!"
+   },
+   "tip_10": {
+      "message": "Ако притиснете Ctrl-Shift-N током рада у прозору, отворићете још једну сесију."
+   },
+   "tip_11": {
+      "message": "Можете поново да повежете тастере/пречице: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Прикажите обавештења у прегледачу помоћу hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Повежите из омнибокса тако што ћете унети „ssh \u003Cprofile name>“: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS може да прикључи системе датотека путем SFTP-а и да прегледа помоћу апликације Датотеке. Користите „Прикључивање протокола SFTP“ уместо „Повежи“."
+   },
+   "tip_5": {
+      "message": "Повежите помоћу ssh:// линкова на веб-страницама или сачувајте обележивач: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Обојте садржај/упит помоћу 16 основних боја и 256 боја и комплетних 24-битних боја: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Копирајте у привремену меморију из уређивача текста Emacs/Vim/итд. помоћу OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Ћаскајте са другим корисницима hterm-а/Secure Shell-а путем chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Пронашли сте грешку? Желите да затражите нову функцију? Јавите нам: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Дошло је до неочекиване грешке. Више детаља потражите на JavaScript конзоли."
+   },
+   "unmount_button_label": {
+      "message": "Опозови учитавање протокола SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Ажурирање је доступно. Затворите све прозоре."
+   },
+   "welcome_changelog": {
+      "message": "Евиденција промена/напомене о верзији: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Одговори на Честа питања: $1 (користите ctrl + клик на линкове да бисте их отварали)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Важне промене у односу на $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Насумични професионални савет бр. $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Добро дошли у верзију $2 апликације $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Идите у Chrome мени и подесите Зумирање на 100%"
+   }
+}

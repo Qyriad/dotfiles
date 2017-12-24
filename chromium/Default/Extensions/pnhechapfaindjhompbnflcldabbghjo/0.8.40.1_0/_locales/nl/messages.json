@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Bestandssysteem is al gekoppeld."
+   },
+   "backup_prefs": {
+      "message": "Back-up opslaan"
+   },
+   "bad_destination": {
+      "message": "Kan bestemming niet parseren: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Als u dit tabblad sluit, wordt deze sessie beëindigd."
+   },
+   "cancel_button_label": {
+      "message": "Annuleren"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Met deze opdracht wordt een menu weergegeven met bekende hosts en prompts die de host moet vergeten."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Een bekende SSH-host vergeten."
+   },
+   "cmd_ssh_help": {
+      "message": "De parameters |username| en |hostname| zijn vereist en |port| is optioneel. Als de poort niet wordt opgegeven, wordt standaard poort 22 gebruikt."
+   },
+   "cmd_ssh_title": {
+      "message": "Een nieuwe SSH-sessie openen."
+   },
+   "command_complete": {
+      "message": "De opdracht $1 is afgesloten met statuscode $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Verbinden"
+   },
+   "connect_or_exit_message": {
+      "message": "Een andere verbinding kiezen (C) of afsluiten (X)?"
+   },
+   "connecting": {
+      "message": "Verbinding maken met $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Wist je dat er een speciale optiepagina is?\nJe hoeft term_ niet meer rechtstreeks te wijzigen.\nDruk op $1 om de pagina te openen of klik op:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Wist je dat er een speciale optiepagina is?\nJe hoeft term_ niet meer rechtstreeks te wijzigen.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Verwijderen"
+   },
+   "disconnect_message": {
+      "message": "NaCl-plug-in afgesloten met statuscode $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "extra opdrachtregelargumenten"
+   },
+   "field_description_aria_label": {
+      "message": "beschrijving"
+   },
+   "field_description_placeholder": {
+      "message": "gebruikersnaam@hostnaam of vrije tekst"
+   },
+   "field_hostname_aria_label": {
+      "message": "hostnaam"
+   },
+   "field_hostname_placeholder": {
+      "message": "hostnaam"
+   },
+   "field_mount_path_placeholder": {
+      "message": "het standaardpad is de home-map van de gebruiker"
+   },
+   "field_port_aria_label": {
+      "message": "poort"
+   },
+   "field_port_placeholder": {
+      "message": "poort"
+   },
+   "field_relay_options_aria_label": {
+      "message": "relayopties"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Opties voor SSH-relayserver"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "standaard"
+   },
+   "field_username_aria_label": {
+      "message": "gebruikersnaam"
+   },
+   "field_username_placeholder": {
+      "message": "gebruikersnaam"
+   },
+   "found_relay": {
+      "message": "Relayserver gevonden: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identiteit"
+   },
+   "import_link_aria_label": {
+      "message": "bestand importeren"
+   },
+   "import_link_label": {
+      "message": "Importeren..."
+   },
+   "initializing_relay": {
+      "message": "Relayserver opzoeken met: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Kan JSON in '$1' niet parseren: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Geen bekende hosts, niets te vergeten."
+   },
+   "known_hosts_prompt": {
+      "message": "Selecteer een host om te vergeten [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Bekende hosts:"
+   },
+   "loading_label": {
+      "message": "Bezig met laden..."
+   },
+   "missing_param": {
+      "message": "Ontbrekende parameter: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "SFTP koppelen"
+   },
+   "mount_path_label": {
+      "message": "Activeringspad"
+   },
+   "mounted_message": {
+      "message": "Gekoppeld."
+   },
+   "notify_copy": {
+      "message": "Selectie gekopieerd"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Verbinding maken met een opgeslagen profiel of een nieuw SSH-systeem"
+   },
+   "open_as_window_tip": {
+      "message": "[Pro-tip] Gebruik 'Openen als venster' om te voorkomen dat de terminal kan worden gesloten via Ctrl-W.\n[Pro-tip] Ga naar $1 voor meer informatie.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Opties"
+   },
+   "plugin_loading": {
+      "message": "NaCl-plug-in laden..."
+   },
+   "plugin_loading_complete": {
+      "message": " gereed."
+   },
+   "plugin_loading_failed": {
+      "message": " Mislukt"
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "Profielinstellingen"
+   },
+   "preferences_reset": {
+      "message": "Alle voorkeuren zijn gereset."
+   },
+   "reconnect_message": {
+      "message": "Opnieuw verbinden (R), een andere verbinding kiezen (C) of afsluiten (X)?"
+   },
+   "relay_retry": {
+      "message": "Opnieuw proberen…"
+   },
+   "restore_prefs": {
+      "message": "Back-up terugzetten"
+   },
+   "shortcut_list_aria_label": {
+      "message": "opgeslagen verbindingen"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH-argumenten"
+   },
+   "terminal_preview_label": {
+      "message": "Voorbeeld"
+   },
+   "terminal_profile_label": {
+      "message": "Huidig profiel"
+   },
+   "tip_1": {
+      "message": "Je kunt Ctrl (Cmd op macOS) ingedrukt houden terwijl je op links klikt om ze te openen."
+   },
+   "tip_10": {
+      "message": "Wanneer de pagina wordt uitgevoerd in een (incognito)venster, kun je met Ctrl-Shift-N nog een sessie openen."
+   },
+   "tip_11": {
+      "message": "Je kunt de functionaliteit van toetsen/sneltoetsen aanpassen: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Geef meldingen in de browser weer met hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Maak verbinding vanuit de omnibox door 'ssh \u003Cprofile name>' te typen: https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS kan bestandssystemen activeren via SFTP en browsen via de app Bestanden. Gebruik 'SFTP koppelen' in plaats van 'Verbinden'."
+   },
+   "tip_5": {
+      "message": "Maak verbinding via ssh://-links op webpagina's of sla een bladwijzer op: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Geef je uitvoer/prompt een kleur met de standaard 16 kleuren en 256 kleuren en volledige 24-bits kleuren: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Kopieer naar je klembord via emacs/vim/etc... met OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Chat met andere gebruikers van hterm/Secure Shell via chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Heb je een bug gevonden? Wil je een nieuwe functie aanvragen? Laat het ons weten: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Er is een onverwachte fout opgetreden. Controleer de JavaScript-console voor meer informatie."
+   },
+   "unmount_button_label": {
+      "message": "SFTP ontkoppelen"
+   },
+   "update_available_tooltip": {
+      "message": "Er is een update beschikbaar. Sluit alle vensters."
+   },
+   "welcome_changelog": {
+      "message": "ChangeLog/release-opmerkingen: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Antwoorden op veelgestelde vragen: $1 (Ctrl+klik op links om ze te openen)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Grote wijzigingen sinds $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Willekeurige Pro-tip #$1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Welkom bij $1-versie $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Stel Chrome-menu -> Zoom in op 100%"
+   }
+}

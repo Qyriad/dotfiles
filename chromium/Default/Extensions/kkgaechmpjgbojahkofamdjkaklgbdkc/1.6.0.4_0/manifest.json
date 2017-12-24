@@ -1,0 +1,48 @@
+{
+   "background": {
+      "scripts": [ "scripts/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "128": "images/main-icon-128.png",
+         "16": "images/main-icon-16.png",
+         "24": "images/main-icon-24.png",
+         "256": "images/main-icon-256.png",
+         "32": "images/main-icon-32.png",
+         "48": "images/main-icon-48.png",
+         "64": "images/main-icon-64.png"
+      },
+      "default_popup": "html/TrelliusPopup.html",
+      "default_title": "__MSG_appName__"
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "css": [ "bower_components/mdi/css/materialdesignicons.min.css", "bower_components/angular-material/angular-material.min.css", "vendors/kendo/styles/kendo.common-bootstrap.min.css", "vendors/kendo/styles/kendo.bootstrap.min.css", "vendors/bootstrap/trellius-bootstrap.css", "styles/materialdesignicons.css", "styles/kendo.css", "styles/contentstyle.css" ],
+      "exclude_matches": [ "https://trello.com/1/*" ],
+      "js": [ "bower_components/jquery/dist/jquery.min.js", "bower_components/angular/angular.min.js", "bower_components/angular-translate/angular-translate.min.js", "bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js", "bower_components/angular-animate/angular-animate.min.js", "bower_components/angular-aria/angular-aria.min.js", "bower_components/angular-material/angular-material.min.js", "bower_components/bootstrap/dist/js/bootstrap.min.js", "bower_components/arrive/minified/arrive.min.js", "bower_components/angular-file-upload/dist/angular-file-upload.min.js", "vendors/kendo/dist/kendo.bundle.js", "vendors/kendo-cultures/dist/kendo.cultures.min.js", "scripts/app.js", "scripts/contentscript.js" ],
+      "matches": [ "https://trello.com/*" ],
+      "run_at": "document_idle"
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';",
+   "default_locale": "en",
+   "description": "__MSG_appDescription__",
+   "externally_connectable": {
+      "matches": [ "https://planyway.com/*" ]
+   },
+   "icons": {
+      "128": "images/main-icon-128.png",
+      "16": "images/main-icon-16.png",
+      "24": "images/main-icon-24.png",
+      "256": "images/main-icon-256.png",
+      "32": "images/main-icon-32.png",
+      "48": "images/main-icon-48.png",
+      "64": "images/main-icon-64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlBaUhMKVdPYj/2u4OTDJ5+kjd20bpGtJz8DgL1m9FlZyg7KGPusW/m8f2lijXgF4uOqRB9GirQDRsrBEh3j0VVM81e9AlWpslfdAcQOJUoZO8hq4uLefffQq81WqXNg0xZ9HfYqEVjXm9eDO56QKC9Qah78yIqrcUsZe643PJvXWmfjX5LSIs2VJQlx88typjVvHp/JNE8Yq1TJRgs2oq07/DwfV4dws6D+noXB5/3M+jCcT2DrQOSHDd0TADT50KX6/wFrcaoSutXBKf4n4hYQ9o29zhjvOtZiDR08J1Tn1SadwEED6Vk1ICWMcfneDNRB5rz7Wv3hwhPdbQCcrZQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_appName__",
+   "permissions": [ "cookies", "storage", "https://trello.com/*", "https://planyway.com/*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.6.0.4",
+   "web_accessible_resources": [ "fonts/*", "html/*", "images/*", "locales/*", "vendors/*", "bower_components/mdi/*", "bower_components/angular-material/angular-material.min.css", "styles/*" ]
+}

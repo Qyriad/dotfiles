@@ -1,0 +1,393 @@
+<script src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/../../viewimage.js></script>
+<script>
+    function submitform() {
+        document.vse.submit();
+    }
+</script>
+
+<html>
+
+<head>
+
+    <meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+    <link href=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/../../../main.css
+          type=text/css rel=stylesheet>
+
+    <title>Predpovedi modelu ALADIN</title>
+</head>
+
+<body>
+<table>
+    <tr>
+        <td>
+            <h1>P�edpov�di modelu ALADIN</h1>
+        </td>
+        <td>
+
+        </td>
+    </tr>
+</table>
+
+<form action='/aladin/index.php' name='vse' method="GET">
+    <table>
+        <tr valign=top>
+            <td>
+                <input type=submit value="Zobraz">
+                p�edpov�� vypo��tanou z term�nu:
+            <td>
+                <div style='background-color:white'>
+                    <input type="radio" name="run" value="latest" checked>09.12.2011 12UTC (nejnov�j��)
+                </div>
+                <div style='background-color:white'>
+                    <input type="radio" name="run" value="run2011120906">09.12.2011 06UTC
+                </div>
+                <div style='background-color:white'>
+                    <input type="radio" name="run" value="run2011120900">09.12.2011 00UTC
+                </div>
+                <div style='background-color:white'>
+                    <input type="radio" name="run" value="run2011120818">08.12.2011 18UTC
+                </div>
+            <td>
+    </table>
+
+    <table>
+        <tr>
+            <td rowspan=2 valingn='top' align='center' style="font-size:60%">
+                V�echny �asy jsou uv�d�ny v UTC. Te� je<br>21:51<br>UTC.
+            <td colspan=4 align=center bgcolor=lightblue><input type=checkbox onclick='submitform()' name=all checked>zobrazit
+                v�echy mapy
+        <tr>
+            <td align=center bgcolor=lightblue><input type=checkbox name=tt checked><br>Teplota ve 2m <br><font size=-2><a
+                    href="javascript:ViewImage('http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/scales/T2m.png','',53+80,629,' scale',0)">(barevn�
+                stupnice)</a></font>
+            <td align=center bgcolor=lightblue><input type=checkbox name=rr checked><br>Sr�ky za posledn�ch 6h (s
+                vy�rafovan�mi oblastmi sn�en�)<br><font size=-2><a
+                        href="javascript:ViewImage('http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/scales/prec.png','',52+80,629,' scale',0)">(barevn�
+                    stupnice)</a></font>
+            <td align=center bgcolor=lightblue><input type=checkbox name=ff><br>V�tr v 10m (s vyzna�en�mi oblastmi s
+                n�razy v�tru &gt;15m/s)
+            <td align=center bgcolor=lightblue><input type=checkbox name=nb><br>Obla�nost (�ern�=jasno, b�l�=zata�eno)
+        <tr>
+            <td bgcolor=wheat align=center>dnes<br><b>12utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_00.png
+                    onMouseOver="window.status='Teplota ve 2m dne 9.12. v 12h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 9.12. v 12h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_00.png
+                     onMouseOver="window.status='V�tr dne 9.12. v 12h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 9.12. v 12h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_00.png
+                     onMouseOver="window.status='Obla�nost dne 9.12. v 12h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 9.12. v 12h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>dnes<br><b>12utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>dnes<br><b>18utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_06.png
+                    onMouseOver="window.status='Teplota ve 2m dne 9.12. v 18h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 9.12. v 18h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_06.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 9.12. v 18h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 9.12. v 18h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_06.png
+                     onMouseOver="window.status='V�tr dne 9.12. v 18h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 9.12. v 18h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_06.png
+                     onMouseOver="window.status='Obla�nost dne 9.12. v 18h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 9.12. v 18h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>dnes<br><b>18utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>z�tra<br><b>00utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_12.png
+                    onMouseOver="window.status='Teplota ve 2m dne 10.12. v 00h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 10.12. v 00h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_12.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 10.12. v 00h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 10.12. v 00h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_12.png
+                     onMouseOver="window.status='V�tr dne 10.12. v 00h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 10.12. v 00h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_12.png
+                     onMouseOver="window.status='Obla�nost dne 10.12. v 00h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 10.12. v 00h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>z�tra<br><b>00utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>z�tra<br><b>06utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_18.png
+                    onMouseOver="window.status='Teplota ve 2m dne 10.12. v 06h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 10.12. v 06h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_18.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 10.12. v 06h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 10.12. v 06h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_18.png
+                     onMouseOver="window.status='V�tr dne 10.12. v 06h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 10.12. v 06h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_18.png
+                     onMouseOver="window.status='Obla�nost dne 10.12. v 06h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 10.12. v 06h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>z�tra<br><b>06utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>z�tra<br><b>12utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_24.png
+                    onMouseOver="window.status='Teplota ve 2m dne 10.12. v 12h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 10.12. v 12h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_24.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 10.12. v 12h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 10.12. v 12h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_24.png
+                     onMouseOver="window.status='V�tr dne 10.12. v 12h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 10.12. v 12h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_24.png
+                     onMouseOver="window.status='Obla�nost dne 10.12. v 12h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 10.12. v 12h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>z�tra<br><b>12utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>z�tra<br><b>18utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_30.png
+                    onMouseOver="window.status='Teplota ve 2m dne 10.12. v 18h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 10.12. v 18h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_30.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 10.12. v 18h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 10.12. v 18h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_30.png
+                     onMouseOver="window.status='V�tr dne 10.12. v 18h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 10.12. v 18h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_30.png
+                     onMouseOver="window.status='Obla�nost dne 10.12. v 18h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 10.12. v 18h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>z�tra<br><b>18utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>00utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_36.png
+                    onMouseOver="window.status='Teplota ve 2m dne 11.12. v 00h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 11.12. v 00h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_36.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 11.12. v 00h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 11.12. v 00h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_36.png
+                     onMouseOver="window.status='V�tr dne 11.12. v 00h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 11.12. v 00h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_36.png
+                     onMouseOver="window.status='Obla�nost dne 11.12. v 00h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 11.12. v 00h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>00utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>06utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_42.png
+                    onMouseOver="window.status='Teplota ve 2m dne 11.12. v 06h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 11.12. v 06h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_42.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 11.12. v 06h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 11.12. v 06h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_42.png
+                     onMouseOver="window.status='V�tr dne 11.12. v 06h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 11.12. v 06h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_42.png
+                     onMouseOver="window.status='Obla�nost dne 11.12. v 06h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 11.12. v 06h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>06utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>12utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_48.png
+                    onMouseOver="window.status='Teplota ve 2m dne 11.12. v 12h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 11.12. v 12h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_48.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 11.12. v 12h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 11.12. v 12h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_48.png
+                     onMouseOver="window.status='V�tr dne 11.12. v 12h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 11.12. v 12h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_48.png
+                     onMouseOver="window.status='Obla�nost dne 11.12. v 12h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 11.12. v 12h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>12utc</b>
+
+        <tr>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>18utc</b>
+            <td bgcolor=lightgrey align=center><img
+                    src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/T2m_public_54.png
+                    onMouseOver="window.status='Teplota ve 2m dne 11.12. v 18h utc (sv�tov� �as)';return true;"
+                    onMouseOut="window.status='';return true;" title='Teplota dne 11.12. v 18h utc (sv�tov� �as) ve 2m nad modelov�m ter�nem.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/prec_public_54.png
+                     onMouseOver="window.status='Sr�ky v mm za posledn�ch 6h dne 11.12. v 18h utc (sv�tov� �as)';return true;"
+                     onMouseOut="window.status='';return true;" title='Sr�ky v mm dne 11.12. v 18h utc (sv�tov� �as) za posledn�ch 6 hodin.
+Oblasti se sn�en�m jsou vy�rafov�ny.
+Barevn� stupnice viz odkaz naho�e.'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2011120912/v10m_public_54.png
+                     onMouseOver="window.status='V�tr dne 11.12. v 18h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)';return true;"
+                     onMouseOut="window.status='';return true;"
+                     title='V�tr dne 11.12. v 18h utc (sv�tov� �as) v 10m nad modelov�m ter�nem (s vyzna�en�mi oblastmi s n�razy p�es 15m/s)'>
+            <td bgcolor=lightgrey align=center>
+                <img src=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data//2011120912/nebul_public_54.png
+                     onMouseOver="window.status='Obla�nost dne 11.12. v 18h utc (sv�tov� �as) (b�l�=zata�eno, �ern�=jasno)';return true;"
+                     onMouseOut="window.status='';return true;" title='Obla�nost v dne 11.12. v 18h utc (sv�tov� �as).
+B�l�=zata�eno, �ern�=jasno.'>
+            <td bgcolor=wheat align=center>ned�le<br>11.12.<br><b>18utc</b>
+
+
+        <tr>
+            <td>
+            <td valign=top bgcolor=lightblue><font size=-2>
+                <b>Teplota ve 2 m nad modelov�m ter�nem.</b><br>
+                Barevn� plochy zobrazuj� detailn� pole teplot ve 2 m nad zem�. Zobrazen� ��seln� hodnoty ve vybran�ch
+                bodech slou�� pouze pro sna��� orientaci na map� (nejedn� se ani o extr�mn�, ani o pr�m�rn� teploty v
+                zobrazen� s�ti).<br>
+                Vzhledem k siln� z�vislosti teploty na nadmo�sk� v��ce je pro ch�p�n� p�edpov�di teplot nutn�
+                p�ihl�dnout
+                i k m�stn� chyb� v��ky ter�nu (orografie). Ter�n v modelu mus� b�t z konstruk�n�ch d�vod� zhlazen�, a
+                tud� modelov� nadmo�sk� v��ka
+                v konkr�tn� lokalit� nemus� odpov�dat skute�nosti. Model nap�. "nevid�" izolovan� kopce
+                (nap�. Mile�ovku) nebo hlubok� �dol�, maxim�ln� nadmo�sk� v��ka poho�� je men�� ne� ve skute�nosti apod.
+                ��m m� model hrub�� v�po�etn� s�, t�m je tato chyba v�razn�j��.
+                <!-- <i><a href=../oper/orog.png target=_blank>mapa aktu�ln� modelov� orografie</a></i> -->
+            </font>
+            <td valign=top bgcolor=lightblue><font size=-2>
+                <b>Sr�ky v mm za posledn�ch 6 hodin.</b><br>
+                �rafov�n�m jsou p��padn� vyzna�eny oblasti, kde je p�edpov�d�no sn�en� nebo d隝 se sn�hem.<br>
+                Sr�ky jsou v�sledkem �ady proces�, jejich� modelov�n� je velmi obt�n�. Detaily ve
+                sr�kov�m poli men�� ne� cca 50&nbsp;km maj� v�znam pouze jako ukazatel prostorov�
+                prom�nlivosti sr�ek (letn� odpoledn� p�eh��ky versus rozs�hl� front�ln� sr�ky).
+                Efekty n�v�t��/z�v�t�� model zachycuje, av�ak v m��e dan� zhlazen�m modelov�m ter�nem.<br>
+                Skupenstv� p�edpov�dan�ch sr�ek (zda pr�� nebo sn��) m��e b�t mj. ovlivn�no rozd�ly v��ek ter�nu
+                v modelu a v realit� (viz pozn�mka vlevo u teploty). Pokud tedy ve vysok�ch hor�ch sn��, ale modelov�
+                ter�n je v dan�m m�st� ni���, m��e b�t v dan�m m�st� (chybn�) p�edpov�d�n d隝.
+            </font>
+            <td valign=top bgcolor=lightblue><font size=-2>
+                <b>V�tr v 10m nad ter�nem a n�razy.</b><br>
+                Sm�r a rychlost v�tru nad modelov�m ter�nem je zobrazen pomoc� <a
+                    href=http://portal.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/../../docs/vitrsymb.html>symbol�
+                v�tru</a>.
+                Jedn� se o hodnoty v�tru zpr�m�rovan�ho za cca 5&nbsp;min. P�esto�e je v�tr p�edpov�d�n pom�rn�
+                spolehliv�,
+                nen� v jeho poli mo�no zachytit lok�ln� vliv m�stn�ch ter�nn�ch �tvar�
+                (mal� �dol� nebo vrcholy), kter� nejsou rozli�eny zhlazen�m modelov�m ter�nem.<br>
+                Mapa d�le zobrazuje �erven� oblasti s <i>n�razy</i> v�tru, co� jsou n�hl� fluktuace v poli v�tru,
+                zp�soben�
+                turbulenc�, typicky v zimn�ch situac�ch spojen�ch s rychl�m proud�n�m (vich�ice).
+                Intenzita n�raz� je v modelu odhadov�na a je nutn� ji br�t jako orienta�n�. Model nen�
+                zat�m schopen simulovat lok�ln� n�razy v�tru, spojen� s letn� konvekc� (bou�ky).
+            </font>
+            <td valign=top bgcolor=lightblue><font size=-2>
+                <b>Obla�nost.</b><br>
+                Odhad stupn� pokryt� obla�nosti ve �k�le od b�l� (zata�eno) po �ernou (jasno), obdobn� jako u
+                dru�icov�ho sn�mku.
+                Nen� rozli�ena obla�nost jednotliv�ch pater, ani typ, �i struktura.
+
+    </table>
+
+</form>
+
+
+<b>Upozorn�n�</b>: P�edpov�di meteorologick�ch p�edpov�dn�ch model� jsou v�sledkem
+trval�ho v�voje na hranici atmosf�rick� fyziky, numerick� matematiky a computer science a slou��
+p�edev��m jako vstupn� podklady pro pr�ci meteorologa a dal�� speci�ln� aplikace.
+Interpretace numerick�ch p�edpov�d� vy�aduje
+znalosti, zku�enost a komplexn� p��stup, zahrnuj�c� anal�zu �ady dal��ch atmosferick�ch pol�.
+Vybran� mapy, publikovan� na t�to str�nce, mohou slou�it pouze jako
+<b>dopl�kov� informace k profesion�ln�m p�edpov�d�m po�as�</b>, a jsou ur�eny ve�ejnosti
+v�hradn� pro osobn� a studijn� ��ely.
+Doporu�ujeme prostudovat si
+<!--<a href=/meteo/ov/aladin/>-->informace o z�kladn�ch parametrech modelu ALADIN a jeho ur�en�<!--</a>--> a
+modelov� mapy porovnat s p�edpov�d� meteorologa, zejm�na hroz�-li n�jak�
+extr�mn� pov�trnostn� jevy.
+<br>
+<b>�HM� se z��k� odpov�dnosti za p��padn� �kody zp�soben� �patnou interpretac�
+    p�edpov�dn�ch map modelu ALADIN.</b><br>
+Vyhra�ujeme si pr�vo z provozn�ch nebo odborn�ch d�vod� omezit p��stup k t�mto informac�m
+i bez p�edchoz�ho upozorn�n�. Redistribuce t�chto map nen� dovolena.
+<br/>
+<br/>
+<p align="right"><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/cz/" target="_blank"><img
+        src="http://portal.chmi.cz/files/webapps/portal/chmu/images/cc/88x31.png" title="CC by-nc-nd" border="0"></a>
+</p>
+</body>
+
+</html>

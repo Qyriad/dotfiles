@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="font/roboto/roboto.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/status.css">
+    <title>Session Buddy Status</title>
+</head>
+<body id="body" style="overflow-y: auto;">
+    <div id="header" class="header">
+        <img id="iRegisterValue2Val" height="19" width="19" src="images/logo/logo_38x38.png" style="height:19px;width:19px;position:absolute;left:14px;top:15px;" />
+        <span id="evalRequestHonored">
+            Unable to determine Session Buddy's status at the moment.
+        </span>
+    </div>
+    <div id="refresh" style="padding: 15px 15px 10px 20px;">
+        Try <a id="bAppImport">refreshing this page</a>.</div>
+    <div id="augmentActiveSessionTab" style="padding: 20px;padding-bottom:0;">
+        If you are experiencing a technical problem with Session Buddy, try the following:
+    </div>
+    <div style="margin-left: 10px;">
+        <div class="tlu"><span class="splat">1</span><span class="idc">Restart Chrome</span></div>
+        <div class="sub_item">
+        Make sure to shut down Chrome completely.
+        <ul>
+        <li>On <b>Windows</b>: after closing all Chrome windows, check the tool tray for the Chrome icon. If it is present, right-click it and click <b>Exit</b>.</li>
+        <li>On <b>OS X</b>: shut down Chrome by pressing Command+Q. Check the Dock for the Chrome icon. If present, right-click it and click <b>Quit</b> if this menu item is available.</li>
+        </ul>
+        <br>
+        If the problem persists after starting Chrome again, try step 2.
+        </div>
+        
+        <div class="tlu"><span class="splat">2</span><span class="idc">Reinstall Session Buddy</span></div>
+        <div class="sub_item">
+        <b>Make sure to back up your Session Buddy data before reinstalling</b> so that you can restore it into the new installation. <span id="bnd" style="display:none;">See: </span><span id="bd"><br><br>If you are able to access Session Buddy, see: <a href="https://sessionbuddy.com/backup-restore/" target="_blank">How to Back Up and Restore Session Buddy Data</a>.<br><br>If you are <b>NOT</b> able to access Session Buddy, check out the </span><a href="https://sessionbuddy.com/backup-restore-advanced/" target="_blank">Advanced Backup and Restore Instructions</a>.
+        <br><br>
+        Once you've backed up your data, uninstall Session Buddy and completely shut down and restart Chrome (see step 1 above).
+
+        <br><br>After restarting Chrome, <a href="https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko" target="_blank">reinstall Session Buddy from the Chrome Web Store</a>.
+        <br><br>
+        If you are then able to open Session Buddy without issue, proceed to restore your data according to the instructions linked above<span id="rDetail"> corresponding to the type of backup you performed</span>.
+        <br><br>
+        If this step does not solve the problem, proceed to step 3.
+        </div>
+
+        <div class="tlu"><span class="splat">3</span><span class="idc">Contact <a id="l1" href="mailto:support@sessionbuddy.com" style="color:inherit;">support@sessionbuddy.com</a></span></div>
+        <div class="sub_item">
+            <div id="tatePanel" style="display: none;">
+                <a id="l2" href="mailto:support@sessionbuddy.com">Click here to compose a support email message</a> 
+                <br><br>
+                Alternatively, you can<span id="tabDataInject"> <a id="iOrderStringVal" class="linearVal" style="font-weight:bold;">click here to copy diagnostic details</a> </span>to the clipboard and then paste this into an email to <b>support@sessionbuddy.com</b>.
+
+                <br><br>
+            </div>
+
+            When contacting support, please provide as much detail as possible about the trouble you're having. The more information you provide, the better equipped we are to resolve the problem.<br />
+            <br />
+            <b>Some helpful information to include:</b><ol>
+                <li>Specifically what steps lead to the observed failure?</li>
+                <li>What are you expecting to happen and what is happening instead?</li>
+                <li>Can the observed failure be reliably reproduced?</li>
+                <li>When did the trouble start? (eg, after a recent update? after a recent crash?)</li>
+                <li>What error messages are displayed by Session Buddy?</li>
+                <li>What error messages are displayed in the console? (see the following linked instructions for <a href="https://sessionbuddy.com/console/" target="_blank">accessing Session Buddy's console</a>)</li>
+                <li>What steps have you taken in an effort to correct the problem?</li>
+                <li>Are you synching Chrome extensions or bookmarks through Google?</li>
+            </ol>
+            <br />
+            <b>Additionally helpful items to attach:</b>
+            <ol>
+                <li><span style="font-weight:bold;">A screenshot or screencast demonstrating the problem.</span> This should include views of the console and Session Buddy's settings dialog, if possible.</li>
+                <li><span style="font-weight:bold;">The Session Buddy local user data folder</span>, where sessions and user settings are stored. You do not need to submit this when you first contact support, but we may ask for it to help us troubleshoot if the problem is suspected to be data-related. Refer to the following link for information on <a href="https://sessionbuddy.com/data-location/" target="_blank">locating the user data folder</a>.</li>
+            </ol>
+        </div>
+<!--    <div id="initCurrentSessionSource" class="initCurrentSessionSource" style="margin: 0 15px;">
+            <textarea readonly="true" spellcheck="false" id="iEventVal" class="iEventVal"></textarea>
+        </div>
+        <div id="FAQ" class="FAQ">
+            <div style="display: inline-block; padding: 15px 15px;">
+                We also encourage you to read the <a target="_blank" href="https://sessionbuddy.com/support/FAQ.html">Session Buddy support FAQ</a>, where you'll find answers to many common technical questions.</div>
+        </div> -->
+    </div>
+    <script src="status.bundle.js"></script>
+</body>
+</html>

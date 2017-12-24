@@ -1,0 +1,36 @@
+{
+   "chrome_language": {
+      "description": "language identifier used by Chrome",
+      "message": "en_GB"
+   },
+   "date_week_label": {
+      "description": "short week w/ label",
+      "message": "Week of $week$",
+      "placeholders": {
+         "week": {
+            "content": "$1",
+            "example": "date"
+         }
+      }
+   },
+   "extended_formal_date": {
+      "description": "The order of a full extended date",
+      "message": "dddd, Do MMMM YYYY"
+   },
+   "formal_date": {
+      "description": "The order of a full date",
+      "message": "Do MMMM YYYY"
+   },
+   "google_plus_language": {
+      "description": "Google plus language abbreviation",
+      "message": "en-GB"
+   },
+   "short_date": {
+      "description": "for Moment.js",
+      "message": "Do MMMM"
+   },
+   "short_date_with_day": {
+      "description": "for Moment.js",
+      "message": "dddd, Do MMMM"
+   }
+}

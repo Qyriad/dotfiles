@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Файловая система уже подключена."
+   },
+   "backup_prefs": {
+      "message": "Сохранить резервную копию"
+   },
+   "bad_destination": {
+      "message": "Не удалось выполнить синтаксический анализ: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Закрытие вкладки прервет сеанс."
+   },
+   "cancel_button_label": {
+      "message": "Отмена"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "С помощью этой команды вызывается список хостов и отправляются запросы на их удаление."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Удаление хоста SSH."
+   },
+   "cmd_ssh_help": {
+      "message": "Параметры |username| и |hostname| являются обязательными, а |port| – факультативным. Если порт не указан, то по умолчанию ставится значение 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Открытие SSH-сеанса."
+   },
+   "command_complete": {
+      "message": "Выполнение команды \"$1\" завершено. Код статуса: $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Подключить"
+   },
+   "connect_or_exit_message": {
+      "message": "Выбрать другое подключение (C) или выйти (X)?"
+   },
+   "connecting": {
+      "message": "Подключение к $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Теперь вы можете управлять настройками term_ на специальной странице.\nЧтобы открыть ее, нажмите $1 или перейдите по ссылке $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Теперь вы можете управлять настройками term_ на специальной странице.\nОна доступна по ссылке $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Удалить"
+   },
+   "disconnect_message": {
+      "message": "Работа плагина NaCl завершена. Код статуса: $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ВВОД]"
+   },
+   "field_argstr_placeholder": {
+      "message": "дополнительные аргументы командной строки"
+   },
+   "field_description_aria_label": {
+      "message": "описание"
+   },
+   "field_description_placeholder": {
+      "message": "username@hostname или текст"
+   },
+   "field_hostname_aria_label": {
+      "message": "имя хоста"
+   },
+   "field_hostname_placeholder": {
+      "message": "имя хоста"
+   },
+   "field_mount_path_placeholder": {
+      "message": "по умолчанию используется путь к домашнему каталогу"
+   },
+   "field_port_aria_label": {
+      "message": "порт"
+   },
+   "field_port_placeholder": {
+      "message": "порт"
+   },
+   "field_relay_options_aria_label": {
+      "message": "параметры ретрансляции"
+   },
+   "field_relay_options_placeholder": {
+      "message": "параметры SSH-сервера ретрансляции"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "по умолчанию"
+   },
+   "field_username_aria_label": {
+      "message": "имя пользователя"
+   },
+   "field_username_placeholder": {
+      "message": "имя пользователя"
+   },
+   "found_relay": {
+      "message": "Обнаружен сервер ретрансляции: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Идентификационные данные"
+   },
+   "import_link_aria_label": {
+      "message": "импорт файлов"
+   },
+   "import_link_label": {
+      "message": "Импорт..."
+   },
+   "initializing_relay": {
+      "message": "Поиск сервера ретрансляции с помощью $1…",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Не удалось обработать данные JSON в параметре $1. $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Невозможно удалить. Хостов нет."
+   },
+   "known_hosts_prompt": {
+      "message": "Укажите хост для удаления [1–$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Список хостов:"
+   },
+   "loading_label": {
+      "message": "Загрузка..."
+   },
+   "missing_param": {
+      "message": "Отсутствует параметр: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Подключить SFTP"
+   },
+   "mount_path_label": {
+      "message": "Путь подключения"
+   },
+   "mounted_message": {
+      "message": "Файловая система подключена."
+   },
+   "notify_copy": {
+      "message": "Фрагмент скопирован"
+   },
+   "ok_button_label": {
+      "message": "ОК"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Подключитесь к сохраненному профилю или создайте SSH-соединение."
+   },
+   "open_as_window_tip": {
+      "message": "[Совет] Используйте параметр \"Открыть в отдельном окне\", чтобы терминал нельзя было закрыть нажатием CTRL + W.\n[Совет] Подробная информация представлена на странице $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Параметры"
+   },
+   "plugin_loading": {
+      "message": "Загрузка плагина NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " Готово"
+   },
+   "plugin_loading_failed": {
+      "message": " Не удалось выполнить загрузку."
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "Настройки профиля"
+   },
+   "preferences_reset": {
+      "message": "Все настройки сброшены."
+   },
+   "reconnect_message": {
+      "message": "Подключиться заново (R), выбрать другое подключение (C) или выйти (X)?"
+   },
+   "relay_retry": {
+      "message": "Повторная попытка..."
+   },
+   "restore_prefs": {
+      "message": "Восстановить данные из резервной копии"
+   },
+   "shortcut_list_aria_label": {
+      "message": "сохраненные подключения"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH-аргументы"
+   },
+   "terminal_preview_label": {
+      "message": "Предварительный просмотр"
+   },
+   "terminal_profile_label": {
+      "message": "Текущий профиль"
+   },
+   "tip_1": {
+      "message": "Чтобы открыть ссылку, нажмите на нее, удерживая клавишу CTRL (CMD в Mac OS)."
+   },
+   "tip_10": {
+      "message": "Чтобы начать новый сеанс, нажмите CTRL + SHIFT + N в открытом окне программы."
+   },
+   "tip_11": {
+      "message": "О том, как изменить быстрые клавиши, рассказано на странице https://goo.gl/LWRndr."
+   },
+   "tip_2": {
+      "message": "О том, как настроить уведомления в браузере с помощью hterm-notify, рассказано на странице https://goo.gl/ZNxGdF."
+   },
+   "tip_3": {
+      "message": "Чтобы установить соединение из омнибокса, введите \"ssh \u003Cназвание профиля>\". Подробнее: https://goo.gl/V7o8ki."
+   },
+   "tip_4": {
+      "message": "В Chrome OS можно подключать файловые системы по SFTP и просматривать их через приложение \"Файлы\". Для этого выберите \"Подключить SFTP\" вместо \"Подключить\"."
+   },
+   "tip_5": {
+      "message": "Подключайтесь по ссылкам, которые начинаются с ssh://, или сохраняйте сайты в закладки. Подробнее: https://goo.gl/zS8EZD."
+   },
+   "tip_6": {
+      "message": "Вы можете изменить цвет строки приглашения и текста, который вы вводите. Доступны палитры из 16 и 256 цветов, а также 24-битные цвета. Подробнее: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html."
+   },
+   "tip_7": {
+      "message": "Копируйте данные в буфер обмена из emacs/vim/etc… с помощью OSC-52. Подробнее: https://goo.gl/XSnyLo."
+   },
+   "tip_8": {
+      "message": "Общайтесь с другими пользователями hterm/Secure Shell на форуме chromium-hterm@chromium.org (https://goo.gl/RYHiK)."
+   },
+   "tip_9": {
+      "message": "Нашли ошибку? Не хватает какой-то функции? Напишите нам, заполнив эту форму: https://goo.gl/vb94JY."
+   },
+   "unexpected_error": {
+      "message": "Произошла ошибка. Дополнительную информацию можно найти в консоли JavaScript."
+   },
+   "unmount_button_label": {
+      "message": "Отключить SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Доступно обновление. Закройте все окна."
+   },
+   "welcome_changelog": {
+      "message": "Примечания к выпуску ChangeLog: $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Ответы на часто задаваемые вопросы: $1. Чтобы открыть ссылку, нажмите на нее левой кнопкой мыши, удерживая клавишу CTRL.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Основные отличия от версии $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Совет № $1. $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Добро пожаловать в приложение \"$1\" версии $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Установите масштаб 100% в меню Google Chrome"
+   }
+}

@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Το σύστημα αρχείων προσαρτήθηκε ήδη!"
+   },
+   "backup_prefs": {
+      "message": "Αποθήκευση αντιγράφου ασφαλείας"
+   },
+   "bad_destination": {
+      "message": "Δεν είναι δυνατή η ανάλυση του προορισμού: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Αν κλείσετε αυτήν την καρτέλα, θα τερματιστεί η περίοδος σύνδεσης."
+   },
+   "cancel_button_label": {
+      "message": "Ακύρωση"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Αυτή η εντολή εμφανίζει ένα μενού με τους γνωστούς κεντρικούς υπολογιστές και προτάσεις για να διαγραφούν από τη μνήμη του κεντρικού υπολογιστή."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Διαγραφή από τη μνήμη ενός γνωστού κεντρικού υπολογιστή ssh."
+   },
+   "cmd_ssh_help": {
+      "message": "Οι παράμετροι |username| και |hostname| είναι υποχρεωτικές, ενώ η παράμετρος |port| είναι προαιρετική. Σε περίπτωση που δεν προσδιοριστεί η θύρα, προεπιλεγμένη είναι η 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Ανοίγει μια νέα συνεδρία SSH."
+   },
+   "command_complete": {
+      "message": "Η εντολή $1 πραγματοποίησε έξοδο με κωδικό κατάστασης $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Σύνδεση"
+   },
+   "connect_or_exit_message": {
+      "message": "Θέλετε να επιλέξετε(C) άλλη σύνδεση ή να πραγματοποιήσετε έξοδο(X);"
+   },
+   "connecting": {
+      "message": "Σύνδεση στο $1…",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Γνωρίζετε ότι υπάρχει συγκεκριμένη σελίδα επιλογών;\nΔεν χρειάζεται πλέον να χρησιμοποιείτε απευθείας το term_!\nΠατήστε $1 για να την ανοίξετε ή κάντε κλικ στο:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Γνωρίζετε ότι υπάρχει συγκεκριμένη σελίδα επιλογών;\nΔεν χρειάζεται πλέον να χρησιμοποιείτε απευθείας το term_!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Διαγραφή"
+   },
+   "disconnect_message": {
+      "message": "Η προσθήκη NaCl πραγματοποίησε έξοδο με κωδικό κατάστασης $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "επιπλέον ορίσματα γραμμής εντολών"
+   },
+   "field_description_aria_label": {
+      "message": "περιγραφή"
+   },
+   "field_description_placeholder": {
+      "message": "username@hostname ή κείμενο ελεύθερης μορφής"
+   },
+   "field_hostname_aria_label": {
+      "message": "όνομα κεντρικού υπολογιστή"
+   },
+   "field_hostname_placeholder": {
+      "message": "όνομα κεντρικού υπολογιστή"
+   },
+   "field_mount_path_placeholder": {
+      "message": "η προεπιλεγμένη διαδρομή είναι ο αρχικός κατάλογος του χρήστη"
+   },
+   "field_port_aria_label": {
+      "message": "θύρα"
+   },
+   "field_port_placeholder": {
+      "message": "θύρα"
+   },
+   "field_relay_options_aria_label": {
+      "message": "επιλογές αναμετάδοσης"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Επιλογές διακομιστή αναμετάδοσης SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "προεπιλογή"
+   },
+   "field_username_aria_label": {
+      "message": "όνομα χρήστη"
+   },
+   "field_username_placeholder": {
+      "message": "όνομα χρήστη"
+   },
+   "found_relay": {
+      "message": "Βρέθηκε διακομιστής αναμετάδοσης: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Ταυτότητα"
+   },
+   "import_link_aria_label": {
+      "message": "εισαγωγή αρχείου"
+   },
+   "import_link_label": {
+      "message": "Εισαγωγή…"
+   },
+   "initializing_relay": {
+      "message": "Αναζήτηση στον διακομιστή αναμετάδοσης μέσω: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Δεν ήταν δυνατή η ανάλυση του JSON σε \"$1\": $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Δεν υπάρχουν γνωστοί κεντρικοί υπολογιστές, δεν μπορεί να διαγραφεί κάτι από τη μνήμη."
+   },
+   "known_hosts_prompt": {
+      "message": "Επιλέξτε έναν κεντρικό υπολογιστή για διαγραφή από τη μνήμη[1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Γνωστοί κεντρικοί υπολογιστές:"
+   },
+   "loading_label": {
+      "message": "Φόρτωση…"
+   },
+   "missing_param": {
+      "message": "Λείπει η παράμετρος: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Προσάρτηση SFTP"
+   },
+   "mount_path_label": {
+      "message": "Διαδρομή προσάρτησης"
+   },
+   "mounted_message": {
+      "message": "Προσαρτήθηκε!"
+   },
+   "notify_copy": {
+      "message": "Η επιλογή αντιγράφηκε"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Συνδεθείτε σε ένα αποθηκευμένο προφίλ ή σε ένα νέο σύστημα ssh"
+   },
+   "open_as_window_tip": {
+      "message": "[Επαγγελματική συμβουλή] Χρησιμοποιήστε την επιλογή \"Άνοιγμα σε παράθυρο\" για να αποτρέψετε το κλείσιμο του τερματικού σας από το Control-W!\n[Επαγγελματική συμβουλή] Για περισσότερες πληροφορίες, ανατρέξτε στο $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Επιλογές"
+   },
+   "plugin_loading": {
+      "message": "Φόρτωση της προσθήκης NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": "Τέλος"
+   },
+   "plugin_loading_failed": {
+      "message": " αποτυχία! :("
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "Ρυθμίσεις προφίλ"
+   },
+   "preferences_reset": {
+      "message": "Έγινε επαναφορά όλων των προτιμήσεων!"
+   },
+   "reconnect_message": {
+      "message": "Θέλετε να κάνετε επανασύνδεση(R), να επιλέξετε(C) άλλη σύνδεση ή να πραγματοποιήσετε έξοδο(X);"
+   },
+   "relay_retry": {
+      "message": "Επανάληψη…"
+   },
+   "restore_prefs": {
+      "message": "Επαναφορά αντιγράφου ασφαλείας"
+   },
+   "shortcut_list_aria_label": {
+      "message": "αποθηκευμένες συνδέσεις"
+   },
+   "ssh_argstr_label": {
+      "message": "Ορίσματα SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Προεπισκόπηση"
+   },
+   "terminal_profile_label": {
+      "message": "Τρέχον προφίλ"
+   },
+   "tip_1": {
+      "message": "Μπορείτε να κρατήσετε πατημένο το Ctrl (Cmd σε macOS) ενώ κάνετε κλικ σε συνδέσμους για να τους ανοίξετε!"
+   },
+   "tip_10": {
+      "message": "Κατά την εκτέλεση σε κάποιο παράθυρο, μπορείτε να ανοίξετε μια νέα περίοδο σύνδεσης με τον συνδυασμό πλήκτρων Ctrl-Shift-N."
+   },
+   "tip_11": {
+      "message": "Μπορείτε να δημιουργήσετε νέους συνδυασμούς πλήκτρων/συντομεύσεων: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Προβολή ειδοποιήσεων στο πρόγραμμα περιήγησης, με χρήση του hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Συνδεθείτε από το κύριο πλαίσιο πατώντας \"ssh \u003Cprofile name>\": https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Το Chrome OS μπορεί να προσαρτήσει συστήματα αρχείων μέσω SFTP και να περιηγηθεί μέσω της εφαρμογής \"Αρχεία\". Χρησιμοποιήστε την \"Προσάρτηση SFTP\" αντί για τη \"Σύνδεση\"."
+   },
+   "tip_5": {
+      "message": "Συνδεθείτε χρησιμοποιώντας συνδέσμους ssh:// σε ιστοσελίδες ή αποθηκεύστε έναν σελιδοδείκτη: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Χρωματίστε τα στοιχεία εξόδου/το μήνυμα προτροπής σας χρησιμοποιώντας βασικά 16 χρώματα και 256 χρώματα και το πλήρες φάσμα χρωμάτων 24-bit: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Κάντε αντιγραφή στο πρόχειρό σας από emacs/vim/κ.τλ... χρησιμοποιώντας OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Συζητήστε με άλλους hterm/Ασφαλείς χρήστες κελύφους μέσω του chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Εντοπίσατε  κάποιο σφάλμα; Θέλετε να ζητήσετε μια νέα λειτουργία;  Ενημερώστε μας: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Παρουσιάστηκε μη αναμενόμενο σφάλμα, ελέγξτε την κονσόλα JavaScript για περισσότερες λεπτομέρειες."
+   },
+   "unmount_button_label": {
+      "message": "Αποπροσάρτηση SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Υπάρχει διαθέσιμη ενημέρωση. Κλείστε όλα τα παράθυρα."
+   },
+   "welcome_changelog": {
+      "message": "ChangeLog/σημειώσεις έκδοσης: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Απαντήσεις σε Συνήθεις ερωτήσεις: $1 (κάντε ctrl+click στους συνδέσμους για να τους ανοίξετε)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Σημαντικές αλλαγές από την έκδοση $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Τυχαία Επαγγελματική συμβουλή #$1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Καλώς ήρθατε στο $1, έκδοση $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Ρυθμίστε το Μενού Chrome->Εστίαση σε 100%"
+   }
+}

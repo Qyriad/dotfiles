@@ -1,0 +1,34 @@
+{
+   "background": {
+      "scripts": [ "scripts/analytics.js", "scripts/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/icons/icon19.png",
+         "38": "images/icons/icon38.png"
+      },
+      "default_title": "__MSG_manifest_browser_action_title__"
+   },
+   "chrome_url_overrides": {
+      "history": "index.html"
+   },
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com https://platform.twitter.com https://www.google.com https://apis.google.com;object-src 'self';",
+   "default_locale": "en",
+   "description": "__MSG_manifest_description__",
+   "icons": {
+      "128": "images/icons/icon128.png",
+      "16": "images/icons/icon16.png",
+      "48": "images/icons/icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnSSCipBZBTHYMvfX3F4FJ4Z4RfXgZ5x0PzIVixVXBM2Tfu6PLjQKKSKiGz9xd4fj8z4IcaFuFNIixSgE7F6Prmu4YWJg+029DnUnSzRTIXqnB+XKTV/J0Ghh5Id2vrLZm6O/EpSmHmr6Lm58apu/JfUMSTNuW29e2WPShQYx9CQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "29",
+   "name": "__MSG_manifest_name__",
+   "offline_enabled": true,
+   "omnibox": {
+      "keyword": "__MSG_history_title__"
+   },
+   "permissions": [ "http://*/*", "https://*/*", "chrome://favicon/", "history", "tabs", "contextMenus", "storage", "unlimitedStorage", "identity", "sessions", "downloads", "idle", "webNavigation", "webRequest", "webRequestBlocking" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.9.20"
+}

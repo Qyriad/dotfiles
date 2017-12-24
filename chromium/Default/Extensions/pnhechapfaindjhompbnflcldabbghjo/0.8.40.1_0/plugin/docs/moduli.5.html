@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    div.Pp { margin: 1ex 0ex; }
+  </style>
+  <title>MODULI(5)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MODULI(5)</td>
+    <td class="head-vol">File Formats Manual</td>
+    <td class="head-rtitle">MODULI(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<h1 class="Sh" title="Sh" id="NAME"><a class="selflink" href="#NAME">NAME</a></h1>
+<b class="Nm" title="Nm">moduli</b> &#x2014;
+  <span class="Nd" title="Nd">Diffie-Hellman moduli</span>
+<h1 class="Sh" title="Sh" id="DESCRIPTION"><a class="selflink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+The <i class="Pa" title="Pa">/etc/moduli</i> file contains prime numbers and
+  generators for use by <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>
+  in the Diffie-Hellman Group Exchange key exchange method.
+<div class="Pp"></div>
+New moduli may be generated with
+  <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a> using a
+  two-step process. An initial <i class="Em" title="Em">candidate generation</i>
+  pass, using <b class="Ic" title="Ic">ssh-keygen -G</b>, calculates numbers
+  that are likely to be useful. A second <i class="Em" title="Em">primality
+  testing</i> pass, using <b class="Ic" title="Ic">ssh-keygen -T</b>, provides a
+  high degree of assurance that the numbers are prime and are safe for use in
+  Diffie-Hellman operations by
+  <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. This
+  <b class="Nm" title="Nm">moduli</b> format is used as the output from each
+  pass.
+<div class="Pp"></div>
+The file consists of newline-separated records, one per modulus, containing
+  seven space-separated fields. These fields are as follows:
+<div class="Bl-tag" style="margin-left: 6.00ex;">
+<dl class="Bl-tag" style="margin-left: 16.20ex;">
+  <dt class="It-tag" style="margin-left: -16.20ex;">timestamp</dt>
+  <dd class="It-tag">The time that the modulus was last processed as
+      YYYYMMDDHHMMSS.</dd>
+  <dt class="It-tag" style="margin-left: -16.20ex;">type</dt>
+  <dd class="It-tag">Decimal number specifying the internal structure of the
+      prime modulus. Supported types are:
+    <div class="Pp"></div>
+    <dl class="Bl-tag Bl-compact" style="margin-left: 7.80ex;">
+      <dt class="It-tag" style="margin-left: -7.80ex;">0</dt>
+      <dd class="It-tag">Unknown, not tested.</dd>
+      <dt class="It-tag" style="margin-left: -7.80ex;">2</dt>
+      <dd class="It-tag">&quot;Safe&quot; prime; (p-1)/2 is also prime.</dd>
+      <dt class="It-tag" style="margin-left: -7.80ex;">4</dt>
+      <dd class="It-tag">Sophie Germain; 2p+1 is also prime.</dd>
+    </dl>
+    <div class="Pp"></div>
+    Moduli candidates initially produced by
+      <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a> are
+      Sophie Germain primes (type 4). Further primality testing with
+      <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>
+      produces safe prime moduli (type 2) that are ready for use in
+      <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>. Other types are
+      not used by OpenSSH.</dd>
+  <dt class="It-tag" style="margin-left: -16.20ex;">tests</dt>
+  <dd class="It-tag">Decimal number indicating the type of primality tests that
+      the number has been subjected to represented as a bitmask of the following
+      values:
+    <div class="Pp"></div>
+    <dl class="Bl-tag Bl-compact" style="margin-left: 7.80ex;">
+      <dt class="It-tag" style="margin-left: -7.80ex;">0x00</dt>
+      <dd class="It-tag">Not tested.</dd>
+      <dt class="It-tag" style="margin-left: -7.80ex;">0x01</dt>
+      <dd class="It-tag">Composite number &#x2013; not prime.</dd>
+      <dt class="It-tag" style="margin-left: -7.80ex;">0x02</dt>
+      <dd class="It-tag">Sieve of Eratosthenes.</dd>
+      <dt class="It-tag" style="margin-left: -7.80ex;">0x04</dt>
+      <dd class="It-tag">Probabilistic Miller-Rabin primality tests.</dd>
+    </dl>
+    <div class="Pp"></div>
+    The <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>
+      moduli candidate generation uses the Sieve of Eratosthenes (flag 0x02).
+      Subsequent
+      <a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>
+      primality tests are Miller-Rabin tests (flag 0x04).</dd>
+  <dt class="It-tag" style="margin-left: -16.20ex;">trials</dt>
+  <dd class="It-tag">Decimal number indicating the number of primality trials
+      that have been performed on the modulus.</dd>
+  <dt class="It-tag" style="margin-left: -16.20ex;">size</dt>
+  <dd class="It-tag">Decimal number indicating the size of the prime in
+    bits.</dd>
+  <dt class="It-tag" style="margin-left: -16.20ex;">generator</dt>
+  <dd class="It-tag">The recommended generator for use with this modulus
+      (hexadecimal).</dd>
+  <dt class="It-tag" style="margin-left: -16.20ex;">modulus</dt>
+  <dd class="It-tag">The modulus itself in hexadecimal.</dd>
+</dl>
+</div>
+<div class="Pp"></div>
+When performing Diffie-Hellman Group Exchange,
+  <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> first estimates the
+  size of the modulus required to produce enough Diffie-Hellman output to
+  sufficiently key the selected symmetric cipher.
+  <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a> then randomly selects
+  a modulus from <var class="Fa" title="Fa">/etc/moduli</var> that best meets
+  the size requirement.
+<h1 class="Sh" title="Sh" id="SEE_ALSO"><a class="selflink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<a class="Xr" title="Xr" href="ssh-keygen.1.html">ssh-keygen(1)</a>,
+  <a class="Xr" title="Xr" href="sshd.8.html">sshd(8)</a>
+<h1 class="Sh" title="Sh" id="STANDARDS"><a class="selflink" href="#STANDARDS">STANDARDS</a></h1>
+<cite class="Rs" title="Rs"><span class="RsA">M. Friedl</span>,
+  <span class="RsA">N. Provos</span>, and <span class="RsA">W. Simpson</span>,
+  <span class="RsT">Diffie-Hellman Group Exchange for the Secure Shell (SSH)
+  Transport Layer Protocol</span>, <span class="RsR">RFC 4419</span>,
+  <span class="RsD">March 2006</span>,
+  <span class="RsD">2006</span>.</cite></div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">September 26, 2012</td>
+    <td class="foot-os">openssh-7.6p1</td>
+  </tr>
+</table>
+</body>
+</html>

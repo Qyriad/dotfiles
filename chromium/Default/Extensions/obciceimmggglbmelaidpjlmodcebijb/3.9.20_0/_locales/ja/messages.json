@@ -1,0 +1,860 @@
+{
+   "1": {
+      "description": "the number",
+      "message": "1"
+   },
+   "10": {
+      "description": "the number",
+      "message": "10"
+   },
+   "11": {
+      "description": "the number",
+      "message": "11"
+   },
+   "12": {
+      "description": "the number",
+      "message": "12"
+   },
+   "12_hours_option": {
+      "description": "12 hour time format, example: 3:00 PM",
+      "message": "12時間表示"
+   },
+   "13": {
+      "description": "the number",
+      "message": "13"
+   },
+   "14": {
+      "description": "the number",
+      "message": "14"
+   },
+   "15": {
+      "description": "the number",
+      "message": "15"
+   },
+   "15_minutes_option": {
+      "description": "Time amount",
+      "message": "15分"
+   },
+   "16": {
+      "description": "the number",
+      "message": "16"
+   },
+   "17": {
+      "description": "the number",
+      "message": "17"
+   },
+   "18": {
+      "description": "the number",
+      "message": "18"
+   },
+   "19": {
+      "description": "the number",
+      "message": "19"
+   },
+   "2": {
+      "description": "the number",
+      "message": "2"
+   },
+   "20": {
+      "description": "the number",
+      "message": "20"
+   },
+   "21": {
+      "description": "the number",
+      "message": "21"
+   },
+   "22": {
+      "description": "the number",
+      "message": "22"
+   },
+   "23": {
+      "description": "the number",
+      "message": "23"
+   },
+   "24": {
+      "description": "the number",
+      "message": "24"
+   },
+   "24_hours_option": {
+      "description": "24 hour time format, example: 14:00",
+      "message": "24時間表示"
+   },
+   "25": {
+      "description": "the number",
+      "message": "25"
+   },
+   "26": {
+      "description": "the number",
+      "message": "26"
+   },
+   "27": {
+      "description": "the number",
+      "message": "27"
+   },
+   "28": {
+      "description": "the number",
+      "message": "28"
+   },
+   "29": {
+      "description": "the number",
+      "message": "29"
+   },
+   "3": {
+      "description": "the number",
+      "message": "3"
+   },
+   "30": {
+      "description": "the number",
+      "message": "30"
+   },
+   "30_minutes_option": {
+      "description": "Time amount",
+      "message": "30分"
+   },
+   "31": {
+      "description": "the number",
+      "message": "31"
+   },
+   "4": {
+      "description": "the number",
+      "message": "4"
+   },
+   "5": {
+      "description": "the number",
+      "message": "5"
+   },
+   "6": {
+      "description": "the number",
+      "message": "6"
+   },
+   "60_minutes_option": {
+      "description": "Time amount",
+      "message": "1時間"
+   },
+   "7": {
+      "description": "the number",
+      "message": "7"
+   },
+   "8": {
+      "description": "the number",
+      "message": "8"
+   },
+   "9": {
+      "description": "the number",
+      "message": "9"
+   },
+   "Whats_new_section_title": {
+      "description": "Section heading in Settings",
+      "message": "What's new"
+   },
+   "afternoon": {
+      "description": "The afternoon abbreviation when using 12 hour time",
+      "message": "昼頃"
+   },
+   "and": {
+      "description": "The word and",
+      "message": "and"
+   },
+   "april": {
+      "description": "The month",
+      "message": "4"
+   },
+   "arabic": {
+      "description": "The language",
+      "message": "Arabic"
+   },
+   "august": {
+      "description": "The month",
+      "message": "8"
+   },
+   "back_arrow": {
+      "description": "ascii arrow",
+      "message": "&larr;"
+   },
+   "back_to_week_link": {
+      "description": "back to week link",
+      "message": "$arrow$ 週に戻る",
+      "placeholders": {
+         "arrow": {
+            "content": "$1",
+            "example": "an arrow"
+         }
+      }
+   },
+   "catalonian": {
+      "description": "The language",
+      "message": "Catalonian"
+   },
+   "chinese_simplified": {
+      "description": "The language",
+      "message": "Chinese (Simplified)"
+   },
+   "chrome_language": {
+      "description": "language identifier used by Chrome",
+      "message": "ja"
+   },
+   "clear_history_button": {
+      "description": "Button text for clear history button in Settings",
+      "message": "閲覧履歴のクリア"
+   },
+   "clearing_history_section_title": {
+      "description": "Section heading in Settings",
+      "message": "閲覧履歴のクリア"
+   },
+   "close_button": {
+      "description": "Button to close modal",
+      "message": "Ok!"
+   },
+   "collapse_button": {
+      "description": "Text for collapse button",
+      "message": "折り畳む"
+   },
+   "confirm_delete_all_search_results": {
+      "description": "Confirmation text to delete all search results",
+      "message": "検索結果をすべて削除してもよいですか？"
+   },
+   "confirm_delete_all_visits": {
+      "description": "Confirmation text to delete all visits from a specific date",
+      "message": "$formal_date$以降の閲覧履歴をすべて消去してもよろしいですか？",
+      "placeholders": {
+         "formal_date": {
+            "content": "$1",
+            "example": "January 2, 2011"
+         }
+      }
+   },
+   "credits_link": {
+      "description": "The link to credits",
+      "message": "$open$Better History$close$ credits",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "strong close"
+         },
+         "open": {
+            "content": "$1",
+            "example": "strong open"
+         }
+      }
+   },
+   "credits_title": {
+      "description": "Title for credits modal",
+      "message": "Better History Credits"
+   },
+   "current_version_label": {
+      "description": "label for the current version",
+      "message": "Current version"
+   },
+   "czech": {
+      "description": "The language",
+      "message": "Czech"
+   },
+   "date_week_label": {
+      "description": "short week w/ label",
+      "message": "$week$ 日を含む週",
+      "placeholders": {
+         "week": {
+            "content": "$1",
+            "example": "date"
+         }
+      }
+   },
+   "december": {
+      "description": "The month",
+      "message": "12"
+   },
+   "default_time_format": {
+      "description": "12 or 24 hour based",
+      "message": "12"
+   },
+   "delete_all_visits_for_filter_button": {
+      "description": "Text for delete all visits for a day filter button",
+      "message": "削除..."
+   },
+   "delete_all_visits_for_search_button": {
+      "description": "Text for delete all visits from search button",
+      "message": "削除..."
+   },
+   "delete_grouped_visits": {
+      "description": "Tooltip for the delete button on grouped visits",
+      "message": "このグループを削除する"
+   },
+   "delete_time_interval_button": {
+      "description": "delete button label",
+      "message": "削除"
+   },
+   "delete_time_interval_button_tooltip": {
+      "description": "delete button tooltip",
+      "message": "削除"
+   },
+   "delete_visit": {
+      "description": "Tooltip for the delete button on a page visit",
+      "message": "この履歴を削除する"
+   },
+   "developed_by": {
+      "description": "Developer label",
+      "message": "Created and developed by $link_open$$name$$link_close$",
+      "placeholders": {
+         "link_close": {
+            "content": "$2",
+            "example": "Closing link"
+         },
+         "link_open": {
+            "content": "$1",
+            "example": "Opening link"
+         },
+         "name": {
+            "content": "$3",
+            "example": "Developer name"
+         }
+      }
+   },
+   "dutch": {
+      "description": "The language",
+      "message": "Dutch"
+   },
+   "evening": {
+      "description": "The evening abbreviation when using 12 hour time",
+      "message": "夕方"
+   },
+   "expand_button": {
+      "description": "Text for expand button",
+      "message": "展開する"
+   },
+   "extended_formal_date": {
+      "description": "The order of a full extended date",
+      "message": "dddd YYYY MMMM Do"
+   },
+   "february": {
+      "description": "The month",
+      "message": "2"
+   },
+   "feedback_section_title": {
+      "description": "Section heading in Settings",
+      "message": "フォードバック"
+   },
+   "formal_date": {
+      "description": "The order of a full date",
+      "message": "YYYY年 MMMM月 Do"
+   },
+   "french": {
+      "description": "The language",
+      "message": "French"
+   },
+   "friday": {
+      "description": "The day of the week",
+      "message": "金"
+   },
+   "german": {
+      "description": "The language",
+      "message": "German"
+   },
+   "google_plus_language": {
+      "description": "Google plus language abbreviation",
+      "message": "ja"
+   },
+   "group_visits_by_domain_label": {
+      "description": "Label for check box to group visits by domain",
+      "message": "閲覧履歴をドメインごとにまとめる"
+   },
+   "group_visits_by_label": {
+      "description": "Label for select box to set the time grouping interval for visits",
+      "message": "グループ化の単位"
+   },
+   "hindi": {
+      "description": "The language",
+      "message": "Hindi"
+   },
+   "history_title": {
+      "description": "Extension title",
+      "message": "History"
+   },
+   "hungarian": {
+      "description": "The language",
+      "message": "Hungarian"
+   },
+   "italian": {
+      "description": "The language",
+      "message": "Italian"
+   },
+   "january": {
+      "description": "The month",
+      "message": "1"
+   },
+   "japanese": {
+      "description": "The language",
+      "message": "Japanese"
+   },
+   "july": {
+      "description": "The month",
+      "message": "7"
+   },
+   "june": {
+      "description": "The month",
+      "message": "6"
+   },
+   "last_week": {
+      "description": "last week",
+      "message": "先週"
+   },
+   "latvian": {
+      "description": "The language",
+      "message": "Latvian"
+   },
+   "leave_a_review": {
+      "description": "Link text to leave a review",
+      "message": "レビューを書く"
+   },
+   "local_time": {
+      "description": "local time format",
+      "message": "Ah時m分"
+   },
+   "manifest_browser_action_title": {
+      "description": "Manifest browser action title",
+      "message": "Browse history"
+   },
+   "manifest_description": {
+      "description": "Manifest description",
+      "message": "閲覧履歴をもっと見やすくします。　検索機能・優れたインターフェイス・使いやすいフィルター機能を閲覧履歴に。"
+   },
+   "manifest_name": {
+      "description": "Manifest name",
+      "message": "Better History"
+   },
+   "march": {
+      "description": "The month",
+      "message": "3"
+   },
+   "max_number_of_search_results": {
+      "description": "number of search results found",
+      "message": "$number$ 件以上の結果",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "may": {
+      "description": "The month",
+      "message": "5"
+   },
+   "monday": {
+      "description": "The day of the week",
+      "message": "月"
+   },
+   "morning": {
+      "description": "The morning abbreviation when using 12 hour time",
+      "message": "早朝"
+   },
+   "no_visits_found": {
+      "description": "Text for no visits found message",
+      "message": "閲覧履歴がみつかりません。"
+   },
+   "november": {
+      "description": "The month",
+      "message": "11"
+   },
+   "number_of_search_results": {
+      "description": "number of search results found",
+      "message": "$number$ 件の検索結果",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "10"
+         }
+      }
+   },
+   "number_of_visits": {
+      "description": "Label to a number representing a number of visits",
+      "message": "$number_open$$number$$number_close$ visits",
+      "placeholders": {
+         "number": {
+            "content": "$1",
+            "example": "the number of visits"
+         },
+         "number_close": {
+            "content": "$3",
+            "example": "number tag close"
+         },
+         "number_open": {
+            "content": "$2",
+            "example": "number tag open"
+         }
+      }
+   },
+   "october": {
+      "description": "The month",
+      "message": "10"
+   },
+   "ordinal_1": {
+      "description": "the ordinal for 1",
+      "message": "日"
+   },
+   "ordinal_10": {
+      "description": "the ordinal for 10",
+      "message": "日"
+   },
+   "ordinal_11": {
+      "description": "the ordinal for 11",
+      "message": "日"
+   },
+   "ordinal_12": {
+      "description": "the ordinal for 12",
+      "message": "日"
+   },
+   "ordinal_13": {
+      "description": "the ordinal for 13",
+      "message": "日"
+   },
+   "ordinal_14": {
+      "description": "the ordinal for 14",
+      "message": "日"
+   },
+   "ordinal_15": {
+      "description": "the ordinal for 15",
+      "message": "日"
+   },
+   "ordinal_16": {
+      "description": "the ordinal for 16",
+      "message": "日"
+   },
+   "ordinal_17": {
+      "description": "the ordinal for 17",
+      "message": "日"
+   },
+   "ordinal_18": {
+      "description": "the ordinal for 18",
+      "message": "日"
+   },
+   "ordinal_19": {
+      "description": "the ordinal for 19",
+      "message": "日"
+   },
+   "ordinal_2": {
+      "description": "the ordinal for 2",
+      "message": "日"
+   },
+   "ordinal_20": {
+      "description": "the ordinal for 20",
+      "message": "日"
+   },
+   "ordinal_21": {
+      "description": "the ordinal for 21",
+      "message": "日"
+   },
+   "ordinal_22": {
+      "description": "the ordinal for 22",
+      "message": "日"
+   },
+   "ordinal_23": {
+      "description": "the ordinal for 23",
+      "message": "日"
+   },
+   "ordinal_24": {
+      "description": "the ordinal for 24",
+      "message": "日"
+   },
+   "ordinal_25": {
+      "description": "the ordinal for 25",
+      "message": "日"
+   },
+   "ordinal_26": {
+      "description": "the ordinal for 26",
+      "message": "日"
+   },
+   "ordinal_27": {
+      "description": "the ordinal for 27",
+      "message": "日"
+   },
+   "ordinal_28": {
+      "description": "the ordinal for 28",
+      "message": "日"
+   },
+   "ordinal_29": {
+      "description": "the ordinal for 29",
+      "message": "日"
+   },
+   "ordinal_3": {
+      "description": "the ordinal for 3",
+      "message": "日"
+   },
+   "ordinal_30": {
+      "description": "the ordinal for 30",
+      "message": "日"
+   },
+   "ordinal_31": {
+      "description": "the ordinal for 31",
+      "message": "日"
+   },
+   "ordinal_4": {
+      "description": "the ordinal for 4",
+      "message": "日"
+   },
+   "ordinal_5": {
+      "description": "the ordinal for 5",
+      "message": "日"
+   },
+   "ordinal_6": {
+      "description": "the ordinal for 6",
+      "message": "日"
+   },
+   "ordinal_7": {
+      "description": "the ordinal for 7",
+      "message": "日"
+   },
+   "ordinal_8": {
+      "description": "the ordinal for 8",
+      "message": "日"
+   },
+   "ordinal_9": {
+      "description": "the ordinal for 9",
+      "message": "日"
+   },
+   "polish": {
+      "description": "The language",
+      "message": "Polish"
+   },
+   "portuguese": {
+      "description": "The language",
+      "message": "Portuguese"
+   },
+   "prompt_cancel_button": {
+      "description": "Button to close modal",
+      "message": "キャンセル"
+   },
+   "prompt_delete_button": {
+      "description": "Button to delete history",
+      "message": "削除"
+   },
+   "prompt_title": {
+      "description": "Title of prompt",
+      "message": "確認"
+   },
+   "right_click_options_section_title": {
+      "description": "Section heading in Settings",
+      "message": "右クリックのオプション"
+   },
+   "romanian": {
+      "description": "The language",
+      "message": "Romanian"
+   },
+   "russian": {
+      "description": "The language",
+      "message": "Russian"
+   },
+   "saturday": {
+      "description": "The day of the week",
+      "message": "土"
+   },
+   "search_by_domain": {
+      "description": "search by domain of visit",
+      "message": "詳しくはサイトへ"
+   },
+   "search_by_domain_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "Search by domain"
+   },
+   "search_by_text_selection_label": {
+      "description": "Label for check box to enable right click option",
+      "message": "選択範囲からの検索を可能にする"
+   },
+   "search_in_history": {
+      "description": "Label for search in history context menu item",
+      "message": "閲覧履歴から検索"
+   },
+   "search_input_placeholder_text": {
+      "description": "Placeholder text in the search input box",
+      "message": "タイトル・URL・日付など"
+   },
+   "search_time_frame": {
+      "description": "Time frame relating to Search",
+      "message": "この数ヶ月"
+   },
+   "search_title": {
+      "description": "title for the search page",
+      "message": "検索"
+   },
+   "searching_title": {
+      "description": "Searching title",
+      "message": "検索"
+   },
+   "september": {
+      "description": "The month",
+      "message": "9"
+   },
+   "settings_link": {
+      "description": "Text for the link to Settings",
+      "message": "設定"
+   },
+   "settings_title": {
+      "description": "Settings title for Settings page",
+      "message": "設定"
+   },
+   "short_date": {
+      "description": "for Moment.js",
+      "message": "MMMM Do"
+   },
+   "short_date_with_day": {
+      "description": "for Moment.js",
+      "message": "dddd, MMMM Do"
+   },
+   "slovak": {
+      "description": "The language",
+      "message": "Slovak"
+   },
+   "spanish": {
+      "description": "The language",
+      "message": "Spanish"
+   },
+   "spread_the_word_section_title": {
+      "description": "Section heading in Settings",
+      "message": "世界に広げよう！"
+   },
+   "suggestions_bugs_comments": {
+      "description": "Link text to give feedback",
+      "message": "提案のある人・バグを見つけた人・コメントを送りたい人は $link_open$@Better_History$link_close$ にリプライを飛ばしてください！",
+      "placeholders": {
+         "link_close": {
+            "content": "$2"
+         },
+         "link_open": {
+            "content": "$1"
+         }
+      }
+   },
+   "sunday": {
+      "description": "The day of the week",
+      "message": "日"
+   },
+   "swedish": {
+      "description": "The language",
+      "message": "Swedish"
+   },
+   "this_week": {
+      "description": "this week",
+      "message": "今週"
+   },
+   "thursday": {
+      "description": "The day of the week",
+      "message": "木"
+   },
+   "time_format_label": {
+      "description": "Label for select box to set the time format (12 or 24 hours)",
+      "message": "時刻の表示形式"
+   },
+   "today_link": {
+      "description": "Link for today",
+      "message": "今日"
+   },
+   "translation_help_heading": {
+      "description": "Heading to recruit translators",
+      "message": "あなたの母語が選択肢にない場合……"
+   },
+   "translation_instructions": {
+      "description": "Instructions on how to help translate",
+      "message": "英語が使えて、Better History の翻訳をしたい貴方、大歓迎です！　$link_open$ $email$ $link_close$ までご連絡を！",
+      "placeholders": {
+         "email": {
+            "content": "$1",
+            "example": "Contact email address"
+         },
+         "link_close": {
+            "content": "$3",
+            "example": "close tag for email link"
+         },
+         "link_open": {
+            "content": "$2",
+            "example": "open tag for email link"
+         }
+      }
+   },
+   "translators_heading": {
+      "description": "Heading for translators",
+      "message": "Translators"
+   },
+   "tuesday": {
+      "description": "The day of the week",
+      "message": "火"
+   },
+   "turkish": {
+      "description": "The language",
+      "message": "Turkish"
+   },
+   "twitter_language": {
+      "description": "Twitter language abbreviation",
+      "message": "ja"
+   },
+   "twitter_template": {
+      "description": "Default message for Twitter sharing",
+      "message": "Chrome 用 Better History で、閲覧履歴が素敵に！"
+   },
+   "use_24_hour_clock_label": {
+      "description": "Label for check box to show hours as 24 hours",
+      "message": "24時間表示"
+   },
+   "version_description": {
+      "description": "Version description",
+      "message": ""
+   },
+   "version_important_note": {
+      "description": "Heading for an important note",
+      "message": "Important note"
+   },
+   "version_items": {
+      "description": "Release bulletpoints",
+      "message": "$open$直近十週間の履歴を簡単に見ることができます$close$ $open$週区切りでの履歴の整理$close$ $open$週ごとのブラウジングサマリー$close$ $open$起動の高速化$close$ $open$検索・グループ化の最適化$close$$open$ワンクリックで過去に訪問したドメインからの検索が可能$close$",
+      "placeholders": {
+         "close": {
+            "content": "$2",
+            "example": "\u003C/li>"
+         },
+         "open": {
+            "content": "$1",
+            "example": "\u003Cli>"
+         }
+      }
+   },
+   "version_note": {
+      "descriotion": "Feedback and support note",
+      "message": ""
+   },
+   "version_title": {
+      "description": "Title of the version modal",
+      "message": "メジャーマイルストーン：週区切りでの履歴の表示！"
+   },
+   "version_whats_new": {
+      "description": "Heading for what's new in version",
+      "message": "What's new"
+   },
+   "vietnamese": {
+      "description": "The language",
+      "message": "Vietnamese"
+   },
+   "view_release_announcement_link": {
+      "description": "Link text to view the release announcement",
+      "message": "リリースノートをみる"
+   },
+   "visit_grouping_section_title": {
+      "description": "Section heading in Settings",
+      "message": "閲覧履歴のグループ化"
+   },
+   "visits_to_domain": {
+      "description": "Label for visits to domain context menu item",
+      "message": "$domain$ へアクセスする",
+      "placeholders": {
+         "domain": {
+            "content": "$1",
+            "example": "google.com"
+         }
+      }
+   },
+   "wednesday": {
+      "description": "The day of the week",
+      "message": "水"
+   },
+   "yesterday_link": {
+      "description": "Link for yesterday",
+      "message": "昨日"
+   }
+}

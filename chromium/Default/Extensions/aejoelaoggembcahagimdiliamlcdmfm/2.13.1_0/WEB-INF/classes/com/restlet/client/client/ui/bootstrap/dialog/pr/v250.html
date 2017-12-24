@@ -1,0 +1,49 @@
+<!--
+  ~ Copyright 2010-2017 Restlet S.A.S. All rights reserved.
+  ~ Restlet is registered trademark of Restlet S.A.S.
+  -->
+
+<p class="whats-new-intro">June 26, 2017 - Restlet Client 2.5.0</p>
+<h4>A shiny new request editor ✨</h4>
+<div>
+  <p>
+    Request editing is at the very core of Restlet Client. Based on your feedback, we’ve enhanced the request
+    editor.
+    You’ll find nice goodies such as the ability to resize and collapse the headers and body.
+    This new request editor is available for both Requests and Scenarios tabs. We hope you’ll find it handy and
+    don't
+    hesitate to let us know what you think.
+  </p>
+</div>
+<p class="whats-new-intro" style="margin-top: 20px;">June 26, 2017 - Restlet Client 2.5.0</p>
+<h4>New testing capabilities</h4>
+<div>
+  <p>
+    We’ve packed this release with nice additions regarding API testing:
+  </p>
+  <h5>
+    Easily debug your scenarios
+  </h5>
+  <p style="margin-left: 20px">
+    While crafting a scenario it can be helpful to see the preview of what your request will look like once it's
+    sent.
+    The new Request Preview panel displays an evaluated view of your request straight away.
+  </p>
+  <h5>Wait for success before moving on</h5>
+  <p style="margin-left: 20px">
+    Sometimes in your scenarios you know that some of your requests may fail due to some delay, e.g. an asynchronous
+    task on your back-end could take a few seconds to complete but the completion of that task is a prerequisite for
+    the next request. Restlet Client now offers a way to retry a request up to 9 times with a configurable interval
+    until assertions pass.
+  </p>
+  <h5>Configurable proxy for the test runner</h5>
+  <p style="margin-left: 20px">
+    We’ve added different ways to configure a proxy for our Maven test runner.
+    <a href="https://restlet.com/documentation/client/user-guide/automate/run-tests-from-cli?utm_source=DHC" target="_blank">
+      Learn more in the user guide <i class="fa fa-external-link" aria-hidden="true"></i>
+    </a>.
+  </p>
+  <p>
+    A bug preventing the "automatic expression updater" to update expressions located inside assertions has been fixed.
+  </p>
+</div>

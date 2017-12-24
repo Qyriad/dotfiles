@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>VNC&reg; Viewer for Google Chrome&trade;</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style/viewer.css"/>
+    <link rel="stylesheet" href="style/tab-view.css"/>
+
+  </head>
+  <body>
+
+    <div id='tab-bar-container'>
+      <div id="tab-bar">
+        <div id="tab-bar-help" class="tab-bar-button"></div>
+        <div id="tab-bar-fullscreen" class="tab-bar-button"></div>
+        <div id="tab-bar-bottom"></div>
+      </div>
+      <div id="tab-bar-border-mask"></div>
+    </div>
+
+    <div id="content">
+
+    </div> <!-- content -->
+
+    <!-- Modal Dialog: Help -->
+    <div id="help-modal" class="modal hide fade">
+      <div id="help-header" class="modal-header">
+        <button id="help-button-close" class="close">&#215;</button>
+        <h3 id="help-title">Help</h3>
+      </div>
+      <div id="help-body" class="modal-body modal-contains-iframe">
+        <iframe id="help-iframe"></iframe>
+      </div>
+      <div id="help-footer" class="modal-footer">
+        <a id="help-button-ok" class="btn btn-primary">OK</a>
+      </div>
+    </div>
+
+    <!-- Modal Dialog: What's New -->
+    <div id="whats-new-modal" class="modal hide fade">
+      <div id="whats-new-header" class="modal-header">
+        <button id="whats-new-button-close" class="close">&#215;</button>
+        <h3 id="whats-new-title">What's New</h3>
+      </div>
+      <div id="whats-new-body" class="modal-body modal-contains-iframe">
+        <iframe id="whats-new-iframe"></iframe>
+      </div>
+      <div id="whats-new-footer" class="modal-footer">
+        <div class="left">
+          <label id="whats-new-analytics-container" class="checkbox">
+            <input id="whats-new-analytics" type="checkbox" checked="true"/>
+            <span id="whats-new-analytics-label"></span>
+          </label>
+        </div>
+        <a id="whats-new-button-ok" class="btn btn-primary">OK</a>
+      </div>
+    </div>
+
+<!-- BEGIN SCRIPT SECTION -->
+<script type="text/javascript" src="javascript/tab-view.min.js"></script>
+<!-- END SCRIPT SECTION -->
+  </body>
+</html>

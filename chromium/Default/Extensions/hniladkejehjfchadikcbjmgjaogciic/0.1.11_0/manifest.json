@@ -1,0 +1,26 @@
+{
+   "browser_action": {
+      "default_icon": {
+         "19": "images/icon19.png",
+         "38": "images/icon38.png"
+      },
+      "default_popup": "index.html",
+      "default_title": "vGet - download videos"
+   },
+   "content_security_policy": "script-src 'self' http://localhost:9008 https://www.google-analytics.com; object-src 'self'",
+   "default_locale": "en",
+   "description": "__MSG_application_description__",
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArL44UrHpwAxV+KFNogRrNOimePkKQR0WNwnm/lwXhWz8tNu215irPPoHFSi0AwXV4ZvOCR6je5zW27VnLqhoVa99lJnNo1bKhup4MIhiYcGIKTloFupIPj4oM4TYMZG5OulV/Vikj4lk6VefV4MhEuUzmZi4M6p2lUPelx/Ctm8JEMSYvK90a6tRedIlDPnySRLWea0SWyH/vD2z4KpoNshuosPNUkPdxW2D3EdgiUcORcID65K/dQiBXNBDjWoN/cyzYOuIJu8XxzIeE8zMkseUxtqscAWhd0vauJxA8Z1OH7tY4XMIYVfA7WEDQBPMZf5MlNmok992hS0NzasOCwIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "31",
+   "name": "vGet Extension (Video Downloader, DLNA)",
+   "optional_permissions": [  ],
+   "permissions": [ "\u003Call_urls>", "downloads" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.1.11"
+}

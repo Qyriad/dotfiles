@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "מערכת הקבצים כבר נטענה!"
+   },
+   "backup_prefs": {
+      "message": "שמור עותק לגיבוי"
+   },
+   "bad_destination": {
+      "message": "לא ניתן לנתח יעד: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "סגירת כרטיסייה זו תנתק את ההפעלה הנוכחית."
+   },
+   "cancel_button_label": {
+      "message": "ביטול"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "פקודה זו מציגה תפריט של מארחים ידועים ומבקשת מהמארח לשכוח."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "‏שכח מארח ssh ידוע."
+   },
+   "cmd_ssh_help": {
+      "message": "‏הפרמטרים |username| ו-|hostname| נדרשים. הפרמטר |port| אופציונלי. אם היציאה לא מצוינת, ברירת המחדל היא 22."
+   },
+   "cmd_ssh_title": {
+      "message": "‏פותח הפעלת SSH חדשה."
+   },
+   "command_complete": {
+      "message": "הפקודה $1 הסתיימה והחזירה את קוד הסטטוס $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "התחבר"
+   },
+   "connect_or_exit_message": {
+      "message": "‏הקש על C כדי לבחור חיבור אחר או על X כדי לצאת."
+   },
+   "connecting": {
+      "message": "מתחבר אל $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "‏ידעת שיש דף אפשרויות ייעודי?\nכבר אין צורך להסתבך עם term_ directly!\nיש להקיש על $1 כדי לפתוח אותו, או ללחוץ על:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "‏ידעת שיש דף אפשרויות ייעודי?\nכבר אין צורך להסתבך עם term_ directly!\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "מחק"
+   },
+   "disconnect_message": {
+      "message": "‏פלאגין NaCl נסגר והחזיר את קוד הסטטוס $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "ארגומנטים נוספים לשורת הפקודה"
+   },
+   "field_description_aria_label": {
+      "message": "תיאור"
+   },
+   "field_description_placeholder": {
+      "message": "‏username@hostname או טקסט חופשי"
+   },
+   "field_hostname_aria_label": {
+      "message": "שם מארח"
+   },
+   "field_hostname_placeholder": {
+      "message": "שם מארח"
+   },
+   "field_mount_path_placeholder": {
+      "message": "נתיב ברירת המחדל הוא ספריית הבית של המשתמש"
+   },
+   "field_port_aria_label": {
+      "message": "יציאה"
+   },
+   "field_port_placeholder": {
+      "message": "יציאה"
+   },
+   "field_relay_options_aria_label": {
+      "message": "אפשרויות של שרתי ממסר"
+   },
+   "field_relay_options_placeholder": {
+      "message": "‏אפשרויות של שרת ממסר SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "ברירת מחדל"
+   },
+   "field_username_aria_label": {
+      "message": "שם משתמש"
+   },
+   "field_username_placeholder": {
+      "message": "שם משתמש"
+   },
+   "found_relay": {
+      "message": "נמצא שרת ממסר: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "זהות"
+   },
+   "import_link_aria_label": {
+      "message": "יבא קובץ"
+   },
+   "import_link_label": {
+      "message": "יבא..."
+   },
+   "initializing_relay": {
+      "message": "מחפש שרת ממסר באמצעות: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "‏לא ניתן היה לנתח נתוני JSON ב-'$1': $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "אין מארחים ידועים, אין מה לשכוח."
+   },
+   "known_hosts_prompt": {
+      "message": "בחר מארח כדי לשכוח [1 - $1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "מארחים ידועים:"
+   },
+   "loading_label": {
+      "message": "טוען..."
+   },
+   "missing_param": {
+      "message": "חסר הפרמטר: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "‏טעינת SFTP"
+   },
+   "mount_path_label": {
+      "message": "נתיב טעינה"
+   },
+   "mounted_message": {
+      "message": "נטען!"
+   },
+   "notify_copy": {
+      "message": "הטקסט הועתק"
+   },
+   "ok_button_label": {
+      "message": "אישור"
+   },
+   "omnibox_default": {
+      "message": "‏\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> יש להתחבר אל פרופיל שמור או אל מערכת SSH חדשה."
+   },
+   "open_as_window_tip": {
+      "message": "‏[טיפ למתקדמים] האפשרות 'פתח כחלון' מונעת מהקשה על Control-W לסגור את המסוף.\n[טיפ למתקדמים] אפשר לקרוא מידע נוסף בכתובת $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "אפשרויות"
+   },
+   "plugin_loading": {
+      "message": "‏טוען פלאגין של NaCl ..."
+   },
+   "plugin_loading_complete": {
+      "message": " בוצע."
+   },
+   "plugin_loading_failed": {
+      "message": " הטעינה נכשלה :("
+   },
+   "pref_backup_filename": {
+      "message": "Secure Shell Preferences Backup.json"
+   },
+   "preferences_header": {
+      "message": "הגדרות פרופיל"
+   },
+   "preferences_reset": {
+      "message": "איפסת את כל ההעדפות."
+   },
+   "reconnect_message": {
+      "message": "‏הקש על R כדי להתחבר מחדש, על C כדי לבחור חיבור אחר או על X כדי לצאת."
+   },
+   "relay_retry": {
+      "message": "מנסה שוב..."
+   },
+   "restore_prefs": {
+      "message": "שחזר את הגיבוי"
+   },
+   "shortcut_list_aria_label": {
+      "message": "חיבורים שנשמרו"
+   },
+   "ssh_argstr_label": {
+      "message": "‏ארגומנטים ל-SSH"
+   },
+   "terminal_preview_label": {
+      "message": "תצוגה מקדימה"
+   },
+   "terminal_profile_label": {
+      "message": "הפרופיל הנוכחי"
+   },
+   "tip_1": {
+      "message": "‏כדי לפתוח קישורים אפשר להקיש הקשה ארוכה על Ctrl (המקש Cmd ב-macOS) תוך כדי לחיצה עליהם."
+   },
+   "tip_10": {
+      "message": "‏כשהיישום פועל בחלון, אפשר להקיש על Ctrl-Shift-N כדי לפתוח הפעלה חדשה."
+   },
+   "tip_11": {
+      "message": "‏אפשר לקשר מחדש מקשים/מקשי קיצור: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "‏אפשר להציג הודעות בדפדפן בעזרת hterm-notify‏: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "‏כדי להתחבר מסרגל הכתובות יש להקליד ‎'ssh \u003Cprofile name>': https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "‏Chrome OS יכול לטעון מערכות קבצים דרך SFTP ולאפשר עיון דרך היישום 'קבצים'. יש להשתמש ב-'SFTP Mount' במקום ב-'Connect'."
+   },
+   "tip_5": {
+      "message": "‏יש להתחבר בעזרת קישורי ssh://‎ בדפי אינטרנט או לשמור סימניה: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "‏אפשר לצבוע את הפלט/הודעה ב-16 צבעים בסיסיים, 256 צבעים וצבעי 24 סיביות מלאים: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "‏אפשר להעתיק אל הלוח מ-emacs/vim/etc... בעזרת OSC-52‏: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "‏אפשר לשוחח בצ'אט עם משתמשי hterm/Secure Shell אחרים דרך  chromium-hterm@chromium.org‏: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "‏מצאת באג? רוצה לבקש תכונה חדשה? נשמח לשמוע: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "‏אירעה שגיאה לא צפויה, בדוק בלוח Javascript לקבלת פרטים נוספים."
+   },
+   "unmount_button_label": {
+      "message": "‏בטל את הטעינה של SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "יש עדכון זמין. עליך לסגור את כל החלונות."
+   },
+   "welcome_changelog": {
+      "message": "‏ChangeLog/נתוני גירסה: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "‏תשובות לשאלות נפוצות. $1 (הקש על ctrl ולחץ על קישור כדי לפתוח אותו)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "שינויים משמעותיים מאז $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "טיפ אקראי למתקדמים מס' $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "ברוכים הבאים לגרסה $2 של $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "‏עבור אל תפריט Chrome > מרחק מהתצוגה ושנה את ההגדרה ל-100%."
+   }
+}

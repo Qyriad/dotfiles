@@ -1,0 +1,12 @@
+2017/12/23-13:21:45.960 1608 Reusing MANIFEST /home/qyriad/.config/chromium/Default/Session Storage/MANIFEST-000001
+2017/12/23-13:21:45.960 1608 Recovering log #37
+2017/12/23-13:21:45.962 1608 Reusing old log /home/qyriad/.config/chromium/Default/Session Storage/000037.log 
+2017/12/23-13:22:12.816 3366 Level-0 table #42: started
+2017/12/23-13:22:12.819 3366 Level-0 table #42: 18009 bytes OK
+2017/12/23-13:22:12.819 3366 Delete type=0 #37
+2017/12/23-14:12:42.484 3366 Compacting 1@1 + 1@2 files
+2017/12/23-14:12:42.491 3366 Generated table #43@1: 169 keys, 9704 bytes
+2017/12/23-14:12:42.491 3366 Compacted 1@1 + 1@2 files => 9704 bytes
+2017/12/23-14:12:42.491 3366 compacted to: files[ 0 0 1 0 0 0 0 ]
+2017/12/23-14:12:42.491 3366 Delete type=2 #39
+2017/12/23-14:12:42.491 3366 Delete type=2 #42

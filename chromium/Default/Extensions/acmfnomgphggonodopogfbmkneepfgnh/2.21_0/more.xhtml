@@ -1,0 +1,54 @@
+<!--
+Bookmark Favicon Changer by Sonthakit Leelahanon.
+Copyright 2014 Sonthakit Leelahanon. All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<script src="nocontext.js"></script>
+		<script src="more.js"></script>
+		<style type="text/css">
+			button.myButton {
+				min-width: 280px;
+				min-height: 30px;
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body style="overflow-x:hidden; overflow-y:auto;">
+		<table border="0" cellpadding="7" cellspacing="0">
+			<tr>
+				<td><button id="viewDatabase" class="myButton">View custom favicon database</button></td>
+				<td>This will open a popup and show custom favicon database. Read only.</td>
+			</tr>
+			<tr>
+				<td><button id="restoreLost" class="myButton">Restore lost custom favicons</button></td>
+				<td>Rarely, you may lose your custom favicons in some situations such as you disable this extension, website use JavaScript to change favicon (dynamic favicon) or abnormal URL redirection. Clicking this button will restore all custom favicons back.</td>
+			</tr>
+			<tr>
+				<td><button id="resetAllNonCustom" class="myButton">Reset all non-custom favicons</button></td>
+				<td>This will reset all bookmarks that have no custom favicon. It will try to load from the internet at the most likely address.</td>
+			</tr>
+			<tr>
+				<td><button id="exportAll" class="myButton">Export all custom favicons and all tab icons</button></td>
+				<td>This will export all custom favicons and all tab icons in one zip file.</td>
+			</tr>
+			<tr>
+				<td>
+					<button id="importPageCustomFaviconDatabase" class="myButton">Import Bookmark Favicon Changer database</button>
+					<input type="file" accept="text/html" id="importPageCustomFaviconDatabaseInput" style="display:none"></input>
+				</td>
+				<td>This will import and merge existing Bookmark Favicon Changer database.</td>
+			</tr>
+			<tr>
+				<td><button id="exportPageCustomFaviconDatabase" class="myButton">Export Bookmark Favicon Changer database</button></td>
+				<td>This will export Bookmark Favicon Changer database in one html file. You can use it as a backup resource. Please note that browser may warn you "this type of file can harm your computer". <u>The truth is this file is totally safe.</u></td>
+			</tr>
+			<tr>
+				<td><button id="resetAllCustom" class="myButton">Delete custom favicon database</button></td>
+				<td>This will empty Bookmark Favicon Changer database and reset favicons back to the original ones. Tab icon rules are still intact.</td>
+			</tr>
+		</table>
+	</body>
+</html>

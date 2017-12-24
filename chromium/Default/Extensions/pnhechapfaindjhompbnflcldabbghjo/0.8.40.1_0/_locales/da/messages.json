@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "Filsystemet er allerede tilsluttet."
+   },
+   "backup_prefs": {
+      "message": "Gem sikkerhedskopi"
+   },
+   "bad_destination": {
+      "message": "Destinationen kunne ikke parses: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Hvis denne fane lukkes, afbrydes denne session."
+   },
+   "cancel_button_label": {
+      "message": "Annuller"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Denne kommando viser en menu med kendte værter og beskeder, som værten skal glemme."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Glem en kendt SSH-vært."
+   },
+   "cmd_ssh_help": {
+      "message": "Parametrene |username| og |hostname| er påkrævede, |port| er valgfri. Hvis porten ikke er angivet, sættes 22 som standard."
+   },
+   "cmd_ssh_title": {
+      "message": "Åbner en ny SSH-session."
+   },
+   "command_complete": {
+      "message": "Kommandoen $1 blev afsluttet med statuskoden $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Opret forbindelse"
+   },
+   "connect_or_exit_message": {
+      "message": "Vil du vælge (C) en anden forbindelse eller afslutte (X)?"
+   },
+   "connecting": {
+      "message": "Opretter forbindelse til $1...",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Vidste du, at der er en dedikeret side med indstillinger?\nDu behøver ikke længere at rode direkte med term_.\nTryk på $1 for at åben den, eller klik på:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Vidste du, at der er en dedikeret side med indstillinger?\nDu behøver ikke længere at rode direkte med term_.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DELETE]"
+   },
+   "delete_button_label": {
+      "message": "Slet"
+   },
+   "disconnect_message": {
+      "message": "NaCl-pluginnet blev afsluttet med statuskoden $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "ekstra kommandolinjeargumenter"
+   },
+   "field_description_aria_label": {
+      "message": "beskrivelse"
+   },
+   "field_description_placeholder": {
+      "message": "brugernavn@hostname eller tekst i frit format"
+   },
+   "field_hostname_aria_label": {
+      "message": "hostname"
+   },
+   "field_hostname_placeholder": {
+      "message": "hostname"
+   },
+   "field_mount_path_placeholder": {
+      "message": "standardstien er brugerens hjemmeindeks"
+   },
+   "field_port_aria_label": {
+      "message": "port"
+   },
+   "field_port_placeholder": {
+      "message": "port"
+   },
+   "field_relay_options_aria_label": {
+      "message": "valgmuligheder for relæserver"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Indstillinger for SSH-relæserver"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "standard"
+   },
+   "field_username_aria_label": {
+      "message": "brugernavn"
+   },
+   "field_username_placeholder": {
+      "message": "brugernavn"
+   },
+   "found_relay": {
+      "message": "Registreret relæserver: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identitet"
+   },
+   "import_link_aria_label": {
+      "message": "filimport"
+   },
+   "import_link_label": {
+      "message": "Importér..."
+   },
+   "initializing_relay": {
+      "message": "Søger efter relæserver via: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "JSON kunne ikke parses i \"$1\": $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Ingen kendte værter, intet at glemme."
+   },
+   "known_hosts_prompt": {
+      "message": "Vælg en vært, der skal glemmes [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Kendte værter:"
+   },
+   "loading_label": {
+      "message": "Indlæser..."
+   },
+   "missing_param": {
+      "message": "Manglende parameter: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "SFTP-tilslutning"
+   },
+   "mount_path_label": {
+      "message": "Isæt sti"
+   },
+   "mounted_message": {
+      "message": "Tilsluttet"
+   },
+   "notify_copy": {
+      "message": "Markeringen blev kopieret"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Opret forbindelse til en gemt profil eller et nyt SSH-system"
+   },
+   "open_as_window_tip": {
+      "message": "[Proftip] Brug \"Åbn som vindue\" for at undgå, at Control-W lukker din terminal.\n[Proftip] Se $1 for at få flere oplysninger.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Valgmuligheder"
+   },
+   "plugin_loading": {
+      "message": "Indlæser pluginnet NaCl..."
+   },
+   "plugin_loading_complete": {
+      "message": " udført."
+   },
+   "plugin_loading_failed": {
+      "message": " mislykkedes"
+   },
+   "pref_backup_filename": {
+      "message": "Backup af Secure Shell-præferencer.json"
+   },
+   "preferences_header": {
+      "message": "Profilindstillinger"
+   },
+   "preferences_reset": {
+      "message": "Alle præferencer blev nulstillet"
+   },
+   "reconnect_message": {
+      "message": "Vil du genoprette forbindelsen (R), vælge en anden forbindelse (C) eller afslutte (X)?"
+   },
+   "relay_retry": {
+      "message": "Prøver igen…"
+   },
+   "restore_prefs": {
+      "message": "Gendan sikkerhedskopi"
+   },
+   "shortcut_list_aria_label": {
+      "message": "gemte forbindelser"
+   },
+   "ssh_argstr_label": {
+      "message": "SSH-argumenter"
+   },
+   "terminal_preview_label": {
+      "message": "Eksempelvisning"
+   },
+   "terminal_profile_label": {
+      "message": "Nuværende profil"
+   },
+   "tip_1": {
+      "message": "Du kan holde Ctrl (Cmd på macOS) nede, mens du klikker på links, for at åben dem."
+   },
+   "tip_10": {
+      "message": "Ved kørsel i et andet vindue kan du trykke Ctrl-Shift-N for at åbne en ny session."
+   },
+   "tip_11": {
+      "message": "Du kan ændre tilknytningen mellem taster og genveje: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Vis underretninger i browseren ved hjælp af hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Opret forbindelse fra omnifeltet ved at skrive \"ssh \u003Cprofilnavn>\": https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "Chrome OS kan isætte filsystemer via SFTP og browse via appen Filer. Brug \"SFTP Mount\" i stedet for \"Connect\"."
+   },
+   "tip_5": {
+      "message": "Opret forbindelse ved hjælp af ssh://-links på websider, eller gem et bogmærke: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Sæt kulør på dit output/din meddelelse med 16 farver, 256 farver og 24-bit farver: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Kopiér til udklipsholderen fra emacs/vim/etc... ved hjælp af OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Chat med andre hterm/Secure Shell-brugere via chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Har du fundet en fejl?  Ønsker du en ny funktion?  Giv os besked: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Der opstod en uventet fejl. Du kan få flere oplysninger i JavaScript-konsollen."
+   },
+   "unmount_button_label": {
+      "message": "Fjern tilslutning til SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Der er en tilgængelig opdatering. Luk alle vinduer."
+   },
+   "welcome_changelog": {
+      "message": "ChangeLog/produktbemærkninger: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Svar på ofte stillede spørgsmål: $1 (tryk på ctrl, og hold knappen nede, mens du klikker på linket, for at åbne det)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Større ændringer siden $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Tilfældigt Proftip nr. $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Velkommen til version $2 af $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Konfigurer Chrome-menuen -> Vælg 100 % zoom"
+   }
+}

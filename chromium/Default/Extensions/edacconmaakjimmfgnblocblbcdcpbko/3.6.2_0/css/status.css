@@ -1,0 +1,131 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background: #fff;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+}
+
+li {
+    margin: 10px 0px;
+}
+
+.header {
+    padding: 10px;
+    background-color: #eee;
+    position: relative;
+    height: 30px;
+}
+
+.handleExceptions {
+    background-color: hsl(0, 28%, 88%);
+}
+
+.FAQ {
+    margin: 55px 0px 0px 0px;
+    background-color: #eee;
+}
+
+.linearVal {
+    text-decoration: underline;
+    outline: none;
+}
+
+
+/*.initCurrentSessionSource
+{
+    display: none;
+}
+
+.iEventVal
+{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    font-size: 12px;
+    height: 200px;
+    top: 10px;
+    outline: none;
+    padding: 7px;
+    color: #555;
+    background-color: hsl(0,0%, 97%);
+    border-radius: 2px;
+    border-color: hsl(0, 0%, 75%);
+}
+
+.iEventVal:focus
+{
+    border-color: hsl(13, 0%, 50%);
+}
+*/
+
+.splat {
+    margin-left: 20px;
+    margin-right: 5px;
+    font-size: 20px;
+    font-weight: 400;
+    background: hsl(207, 82%, 62%);
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 30px;
+    vertical-align: middle;
+}
+
+.error .splat {
+    background-color: hsl(4, 22%, 51%);
+}
+
+.tlu {
+    line-height: 65px;
+    height: 65px;
+    padding-top: 20px;
+}
+
+.idc {
+    vertical-align: middle;
+    font-weight: 400;
+    font-size: 22px;
+    padding-left: 10px;
+    color: hsl(207, 82%, 62%);
+    white-space: nowrap;
+}
+
+.error .idc {
+    color: hsl(4, 22%, 51%);
+}
+
+.sub_item {
+    padding-left: 79px;
+}
+
+#tabDataInject {
+    transition: background-color .3s linear;
+    border-radius: 2px;
+}
+
+.transposeTab {
+    background-color: hsl(123, 100%, 91%);
+}
+
+#evalRequestHonored {
+    white-space: nowrap;
+    position: absolute;
+    left: 44px;
+    top: 15px;
+    font-size: 14px;
+    font-weight: 400;
+    color: hsl(0, 0%, 25%);
+}
+
+.error #evalRequestHonored {
+    color: hsl(0, 25%, 35%);
+}

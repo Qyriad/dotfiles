@@ -1,0 +1,1077 @@
+.flexfullscreen
+{
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  -webkit-align-content: center;
+
+  display: -moz-flex;
+  -moz-justify-content: center;
+  -moz-align-items: center;
+  -moz-align-content: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+#extension-keys-overlay-container
+{
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+
+.flexcontainer {
+  /* basic styling */
+  min-width: auto;
+  min-height: auto;
+
+  /* flexbox setup */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+
+  display: -moz-flex;
+  -moz-flex-direction: row;
+  -moz-flex-wrap: wrap;
+  -moz-justify-content: center;
+  -moz-align-items: center;
+
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+body
+  {
+  -webkit-user-select: none;
+     -moz-user-select: -moz-none;
+      -ms-user-select: none;
+          user-select: none;
+  overflow: hidden;
+  }
+
+/* mozilla doesn't seem to propagate the -moz-user-select property from body properly */
+.modal, #details-frame, #progress-frame, #reconnect-frame, #desktop-frame {
+  -moz-user-select: -moz-none;
+}
+
+/* tables keep unselecting their last element, unless you select something else; so make
+    the whole dialog contents selectable in mozilla. */
+#information-body {
+  -moz-user-select: text;
+}
+
+.input, .selectable
+  {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
+  }
+
+textarea:focus, input:focus, button:focus {
+  outline: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+.tooltip
+  {
+  text-rendering: optimizeLegibility;
+  text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 1px;
+  }
+
+.tooltip.in
+  {
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+  }
+
+.left {
+  float: left;
+}
+
+#details-header
+  {
+  width: 100%;
+  text-align: right;
+  color: #ccc;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  }
+
+#details-about
+  {
+  cursor: pointer;
+  }
+
+#details
+  {
+  width: 600px;
+  height: 200px;
+  }
+
+#details-frame
+  {
+  background-color: white;
+  }
+
+.details-help
+  {
+  margin: 0 6px;
+  cursor: pointer;
+  }
+
+#details-zoom {
+  display: none;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  text-align: center;
+}
+
+#details-zoom-inner {
+  width: 100%;
+  margin-left: -50%;
+}
+
+#details-zoom-image {
+  margin: 3px;
+}
+
+.details-address-delete {
+  float: right;
+  margin-top: 2px;
+  opacity: 0.75;
+}
+
+.typeahead > li > a {
+  padding-right: 45px;
+}
+
+i.details-address-delete {
+  margin-right: -30px;
+}
+
+.active > a > i.details-address-delete, i.details-address-delete:hover {
+  background-image: url("../bootstrap/img/glyphicons-halflings-white.png");
+}
+
+.details-address-delete:hover {
+  opacity: 1.00;
+}
+
+.form-actions
+  {
+  background-color: #fff;
+  border: 0;
+  }
+
+#viewerIcon
+  {
+  float: left;
+  margin-top: -26px;
+  width: 128px;
+  height: 128px;
+  background-size: 128px 128px;
+  background-image: url(../images/logo/logo.png);
+  }
+
+.dark-background
+  {
+  background-color: #222;
+  }
+
+.light-text
+  {
+  color: #fff;
+  }
+
+#canvas
+  {
+  margin: auto;
+  }
+
+#progress, #reconnect
+  {
+  text-align: center;
+  width: 200px;
+  }
+
+#reconnect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: -39px;
+}
+
+#progress-buttons, #reconnect-buttons
+  {
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  text-align: center;
+  }
+
+#progress-title, #reconnect-title
+  {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 7px;
+  }
+
+#reconnect-background
+  {
+  opacity: 0.6;
+  }
+
+#desktop-frame
+  {
+  overflow: hidden;
+  }
+
+#desktop
+  {
+  overflow: hidden;
+  }
+
+#desktop-content
+  {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  }
+
+#desktop-content-nacl
+  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  }
+
+#desktop-toolbar-container
+  {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  pointer-events: none;
+  }
+
+#desktop-toolbar-background {
+  height: 42px;
+  width: 280px;
+  margin: auto;
+  padding: 4px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  pointer-events: auto;
+}
+
+#desktop-toolbar
+  {
+  height: 40px;
+  width: 292px; /* to account for chrome rounding issues when zoomed */
+  margin: auto;
+  background: rgba(0, 0, 0, 0);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  pointer-events: auto;
+  -webkit-padding-start: 0;
+  }
+
+#desktop-toolbar ul
+  {
+  list-style: none;
+  }
+
+#desktop-toolbar li
+  {
+  list-style: none;
+  float: left;
+  padding: 8px;
+  cursor:pointer;
+  }
+
+#toolbar-pin-icon               { background-image: url('../images/toolbar/pin_up.png'); }
+#toolbar-information-icon       { background-image: url('../images/toolbar/info.png'); }
+#toolbar-help-icon              { background-image: url('../images/toolbar/about.png'); }
+#toolbar-keys-icon              { background-image: url('../images/toolbar/keyboard.png'); }
+#toolbar-fullscreen-icon        { background-image: url('../images/toolbar/fullscreen.png'); }
+#toolbar-scaling-icon           { background-image: url('../images/toolbar/scaling.png'); }
+#toolbar-disconnect-icon        { background-image: url('../images/toolbar/disconnect.png'); }
+
+li:hover > #toolbar-pin-icon          { background-image: url('../images/toolbar/pin_up_hover.png'); }
+li:hover > #toolbar-information-icon  { background-image: url('../images/toolbar/info_hover.png'); }
+li:hover > #toolbar-help-icon         { background-image: url('../images/toolbar/about_hover.png'); }
+li:hover > #toolbar-keys-icon         { background-image: url('../images/toolbar/keyboard_hover.png'); }
+li:hover > #toolbar-fullscreen-icon   { background-image: url('../images/toolbar/fullscreen_hover.png'); }
+li:hover > #toolbar-scaling-icon      { background-image: url('../images/toolbar/scaling_hover.png'); }
+li:hover > #toolbar-disconnect-icon   { background-image: url('../images/toolbar/disconnect_hover.png'); }
+
+li:active > #toolbar-pin-icon           { background-image: url('../images/toolbar/pin_up.png'); }
+li:active > #toolbar-new-icon           { background-image: url('../images/toolbar/new.png'); }
+li:active > #toolbar-information-icon   { background-image: url('../images/toolbar/info.png'); }
+li:active > #toolbar-help-icon          { background-image: url('../images/toolbar/about.png'); }
+li:active > #toolbar-keys-icon          { background-image: url('../images/toolbar/keyboard.png'); }
+li:active > #toolbar-fullscreen-icon    { background-image: url('../images/toolbar/fullscreen.png'); }
+li:active > #toolbar-scaling-icon       { background-image: url('../images/toolbar/scaling.png'); }
+li:active > #toolbar-disconnect-icon    { background-image: url('../images/toolbar/disconnect.png'); }
+
+#toolbar-pin-icon.selected                    { background-image: url('../images/toolbar/pin_down.png'); }
+li:hover > #toolbar-pin-icon.selected         { background-image: url('../images/toolbar/pin_down_hover.png'); }
+li:active > #toolbar-pin-icon.selected        { background-image: url('../images/toolbar/pin_down.png'); }
+#toolbar-fullscreen-icon.selected             { background-image: url('../images/toolbar/fullscreen_active.png'); }
+li:hover > #toolbar-fullscreen-icon.selected  { background-image: url('../images/toolbar/fullscreen_active_hover.png'); }
+li:active > #toolbar-fullscreen-icon.selected { background-image: url('../images/toolbar/fullscreen_active.png'); }
+#toolbar-scaling-icon.selected                { background-image: url('../images/toolbar/scaling_active.png'); }
+li:hover > #toolbar-scaling-icon.selected     { background-image: url('../images/toolbar/scaling_active_hover.png'); }
+li:active > #toolbar-scaling-icon.selected    { background-image: url('../images/toolbar/scaling_active.png'); }
+
+.toolbar-icon
+  {
+  background-size: 24px 24px;
+  display: inline-block;
+  width:24px;
+  height:24px;
+  margin:0;
+  padding:0;
+  }
+
+#extension-keys-background {
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+          border-radius: 10px;
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  z-index: -1;
+}
+
+#extension-keys-overlay {
+  min-width: auto;
+  min-height: auto;
+
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+
+  display: -moz-flex;
+  -moz-flex-direction: row;
+  -moz-flex-wrap: wrap;
+  -moz-justify-content: center;
+  -moz-align-items: center;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+          border-radius: 10px;
+  background-color: transparent;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: all;
+}
+
+#extkeys-content,
+#extkeys {
+  min-width: auto;
+  min-height: auto;
+
+  /* flexbox setup */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+
+  display: -moz-flex;
+  -moz-flex-direction: row;
+  -moz-flex-wrap: wrap;
+  -moz-justify-content: center;
+  -moz-align-items: center;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Set the width so that the extension keyboard doesn't go onto less that two lines */
+#extkeys {
+  -webkit-flex: 0 1 1500px;
+  -moz-flex: 0 1 1500px;
+  flex: 0 1 1500px;
+}
+
+#extkeys-scrollview {
+  overflow: hidden;
+}
+
+#extkeys-scrollbar-gutter-vertical {
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+#extension-keys-modifiers-group,
+#extension-keys-others-group,
+#extension-keys-wdei-group,
+#extension-keys-pgud-group,
+#extension-keys-function-group
+{
+  padding: 10px 10px 15px 15px;
+
+  /* flexbox setup */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
+
+#extension-keys-modifiers-1,
+#extension-keys-modifiers-2,
+#extension-keys-wd-group,
+#extension-keys-ei-group,
+#extension-keys-pgud-1,
+#extension-keys-pgud-2,
+#extension-keys-function-1,
+#extension-keys-function-2,
+#extension-keys-function-3,
+#extension-keys-function-4,
+#extension-keys-function-group-left,
+#extension-keys-function-group-right
+{
+  /* flexbox setup */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+
+  width: auto;
+}
+
+.extension-key-text {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.centered-2line-text {
+  position: relative;
+  top: -9px;
+}
+
+.extension-key-hotkey {
+  position: absolute;
+  bottom: 6px;
+  right: 12px;
+  text-shadow: white 0 1px 1px;
+  color: #777;
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.extension-key-toggle > .extension-key-hotkey {
+  color: #aaa;
+  text-shadow: #666 0 1px 1px;
+}
+
+.extension-key,
+.extension-key-toggle {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 24px;
+  cursor: pointer;
+  padding: 12px 6px 12px 0;
+  margin: 2px 0 0 0;
+  font-weight: bold;
+  line-height: 18px;
+  background-repeat:no-repeat;
+}
+
+.extension-key {
+  color: black;
+  background-image:url('../images/up.png');
+  vertical-align: middle;
+}
+
+.extension-key-toggle {
+  color: white;
+  background-image:url('../images/grey.png');
+}
+
+.extension-key:hover {
+  background-image:url('../images/hover.png');
+}
+
+.extension-key-toggle:hover {
+  background-image:url('../images/grey-hover.png');
+}
+
+.extension-key:active,
+.extension-key.active {
+  background-image:url('../images/down.png');
+}
+
+.extension-key-toggle:active,
+.extension-key-toggle.active {
+  background-image:url('../images/grey-down.png');
+}
+
+.extension-key-toggle.on {
+  background-image:url('../images/blue-up.png');
+}
+
+.extension-key-toggle.on:hover {
+  background-image:url('../images/blue-hover.png');
+}
+
+.extension-key-toggle.on:active,
+.extension-key-toggle.on.active {
+  background-image:url('../images/blue-down.png');
+}
+
+.extension-key:active > .extension-key-text,
+.extension-key-toggle:active > .extension-key-text,
+.extension-key.active > .extension-key-text,
+.extension-key-toggle.active > .extension-key-text {
+  top: 1px;
+  left: 1px;
+}
+
+.extension-key:active > .extension-key-hotkey,
+.extension-key-toggle:active > .extension-key-hotkey,
+.extension-key.active > .extension-key-hotkey,
+.extension-key-toggle.active > .extension-key-hotkey {
+  bottom: 4px;
+  right: 11px;
+}
+
+.extension-key-toggle.on > .extension-key-hotkey {
+  color: #09b;
+  text-shadow: #09F 0 1px 1px;
+}
+
+.extension-key-text > img {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  top: -1px;
+}
+
+.active-key > img {
+  width: 57px;
+  min-width: 57px;
+  height: 57px;
+  padding: 2px;
+  position: relative;
+  top: -6px;
+  background-repeat: no-repeat;
+  background-size: 61px;
+  background-origin: content-box;
+}
+
+.active-key > img[src='images/key-cmd.png'] {
+  background-image: url('../images/key-cmd-shadow.png');
+}
+
+.active-key > img[src='images/key-opt.png'] {
+  background-image: url('../images/key-opt-shadow.png');
+}
+
+.active-key > img[src='images/key-shift.png'] {
+  background-image: url('../images/key-shift-shadow.png');
+}
+
+.active-key > img[src='images/key-win.png'] {
+  background-image: url('../images/key-win-shadow.png');
+}
+
+#active-keys-overlay {
+  position: absolute;
+  height: 75px;
+  line-height: 100%;
+  bottom: 50px;
+  left: 50px;
+  pointer-events: none;
+  font-size: 75px;
+  font-weight: bold;
+  color: white;
+  text-shadow: black 2px 2px 6px;
+}
+
+.active-key {
+  display: inline-block;
+  height: 100%;
+  white-space: pre;
+}
+
+.active-key:after {
+  content: " ";
+}
+
+.popover-inner
+  {
+  width: auto;
+  }
+
+.disconnect-menu .btn
+  {
+  margin: 6px 4px 2px;
+  }
+
+.disconnect-header {
+  padding: 4px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+#desktop-debug
+  {
+  width: 200px;
+  background-color: black;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+          border-radius: 6px;
+  opacity: 0.6;
+  -moz-opacity: 0.6;
+  filter:alpha(opacity=6);
+  text-align: center;
+  color: white;
+  padding: 10px 0;
+  pointer-events: none;
+  }
+
+#desktop-nag
+  {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 400px;
+  height: 110px;
+  text-align: center;
+  display: none;
+  }
+
+#desktop-nag-background
+  {
+  background-color: black;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+      -ms-border-radius: 8px;
+          border-radius: 8px;
+  color: white;
+  opacity: 0.7;
+  -moz-opacity: 0.7;
+  filter:alpha(opacity=7);
+  }
+
+#desktop-nag-body
+  {
+  color: white;
+  font-weight: normal;
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  }
+
+#desktop-nag-logo
+  {
+  position: absolute;
+  left: 30px;
+  }
+
+#desktop-nag-text {
+  padding: 0 30px;
+  margin-left: 50px;
+}
+
+.nag-hover
+  {
+  text-decoration: underline;
+  }
+
+#desktop-nag-dismiss
+  {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  }
+
+#security-toolbar
+  {
+  position: absolute;
+  height: 44px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #111;
+  }
+
+#security-toolbar-title
+  {
+  text-align: center;
+  padding-top: 14px;
+  font-weight: normal;
+  text-shadow: 0;
+  font-size: 14px;
+  }
+
+#security-toolbar-lock
+  {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px 10px 10px 20px;
+  }
+#security-toolbar-lock-icon
+  {
+  display: block;
+  width: 24px;
+  height: 24px;
+  }
+
+#security-toolbar-close
+  {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 13px;
+  }
+
+.scrollbar-gutter-vertical
+  {
+  position: absolute;
+  height: 100%;
+  width: 18px;
+  right: 0;
+  top: 0;
+  }
+
+.scrollbar-gutter-horizontal
+  {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 18px;
+  width: 100%;
+  padding-right: 18px;
+  }
+
+.scrollbar-horizontal,
+.scrollbar-vertical
+  {
+  background-color: #222;
+  }
+
+#extkeys-scrollbar-horizontal,
+#extkeys-scrollbar-vertical {
+  background-color: transparent;
+}
+
+.scrollbar-horizontal
+  {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  }
+
+.scrollbar-vertical
+  {
+  height: 100%;
+  position:absolute;
+  top: 0;
+  right: 0;
+  }
+
+.scrollbar-puck-vertical,
+.scrollbar-puck-horizontal
+  {
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+          border-radius: 6px;
+  margin: 2px;
+  }
+
+.scrollbar-puck-vertical
+  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+  width: 12px;
+  }
+
+.scrollbar-puck-horizontal
+  {
+  position: absolute;
+  left: 0;
+  height: 12px;
+  width: 200px;
+  }
+
+.ui-draggable
+  {
+  background-color: #444;
+  background-image: -webkit-linear-gradient(top, #444444 0%, #333333 100%);
+  border: 1px solid #111;
+  }
+
+.ui-draggable:active {
+  background-color: #4CCCCC;
+  background-image: -webkit-linear-gradient(top, #4C4C4C 0%, #3B3B3B 100%);
+}
+
+.scrollbar-vertical .ui-draggable
+  {
+  background-image: -webkit-linear-gradient(left, #444444 0%, #333333 100%);
+  }
+
+.scrollbar-vertical .ui-draggable:active {
+  background-image: -webkit-linear-gradient(left, #4C4C4C 0%, #3B3B3B 100%);
+}
+
+.puck-hover
+  {
+  background-color: #555;
+  background-image: -webkit-linear-gradient(top, #555555 0%, #444444 100%);
+  }
+
+.scrollbar-vertical .puck-hover
+  {
+  background-image: -webkit-linear-gradient(left, #555555 0%, #444444 100%);
+  }
+
+.ui-draggable-dragging
+  {
+  background-color: #555;
+  }
+
+.modal {
+  overflow: hidden;
+}
+
+.modal.fade {
+  top: -25%;
+}
+
+.modal.fade.in {
+  top: 50%;
+}
+
+#desktop-modal
+  {
+  background-color: black;
+  opacity: 0.2;
+  -moz-opacity: 0.2;
+  filter:alpha(opacity=2);
+  z-index: 0;
+  }
+
+.popover-title
+  {
+  display: none;
+  }
+
+
+#information-picture-quality-select
+  {
+  margin: 0;
+  }
+
+#information-table {
+  margin: 0;
+}
+
+#information-settings-table {
+  margin: 12px 0 0 0;
+}
+
+#information-picture-quality-select {
+  border: 1px solid #d9d9d9;
+  width: 101%;
+  height: 29px;
+  padding: 3px;
+}
+
+#information-body th {
+  width: 41%;
+}
+
+#information-body hr {
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 4px;
+  border-top: 1px solid #d9d9d9;
+}
+
+#information-picture-quality-value {
+  padding: 4px 7px 4px 4px;
+}
+
+.modal-contains-iframe {
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#help-navigation {
+  float: left;
+}
+
+.help-navigation-image {
+  padding-right: 3px;
+  padding-bottom: 3px;
+}
+
+.help-navigation-button {
+  cursor: pointer;
+}
+
+.help-navigation-button.disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.modal iframe {
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#error-body {
+  padding-bottom: 5px;
+}
+
+#unencrypted-dontwarn-container {
+  margin-top: 5px;
+}
+
+.reconnecting-desktop-grayscale {
+  -webkit-filter: grayscale(0.8)
+}
+
+.composition {
+  font-size: 5em;
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+#input-handler {
+  display: block;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  padding: 10px;
+  margin: 0;
+  background-color: black;
+  color: white;
+  opacity: 0.8;
+  border: 0;
+  -webkit-border-radius: 20px;
+  font-size: 5em;
+  height: 2em;
+}
+
+#input-handler-tester {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: auto;
+  white-space: nowrap;
+}
+
+#clipboard {
+  display: block;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+
+@media only screen and (-webkit-device-pixel-ratio:2) {
+
+  #viewerIcon
+    {
+    background-image: url('../images/logo/logo@2x.png');
+    }
+
+  #toolbar-pin-icon               { background-image: url('../images/toolbar/pin_up@2x.png'); }
+  #toolbar-information-icon       { background-image: url('../images/toolbar/info@2x.png'); }
+  #toolbar-help-icon              { background-image: url('../images/toolbar/about@2x.png'); }
+  #toolbar-keys-icon              { background-image: url('../images/toolbar/keyboard@2x.png'); }
+  #toolbar-fullscreen-icon        { background-image: url('../images/toolbar/fullscreen@2x.png'); }
+  #toolbar-scaling-icon           { background-image: url('../images/toolbar/scaling@2x.png'); }
+  #toolbar-disconnect-icon        { background-image: url('../images/toolbar/disconnect@2x.png'); }
+
+  li:hover > #toolbar-pin-icon          { background-image: url('../images/toolbar/pin_up_hover@2x.png'); }
+  li:hover > #toolbar-information-icon  { background-image: url('../images/toolbar/info_hover@2x.png'); }
+  li:hover > #toolbar-help-icon         { background-image: url('../images/toolbar/about_hover@2x.png'); }
+  li:hover > #toolbar-keys-icon         { background-image: url('../images/toolbar/keyboard_hover@2x.png'); }
+  li:hover > #toolbar-fullscreen-icon   { background-image: url('../images/toolbar/fullscreen_hover@2x.png'); }
+  li:hover > #toolbar-scaling-icon      { background-image: url('../images/toolbar/scaling_hover@2x.png'); }
+  li:hover > #toolbar-disconnect-icon   { background-image: url('../images/toolbar/disconnect_hover@2x.png'); }
+
+  li:active > #toolbar-pin-icon           { background-image: url('../images/toolbar/pin_up@2x.png'); }
+  li:active > #toolbar-new-icon           { background-image: url('../images/toolbar/new@2x.png'); }
+  li:active > #toolbar-information-icon   { background-image: url('../images/toolbar/info@2x.png'); }
+  li:active > #toolbar-help-icon          { background-image: url('../images/toolbar/about@2x.png'); }
+  li:active > #toolbar-keys-icon          { background-image: url('../images/toolbar/keyboard@2x.png'); }
+  li:active > #toolbar-fullscreen-icon    { background-image: url('../images/toolbar/fullscreen@2x.png'); }
+  li:active > #toolbar-scaling-icon       { background-image: url('../images/toolbar/scaling@2x.png'); }
+  li:active > #toolbar-disconnect-icon    { background-image: url('../images/toolbar/disconnect@2x.png'); }
+
+  #toolbar-pin-icon.selected                    { background-image: url('../images/toolbar/pin_down@2x.png'); }
+  li:hover > #toolbar-pin-icon.selected         { background-image: url('../images/toolbar/pin_down_hover@2x.png'); }
+  li:active > #toolbar-pin-icon.selected        { background-image: url('../images/toolbar/pin_down@2x.png'); }
+  #toolbar-fullscreen-icon.selected             { background-image: url('../images/toolbar/fullscreen_active@2x.png'); }
+  li:hover > #toolbar-fullscreen-icon.selected  { background-image: url('../images/toolbar/fullscreen_active_hover@2x.png'); }
+  li:active > #toolbar-fullscreen-icon.selected { background-image: url('../images/toolbar/fullscreen_active@2x.png'); }
+  #toolbar-scaling-icon.selected                { background-image: url('../images/toolbar/scaling_active@2x.png'); }
+  li:hover > #toolbar-scaling-icon.selected     { background-image: url('../images/toolbar/scaling_active_hover@2x.png'); }
+  li:active > #toolbar-scaling-icon.selected    { background-image: url('../images/toolbar/scaling_active@2x.png'); }
+
+}

@@ -1,0 +1,354 @@
+{
+   "already_mounted_message": {
+      "message": "O sistema de arquivos já está ativado."
+   },
+   "backup_prefs": {
+      "message": "Salvar backup"
+   },
+   "bad_destination": {
+      "message": "Não foi possível analisar o destino: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "before_unload": {
+      "message": "Fechar esta guia irá desconectar esta sessão."
+   },
+   "cancel_button_label": {
+      "message": "Cancelar"
+   },
+   "cmd_ssh_forget_host_help": {
+      "message": "Este comando exibe um menu de hosts conhecidos e solicita que o host seja esquecido."
+   },
+   "cmd_ssh_forget_host_title": {
+      "message": "Esquecer um host ssh conhecido."
+   },
+   "cmd_ssh_help": {
+      "message": "Os parâmetros |username| e |hostname| são obrigatórios, |port| é opcional. Se a porta não for especificada, o padrão será 22."
+   },
+   "cmd_ssh_title": {
+      "message": "Abre uma nova sessão SSH."
+   },
+   "command_complete": {
+      "message": "O comando $1 foi fechado com o código de status $2.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "connect_button_label": {
+      "message": "Conectar"
+   },
+   "connect_or_exit_message": {
+      "message": "Escolher outra conexão (C) ou sair (X)?"
+   },
+   "connecting": {
+      "message": "Conectando-se a $1…",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "console_crosh_options_notice": {
+      "message": "Você sabia que há uma página dedicada a opções?\nNão há mais necessidade de lidar diretamente com term_.\nPressione $1 para abri-la ou clique em:\n$2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "console_nassh_options_notice": {
+      "message": "Você sabia que há uma página dedicada a opções?\nNão há mais necessidade de lidar diretamente com term_.\n$1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "del_keycap": {
+      "message": "[DEL]"
+   },
+   "delete_button_label": {
+      "message": "Excluir"
+   },
+   "disconnect_message": {
+      "message": "Plug-in NaCl fechado com o código de status $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "enter_keycap": {
+      "message": "[ENTER]"
+   },
+   "field_argstr_placeholder": {
+      "message": "argumentos de linha de comando extra"
+   },
+   "field_description_aria_label": {
+      "message": "descrição"
+   },
+   "field_description_placeholder": {
+      "message": "nomedeusuário@nomedohost ou texto de forma livre"
+   },
+   "field_hostname_aria_label": {
+      "message": "nome do host"
+   },
+   "field_hostname_placeholder": {
+      "message": "nome do host"
+   },
+   "field_mount_path_placeholder": {
+      "message": "o caminho padrão é o diretório inicial do usuário"
+   },
+   "field_port_aria_label": {
+      "message": "porta"
+   },
+   "field_port_placeholder": {
+      "message": "porta"
+   },
+   "field_relay_options_aria_label": {
+      "message": "opções de relay"
+   },
+   "field_relay_options_placeholder": {
+      "message": "Opções de servidor relay SSH"
+   },
+   "field_terminal_profile_placeholder": {
+      "message": "padrão"
+   },
+   "field_username_aria_label": {
+      "message": "nome de usuário"
+   },
+   "field_username_placeholder": {
+      "message": "nome de usuário"
+   },
+   "found_relay": {
+      "message": "Servidor relay encontrado: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "identity_label": {
+      "message": "Identidade"
+   },
+   "import_link_aria_label": {
+      "message": "importação de arquivos"
+   },
+   "import_link_label": {
+      "message": "Importar..."
+   },
+   "initializing_relay": {
+      "message": "Pesquisando servidor relay usando: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "json_parse_error": {
+      "message": "Não foi possível analisar o JSON em '$1': $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "known_hosts_empty": {
+      "message": "Não há hosts conhecidos, nada a esquecer."
+   },
+   "known_hosts_prompt": {
+      "message": "Selecione um host para esquecer [1-$1]:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "known_hosts_title": {
+      "message": "Hosts conhecidos:"
+   },
+   "loading_label": {
+      "message": "Carregando..."
+   },
+   "missing_param": {
+      "message": "Faltando parâmetro: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "mount_button_label": {
+      "message": "Ativar SFTP"
+   },
+   "mount_path_label": {
+      "message": "Ativar caminho"
+   },
+   "mounted_message": {
+      "message": "Ativado."
+   },
+   "notify_copy": {
+      "message": "Seleção copiada"
+   },
+   "ok_button_label": {
+      "message": "OK"
+   },
+   "omnibox_default": {
+      "message": "\u003Curl>\u003Cmatch>user@hostname[:port]\u003C/match>\u003C/url> Conectar a um perfil salvo ou a um novo sistema ssh"
+   },
+   "open_as_window_tip": {
+      "message": "[Dica] Use \"Abrir como janela\" para impedir que Ctrl + W feche seu terminal.\n[Dica] Consulte $1 para ver mais informações.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "options_button_label": {
+      "message": "Opções"
+   },
+   "plugin_loading": {
+      "message": "Carregando plugin NaCl ..."
+   },
+   "plugin_loading_complete": {
+      "message": " concluído."
+   },
+   "plugin_loading_failed": {
+      "message": " Falhou"
+   },
+   "pref_backup_filename": {
+      "message": "Proteger preferências de Shell Backup.json"
+   },
+   "preferences_header": {
+      "message": "Configurações do perfil"
+   },
+   "preferences_reset": {
+      "message": "Todas as preferências foram redefinidas."
+   },
+   "reconnect_message": {
+      "message": "Reconectar (R), escolher outra conexão (C) ou sair (X)?"
+   },
+   "relay_retry": {
+      "message": "Tentando novamente..."
+   },
+   "restore_prefs": {
+      "message": "Restaurar backup"
+   },
+   "shortcut_list_aria_label": {
+      "message": "conexões salvas"
+   },
+   "ssh_argstr_label": {
+      "message": "Argumentos SSH"
+   },
+   "terminal_preview_label": {
+      "message": "Visualizar"
+   },
+   "terminal_profile_label": {
+      "message": "Perfil atual"
+   },
+   "tip_1": {
+      "message": "Você pode manter a tecla Ctrl (ou command no macOS) pressionada ao clicar nos links para abri-los."
+   },
+   "tip_10": {
+      "message": "Quando executado em uma janela, Ctrl-Shift-N pode abrir outra sessão."
+   },
+   "tip_11": {
+      "message": "Você pode reassociar chaves/atalhos: https://goo.gl/LWRndr"
+   },
+   "tip_2": {
+      "message": "Exibir notificações no navegador usando hterm-notify: https://goo.gl/ZNxGdF"
+   },
+   "tip_3": {
+      "message": "Conectar da omnibox digitando 'ssh \u003Cprofile name>': https://goo.gl/V7o8ki"
+   },
+   "tip_4": {
+      "message": "O Chrome OS pode ativar sistemas de arquivos SFTP e navegar usando o app Arquivos. Use 'Ativar SFTP' em vez de 'Conectar'."
+   },
+   "tip_5": {
+      "message": "Conecte usando links ssh:// em páginas da Web ou salve um favorito: https://goo.gl/zS8EZD"
+   },
+   "tip_6": {
+      "message": "Deixe seu prompt mais colorido usando 16 cores, 256 cores e cores de 24 bits: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html"
+   },
+   "tip_7": {
+      "message": "Copie para a área de transferência de emacs/vim/etc... usando OSC-52: https://goo.gl/XSnyLo"
+   },
+   "tip_8": {
+      "message": "Converse com usuários de hterm/Secure Shell via chromium-hterm@chromium.org: https://goo.gl/RYHiK"
+   },
+   "tip_9": {
+      "message": "Encontrou um bug?  Quer solicitar um novo recurso?  Fale conosco: https://goo.gl/vb94JY"
+   },
+   "unexpected_error": {
+      "message": "Ocorreu um erro inesperado. Verifique o Console JavaScript para saber mais detalhes."
+   },
+   "unmount_button_label": {
+      "message": "Desativar SFTP"
+   },
+   "update_available_tooltip": {
+      "message": "Uma atualização está disponível. Feche todas as janelas."
+   },
+   "welcome_changelog": {
+      "message": "ChangeLog/notas da versão: $1",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_faq": {
+      "message": "Respostas a perguntas frequentes: $1 (pressione Ctrl e clique nos links para abrir)",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_release_highlights": {
+      "message": "Principais alterações desde $1:",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         }
+      }
+   },
+   "welcome_tip_of_day": {
+      "message": "Dica aleatória nº $1: $2",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "welcome_version": {
+      "message": "Bem-vindo à versão $2 de $1.",
+      "placeholders": {
+         "1": {
+            "content": "$1"
+         },
+         "2": {
+            "content": "$2"
+         }
+      }
+   },
+   "zoom_warning": {
+      "message": "Defina o zoom no menu do Google Chrome para 100%"
+   }
+}
