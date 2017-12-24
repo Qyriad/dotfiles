@@ -1,7 +1,0 @@
-{
-	"env" : "production",
-	"server": {
-		"hostUrl": "https://www.rabb.it",
-		"dataHttp": "https://data-http-prod.rabb.it"
-	}
-}

@@ -63,6 +63,11 @@ alias ni="nonet"
 alias info="pinfo"
 alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to preserve env when editing
 
+function vi()
+{
+	echo "Nope."
+}
+
 set -C # Disallow overriting on >, require >| to override that
 
 eval $(thefuck --alias)

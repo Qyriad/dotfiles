@@ -1,1 +1,0 @@
-this.createjs=this.createjs||{},function(){var e=function(){this.initialize()},t=e.prototype;t.initialize=function(){},t.getBounds=function(){return new createjs.Rectangle(0,0,0,0)},t.applyFilter=function(e,t,n,r,i,s,o,u){},t.toString=function(){return"[Filter]"},t.clone=function(){return new e},createjs.Filter=e}();
