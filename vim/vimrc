@@ -1,14 +1,48 @@
 " vim:syntax=vim
+set nocompatible
+
 set undodir=$XDG_CACHE_HOME/vim/undo
 set directory=$XDG_CACHE_HOME/vim/swap
 set backupdir=$XDG_CACHE_HOME/vim/backup
 set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
-set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIMRUNTIME,/usr/share/vim/vimfiles
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,/usr/share/vim/vimfiles,$XDG_CONFIG_HOME/vim/after/
 
 " Put netrwhist in XDG_CACHE_HOME
 let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
-set number
-syntax on
-set modeline
+" Allow cursor to change in tmux
+if exists('$TMUX')
+	    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	else
+	    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+		let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
+syntax on
+filetype plugin indent on
+
+set number
+set modeline
+set undofile
+"set colorcolumn=120
+set showmatch
+set incsearch
+set hlsearch
+set wildmenu " Autocomplete command menu
+"set cursorcolumn
+"set cursorline
+set tabstop=4 " Number of visual spaces to be displayed per \t
+set noexpandtab
+set shiftwidth=0
+set showcmd " Show the last command in the bottom bar
+set lazyredraw " Only redraw when we need to
+set showmatch " Show matching () [] {} 
+set so=12 " Keep 12 lines between the end of the buffer and the cursor
+
+map \ <leader>
+
+" Stop highling last search with \/
+nmap <leader>/ :nohlsearch<CR>
+
+" let g:rust_recommended_style = 0

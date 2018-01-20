@@ -7,7 +7,7 @@
 
 source /usr/share/git/completion/git-completion.bash
 source /usr/share/git/completion/git-prompt.sh
-PS1="\[\e[0;32m\]\u@\h.$(tty | cut -c6-)\[\e[m\] \[\e[0;33m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[1;32m\] \$\[\e[0;37m\] "
+#PS1="\[\e[0;32m\]\u@\h.$(tty | cut -c6-)\[\e[m\] \[\e[0;33m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[1;32m\] \$\[\e[0;37m\] "
 [ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
 export PATH=$PATH:/usr/local/bin:~/.local/bin:~/.local/share/cargo/bin
 
@@ -67,6 +67,7 @@ alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to pr
 # (Any amount of whitespace; 'Command:'; any amount of whitespace) <-- don't match that, just assert it
 # Match any sequence of alphabetical characters given the previous assertion
 alias xlsprograms='xlsclients -l | grep --color=never -oxP "(\s+Command:\s+)\K[a-zA-Z]+"'
+alias lsnoxprograms='ps x | grep -v -e "$(xlsprograms)" -e "X11" -e "xorg" -e "Xorg" -e "startx" -e "xinit"'
 
 function vi()
 {
@@ -81,3 +82,43 @@ function diffcmd()
 {
 	echo Diffing command $1 and $2
 }
+
+function color256()
+{
+	# $1 is string
+	# $2 is the color
+	echo -e "\e[38;5;$2m$1\e[0m"
+}
+
+function switch256
+{
+	# $1 is the color
+	echo -e "\e[38;5;$1m"
+}
+
+function resetcolor
+{
+	echo -e "\e[0m"
+}
+
+PS1="\[\e[0;32m\]\u@\h.$(tty | cut -c6-)\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
+#PS1="$(switch256 93)\u$(resetcolor)@$(switch256 27)\h $(switch256 130)\w \$ $(resetcolor)"
+
+source /etc/profile.d/devkitarm.sh
+source /etc/profile.d/devkitppc.sh
+
+export WUT_ROOT=/usr
+alias cmakewii="cmake -DCMAKE_TOOLCHAIN_FILE=$WUT_ROOT/cmake/wut-toolchain.cmake"
+alias lsync="rsync -av --no-o --no-p --no-g --progress"
+alias funkiiu="FunKiiU"
+alias lsxfilter='grep $(for p in $(xlsprograms); do echo "-e $p"; done)'
+
+if [ -z "$TMUX" ]; then
+	if [ "$(tty)" != "/dev/tty1" ]; then
+		if tmux list-sessions; then
+			tmux attach-session
+		else
+			tmux
+		fi
+	fi
+fi

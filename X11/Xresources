@@ -1,16 +1,17 @@
-URxvt*termName: rxvt-unicode-256color
+!URxvt*termName: rxvt-unicode-256color
 
 ! general
-*.background: #1f1f1f
-*.foreground: #c0b18b
-*.cursorColor: #c0b18b
-*.colorBD: #c0b18b
-*.colorUL: #c0b18b
-*.colorIT: #c0b18b
+!*.background: #1f1f1f
+!URxvt.background: #1f1f1f
+!*.foreground: #c0b18b
+!*.cursorColor: #c0b18b
+!*.colorBD: #c0b18b
+!*.colorUL: #c0b18b
+!*.colorIT: #c0b18b
 
 ! black
-*.color0: #4a3637
-*.color8: #402e2e
+!*.color0: #4a3637
+!*.color8: #402e2e
 
 ! red
 !*.color1:  #d17b49
@@ -20,15 +21,15 @@ URxvt*termName: rxvt-unicode-256color
 
 ! green
 !*.color2:  #7b8748
-*.color10: #647035
+!*.color10: #647035
 
 ! yellow
-*.color3:  #af865a
-*.color11: #8f6840
+!*.color3:  #af865a
+!*.color11: #8f6840
 
 ! blue
-*.color4:  #535c5c
-*.color12: #444b4b
+!*.color4:  #535c5c
+!*.color12: #444b4b
 
 ! magenta
 !*.color5:  #775759

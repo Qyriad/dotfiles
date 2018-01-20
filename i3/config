@@ -10,8 +10,59 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 
+set $left DVI-1
+set $right HDMI-0
 
+# Use 1-10 (super) on right, 11-20 (alt) on left
 
+workspace 1 output $right
+workspace 2 output $right
+workspace 3 output $right
+workspace 4 output $right
+workspace 5 output $right
+workspace 6 output $right
+workspace 7 output $right
+workspace 8 output $right
+workspace 9 output $right
+workspace 10 output $right
+
+workspace 11 output $left
+workspace 12 output $left
+workspace 13 output $left
+workspace 14 output $left
+workspace 15 output $left
+workspace 16 output $left
+workspace 17 output $left
+workspace 18 output $left
+workspace 19 output $left
+workspace 20 output $left
+
+bindsym Mod1+1 workspace 11
+bindsym Mod1+2 workspace 12
+bindsym Mod1+3 workspace 13
+bindsym Mod1+4 workspace 14
+bindsym Mod1+5 workspace 15
+bindsym Mod1+6 workspace 16
+bindsym Mod1+7 workspace 17
+bindsym Mod1+8 workspace 18
+bindsym Mod1+9 workspace 19
+bindsym Mod1+0 workspace 20
+
+bindsym Mod1+Shift+1 move container to workspace 11
+bindsym Mod1+Shift+2 move container to workspace 12
+bindsym Mod1+Shift+3 move container to workspace 13
+bindsym Mod1+Shift+4 move container to workspace 14
+bindsym Mod1+Shift+5 move container to workspace 15
+bindsym Mod1+Shift+6 move container to workspace 16
+bindsym Mod1+Shift+7 move container to workspace 17
+bindsym Mod1+Shift+8 move container to workspace 18
+bindsym Mod1+Shift+9 move container to workspace 19
+bindsym Mod1+Shift+0 move container to workspace 20
+
+bindsym $mod+t exec thunar
+bindsym $mod+Shift+Return exec urxvt -name urxvt-floating
+
+bindsym $mod+Shift+c exec chromium
 
 ### i3-colors
 #name		#top	#border	#text
@@ -21,9 +72,13 @@ client.focused_inactive #402e2e #402e2e #978965 #402e2e
 client.urgent           #402e2e #402e2e #978965 #402e2e
 
 #for_window [class="URxvt"] floating enable; border 1pixel; resize set 700 400; move position center
-for_window [class="urxvt"] border pixel 1
+for_window [class="URxvt"] border pixel 1
 for_window [class="feh"] floating enable
 for_window [class="floating"] floating enable
+for_window [instance="floating"] floating enable
+for_window [instance="urxvt-floating"] floating enable, resize grow right 50, resize grow left 50, resize grow up 50, resize grow down 50
+for_window [class="lxappearance"] floating enable
+for_window [class="Thunar"] floating enable, resize shrink 100
 
 set $mod Mod4
 
@@ -134,7 +189,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
