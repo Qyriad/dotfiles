@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+mouse_warping none
 
 set $left DVI-1
 set $right HDMI-0
@@ -63,6 +64,8 @@ bindsym $mod+t exec thunar
 bindsym $mod+Shift+Return exec urxvt -name urxvt-floating
 
 bindsym $mod+Shift+c exec chromium
+
+bindsym $mod+Shift+s exec maim -sf png | xclip -selection clipboard -t image/png
 
 ### i3-colors
 #name		#top	#border	#text

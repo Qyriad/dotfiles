@@ -28,6 +28,13 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
 alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 
+# Set default compiler stuff
+export CC=clang
+export CXX=clang++
+export CXXFLAGS="$CXXFLAGS -Wall -Wextra -pedantic"
+
+alias rmc="rm -rf CMakeCache.txt CMakeFiles"
+
 # Coreutils and builtins
 alias ls='ls --color=auto -p --group-directories-first'
 alias ll="ls -lh"

@@ -1,3 +1,5 @@
 [user]
 	name = Mikaela RJ Szekely
 	email = qyriad@gmail.com
+[merge]
+	tool = vimdiff2

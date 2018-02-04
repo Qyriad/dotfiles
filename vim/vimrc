@@ -4,7 +4,12 @@ set nocompatible
 set undodir=$XDG_CACHE_HOME/vim/undo
 set directory=$XDG_CACHE_HOME/vim/swap
 set backupdir=$XDG_CACHE_HOME/vim/backup
-set viminfo+='1000,n$XDG_CACHE_HOME/vim/viminfo
+if !has('nvim')
+	set viminfo+='1000,n$XDG_CACHE_HOME/viminfo
+else
+	set viminfo+='1000,n$XDG_CACHE_HOME/nviminfo
+endif
+
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,/usr/share/vim/vimfiles,$XDG_CONFIG_HOME/vim/after/
 
 " Put netrwhist in XDG_CACHE_HOME
@@ -12,11 +17,11 @@ let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
 " Allow cursor to change in tmux
 if exists('$TMUX')
-	    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-	    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-	else
-	    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-		let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 syntax on
@@ -46,3 +51,6 @@ map \ <leader>
 nmap <leader>/ :nohlsearch<CR>
 
 " let g:rust_recommended_style = 0
+
+" Save my pinky
+nnoremap ; :
