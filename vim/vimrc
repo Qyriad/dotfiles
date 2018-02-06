@@ -44,6 +44,7 @@ set showcmd " Show the last command in the bottom bar
 set lazyredraw " Only redraw when we need to
 set showmatch " Show matching () [] {} 
 set so=12 " Keep 12 lines between the end of the buffer and the cursor
+set mouse=n " Enable the mouse in normal mode
 
 map \ <leader>
 

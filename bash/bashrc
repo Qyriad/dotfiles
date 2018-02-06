@@ -31,9 +31,10 @@ alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 # Set default compiler stuff
 export CC=clang
 export CXX=clang++
-export CXXFLAGS="$CXXFLAGS -Wall -Wextra -pedantic"
+export CXXFLAGS="-Wall -Wextra -pedantic -g3 -Og"
 
-alias rmc="rm -rf CMakeCache.txt CMakeFiles"
+alias cmc="rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake"
+alias ec="vim CMakeLists.txt"
 
 # Coreutils and builtins
 alias ls='ls --color=auto -p --group-directories-first'
@@ -69,6 +70,8 @@ alias wgetc="wget --content-disposition" # Uses server filename across redirects
 alias ni="nonet"
 alias info="pinfo"
 alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to preserve env when editing
+
+alias savepng="xclip -f image/png -selection clipboard -o > \"\$(date +\"%Y-%m-%d-%H-%M-%S\").png\""
 
 # Explanation: list x clients; don't match in color; only display the parts that match; use pcre; 
 # (Any amount of whitespace; 'Command:'; any amount of whitespace) <-- don't match that, just assert it

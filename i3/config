@@ -66,6 +66,7 @@ bindsym $mod+Shift+Return exec urxvt -name urxvt-floating
 bindsym $mod+Shift+c exec chromium
 
 bindsym $mod+Shift+s exec maim -sf png | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+Ctrl+s exec sh -c "xclip -f image/png -selection clipboard -o > ~/$(date +\"%Y-%m-%d-%H-%M-%S\").png"
 
 ### i3-colors
 #name		#top	#border	#text
