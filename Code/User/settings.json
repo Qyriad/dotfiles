@@ -5,4 +5,5 @@
     "editor.renderControlCharacters": false,
     "editor.multiCursorModifier": "alt",
     "workbench.iconTheme": "vscode-icons",
+    "explorer.confirmDragAndDrop": false,
 }
