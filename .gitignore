@@ -20,3 +20,16 @@ Google Play Music Desktop Player/File System/*
 chromium
 discord/modules.log
 .netrwhist
+dconf
+ranger/history
+ranger/bookmarks
+*.un~*
+xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+Code/Backups
+enchant
+discord
+Thunar/accels.scm
+Google Play Music Desktop Player
+expressvpn
+gedit
+
