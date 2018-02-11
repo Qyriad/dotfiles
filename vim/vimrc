@@ -1,7 +1,7 @@
-" vim:syntax=vim
+" vim:syntax=vim:textwidth=0
 set nocompatible
 
-set undodir=$XDG_CACHE_HOME/vim/undo
+" Set runtime directories and stuff
 set directory=$XDG_CACHE_HOME/vim/swap
 set backupdir=$XDG_CACHE_HOME/vim/backup
 if !has('nvim')
@@ -15,43 +15,83 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,/usr/share/vim/vimfiles,$XDG_CO
 " Put netrwhist in XDG_CACHE_HOME
 let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
-" Allow cursor to change in tmux
-if exists('$TMUX')
-	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-	let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-	let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
+
+" Vundle stuff
+filetype off
+set rtp+=~/.config/vim/bundle/Vundle.vim
+call vundle#begin('~/.config/vim/plugins')
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'sjl/badwolf' " color scheme
+call vundle#end()
+" /Vundle stuff
 
 syntax on
 filetype plugin indent on
 
-set number
-set modeline
-set undofile
-"set colorcolumn=120
-set showmatch
-set incsearch
-set hlsearch
-set wildmenu " Autocomplete command menu
-"set cursorcolumn
-"set cursorline
+set number " Show line numbers
+set relativenumber " Make line numbers relative (except the current one)
+set modeline " Allow vim meta commands in text files
+set undofile " Persistent undo tree
+set incsearch " Incremental search
+set hlsearch " Highlight all matches of a search not just the current one
 set tabstop=4 " Number of visual spaces to be displayed per \t
-set noexpandtab
-set shiftwidth=0
+set noexpandtab " Don't 'expand' tabs to indents@
+set shiftwidth=0 " Use tabstop value for indenting
 set showcmd " Show the last command in the bottom bar
 set lazyredraw " Only redraw when we need to
-set showmatch " Show matching () [] {} 
 set so=12 " Keep 12 lines between the end of the buffer and the cursor
 set mouse=n " Enable the mouse in normal mode
+set colorcolumn=120
+set wildmenu " Autocomplete command menu
+set cursorcolumn
+set cursorline
+set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
 
-map \ <leader>
+
+fun! Togglenumber() " Toggle relativenumbers for all filetypes except 'help'
+	if &ft=~ 'help'
+		return
+	endif
+	set relativenumber!
+endfun
+
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * call Togglenumber()
+	autocmd BufLeave,FocusLost,InsertEnter * call Togglenumber()
+augroup END
+
+" Make the highlight color for the colorcolumn not obnoxious, but still stand out
+highlight ColorColumn ctermbg=236
+" Make the highlight color for the current column not obnoxious
+highlight CursorColumn ctermbg=235
+" Make the highlight color for the current row not obnoxious and not underlined
+highlight CursorLine ctermbg=235 cterm=NONE
+" Also bold the line number
+highlight CursorLineNr cterm=bold
+
+"map \ <leader> " apparently this does nothing?
 
 " Stop highling last search with \/
 nmap <leader>/ :nohlsearch<CR>
 
-" let g:rust_recommended_style = 0
-
 " Save my pinky
 nnoremap ; :
+
+" New verb! X: delete to black hole (null) registry
+nmap X "_d
+nmap XX "_dd
+
+" Have the indent commands re-highlight the last visual selection
+vnoremap > >gv
+vnoremap < <gv
+
+
+" Allow cursor change in tmux
+if exists('$TMUX')
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+	let &t_SI = "\e[5 q"
+	let &t_EI = "\e[2 q"
+endif
