@@ -3,3 +3,5 @@
 	email = qyriad@gmail.com
 [merge]
 	tool = vimdiff2
+[alias]
+	sub = submodule
