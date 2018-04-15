@@ -24,7 +24,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
-export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
+export VIMINIT=':let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 
 # Set default compiler stuff

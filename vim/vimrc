@@ -16,6 +16,14 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,/usr/share/vim/vimfiles,$XDG_CO
 " Put netrwhist in XDG_CACHE_HOME
 let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
+" Allow cursor change in tmux
+if exists('$TMUX')
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+	let &t_SI = "\e[5 q"
+	let &t_EI = "\e[2 q"
+endif
 
 " Vundle stuff
 filetype off
@@ -23,7 +31,6 @@ set rtp+=~/.config/vim/bundle/Vundle.vim
 call vundle#begin('~/.config/vim/plugins')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
-"Plugin 'sjl/badwolf' " color scheme
 Plugin 'chrisbra/colorizer'
 Plugin 'Alvarocz/vim-fresh'
 call vundle#end()
@@ -38,7 +45,7 @@ set modeline " Allow vim meta commands in text files
 set undofile " Persistent undo tree
 set incsearch " Incremental search
 set hlsearch " Highlight all matches of a search not just the current one
-set tabstop=4 " Number of visual spaces to be displayed per \t
+set tabstop=4 " Number of visual spaces to be displayed per HT
 set noexpandtab " Don't 'expand' tabs to indents@
 set shiftwidth=0 " Use tabstop value for indenting
 set showcmd " Show the last command in the bottom bar
@@ -51,7 +58,7 @@ set cursorcolumn
 set cursorline
 set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
 
-fun! Togglenumber() " Toggle relativenumbers for all filetypes except 'help'
+function! Togglenumber() " Toggle relativenumbers for all filetypes except 'help'
 	if &ft=~ 'help'
 		return
 	endif
@@ -75,10 +82,14 @@ highlight CursorLine ctermbg=235 cterm=NONE
 " Also bold the line number
 highlight CursorLineNr cterm=bold
 
-"map \ <leader> " apparently this does nothing?
+let mapleader="\\"
 
 " Stop highling last search with \/
-nmap <leader>/ :nohlsearch<CR>
+nnoremap <leader>/ :nohlsearch<CR>
+
+" Edit and source vimrc shortcus
+nnoremap <leader>ev :tabedit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Save my pinky
 nnoremap ; :
@@ -99,23 +110,14 @@ nnoremap gp `[v`]
 " Unmap Q
 nnoremap Q <nop>
 
-" Allow cursor change in tmux
-if exists('$TMUX')
-	let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-	let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
-else
-	let &t_SI = "\e[5 q"
-	let &t_EI = "\e[2 q"
-endif
-
 let g:python_recommended_style=0
-
 
 set laststatus=2 " Always show statusline
 " left_sep: 
 " right_sep: 
 " lock: 
-let g:lightline = {
+let g:lightline =
+\{
 	\	'active': { 'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']] },
-	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" }
-	\	}
+	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+\}
