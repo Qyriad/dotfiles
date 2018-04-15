@@ -67,6 +67,8 @@ bindsym $mod+Shift+c exec chromium
 
 bindsym $mod+Shift+s exec maim -sf png | xclip -selection clipboard -t image/png
 bindsym $mod+Shift+Ctrl+s exec sh -c "xclip -f image/png -selection clipboard -o > ~/$(date +\"%Y-%m-%d-%H-%M-%S\").png"
+bindsym $mod+Ctrl+Break exec systemctl suspend
+bindsym $mod+Ctrl+m exec '/home/qyriad/code/scripts/maintenance_menu.sh'
 
 ### i3-colors
 #name		#top	#border	#text
@@ -106,7 +108,7 @@ floating_modifier $mod
 #floating_maximum_size 700 x 700
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
