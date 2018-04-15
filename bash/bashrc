@@ -115,8 +115,8 @@ else
 	PS1="\[\e[0;32m\]\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
 fi
 
-[-r /etc/profile.d/devkitarm.sh ] && source /etc/profile.d/devkitarm.sh
-[-r /etc/profile.d/devkitppc.sh ] && source /etc/profile.d/devkitppc.sh
+[ -r /etc/profile.d/devkitarm.sh ] && source /etc/profile.d/devkitarm.sh
+[ -r /etc/profile.d/devkitppc.sh ] && source /etc/profile.d/devkitppc.sh
 
 export WUT_ROOT=/usr
 alias cmakewii="cmake -DCMAKE_TOOLCHAIN_FILE=$WUT_ROOT/cmake/wut-toolchain.cmake"
