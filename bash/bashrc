@@ -118,7 +118,26 @@ function resetcolor
 	echo -e "\e[0m"
 }
 
-PS1="\[\e[0;32m\]\u@\h.$(tty | cut -c6-)\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
+ttystr="$(tty | sed -E 's|/dev/pts..?||' | cut -c6-)"
+if [ -n "$ttystr" ]; then
+	tty=".$ttystr"
+else
+	tty=""
+fi
+
+if [ "$(tput colors)" -lt 256 ]; then
+	SUDO_COLOR="\[\e[0;36m\]"
+else
+	SUDO_COLOR="\[\e[38;5;39m\]"
+fi
+
+if [[ $SUDO_USER ]]; then
+	PS1="$SUDO_COLOR\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
+elif [ "$EUID" = 0 ]; then
+	PS1="\[\e[0;31m\]\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
+else
+	PS1="\[\e[0;32m\]\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
+fi
 #PS1="$(switch256 93)\u$(resetcolor)@$(switch256 27)\h $(switch256 130)\w \$ $(resetcolor)"
 
 source /etc/profile.d/devkitarm.sh
