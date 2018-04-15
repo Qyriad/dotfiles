@@ -149,12 +149,30 @@ alias lsync="rsync -av --no-o --no-p --no-g --progress"
 alias funkiiu="FunKiiU"
 alias lsxfilter='grep $(for p in $(xlsprograms); do echo "-e $p"; done)'
 
-if [ -z "$TMUX" ]; then
-	if [ "$(tty)" != "/dev/tty1" ]; then
-		if tmux list-sessions; then
-			tmux attach-session
-		else
-			tmux
+# Tab completion stuff
+bind 'TAB:menu-complete'
+bind 'set show-all-if-ambiguous on'
+bind 'set menu-complete-display-prefix on'
+
+if [ "$EUID" = 0 ]; then
+	return
+fi
+
+if [ -n "$thunar" ]; then
+	unset thunar
+	tmux new-window
+	tmux attach-session
+	return
+fi
+
+if [ -z "$TMUX" ]; then # if we're not already in a tmux session
+	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
+		if [ -z "$SSH_CONNECTION" ]; then # and we're not SSH'd
+			if tmux list-sessions; then # if there's a session, attach
+				tmux attach-session -d
+			else
+				tmux # otherwise, create one
+			fi
 		fi
 	fi
 fi
