@@ -23,6 +23,9 @@ set rtp+=~/.config/vim/bundle/Vundle.vim
 call vundle#begin('~/.config/vim/plugins')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
+"Plugin 'sjl/badwolf' " color scheme
+Plugin 'chrisbra/colorizer'
+Plugin 'Alvarocz/vim-fresh'
 call vundle#end()
 " /Vundle stuff
 
@@ -40,14 +43,13 @@ set noexpandtab " Don't 'expand' tabs to indents@
 set shiftwidth=0 " Use tabstop value for indenting
 set showcmd " Show the last command in the bottom bar
 set lazyredraw " Only redraw when we need to
-set so=12 " Keep 12 lines between the end of the buffer and the cursor
+set scrolloff=12 " Keep 12 lines between the end of the buffer and the cursor
 set mouse=n " Enable the mouse in normal mode
 set colorcolumn=120
 set wildmenu " Autocomplete command menu
 set cursorcolumn
 set cursorline
 set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
-
 
 fun! Togglenumber() " Toggle relativenumbers for all filetypes except 'help'
 	if &ft=~ 'help'
@@ -61,6 +63,8 @@ augroup numbertoggle
 	autocmd BufEnter,FocusGained,InsertLeave * call Togglenumber()
 	autocmd BufLeave,FocusLost,InsertEnter * call Togglenumber()
 augroup END
+
+nnoremap <F3> :set number! relativenumber!<CR>
 
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236
@@ -87,6 +91,13 @@ nmap XX "_dd
 vnoremap > >gv
 vnoremap < <gv
 
+nnoremap <F1> :vertical help<CR><C-w>x
+
+" gp: select pasted text
+nnoremap gp `[v`]
+
+" Unmap Q
+nnoremap Q <nop>
 
 " Allow cursor change in tmux
 if exists('$TMUX')
@@ -96,6 +107,9 @@ else
 	let &t_SI = "\e[5 q"
 	let &t_EI = "\e[2 q"
 endif
+
+let g:python_recommended_style=0
+
 
 set laststatus=2 " Always show statusline
 " left_sep: 
