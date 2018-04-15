@@ -4,6 +4,7 @@ set nocompatible
 " Set runtime directories and stuff
 set directory=$XDG_CACHE_HOME/vim/swap
 set backupdir=$XDG_CACHE_HOME/vim/backup
+set undodir=$XDG_CACHE_HOME/vim/undo
 if !has('nvim')
 	set viminfo+='1000,n$XDG_CACHE_HOME/viminfo
 else
