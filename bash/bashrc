@@ -1,4 +1,4 @@
-#
+#}
 # ~/.bashrc
 #
 
@@ -31,13 +31,15 @@ alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 # Set default compiler stuff
 export CC=clang
 export CXX=clang++
+export CFLAGS="-Wall -Wextra -pedantic -g3 -Og"
 export CXXFLAGS="-Wall -Wextra -pedantic -g3 -Og"
 
 alias cmc="rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake"
 alias ec="vim CMakeLists.txt"
 
 # Coreutils and builtins
-alias ls='ls --color=auto -p --group-directories-first'
+#alias ls='ls --color=auto -p --group-directories-first'
+alias ls='exa'
 alias ll="ls -lh"
 alias la="ls -Al"
 alias cp="cp -vi"
@@ -64,12 +66,17 @@ alias ex="vim ~/.xinitrc"
 alias exr="vim ~/.config/X11/Xresources"
 alias ei="vim ~/.config/i3/config"
 alias sb="source ~/.bashrc"
+alias er="vim ~/.config/ranger/rc.conf"
+alias ea='vim ~/.config/alacritty/alacritty.yml'
 
 # Misc
 alias wgetc="wget --content-disposition" # Uses server filename across redirects
 alias ni="nonet"
 alias info="pinfo"
 alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to preserve env when editing
+alias sudo="sudo -E" # screw it
+alias sudos="sudo -Es"
+alias gpc='gpaste-client'
 
 alias savepng="xclip -f image/png -selection clipboard -o > \"\$(date +\"%Y-%m-%d-%H-%M-%S\").png\""
 
@@ -86,7 +93,7 @@ function vi()
 
 set -C # Disallow overriting on >, require >| to override that
 
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 function diffcmd()
 {
