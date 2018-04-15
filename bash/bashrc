@@ -140,8 +140,8 @@ else
 fi
 #PS1="$(switch256 93)\u$(resetcolor)@$(switch256 27)\h $(switch256 130)\w \$ $(resetcolor)"
 
-source /etc/profile.d/devkitarm.sh
-source /etc/profile.d/devkitppc.sh
+[-r /etc/profile.d/devkitarm.sh ] && source /etc/profile.d/devkitarm.sh
+[-r /etc/profile.d/devkitppc.sh ] && source /etc/profile.d/devkitppc.sh
 
 export WUT_ROOT=/usr
 alias cmakewii="cmake -DCMAKE_TOOLCHAIN_FILE=$WUT_ROOT/cmake/wut-toolchain.cmake"
