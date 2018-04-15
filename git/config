@@ -5,3 +5,6 @@
 	tool = vimdiff2
 [alias]
 	sub = submodule
+	l = log --abbrev-commit --decorate -n 8 --graph
+	s = status
+	curbr = rev-parse --abbrev-ref HEAD
