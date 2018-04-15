@@ -22,7 +22,7 @@ filetype off
 set rtp+=~/.config/vim/bundle/Vundle.vim
 call vundle#begin('~/.config/vim/plugins')
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'sjl/badwolf' " color scheme
+Plugin 'itchyny/lightline.vim'
 call vundle#end()
 " /Vundle stuff
 
@@ -96,3 +96,12 @@ else
 	let &t_SI = "\e[5 q"
 	let &t_EI = "\e[2 q"
 endif
+
+set laststatus=2 " Always show statusline
+" left_sep: 
+" right_sep: 
+" lock: 
+let g:lightline = {
+	\	'active': { 'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']] },
+	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" }
+	\	}
