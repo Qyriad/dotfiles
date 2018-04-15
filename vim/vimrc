@@ -95,8 +95,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap ; :
 
 " New verb! X: delete to black hole (null) registry
-nmap X "_d
-nmap XX "_dd
+nnoremap X "_d
+nnoremap XX "_dd
 
 " Have the indent commands re-highlight the last visual selection
 vnoremap > >gv
