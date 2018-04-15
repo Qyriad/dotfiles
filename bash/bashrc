@@ -5,9 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source /usr/share/git/completion/git-completion.bash
-source /usr/share/git/completion/git-prompt.sh
-[ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
 export PATH=$PATH:/usr/local/bin:~/.local/bin:~/.local/share/cargo/bin
 
 # Use vim for everything
@@ -76,6 +73,12 @@ alias sudo="sudo -E" # screw it
 alias sudos="sudo -Es"
 alias gpc='gpaste-client'
 
+[ -r /usr/share/git/completion/git-completion.bash ] && source /usr/share/git/completion/git-completion.bash
+[ -r /usr/share/git/completion/git-prompt.sh ] && source /usr/share/git/completion/git-prompt.sh
+[ -r /etc/profile.d/cnf.sh ] && source /etc/profile.d/cnf.sh
+[ -r /etc/profile.d/devkitarm.sh ] && source /etc/profile.d/devkitarm.sh
+[ -r /etc/profile.d/devkitppc.sh ] && source /etc/profile.d/devkitppc.sh
+
 alias savepng="xclip -f image/png -selection clipboard -o > \"\$(date +\"%Y-%m-%d-%H-%M-%S\").png\""
 
 # Explanation: list x clients; don't match in color; only display the parts that match; use pcre; 
@@ -114,9 +117,6 @@ elif [ "$EUID" = 0 ]; then
 else
 	PS1="\[\e[0;32m\]\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
 fi
-
-[ -r /etc/profile.d/devkitarm.sh ] && source /etc/profile.d/devkitarm.sh
-[ -r /etc/profile.d/devkitppc.sh ] && source /etc/profile.d/devkitppc.sh
 
 export WUT_ROOT=/usr
 alias cmakewii="cmake -DCMAKE_TOOLCHAIN_FILE=$WUT_ROOT/cmake/wut-toolchain.cmake"
