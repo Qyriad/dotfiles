@@ -85,7 +85,7 @@ highlight CursorLineNr cterm=bold
 let mapleader="\\"
 
 " Stop highling last search with \/
-nnoremap <leader>/ :nohlsearch<CR>
+nnoremap <leader>/ :nohlsearch<CR> | let @/=""
 
 " Edit and source vimrc shortcus
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
