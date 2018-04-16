@@ -27,7 +27,7 @@ endif
 
 " Vundle stuff
 filetype off
-set rtp+=~/.config/vim/bundle/Vundle.vim
+set runtimepath+=~/.config/vim/bundle/Vundle.vim
 call vundle#begin('~/.config/vim/plugins')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
@@ -52,10 +52,10 @@ set showcmd " Show the last command in the bottom bar
 set lazyredraw " Only redraw when we need to
 set scrolloff=12 " Keep 12 lines between the end of the buffer and the cursor
 set mouse=n " Enable the mouse in normal mode
-set colorcolumn=120
+set colorcolumn=120 " It's typically good to keep lines of code under 120 characters
 set wildmenu " Autocomplete command menu
-set cursorcolumn
-set cursorline
+set cursorcolumn " Highlight the column the cursor is on
+set cursorline " Highlight the line the cursor is on
 set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
 
 function! Togglenumber() " Toggle relativenumbers for all filetypes except 'help'
@@ -94,7 +94,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Save my pinky
 nnoremap ; :
 
-" New verb! X: delete to black hole (null) registry
+" New verb! X: delete to black hole (null) register
 nnoremap X "_d
 nnoremap XX "_dd
 
@@ -110,6 +110,7 @@ nnoremap gp `[v`]
 " Unmap Q
 nnoremap Q <nop>
 
+" Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
 
 set laststatus=2 " Always show statusline
