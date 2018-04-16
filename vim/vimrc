@@ -78,10 +78,10 @@ nnoremap <F3> :set number! relativenumber!<CR>
 
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236
-" Make the highlight color for the current column not obnoxious
-highlight CursorColumn ctermbg=235
+" Make the highlight color for the current column not obnoxious, and stand out a bit less than above
+highlight CursorColumn ctermbg=233
 " Make the highlight color for the current row not obnoxious and not underlined
-highlight CursorLine ctermbg=235 cterm=NONE
+highlight CursorLine ctermbg=233 cterm=NONE
 " Also bold the line number
 highlight CursorLineNr cterm=bold
 
