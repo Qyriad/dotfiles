@@ -61,6 +61,12 @@ set noshowmode " We're using Airline, so showing mode like this is redundant
 set splitright " Make :vsplit put the new window on the right, not the left
 set splitbelow " Same as above, but on the bottom with horizontal splits
 
+" Only highlight the cursor postiion in the current window
+augroup cursorpos_currentwin
+	autocmd! WinLeave * set nocursorline nocursorcolumn
+	autocmd! WinEnter * set cursorline cursorcolumn
+augroup END
+
 function! Togglenumber() " Toggle relativenumbers for all filetypes except 'help'
 	if &ft=~ 'help'
 		return
