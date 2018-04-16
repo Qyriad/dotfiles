@@ -82,6 +82,10 @@ augroup END
 
 nnoremap <F3> :set number! relativenumber!<CR>
 
+augroup gitrebase
+	autocmd! FileType gitrebase echomsg "Git Rebase filetype"
+augroup END
+
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236
 " Make the highlight color for the current column not obnoxious, and stand out a bit less than above
