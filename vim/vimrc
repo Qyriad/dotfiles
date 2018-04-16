@@ -57,6 +57,7 @@ set wildmenu " Autocomplete command menu
 set cursorcolumn " Highlight the column the cursor is on
 set cursorline " Highlight the line the cursor is on
 set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
+set noshowmode " We're using Airline, so showing mode like this is redundant
 set splitright " Make :vsplit put the new window on the right, not the left
 set splitbelow " Same as above, but on the bottom with horizontal splits
 
