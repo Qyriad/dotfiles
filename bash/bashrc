@@ -132,21 +132,12 @@ if [ "$EUID" = 0 ]; then
 	return
 fi
 
-if [ -n "$thunar" ]; then
-	unset thunar
-	tmux new-window
-	tmux attach-session
-	return
-fi
-
 if [ -z "$TMUX" ]; then # if we're not already in a tmux session
 	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
-		if [ -z "$SSH_CONNECTION" ]; then # and we're not SSH'd
-			if tmux list-sessions; then # if there's a session, attach
-				tmux attach-session -d
-			else
-				tmux # otherwise, create one
-			fi
+		if tmux list-sessions; then # if there's a session, attach
+			tmux attach-session -d
+		else
+			tmux # otherwise, create one
 		fi
 	fi
 fi
