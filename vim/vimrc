@@ -82,6 +82,10 @@ augroup END
 
 nnoremap <F3> :set number! relativenumber!<CR>
 
+augroup gitrebase
+	autocmd! FileType gitrebase echomsg "Git Rebase filetype"
+augroup END
+
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236
 " Make the highlight color for the current column not obnoxious, and stand out a bit less than above
@@ -123,7 +127,11 @@ nnoremap Q <nop>
 " Explanation: Go to the beginning of the line, delete it, insert the result of:
 " 	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
 " 	mode
-nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . strpart(@", 0, strlen(@")), "")<CR><Esc>
+nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . @", "")<CR><Esc>
+
+" Yank from default register to gpaste clipboard
+" Explantion: Run system command: `gpaste-client add`, send the @" register to stdin minus the last character
+nnoremap <leader>Y :call system("gpaste-client add", strpart(@", 0, strlen(@") - 1))<CR>
 
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
