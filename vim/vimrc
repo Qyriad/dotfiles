@@ -123,6 +123,12 @@ nnoremap gp `[v`]
 " Unmap Q
 nnoremap Q <nop>
 
+" I am fucking proud of this
+" Explanation: Go to the beginning of the line, delete it, insert the result of:
+" 	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
+" 	mode
+nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . strpart(@", 0, strlen(@")), "")<CR><Esc>
+
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
 
