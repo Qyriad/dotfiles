@@ -123,6 +123,13 @@ nnoremap gp `[v`]
 " Unmap Q
 nnoremap Q <nop>
 
+" Add newlines above and below without entering insert mode or moving the cursor
+nnoremap <leader>o mso<Esc>`s
+nnoremap <leader>O msO<Esc>`s
+
+" Add newline at current position without entering insert mode or moving the cursor
+nnoremap <leader><CR> msi<CR><Esc>`s
+
 " I am fucking proud of this
 " Explanation: Go to the beginning of the line, delete it, insert the result of:
 " 	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
