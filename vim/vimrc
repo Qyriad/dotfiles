@@ -129,6 +129,10 @@ nnoremap Q <nop>
 " 	mode
 nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . @", "")<CR><Esc>
 
+" Yank from default register to gpaste clipboard
+" Explantion: Run system command: `gpaste-client add`, send the @" register to stdin minus the last character
+nnoremap <leader>Y :call system("gpaste-client add", strpart(@", 0, strlen(@") - 1))<CR>
+
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
 
