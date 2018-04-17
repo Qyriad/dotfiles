@@ -46,7 +46,7 @@ set undofile " Persistent undo tree
 set incsearch " Incremental search
 set hlsearch " Highlight all matches of a search not just the current one
 set tabstop=4 " Number of visual spaces to be displayed per HT
-set noexpandtab " Don't 'expand' tabs to indents@
+set noexpandtab " Don't 'expand' tabs to spaces
 set shiftwidth=0 " Use tabstop value for indenting
 set showcmd " Show the last command in the bottom bar
 set lazyredraw " Only redraw when we need to
