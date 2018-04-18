@@ -33,6 +33,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'chrisbra/colorizer'
 Plugin 'Alvarocz/vim-fresh'
+Plugin 'skywind3000/quickmenu.vim'
 call vundle#end()
 " /Vundle stuff
 
@@ -82,8 +83,42 @@ augroup END
 
 nnoremap <F3> :set number! relativenumber!<CR>
 
+function! Gitrebase_menu()
+	let g:quickmenu_options = "LHT"
+	let g:quickmenu_padding_right = 15
+	let g:quickmenu_max_width = 200
+	call g:quickmenu#current(0)
+	call g:quickmenu#reset()
+	call g:quickmenu#header("Git Rebase")
+	call g:quickmenu#append('Pick', 'normal ^cwpick', 'use commit')
+	call g:quickmenu#append('Reword', 'normal ^cwreword', 'use commit but edit the commit message')
+	call g:quickmenu#append('Edit', 'normal ^cwedit', 'use commit, but stop for amending')
+	call g:quickmenu#append('Squash', 'normal ^cwsquash', 'use commit, but meld into previous commit')
+	call g:quickmenu#append('Fixup', 'normal ^cwfixup', 'like "squash", but discard this commit''s log message')
+	call g:quickmenu#append('eXec', 'normal ^cwexec', 'run command (the rest of the line) using shell')
+	call g:quickmenu#append('Drop', 'normal ^cwdrop', 'remove commit')
+	call g:quickmenu#toggle(0)
+endfunction
+
+nnoremap <leader>gr :call Gitrebase_menu()<CR>
+
+function! Gitrebase_quickmenu_mappings()
+	" We actually specifically *want* recursive mappings here
+	nmap <buffer> p 1
+	nmap <buffer> r 2
+	nmap <buffer> e 3
+	nmap <buffer> s 4
+	nmap <buffer> f 5
+	nmap <buffer> x 6
+	nmap <buffer> d 7
+endfunction
+
+augroup gitrebase_quickmenu
+	autocmd! FileType quickmenu call Gitrebase_quickmenu_mappings()
+augroup END
+
 augroup gitrebase
-	autocmd! FileType gitrebase echomsg "Git Rebase filetype"
+	autocmd! FileType gitrebase nmap <buffer> <Tab> :call Gitrebase_menu()<CR>
 augroup END
 
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
@@ -103,6 +138,10 @@ nnoremap <leader>/ :nohlsearch<CR> | let @/=""
 " Edit and source vimrc shortcus
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" PluginInstall and PluginClean shortcuts
+nnoremap <leader>pi :source $MYVIMRC<CR>:PluginInstall<CR>
+nnoremap <leader>pc :source $MYVIMRC<CR>:PluginClean<CR>
 
 " Save my pinky
 nnoremap ; :
