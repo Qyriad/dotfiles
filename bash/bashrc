@@ -72,6 +72,7 @@ alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to pr
 alias sudo="sudo -E" # screw it
 alias sudos="sudo -Es"
 alias gpc='gpaste-client'
+alias cdconf='cd ~/.config'
 
 [ -r /usr/share/git/completion/git-completion.bash ] && source /usr/share/git/completion/git-completion.bash
 [ -r /usr/share/git/completion/git-prompt.sh ] && source /usr/share/git/completion/git-prompt.sh
