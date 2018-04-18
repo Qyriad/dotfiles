@@ -104,6 +104,10 @@ nnoremap <leader>/ :nohlsearch<CR> | let @/=""
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+" PluginInstall and PluginClean shortcuts
+nnoremap <leader>pi :source $MYVIMRC<CR>:PluginInstall<CR>
+nnoremap <leader>pc :source $MYVIMRC<CR>:PluginClean<CR>
+
 " Save my pinky
 nnoremap ; :
 
