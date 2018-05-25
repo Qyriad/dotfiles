@@ -34,6 +34,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'chrisbra/colorizer'
 Plugin 'Alvarocz/vim-fresh'
 Plugin 'skywind3000/quickmenu.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'urbainvaes/vim-remembrall'
 call vundle#end()
 " /Vundle stuff
 
@@ -41,7 +43,7 @@ syntax on
 filetype plugin indent on
 
 set number " Show line numbers
-set relativenumber " Make line numbers relative (except the current one)
+set norelativenumber " Make line numbers relative (except the current one)
 set modeline " Allow vim meta commands in text files
 set undofile " Persistent undo tree
 set incsearch " Incremental search
@@ -61,6 +63,7 @@ set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
 set noshowmode " We're using Airline, so showing mode like this is redundant
 set splitright " Make :vsplit put the new window on the right, not the left
 set splitbelow " Same as above, but on the bottom with horizontal splits
+set foldlevel=1 " Usually, collapse to function definitions in classes, not the classes themselves
 
 " Only highlight the cursor postiion in the current window
 augroup cursorpos_currentwin
@@ -80,6 +83,8 @@ augroup numbertoggle
 	autocmd BufEnter,FocusGained,InsertLeave * call Togglenumber()
 	autocmd BufLeave,FocusLost,InsertEnter * call Togglenumber()
 augroup END
+
+set norelativenumber
 
 nnoremap <F3> :set number! relativenumber!<CR>
 
@@ -121,14 +126,57 @@ augroup gitrebase
 	autocmd! FileType gitrebase nmap <buffer> <Tab> :call Gitrebase_menu()<CR>
 augroup END
 
+augroup check_on_insert
+	" CursorHold
+	autocmd! InsertEnter,CursorHold,InsertChange,InsertLeave,InsertCharPre echom "Hello"
+augroup END
+
+function! SyntaxItem()
+	let synid = synID(line("."), col("."), 1)
+	let trans = synIDtrans(synid)
+	return synIDattr(synid, "name") . " | " . synIDattr(trans, "name") . " | " . synIDattr(trans, "fg")
+endfunction
+
+function! SyntaxColor()
+	highlight SyntaxItem()
+endfunction
+
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
-highlight ColorColumn ctermbg=236
+highlight ColorColumn ctermbg=236 guibg=#303030
 " Make the highlight color for the current column not obnoxious, and stand out a bit less than above
-highlight CursorColumn ctermbg=234
+highlight CursorColumn ctermbg=234 guibg=#1c1c1c
 " Make the highlight color for the current row not obnoxious and not underlined
-highlight CursorLine ctermbg=234 cterm=NONE
+highlight CursorLine ctermbg=234 cterm=NONE guibg=#1c1c1c
 " Also bold the line number
 highlight CursorLineNr cterm=bold
+" Make the folded text color not suck
+highlight Folded ctermbg=17
+
+"highlight DiffAdd ctermbg=18 cterm=bold
+
+" Enable true colors
+execute "set t_8f=\e[38;2;%lu;%lu;%lum"
+execute "set t_8b=\e[48;2;%lu;%lu;%lum"
+set termguicolors
+" Reset to term colors
+highlight Statement guifg=#af5f00
+highlight Comment guifg=#0aa6da
+highlight PreProc guifg=#c397d8
+highlight Identifier guifg=#70c0ba
+highlight Constant guifg=#cf0002
+highlight Type guifg=#00cc00
+highlight Special guifg=#c397d8
+highlight! link LineNr Statement
+highlight CursorLineNr gui=bold guifg=#af5f00
+
+" Diff colors that don't suck
+highlight DiffAdd guibg=#002d77
+highlight DiffText gui=bold guibg=#056d05
+highlight DiffChange guifg=#243024
+highlight DiffDelete guibg=#8e0000 guifg=#c6a5a5
+
+" Good purple 53
+nnoremap <leader>ct :source $VIMRUNTIME/syntax/hitest.vim
 
 let mapleader="\\"
 
@@ -188,6 +236,10 @@ set laststatus=2 " Always show statusline
 " lock: 
 let g:lightline =
 \{
-	\	'active': { 'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']] },
+	\	'active': { 
+	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+	\		'right': [[], ['lineinfo', 'percent', 'fileencoding', 'fileformat'], ['syncolor', 'syn']]
+	\	},
 	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+	\	'component_function': { 'syn': 'SyntaxItem' }
 \}
