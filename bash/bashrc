@@ -69,10 +69,34 @@ alias wgetc="wget --content-disposition" # Uses server filename across redirects
 alias ni="nonet"
 alias info="pinfo"
 alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to preserve env when editing
-alias sudo="sudo -E" # screw it
+#alias sudo="sudo -E" # screw it
 alias sudos="sudo -Es"
 alias gpc='gpaste-client'
 alias cdconf='cd ~/.config'
+alias xdgo='xdg-open'
+alias ffprobe="ffprobe -hide_banner"
+alias ffmpeg='ffmpeg -hide_banner'
+alias prp='realpath .' # "Print real path"
+alias tn="tr -d '\n'" # Strip newlines, meant to be used when copying one line of command output to clipboard
+
+# Directory shortucts
+export lorddir="/media/qyriad/lord"
+export gamesdir="$lorddir/Games"
+
+
+function show()
+{
+	grep -E --color=always "$1|"
+}
+
+function source_if()
+{
+	[ -r "$1" ] && source "$1"
+}
+
+source_if /usr/share/doc/ranger/examples/bash_automatic_cd.sh
+
+alias ranger='ranger-cd'
 
 [ -r /usr/share/git/completion/git-completion.bash ] && source /usr/share/git/completion/git-completion.bash
 [ -r /usr/share/git/completion/git-prompt.sh ] && source /usr/share/git/completion/git-prompt.sh
@@ -128,6 +152,12 @@ alias funkiiu="FunKiiU"
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 bind 'set menu-complete-display-prefix on'
+bind 'set completion-ignore-case on'
+
+function git_commit()
+{
+	tmux split-window -v && tmux send-keys "git" Space "commit && exit"
+}
 
 if [ "$EUID" = 0 ]; then
 	return
@@ -142,12 +172,10 @@ fi
 
 if [ -z "$TMUX" ]; then # if we're not already in a tmux session
 	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
-		if [ -z "$SSH_CONNECTION" ]; then # and we're not SSH'd
-			if tmux list-sessions; then # if there's a session, attach
-				tmux attach-session -d
-			else
-				tmux # otherwise, create one
-			fi
+		if tmux list-sessions; then # if there's a session, attach
+			tmux attach-session -d
+		else
+			tmux # otherwise, create one
 		fi
 	fi
 fi
