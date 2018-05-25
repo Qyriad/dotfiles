@@ -53,5 +53,6 @@ autostart
 QtProject.conf
 Thunar/uca.xml
 configstore
+pulse
 Trolltech.conf
-menus/applications-merged/user-chrome-apps.menu
+menus/

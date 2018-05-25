@@ -1,29 +1,5 @@
 {
-    "editor.minimap.enabled": false,
-    "window.zoomLevel": 0,
-    "problems.decorations.enabled": true,
-    "editor.renderControlCharacters": false,
-    "editor.multiCursorModifier": "alt",
-    "workbench.iconTheme": "vscode-icons",
-    "explorer.confirmDragAndDrop": false,
-    "gitlens.gitExplorer.files.compact": false,
-    "gitlens.codeLens.scopes": [
-        "document",
-        "containers",
-        "blocks"
-    ],
-    "markdownlint.config": {
-        "MD013": false,
-        "MD033": false
-    },
     "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
     }
 }
