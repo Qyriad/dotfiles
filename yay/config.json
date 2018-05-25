@@ -1,0 +1,17 @@
+{
+	"buildDir": "/tmp/yay/",
+	"editor": "vim",
+	"makepkgbin": "makepkg",
+	"pacmanbin": "pacman",
+	"pacmanconf": "/etc/pacman.conf",
+	"tarbin": "bsdtar",
+	"redownload": "no",
+	"gitbin": "git",
+	"mflags": "",
+	"requestsplitn": 150,
+	"sortmode": 1,
+	"sudoloop": false,
+	"timeupdate": false,
+	"devel": false,
+	"cleanAfter": true
+}

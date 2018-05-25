@@ -1,0 +1,19 @@
+{
+ "env": {
+  "DYNAMIC_CWD_ELISION_CHAR": "...",
+  "LANG": "en_US.UTF-8",
+  "XONSH_SHOW_TRACEBACK": true,
+  "XONSH_STORE_STDIN": true
+ },
+ "foreign_shells": [
+  {
+   "login": true,
+   "shell": ""
+  }
+ ],
+ "xontribs": [
+  "prompt_ret_code",
+  "whole_word_jumping",
+  "z"
+ ]
+}
