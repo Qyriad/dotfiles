@@ -1,6 +1,7 @@
 [user]
-	name = Mikaela RJ Szekely
+	name = Mikaela Szekely
 	email = qyriad@gmail.com
+	signingKey = qyriad@gmail.com
 [merge]
 	tool = vimdiff2
 [alias]
@@ -8,3 +9,6 @@
 	l = log --abbrev-commit --decorate -n 8 --graph
 	s = status
 	curbr = rev-parse --abbrev-ref HEAD
+	#c = !tmux split-window -v "git commit && exit"
+[rebase]
+	autostash = true
