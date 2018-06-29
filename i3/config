@@ -11,32 +11,31 @@
 
 mouse_warping none
 
-set $left DVI-1
-set $right HDMI-0
+workspace_layout tabbed
 
 # Use 1-10 (super) on right, 11-20 (alt) on left
 
-workspace 1 output $right
-workspace 2 output $right
-workspace 3 output $right
-workspace 4 output $right
-workspace 5 output $right
-workspace 6 output $right
-workspace 7 output $right
-workspace 8 output $right
-workspace 9 output $right
-workspace 10 output $right
+#workspace 1 output $right
+#workspace 2 output $right
+#workspace 3 output $right
+#workspace 4 output $right
+#workspace 5 output $right
+#workspace 6 output $right
+#workspace 7 output $right
+#workspace 8 output $right
+#workspace 9 output $right
+#workspace 10 output $right
 
-workspace 11 output $left
-workspace 12 output $left
-workspace 13 output $left
-workspace 14 output $left
-workspace 15 output $left
-workspace 16 output $left
-workspace 17 output $left
-workspace 18 output $left
-workspace 19 output $left
-workspace 20 output $left
+#workspace 11 output $left
+#workspace 12 output $left
+#workspace 13 output $left
+#workspace 14 output $left
+#workspace 15 output $left
+#workspace 16 output $left
+#workspace 17 output $left
+#workspace 18 output $left
+#workspace 19 output $left
+#workspace 20 output $left
 
 bindsym Mod1+1 workspace 11
 bindsym Mod1+2 workspace 12
@@ -61,7 +60,7 @@ bindsym Mod1+Shift+9 move container to workspace 19
 bindsym Mod1+Shift+0 move container to workspace 20
 
 bindsym $mod+t exec thunar
-bindsym $mod+Shift+Return exec urxvt -name urxvt-floating
+bindsym $mod+Shift+Return exec alacritty
 
 bindsym $mod+Shift+c exec chromium
 
@@ -69,6 +68,8 @@ bindsym $mod+Shift+s exec maim -sf png | xclip -selection clipboard -t image/png
 bindsym $mod+Shift+Ctrl+s exec sh -c "xclip -f image/png -selection clipboard -o > ~/$(date +\"%Y-%m-%d-%H-%M-%S\").png"
 bindsym $mod+Ctrl+Break exec systemctl suspend
 bindsym $mod+Ctrl+m exec '/home/qyriad/code/scripts/maintenance_menu.sh'
+
+#bindsym $mod+Shift+l exec i3lock -c 000000
 
 ### i3-colors
 #name		#top	#border	#text
@@ -85,6 +86,8 @@ for_window [instance="floating"] floating enable
 for_window [instance="urxvt-floating"] floating enable, resize grow right 50, resize grow left 50, resize grow up 50, resize grow down 50
 for_window [class="lxappearance"] floating enable
 for_window [class="Thunar"] floating enable, resize shrink 100
+
+#set $TERMINAL alacritty
 
 set $mod Mod4
 
@@ -109,6 +112,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+set $TERMINAL alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -234,3 +238,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+
+exec dex -ae i3

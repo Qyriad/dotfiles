@@ -5,12 +5,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PATH=$PATH:/usr/local/bin:~/.local/bin:~/.local/share/cargo/bin
+export PATH=~/.local/bin:$PATH:/usr/local/bin:~/.local/share/cargo/bin:$DEVKITARM/bin
 
 # Use vim for everything
 export EDITOR="/usr/bin/vim"
 export VISUAL="/usr/bin/vim"
 export SYSTEMD_EDITOR="/usr/bin/vim"
+export NETCTL_EDITOR="/usr/bin/vim"
 
 # Make stuff follow XDG
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -24,11 +25,14 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export VIMINIT=':let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 
+# High DPI
+#export GTK_SCALE=2
+
 # Set default compiler stuff
-export CC=clang
-export CXX=clang++
-export CFLAGS="-Wall -Wextra -pedantic -g3 -Og"
-export CXXFLAGS="-Wall -Wextra -pedantic -g3 -Og"
+#export CC=clang
+#export CXX=clang++
+#export CFLAGS="-Wall -Wextra -pedantic -g3 -Og"
+#export CXXFLAGS="-Wall -Wextra -pedantic -g3 -Og"
 
 alias cmc="rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake"
 alias ec="vim CMakeLists.txt"
@@ -63,6 +67,7 @@ alias ei="vim ~/.config/i3/config"
 alias sb="source ~/.bashrc"
 alias er="vim ~/.config/ranger/rc.conf"
 alias ea='vim ~/.config/alacritty/alacritty.yml'
+alias ef='vim ~/.config/fontconfig/fonts.conf'
 
 # Misc
 alias wgetc="wget --content-disposition" # Uses server filename across redirects
@@ -72,12 +77,15 @@ alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to pr
 #alias sudo="sudo -E" # screw it
 alias sudos="sudo -Es"
 alias gpc='gpaste-client'
+alias sgpc='xargs gpaste-client add'
 alias cdconf='cd ~/.config'
 alias xdgo='xdg-open'
 alias ffprobe="ffprobe -hide_banner"
 alias ffmpeg='ffmpeg -hide_banner'
 alias prp='realpath .' # "Print real path"
 alias tn="tr -d '\n'" # Strip newlines, meant to be used when copying one line of command output to clipboard
+alias remake='mkdir $(pwd) ; cd $(pwd)'
+alias svim='sudo -E vim'
 
 # Directory shortucts
 export lorddir="/media/qyriad/lord"
@@ -140,7 +148,7 @@ if [[ $SUDO_USER ]]; then
 elif [ "$EUID" = 0 ]; then
 	PS1="\[\e[0;31m\]\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
 else
-	PS1="\[\e[0;32m\]\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
+	PS1="\[\e[32m\]\u@\h$tty\[\e[m\] \[\e[38;5;129m\]\w\[\e[m\]\[\033[36m\]"'`__git_ps1`'"\[\e[0;32m\] \$\[\e[0;37m\] "
 fi
 
 export WUT_ROOT=/usr

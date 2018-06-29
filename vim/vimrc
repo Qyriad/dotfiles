@@ -1,18 +1,23 @@
 " vim:syntax=vim:textwidth=0
-set nocompatible
+
+if !has("nvim")
+	set nocompatible
+endif
 
 " Set runtime directories and stuff
-set directory=$XDG_CACHE_HOME/vim/swap
-set backupdir=$XDG_CACHE_HOME/vim/backup
-set undodir=$XDG_CACHE_HOME/vim/undo
+if !has("nvim")
+	set directory=$XDG_CACHE_HOME/vim/swap
+	set backupdir=$XDG_CACHE_HOME/vim/backup
+	set undodir=$XDG_CACHE_HOME/vim/undo
+	" Put netrwhist in XDG_CACHE_HOME
+	let g:netrw_home=$XDG_CACHE_HOME.'/vim'
+endif
+
 if !has('nvim')
 	set viminfo+='1000,n$XDG_CACHE_HOME/viminfo
 else
 	set viminfo+='1000,n$XDG_CACHE_HOME/nviminfo
 endif
-
-" Put netrwhist in XDG_CACHE_HOME
-let g:netrw_home=$XDG_CACHE_HOME.'/vim'
 
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,/usr/share/vim/vimfiles,$XDG_CONFIG_HOME/vim/after/
 
@@ -35,7 +40,6 @@ Plugin 'chrisbra/colorizer'
 Plugin 'Alvarocz/vim-fresh'
 Plugin 'skywind3000/quickmenu.vim'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'urbainvaes/vim-remembrall'
 call vundle#end()
 " /Vundle stuff
 
@@ -64,6 +68,8 @@ set noshowmode " We're using Airline, so showing mode like this is redundant
 set splitright " Make :vsplit put the new window on the right, not the left
 set splitbelow " Same as above, but on the bottom with horizontal splits
 set foldlevel=1 " Usually, collapse to function definitions in classes, not the classes themselves
+set hidden " Allow for hidden, modified but not written buffers
+set bufhidden=hide " Hide buffers instead of deleting or unloading them
 
 " Only highlight the cursor postiion in the current window
 augroup cursorpos_currentwin
@@ -78,11 +84,11 @@ function! Togglenumber() " Toggle relativenumbers for all filetypes except 'help
 	set relativenumber!
 endfun
 
-augroup numbertoggle
-	autocmd!
-	autocmd BufEnter,FocusGained,InsertLeave * call Togglenumber()
-	autocmd BufLeave,FocusLost,InsertEnter * call Togglenumber()
-augroup END
+" augroup numbertoggle
+" 	autocmd!
+" 	autocmd BufEnter,FocusGained,InsertLeave * call Togglenumber()
+" 	autocmd BufLeave,FocusLost,InsertEnter * call Togglenumber()
+" augroup END
 
 set norelativenumber
 
@@ -131,6 +137,14 @@ augroup check_on_insert
 	autocmd! InsertEnter,CursorHold,InsertChange,InsertLeave,InsertCharPre echom "Hello"
 augroup END
 
+augroup drirc_ft
+	autocmd! BufNewFile,BufReadPre .drirc set filetype=xml
+augroup END
+
+augroup show_help_buffers
+	autocmd! FileType help setlocal buflisted
+augroup END
+
 function! SyntaxItem()
 	let synid = synID(line("."), col("."), 1)
 	let trans = synIDtrans(synid)
@@ -140,6 +154,14 @@ endfunction
 function! SyntaxColor()
 	highlight SyntaxItem()
 endfunction
+
+function! LightlineReload()
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction
+
+command! LightlineReload call LightlineReload()
 
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236 guibg=#303030
@@ -217,6 +239,18 @@ nnoremap <leader>O msO<Esc>`s
 " Add newline at current position without entering insert mode or moving the cursor
 nnoremap <leader><CR> msi<CR><Esc>`s
 
+" List buffers
+nnoremap <leader>b :buffers<CR>
+
+" List all buffers
+nnoremap <leader>ab :buffers!<CR>
+
+" Switch buffer
+nnoremap <leader>sb :buffers<CR>:buffer 
+
+" Switch between all buffers
+nnoremap <leader>sab :buffers<CR>:buffer 
+
 " I am fucking proud of this
 " Explanation: Go to the beginning of the line, delete it, insert the result of:
 " 	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
@@ -238,7 +272,7 @@ let g:lightline =
 \{
 	\	'active': { 
 	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-	\		'right': [[], ['lineinfo', 'percent', 'fileencoding', 'fileformat'], ['syncolor', 'syn']]
+	\		'right': [[], ['filetype', 'lineinfo', 'percent', 'fileencoding', 'fileformat'], ['syncolor', 'syn']]
 	\	},
 	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
 	\	'component_function': { 'syn': 'SyntaxItem' }
