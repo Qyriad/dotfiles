@@ -102,6 +102,7 @@ alias prp='realpath .' # "Print real path"
 alias tn="tr -d '\n'" # Strip newlines, meant to be used when copying one line of command output to clipboard
 alias remake='mkdir $(pwd) ; cd $(pwd)'
 alias svim="sudo -E nvim"
+alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
 
 function source_if()
 {
@@ -120,6 +121,9 @@ source_if /etc/profile.d/devkitppc.sh
 
 
 source_if /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_if /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+source /usr/share/zsh/scripts/zplug/init.zsh
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
 	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
