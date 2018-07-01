@@ -22,8 +22,11 @@ autoload -Uz promptinit
 
 promptinit
 
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word # C-<right>
+bindkey "^[[1;5D" backward-word # C-<left>
+bindkey "^[[1~" beginning-of-line # <home>
+bindkey "^[[4~" end-of-line # <end>
+bindkey "^[[3~" delete-char # <del>
 
 export PATH="~/.local/bin:/usr/local/bin:~/.local/share/cargo/bin:$DEVKITARM/bin:$PATH"
 
