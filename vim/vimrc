@@ -40,8 +40,15 @@ Plugin 'chrisbra/colorizer'
 Plugin 'Alvarocz/vim-fresh'
 Plugin 'skywind3000/quickmenu.vim'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-characterize'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 " /Vundle stuff
+
+runtime ftplugin/man.vim
 
 syntax on
 filetype plugin indent on
@@ -70,6 +77,20 @@ set splitbelow " Same as above, but on the bottom with horizontal splits
 set foldlevel=1 " Usually, collapse to function definitions in classes, not the classes themselves
 set hidden " Allow for hidden, modified but not written buffers
 set bufhidden=hide " Hide buffers instead of deleting or unloading them
+set smartcase
+set ignorecase
+
+"let g:NERDSpaceDelims = 1
+
+augroup python_foldlevel
+	autocmd! FileType python set foldlevel=4
+augroup END
+
+let g:NERDAltDelims_python = 1
+
+augroup vim_comments
+	autocmd! FileType vim set formatoptions-=cro
+augroup END
 
 " Only highlight the cursor postiion in the current window
 augroup cursorpos_currentwin
@@ -122,6 +143,7 @@ function! Gitrebase_quickmenu_mappings()
 	nmap <buffer> f 5
 	nmap <buffer> x 6
 	nmap <buffer> d 7
+	nmap <buffer> dd 7
 endfunction
 
 augroup gitrebase_quickmenu
@@ -131,6 +153,16 @@ augroup END
 augroup gitrebase
 	autocmd! FileType gitrebase nmap <buffer> <Tab> :call Gitrebase_menu()<CR>
 augroup END
+
+function! Same(cmd)
+	" Get current tab number
+	let l:current_tabpage = tabpagenr()
+	" Open the last tab
+	execute '$tab ' . a:cmd
+	execute '$tabnext'
+	let new_buffer = bufpagenr('%')
+	execute l:current_tabpage . 'tabnext'
+endfunction
 
 augroup check_on_insert
 	" CursorHold
@@ -197,6 +229,9 @@ highlight DiffText gui=bold guibg=#056d05
 highlight DiffChange guifg=#243024
 highlight DiffDelete guibg=#8e0000 guifg=#c6a5a5
 
+" Actually be able to see searched stuff
+highlight Search guibg=#a0a0a0
+
 " Good purple 53
 nnoremap <leader>ct :source $VIMRUNTIME/syntax/hitest.vim
 
@@ -251,6 +286,32 @@ nnoremap <leader>sb :buffers<CR>:buffer
 " Switch between all buffers
 nnoremap <leader>sab :buffers<CR>:buffer 
 
+" Gstatus
+nnoremap <leader>gs :tab Gstatus<CR>
+
+function! Gtabeditcursor()
+	execute "Gtabedit " expand("<cword>")
+endfunction
+
+" Gtabedit revision under cursor
+nnoremap <leader>gte :call Gtabeditcursor()<CR>
+
+function! Gvsplitcursor()
+	execute "Gvsplit " expand("<cword>")
+endfunction
+
+" Gvsplit revision under cursor
+nnoremap <leader>gve :call Gvsplitcursor()<CR>
+
+" Close diff / close two windows
+nnoremap <leader>dq :q<CR>:q<CR>
+
+" Man page
+nnoremap <leader>m :Man 
+
+" Man -> man
+cnoreabbrev man Man
+
 " I am fucking proud of this
 " Explanation: Go to the beginning of the line, delete it, insert the result of:
 " 	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
@@ -259,7 +320,7 @@ nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . @", "")<CR><
 
 " Yank from default register to gpaste clipboard
 " Explantion: Run system command: `gpaste-client add`, send the @" register to stdin minus the last character
-nnoremap <leader>Y :call system("gpaste-client add", strpart(@", 0, strlen(@") - 1))<CR>
+nnoremap <leader>Y :echo system("gpaste-client add", strpart(@", 0, strlen(@") - 1))<CR>
 
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
