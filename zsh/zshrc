@@ -1,5 +1,5 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.cache/zsh/histfile
+HISTFILE=$HOME/.cache/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory
@@ -18,6 +18,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt AUTO_CONTINUE
+
 autoload -Uz promptinit
 
 promptinit
@@ -28,7 +30,15 @@ bindkey "^[[1~" beginning-of-line # <home>
 bindkey "^[[4~" end-of-line # <end>
 bindkey "^[[3~" delete-char # <del>
 
-export PATH="~/.local/bin:/usr/local/bin:~/.local/share/cargo/bin:$DEVKITARM/bin:$PATH"
+# Allow editing the command in vim
+autoload -Uz edit-command-line # Load the function from ZSH runtime 
+zle -N edit-command-line # Expose the function as a widget
+bindkey "" "edit-command-line" # Call the widget upon <C-X><C-E>
+
+# Add shortcut for pushing the line onto the stack
+bindkey "" "push-input"
+
+export PATH="$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/cargo/bin:$PATH"
 
 # Use neovim for everything
 export EDITOR="/usr/bin/nvim"
@@ -48,6 +58,7 @@ export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export VIMINIT=':let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
+export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
 
 alias cmc="rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake"
 alias ec="vim CMakeLists.txt"
@@ -72,19 +83,22 @@ alias tart="tar -tvf"
 alias tarc="tar -cvf"
 
 # Edit config shortucts
-alias et="$EDITOR ~/.config/tmux/tmux.conf"
-alias ev="$EDITOR ~/.config/vim/vimrc"
-alias ei3="$EDITOR ~/.config/i3/config"
-alias eb="$EDITOR ~/.config/bash/bashrc"
-alias ex="$EDITOR ~/.xinitrc"
-alias exr="$EDITOR ~/.config/X11/Xresources"
-alias ei="$EDITOR ~/.config/i3/config"
-alias sb="source ~/.bashrc"
-alias er="$EDITOR ~/.config/ranger/rc.conf"
-alias ea='$EDITOR ~/.config/alacritty/alacritty.yml'
-alias ef='$EDITOR ~/.config/fontconfig/fonts.conf'
-alias ez='$EDITOR ~/.config/zsh/zshrc'
-alias sz='source ~/.zshrc'
+alias et="$EDITOR $HOME/.config/tmux/tmux.conf"
+alias ev="$EDITOR $HOME/.config/vim/vimrc"
+alias ei3="$EDITOR $HOME/.config/i3/config"
+alias eb="$EDITOR $HOME/.config/bash/bashrc"
+alias ex="$EDITOR $HOME/.xinitrc"
+alias exr="$EDITOR $HOME/.config/X11/Xresources"
+alias ei="$EDITOR $HOME/.config/i3/config"
+alias sb="source $HOME/.bashrc"
+alias er="$EDITOR $HOME/.config/ranger/rc.conf"
+alias ea="$EDITOR $HOME/.config/alacritty/alacritty.yml"
+alias ef="$EDITOR $HOME/.config/fontconfig/fonts.conf"
+alias ez="$EDITOR $HOME/.config/zsh/zshrc"
+alias sz="source $HOME/.zshrc"
+alias es="$EDITOR $HOME/.ssh/config"
+alias ek="$EDITOR $HOME/.config/kitty/kitty.conf"
+alias etr="$EDITOR $HOME/.config/termite/config"
 
 # Misc
 alias wgetc="wget --content-disposition" # Uses server filename across redirects
@@ -94,7 +108,7 @@ alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to pr
 alias sudos="sudo -Es"
 alias gpc='gpaste-client'
 alias sgpc='xargs gpaste-client add'
-alias cdconf='cd ~/.config'
+alias cdconf='cd $HOME/.config'
 alias xdgo='xdg-open'
 alias ffprobe="ffprobe -hide_banner"
 alias ffmpeg='ffmpeg -hide_banner'
@@ -103,6 +117,28 @@ alias tn="tr -d '\n'" # Strip newlines, meant to be used when copying one line o
 alias remake='mkdir $(pwd) ; cd $(pwd)'
 alias svim="sudo -E nvim"
 alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
+alias yay='GNUPGHOME=$HOME/.config/makepkg.gnupg yay'
+alias xxpreview='xxd -l 512'
+#alias lsync='rsync -av --no-o --no-p --no-g --info=progress2'
+alias lsync='rsync -rvlh --info=progress2'
+alias what='whence -sav' # show symlinks too
+#alias built-in-man='vim "+tab Man zshall | normal
+alias ps='ps --forest'
+
+function tmuxman()
+{
+	man tmux | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
+}
+
+function vimman()
+{
+	man $1 | vim "+set ft=man"
+}
+
+function zshman()
+{
+	man zshall | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
+}
 
 function source_if()
 {
@@ -124,6 +160,8 @@ source_if /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting
 source_if /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source /usr/share/zsh/scripts/zplug/init.zsh
+
+source_if $HOME/.local/bin/zsh_automatic_cd.zsh && bindkey -s '' 'ranger' && alias ranger='ranger-cd'
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
 	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
