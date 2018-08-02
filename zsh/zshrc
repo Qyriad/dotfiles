@@ -124,6 +124,7 @@ alias lsync='rsync -rvlh --info=progress2'
 alias what='whence -sav' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias ps='ps --forest'
+alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT'
 
 function tmuxman()
 {
