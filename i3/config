@@ -65,7 +65,7 @@ bindsym $mod+Shift+Return exec termite
 bindsym $mod+Shift+c exec chromium
 
 bindsym $mod+Shift+s exec maim -sf png | xclip -selection clipboard -t image/png
-bindsym $mod+Shift+Ctrl+s exec sh -c "xclip -f image/png -selection clipboard -o > ~/$(date +\"%Y-%m-%d-%H-%M-%S\").png"
+bindsym $mod+Shift+Ctrl+s exec sh -c "xclip -t image/png -selection clipboard -o > ~/$(date +\"%Y-%m-%d-%H-%M-%S\").png"
 bindsym $mod+Ctrl+Break exec systemctl suspend
 bindsym $mod+Ctrl+m exec '/home/qyriad/code/scripts/maintenance_menu.sh'
 
@@ -86,6 +86,9 @@ for_window [instance="floating"] floating enable
 for_window [instance="urxvt-floating"] floating enable, resize grow right 50, resize grow left 50, resize grow up 50, resize grow down 50
 for_window [class="lxappearance"] floating enable
 for_window [class="Thunar"] floating enable, resize shrink 100
+for_window [class="discordinjections-loader"] move container to workspace 11, workspace 11, move workspace to output $secondary
+for_window [class="/usr/bin/chromium-snapshot-bin"] move container to workspace 2, workspace 2, move workspace to output $primary
+for_window [class="dmenu"] move container to workspace current
 
 #set $TERMINAL alacritty
 
@@ -236,7 +239,16 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+		output $primary
         status_command i3status
+		tray_output primary
+}
+
+
+bar {
+		output $secondary
+		status_command i3status
+		tray_output none
 }
 
 
