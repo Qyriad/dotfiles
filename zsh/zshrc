@@ -24,6 +24,8 @@ autoload -Uz promptinit
 
 promptinit
 
+setopt PROMPT_SUBST
+
 bindkey "^[[1;5C" forward-word # C-<right>
 bindkey "^[[1;5D" backward-word # C-<left>
 bindkey "^[[1~" beginning-of-line # <home>
@@ -125,6 +127,7 @@ alias what='whence -sav' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias ps='ps --forest'
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT'
+alias lsd='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT'
 
 function tmuxman()
 {
@@ -146,7 +149,18 @@ function source_if()
 	[ -r "$1" ] && source "$1"
 }
 
-export PROMPT="%F{2}%n@%m %F{129}%~ %F{2}%(! # $) %f"
+source /usr/share/git/completion/git-prompt.sh
+autoload -Uz vcs_info
+
+precmd()
+{
+	vcs_info
+}
+
+zstyle ':vcs_info:git*' formats '%F{116}(%b)'
+zstyle ':vcs_info:git*' actionformats '%F{116}(%b|%a)'
+
+export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %F{2}%(! # $) %f'
 
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
 
@@ -163,6 +177,9 @@ source_if /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/scripts/zplug/init.zsh
 
 source_if $HOME/.local/bin/zsh_automatic_cd.zsh && bindkey -s '' 'ranger' && alias ranger='ranger-cd'
+
+unalias run-help
+autoload -Uz run-help
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
 	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
