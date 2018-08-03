@@ -60,7 +60,7 @@ bindsym Mod1+Shift+9 move container to workspace 19
 bindsym Mod1+Shift+0 move container to workspace 20
 
 bindsym $mod+t exec thunar
-bindsym $mod+Shift+Return exec alacritty
+bindsym $mod+Shift+Return exec termite
 
 bindsym $mod+Shift+c exec chromium
 
@@ -111,8 +111,8 @@ floating_modifier $mod
 #floating_maximum_size 700 x 700
 
 # start a terminal
-bindsym $mod+Return exec alacritty
-set $TERMINAL alacritty
+bindsym $mod+Return exec termite
+set $TERMINAL termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
