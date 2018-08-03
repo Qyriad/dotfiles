@@ -291,7 +291,8 @@ key_bindings:
   - { key: C,        mods: Control|Shift,    action: Copy                }
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
-  - { key: Insert,   mods: Shift,   action: PasteSelection               }
+  # - { key: Insert,   mods: Shift,   action: PasteSelection               }
+  - { key: Insert,   mods: Shift,   action: Paste                        }
   - { key: Key0,     mods: Control, action: ResetFontSize                }
   - { key: Equals,   mods: Control, action: IncreaseFontSize             }
   - { key: Subtract, mods: Control, action: DecreaseFontSize             }
