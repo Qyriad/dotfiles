@@ -131,6 +131,11 @@ alias lsd='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT'
 alias wine32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 wine"
 alias winetricks32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 winetricks"
 
+function appfd()
+{
+	fd "$1" /usr/share/applications ~/.local/share/applications
+}
+
 function tmuxman()
 {
 	man tmux | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
