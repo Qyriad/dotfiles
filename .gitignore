@@ -60,3 +60,14 @@ Code/User/workspace*
 vim/plugins
 spotify
 libreoffice
+systemd/*
+goa*/*
+makepkg.gnupg/*
+openwmail/*
+wireshark/*
+Keybase/*
+keybase/*
+discordcanary/*
+evolution/*
+Bitwarden*
+Google Chrome
