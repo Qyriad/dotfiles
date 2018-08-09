@@ -128,6 +128,8 @@ alias what='whence -sav' # show symlinks too
 alias ps='ps --forest'
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT'
 alias lsd='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT'
+alias wine32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 wine"
+alias winetricks32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 winetricks"
 
 function tmuxman()
 {
