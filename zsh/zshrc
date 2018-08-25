@@ -154,6 +154,26 @@ function zshman()
 	man zshall | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
 }
 
+function bak()
+{
+	if [ -e "$1" ]; then
+		mv "$1" "$1.bak"
+	else
+		echo "File \"$1\" not found"
+	fi
+}
+
+function unbak()
+{
+	if [ -e "$1" ]; then
+		mv "$1" "${1%.bak}" # Strip trailing .bak
+	elif [ -e "$1.bak" ]; then
+		mv "$1.bak" "$1"
+	else
+		echo "File \"$1\" not found"
+	fi
+}
+
 function source_if()
 {
 	[ -r "$1" ] && source "$1"
