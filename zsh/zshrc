@@ -118,6 +118,9 @@ alias prp='realpath .' # "Print real path"
 alias tn="tr -d '\n'" # Strip newlines, meant to be used when copying one line of command output to clipboard
 alias remake='mkdir $(pwd) ; cd $(pwd)'
 alias svim="sudo -E nvim"
+alias visudo='sudo -E visudo'
+alias vipw='sudo -E vipw'
+alias vigr='sudo -E vigr'
 alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
 alias yay='GNUPGHOME=$HOME/.config/makepkg.gnupg yay'
 alias xxpreview='xxd -l 512'
