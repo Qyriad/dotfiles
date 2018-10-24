@@ -52,6 +52,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-characterize'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 " /Vundle stuff
 
@@ -95,6 +96,11 @@ augroup python_foldlevel
 augroup END
 
 let g:NERDAltDelims_python = 1
+
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_global_ycm_extra_conf = "$HOME/.ycm_extra_conf.py"
+let g:ycm_extra_conf_globlist = ['~/.ycm_extra_conf.py']
+let g:ycm_semantic_triggers = { 'c' : ['#'] }
 
 augroup vim_comments
 	autocmd! FileType vim set formatoptions-=cro
@@ -202,6 +208,8 @@ function! LightlineReload()
 endfunction
 
 command! LightlineReload call LightlineReload()
+
+highlight Pmenu guibg=#303030 guifg=#5a95f4
 
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236 guibg=#303030
@@ -329,6 +337,8 @@ nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . @", "")<CR><
 " Yank from default register to gpaste clipboard
 " Explantion: Run system command: `gpaste-client add`, send the @" register to stdin minus the last character
 nnoremap <leader>Y :echo system("gpaste-client add", strpart(@", 0, strlen(@") - 1))<CR>
+
+nnoremap <leader>y :YcmCompleter
 
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
