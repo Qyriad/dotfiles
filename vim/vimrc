@@ -86,8 +86,12 @@ set splitbelow " Same as above, but on the bottom with horizontal splits
 set foldlevel=1 " Usually, collapse to function definitions in classes, not the classes themselves
 set hidden " Allow for hidden, modified but not written buffers
 set bufhidden=hide " Hide buffers instead of deleting or unloading them
-set smartcase
 set ignorecase
+set smartcase
+set gdefault " Substitute all matches in a line by default
+set cindent
+set cinoptions=1l,j1 " Indent case blocks correctly; indent Java anonymous classes correctly
+
 
 "let g:NERDSpaceDelims = 1
 
@@ -271,6 +275,9 @@ nnoremap ; :
 nnoremap X "_d
 nnoremap XX "_dd
 
+" Add ( here and ) at the next parenthesis
+nnoremap <leader>) i(<Esc>t)a)<Esc>
+
 " Have the indent commands re-highlight the last visual selection
 vnoremap > >gv
 vnoremap < <gv
@@ -282,6 +289,9 @@ nnoremap gp `[v`]
 
 " Unmap Q
 nnoremap Q <nop>
+
+" Alt+Backspace to kill-word
+inoremap <A-BS> <C-w>
 
 " Add newlines above and below without entering insert mode or moving the cursor
 nnoremap <leader>o mso<Esc>`s
