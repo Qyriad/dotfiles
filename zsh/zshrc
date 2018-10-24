@@ -31,6 +31,7 @@ bindkey "^[[1;5D" backward-word # C-<left>
 bindkey "^[[1~" beginning-of-line # <home>
 bindkey "^[[4~" end-of-line # <end>
 bindkey "^[[3~" delete-char # <del>
+bindkey "<M-Del>" kill-word # <S-Del>
 
 # Allow editing the command in vim
 autoload -Uz edit-command-line # Load the function from ZSH runtime 
