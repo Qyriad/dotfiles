@@ -191,7 +191,9 @@ unalias run-help
 autoload -Uz run-help
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
-	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
+	#if [ "$(tty)" != "/dev/tty2" ]; then # and we're not in tty1
+	s="$(tty)"
+	if [[ ! "$(tty)" =~ "/dev/tty" ]]; then
 		if tmux list-sessions; then # if there's a session, attach
 			tmux attach-session -d
 		else
