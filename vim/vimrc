@@ -238,7 +238,8 @@ nnoremap <leader>ct :source $VIMRUNTIME/syntax/hitest.vim
 let mapleader="\\"
 
 " Stop highling last search with \/
-nnoremap <leader>/ :nohlsearch<CR> | let @/=""
+ "| let @/=""
+nnoremap <leader>/ :nohlsearch<CR>
 
 " Edit and source vimrc shortcus
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
@@ -321,6 +322,9 @@ nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . @", "")<CR><
 " Yank from default register to gpaste clipboard
 " Explantion: Run system command: `gpaste-client add`, send the @" register to stdin minus the last character
 nnoremap <leader>Y :echo system("gpaste-client add", strpart(@", 0, strlen(@") - 1))<CR>
+
+" Use escape to exit terminal mode
+tnoremap <Esc> <C-\><C-n>
 
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
