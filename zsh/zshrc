@@ -26,6 +26,8 @@ promptinit
 
 setopt PROMPT_SUBST
 
+setopt cbases
+
 bindkey "^[[1;5C" forward-word # C-<right>
 bindkey "^[[1;5D" backward-word # C-<left>
 bindkey "^[[1~" beginning-of-line # <home>
