@@ -4,6 +4,9 @@ if !has("nvim")
 	set nocompatible
 endif
 
+" Disable python 2
+let g:loaded_python_provider = 1
+
 " Set runtime directories and stuff
 if !has("nvim")
 	set directory=$XDG_CACHE_HOME/vim/swap
@@ -11,6 +14,10 @@ if !has("nvim")
 	set undodir=$XDG_CACHE_HOME/vim/undo
 	" Put netrwhist in XDG_CACHE_HOME
 	let g:netrw_home=$XDG_CACHE_HOME.'/vim'
+else
+	"set directory=$HOME/.local/share/nvim/swap
+	"set backupdir=$HOME/.local/share/nvim/backup
+	"set undodir=$HOME/.local/share/nvim/undo
 endif
 
 if !has('nvim')
@@ -19,7 +26,7 @@ else
 	set viminfo+='1000,n$XDG_CACHE_HOME/nviminfo
 endif
 
-set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,/usr/share/vim/vimfiles,$XDG_CONFIG_HOME/vim/after/
+set runtimepath+=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,/usr/share/vim/vimfiles,$XDG_CONFIG_HOME/vim/after/
 
 " Allow cursor change in tmux
 if exists('$TMUX')
@@ -45,6 +52,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-characterize'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 " /Vundle stuff
 
@@ -65,6 +73,7 @@ set shiftwidth=0 " Use tabstop value for indenting
 set showcmd " Show the last command in the bottom bar
 set lazyredraw " Only redraw when we need to
 set scrolloff=12 " Keep 12 lines between the end of the buffer and the cursor
+set sidescrolloff=2 " Keep 2 characters between the current column and the screen edge
 set mouse=n " Enable the mouse in normal mode
 set colorcolumn=120 " It's typically good to keep lines of code under 120 characters
 set wildmenu " Autocomplete command menu
@@ -77,8 +86,12 @@ set splitbelow " Same as above, but on the bottom with horizontal splits
 set foldlevel=1 " Usually, collapse to function definitions in classes, not the classes themselves
 set hidden " Allow for hidden, modified but not written buffers
 set bufhidden=hide " Hide buffers instead of deleting or unloading them
-set smartcase
 set ignorecase
+set smartcase
+set gdefault " Substitute all matches in a line by default
+set cindent
+set cinoptions=1l,j1 " Indent case blocks correctly; indent Java anonymous classes correctly
+
 
 "let g:NERDSpaceDelims = 1
 
@@ -87,6 +100,11 @@ augroup python_foldlevel
 augroup END
 
 let g:NERDAltDelims_python = 1
+
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_global_ycm_extra_conf = "$HOME/.ycm_extra_conf.py"
+let g:ycm_extra_conf_globlist = ['~/.ycm_extra_conf.py']
+let g:ycm_semantic_triggers = { 'c' : ['#'] }
 
 augroup vim_comments
 	autocmd! FileType vim set formatoptions-=cro
@@ -195,6 +213,8 @@ endfunction
 
 command! LightlineReload call LightlineReload()
 
+highlight Pmenu guibg=#303030 guifg=#5a95f4
+
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236 guibg=#303030
 " Make the highlight color for the current column not obnoxious, and stand out a bit less than above
@@ -256,6 +276,9 @@ nnoremap ; :
 nnoremap X "_d
 nnoremap XX "_dd
 
+" Add ( here and ) at the next parenthesis
+nnoremap <leader>) i(<Esc>t)a)<Esc>
+
 " Have the indent commands re-highlight the last visual selection
 vnoremap > >gv
 vnoremap < <gv
@@ -267,6 +290,9 @@ nnoremap gp `[v`]
 
 " Unmap Q
 nnoremap Q <nop>
+
+" Alt+Backspace to kill-word
+inoremap <A-BS> <C-w>
 
 " Add newlines above and below without entering insert mode or moving the cursor
 nnoremap <leader>o mso<Esc>`s
@@ -325,6 +351,8 @@ nnoremap <leader>Y :echo system("gpaste-client add", strpart(@", 0, strlen(@") -
 
 " Use escape to exit terminal mode
 tnoremap <Esc> <C-\><C-n>
+
+nnoremap <leader>y :YcmCompleter
 
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0

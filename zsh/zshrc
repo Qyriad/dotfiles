@@ -33,6 +33,7 @@ bindkey "^[[1;5D" backward-word # C-<left>
 bindkey "^[[1~" beginning-of-line # <home>
 bindkey "^[[4~" end-of-line # <end>
 bindkey "^[[3~" delete-char # <del>
+bindkey "<M-Del>" kill-word # <S-Del>
 
 # Allow editing the command in vim
 autoload -Uz edit-command-line # Load the function from ZSH runtime 
@@ -116,6 +117,7 @@ alias cdconf='cd $HOME/.config'
 alias xdgo='xdg-open'
 alias ffprobe="ffprobe -hide_banner"
 alias ffmpeg='ffmpeg -hide_banner'
+alias mpv='mpv --osd-fractions'
 alias prp='realpath .' # "Print real path"
 alias tn="tr -d '\n'" # Strip newlines, meant to be used when copying one line of command output to clipboard
 alias remake='mkdir $(pwd) ; cd $(pwd)'
@@ -230,7 +232,9 @@ unalias run-help 2>/dev/null
 autoload -Uz run-help
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
-	if [ "$(tty)" != "/dev/tty1" ]; then # and we're not in tty1
+	#if [ "$(tty)" != "/dev/tty2" ]; then # and we're not in tty1
+	s="$(tty)"
+	if [[ ! "$(tty)" =~ "/dev/tty" ]]; then
 		if tmux list-sessions; then # if there's a session, attach
 			tmux attach-session -d
 		else

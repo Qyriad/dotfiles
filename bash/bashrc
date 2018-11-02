@@ -86,6 +86,7 @@ alias prp='realpath .' # "Print real path"
 alias tn="tr -d '\n'" # Strip newlines, meant to be used when copying one line of command output to clipboard
 alias remake='mkdir $(pwd) ; cd $(pwd)'
 alias svim='sudo -E vim'
+alias videoctl='v4l2-ctl'
 
 # Directory shortucts
 export lorddir="/media/qyriad/lord"
