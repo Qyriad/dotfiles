@@ -215,9 +215,18 @@ source_if /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source_if /usr/share/zsh/scripts/zplug/init.zsh
 
+zplug "lambda/zsh-snippets"
+zplug load
+
+alias zsp='zsh_snippets'
+bindkey "<M-s>" zsh-snippets-widget-expand
+
+# willinghatch/zsh-snippets
+# momo-lab/zsh-abbrev-alias
+
 source_if $HOME/.local/bin/zsh_automatic_cd.zsh && bindkey -s '' 'ranger' && alias ranger='ranger-cd'
 
-unalias run-help
+unalias run-help 2>/dev/null
 autoload -Uz run-help
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
