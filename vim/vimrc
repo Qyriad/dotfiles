@@ -359,6 +359,8 @@ tnoremap <Esc> <C-\><C-n>
 
 nnoremap <leader>y :YcmCompleter
 
+nnoremap <C-[> :YcmCompleter GoTo<CR>
+
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
 
