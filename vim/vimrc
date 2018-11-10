@@ -196,6 +196,10 @@ augroup show_help_buffers
 	autocmd! FileType help setlocal buflisted
 augroup END
 
+augroup term_line_numbers
+	autocmd! TermOpen * setlocal nonumber | startinsert
+augroup END
+
 function! SyntaxItem()
 	let synid = synID(line("."), col("."), 1)
 	let trans = synIDtrans(synid)
