@@ -71,3 +71,12 @@ discordcanary/*
 evolution/*
 Bitwarden*
 Google Chrome
+Electron
+MonoGame
+Yubico
+*.orig
+monitors.xml
+gnome-control-center
+gconf
+onedrive
+touchegg
