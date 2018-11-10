@@ -82,11 +82,6 @@ alias chgrp="chgrp -v --preserve-root"
 alias grep="grep --color=auto"
 alias less="less -R"
 
-# Tar
-alias tarx="tar -xvf"
-alias tart="tar -tvf"
-alias tarc="tar -cvf"
-
 # Edit config shortucts
 alias et="$EDITOR $HOME/.config/tmux/tmux.conf"
 alias ev="$EDITOR $HOME/.config/vim/vimrc"
@@ -112,8 +107,6 @@ alias info="pinfo"
 alias sudoe="sudo -E" # I shouldn't always, but sometimes it's really nice to preserve env when editing
 alias sudos="sudo -Es"
 alias gpc='gpaste-client'
-alias sgpc='xargs gpaste-client add'
-alias cdconf='cd $HOME/.config'
 alias xdgo='xdg-open'
 alias ffprobe="ffprobe -hide_banner"
 alias ffmpeg='ffmpeg -hide_banner'
