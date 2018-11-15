@@ -67,6 +67,7 @@ alias cmc="rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake"
 alias ec="vim CMakeLists.txt"
 
 # Coreutils and builtins
+alias lls='command ls --color=always'
 alias ls='exa'
 alias ll="ls -lh"
 alias la="ls -Al"
