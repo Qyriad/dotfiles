@@ -53,6 +53,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-characterize'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'w0rp/ale'
+Plugin 'Konfekt/vim-alias'
+"Plugin 'gcmt/taboo.vim'
+"Plugin 'roxma/nvim-yarp'
 call vundle#end()
 " /Vundle stuff
 
@@ -61,6 +65,8 @@ runtime ftplugin/man.vim
 syntax on
 filetype plugin indent on
 
+set exrc
+set secure
 set number " Show line numbers
 set norelativenumber " Make line numbers relative (except the current one)
 set modeline " Allow vim meta commands in text files
@@ -77,6 +83,8 @@ set sidescrolloff=2 " Keep 2 characters between the current column and the scree
 set mouse=n " Enable the mouse in normal mode
 set colorcolumn=120 " It's typically good to keep lines of code under 120 characters
 set wildmenu " Autocomplete command menu
+set wildmode=longest:full,full " Most bash-like way
+set wildignorecase
 set cursorcolumn " Highlight the column the cursor is on
 set cursorline " Highlight the line the cursor is on
 set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
@@ -94,6 +102,13 @@ set cinoptions=1l,j1 " Indent case blocks correctly; indent Java anonymous class
 
 set omnifunc=syntaxcomplete#Complete
 
+let g:ale_c_parse_compile_commands = 1
+"let g:ale_c_build_dir_names = '.'
+let g:ale_linters = {'c': ['clang', 'ccls']}
+let g:ale_c_ccls_init_options = { 'clang': { 'extraArgs': ['-isystem', '/usr/include'] } }
+
+"inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : 
+
 "let g:NERDSpaceDelims = 1
 
 augroup python_foldlevel
@@ -103,12 +118,17 @@ augroup END
 let g:NERDAltDelims_python = 1
 
 let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_global_ycm_extra_conf = "$HOME/.ycm_extra_conf.py"
-let g:ycm_extra_conf_globlist = ['~/.ycm_extra_conf.py']
+let g:ycm_global_ycm_extra_conf = "$HOME/.ycm_conf.py"
+let g:ycm_extra_conf_globlist = ['.ycm_extra_conf.py']
 let g:ycm_semantic_triggers = { 'c' : ['#'] }
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_echo_current_diagnostic = 0
+" let g:ycm_filter_diagnostics = { '*': { 'regex': '*', 'level': 'warning' } } 
 
 augroup vim_comments
-	autocmd! FileType vim set formatoptions-=cro
+	autocmd! FileType vim setlocal formatoptions-=cro
 augroup END
 
 " Only highlight the cursor postiion in the current window
@@ -125,9 +145,9 @@ function! Togglenumber() " Toggle relativenumbers for all filetypes except 'help
 endfun
 
 " augroup numbertoggle
-" 	autocmd!
-" 	autocmd BufEnter,FocusGained,InsertLeave * call Togglenumber()
-" 	autocmd BufLeave,FocusLost,InsertEnter * call Togglenumber()
+"	autocmd!
+"	autocmd BufEnter,FocusGained,InsertLeave * call Togglenumber()
+"	autocmd BufLeave,FocusLost,InsertEnter * call Togglenumber()
 " augroup END
 
 set norelativenumber
@@ -210,6 +230,17 @@ function! SyntaxColor()
 	highlight SyntaxItem()
 endfunction
 
+function! HomeRelDir()
+	"return substitute(expand('%:p:h'), $HOME, '~', 'e')
+	let l:dir = fnamemodify(expand('%:p:h'), ':~:.')
+	if l:dir ==? substitute(getcwd(), $HOME, '~', 'e')
+		return ''
+	else
+		return l:dir
+	endif
+
+endfunction
+
 function! LightlineReload()
   call lightline#init()
   call lightline#colorscheme()
@@ -217,6 +248,36 @@ function! LightlineReload()
 endfunction
 
 command! LightlineReload call LightlineReload()
+
+function! BufSel(pattern)
+	let bufcount = bufnr("$")
+  let currbufnr = 1
+  let nummatches = 0
+  let firstmatchingbufnr = 0
+  while currbufnr <= bufcount
+	if(bufexists(currbufnr))
+	  let currbufname = bufname(currbufnr)
+	  if(match(currbufname, a:pattern) > -1)
+		echo currbufnr . ": ". bufname(currbufnr)
+		let nummatches += 1
+		let firstmatchingbufnr = currbufnr
+	  endif
+	endif
+	let currbufnr = currbufnr + 1
+  endwhile
+  if(nummatches == 1)
+	execute ":buffer ". firstmatchingbufnr
+  elseif(nummatches > 1)
+	let desiredbufnr = input("Enter buffer number: ")
+	if(strlen(desiredbufnr) != 0)
+	  execute ":buffer ". desiredbufnr
+	endif
+  else
+	echo "No matching buffers"
+  endif
+endfunction
+
+command! -nargs=1 Bs :call BufSel("<args>")
 
 highlight Pmenu guibg=#303030 guifg=#5a95f4
 
@@ -245,7 +306,8 @@ highlight Identifier guifg=#70c0ba
 highlight Constant guifg=#cf0002
 highlight Type guifg=#00cc00
 highlight Special guifg=#c397d8
-highlight! link LineNr Statement
+"highlight! link LineNr Statement
+highlight LineNr gui=none guifg=#af5f00
 highlight CursorLineNr gui=bold guifg=#af5f00
 
 " Diff colors that don't suck
@@ -313,7 +375,8 @@ nnoremap <leader>b :buffers<CR>
 nnoremap <leader>ab :buffers!<CR>
 
 " Switch buffer
-nnoremap <leader>sb :buffers<CR>:buffer 
+"nnoremap <leader>sb :buffers<CR>:buffer 
+nnoremap <leader>sb :Bs<CR>
 
 " Switch between all buffers
 nnoremap <leader>sab :buffers<CR>:buffer 
@@ -341,13 +404,17 @@ nnoremap <leader>dq :q<CR>:q<CR>
 " Man page
 nnoremap <leader>m :Man 
 
+" 
+cnoremap <M-BS> 
+
 " Man -> man
-cnoreabbrev man Man
+"cnoreabbrev man Man
+"Alias man Man
 
 " I am fucking proud of this
 " Explanation: Go to the beginning of the line, delete it, insert the result of:
-" 	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
-" 	mode
+"	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
+"	mode
 nnoremap <leader>co ^Di<C-R>=substitute(&commentstring, "%s", ' ' . @", "")<CR><Esc>
 
 " Yank from default register to gpaste clipboard
@@ -359,7 +426,8 @@ tnoremap <Esc> <C-\><C-n>
 
 nnoremap <leader>y :YcmCompleter
 
-nnoremap <C-[> :YcmCompleter GoTo<CR>
+nnoremap <Return> :ALEHover<CR>
+nnoremap <M-Return> :ALEGoToDefinition<CR>
 
 " Yes, I use tabs instead of spaces. Shoot me.
 let g:python_recommended_style=0
@@ -368,12 +436,25 @@ set laststatus=2 " Always show statusline
 " left_sep: 
 " right_sep: 
 " lock: 
+
+let g:tab_dict = {}
+
+function! Tab_Name(tabnum)
+	" Check if the tabnum is in the tab_dict
+	if has_key(tab_dict, tabnum)
+		return tab_dict.tabnum
+	else
+		return lightline#tab#filename(tabnum)
+	endif
+endfunction
+
 let g:lightline =
 \{
 	\	'active': { 
 	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-	\		'right': [[], ['filetype', 'lineinfo', 'percent', 'fileencoding', 'fileformat'], ['syncolor', 'syn']]
+	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileencoding', 'fileformat'], ['syncolor', 'syn']]
 	\	},
 	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-	\	'component_function': { 'syn': 'SyntaxItem' }
+	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir' },
+	\	'tab': { 'active': ['tabnum', 'filename', 'modified'], 'inactive': ['tabnum', 'filename', 'modified'] }
 \}

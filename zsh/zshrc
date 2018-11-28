@@ -127,12 +127,13 @@ alias lsync='rsync -rvlh --info=progress2'
 alias what='whence -sav' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias ps='ps --forest'
-alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,MIN-IO'
+alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE,MIN-IO'
 alias lsd='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,MIN-IO'
 alias wine32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 wine"
 alias winetricks32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 winetricks"
 alias ddf='pydf'
 alias userctl='systemctl --user'
+alias sudo='sudo '
 
 function appfd()
 {
@@ -177,6 +178,21 @@ function unbak()
 	else
 		echo "File \"$1\" not found"
 	fi
+}
+
+function bwsearch()
+{
+	bw list items --search "$1" | jq '[.[] | {id: .id, name: .name, username: .login.username, url: .login.uris[].uri}]'
+}
+
+function bwgetpw()
+{
+	bw get password "$1"
+}
+
+function bwcppw()
+{
+	bw get password "$1" | tr -d '\n' | gpaste-client
 }
 
 function source_if()
@@ -230,7 +246,7 @@ if [ -z "$TMUX" ]; then # If we're not already in a tmux session
 	s="$(tty)"
 	if [[ ! "$(tty)" =~ "/dev/tty" ]]; then
 		if tmux list-sessions; then # if there's a session, attach
-			tmux attach-session -d
+			#tmux attach-session -d
 		else
 			tmux # otherwise, create one
 		fi
