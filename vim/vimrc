@@ -412,10 +412,21 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <leader>y :YcmCompleter
 
 nnoremap <Return> :ALEHover<CR>
+function! Ale_hover()
+	let hover_s = ale#hover#Show(bufnr(''), getcurpos()[1], getcurpos()[2], {})
+	sleep 2
+endfunction
+nnoremap <Return> :jobstart call Ale_hover()<CR>
 nnoremap <M-Return> :ALEGoToDefinition<CR>
+nnoremap <leader><M-CR> :ALEGoToDefinitionInTab<C-b><Space><Left>
+nnoremap <M-NL> :ALEFindReferences<CR>
 
 " Yes, I use tabs instead of spaces. Shoot me.
-let g:python_recommended_style=0
+let g:python_recommended_style = 0
+
+" show whitespace errors
+let g:c_space_errors = 1
+let g:python_space_error_highlight = 1
 
 set laststatus=2 " Always show statusline
 " left_sep: 
