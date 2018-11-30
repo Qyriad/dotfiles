@@ -193,21 +193,6 @@ augroup gitrebase
 	autocmd! FileType gitrebase nmap <buffer> <Tab> :call Gitrebase_menu()<CR>
 augroup END
 
-function! Same(cmd)
-	" Get current tab number
-	let l:current_tabpage = tabpagenr()
-	" Open the last tab
-	execute '$tab ' . a:cmd
-	execute '$tabnext'
-	let new_buffer = bufpagenr('%')
-	execute l:current_tabpage . 'tabnext'
-endfunction
-
-augroup check_on_insert
-	" CursorHold
-	autocmd! InsertEnter,CursorHold,InsertChange,InsertLeave,InsertCharPre echom "Hello"
-augroup END
-
 augroup drirc_ft
 	autocmd! BufNewFile,BufReadPre .drirc set filetype=xml
 augroup END
@@ -404,12 +389,12 @@ nnoremap <leader>dq :q<CR>:q<CR>
 " Man page
 nnoremap <leader>m :Man 
 
-" 
+" ALT+Backspace -> delete word
 cnoremap <M-BS> 
 
 " Man -> man
 "cnoreabbrev man Man
-"Alias man Man
+Alias man Man
 
 " I am fucking proud of this
 " Explanation: Go to the beginning of the line, delete it, insert the result of:
