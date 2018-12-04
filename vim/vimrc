@@ -44,7 +44,6 @@ call vundle#begin('~/.config/vim/plugins')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'chrisbra/colorizer'
-Plugin 'Alvarocz/vim-fresh'
 Plugin 'skywind3000/quickmenu.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'tpope/vim-fugitive'
@@ -52,11 +51,17 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-characterize'
 "Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'neoclide/jsonc.vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'w0rp/ale'
 Plugin 'Konfekt/vim-alias'
 "Plugin 'gcmt/taboo.vim'
 "Plugin 'roxma/nvim-yarp'
+"Plugin 'Shougo/neco-vim'
+"Plugin 'neoclide/coc-neco' " Vim completion source
+"Plugin 'neoclide/coc.nvim'
+"Plugin 'neoclide/coc-sources'
 call vundle#end()
 " /Vundle stuff
 
@@ -100,7 +105,16 @@ set gdefault " Substitute all matches in a line by default
 set cindent
 set cinoptions=1l,j1 " Indent case blocks correctly; indent Java anonymous classes correctly
 
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
+"set completeopt=menu,menuone,preview,noselect,noinsert
+
+" Completion mappings
+inoremap <expr> <ESC> pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" <C-space> to manually trigger completion
+inoremap <silent><expr> <C-Space> coc#refresh()
 
 let g:ale_c_parse_compile_commands = 1
 "let g:ale_c_build_dir_names = '.'
@@ -392,10 +406,6 @@ nnoremap <leader>m :Man
 " ALT+Backspace -> delete word
 cnoremap <M-BS> 
 
-" Man -> man
-"cnoreabbrev man Man
-Alias man Man
-
 " I am fucking proud of this
 " Explanation: Go to the beginning of the line, delete it, insert the result of:
 "	Take the comment string template, replace %s with the contents of the line that just got deleted, return to normal
@@ -437,8 +447,8 @@ let g:tab_dict = {}
 
 function! Tab_Name(tabnum)
 	" Check if the tabnum is in the tab_dict
-	if has_key(tab_dict, tabnum)
-		return tab_dict.tabnum
+	if has_key(g:tab_dict, a:tabnum)
+		return g:tab_dict . a:tabnum
 	else
 		return lightline#tab#filename(tabnum)
 	endif
