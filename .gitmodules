@@ -7,4 +7,4 @@
 
 [submodule "vim/plugins/Vundle.vim"]
 	path = vim/plugins/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.gim.git
+	url = https://github.com/VundleVim/Vundle.vim.git
