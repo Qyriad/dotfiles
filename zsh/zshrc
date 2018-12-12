@@ -52,7 +52,7 @@ export SYSTEMD_EDITOR="/usr/bin/nvim"
 export NETCTL_EDITOR="/usr/bin/nvim"
 alias vim='nvim'
 
-# MAke stuff follow XDG
+# Make stuff follow XDG
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -68,6 +68,8 @@ export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
 
 alias cmc="rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake"
 alias ec="vim CMakeLists.txt"
+
+export PAGER="less"
 
 # Coreutils and builtins
 alias lls='command ls --color=always'
@@ -102,6 +104,16 @@ alias es="$EDITOR $HOME/.ssh/config"
 alias ek="$EDITOR $HOME/.config/kitty/kitty.conf"
 alias etr="$EDITOR $HOME/.config/termite/config"
 
+# Color output
+alias df='grc df'
+alias free='grc free'
+alias ifconfig='grc ifconfig'
+alias mount='grc mount'
+alias netstat='grc netstat'
+alias ping='grc ping'
+alias as='grc as'
+alias last='grc last'
+
 # Misc
 alias wgetc="wget --content-disposition" # Uses server filename across redirects
 alias ni="nonet"
@@ -125,7 +137,7 @@ alias yay='GNUPGHOME=$HOME/.config/makepkg.gnupg yay'
 alias xxpreview='xxd -l 512'
 #alias lsync='rsync -av --no-o --no-p --no-g --info=progress2'
 alias lsync='rsync -rvlh --info=progress2'
-alias what='whence -sav' # show symlinks too
+alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias ps='ps --forest'
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE,MIN-IO'
@@ -229,6 +241,7 @@ source_if /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source_if /usr/share/zsh/scripts/zplug/init.zsh
 
 zplug "lambda/zsh-snippets"
+zplug "ael-code/zsh-colored-man-pages"
 zplug load
 
 alias zsp='zsh_snippets'
