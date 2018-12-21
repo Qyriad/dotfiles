@@ -223,15 +223,19 @@ function source_if()
 source_if /usr/share/git/completion/git-prompt.sh
 autoload -Uz vcs_info
 
+#zstyle ':vcs:info:*' disable bzr cdv darcs mtn svk tla darcs fossil mtn p4
+zstyle ':vcs_info:*' enable git cvs svn hg
+
 precmd()
 {
 	vcs_info
 }
 
 zstyle ':vcs_info:git*' formats '%F{116}(%b)'
-zstyle ':vcs_info:git*' actionformats '%F{116}(%b|%a)'
+zstyle ':vcs_info:git*' actionformats '%F{116}(%b|%a|%m)'
 
 export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %F{2}%(! # $) %f'
+export RPROMPT='$?'
 
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
 
