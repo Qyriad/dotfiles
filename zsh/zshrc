@@ -7,7 +7,10 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _complete _ignored
+#zstyle ':completion:*' completer _complete _ignored
+zstyle ':completion:*' completer _complete _ignored _expand _correct _approximate
+# new
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'r:|[._-/]=* r:|=* l:|=*'
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select=1
