@@ -21,6 +21,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt COMPLETE_ALIASES
+
 setopt AUTO_CONTINUE
 
 autoload -Uz promptinit
