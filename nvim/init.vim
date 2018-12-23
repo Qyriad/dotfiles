@@ -191,6 +191,10 @@ nnoremap <leader>sb :Bs<CR>
 " Use escape to exit terminal mode
 tnoremap <Esc> <C-\><C-n>
 
+" Use line-wrapped movement by default, but specifying a count disables it
+nnoremap <expr> j (v:count > 0 ? "m'" . v:count . 'j' : 'gj')
+nnoremap <expr> k (v:count > 0 ? "m'" . v:count . 'k' : 'gk')
+
 " Edit and source vimrc shortcuts
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
