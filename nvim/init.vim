@@ -19,6 +19,7 @@ set scrolloff=8 " Keep 8 lines between the end of the buffer and the cursor
 set sidescrolloff=2 " Keep 2 characters between the current column and the screen edge
 set mouse=n " Enable the mouse in normal mode
 set colorcolumn=120 " It's typically good to keep lines of code under 120 characters
+set textwidth=120 " ""
 set wildmenu " Autocomplete command menu
 set wildmode=longest:full,full " Most bash-like way
 set wildignorecase
