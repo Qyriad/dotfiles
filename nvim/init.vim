@@ -171,6 +171,18 @@ highlight Search guibg=#5c5c5c guifg=#ffffff gui=NONE
 command! Hitest :source $VIMRUNTIME/syntax/hitest.vim
 
 " Autocommands
+
+function! Restore_last_position()
+	if line("'\"") <= line("$")
+		normal! g`"
+		return 1
+	endif
+endfunction
+
+augroup restore_last_position
+	autocmd! BufWinEnter * call Restore_last_position()
+augroup END
+
 augroup insert_nohlsearch
 	autocmd! InsertEnter * set nohlsearch
 augroup END
