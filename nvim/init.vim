@@ -54,6 +54,11 @@ inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
 let g:LanguageClient_serverCommands = { 'rust': ['rustup', 'run', 'nightly', 'rls'] }
 let g:deoplete#enable_at_startup = 1
 
+" use fuzzy YCM-style matching
+augroup deoplete_source
+	autocmd! VimEnter * call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+augroup END
+
 " Linting
 let g:c_space_errors = 1
 let g:python_space_error_highlight = 1
