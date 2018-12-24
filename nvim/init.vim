@@ -43,7 +43,10 @@ inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:ale_completion_enabled = 1
+inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
+"let g:ale_completion_enabled = 1
+let g:LanguageClient_serverCommands = { 'rust': ['rustup', 'run', 'nightly', 'rls'] }
+let g:deoplete#enable_at_startup = 1
 
 " Linting
 let g:c_space_errors = 1
@@ -51,6 +54,7 @@ let g:python_space_error_highlight = 1
 let g:ale_c_parse_compile_commands = 1
 let g:ale_linters = {'c': ['ccls', 'clang'], 'rust': ['rls', 'cargo']}
 let g:ale_c_ccls_init_options = {'clang': {'extraArgs': ['-isystem', '/usr/include'] } }
+let g:LanguageClient_diagnosticsEnable = 0
 
 " Other LSP
 nnoremap <Return> :ALEHover<CR>
@@ -321,6 +325,10 @@ Plug 'Konfekt/vim-alias'
 Plug 'neoclide/jsonc.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neco-vim'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 call plug#end()
 
 " vim:textwidth=0
