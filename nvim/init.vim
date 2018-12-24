@@ -29,7 +29,8 @@ set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
 set noshowmode " We're using lightline, so showing the mode in the command line is redundant
 set splitright " Make :vsplit put the new window on the right
 set splitbelow " Same as above, but on the bottom with horizontal splis
-set foldlevel=1 " Usually collapse to function definitions in classes, not the classes themselves
+"set foldlevel=1 " Usually collapse to function definitions in classes, not the classes themselves
+set foldlevel=5
 set hidden " Allow for hidden, modified but not written buffers
 set bufhidden=hide " Hide buffers instead of deleting or unloading them
 set ignorecase
@@ -37,6 +38,10 @@ set smartcase
 set gdefault " Substitute all matches in a line by default
 set cindent
 set cinoptions=1l,j1 " Indent case blocks correctly; indent Java anonymous classes correctly
+" Don't display . on folds
+set fillchars=fold:\ 
+
+let g:vimsyn_folding = 'aflmpPrt'
 
 " Completion
 set completeopt=menu,menuone,preview,noselect,noinsert
@@ -330,6 +335,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neco-vim'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+"Plug 'thinca/vim-ft-vim_fold'
 call plug#end()
 
 " vim:textwidth=0
