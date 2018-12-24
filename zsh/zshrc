@@ -69,7 +69,7 @@ export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 #export VIMINIT=':let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
-export VIMCONFIG="$XDG_CONFIG_HOME/vim"
+export VIMCONFIG="$XDG_CONFIG_HOME/nvim"
 alias tmux='tmux -u -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
 
