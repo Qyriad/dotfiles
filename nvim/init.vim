@@ -236,6 +236,9 @@ nnoremap ; :
 vnoremap > >gv
 vnoremap < <gv
 
+" Go to the second to last character
+vnoremap <leader>$ $h
+
 " Stop highlighting last search with \/
 nnoremap <leader>/ :nohlsearch<CR>
 
@@ -265,6 +268,15 @@ tnoremap <Esc> <C-\><C-n>
 " Use line-wrapped movement by default, but specifying a count disables it
 nnoremap <expr> j (v:count > 0 ? "m'" . v:count . 'j' : 'gj')
 nnoremap <expr> k (v:count > 0 ? "m'" . v:count . 'k' : 'gk')
+
+" \$ for third-to-last character
+nnoremap <leader>$ $2h
+
+" <A-CR> to insert and goto line above
+inoremap <A-CR> <Esc>O
+
+" Copy current command line
+cnoremap <C-y> <C-f>Vy<C-c>
 
 " Edit and source vimrc shortcuts
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
