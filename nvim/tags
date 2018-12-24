@@ -1,0 +1,12 @@
+options	init.vim	/" Options$
+completion	init.vim	/" Completion$
+linting	init.vim	/" Linting$
+other-lsp	init.vim	/" Other LSP$
+lightline-helper-functions	init.vim	/" Lightline helper functions$
+mapping-helper-functions	init.vim	/" Mapping helper functions$
+color-customization	init.vim	/" Color customization$
+autocommands	init.vim	/" Autocommands$
+mappings	init.vim	/" Mappings$
+mapping	init.vim	/" Mappings$
+lightline	init.vim	/" Lightline$
+vim-plug	init.vim	/" vim-plug$

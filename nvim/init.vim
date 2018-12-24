@@ -5,6 +5,7 @@ filetype plugin indent on
 
 runtime ftplugin/man.vim
 
+" Options
 set number " Show line numbers
 set modeline " Allow vim commands in text file comments
 set undofile " Persistent undo tree
@@ -90,7 +91,7 @@ command! LightlineReload call LightlineReload()
 
 
 " Mapping helper functions
-function BufSel(pattern)
+function! BufSel(pattern)
 	let bufcount = bufnr('$')
 	let currbufnr = 1
 	let nummatches = 0
@@ -154,6 +155,76 @@ highlight Search guibg=#5c5c5c guifg=#ffffff gui=NONE
 
 command! Hitest :source $VIMRUNTIME/syntax/hitest.vim
 
+" Autocommands
+augroup insert_nohlsearch
+	autocmd! InsertEnter * set nohlsearch
+augroup END
+
+function! Init_menu_items() abort
+	"let l:tagl = taglist('.', 'init.vim')
+	let l:tagl = {
+	\ 'Options': {-> execute('tag options')},
+	\ 'Completion': {-> execute('tag completion')},
+	\ 'Linting': {-> execute('tag linting')},
+	\ 'Other LSP': {-> execute('tag other-lsp')},
+	\ 'Lightline helper functions': {-> execute('tag lightline-helper-functions')},
+	\ 'Mapping helper functions': {-> execute('tag mapping-helper-functions')},
+	\ 'Color customization': {-> execute('tag color-customization')},
+	\ 'Autocommands': {-> execute('tag autocommands')},
+	\ 'Mappings': {-> execute('tag mappings')},
+	\ 'Lightline': {-> execute('tag lightline')},
+	\ 'vim-plug': {-> execute('tag vim-plug')},
+	\}
+
+	return l:tagl
+endfunction
+
+function! Init_menu_handle(item) abort
+	let l:items = Init_menu_items()
+	execute 'redraw'
+	return call(l:items[a:item], [])
+endfunction
+
+function! Init_menu() abort
+	let l:options = keys(Init_menu_items())
+
+	return fzf#run(fzf#wrap({'source': l:options, 'sink': function('Init_menu_handle'), }))
+endfunction
+
+augroup init_mapping
+	autocmd! BufReadPre init.vim nnoremap <buffer> <leader><leader> :call Init_menu()<CR>
+augroup END
+
+"augroup init_toc_ft
+	"autocmd! BufWinEnter init-toc.txt filetype detect
+"augroup END
+
+"function! Init_toc_goto_tag()
+	"let cw = expand("<cword>")
+	"execute "normal \<C-w>h"
+	"execute "tag " . cw
+"endfunction
+
+"function! Init_toc_helper()
+	"vsplit ~/.config/nvim/init-toc.txt
+	""setlocal filetype=help
+	"" Start off in the tag column
+	"normal w
+	"" Remap goto-tag to use the existing window
+	"nnoremap <buffer> <C-]> :call Init_toc_goto_tag()<CR>
+	"" Switch back to init.vim
+	"normal <C-w>h
+	"setlocal filetype=vim
+"endfunction
+
+"augroup init_toc
+	"autocmd! BufWinEnter init.vim call Init_toc_helper()
+"augroup END
+
+augroup fzf_quit
+	autocmd! FileType fzf nnoremap <buffer> q :silent q<CR> | nnoremap <buffer> <Esc> :silent q<CR>
+augroup EN
+
 " Mappings
 
 let mapleader="\\"
@@ -202,9 +273,10 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Gstatus
 nnoremap <leader>gs :tab Gstatus<CR>
 
-" Statusine/lightline
+" Statusline/lightline
 set laststatus=2 " Always show statusline
 
+" Lightline
 let g:lightline =
 \{
 	\	'active': { 
