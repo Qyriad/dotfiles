@@ -140,7 +140,8 @@ alias visudo='sudo -E visudo'
 alias vipw='sudo -E vipw'
 alias vigr='sudo -E vigr'
 alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
-alias yay='GNUPGHOME=$HOME/.config/makepkg.gnupg yay'
+alias yay='GNUPGHOME=$HOME/.config/makepkg.gnupg ; gnome-session-inhibit --inhibit suspend --reason yay yay'
+alias makepkg='gnome-session-inhibit --inhibit suspend --reason makepkg makepkg'
 alias xxpreview='xxd -l 512'
 #alias lsync='rsync -av --no-o --no-p --no-g --info=progress2'
 alias lsync='rsync -rvlh --info=progress2'
@@ -154,6 +155,28 @@ alias winetricks32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 winetricks"
 alias ddf='pydf'
 alias userctl='systemctl --user'
 alias sudo='sudo '
+
+# Disable suspending while `yay` is running
+function yay()
+{
+	echo "Disabling suspension"
+	current=$(gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout)
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+	GNUPGHOME=$HOME/.config/makepkg.gnupg command yay "$@"
+	echo "Enabling suspension"
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout $current
+}
+
+# Disable suspending while `makepkg` is running
+function makepkg()
+{
+	echo "Disabling suspension"
+	current=$(gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout | awk '{print $2}')
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+	makepkg "$@"
+	echo "Enabling suspension"
+	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout $current
+}
 
 function appfd()
 {

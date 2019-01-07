@@ -4,7 +4,7 @@
 #clickable_url = true
 #dynamic_title = true
 #font = Monospace 9
-font = InconsolataGo Nerd Font 12
+font = InconsolataGo Nerd Font Mono 12
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
