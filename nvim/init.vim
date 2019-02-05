@@ -95,6 +95,8 @@ let g:ale_c_parse_compile_commands = 1
 "let g:ale_linters = {'c': ['ccls', 'clang'], 'rust': ['rls', 'cargo']}
 " Only use ALE for languages without a language server
 let g:ale_linters = {'vim': ['vint'], 'rust': ['rls'], 'c': ['ccls']}
+let g:ale_rust_rls_executable = 'rls'
+let g:ale_rust_rls_toolchain = ''
 "let g:ale_c_ccls_init_options = {'clang': {'extraArgs': ['-isystem', '/usr/include'] } }
 "let g:ale_enabled = 0
 let g:ale_virtualtext_cursor = 1 " Enable ALE virtual text
