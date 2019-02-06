@@ -3,7 +3,7 @@
 	email = qyriad@gmail.com
 	signingKey = qyriad@gmail.com
 [merge]
-	tool = vimdiff2
+	tool = vimdiff
 [alias]
 	sub = submodule
 	l = log --abbrev-commit --decorate -n 8 --graph
@@ -14,3 +14,9 @@
 	autostash = true
 [commit]
 	verbose = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+	prompt = true
+[diff]
+	tool = vimdiff
