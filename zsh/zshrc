@@ -141,7 +141,7 @@ alias vipw='sudo -E vipw'
 alias vigr='sudo -E vigr'
 alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
 #alias yay='GNUPGHOME=$HOME/.config/makepkg.gnupg ; gnome-session-inhibit --inhibit suspend --reason yay yay'
-alias makepkg='gnome-session-inhibit --inhibit suspend --reason makepkg makepkg'
+#alias makepkg='gnome-session-inhibit --inhibit suspend --reason makepkg makepkg'
 alias xxpreview='xxd -l 512'
 #alias lsync='rsync -av --no-o --no-p --no-g --info=progress2'
 alias lsync='rsync -rvlhh --info=progress2'
@@ -157,22 +157,28 @@ alias userctl='systemctl --user'
 alias sudo='sudo '
 alias ins='insect'
 alias time='command time -f "%U user %S system %E elapsed %P%% CPU"'
+alias qmount='mount -o uid=$(id -u)'
+#alias inhibit='systemd-inhibit --what=shutdown:sleep:idle:handle-power-key:handle-suspend-key:handle-hibernate-key:handle-lid-switch --mode=block'
+alias inhibit='gnome-session-inhibit --inhibit logout:suspend:idle --reason "manually inhibited"'
 
 # Disable suspending while `yay` is running
 function yay()
 {
-	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --what=sleep --who=qyriad --why=yay yay "$@")
+	#(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --what=idle:sleep --who=qyriad --why=yay yay "$@")
+	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; gnome-session-inhibit --inhibit logout:suspend:idle --who=qyriad --why=yay yay "$@")
 }
 
 # Disable suspending while `makepkg` is running
 function makepkg()
 {
-	echo "Disabling suspension"
-	current=$(gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout | awk '{print $2}')
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
-	makepkg "$@"
-	echo "Enabling suspension"
-	gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout $current
+	#(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --what=idle:sleep --who=qyriad --why=makepkg makepkg "$@")
+	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; gnome-session-inhibit --inhibit logout:suspend:idle --who=qyriad --why=makepkg makepkg "$@")
+	#echo "Disabling suspension"
+	#current=$(gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout | awk '{print $2}')
+	#gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+	#makepkg "$@"
+	#echo "Enabling suspension"
+	#gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout $current
 }
 
 function appfd()
