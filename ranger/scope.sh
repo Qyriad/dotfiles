@@ -162,7 +162,8 @@ handle_mime() {
 }
 
 handle_fallback() {
-    echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" && exit 5
+    #echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" # && exit 5
+    echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}" && xxd -l 40 ${FILE_PATH} && exit 5
     exit 1
 }
 
