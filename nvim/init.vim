@@ -53,14 +53,17 @@ inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
-inoremap <expr><C-l> deoplete#refresh()
+"inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
+"inoremap <expr><C-l> deoplete#refresh()
 "let g:ale_completion_enabled = 1
 "let g:LanguageClient_serverCommands = { 'rust': ['rustup', 'run', 'nightly', 'rls'] }
 let g:LanguageClient_serverCommands = { 'rust': ['rls'], 'c': ['ccls'] }
 let g:deoplete#enable_at_startup = 1
 let g:echodoc#enable_at_startup = 1
-"let g:echodoc#type = "virtual"
+let g:echodoc#type = "virtual"
+
+" <C-Space> to force open the completion menu
+inoremap <silent><expr> <C-Space> coc#refresh()
 
 " Otherwise I won't have any CMake completion
 let g:necosyntax#max_syntax_lines = 1000
@@ -85,7 +88,7 @@ function! Deoplete_options()
 endfunction
 
 augroup deoplete_options
-	autocmd! VimEnter * call Deoplete_options()
+	"autocmd! VimEnter * call Deoplete_options()
 augroup END
 
 
@@ -146,9 +149,11 @@ let g:LanguageClient_diagnosticsDisplay =
 
 
 " Other LSP
-nnoremap <Return> :ALEHover<CR>
+"nnoremap <Return> :ALEHover<CR>
+nnoremap <silent> <Return> :call CocAction('doHover')<CR>
 "nnoremap <Return> :call LanguageClient#textDocument_hover()<CR>
-nnoremap <A-Return> :ALEGoToDefinition<CR>
+"nnoremap <A-Return> :ALEGoToDefinition<CR>
+nmap <A-Return> <Plug>(coc-definition)
 "nnoremap <A-Return> :call LanguageClient#textDocument_definition()<CR>
 "nnoremap <leader><A-CR> :ALEGoToDefinitionInTab<C-b><Space><Left>
 nnoremap <leader><A-CR> :tab call LanguageClient#textDocument_definition()
@@ -400,6 +405,9 @@ inoremap <A-CR> <Esc>O
 " Copy current command line
 cnoremap <C-y> <C-f>Vy<C-c>
 
+" Go to the end of the line in insert mode
+inoremap <C-L> <C-o>A
+
 " Edit and source vimrc shortcuts
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -444,16 +452,17 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Konfekt/vim-alias'
 Plug 'neoclide/jsonc.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neco-vim'
+"Plug 'w0rp/ale'
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'Shougo/neco-syntax'
+"Plug 'Shougo/neco-vim'
 Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+"Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-eunuch'
 "Plug 'thinca/vim-ft-vim_fold'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 call plug#end()
 
 " vim:textwidth=0
