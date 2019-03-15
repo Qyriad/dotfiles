@@ -38,9 +38,11 @@ set smartcase
 set gdefault " Substitute all matches in a line by default
 set cindent
 set cinoptions=1l,j1 " Indent case blocks correctly; indent Java anonymous classes correctly
-set formatoptions-=tro " Don't automatically cut long lines, and don't automatically insert comments
+"set formatoptions-=tro " Don't automatically cut long lines, and don't automatically insert comments
+set formatoptions=cqj
 " Don't display . on folds
 set fillchars=fold:\ 
+set updatetime=1000 " Lets languageservers update faster, and shortens the time for CursorHold
 
 let g:vimsyn_folding = 'aflmpPrt'
 
