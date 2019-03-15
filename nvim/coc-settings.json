@@ -1,0 +1,28 @@
+{
+	"suggest.autoTrigger": "always",
+	"suggest.acceptSuggestionOnCommitCharacter": true,
+	"suggest.echodocSupport": true,
+	"suggest.maxCompleteItemCount": 100,
+	"suggest.enablePreview": true,
+	"coc.preferences.hoverTarget": "float",
+	"codeLens.enable": true,
+	"diagnostic.virtualText": true,
+	"diagnostic.virtualTextPrefix": "\\\\ ",
+	"coc.preferences.snippets.enable": false,
+	"suggest.preferCompleteThanJumpPlaceholder": true,
+
+	"languageserver":
+	{
+		"ccls":
+		{
+			"command": "ccls",
+			"filetypes": ["c", "cpp"],
+			"rootPatterns": [".ccls", "compile_commands.json", ".git/"],
+			"trace.server": "verbose",
+			/*"initializationOptions":*/
+			/*{*/
+
+			/*}*/
+		}
+	},
+}
