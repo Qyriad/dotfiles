@@ -25,4 +25,7 @@
 			/*}*/
 		}
 	},
+
+	"json.enable": true,
+	"json.trace.server": "verbose",
 }
