@@ -27,7 +27,7 @@
 	"sudoloop": false,
 	"timeupdate": false,
 	"devel": true,
-	"cleanAfter": true,
+	"cleanAfter": false,
 	"gitclone": true,
 	"provides": true,
 	"pgpfetch": true,
