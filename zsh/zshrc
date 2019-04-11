@@ -2,7 +2,8 @@
 HISTFILE=$HOME/.cache/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory
+#setopt appendhistory
+setopt sharehistory
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -49,6 +50,16 @@ bindkey "" "edit-command-line" # Call the widget upon <C-X><C-E>
 
 # Add shortcut for pushing the line onto the stack
 bindkey "" "push-input"
+
+# <Esc>ia for select-in-shell-word
+bindkey 'ia' select-in-shell-word
+
+# <Esc>v for toggle visual mode
+bindkey 'v' visual-mode
+
+# <Esc>u for undo
+bindkey 'u' undo
+
 
 export PATH="$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/cargo/bin:$PATH"
 
@@ -261,8 +272,9 @@ precmd()
 zstyle ':vcs_info:git*' formats '%F{116}(%b)'
 zstyle ':vcs_info:git*' actionformats '%F{116}(%b|%a|%m)'
 
-export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %F{2}%(! # $) %f'
-export RPROMPT='$?'
+export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %(?..%F{1}[%?] )%F{2}%(! # $) %f'
+#export RPROMPT='$?'
+unset RPROMPT
 
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
 
