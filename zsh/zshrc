@@ -91,7 +91,7 @@ export PAGER="less"
 
 # Coreutils and builtins
 alias lls='command ls --color=always'
-alias ls='exa -gFh --group-directories-first'
+alias ls='exa -gFhb --group-directories-first'
 alias ll="ls -lh"
 alias la="ls -Al"
 alias cp="cp -vi"
