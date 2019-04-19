@@ -16,6 +16,7 @@
 		"ccls":
 		{
 			"command": "ccls",
+			"args": ["-v=2"],
 			"filetypes": ["c", "cpp"],
 			"rootPatterns": [".ccls", "compile_commands.json", ".git/"],
 			"trace.server": "verbose",
