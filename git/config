@@ -9,6 +9,8 @@
 	l = log --abbrev-commit --decorate -n 8 --graph
 	s = status
 	curbr = rev-parse --abbrev-ref HEAD
+	lo = log --abbrev-commit --decorate --graph
+	br = branch -vv
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
