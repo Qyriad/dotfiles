@@ -2,7 +2,8 @@
 HISTFILE=$HOME/.cache/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory
+#setopt appendhistory
+setopt sharehistory
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -50,6 +51,16 @@ bindkey "" "edit-command-line" # Call the widget upon <C-X><C-E>
 # Add shortcut for pushing the line onto the stack
 bindkey "" "push-input"
 
+# <Esc>ia for select-in-shell-word
+bindkey 'ia' select-in-shell-word
+
+# <Esc>v for toggle visual mode
+bindkey 'v' visual-mode
+
+# <Esc>u for undo
+bindkey 'u' undo
+
+
 export PATH="$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/cargo/bin:$PATH"
 
 # Use neovim for everything
@@ -80,7 +91,7 @@ export PAGER="less"
 
 # Coreutils and builtins
 alias lls='command ls --color=always'
-alias ls='exa -gFh --group-directories-first'
+alias ls='exa -gFhb --group-directories-first'
 alias ll="ls -lh"
 alias la="ls -Al"
 alias cp="cp -vi"
@@ -157,6 +168,8 @@ alias userctl='systemctl --user'
 alias sudo='sudo '
 alias ins='insect'
 alias time='command time -f "%U user %S system %E elapsed %P%% CPU"'
+alias progress='progress -a atool -a aunpack -a apack -a unzip'
+alias pm='progress -a atool -a aunpack -a apack -a unzip -M'
 alias qmount='mount -o uid=$(id -u)'
 #alias inhibit='systemd-inhibit --what=shutdown:sleep:idle:handle-power-key:handle-suspend-key:handle-hibernate-key:handle-lid-switch --mode=block'
 alias inhibit='gnome-session-inhibit --inhibit logout:suspend:idle --reason "manually inhibited"'
@@ -261,8 +274,9 @@ precmd()
 zstyle ':vcs_info:git*' formats '%F{116}(%b)'
 zstyle ':vcs_info:git*' actionformats '%F{116}(%b|%a|%m)'
 
-export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %F{2}%(! # $) %f'
-export RPROMPT='$?'
+export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %(?..%F{1}[%?] )%F{2}%(! # $) %f'
+#export RPROMPT='$?'
+unset RPROMPT
 
 zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
 
