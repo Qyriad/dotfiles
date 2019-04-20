@@ -154,6 +154,7 @@ nnoremap <silent> <Return> :call CocAction('doHover')<CR>
 "nnoremap <Return> :call LanguageClient#textDocument_hover()<CR>
 "nnoremap <A-Return> :ALEGoToDefinition<CR>
 nmap <A-Return> <Plug>(coc-definition)
+nmap <A-]> <Plug>(coc-type-definition)
 "nnoremap <A-Return> :call LanguageClient#textDocument_definition()<CR>
 "nnoremap <leader><A-CR> :ALEGoToDefinitionInTab<C-b><Space><Left>
 nnoremap <leader><A-CR> :tab call LanguageClient#textDocument_definition()
@@ -462,7 +463,7 @@ Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-eunuch'
 "Plug 'thinca/vim-ft-vim_fold'
-Plug 'neoclide/coc.nvim', {'do': { -> 'yarn install --frozen-lockfile'}}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 call plug#end()
 
 " vim:textwidth=0
