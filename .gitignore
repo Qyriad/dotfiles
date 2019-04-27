@@ -80,3 +80,34 @@ gnome-control-center
 gconf
 onedrive
 touchegg
+k*
+plasma*
+systemsettingsrc
+startupconfig
+startupconfigfiles
+startupconfigkeys
+insect-history
+ibus
+gtk-3.0
+gtk-4.0
+gtkrc
+gtkrc-2.0
+bless
+coc/extensions/db.json
+coc/db.json
+coc/extensions/node_modules
+coc/extensions/yarn.lock
+coc/history.json
+coc/lists
+coc/memos.json
+cura
+filezilla
+gnome-boxes
+akregatorrc
+Unknown Organization
+Minecraft Linux Launcher
+baloofilerc
+monitors.xml~
+nautilus
+nvim/plugged
+remmina
