@@ -307,6 +307,17 @@ source_if $HOME/.local/bin/zsh_automatic_cd.zsh && bindkey -s '' 'ranger' && 
 unalias run-help 2>/dev/null
 autoload -Uz run-help
 
+# udevadm custom completion extension
+_udevadm 2> /dev/null
+functions[_udevadm-orig]=$functions[_udevadm_info]
+_udevadm_info()
+{
+	_udevadm-orig "$@"
+    _arguments \
+	'*: :_files'
+}
+
+
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
 	#if [ "$(tty)" != "/dev/tty2" ]; then # and we're not in tty1
 	s="$(tty)"
