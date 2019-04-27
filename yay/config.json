@@ -10,7 +10,7 @@
 	"tarbin": "bsdtar",
 	"redownload": "no",
 	"rebuild": "no",
-	"answerclean": "",
+	"answerclean": "None",
 	"answerdiff": "None",
 	"answeredit": "None",
 	"answerupgrade": "",
