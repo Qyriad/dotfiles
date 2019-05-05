@@ -11,6 +11,7 @@
 	curbr = rev-parse --abbrev-ref HEAD
 	lo = log --abbrev-commit --decorate --graph
 	br = branch -vv
+	r = remote -v
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
