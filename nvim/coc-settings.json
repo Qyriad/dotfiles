@@ -10,6 +10,7 @@
 	"diagnostic.virtualTextPrefix": "\\\\ ",
 	"coc.preferences.snippets.enable": false,
 	"suggest.preferCompleteThanJumpPlaceholder": true,
+	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 
 	"languageserver":
 	{
