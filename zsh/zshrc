@@ -61,6 +61,9 @@ bindkey 'v' visual-mode
 # <Esc>u for undo
 bindkey 'u' undo
 
+# completion help
+bindkey '' _complete_help
+
 
 export PATH="$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/cargo/bin:$PATH"
 
