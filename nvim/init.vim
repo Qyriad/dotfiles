@@ -444,6 +444,8 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	augroup END
 endif
 
+let g:coc_global_extensions = ['coc-rls', 'coc-json']
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'chrisbra/colorizer'
