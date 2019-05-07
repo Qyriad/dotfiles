@@ -465,6 +465,8 @@ Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-eunuch'
 "Plug 'thinca/vim-ft-vim_fold'
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 call plug#end()
 
