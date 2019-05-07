@@ -164,6 +164,7 @@ nmap <C-[> <Plug>(coc-references)
 	"sleep 2
 "endfunction
 "nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <F5> :CocList<CR>
 nnoremap <leader><BS> :pclose<CR>
 
 let g:LanguageClient_previewheightLineCount = 1
