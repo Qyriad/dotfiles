@@ -155,7 +155,7 @@ nnoremap <silent> <Return> :call CocAction('doHover')<CR>
 "nnoremap <A-Return> :ALEGoToDefinition<CR>
 nmap <A-Return> <Plug>(coc-definition)
 nmap <A-]> <Plug>(coc-type-definition)
-nmap <C-[> <Plug>(coc-references)
+nmap <A-[> <Plug>(coc-references)
 "nnoremap <A-Return> :call LanguageClient#textDocument_definition()<CR>
 "nnoremap <leader><A-CR> :ALEGoToDefinitionInTab<C-b><Space><Left>
 "nnoremap <leader><A-CR> :tab call LanguageClient#textDocument_definition()
