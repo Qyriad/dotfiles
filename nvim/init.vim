@@ -158,12 +158,12 @@ nmap <A-]> <Plug>(coc-type-definition)
 nmap <C-[> <Plug>(coc-references)
 "nnoremap <A-Return> :call LanguageClient#textDocument_definition()<CR>
 "nnoremap <leader><A-CR> :ALEGoToDefinitionInTab<C-b><Space><Left>
-nnoremap <leader><A-CR> :tab call LanguageClient#textDocument_definition()
+"nnoremap <leader><A-CR> :tab call LanguageClient#textDocument_definition()
 "function! Ale_hover()
 	"let hover_s = ale#hover#Show(bufnr(''), getcurpos()[1], getcurpos()[2], {})
 	"sleep 2
 "endfunction
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+"nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <leader><BS> :pclose<CR>
 
 let g:LanguageClient_previewheightLineCount = 1
