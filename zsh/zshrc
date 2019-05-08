@@ -106,6 +106,7 @@ alias chown="chown -v --preserve-root"
 alias chmod="chmod -v --preserve-root"
 alias chgrp="chgrp -v --preserve-root"
 alias grep="grep --color=auto"
+alias egrep='egrep --color=auto'
 alias less="less -R"
 
 # Edit config shortucts
@@ -135,6 +136,21 @@ alias netstat='grc netstat'
 alias ping='grc ping'
 alias as='grc as'
 alias last='grc last'
+
+# Forced color output (for piping)
+alias grcc='grc --colour=on'
+alias grepc='grep --color=always'
+alias egrepc='egrep --color=always'
+alias jqc='jq --color-output'
+alias watchc='watch --color'
+
+# fd and rg no ignore
+# use -E, --exclude for globbing
+alias fdi='fd --no-ignore'
+alias fdih='fd --no-ignore --hidden'
+# use -g, --glob for globbing (! negates)
+alias rgi='rg --no-ignore'
+alias rgih='rg --no-ignore --hidden'
 
 # Misc
 alias wgetc="wget --content-disposition" # Uses server filename across redirects
