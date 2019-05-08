@@ -156,6 +156,9 @@ nnoremap <silent> <Return> :call CocAction('doHover')<CR>
 nmap <A-Return> <Plug>(coc-definition)
 nmap <A-]> <Plug>(coc-type-definition)
 nmap <A-[> <Plug>(coc-references)
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+nmap gs <Plug>(coc-git-chunkinfo)
 "nnoremap <A-Return> :call LanguageClient#textDocument_definition()<CR>
 "nnoremap <leader><A-CR> :ALEGoToDefinitionInTab<C-b><Space><Left>
 "nnoremap <leader><A-CR> :tab call LanguageClient#textDocument_definition()
