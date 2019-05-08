@@ -11,6 +11,7 @@
 	"coc.preferences.snippets.enable": false,
 	"suggest.preferCompleteThanJumpPlaceholder": true,
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
+	"rust-client.trace.server": "verbose",
 
 	"languageserver":
 	{
