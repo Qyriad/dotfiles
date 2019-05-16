@@ -15,12 +15,15 @@ def main():
         if workspace['focused']:
             current_workspace = workspace
 
-    # "sanitize" the workspace name
+    # "sanitize" the workspace name: format: <n>:<n>: s
     name: str = current_workspace['name']
-    colon_index = name.find(': ')
+    colon_index = name.find(':')
+    name_index = name.find(':', colon_index + 1) + 1 # +1 to account for the :
     if colon_index is not None:
-        name_without_number = name[(colon_index + 2):] # +2 to account for the space after
+        name_without_number = name[name_index:]
         number = name[:colon_index]
+        print('name without: {}'.format(name_without_number))
+        print('number: {}'.format(number))
     else:
         # not a named workspace, then
         name_without_number = name
@@ -32,9 +35,12 @@ def main():
         .run(['bemenu', '-p "rename workspace: "'], input=bemenu_process_stdin, stdout=subprocess.PIPE) \
         .stdout
 
-    # trim the newline
-    new_name: str = (new_name.decode('utf8'))[:-1]
-    subprocess.run(['swaymsg', 'rename', 'workspace', 'to', '{}: {}'.format(number, new_name)])
+    if new_name != b'':
+        # trim the newline
+        new_name: str = (new_name.decode('utf8'))[:-1]
+        subprocess.run(['swaymsg', 'rename', 'workspace', 'to', '{}:{}: {}'.format(number, number, new_name)])
+    else:
+        pass # cancel
 
 if __name__ == '__main__':
     main()
