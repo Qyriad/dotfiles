@@ -13,6 +13,10 @@
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 	"rust-client.trace.server": "verbose",
 
+	"python.linting.enabled": true,
+	"python.trace.server": "verbose",
+	"python.jediEnabled": false,
+
 	"languageserver":
 	{
 		"ccls":
