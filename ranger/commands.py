@@ -16,6 +16,18 @@ import os
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
 
+class nautilus(Command):
+    """
+    :nautilus
+
+    Open nautilus in the current directory
+    """
+
+    def execute(self):
+        # open nautilus in the current directory, discard output, and fork
+        command = [":shell", "-fw", "nautilus", "."]
+        self.fm.execute_console("shell -fw nautilus .")
+
 
 class my_edit(Command):
     # The so-called doc-string of the class will be visible in the built-in
