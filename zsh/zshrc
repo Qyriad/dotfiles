@@ -176,6 +176,7 @@ alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
 alias xxpreview='xxd -l 512'
 #alias lsync='rsync -av --no-o --no-p --no-g --info=progress2'
 alias lsync='gnome-session-inhibit --inhibit logout:suspend:idle --reason rsync rsync -rvhh --links --checksum --whole-file --info=progress2'
+alias lsyncn='rsync -rvhh --links --checksum --whole-file --info=progress2'
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias ps='ps --forest'
