@@ -7,6 +7,7 @@
 	"coc.preferences.hoverTarget": "float",
 	"codeLens.enable": false,
 	"suggest.floatEnable": true,
+	"codeLens.enable": false,
 	"diagnostic.virtualText": true,
 	"diagnostic.virtualTextPrefix": "\\\\ ",
 	"coc.preferences.snippets.enable": false,
