@@ -6,6 +6,7 @@
 	"suggest.enablePreview": true,
 	"coc.preferences.hoverTarget": "float",
 	"codeLens.enable": false,
+	"suggest.floatEnable": true,
 	"diagnostic.virtualText": true,
 	"diagnostic.virtualTextPrefix": "\\\\ ",
 	"coc.preferences.snippets.enable": false,
