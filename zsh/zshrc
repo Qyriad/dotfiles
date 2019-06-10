@@ -49,6 +49,24 @@ autoload -Uz edit-command-line # Load the function from ZSH runtime
 zle -N edit-command-line # Expose the function as a widget
 bindkey "" "edit-command-line" # Call the widget upon <C-X><C-E>
 
+# This zle widget funcvtion cancels the current command, keeping the buffer,
+# and moving to the next line, but without setting the error code
+function enter-without-exec()
+{
+	# store our buffer, since we're about to delete it
+	buf="${BUFFER}"
+	zle kill-buffer
+	# print it again, and move to the next line
+	print "${buf}"
+	_zsh_highlight
+	# print the prompt—zsh won't do it for us since it doesn't see this as a new command buffer
+	print -n -P "${PS1}"
+}
+
+# expose the function as a widget
+zle -N enter-without-exec
+bindkey "" enter-without-exec
+
 # Add shortcut for pushing the line onto the stack
 bindkey "" "push-input"
 
