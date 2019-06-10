@@ -1,7 +1,7 @@
 {
 	"suggest.autoTrigger": "always",
 	"suggest.acceptSuggestionOnCommitCharacter": true,
-	"suggest.echodocSupport": true,
+	"suggest.echodocSupport": false,
 	"suggest.maxCompleteItemCount": 100,
 	"suggest.enablePreview": true,
 	"coc.preferences.hoverTarget": "float",
