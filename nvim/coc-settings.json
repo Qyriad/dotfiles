@@ -24,6 +24,39 @@
 	"signature.enable": true,
 	"signature.target": "float",
 
+	"suggest.completionItemKindLabels":
+	{
+		"variable": "var",
+		"function": "fun",
+		"method": "meth",
+		"module": "mod",
+		"value": "val",
+		"default": "def",
+		"keyword": "key",
+		"class": "class",
+		"unit": "unit",
+		"field": "field",
+		"property": "prop",
+		"constant": "const",
+		"operator": "op",
+		"reference": "ref",
+		"typeParameter": "type param",
+		"text": "text",
+		"enum": "enum",
+		"file": "file",
+		"color": "color",
+		"event": "event",
+		"folder": "folder",
+		"struct": "struct",
+		"snippet": "snip",
+		"interface": "interface",
+		"enumMember": "enum member"
+	},
+
+	"python.linting.enabled": true,
+	"python.trace.server": "verbose",
+	"python.jediEnabled": false,
+
 	"languageserver":
 	{
 		"ccls":
