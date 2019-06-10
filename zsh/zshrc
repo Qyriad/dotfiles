@@ -123,6 +123,7 @@ alias ea="$EDITOR $HOME/.config/alacritty/alacritty.yml"
 alias ef="$EDITOR $HOME/.config/fontconfig/fonts.conf"
 alias ez="$EDITOR $HOME/.config/zsh/zshrc"
 alias sz="source $HOME/.zshrc"
+alias exz='exec zsh'
 alias es="$EDITOR $HOME/.ssh/config"
 alias ek="$EDITOR $HOME/.config/kitty/kitty.conf"
 alias etr="$EDITOR $HOME/.config/termite/config"
