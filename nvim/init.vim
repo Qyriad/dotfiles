@@ -472,6 +472,7 @@ Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-eunuch'
+Plug 'terryma/vim-expand-region'
 "Plug 'thinca/vim-ft-vim_fold'
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
