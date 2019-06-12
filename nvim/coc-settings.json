@@ -12,6 +12,7 @@
 	"suggest.preferCompleteThanJumpPlaceholder": true,
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 	"rust-client.trace.server": "verbose",
+	"vimlsp.trace.server": "verbose",
 
 	"python.linting.enabled": true,
 	"python.trace.server": "verbose",
