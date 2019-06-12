@@ -172,6 +172,8 @@ nnoremap <leader><BS> :pclose<CR>
 
 let g:LanguageClient_previewheightLineCount = 1
 
+let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
+
 " Lightline helper functions
 function! SyntaxItem()
 	let synid = synID(line('.'), col('.'), 1)
