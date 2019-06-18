@@ -479,6 +479,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 " vim:textwidth=0
