@@ -170,6 +170,8 @@ nmap gs <Plug>(coc-git-chunkinfo)
 nnoremap <F5> :CocList<CR>
 nnoremap <leader><BS> :pclose<CR>
 
+command! CocFloatHide execute "normal! \<Plug>(coc-float-hide)"
+
 let g:LanguageClient_previewheightLineCount = 1
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
