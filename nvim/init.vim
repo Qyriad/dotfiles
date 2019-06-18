@@ -150,7 +150,8 @@ let g:LanguageClient_diagnosticsDisplay =
 
 " Other LSP
 "nnoremap <Return> :ALEHover<CR>
-nnoremap <silent> <Return> :call CocAction('doHover')<CR>
+"nnoremap <silent> <Return> :call CocAction('doHover')<CR>
+nnoremap <silent> <Return> :call CocActionAsync('doHover')<CR>
 "nnoremap <Return> :call LanguageClient#textDocument_hover()<CR>
 "nnoremap <A-Return> :ALEGoToDefinition<CR>
 nmap <A-Return> <Plug>(coc-definition)
