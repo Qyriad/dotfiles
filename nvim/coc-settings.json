@@ -71,6 +71,12 @@
 				/*"compilationDatabaseDirectory": "firmware/build"*/
 			/*}*/
 		}
+		/*"palantir":*/
+		/*{*/
+			/*"command": "pyls",*/
+			/*"filetypes": ["python"],*/
+			/*"trace.server": "verbose"*/
+		/*}*/
 	},
 
 	"json.enable": true,
