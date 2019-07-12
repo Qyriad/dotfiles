@@ -199,7 +199,7 @@ alias lsyncn='rsync -rvhh --links --checksum --whole-file --info=progress2'
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias ps='ps --forest'
-alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE,MIN-IO'
+alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 alias lsd='lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 alias wine32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 wine"
 alias winetricks32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 winetricks"
