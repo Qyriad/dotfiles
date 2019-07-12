@@ -423,6 +423,8 @@ inoremap <C-L> <C-o>A
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+nnoremap <leader>ts :tab split<CR>
+
 " Gstatus
 nnoremap <leader>gs :tab Gstatus<CR>
 
