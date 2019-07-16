@@ -37,8 +37,8 @@ setopt PROMPT_SUBST
 
 setopt cbases
 
-bindkey "^[[1;5C" forward-word # C-<right>
-bindkey "^[[1;5D" backward-word # C-<left>
+bindkey "^[[1;3D" backward-word # <A-<Left>>
+bindkey "^[[1;3C" forward-word # <A-<Right>>
 bindkey "^[[1~" beginning-of-line # <home>
 bindkey "^[[4~" end-of-line # <end>
 bindkey "^[[3~" delete-char # <del>
@@ -63,9 +63,46 @@ function enter-without-exec()
 	print -n -P "${PS1}"
 }
 
-# expose the function as a widget
+# expose the function as a widget and bind it
 zle -N enter-without-exec
 bindkey "" enter-without-exec
+
+# zle widget function for bash-style word kill
+function bash-backward-kill-word()
+{
+	#local WORDCHARS="${WORDCHARS:s/\///}"
+	local WORDCHARS="${WORDCHARS//[^[:alnum:]]/}"
+	zle backward-kill-word
+}
+
+# expose the function as a widget and bind it
+zle -N bash-backward-kill-word
+# ^[08 is <C-<BS>>, which I bound in Alacritty's config
+bindkey '^[08' bash-backward-kill-word
+
+# zle widget function for bash-style word movement left
+function bash-backward-word()
+{
+	local WORDCHARS="${WORDCHARS//[^[:alnum:]]/}"
+	zle backward-word
+}
+
+# expose the function as a widget and bind it
+zle -N bash-backward-word
+# Alacritty default for <C-<Left>>
+bindkey '^[[1;5D' bash-backward-word
+
+# zle widget function for bash-style word-movement right
+function bash-forward-word()
+{
+	local WORDCHARS="${WORDCHARS//[^[:alnum:]]/}"
+	zle forward-word
+}
+
+# expose the function as a widget and bind it
+zle -N bash-forward-word
+# Alacritty default for <C-<Right>>
+bindkey '^[[1;5C' bash-forward-word
 
 # Add shortcut for pushing the line onto the stack
 bindkey "" "push-input"
