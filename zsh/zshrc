@@ -134,7 +134,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
+#export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
@@ -316,6 +316,13 @@ function unbak()
 	else
 		echo "File \"$1\" not found"
 	fi
+}
+
+function rekey()
+{
+	export GPG_TTY="$(tty)"
+	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+	gpg-connect-agent updatestartuptty reloadagent /bye > /dev/null
 }
 
 function bwsearch()
