@@ -238,7 +238,6 @@ alias lsync='gnome-session-inhibit --inhibit logout:suspend:idle --reason rsync 
 alias lsyncn='rsync -rvhh --links --checksum --whole-file --info=progress2'
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
-alias ps='ps --forest'
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 alias lsd='lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 alias wine32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 wine"
