@@ -431,6 +431,30 @@ nnoremap <leader>gs :tab Gstatus<CR>
 " Easy-Align
 xmap ga <Plug>(EasyAlign)
 
+" Word motion makes `word` defined to be more like a variable segment
+" I really never use Vim's definition of a `WORD`, so I'll replace its mappings to behave like Vim's original `word`s.
+nnoremap W w
+nnoremap E e
+nnoremap B b
+nnoremap gE ge
+xnoremap W w
+xnoremap E e
+xnoremap B b
+xnoremap gE ge
+onoremap W w
+onoremap E e
+onoremap B b
+onoremap gE ge
+
+xnoremap aW aw
+xnoremap iW iw
+
+" Also a few <leader> mappings for the same thing, particularly for operator-pending mode
+onoremap <leader>iw iw
+onoremap i<leader>w iw
+onoremap <leader>aw aw
+onoremap a<leader>w aw
+
 " Statusline/lightline
 set laststatus=2 " Always show statusline
 
@@ -483,6 +507,7 @@ Plug 'vim-scripts/vis'
 Plug 'tpope/vim-eunuch'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'chaoren/vim-wordmotion'
 Plug 'terryma/vim-expand-region'
 "Plug 'thinca/vim-ft-vim_fold'
 Plug 'Shougo/neco-vim'
