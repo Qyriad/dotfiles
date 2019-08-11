@@ -428,6 +428,9 @@ nnoremap <leader>ts :tab split<CR>
 " Gstatus
 nnoremap <leader>gs :tab Gstatus<CR>
 
+" Easy-Align
+xmap ga <Plug>(EasyAlign)
+
 " Statusline/lightline
 set laststatus=2 " Always show statusline
 
@@ -476,8 +479,10 @@ Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 "Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
+Plug 'vim-scripts/vis'
 Plug 'tpope/vim-eunuch'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'terryma/vim-expand-region'
 "Plug 'thinca/vim-ft-vim_fold'
 Plug 'Shougo/neco-vim'
