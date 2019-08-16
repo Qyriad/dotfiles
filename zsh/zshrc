@@ -23,8 +23,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-setopt COMPLETE_ALIASES
-
 zstyle ':completion:*' rehash true
 
 setopt AUTO_CONTINUE
@@ -386,6 +384,7 @@ source_if /usr/share/zsh/scripts/zplug/init.zsh
 
 zplug "lambda/zsh-snippets"
 zplug "ael-code/zsh-colored-man-pages"
+zplug "agkozak/zsh-z"
 zplug load
 
 alias zsp='zsh_snippets'
