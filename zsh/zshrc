@@ -322,6 +322,12 @@ function rekey()
 	gpg-connect-agent updatestartuptty reloadagent /bye > /dev/null
 }
 
+function reenv()
+{
+	tmux show-environment -s | rg -v unset
+	eval $(tmux show-environment -s | rg -v unset)
+}
+
 function bwsearch()
 {
 	bw list items --search "$1" | jq '[.[] | {id: .id, name: .name, username: .login.username, url: .login.uris[].uri}]'
