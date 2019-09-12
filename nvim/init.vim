@@ -464,7 +464,7 @@ let g:lightline =
 \{
 	\	'active': { 
 	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
-	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileencoding', 'fileformat'], ['syncolor', 'syn']]
+	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], ['syncolor', 'syn']]
 	\	},
 	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
 	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir' },
