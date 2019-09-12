@@ -280,7 +280,8 @@ augroup END
 
 augroup c_ft_headers
 	autocmd!
-	autocmd BufRead,BufNewFile *.h set filetype=c
+	autocmd BufRead,BufNewFile *.h set filetype=c.doxygen
+	autocmd FileType c set filetype=c.doxygen
 augroup END
 
 function! Restore_last_position()
