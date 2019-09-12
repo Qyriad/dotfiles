@@ -412,6 +412,12 @@ _udevadm_info()
 }
 
 
+# Source host-specific zshrc if there is Source host-specific zshrc if there is one
+h=$(hostname) # get hostname
+h=${(L)h} # convert to lowercase
+source_if "$HOME/.config/host/$h/zshrc"
+
+
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
 	#if [ "$(tty)" != "/dev/tty2" ]; then # and we're not in tty1
 	s="$(tty)"
