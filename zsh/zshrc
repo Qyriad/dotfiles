@@ -226,15 +226,11 @@ alias visudo='sudo -E visudo'
 alias vipw='sudo -E vipw'
 alias vigr='sudo -E vigr'
 alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
-#alias yay='GNUPGHOME=$HOME/.config/makepkg.gnupg ; gnome-session-inhibit --inhibit suspend --reason yay yay'
-#alias makepkg='gnome-session-inhibit --inhibit suspend --reason makepkg makepkg'
 alias xxpreview='xxd -l 512'
-#alias lsync='rsync -av --no-o --no-p --no-g --info=progress2'
-#alias lsync='gnome-session-inhibit --inhibit logout:suspend:idle --reason rsync rsync -rvhh --links --checksum --whole-file --info=progress2'
-alias rsync='gnome-session-inhibit --inhibit logout:suspend:idle --reason rsync rsync --recursive -hh --links -v --info=PROGRESS2'
-alias rsyncn='rsync --recursive -hh --links -v --info=PROGRESS2'
-alias lsync='gnome-session-inhibit --inhibit logout:suspend:idle --reason rsync rsync --whole-file --recursive -hh --links -v --info=PROGRESS2'
-alias lsyncn='rsync -rvhh --links --checksum --whole-file --info=progress2'
+alias rsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --recursive -hh --links -v --info=PROGRESS2'
+alias rsyncn='/usr/bin/rsync --recursive -hh --links -v --info=PROGRESS2'
+alias lsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hh --links -v --info=PROGRESS2'
+alias lsyncn='/usr/bin/rsync -rvhh --links --checksum --whole-file --info=progress2'
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
@@ -258,14 +254,14 @@ alias htopshort="HTOPRC=$HOME/.config/htop/alt.htoprc htop"
 function yay()
 {
 	#(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --what=idle:sleep --who=qyriad --why=yay yay "$@")
-	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; gnome-session-inhibit --inhibit logout:suspend:idle --reason yay yay "$@")
+	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=yay --no-pager --no-legend yay "$@")
 }
 
 # Disable suspending while `makepkg` is running
 function makepkg()
 {
 	#(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --what=idle:sleep --who=qyriad --why=makepkg makepkg "$@")
-	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; gnome-session-inhibit --inhibit logout:suspend:idle --reason makepkg makepkg "$@")
+	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=yay --no-pager --no-legend makepkg "$@")
 	#echo "Disabling suspension"
 	#current=$(gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout | awk '{print $2}')
 	#gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
