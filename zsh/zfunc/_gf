@@ -1,0 +1,15 @@
+#compdef _gf
+# vim: ft=zsh
+
+# total=$(b=("${(@s/:/)PATH}") ; for i in $b; do fd "greatfet_" "$i" | sd ".+greatfet_" "greatfet_"; done);
+# total=("${(f)total}"); echo $total
+
+function _gf()
+{
+	local subs
+	subs=$(b=("${(@s/:/)PATH}") ; for i in $b; do fd "greatfet_" "$i" | sd ".+greatfet_" ""; done);
+	subs=("${(f)subs}")
+	_arguments "1: :($subs)"
+}
+
+_gf "$@"

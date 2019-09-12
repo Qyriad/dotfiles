@@ -409,6 +409,9 @@ _udevadm_info()
 	'*: :_files'
 }
 
+compdef _gf gf
+compdef _gf greatfet
+
 
 # Source host-specific zshrc if there is Source host-specific zshrc if there is one
 h=$(hostname) # get hostname
