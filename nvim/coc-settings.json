@@ -11,6 +11,7 @@
 	"diagnostic.virtualTextPrefix": "\\\\ ",
 	"coc.preferences.snippets.enable": false,
 	"suggest.preferCompleteThanJumpPlaceholder": true,
+	"suggest.removeDuplicateItems": true,
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 	"rust-client.trace.server": "verbose",
 	"vimlsp.trace.server": "verbose",
