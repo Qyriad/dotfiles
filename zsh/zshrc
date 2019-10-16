@@ -326,6 +326,11 @@ function reenv()
 	eval $(tmux show-environment -s | rg -v unset)
 }
 
+function ftail()
+{
+	tail -f "$1" 2>&1 | perl -ne "if /file truncated/) {system 'clear'} else {print}"
+}
+
 function bwsearch()
 {
 	bw list items --search "$1" | jq '[.[] | {id: .id, name: .name, username: .login.username, url: .login.uris[].uri}]'
