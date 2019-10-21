@@ -328,7 +328,7 @@ function reenv()
 
 function ftail()
 {
-	tail -f "$1" 2>&1 | perl -ne "if /file truncated/) {system 'clear'} else {print}"
+	tail -f "$1" 2>&1 | perl -ne "if (/file truncated/) {system "clear'} else {print}'
 }
 
 function bwsearch()
