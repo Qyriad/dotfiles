@@ -179,12 +179,14 @@ let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
 
 " Lightline helper functions
 function! SyntaxItem()
+	return ""
 	let synid = synID(line('.'), col('.'), 1)
 	let trans = synIDtrans(synid)
 	return synIDattr(synid, 'name') . ' | ' . synIDattr(trans, 'name') . ' | ' . synIDattr(trans, 'fg')
 endfunction
 
 function! SyntaxColor()
+	return ""
 	highlight SyntaxItem()
 endfunction
 
