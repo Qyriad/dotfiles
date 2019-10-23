@@ -458,10 +458,18 @@ onoremap i<leader>w iw
 onoremap <leader>aw aw
 onoremap a<leader>w aw
 
-" Capitalize the last inserted text; usable from <C-o>
+" Capitalize the last inserted text
+function! Capitalize_and_return()
+	normal `[v`]gU`]
+	s/-/_/
+	normal ``a
+endfunction
+
+" Usable from <C-o>
 nnoremap <leader>c :normal `[v`]gU`]a<CR>
-" Capitalize the last inserted text; usable from insert mode
-inoremap <F3> <C-o>:normal `[v`]gU`]a<CR>
+" Usable from insert mode, and replaces - with /
+inoremap <F3> <C-o>:call Capitalize_and_return()<CR>
+
 
 " Statusline/lightline
 set laststatus=2 " Always show statusline
