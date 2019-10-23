@@ -458,6 +458,11 @@ onoremap i<leader>w iw
 onoremap <leader>aw aw
 onoremap a<leader>w aw
 
+" Capitalize the last inserted text; usable from <C-o>
+nnoremap <leader>c :normal `[v`]gU`]a<CR>
+" Capitalize the last inserted text; usable from insert mode
+inoremap <F3> <C-o>:normal `[v`]gU`]a<CR>
+
 " Statusline/lightline
 set laststatus=2 " Always show statusline
 
