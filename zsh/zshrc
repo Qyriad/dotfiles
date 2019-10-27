@@ -139,6 +139,7 @@ export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 #export VIMINIT=':let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 alias tmux="tmux -u -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias t='systemd-run -d -E TMUX_TMPDIR=$TMUX_TMPDIR -r --uid qyriad --gid qyriad $(whence tmux) start-server'
 export XCOMPOSEFILE="$XDG_CONFIG_HOME/X11/Xcompose"
 
 alias cmc="rm -rf CMakeCache.txt CMakeFiles Makefile cmake_install.cmake"
@@ -459,13 +460,14 @@ source_if "$HOME/.config/host/$h/zshrc"
 
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
-	#if [ "$(tty)" != "/dev/tty2" ]; then # and we're not in tty1
+	# and we're not in a tty
 	s="$(tty)"
 	if [[ ! "$(tty)" =~ "/dev/tty" ]]; then
 		if tmux list-sessions; then # if there's a session, attach
 			#tmux attach-session -d
 		else
-			tmux # otherwise, create one
+			#tmux # otherwise, create one
 		fi
 	fi
 fi
+
