@@ -314,6 +314,39 @@ function unbak()
 	fi
 }
 
+function vienv()
+{
+	to="$(mktemp)"
+	tm="$(mktemp)"
+	e=$(env)
+	echo "$e" > "$to"
+	echo "$e" > "$tm"
+
+
+	"$EDITOR" "$tm"
+
+	# unset comm -23
+	# set comm -13
+
+	for i in $(comm -23 <(sort "$to") <(sort "$tm")); do
+		a=(${(s/=/)i})
+		name=${a[1]}
+
+		unset $name
+	done
+
+	for i in $(comm -13 <(sort "$to") <(sort "$tm")); do
+		a=(${(s/=/)i})
+		name=${a[1]}
+		val=${a[2]}
+
+		export "$name"="$val"
+	done
+
+	/usr/bin/rm "$to"
+	/usr/bin/rm "$tm"
+}
+
 function rekey()
 {
 	export GPG_TTY="$(tty)"
