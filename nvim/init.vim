@@ -250,7 +250,7 @@ highlight CursorLine ctermbg=234 cterm=NONE guibg=#1c1c1c
 " Also bold the line number
 highlight CursorLineNr cterm=bold gui=bold guifg=#af5f00
 " Make the folded text color not suck
-highlight Folded ctermbg=17
+highlight Folded ctermbg=17 guibg=#303030
 
 " Make the completion menu look not ungodly
 highlight Pmenu guibg=#303030 guifg=#5a95f4
