@@ -1,0 +1,1 @@
+alias t='systemd-run -d -E TMUX_TMPDIR=$TMUX_TMPDIR --user --scope $(whence tmux) start-server'

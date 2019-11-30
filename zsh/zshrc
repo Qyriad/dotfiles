@@ -461,7 +461,7 @@ compdef _gf greatfet
 # Source host-specific zshrc if there is Source host-specific zshrc if there is one
 h=$(hostname) # get hostname
 h=${(L)h} # convert to lowercase
-source_if "$HOME/.config/host/$h/zshrc"
+source_if "$HOME/.config/host/$h/zsh/zshrc"
 
 
 if [ -z "$TMUX" ]; then # If we're not already in a tmux session
