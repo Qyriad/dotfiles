@@ -49,16 +49,9 @@ let g:vimsyn_folding = 'aflmpPrt'
 " Completion
 set completeopt=menu,menuone,preview,noselect,noinsert
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-"inoremap <expr> <Esc> pumvisible() ? deoplete#cancel_popup() : "\<Esc>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <silent><expr> <C-Space> deoplete#mappings#manual_complete()
-"inoremap <expr><C-l> deoplete#refresh()
-"let g:ale_completion_enabled = 1
-"let g:LanguageClient_serverCommands = { 'rust': ['rustup', 'run', 'nightly', 'rls'] }
-let g:LanguageClient_serverCommands = { 'rust': ['rls'], 'c': ['ccls'] }
-let g:deoplete#enable_at_startup = 1
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = "virtual"
 
@@ -67,30 +60,6 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 
 " Otherwise I won't have any CMake completion
 let g:necosyntax#max_syntax_lines = 1000
-function! Deoplete_options()
-	" use fuzzy YCM-style matching
-	" matcher_length means that any completion with <= characters won't be shown…including itself
-	" Not a great solution :/
-	"call deoplete#enable_logging('DEBUG', '/home/qyriad/deoplete.log')
-	call deoplete#custom#option('ignore_sources', {'_': ['around', 'dictionary']})
-	call deoplete#custom#source('_', 'matchers', ['matcher_length', 'matcher_full_fuzzy'])
-	call deoplete#custom#source('_', 'max_menu_width', 120)
-	call deoplete#custom#source('_', 'max_kind_width', 60)
-	call deoplete#custom#source('_', 'max_abbr_width', 0)
-	call deoplete#custom#source('buffer', 'rank', 1)
-	call deoplete#custom#source('buffer', 'mark', '[BUF]')
-	call deoplete#custom#source('LanguageClient', 'mark', '[LC]')
-	call deoplete#custom#source('LanguageClient', 'rank', 200)
-	call deoplete#custom#source('syntax', 'rank', 100)
-	call deoplete#custom#source('vim', 'rank', 100)
-	" Syntax source mark: [S]
-	" LanguageClient
-endfunction
-
-augroup deoplete_options
-	"autocmd! VimEnter * call Deoplete_options()
-augroup END
-
 
 " Linting
 highlight link ALEErrorSign Error
@@ -99,81 +68,19 @@ highlight link ALEWarningSign Todo
 let g:c_space_errors = 1
 let g:python_space_error_highlight = 1
 
-let g:ale_c_parse_compile_commands = 1
-"let g:ale_linters = {'c': ['ccls', 'clang'], 'rust': ['rls', 'cargo']}
-" Only use ALE for languages without a language server
-let g:ale_linters = {'vim': ['vint'], 'rust': ['rls'], 'c': ['ccls']}
-let g:ale_rust_rls_executable = 'rls'
-let g:ale_rust_rls_toolchain = ''
-"let g:ale_c_ccls_init_options = {'clang': {'extraArgs': ['-isystem', '/usr/include'] } }
-"let g:ale_enabled = 0
-let g:ale_virtualtext_cursor = 1 " Enable ALE virtual text
-
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_diagnosticsDisplay = 
-\{
-\	1:
-\	{
-\		"name": "Error",
-\		"texthl": "ALEError",
-\		"signText": ">>",
-\		"signTexthl": "ALEErrorSign",
-\       },
-\       2:
-\		{
-\           "name": "Warning",
-\           "texthl": "ALEWarning",
-\           "signText": ">",
-\           "signTexthl": "ALEWarningSign",
-\       },
-\       3:
-\		{
-\           "name": "Information",
-\           "texthl": "ALEInfo",
-\           "signText": "--",
-\           "signTexthl": "ALEInfoSign",
-\       },
-\       4:
-\		{
-\           "name": "Hint",
-\           "texthl": "ALEInfo",
-\           "signText": "-",
-\           "signTexthl": "ALEInfoSign",
-\       },
-\    }
-
-" Only use ALE for vim, which doesn't have a language server
-"augroup vim_ft_ale
-	"autocmd! FileType vim let b:ale_enabled = 1
-"augroup END
-
 
 " Other LSP
-"nnoremap <Return> :ALEHover<CR>
-"nnoremap <silent> <Return> :call CocAction('doHover')<CR>
 nnoremap <silent> <Return> :call CocActionAsync('doHover')<CR>
-"nnoremap <Return> :call LanguageClient#textDocument_hover()<CR>
-"nnoremap <A-Return> :ALEGoToDefinition<CR>
 nmap <A-Return> <Plug>(coc-definition)
 nmap <A-]> <Plug>(coc-type-definition)
 nmap <A-[> <Plug>(coc-references)
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 nmap gs <Plug>(coc-git-chunkinfo)
-"nnoremap <A-Return> :call LanguageClient#textDocument_definition()<CR>
-"nnoremap <leader><A-CR> :ALEGoToDefinitionInTab<C-b><Space><Left>
-"nnoremap <leader><A-CR> :tab call LanguageClient#textDocument_definition()
-"function! Ale_hover()
-	"let hover_s = ale#hover#Show(bufnr(''), getcurpos()[1], getcurpos()[2], {})
-	"sleep 2
-"endfunction
-"nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <F5> :CocList<CR>
 nnoremap <leader><BS> :pclose<CR>
 
 command! CocFloatHide execute "normal! \<Plug>(coc-float-hide)"
-
-let g:LanguageClient_previewheightLineCount = 1
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
 
@@ -208,7 +115,8 @@ endfunction
 command! LightlineReload call LightlineReload()
 
 
-" Mapping helper functions
+""" Mapping helper functions
+
 function! BufSel(pattern)
 	let bufcount = bufnr('$')
 	let currbufnr = 1
@@ -511,12 +419,10 @@ Plug 'Konfekt/vim-alias'
 Plug 'neoclide/jsonc.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Shirk/vim-gas'
-"Plug 'w0rp/ale'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'Shougo/neco-syntax'
 "Plug 'Shougo/neco-vim'
 Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
-"Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
 Plug 'vim-scripts/vis'
@@ -526,8 +432,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'chaoren/vim-wordmotion'
 Plug 'terryma/vim-expand-region'
 "Plug 'thinca/vim-ft-vim_fold'
-Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'
+"Plug 'Shougo/neco-vim'
+"Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 Plug 'liuchengxu/vista.vim'
 call plug#end()
