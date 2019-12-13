@@ -28,3 +28,5 @@
 	prompt = true
 [diff]
 	tool = vimdiff
+[core]
+	pager = delta --dark
