@@ -16,6 +16,7 @@
 	cleang = clean -e firmware/build -e compile_commands.json -e .gdbinit
 	b = branch -vv
 	bb = branch -vv --no-merged master
+	sh = show --abbrev-commit --decorate -q
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
