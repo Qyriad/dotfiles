@@ -186,6 +186,7 @@ alias etr="$EDITOR $HOME/.config/termite/config"
 alias df='grc df'
 alias free='grc free'
 alias ifconfig='grc ifconfig'
+alias ip='grc ip'
 alias mount='grc mount'
 alias netstat='grc netstat'
 alias ping='grc ping'
