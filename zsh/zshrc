@@ -405,7 +405,11 @@ export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %(?..
 #export RPROMPT='$?'
 unset RPROMPT
 
-zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
+# FIXME: this is super slow, so we'll use bash's instead
+#zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
+autoload -Uz bashcompinit
+bashcompinit
+source_if /usr/share/git/completion/git-completion.bash 2> /dev/null
 
 #source_if /usr/share/git/completion/git-completion.zsh
 source_if /usr/share/git/completion/git-prompt.sh
