@@ -12,9 +12,10 @@
 	lo = log --abbrev-commit --decorate --graph
 	br = !zsh -c 'cat <(git branch -vv --no-merged) <(git branch -vv --color=always | grep --color=never master)'
 	r = remote -v
-	b = branch -vv
 	clean-fw = clean -e firmware/build -e compile_commands.json -e .gdbinit
 	cleang = clean -e firmware/build -e compile_commands.json -e .gdbinit
+	b = branch -vv
+	bb = branch -vv --no-merged master
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
