@@ -413,7 +413,7 @@ source_if /usr/share/git/completion/git-completion.bash 2> /dev/null
 
 #source_if /usr/share/git/completion/git-completion.zsh
 source_if /usr/share/git/completion/git-prompt.sh
-source_if /etc/profile.d/cnf.sh
+#source_if /etc/profile.d/cnf.sh
 source_if /etc/profile.d/devkitarm.sh
 source_if /etc/profile.d/devkitppc.sh
 
@@ -428,13 +428,13 @@ source_if /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source_if /usr/share/zsh/scripts/zplug/init.zsh
 
-zplug "lambda/zsh-snippets"
+#zplug "lambda/zsh-snippets"
 zplug "ael-code/zsh-colored-man-pages"
-zplug "agkozak/zsh-z"
+#zplug "agkozak/zsh-z"
 zplug load
 
-alias zsp='zsh_snippets'
-bindkey "<M-s>" zsh-snippets-widget-expand
+#alias zsp='zsh_snippets'
+#bindkey "<M-s>" zsh-snippets-widget-expand
 
 # willinghatch/zsh-snippets
 # momo-lab/zsh-abbrev-alias
