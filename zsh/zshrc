@@ -228,10 +228,10 @@ alias vipw='sudo -E vipw'
 alias vigr='sudo -E vigr'
 alias vrt='nvr --remote-silent -sp' # Vim Remote Tab
 alias xxpreview='xxd -l 512'
-alias rsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --recursive -hh --links -v --info=PROGRESS2'
-alias rsyncn='/usr/bin/rsync --recursive -hh --links -v --info=PROGRESS2'
-alias lsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hh --links -v --info=PROGRESS2'
-alias lsyncn='/usr/bin/rsync -rvhh --links --checksum --whole-file --info=progress2'
+alias rsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --recursive -hhh --links -v --info=PROGRESS2'
+alias rsyncn='/usr/bin/rsync --recursive -hhh --links -v --info=PROGRESS2'
+alias lsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hhh --links -v --info=PROGRESS2'
+alias lsyncn='/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
