@@ -391,11 +391,11 @@ set laststatus=2 " Always show statusline
 let g:lightline =
 \{
 	\	'active': { 
-	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified'], ['zoomed']],
 	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], ['syncolor', 'syn']]
 	\	},
 	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir' },
+	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir', 'zoomed': 'zoom#statusline' },
 	\	'tab': { 'active': ['tabnum', 'filename', 'modified'], 'inactive': ['tabnum', 'filename', 'modified'] }
 \}
 
@@ -436,6 +436,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'chaoren/vim-wordmotion'
 Plug 'terryma/vim-expand-region'
+Plug 'dhruvasagar/vim-zoom'
 "Plug 'thinca/vim-ft-vim_fold'
 "Plug 'Shougo/neco-vim'
 "Plug 'neoclide/coc-neco'
