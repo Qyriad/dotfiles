@@ -468,10 +468,10 @@ if [ -z "$TMUX" ]; then # If we're not already in a tmux session
 	# and we're not in a tty
 	s="$(tty)"
 	if [[ ! "$(tty)" =~ "/dev/tty" ]]; then
-		if tmux list-sessions; then # if there's a session, attach
+		if [[ $(tmux list-sessions) =~ '\n' ]]; then # if there's a session, attach
 			#tmux attach-session -d
 		else
-			#tmux # otherwise, create one
+			#tmux new-session -s 0 # otherwise, create one
 		fi
 	fi
 fi
