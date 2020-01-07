@@ -20,7 +20,7 @@
 	"python.linting.pylintEnabled": true,
 	"python.linting.pylintArgs": ["--max-line-length", "120", "--max-args", "8"],
 	"python.trace.server": "messages",
-	"python.jediEnabled": true,
+	"python.jediEnabled": false,
 	"signature.enable": true,
 	"signature.target": "float",
 
