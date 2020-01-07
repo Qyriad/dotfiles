@@ -194,6 +194,11 @@ augroup c_ft_headers
 	autocmd FileType c set filetype=c.doxygen
 augroup END
 
+augroup gas_ft
+	autocmd!
+	autocmd BufRead,BufNewFile *.S set filetype=gas
+augroup END
+
 function! Restore_last_position()
 	if line("'\"") <= line("$")
 		normal! g`"
