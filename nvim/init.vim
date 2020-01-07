@@ -377,7 +377,7 @@ onoremap a<leader>w aw
 " Capitalize the last inserted text
 function! Capitalize_and_return()
 	normal `[v`]gU`]
-	s/-/_/
+	silent s/-/_/
 	normal ``a
 endfunction
 
