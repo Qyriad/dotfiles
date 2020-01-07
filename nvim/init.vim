@@ -286,6 +286,9 @@ let mapleader="\\"
 " Save my pinky
 nnoremap ; :
 
+" I keep accidentially closing neovim when I just want to write
+cnoreabbrev wq w
+
 " Have the indent commands re-highlight the last visual selection
 vnoremap > >gv
 vnoremap < <gv
