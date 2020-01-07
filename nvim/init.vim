@@ -15,7 +15,7 @@ set noexpandtab " Don't 'expand' tabs to spaces
 set shiftwidth=0 " Use tabstop value for indenting
 set showcmd " Show the last command on the command line
 set lazyredraw " Only redraw when we need to
-set scrolloff=8 " Keep 8 lines between the end of the buffer and the cursor
+set scrolloff=2 " Keep 8 lines between the end of the buffer and the cursor
 set sidescrolloff=2 " Keep 2 characters between the current column and the screen edge
 set mouse=n " Enable the mouse in normal mode
 set colorcolumn=120 " It's typically good to keep lines of code under 120 characters
