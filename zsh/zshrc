@@ -251,26 +251,6 @@ alias qmount='mount -o uid=$(id -u)'
 alias inhibit='gnome-session-inhibit --inhibit logout:suspend:idle --reason "manually inhibited"'
 alias htopshort="HTOPRC=$HOME/.config/htop/alt.htoprc htop"
 
-# Disable suspending while `yay` is running
-function yay()
-{
-	#(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --what=idle:sleep --who=qyriad --why=yay yay "$@")
-	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=yay --no-pager --no-legend yay "$@")
-}
-
-# Disable suspending while `makepkg` is running
-function makepkg()
-{
-	#(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --what=idle:sleep --who=qyriad --why=makepkg makepkg "$@")
-	(GNUPGHOME=$HOME/.config/makepkg.gnupg ; systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=yay --no-pager --no-legend makepkg "$@")
-	#echo "Disabling suspension"
-	#current=$(gsettings get org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout | awk '{print $2}')
-	#gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
-	#makepkg "$@"
-	#echo "Enabling suspension"
-	#gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout $current
-}
-
 function appfd()
 {
 	fd "$1" /usr/share/applications ~/.local/share/applications
