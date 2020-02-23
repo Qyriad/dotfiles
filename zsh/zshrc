@@ -123,10 +123,10 @@ bindkey '' _complete_help
 export PATH="$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/cargo/bin:$PATH"
 
 # Use neovim for everything
-export EDITOR="/usr/bin/nvim"
-export VISUAL="/usr/bin/nvim"
-export SYSTEMD_EDITOR="/usr/bin/nvim"
-export NETCTL_EDITOR="/usr/bin/nvim"
+export EDITOR="$(which nvim)"
+export VISUAL="$(which nvim)"
+export SYSTEMD_EDITOR="$(which nvim)"
+export NETCTL_EDITOR="$(which nvim)"
 
 # Make stuff follow XDG
 export XDG_DATA_HOME="$HOME/.local/share"
