@@ -398,19 +398,20 @@ source_if /etc/profile.d/devkitarm.sh
 source_if /etc/profile.d/devkitppc.sh
 
 
-#export X_ZSH_HIGHLIGHT_DIRS_BLACKLIST=('/media/*/*')
-
-#source_if /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-typeset -Ag FAST_HIGHLIGHT
-FAST_HIGHLIGHT[use_async]=1
-source_if /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source_if /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source_if /usr/share/zsh/scripts/zplug/init.zsh
 
 #zplug "lambda/zsh-snippets"
 zplug "ael-code/zsh-colored-man-pages"
 #zplug "agkozak/zsh-z"
+
+#export X_ZSH_HIGHLIGHT_DIRS_BLACKLIST=('/media/*/*')
+typeset -Ag FAST_HIGHLIGHT
+FAST_HIGHLIGHT[use_async]=1
+zplug zdharma/fast-syntax-highlighting
+
+zplug zsh-users/zsh-autosuggestions
+
 zplug load
 
 #alias zsp='zsh_snippets'
