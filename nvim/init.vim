@@ -5,7 +5,7 @@ filetype plugin indent on
 
 runtime ftplugin/man.vim
 
-" Options
+""" Options
 set number " Show line numbers
 set modeline " Allow vim commands in text file comments
 set undofile " Persistent undo tree
@@ -46,7 +46,7 @@ set updatetime=1000 " Lets languageservers update faster, and shortens the time 
 
 let g:vimsyn_folding = 'aflmpPrt'
 
-" Completion
+""" Completion
 set completeopt=menu,menuone,preview,noselect,noinsert
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
@@ -54,6 +54,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = "virtual"
+
+""" LSP
 
 " <C-Space> to force open the completion menu
 inoremap <silent><expr> <C-Space> coc#refresh()
@@ -81,6 +83,7 @@ nnoremap <F5> :CocList<CR>
 nnoremap <leader><BS> :pclose<CR>
 
 command! CocFloatHide execute "normal! \<Plug>(coc-float-hide)"
+
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
 
@@ -147,7 +150,7 @@ endfunction
 
 command! -nargs=1 Bs :call BufSel('<args>')
 
-" Color customization
+""" Color customization
 
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
 highlight ColorColumn ctermbg=236 guibg=#303030
@@ -181,7 +184,7 @@ highlight Search guibg=#5c5c5c guifg=#ffffff gui=NONE
 
 command! Hitest :source $VIMRUNTIME/syntax/hitest.vim
 
-" Autocommands
+""" Autocommands
 
 augroup disable_rainbow_cmake
 	autocmd!
