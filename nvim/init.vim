@@ -286,6 +286,9 @@ let mapleader="\\"
 " Save my pinky
 nnoremap ; :
 
+" …But sometimes I actually want to use ;
+nnoremap <leader>; ;
+
 " I keep accidentially closing neovim when I just want to write
 cnoreabbrev wq w
 
