@@ -35,7 +35,7 @@
 	"python.linting.pylintEnabled": true,
 	"python.linting.pylintArgs": ["--max-line-length", "120", "--max-args", "8"],
 	"python.trace.server": "messages",
-	"python.jediEnabled": false,
+	"python.jediEnabled": true,
 	"python.analysis.memory.keepLibraryAst": true,
 
 	"suggest.completionItemKindLabels":

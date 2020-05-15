@@ -475,7 +475,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/jsonc.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Shirk/vim-gas'
-Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
+"Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
 Plug 'vim-scripts/vis'
