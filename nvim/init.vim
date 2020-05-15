@@ -47,7 +47,10 @@ set diffopt+=algorithm:patience
 
 let g:vimsyn_folding = 'aflmpPrt'
 
-""" Completion
+
+""" LSP
+
+" Completion
 set completeopt=menu,menuone,preview,noselect,noinsert
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
@@ -55,8 +58,6 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = "virtual"
-
-""" LSP
 
 " <C-Space> to force open the completion menu
 inoremap <silent><expr> <C-Space> coc#refresh()
@@ -72,23 +73,33 @@ let g:c_space_errors = 1
 let g:python_space_error_highlight = 1
 
 
-" Other LSP
-nnoremap <silent> <Return> :call CocActionAsync('doHover')<CR>
+" LSP Mappings
+nnoremap <silent> <Return> <Cmd>call CocActionAsync('doHover')<CR>
 nmap <A-Return> <Plug>(coc-definition)
 nmap <A-]> <Plug>(coc-type-definition)
 nmap <A-[> <Plug>(coc-references)
+
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
 nmap gs <Plug>(coc-git-chunkinfo)
-nnoremap <F5> :CocList<CR>
-nnoremap <leader><BS> :pclose<CR>
 
-command! CocFloatHide execute "normal! \<Plug>(coc-float-hide)"
+nmap [d <Plug>(coc-diagnostic-prev)
+nmap ]d <Plug>(coc-diagnostic-next)
+nmap gds <Plug>(coc-diagnostic-info)
+
+nmap <leader>gcl <Plug>(coc-codelens-action)
+
+vmap <leader>p  <Plug>(coc-format-selected)
+
+nnoremap <F5> <Cmd>:CocList<CR>
+nnoremap <leader><BS> <Cmd>:pclose<CR>
+
+command! CocFloatHide call coc#util#float_hide()
 
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
 
-" Lightline helper functions
+""" Lightline helper functions
 function! SyntaxItem()
 	return ""
 	let synid = synID(line('.'), col('.'), 1)
@@ -107,6 +118,14 @@ function! HomeRelDir()
 		return ''
 	else
 		return l:dir
+	endif
+endfunction
+
+function! CurrentSymbol()
+	if exists('b:coc_current_function')
+		return b:coc_current_function
+	else
+		return ''
 	endif
 endfunction
 
@@ -402,10 +421,10 @@ let g:lightline =
 \{
 	\	'active': { 
 	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified'], ['zoomed']],
-	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], ['syncolor', 'syn']]
+	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], ['symbol', 'syn']]
 	\	},
 	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir', 'zoomed': 'zoom#statusline' },
+	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir', 'symbol': 'CurrentSymbol', 'zoomed': 'zoom#statusline' },
 	\	'tab': { 'active': ['tabnum', 'filename', 'modified'], 'inactive': ['tabnum', 'filename', 'modified'] }
 \}
 
@@ -420,7 +439,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	augroup END
 endif
 
-let g:coc_global_extensions = ['coc-rls', 'coc-python', 'coc-json', 'coc-lists', 'coc-git']
+let g:coc_global_extensions = ['coc-rls', 'coc-python', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'itchyny/lightline.vim'
@@ -434,9 +453,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/jsonc.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Shirk/vim-gas'
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'Shougo/neco-syntax'
-"Plug 'Shougo/neco-vim'
 Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 Plug 'Firef0x/PKGBUILD.vim'
 Plug 'luochen1990/rainbow'
@@ -445,12 +461,13 @@ Plug 'tpope/vim-eunuch'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'chaoren/vim-wordmotion'
+Plug 'gaving/vim-textobj-argument'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'terryma/vim-expand-region'
 Plug 'dhruvasagar/vim-zoom'
 "Plug 'thinca/vim-ft-vim_fold'
-"Plug 'Shougo/neco-vim'
-"Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
+"Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'liuchengxu/vista.vim'
 call plug#end()
 
