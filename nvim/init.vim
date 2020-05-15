@@ -399,6 +399,7 @@ xnoremap aW aw
 xnoremap iW iw
 
 " Also a few <leader> mappings for the same thing, particularly for operator-pending mode
+onoremap <leader>w w
 onoremap <leader>iw iw
 onoremap i<leader>w iw
 onoremap <leader>aw aw
@@ -406,7 +407,7 @@ onoremap a<leader>w aw
 
 
 " Delete a function call, leaving the arguments intact.
-nmap daf da<leader>wds)
+nmap dsf d<leader>wds)
 
 " Delete a Python type hint comment on the current line.
 nnoremap <leader>dt <Cmd>substitute/\s#\stype:.\+//<CR>
