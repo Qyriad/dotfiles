@@ -323,7 +323,7 @@ vnoremap < <gv
 vnoremap <leader>$ $h
 
 " Stop highlighting last search with \/
-nnoremap <leader>/ :nohlsearch<CR>
+nnoremap <leader>/ <Cmd>nohlsearch<CR>
 
 " gp to select pasted text
 nnoremap gp `[v`]
@@ -343,7 +343,7 @@ nnoremap <leader>O msO<Esc>`s
 nnoremap <leader><CR> msi<CR><Esc>`s
 
 " Switch buffer
-nnoremap <leader>sb :Bs<CR>
+nnoremap <leader>sb <Cmd>Bs<CR>
 
 " Use escape to exit terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -352,8 +352,8 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <expr> j (v:count > 0 ? "m'" . v:count . 'j' : 'gj')
 nnoremap <expr> k (v:count > 0 ? "m'" . v:count . 'k' : 'gk')
 
-" \$ for third-to-last character
-nnoremap <leader>$ $2h
+" \$ for last character
+nnoremap <leader>$ $h
 
 " <A-CR> to insert and goto line above
 inoremap <A-CR> <Esc>O
@@ -365,13 +365,13 @@ cnoremap <C-y> <C-f>Vy<C-c>
 inoremap <C-L> <C-o>A
 
 " Edit and source vimrc shortcuts
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>ev <Cmd>tabedit $MYVIMRC<CR>
+nnoremap <leader>sv <Cmd>source $MYVIMRC<CR>
 
-nnoremap <leader>ts :tab split<CR>
+nnoremap <leader>ts <Cmd>tab split<CR>
 
 " Gstatus
-nnoremap <leader>gs :tab Gstatus<CR>
+nnoremap <leader>gs <Cmd>tab Gstatus<CR>
 
 " Easy-Align
 xmap ga <Plug>(EasyAlign)
@@ -399,6 +399,14 @@ onoremap <leader>iw iw
 onoremap i<leader>w iw
 onoremap <leader>aw aw
 onoremap a<leader>w aw
+
+
+" Delete a function call, leaving the arguments intact.
+nmap daf da<leader>wds)
+
+" Delete a Python type hint comment on the current line.
+nnoremap <leader>dt <Cmd>substitute/\s#\stype:.\+//<CR>
+
 
 " Capitalize the last inserted text
 function! Capitalize_and_return()
