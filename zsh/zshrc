@@ -233,6 +233,7 @@ alias rsyncn='/usr/bin/rsync --recursive -hhh --links -v --info=PROGRESS2'
 alias lsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hhh --links -v --info=PROGRESS2'
 alias lsyncn='/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
 alias rclone='rclone -P'
+alias pgrep='pgrep -a'
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
