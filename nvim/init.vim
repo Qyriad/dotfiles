@@ -223,6 +223,10 @@ augroup gas_ft
 augroup END
 
 function! Restore_last_position()
+	if &filetype =~# 'gitcommit'
+		return
+	endif
+
 	if line("'\"") <= line("$")
 		normal! g`"
 		return 1
