@@ -1,28 +1,42 @@
 {
 	"suggest.autoTrigger": "always",
 	"suggest.acceptSuggestionOnCommitCharacter": true,
-	"suggest.echodocSupport": false,
+	"suggest.preferCompleteThanJumpPlaceholder": true,
 	"suggest.maxCompleteItemCount": 100,
 	"suggest.enablePreview": true,
-	"coc.preferences.hoverTarget": "float",
-	"codeLens.enable": false,
-	"suggest.floatEnable": true,
-	"diagnostic.virtualText": true,
-	"diagnostic.virtualTextPrefix": "\\\\ ",
-	"coc.preferences.snippets.enable": false,
-	"suggest.preferCompleteThanJumpPlaceholder": true,
 	"suggest.removeDuplicateItems": true,
+	"suggest.localityBonus": true,
+	"suggest.floatEnable": true,
+	"suggest.echodocSupport": false,
+
+	"signature.enable": true,
+	"signature.target": "float",
+
+	/*"diagnostic.virtualText": true,*/
+	/*"diagnostic.virtualTextPrefix": "\\\\ ",*/
+	"diagnostic.separateRelatedInformationAsDiagnostics": false,
+
+	"coc.preferences.hoverTarget": "float",
+	"coc.preferences.snippets.enable": false,
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
+
+	"codeLens.enable": true,
+
 	"rust-client.trace.server": "verbose",
+
 	"vimlsp.trace.server": "verbose",
 
-	"python.linting.enabled": false,
+	"git.enableGlobalStatus": false,
+
+	"json.enable": true,
+	"json.trace.server": "verbose",
+
+	"python.linting.enabled": true,
 	"python.linting.pylintEnabled": true,
 	"python.linting.pylintArgs": ["--max-line-length", "120", "--max-args", "8"],
 	"python.trace.server": "messages",
 	"python.jediEnabled": false,
-	"signature.enable": true,
-	"signature.target": "float",
+	"python.analysis.memory.keepLibraryAst": true,
 
 	"suggest.completionItemKindLabels":
 	{
@@ -31,7 +45,7 @@
 		"method": "meth",
 		"module": "mod",
 		"value": "val",
-		"default": "def",
+		"default": "default",
 		"keyword": "key",
 		"class": "class",
 		"unit": "unit",
@@ -74,7 +88,4 @@
 			/*"trace.server": "verbose"*/
 		/*}*/
 	},
-
-	"json.enable": true,
-	"json.trace.server": "verbose",
 }
