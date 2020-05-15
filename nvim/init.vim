@@ -104,6 +104,7 @@ nnoremap <F5> <Cmd>:CocList<CR>
 nnoremap <leader><BS> <Cmd>:pclose<CR>
 
 command! CocFloatHide call coc#util#float_hide()
+inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
 
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
