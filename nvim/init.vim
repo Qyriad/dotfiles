@@ -18,7 +18,7 @@ set lazyredraw " Only redraw when we need to
 set scrolloff=2 " Keep 8 lines between the end of the buffer and the cursor
 set sidescrolloff=2 " Keep 2 characters between the current column and the screen edge
 set mouse=n " Enable the mouse in normal mode
-set colorcolumn=120 " It's typically good to keep lines of code under 120 characters
+set colorcolumn=115 " This is how many characters I can fit if I have a vertical split
 set textwidth=120 " ""
 set wildmenu " Autocomplete command menu
 set wildmode=longest:full,full " Most bash-like way
