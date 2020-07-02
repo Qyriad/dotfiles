@@ -109,6 +109,7 @@ baloofilerc
 monitors.xml~
 nautilus
 nvim/plugged
+nvim/autoload/plug.vim
 gwakeonlan
 freerdp
 fontforge
@@ -135,6 +136,7 @@ mimeapps.list
 SEGGER/
 coc/
 nvim/autoload/plug.vim
+nvim/autoload/plug.vim.old
 Chiaki
 Brave-Browser
 ppsspp
@@ -150,3 +152,7 @@ google-chrome-unstable
 gsconnect
 google-music-scripts
 mpv/watch_later
+lsp-plugins/
+WorkFlowy/
+lutris/
+bunkus.org/mkvtoolnix-gui/
