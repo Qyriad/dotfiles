@@ -104,6 +104,8 @@ nmap <leader>gcl <Plug>(coc-codelens-action)
 vmap <leader>p  <Plug>(coc-format-selected)
 
 nnoremap <F5> <Cmd>:CocList<CR>
+nnoremap <F4> <Cmd>:CtrlP<CR>
+nnoremap <F6> <Cmd>:CtrlPBuffer<CR>
 nnoremap <F9> <Cmd>:TagbarToggle<CR>
 nnoremap <leader><BS> <Cmd>:pclose<CR>
 
@@ -489,6 +491,7 @@ Plug 'gaving/vim-textobj-argument'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'terryma/vim-expand-region'
 Plug 'dhruvasagar/vim-zoom'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 "Plug 'thinca/vim-ft-vim_fold'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
