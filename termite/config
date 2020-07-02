@@ -3,8 +3,8 @@
 #audible_bell = false
 #clickable_url = true
 #dynamic_title = true
-#font = Monospace 9
-font = InconsolataGo Nerd Font Mono 12
+#font = InconsolataGo Nerd Font Mono 12
+font = Monospace 10
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
