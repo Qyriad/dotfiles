@@ -254,6 +254,8 @@ alias qmount='mount -o uid=$(id -u)'
 #alias inhibit='systemd-inhibit --what=shutdown:sleep:idle:handle-power-key:handle-suspend-key:handle-hibernate-key:handle-lid-switch --mode=block'
 alias inhibit='gnome-session-inhibit --inhibit logout:suspend:idle --reason "manually inhibited"'
 alias htopshort="HTOPRC=$HOME/.config/htop/alt.htoprc htop"
+#alias cmplinux='delta <(uname -r) <(basename "/usr/lib/modules/"*arch1*) | tail -2'
+alias cmplinux='uname -r ; basename "/usr/lib/modules/"*arch1*'
 
 function appfd()
 {
