@@ -1,0 +1,20 @@
+regexp=.*:$
+colors=bold blue underline
+-
+regexp=^ (.*)    (.*?)$
+colors=,blue,cyan
+-
+regexp=^ +(.*)( )(.*?):$
+colors=bold, underline, underline, underline
+-
+regexp=^ (.*): (.*)
+colors=,magenta
+-
+regexp=(Bus )(\d+) (Device) (\d+): (ID) ([0-9a-f]+:[0-9a-f]+) (.*)
+colors=, bold, blue, bold, blue, bold, green, yellow
+-
+regexp=.*root hub.*
+colors=dark dark white
+-
+regexp=(Bus )(\d+) (Device) (\d+): (ID) (1d50:60e6) (.*)
+colors=underline, bold underline, blue underline, bold underline, blue underline, bold underline, green underline, yellow underline
