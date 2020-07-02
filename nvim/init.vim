@@ -329,6 +329,10 @@ nnoremap ; :
 " …But sometimes I actually want to use ;
 nnoremap <leader>; ;
 
+" Make CTRL-F and CTRL-B scroll 11 lines instead, by default.
+nnoremap <C-f> 11<C-e>
+nnoremap <C-b> 11<C-y>
+
 " I keep accidentially closing neovim when I just want to write
 cnoreabbrev wq w
 
