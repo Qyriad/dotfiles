@@ -235,6 +235,7 @@ alias lsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyria
 alias lsyncn='/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
 alias rclone='rclone -P'
 alias pgrep='pgrep -a'
+alias ppid='ps -o ppid= -p' # Get parent pid of process specified by pid.
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
