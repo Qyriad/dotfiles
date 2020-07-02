@@ -23,8 +23,6 @@ set textwidth=120 " ""
 set wildmenu " Autocomplete command menu
 set wildmode=longest:full,full " Most bash-like way
 set wildignorecase
-set cursorcolumn " Highlight the column the cursor is on
-set cursorline " Highlight the line the cursor is on
 set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay
 set noshowmode " We're using lightline, so showing the mode in the command line is redundant
 set splitright " Make :vsplit put the new window on the right
@@ -183,11 +181,8 @@ command! -nargs=1 Bs :call BufSel('<args>')
 """ Color customization
 
 " Make the highlight color for the colorcolumn not obnoxious, but still stand out
-highlight ColorColumn ctermbg=236 guibg=#303030
-" Make the highlight color for the current column not obnoxious, but still stand out a bit less than above
-highlight CursorColumn ctermbg=234 guibg=#1c1c1c
-" Make the highlight color for the current row not obnoxious and not underlined
-highlight CursorLine ctermbg=234 cterm=NONE guibg=#1c1c1c
+"highlight ColorColumn ctermbg=236 guibg=#303030
+highlight ColorColumn ctermbg=236 guibg=#121212
 " Also bold the line number
 highlight CursorLineNr cterm=bold gui=bold guifg=#af5f00
 " Make the folded text color not suck
