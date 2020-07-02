@@ -30,3 +30,5 @@
 	tool = vimdiff
 [core]
 	pager = delta --dark
+[pull]
+	ff = only
