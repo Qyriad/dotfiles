@@ -257,6 +257,12 @@ alias htopshort="HTOPRC=$HOME/.config/htop/alt.htoprc htop"
 #alias cmplinux='delta <(uname -r) <(basename "/usr/lib/modules/"*arch1*) | tail -2'
 alias cmplinux='uname -r ; basename "/usr/lib/modules/"*arch1*'
 
+function mkcd()
+{
+	mkdir -vp "$1"
+	cd "$1"
+}
+
 function appfd()
 {
 	fd "$1" /usr/share/applications ~/.local/share/applications
