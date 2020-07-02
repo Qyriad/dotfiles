@@ -71,6 +71,10 @@ highlight link ALEWarningSign Todo
 let g:c_space_errors = 1
 let g:python_space_error_highlight = 1
 
+if exists('g:tabgar_sort')
+	unlet g:tagbar_sort
+endif
+
 
 " LSP Mappings
 nnoremap <silent> <Return> <Cmd>call CocActionAsync('doHover')<CR>
@@ -100,6 +104,7 @@ nmap <leader>gcl <Plug>(coc-codelens-action)
 vmap <leader>p  <Plug>(coc-format-selected)
 
 nnoremap <F5> <Cmd>:CocList<CR>
+nnoremap <F9> <Cmd>:TagbarToggle<CR>
 nnoremap <leader><BS> <Cmd>:pclose<CR>
 
 command! CocFloatHide call coc#util#float_hide()
@@ -484,6 +489,7 @@ Plug 'gaving/vim-textobj-argument'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'terryma/vim-expand-region'
 Plug 'dhruvasagar/vim-zoom'
+Plug 'majutsushi/tagbar'
 "Plug 'thinca/vim-ft-vim_fold'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 "Plug 'neoclide/coc.nvim', { 'branch': 'release' }
