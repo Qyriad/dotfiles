@@ -500,6 +500,7 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rbgrouleff/bclose.vim' " Dependency for ranger.vim
 Plug 'francoiscabrol/ranger.vim'
+Plug 'mbbill/undotree'
 Plug 'majutsushi/tagbar'
 "Plug 'thinca/vim-ft-vim_fold'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
