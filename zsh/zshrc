@@ -192,6 +192,7 @@ alias netstat='grc netstat'
 alias ping='grc ping'
 alias as='grc as'
 alias last='grc last'
+alias lsusb='grc lsusb'
 
 # Forced color output (for piping)
 alias grcc='grc --colour=on'
