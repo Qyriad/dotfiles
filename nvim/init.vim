@@ -42,6 +42,7 @@ set formatoptions=cqj
 set fillchars=fold:\ 
 set updatetime=1000 " Lets languageservers update faster, and shortens the time for CursorHold
 set diffopt+=algorithm:patience
+set fsync
 
 let g:vimsyn_folding = 'aflmpPrt'
 
