@@ -251,7 +251,7 @@ augroup restore_last_position
 augroup END
 
 augroup insert_nohlsearch
-	autocmd! InsertEnter * set nohlsearch
+	autocmd! InsertEnter * nohlsearch
 augroup END
 
 function! Init_menu_items() abort
