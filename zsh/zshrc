@@ -37,6 +37,9 @@ setopt cbases
 
 setopt autopushd
 
+# Use natural sort for *
+setopt NUMERIC_GLOB_SORT
+
 bindkey "^[[1;3D" backward-word # <A-<Left>>
 bindkey "^[[1;3C" forward-word # <A-<Right>>
 bindkey "^[[1~" beginning-of-line # <home>
