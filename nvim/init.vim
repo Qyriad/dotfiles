@@ -235,6 +235,14 @@ augroup gas_ft
 	autocmd BufRead,BufNewFile *.S set filetype=gas
 augroup END
 
+" Notes on spellcheck for me:
+" zg to add word to dictionary
+" z= to open suggestion list
+augroup spellcheck
+	autocmd!
+	autocmd FileType gitcommit,markdown,text setlocal spell spelllang=en_us
+augroup END
+
 function! Restore_last_position()
 	if &filetype =~# 'gitcommit'
 		return
