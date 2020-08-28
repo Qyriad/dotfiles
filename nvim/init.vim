@@ -104,6 +104,7 @@ nmap <leader>gcl <Plug>(coc-codelens-action)
 vmap <leader>p  <Plug>(coc-format-selected)
 
 nnoremap <F5> <Cmd>:CocList<CR>
+nnoremap <F3> <Cmd>:CtrlPLine<CR>
 nnoremap <F4> <Cmd>:CtrlP<CR>
 nnoremap <F6> <Cmd>:CtrlPBuffer<CR>
 nnoremap <F9> <Cmd>:TagbarToggle<CR>
