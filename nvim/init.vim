@@ -241,7 +241,7 @@ augroup END
 " z= to open suggestion list
 augroup spellcheck
 	autocmd!
-	autocmd FileType gitcommit,markdown,text setlocal spell spelllang=en_us
+	autocmd FileType gitcommit,markdown,text setlocal spell spelllang=en_us spellcapcheck=
 augroup END
 
 function! Restore_last_position()
