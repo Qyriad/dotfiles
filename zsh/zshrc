@@ -290,7 +290,7 @@ function apprg()
 
 function tmuxman()
 {
-	man tmux | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
+	man tmux | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
 }
 
 function vimman()
@@ -300,7 +300,7 @@ function vimman()
 
 function zshman()
 {
-	man zshall | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
+	man zshall | vim "+set ft=man | normal /\v^\s+$1 (\[|-)"
 }
 
 function bak()
@@ -447,7 +447,7 @@ zplug load
 # willinghatch/zsh-snippets
 # momo-lab/zsh-abbrev-alias
 
-source_if $HOME/.local/bin/zsh_automatic_cd.zsh && bindkey -s '' 'ranger' && alias ranger='ranger-cd'
+source_if $HOME/.local/bin/zsh_automatic_cd.zsh && bindkey -s '' 'ranger ' && alias ranger='ranger-cd'
 
 unalias run-help 2>/dev/null
 autoload -Uz run-help
