@@ -7,3 +7,37 @@ function yay()
 		systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=yay --no-pager --no-legend yay "$@"
 	)
 }
+
+function performance()
+{
+	sudo -v
+	set -x
+	sudo cpupower set -b 0
+	sudo tlp ac
+	sudo brightnessctl -q set 100%
+}
+
+function powersave()
+{
+	sudo -v
+	set -x
+	sudo cpupower set -b 15
+	sudo tlp bat
+}
+
+function bat()
+{
+	sudo -v
+	set -x
+	sudo cpupower set -b 8
+	sudo tlp bat
+}
+
+function ac()
+{
+	sudo -v
+	set -x
+	sudo cpupower set -b 8
+	sudo tlp ac
+	#sudo brightnessctl -q set 100%
+}
