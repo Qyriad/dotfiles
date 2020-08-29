@@ -78,6 +78,17 @@ highlight link ALEWarningSign Todo
 let g:c_space_errors = 1
 let g:python_space_error_highlight = 1
 
+let g:python_highlight_builtins = 1
+let g:python_highlight_builtin_funcs = 1
+let g:python_highlight_builtin_types = 1
+let g:python_highlight_exceptions = 1
+let g:python_highlight_string_formatting = 1
+let g:python_highlight_string_format = 1
+let g:python_highlight_indent_errors = 1
+let g:python_highlight_space_errors = 1
+let g:python_highlight_class_vars = 1
+"let g:python_highlight_func_calls = 1
+
 if exists('g:tabgar_sort')
 	unlet g:tagbar_sort
 endif
@@ -218,6 +229,8 @@ highlight LineNr gui=none guifg=#af5f00
 " Actually be able to see searched stuff
 "highlight Search guibg=#a0a0a0
 highlight Search guibg=#5c5c5c guifg=#ffffff gui=NONE
+
+highlight pythonBuiltinType guifg=#70c0ba
 
 command! Hitest :source $VIMRUNTIME/syntax/hitest.vim
 
@@ -530,6 +543,7 @@ Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 "Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'liuchengxu/vista.vim'
+Plug 'vim-python/python-syntax'
 call plug#end()
 
 " vim:textwidth=0
