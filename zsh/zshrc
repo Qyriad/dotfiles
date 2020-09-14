@@ -258,7 +258,18 @@ alias qmount='mount -o uid=$(id -u)'
 alias inhibit='gnome-session-inhibit --inhibit logout:suspend:idle --reason "manually inhibited"'
 alias htopshort="HTOPRC=$HOME/.config/htop/alt.htoprc htop"
 #alias cmplinux='delta <(uname -r) <(basename "/usr/lib/modules/"*arch1*) | tail -2'
-alias cmplinux='uname -r ; basename "/usr/lib/modules/"*arch1*'
+#alias cmplinux='uname -r ; basename "/usr/lib/modules/"*arch1*'
+
+function cmplinux()
+{
+	boot=$(uname -r)
+	installed=$(basename "/usr/lib/modules/"*arch1*)
+	if [[ $boot != $installed ]]; then
+		delta <(echo $boot) <(echo $installed) | tail -2
+	else
+		echo $boot ; echo $installed
+	fi
+}
 
 function mkcd()
 {
