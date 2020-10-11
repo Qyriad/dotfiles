@@ -241,6 +241,7 @@ alias pgrep='pgrep -a'
 alias ppid='ps -o ppid= -p' # Get parent pid of process specified by pid.
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
+alias lv='ls *.(mp4|mkv)' # list videos
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 alias lsd='lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 alias wine32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 wine"
