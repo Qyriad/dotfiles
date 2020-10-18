@@ -442,6 +442,9 @@ onoremap a<leader>w aw
 " Delete a function call, leaving the arguments intact.
 nmap dsf dt(ds)
 
+" Delete a GenericWrapper<>
+nmap dst dt<ds>
+
 " Delete a Python type hint comment on the current line.
 nnoremap <leader>dt <Cmd>substitute/\s#\stype:.\+//<CR>
 
