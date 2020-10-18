@@ -15,7 +15,7 @@ set noexpandtab " Don't 'expand' tabs to spaces
 set shiftwidth=0 " Use tabstop value for indenting
 set showcmd " Show the last command on the command line
 set lazyredraw " Only redraw when we need to
-set scrolloff=2 " Keep 8 lines between the end of the buffer and the cursor
+set scrolloff=2 " Keep 2 lines between the end of the buffer and the cursor
 set sidescrolloff=2 " Keep 2 characters between the current column and the screen edge
 set mouse=n " Enable the mouse in normal mode
 set colorcolumn=115 " This is how many characters I can fit if I have a vertical split
@@ -44,16 +44,23 @@ set updatetime=1000 " Lets languageservers update faster, and shortens the time 
 set diffopt+=algorithm:patience
 set fsync
 
-let g:vimsyn_folding = 'aflmpPrt'
+" Fold augroups, functions, Lua, and Python
+let g:vimsyn_folding = 'aflP'
+" Support embedded Lua and Python.
+let g:vimsyn_embed = 'lP'
 
 
 """ LSP
 
 " Completion
 set completeopt=menu,menuone,preview,noselect,noinsert
+" Close the popup menu with <Esc>.
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+" Accept the selected completion with <CR>.
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" Select the next completion with <Tab>.
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" Select the previous completion with <S-Tab>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = "virtual"
