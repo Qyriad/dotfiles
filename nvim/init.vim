@@ -375,6 +375,10 @@ nnoremap <leader>O mzO<Esc>`z
 " Add newline at current position without entering insert mode or moving the cursor
 nnoremap <leader><CR> mzi<CR><Esc>`z
 
+" Reverse join. That is to say, move the rest of the current line to the above line.
+" Useful for moving comments to their own line.
+nnoremap <leader>J mzr<CR>ddkP`z
+
 " Switch buffer
 nnoremap <leader>sb <Cmd>Bs<CR>
 
