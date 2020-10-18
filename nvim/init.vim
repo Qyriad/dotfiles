@@ -369,11 +369,11 @@ inoremap <A-BS> <C-w>
 cnoremap <A-BS> <C-w>
 
 " Add newlines above and below without entering insert mode or moving the cursor
-nnoremap <leader>o mso<Esc>`s
-nnoremap <leader>O msO<Esc>`s
+nnoremap <leader>o mzo<Esc>`z
+nnoremap <leader>O mzO<Esc>`z
 
 " Add newline at current position without entering insert mode or moving the cursor
-nnoremap <leader><CR> msi<CR><Esc>`s
+nnoremap <leader><CR> mzi<CR><Esc>`z
 
 " Switch buffer
 nnoremap <leader>sb <Cmd>Bs<CR>
