@@ -145,12 +145,8 @@ function! HomeRelDir()
 	endif
 endfunction
 
-function! CurrentSymbol()
-	if exists('b:coc_current_function')
-		return b:coc_current_function
-	else
-		return ''
-	endif
+function! CurrentTag()
+	return tagbar#currenttag('%s', '', 'f')
 endfunction
 
 function! LightlineReload()
@@ -467,10 +463,11 @@ let g:lightline =
 \{
 	\	'active': { 
 	\		'left': [['mode', 'paste'], ['readonly', 'filename', 'modified'], ['zoomed']],
-	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], ['symbol', 'syn']]
+	\		'right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], ['tag', 'syn']]
 	\	},
 	\	'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir', 'symbol': 'CurrentSymbol', 'zoomed': 'zoom#statusline' },
+	\   'component': { 'filetype': '%{&ft!=#""?&ft:"no ft"}%<' },
+	\	'component_function': { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir', 'symbol': 'CurrentSymbol', 'zoomed': 'zoom#statusline', 'tag': 'CurrentTag' },
 	\	'tab': { 'active': ['tabnum', 'filename', 'modified'], 'inactive': ['tabnum', 'filename', 'modified'] }
 \}
 
