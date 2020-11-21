@@ -379,6 +379,13 @@ function bwsearch()
 	bw list items --search "$1" | jq '[.[] | {id: .id, name: .name, username: .login.username, url: .login.uris[].uri}]'
 }
 
+# copyfrom [hostname]
+function copyfrom()
+{
+	ssh "$1" tmux show-buffer | wl-copy
+}
+alias cfy='copyfrom yuki'
+
 function bwgetpw()
 {
 	bw get password "$1"
