@@ -204,6 +204,7 @@ alias ping='grc ping'
 alias as='grc as'
 alias last='grc last'
 alias lsusb='grc lsusb'
+alias lspci='grc lspci -nn'
 
 # Forced color output (for piping)
 alias grcc='grc --colour=on'
@@ -217,6 +218,7 @@ alias watchc='watch --color'
 alias fdi='fd --no-ignore'
 alias fdih='fd --no-ignore --hidden'
 # use -g, --glob for globbing (! negates)
+alias rg='rg --smart-case'
 alias rgi='rg --no-ignore'
 alias rgih='rg --no-ignore --hidden'
 
@@ -245,13 +247,14 @@ alias rsyncn='/usr/bin/rsync --recursive -hhh --links -v --info=PROGRESS2'
 alias lsync='systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hhh --links -v --info=PROGRESS2'
 alias lsyncn='/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
 alias rclone='rclone -P'
-alias pgrep='pgrep -a'
+alias pgrep='pgrep --list-full --ignore-case'
 alias ppid='ps -o ppid= -p' # Get parent pid of process specified by pid.
 alias what='whence -savf' # show symlinks too
 #alias built-in-man='vim "+tab Man zshall | normal
 alias lv='ls *.(mp4|mkv)' # list videos
 alias lsdsk='lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 alias lsd='lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
+alias ipy='ipython'
 alias wine32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 wine"
 alias winetricks32="WINEPREFIX=$HOME/.wine32 WINEARCH=win32 winetricks"
 alias ddf='pydf'
@@ -409,6 +412,12 @@ function source_if()
 	[ -r "$1" ] && source "$1"
 }
 
+function do_echo()
+{
+	echo "+$@"
+	$@
+}
+
 source_if /usr/share/git/completion/git-prompt.sh
 autoload -Uz vcs_info
 
@@ -444,7 +453,7 @@ source_if /etc/profile.d/devkitppc.sh
 source_if /usr/share/zsh/scripts/zplug/init.zsh
 
 #zplug "lambda/zsh-snippets"
-zplug "ael-code/zsh-colored-man-pages"
+#zplug "ael-code/zsh-colored-man-pages"
 #zplug "agkozak/zsh-z"
 
 #export X_ZSH_HIGHLIGHT_DIRS_BLACKLIST=('/media/*/*')
@@ -453,6 +462,9 @@ FAST_HIGHLIGHT[use_async]=1
 zplug zdharma/fast-syntax-highlighting
 
 zplug zsh-users/zsh-autosuggestions
+
+zplug bigH/git-fuzzy
+zplug wfxr/forgit
 
 zplug load
 
