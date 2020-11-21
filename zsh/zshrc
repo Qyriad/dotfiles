@@ -47,6 +47,14 @@ bindkey "^[[4~" end-of-line # <end>
 bindkey "^[[3~" delete-char # <del>
 bindkey "<M-Del>" kill-word # <S-Del>
 
+# prompt_toolkit style history search on <Up> but with <PageUp> instead
+
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '^[[5~' history-beginning-search-backward-end
+bindkey '^[[6~' history-beginning-search-forward-end
+
 # Allow editing the command in vim
 autoload -Uz edit-command-line # Load the function from ZSH runtime 
 zle -N edit-command-line # Expose the function as a widget
