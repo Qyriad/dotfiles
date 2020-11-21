@@ -29,6 +29,6 @@
 [diff]
 	tool = vimdiff
 [core]
-	pager = delta --dark
+	pager = delta --dark --side-by-side
 [pull]
 	ff = only
