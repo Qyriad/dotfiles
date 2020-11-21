@@ -1,6 +1,7 @@
 {
 	"aururl": "https://aur.archlinux.org",
 	"buildDir": "/home/qyriad/.cache/yay/builds",
+	"absdir": "$HOME/.cache/yay/abs",
 	"editor": "vim",
 	"editorflags": "",
 	"makepkgbin": "makepkg",
