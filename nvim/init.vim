@@ -358,6 +358,9 @@ vnoremap <leader>$ $h
 " Stop highlighting last search with \/
 nnoremap <leader>/ <Cmd>nohlsearch<CR>
 
+" Copy to tmux.
+vnoremap <leader>y :Tyank<CR>
+
 " gp to select pasted text
 nnoremap gp `[v`]
 
@@ -520,6 +523,7 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rbgrouleff/bclose.vim' " Dependency for ranger.vim
 Plug 'francoiscabrol/ranger.vim'
+Plug 'tpope/vim-tbone'
 Plug 'mbbill/undotree'
 Plug 'majutsushi/tagbar'
 "Plug 'thinca/vim-ft-vim_fold'
