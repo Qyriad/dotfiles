@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=$HOME/.cache/zsh/histfile
-HISTSIZE=9000
-SAVEHIST=9000
+HISTSIZE=900000
+SAVEHIST=900000
 #setopt appendhistory
 setopt sharehistory
 bindkey -e
