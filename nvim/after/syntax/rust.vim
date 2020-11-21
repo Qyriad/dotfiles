@@ -1,0 +1,1 @@
+highlight CocRustChainingHint guifg=grey
