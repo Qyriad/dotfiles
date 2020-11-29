@@ -252,6 +252,11 @@ augroup gas_ft
 	autocmd BufRead,BufNewFile *.S set filetype=gas
 augroup END
 
+" Set these for zsh edit-command-line.
+augroup zsh_set
+	autocmd! BufRead /tmp/zsh* set nomagic inccommand=nosplit
+augroup END
+
 " Notes on spellcheck for me:
 " zg to add word to dictionary
 " z= to open suggestion list
