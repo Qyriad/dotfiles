@@ -36,7 +36,7 @@
 	"python.linting.pylintArgs": ["--max-line-length", "120", "--max-args", "8", "--extension-pkg-whitelist=PySide2", "--disable=C0326", "--disable=no-else-return"],
 		/*"--variable-rgx=(?P<snake>[a-z_][a-z0-9_]{0,30}$"],*/
 	"python.trace.server": "messages",
-	"python.jediEnabled": true,
+	"python.jediEnabled": false,
 	"python.analysis.memory.keepLibraryAst": true,
 
 

@@ -512,7 +512,8 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	augroup END
 endif
 
-let g:coc_global_extensions = ['coc-rls', 'coc-python', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
+"let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-python', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
+let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'itchyny/lightline.vim'
