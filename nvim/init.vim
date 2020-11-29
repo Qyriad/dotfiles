@@ -499,7 +499,7 @@ let g:lightline =
 	\	'tab': { 'active': ['tabnum', 'filename', 'modified'], 'inactive': ['tabnum', 'filename', 'modified'] }
 \}
 
-let g:lightline.inactive = { 'left': [['readonly', 'filename', 'modified']], 'right': [['lineinfo'], ['percent']] }
+let g:lightline.inactive = { 'left': [['readonly', 'filename', 'modified']], 'right': [['lineinfo'], ['percent'], ['dir']] }
 
 let g:rainbow_active = 1 " luochen1990/rainbow
 
