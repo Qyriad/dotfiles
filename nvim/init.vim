@@ -252,9 +252,14 @@ augroup gas_ft
 	autocmd BufRead,BufNewFile *.S set filetype=gas
 augroup END
 
+function! Zshedit()
+	set nomagic inccommand=nosplit
+	cunabbrev wq
+endfunction
+
 " Set these for zsh edit-command-line.
 augroup zsh_set
-	autocmd! BufRead /tmp/zsh* set nomagic inccommand=nosplit
+	autocmd! BufRead /tmp/zsh* call Zshedit()
 augroup END
 
 " Notes on spellcheck for me:
