@@ -432,9 +432,7 @@ precmd()
 zstyle ':vcs_info:git*' formats '%F{116}(%b)'
 zstyle ':vcs_info:git*' actionformats '%F{116}(%b|%a|%m)'
 
-export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %(?..%F{1}[%?] )%F{2}%(! # $) %f'
-#export RPROMPT='$?'
-unset RPROMPT
+export PROMPT='%F{2}%n@%m %F{129}%~${vcs_info_msg_0_:+ ${vcs_info_msg_0_}} %(0?..%(130?..%F{1}[%?]))%F{2}%(! # $) %f'
 
 # FIXME: this is super slow, so we'll use bash's instead
 #zstyle ':completion:*:*:git:*' script /usr/share/git/completion/git-completion.zsh
