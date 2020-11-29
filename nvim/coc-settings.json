@@ -39,6 +39,10 @@
 	"python.jediEnabled": true,
 	"python.analysis.memory.keepLibraryAst": true,
 
+
+	"rust-analyzer.lens.implementations": false,
+	"rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+
 	"suggest.completionItemKindLabels":
 	{
 		"variable": "var",
