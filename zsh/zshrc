@@ -206,12 +206,14 @@ alias last='grc last'
 alias lsusb='grc lsusb'
 alias lspci='grc lspci -nn'
 
-# Forced color output (for piping)
+# Forced color output (for piping).
 alias grcc='grc --colour=on'
 alias grepc='grep --color=always'
 alias egrepc='egrep --color=always'
 alias jqc='jq --color-output'
 alias watchc='watch --color'
+alias rgc='rg --smart-case --color=always --heading --line-number' # --smart-case is part of the normal alias
+alias fdc='fd --color=always'
 
 # fd and rg no ignore
 # use -E, --exclude for globbing
