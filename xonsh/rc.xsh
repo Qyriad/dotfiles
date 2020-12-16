@@ -8,19 +8,18 @@ $DYNAMIC_CWD_WIDTH = "40%"
 $MOUSE_SUPPORT = True
 $XONSH_AUTOPAIR = True
 
+$PATH = [f"~/.local/bin", '~/.local/share/cargo/bin'] + $PATH
 
-$PATH = ['~/.local/bin', '~/.local/share/cargo/bin'] + $PATH
-
-# Use neovim for everything.
+# Use Neovim for everything.
 $EDITOR = $(which nvim)
 $VISUAL = $EDITOR
 $SYSTEMD_EDITOR = $EDITOR
 $NETCTL_EDITOR = $EDITOR
 
 # Make stuff follow XDG.
-$XDG_DATA_HOME = '~/.local/share'
-$XDG_CACHE_HOME = '~/.cache'
-$XDG_CONFIG_HOME = '~/.config'
+$XDG_DATA_HOME = f"{$HOME}/.local/share"
+$XDG_CACHE_HOME = f"{$HOME}/.cache"
+$XDG_CONFIG_HOME = f"{$HOME}/.config"
 $XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
 $CARGO_HOME = $XDG_DATA_HOME + '/.cargo'
 $LESSHISTFILE = $XDG_CACHE_HOME + '/less/history'
