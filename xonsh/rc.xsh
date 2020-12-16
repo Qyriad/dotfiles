@@ -6,6 +6,7 @@ $CASE_SENSITIVE_COMPLETIONS = True
 $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
 $MOUSE_SUPPORT = True
+$XONSH_AUTOPAIR = True
 
 
 $PATH = ['~/.local/bin', '~/.local/share/cargo/bin'] + $PATH
