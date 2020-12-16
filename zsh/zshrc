@@ -1,3 +1,4 @@
+FPATH+=":$HOME/.config/zsh/zfunc"
 # Lines configured by zsh-newuser-install
 HISTFILE=$HOME/.cache/zsh/histfile
 HISTSIZE=900000
@@ -8,17 +9,16 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 
-#zstyle ':completion:*' completer _complete _ignored
-zstyle ':completion:*' completer _complete _ignored _expand _correct _approximate
-# new
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'r:|[._-/]=* r:|=* l:|=*'
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' match-original both
+zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' menu select=1
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle :compinstall filename '/home/qyriad/.zshrc'
 
-FPATH+=":$HOME/.config/zsh/zfunc"
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
