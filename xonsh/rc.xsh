@@ -171,6 +171,10 @@ def _ftail(path):
 
 aliases['ftail'] = _ftail
 
+def _delssh(linenum):
+	sed -i @(linenum)d ~/.ssh/known_hosts
+
+aliases['delssh'] = _delssh
 
 $RUSTFLAGS = "-C target-cpu=native"
 
