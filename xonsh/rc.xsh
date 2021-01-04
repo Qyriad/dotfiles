@@ -5,7 +5,7 @@ $PROMPT = '{env_name}{GREEN}{user}@{hostname} {#af00ff}{cwd}{#87d7d7}{curr_branc
 $CASE_SENSITIVE_COMPLETIONS = True
 $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
-$MOUSE_SUPPORT = True
+#$MOUSE_SUPPORT = True
 $XONSH_AUTOPAIR = True
 
 $PATH = [f"~/.local/bin", '~/.local/share/cargo/bin'] + $PATH
