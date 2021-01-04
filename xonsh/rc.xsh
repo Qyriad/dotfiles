@@ -17,8 +17,9 @@ $SYSTEMD_EDITOR = $EDITOR
 $NETCTL_EDITOR = $EDITOR
 
 # Fix Neovim for stuff like git commit.
-__xonsh__.commands_cache.threadable_predictors["nvim"] = lambda *a, **kw: False
-__xonsh__.commands_cache.threadable_predictors["git"] = lambda *a, **kw: False
+no_thread = lambda *a, **kw: False
+for command in ['nvim', 'git', 'vidir', 'systemctl', 'pacman', 'yay']:
+	__xonsh__.commands_cache.threadable_predictors[command] = no_thread
 
 # Make stuff follow XDG.
 $XDG_DATA_HOME = f"{$HOME}/.local/share"
