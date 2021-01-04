@@ -64,12 +64,13 @@ if !(which grc):
 	# Forced color grc.
 	aliases['grcc'] = 'grc --colour=on'
 
-	commands = ['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb']
+	commands = \
+            ['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'lsof']
 
 	for command in commands:
 		aliases[command] = 'grc ' + command
 
-		forced = command = 'c' # Force color, even when piping.
+		forced = command + 'c' # Force color, even when piping.
 		aliases[forced] = 'grcc ' + command
 
 	aliases['lspci'] = 'grc lspci -nn'
