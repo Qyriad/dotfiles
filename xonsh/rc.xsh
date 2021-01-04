@@ -102,6 +102,7 @@ aliases['gpc'] = 'gpaste-client'
 aliases['xdgo'] = 'xdg-open'
 aliases['ffmpeg'] = 'ffmpeg -hide_banner'
 aliases['ffprobe'] = 'ffprobe -hide_banner'
+aliases['ffjson'] = 'ffprobe -hide_banner -v quiet -print_format json'
 aliases['mpv'] = 'mpv --osd-fractions'
 aliases['diskus'] = 'diskus --size-format binary'
 aliases['prp'] = 'realpath .' # "Print real path".
