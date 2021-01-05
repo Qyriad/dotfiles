@@ -1,0 +1,12 @@
+include "%L"
+
+<Multi_key> <d> <d> : "ð"
+<Multi_key> <period> <quotedbl>	: "•"
+<Multi_key> <quotedbl> <period>	: "•"
+<Multi_key> <u> <r> : "┏"
+<Multi_key> <d> <r> : "┗"
+<Multi_key> <e> <n> : "♪"
+<Multi_key> <q> <n> : "♩"
+<Multi_key> <slash> <backslash> : "Δ"
+<Multi_key> <backslash> <slash> : "Δ"
+<Multi_key> <t> <u> : "つ"
