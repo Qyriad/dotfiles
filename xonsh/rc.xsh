@@ -18,7 +18,7 @@ $NETCTL_EDITOR = $EDITOR
 
 # Fix Neovim for stuff like git commit.
 no_thread = lambda *a, **kw: False
-for command in ['nvim', 'git', 'vidir', 'systemctl', 'pacman', 'yay']:
+for command in ['nvim', 'git', 'vidir', 'systemctl', 'pacman', 'yay', 'vidir']:
 	__xonsh__.commands_cache.threadable_predictors[command] = no_thread
 
 # Make stuff follow XDG.
