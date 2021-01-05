@@ -7,6 +7,28 @@ include "%L"
 <Multi_key> <d> <r> : "┗"
 <Multi_key> <e> <n> : "♪"
 <Multi_key> <q> <n> : "♩"
+
+# Delta
 <Multi_key> <slash> <backslash> : "Δ"
 <Multi_key> <backslash> <slash> : "Δ"
+<Multi_key> <D> <e> <l> <t> <a> : "Δ"
+<Multi_key> <d> <e> <l> <t> <a> : "δ"
+
+# Alpha
+<Multi_key> <a> <l> <p> <h> <a> : "α"
+
+# Beta
+<Multi_key> <b> <e> <t> <a> : "β"
+
+# Theta
+<Multi_key> <T> <h> <e> <t> <a> "Θ"
+<Multi_key> <t> <h> <e> <t> <a> "θ"
+
+# Lambda
+<Multi_key> <l> <a> <m> <d> <a> : "λ"
+
+<Multi_key> <p> <i> : "π"
 <Multi_key> <t> <u> : "つ"
+<Multi_key> <t> <s> <u> : "つ"
+<Multi_key> <t> <t> <u> : "っ"
+<Multi_key> <t> <t> <s> <u> : "っ"
