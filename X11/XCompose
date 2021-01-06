@@ -28,7 +28,21 @@ include "%L"
 <Multi_key> <l> <a> <m> <d> <a> : "λ"
 
 <Multi_key> <p> <i> : "π"
+
+# Tsu
 <Multi_key> <t> <u> : "つ"
 <Multi_key> <t> <s> <u> : "つ"
 <Multi_key> <t> <t> <u> : "っ"
 <Multi_key> <t> <t> <s> <u> : "っ"
+
+# Flat
+<Multi_key> <b> <b> : "♭"
+
+# ¯\_(ツ)_/¯
+<Multi_key> <s> <h> : "¯\\_(ツ)_/¯"
+
+# Miscellaneous symbols
+<Multi_key> <colon> <colon> : "•"
+<Multi_key> <8> <n> <t> : "♪"
+<Multi_key> <h> <t> : "♡"
+<Multi_key> <s> <t> : "☆"
