@@ -176,6 +176,12 @@ def _delssh(linenum):
 
 aliases['delssh'] = _delssh
 
+
+def read_from_file(name):
+	with open(name, 'rb') as f:
+		data = f.read()
+	return data
+
 $RUSTFLAGS = "-C target-cpu=native"
 
 
