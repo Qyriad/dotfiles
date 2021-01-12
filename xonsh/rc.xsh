@@ -56,7 +56,7 @@ aliases['et'] = edit('~/.config/tmux/tmux.conf')
 aliases['ev'] = edit('~/.config/nvim/init.vim')
 aliases['er'] = edit('~/.config/ranger/rc.conf')
 aliases['ea'] = edit('~/.config/alacritty/alacritty.yml')
-aliases['ex'] = edit($XDG_CONFIG_HOME + '/rc.xsh')
+aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
 aliases['sx'] = 'source ~/.config/rc.xsh'
 
 # Color output. Note: aliases are recursive.
