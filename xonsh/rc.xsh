@@ -1,3 +1,5 @@
+import os, sys, json, struct
+
 #
 # Xonsh special environment variables.
 #
@@ -204,5 +206,3 @@ $RUSTFLAGS = "-C target-cpu=native"
 xontrib load output_search
 xontrib load whole_word_jumping
 
-
-import os, sys
