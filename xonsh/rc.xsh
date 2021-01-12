@@ -59,7 +59,14 @@ aliases['ea'] = edit('~/.config/alacritty/alacritty.yml')
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
 aliases['sx'] = 'source ~/.config/rc.xsh'
 
-# Color output. Note: aliases are recursive.
+
+# Utilities that I want to modify their default arguments, but also colorize if available.
+maybe_colorize = dict()
+maybe_colorize['lspci'] = 'lspci -nn'
+maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
+#aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
+
+# Color output. Note: aliases recursive into aliases other than themselves.
 if !(which grc):
 
 	# Forced color grc.
@@ -74,12 +81,12 @@ if !(which grc):
 		forced = command + 'c' # Force color, even when piping.
 		aliases[forced] = 'grcc ' + command
 
-	aliases['lspci'] = 'grc lspci -nn'
-	aliases['lspcic'] = 'grcc lspci -nn'
+	for command, alias in maybe_colorize.items():
+		aliases[command] = f'grc {alias}'
 
 else:
+	aliases.update(maybe_colorize)
 
-	aliases['lspci'] = 'lspci -nn'
 
 # Forced normal terminal output for things besides grc, even when piping.
 aliases['grepc'] = 'grep --color=always'
@@ -116,8 +123,6 @@ aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --inf
 aliases['rclone'] = 'rclone -P'
 aliases['pgrep'] = 'pgrep --list-full --ignore-case'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
-aliases['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
-aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 #aliases['wine32'] = '$WINEPREFIX=~/.wine32 WINEARCH=win32 wine'
 aliases['userctl'] = 'systemctl --user'
 aliases['ins'] = 'insect'
