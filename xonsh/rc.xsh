@@ -195,10 +195,17 @@ def _delssh(linenum):
 aliases['delssh'] = _delssh
 
 
-def read_from_file(name):
+def read_to_bytes(name):
 	with open(name, 'rb') as f:
 		data = f.read()
 	return data
+
+
+def read_to_string(name):
+	with open(name, 'r') as f:
+		s = f.read()
+	return s
+
 
 $RUSTFLAGS = "-C target-cpu=native"
 
