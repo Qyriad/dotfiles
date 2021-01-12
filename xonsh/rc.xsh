@@ -123,9 +123,19 @@ aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --inf
 aliases['rclone'] = 'rclone -P'
 aliases['pgrep'] = 'pgrep --list-full --ignore-case'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
-#aliases['wine32'] = '$WINEPREFIX=~/.wine32 WINEARCH=win32 wine'
 aliases['userctl'] = 'systemctl --user'
 aliases['ins'] = 'insect'
+
+def _wine32(args):
+	overrides = {
+		'WINEPREFIX': f"{$HOME}/.wine32",
+		'WINEARCH': 'win32',
+	}
+
+	with ${...}.swap(**overrides):
+		wine @(args)
+
+aliases['wine32'] = _wine32
 
 def _cmplinux():
 	boot = $(uname -r)
