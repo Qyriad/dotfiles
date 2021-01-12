@@ -207,6 +207,28 @@ def read_to_string(name):
 	return s
 
 
+def _ranger_cd(path=None):
+
+	path = path if path else os.getcwd()
+
+	temp = $(mktemp -t tmp.XXXXXX).strip()
+
+	/usr/bin/ranger --choosedir=@(temp) @(path)
+
+	# cd into the new directory, if any.
+	if os.path.exists(temp):
+
+		new_path = read_to_string(temp)
+
+		if new_path and new_path != os.getcwd():
+			cd @(new_path)
+
+		os.remove(temp)
+
+
+aliases['ranger'] = _ranger_cd
+
+
 $RUSTFLAGS = "-C target-cpu=native"
 
 
