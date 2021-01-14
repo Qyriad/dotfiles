@@ -238,7 +238,7 @@ command! Hitest :source $VIMRUNTIME/syntax/hitest.vim
 
 augroup disable_rainbow_cmake
 	autocmd!
-	autocmd FileType cmake call rainbow_main#clear()
+	autocmd FileType cmake,mediawiki,tvtropes RainbowToggleOff
 augroup END
 
 augroup c_ft_headers
