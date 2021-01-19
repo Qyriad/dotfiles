@@ -21,8 +21,8 @@ include "%L"
 <Multi_key> <b> <e> <t> <a> : "β"
 
 # Theta
-<Multi_key> <T> <h> <e> <t> <a> "Θ"
-<Multi_key> <t> <h> <e> <t> <a> "θ"
+<Multi_key> <T> <h> <e> <t> <a> : "Θ"
+<Multi_key> <t> <h> <e> <t> <a> : "θ"
 
 # Lambda
 <Multi_key> <l> <a> <m> <d> <a> : "λ"
@@ -46,3 +46,7 @@ include "%L"
 <Multi_key> <8> <n> <t> : "♪"
 <Multi_key> <h> <t> : "♡"
 <Multi_key> <s> <t> : "☆"
+
+
+# Emoji shortcuts
+<Multi_key> <m> <l> : ":meemlove: "
