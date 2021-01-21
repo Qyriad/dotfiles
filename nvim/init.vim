@@ -132,7 +132,7 @@ command! CocFloatHide call coc#util#float_hide()
 inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
 
 
-let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' } }
+let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' }, 'xonsh': { 'left': '#' } }
 
 """ Lightline helper functions
 function! SyntaxItem()
@@ -555,6 +555,8 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 "Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'liuchengxu/vista.vim'
 Plug 'vim-python/python-syntax'
+"Plug 'meatballs/vim-xonsh'
+Plug 'linkinpark342/xonsh-vim'
 call plug#end()
 
 " vim:textwidth=0
