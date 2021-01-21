@@ -30,5 +30,6 @@
 	tool = vimdiff
 [core]
 	pager = delta --dark --side-by-side
+	editor = /usr/bin/nvim
 [pull]
 	ff = only
