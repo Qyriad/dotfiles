@@ -63,7 +63,7 @@ aliases['sx'] = 'source ~/.config/rc.xsh'
 
 
 # Utilities that I want to modify their default arguments, but also colorize if available.
-maybe_colorize = dict()
+maybe_colorize = { }
 maybe_colorize['lspci'] = 'lspci -nn'
 maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 #aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
@@ -72,7 +72,8 @@ maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 if !(which grc):
 
 	# Forced color grc.
-	aliases['grcc'] = 'grc --colour=on'
+	grcc = 'grc --colour=on'
+	aliases['grcc'] = grcc
 
 	commands = \
             ['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'lsof']
@@ -81,10 +82,13 @@ if !(which grc):
 		aliases[command] = 'grc ' + command
 
 		forced = command + 'c' # Force color, even when piping.
-		aliases[forced] = 'grcc ' + command
+		aliases[forced] = f"{grcc} {command}"
 
 	for command, alias in maybe_colorize.items():
 		aliases[command] = f'grc {alias}'
+
+		forced = command + 'c' # Force color, even when piping.
+		aliases[forced] = f"{grcc} {alias}"
 
 else:
 	aliases.update(maybe_colorize)
