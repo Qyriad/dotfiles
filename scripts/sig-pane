@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import sys
+
+from signal import SIGHUP, SIGTERM, SIGKILL
+
+import psutil
+
+
+SIGNALS = {
+    'HUP': SIGHUP,
+    'TERM': SIGTERM,
+    'KILL': SIGKILL,
+}
+
+
+def get_child_with_name(process: psutil.Process, name: str):
+
+    if process.name() == name:
+        return process
+
+    for child in process.children():
+        result = get_child_with_name(child, name)
+
+        if result is not None:
+            return result
+
+    return None
+
+
+def main():
+
+    if sys.argv[1] not in SIGNALS.keys():
+        print(f"Invalid signal {sys.argv[1]}.")
+        sys.exit(1)
+
+    # Tmux gives us the pid of the top-level process, not the current command,
+    # and the top-level process is usually the shell.
+    top_level = psutil.Process(int(sys.argv[2]))
+
+    p = get_child_with_name(top_level, sys.argv[3])
+
+    p.send_signal(SIGNALS[sys.argv[1]])
+
+
+if __name__ == '__main__':
+    main()
