@@ -1,5 +1,10 @@
 import os, sys, json, struct
 
+try:
+	from psutils import Process
+except ImportError:
+	pass
+
 #
 # Xonsh special environment variables.
 #
