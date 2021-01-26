@@ -10,7 +10,7 @@ $DYNAMIC_CWD_WIDTH = "40%"
 #$MOUSE_SUPPORT = True
 $XONSH_AUTOPAIR = True
 
-$PATH = [f"~/.local/bin", '~/.local/share/cargo/bin'] + $PATH
+$PATH = [f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin'] + $PATH
 
 # Use Neovim for everything.
 $EDITOR = $(which nvim)
