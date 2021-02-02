@@ -233,7 +233,7 @@ def _ranger_cd(path=None):
 aliases['ranger'] = _ranger_cd
 
 
-$RUSTFLAGS = "-C target-cpu=native"
+$RUSTFLAGS = "-C target-cpu native"
 
 
 xontrib load output_search
