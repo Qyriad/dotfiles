@@ -73,8 +73,9 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 let g:necosyntax#max_syntax_lines = 1000
 
 " Linting
-highlight link ALEErrorSign Error
-highlight link ALEWarningSign Todo
+"highlight link ALEErrorSign Error
+"highlight link ALEWarningSign Todo
+"highlight CocRustChainingHint guifg=grey
 
 let g:c_space_errors = 1
 let g:python_space_error_highlight = 1
@@ -218,14 +219,15 @@ highlight Pmenu guibg=#303030 guifg=#5a95f4
 " Enable truecolors
 set termguicolors
 " Reset to term colors
-highlight Statement guifg=#af5f00
-highlight Comment guifg=#0aa6da
-highlight PreProc guifg=#c397d8
-highlight Identifier guifg=#70c0ba
-highlight Constant guifg=#cf0002
-highlight Type guifg=#00cc00
-highlight Special guifg=#c397d8
-highlight LineNr gui=none guifg=#af5f00
+"highlight Statement guifg=#af5f00
+"highlight Comment guifg=#0aa6da
+"highlight PreProc guifg=#c397d8
+"highlight Identifier guifg=#70c0ba
+"highlight Constant guifg=#cf0002
+"highlight Type guifg=#00cc00
+"highlight Special guifg=#c397d8
+"highlight LineNr gui=none guifg=#af5f00
+
 
 " Actually be able to see searched stuff
 "highlight Search guibg=#a0a0a0
@@ -522,7 +524,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	augroup END
 endif
 
-"let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-python', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
+"let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-jedi', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
 call plug#begin('~/.config/nvim/plugged')
@@ -580,5 +582,15 @@ Plug 'majutsushi/tagbar'
 "Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 "Plug 'thinca/vim-ft-vim_fold'
 call plug#end()
+colorscheme solarized8
+highlight Normal                          guibg=#1c1c1c
+highlight LineNr ctermfg=11               guibg=#212728
+
+
+"highlight Normal guifg=#93a1a1 guibg=#1b1b1b
+"highlight Normal guibg=#1b1b1b
+"highlight LineNr guibg=#1c1c1c
+"highlight LineNr gui=none guifg=#af5f00 guibg=#1b1b1b
+
 
 " vim:textwidth=0
