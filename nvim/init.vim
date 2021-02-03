@@ -526,42 +526,59 @@ endif
 let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'itchyny/lightline.vim'
-Plug 'chrisbra/colorizer'
-Plug 'tmhedberg/SimpylFold'
-Plug 'tpope/vim-fugitive'
+
+" Text editing.
 Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-characterize'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'Konfekt/vim-alias'
-Plug 'neoclide/jsonc.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'Shirk/vim-gas'
-"Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
-Plug 'Firef0x/PKGBUILD.vim'
-Plug 'luochen1990/rainbow'
-Plug 'vim-scripts/vis'
-Plug 'tpope/vim-eunuch'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-scripts/vis' " Block selection range commands.
+Plug 'tmhedberg/SimpylFold' " Python folds.
+Plug 'inkarkat/vim-UnconditionalPaste'
 Plug 'junegunn/vim-easy-align'
 Plug 'chaoren/vim-wordmotion'
 Plug 'gaving/vim-textobj-argument'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'terryma/vim-expand-region'
-Plug 'dhruvasagar/vim-zoom'
+Plug 'bergercookie/vim-debugstring'
+Plug 'mbbill/undotree'
+Plug 'editorconfig/editorconfig-vim'
+
+" Language support.
+Plug 'Shirk/vim-gas'
+Plug 'neoclide/jsonc.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-python/python-syntax'
+Plug 'Firef0x/PKGBUILD.vim'
+Plug 'chikamichi/mediawiki.vim'
+Plug 'dzeban/vim-log-syntax'
+"Plug 'meatballs/vim-xonsh'
+Plug 'linkinpark342/xonsh-vim'
+
+" Utilities.
+Plug 'tpope/vim-eunuch'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rbgrouleff/bclose.vim' " Dependency for ranger.vim
 Plug 'francoiscabrol/ranger.vim'
-Plug 'tpope/vim-tbone'
-Plug 'mbbill/undotree'
-Plug 'majutsushi/tagbar'
-"Plug 'thinca/vim-ft-vim_fold'
+Plug 'tpope/vim-tbone' " :Tyank and :Tput
+Plug 'tpope/vim-fugitive'
+
+" Display.
+Plug 'itchyny/lightline.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'chrisbra/colorizer'
+Plug 'luochen1990/rainbow'
+Plug 'dhruvasagar/vim-zoom' " <C-w>m
+
+" LSP-ish.
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile' }
 "Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'liuchengxu/vista.vim'
-Plug 'vim-python/python-syntax'
-"Plug 'meatballs/vim-xonsh'
-Plug 'linkinpark342/xonsh-vim'
+Plug 'majutsushi/tagbar'
+
+"Plug 'tpope/vim-characterize'
+"Plug 'Konfekt/vim-alias'
+"Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
+"Plug 'thinca/vim-ft-vim_fold'
 call plug#end()
 
 " vim:textwidth=0
