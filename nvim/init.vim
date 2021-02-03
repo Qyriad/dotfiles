@@ -62,6 +62,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " Select the previous completion with <S-Tab>
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = "virtual"
 
@@ -470,6 +471,9 @@ nmap dsf dt(ds)
 
 " Delete a GenericWrapper<>
 nmap dst dt<ds>
+
+" Delete a Rust-style type annotation for the current variable.
+nnoremap <leader>dt m0f:xwdaw`0
 
 " Delete a Python type hint comment on the current line.
 nnoremap <leader>dt <Cmd>substitute/\s#\stype:.\+//<CR>
