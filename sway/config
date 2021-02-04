@@ -6,41 +6,43 @@
 
 ### Variables
 #
-# Logo key. Use Mod1 for Alt
+# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-set $super Mod4
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 set $term alacritty
+
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | bemenu -p '' | xargs swaymsg exec
-set $menu "rofi -m $(~/.config/scripts/rofi_current_monitor.zsh) -show drun -run-command 'swaymsg exec -- {cmd}'"
+#set $menu dmenu_path | bemenu | xargs swaymsg exec
+#set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "Inconsolata Regular 24" -p "program:"' --term='kitty' --display-binary
+set $menu wofi --show drun,run -i --style ~/Projects/dotfiles/wofi/style.css --conf ~/Projects/dotfiles/wofi/config | xargs swaymsg exec --
 
+
+###
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output DP-1 position 0 0
-output DP-2 position 1366 0
-output DP-3 position 3286 0
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+###
+
+output * bg /home/qyriad/Wallpapers/yuki_bg.jpg fill
+
+output 'Dell Inc. DELL P2414H 524N341Q45CL'  resolution 1920x1080 scale 0.5  position 0    0
+output 'Dell Inc. DELL P2415Q 59JJ466K051B'  resolution 3840x2160 scale 1    position 3840 0
+output 'Dell Inc. DELL P2415Q Y9PCD4C306LL'  resolution 3840x2160 scale 1    position 7680 0
+
+bindsym --locked $mod+Mod1+o       output * dpms on
+bindsym --locked $mod+Mod1+Shift+o output * dpms off
+
 
 ### Idle configuration
 #
 # Example configuration:
-exec swayidle -w timeout 2700 'swaylock --image background.jpg --daemonize' \
-	timeout 2701 'swaymsg "output * dpms off"' 
-bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
+#
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * dpms off"' \
@@ -50,9 +52,18 @@ bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-
+bindsym $mod+Alt+l exec '0.6s ; loginctl lock-session'
+exec_always pkill swayidle; swayidle -d -w timeout 0 'swaylock -f ; sleep 1s ; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' lock 'pkill -USR1 swayidle'
 
 ### Input configuration
+
+#input "6940:6921:Corsair_Corsair_K70R_Gaming_Keyboard" {
+input type:keyboard {
+	xkb_options caps:escape,compose:ralt # ESC as caps lock, right-alt as compose key
+	xkb_numlock enabled
+}
+
+
 #
 # Example configuration:
 #
@@ -78,6 +89,7 @@ bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
 
     # start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -99,6 +111,7 @@ bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
+
     # or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -110,6 +123,7 @@ bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
+
     # ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -118,40 +132,51 @@ bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
 #
 # Workspaces:
 #
-	# rename workspace
-	#bindsym $mod+comma exec 'python3 $HOME/.local/bin/rename_workspace.py'
     # switch to workspace
-	bindsym $mod+1 workspace number 1
-	bindsym $mod+2 workspace number 2
-	bindsym $mod+3 workspace number 3
-	bindsym $mod+4 workspace number 4
-	bindsym $mod+5 workspace number 5
-	bindsym $mod+6 workspace number 6
-	bindsym $mod+7 workspace number 7
-	bindsym $mod+8 workspace number 8
-	bindsym $mod+9 workspace number 9
-	bindsym $mod+0 workspace number 10
-	#bindsym $mod+1 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 1'
-	#bindsym $mod+2 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 2'
-	#bindsym $mod+3 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 3'
-	#bindsym $mod+4 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 4'
-	#bindsym $mod+5 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 5'
-	#bindsym $mod+6 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 6'
-	#bindsym $mod+7 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 7'
-	#bindsym $mod+8 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 8'
-	#bindsym $mod+9 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 9'
-	#bindsym $mod+0 exec 'python3 $HOME/.local/bin/switch_named_workspace.py 10'
+    bindsym $mod+1 exec /home/qyriad/.local/bin/grab_workspace 1
+    bindsym $mod+2 exec /home/qyriad/.local/bin/grab_workspace 2
+    bindsym $mod+3 exec /home/qyriad/.local/bin/grab_workspace 3
+    bindsym $mod+4 exec /home/qyriad/.local/bin/grab_workspace 4
+    bindsym $mod+5 exec /home/qyriad/.local/bin/grab_workspace 5
+    bindsym $mod+6 exec /home/qyriad/.local/bin/grab_workspace 6
+    bindsym $mod+7 exec /home/qyriad/.local/bin/grab_workspace 7
+    bindsym $mod+8 exec /home/qyriad/.local/bin/grab_workspace 8
+    bindsym $mod+9 exec /home/qyriad/.local/bin/grab_workspace 9
+    bindsym $mod+0 exec /home/qyriad/.local/binKgrab_workspace 10
+
+
+	# Switch to prev/next workspace on output, creating one if necessary.
+	bindsym $mod+Ctrl+Left  exec /home/qyriad/code/swayctl/target/release/swayctl switch -p
+	bindsym $mod+Ctrl+Right exec /home/qyriad/code/swayctl/target/release/swayctl switch -n
+
+	# Move window to prev/next workspace on output, creating one if necessary.
+	bindsym $mod+Ctrl+Shift+Left  exec /home/qyriad/code/swayctl/target/release/swayctl move -p -s
+	bindsym $mod+Ctrl+Shift+Right exec /home/qyriad/code/swayctl/target/release/swayctl move -n -s
+
+	# Switch monitors left/right.
+	bindsym $mod+Alt+Left  exec /home/qyriad/code/swayctl/target/release/swayctl switch -l
+	bindsym $mod+Alt+Right exec /home/qyriad/code/swayctl/target/release/swayctl switch -r
+
+	# Move window to the monitor left/right.
+	bindsym $mod+Alt+Shift+Left  exec /home/qyriad/code/swayctl/target/release/swayctl move -l -s
+	bindsym $mod+Alt+Shift+Right exec /home/qyriad/code/swayctl/target/release/swayctl move -r -s
+
+	# Move the workspace itself to the monitor left/right.
+	bindsym $mod+Ctrl+Alt+Left  move workspace to output left
+	bindsym $mod+Ctrl+Alt+Right move workspace to output right
+
+
     # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -164,9 +189,9 @@ bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    #bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+	bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -175,7 +200,7 @@ bindsym $mod+Ctrl+l exec 'sleep 1 ; kill -USR1 $(pgrep swayidle)'
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+Ctrl+space focus mode_toggle
 
     # move focus to the parent container
     bindsym $mod+a focus parent
@@ -221,21 +246,47 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-	position top
+    position top
 
-	# When the status_command prints a new line to stdout, swaybar updates.
-	# The default just shows the current date and time.
-	status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command i3blocks
 
-	colors {
-		statusline #ffffff
-		background #323232
-		inactive_workspace #32323200 #32323200 #5c5c5c
-	}
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
 
-	strip_workspace_numbers yes
-
-	#swaybar_command waybar
+    font pango:Inconsolata 24
 }
 
-include /etc/sway/config.d/*
+xwayland enable
+
+# Control keyboard special function keys.
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+font pango:Inconsolata 20
+
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema cursor-size 48
+    gsettings set $gnome-schema text-scaling-factor 2
+}
+
+seat seat0 xcursor_theme Adwaita 48
+
+
+exec xrdb -override ~/.Xresources
+
+
+# Mako config
+exec /usr/bin/mako
