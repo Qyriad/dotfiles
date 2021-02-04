@@ -16,12 +16,6 @@ source $HOME/.config/nvim/syntax.vim
 source $HOME/.config/nvim/lsp.vim
 source $HOME/.config/nvim/statusline.vim
 
-" Linting
-"highlight link ALEErrorSign Error
-"highlight link ALEWarningSign Todo
-"highlight CocRustChainingHint guifg=grey
-
-
 """ Mapping helper functions
 
 """ Autocommands

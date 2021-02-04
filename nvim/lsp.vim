@@ -57,6 +57,13 @@ command! CocFloatHide call coc#util#float_hide()
 inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
 
 
+" LSP-related highlights.
+"highlight link ALEErrorSign Error
+"highlight link ALEWarningSign Todo
+"highlight CocRustChainingHint guifg=grey
+
+
+
 if exists('g:tagbar_sort')
 	unlet g:tagbar_sort
 endif
