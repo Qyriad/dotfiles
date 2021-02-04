@@ -12,10 +12,9 @@ let g:plugins = []
 luafile $HOME/.config/nvim/common.lua
 
 source $HOME/.config/nvim/core.vim
-
 source $HOME/.config/nvim/syntax.vim
-
 source $HOME/.config/nvim/lsp.vim
+source $HOME/.config/nvim/statusline.vim
 
 " Linting
 "highlight link ALEErrorSign Error
@@ -113,25 +112,6 @@ nnoremap <leader>c :normal `[v`]gU`]a<CR>
 inoremap <F3> <C-o>:call Capitalize_and_return()<CR>
 
 
-" Statusline/lightline
-set laststatus=2 " Always show statusline
-
-" Lightline
-source $HOME/.config/nvim/statusline.vim
-"let g:lightline = { 'active': {}, 'inactive': {}, 'tab': { 'active': {}, 'inactive': {} } }
-"let g:lightline.active.left = [['mode', 'paste'], ['readonly', 'filename', 'modified'], ['zoomed']]
-"let g:lightline.active.right = [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], []]
-""let g:lightline.active.right': [[], ['dir', 'filetype', 'lineinfo', 'percent', 'fileformat'], ['tag', 'syn']]
-"let g:lightline.inactive.left = [['readonly', 'filename', 'modified']]
-"let g:lightline.inactive.right = [['lineinfo'], ['percent'], ['dir']]
-"let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
-"let g:lightline.component = { 'filetype': '%{&ft!=#""?&ft:"no ft"}%<' }
-"let g:lightline.component_function = { 'dir': 'HomeRelDir', 'zoomed': 'zoom#statusline' }
-""let g:lightline.component_function = { 'syn': 'SyntaxItem', 'dir': 'HomeRelDir', 'symbol': 'CurrentSymbol', 'zoomed': 'zoom#statusline', 'tag': 'CurrentTag' },
-"let g:lightline.tab.active = ['tabnum', 'filename', 'modified']
-"let g:lightline.tab.inactive = ['tabnum', 'filename', 'modified']
-
-"let g:lightline.colorscheme = 'embark'
 
 " vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))

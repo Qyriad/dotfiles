@@ -2,6 +2,10 @@
 " Configuration related to Neovim's statusline, which I currently use Lightline to manage.
 "
 
+
+set laststatus=2 " Always show statusline
+
+
 function! SyntaxItem()
 	return "" " Disabled right now.
 	let synid = synID(line('.'), col('.'), 1)
