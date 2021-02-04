@@ -97,9 +97,8 @@ for plugin in g:plugins
 
 		let actions = ""
 		for [k, v] in items(plugin[1])
-			let k = string(k)
-			let v = string(v)
-			let action = ", { " . k . ": " . v . " }"
+			let [k, v] = [string(k), string(v)] " Put single quotes around the action-parts.
+			let action = ", { " . k . ": " . v . " }" " Of the form `, { 'key': 'value' }`
 			let actions .= action
 		endfor
 
