@@ -87,27 +87,6 @@ let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp',
 
 let g:plugin_strings = []
 
-lua << EOF
---vim.g.plugins = vim_list_cat(vim.g.plugins, {
---	"tpope/vim-surround",
---	{ "neoclide/coc.nvim", { ['do'] = 'yarn install --frozen lockfile' } }
---})
---local plugin_strings = { }
---for i = 1, #vim.g.plugins do
---	local current_plugin = vim.g.plugins[i]
---	if current_plugin[2] == nil then
---		table.insert(plugin_strings, "Plug '" .. current_plugin .. "'")
---	else
---		local actions = ""
---		for k, v in pairs(current_plugin[2]) do
---			actions = actions .. ", { '" .. k .. "': '" .. v .. "' }"
---		end
---		table.insert(plugin_strings, "Plug '" .. current_plugin[1] .. "'" .. actions)
---	end
---end
---vim.g.plugin_strings = plugin_strings
-EOF
-
 " The vimscript version is actually cleaner than the lua version.
 " Somehow.
 for plugin in g:plugins
