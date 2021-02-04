@@ -38,7 +38,7 @@ $CARGO_HOME = $XDG_DATA_HOME + '/cargo'
 $LESSHISTFILE = $XDG_CACHE_HOME + '/less/history'
 $LESSKEY = $XDG_CONFIG_HOME + '/less/lesskey'
 $TMUX_TMPDIR = $XDG_RUNTIME_DIR
-aliases['tmux'] = 'tmux -u -f ' + $XDG_CONFIG_HOME + '/tmux/tmux.conf'
+aliases['tmux'] = 'tmux -u'
 
 $PAGER = 'less'
 
