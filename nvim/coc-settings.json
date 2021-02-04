@@ -6,7 +6,7 @@
 	"suggest.enablePreview": true,
 	"suggest.removeDuplicateItems": true,
 	"suggest.localityBonus": true,
-	"suggest.floatEnable": true,
+	"suggest.floatEnable": true, // Floating window for documentation.
 	"suggest.echodocSupport": false,
 
 	"signature.enable": true,
@@ -14,7 +14,8 @@
 
 	/*"diagnostic.virtualText": true,*/
 	/*"diagnostic.virtualTextPrefix": "\\\\ ",*/
-	"diagnostic.separateRelatedInformationAsDiagnostics": false,
+	/*"diagnostic.virtualTextCurrentLineOnly": false,*/
+	"diagnostic.separateRelatedInformationAsDiagnostics": true,
 
 	"coc.preferences.hoverTarget": "float",
 	"coc.preferences.snippets.enable": false,
@@ -22,26 +23,24 @@
 
 	"codeLens.enable": true,
 
-	"rust-client.trace.server": "verbose",
-
-	"vimlsp.trace.server": "verbose",
+	"vimlsp.trace.server": "messages",
 
 	"git.enableGlobalStatus": false,
 
 	"json.enable": true,
-	"json.trace.server": "verbose",
+	"json.trace.server": "messages",
 
 	"python.linting.enabled": true,
+	"python.linting.pylintUseMinimalCheckers": true,
 	"python.linting.pylintEnabled": true,
 	"python.linting.pylintArgs": ["--max-line-length", "120", "--max-args", "8", "--extension-pkg-whitelist=PySide2", "--disable=C0326", "--disable=no-else-return"],
+	"pyright.trace.server": "messages",
+	"python.analysis.useLibraryCodeForTypes": true,
 		/*"--variable-rgx=(?P<snake>[a-z_][a-z0-9_]{0,30}$"],*/
-	"python.trace.server": "messages",
-	"python.jediEnabled": false,
-	"python.analysis.memory.keepLibraryAst": true,
-
 
 	"rust-analyzer.lens.implementations": false,
 	"rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+	"rust-analyzer.trace.server": "messages",
 
 	"suggest.completionItemKindLabels":
 	{
@@ -80,17 +79,11 @@
 			"args": ["-v=2"],
 			"filetypes": ["c", "c.doxygen", "cpp"],
 			"rootPatterns": [".ccls", "compile_commands.json", ".git/"],
-			"trace.server": "verbose",
+			"trace.server": "messages"
 			/*"initializationOptions":*/
 			/*{*/
 				/*"compilationDatabaseDirectory": "firmware/build"*/
 			/*}*/
 		}
-		/*"palantir":*/
-		/*{*/
-			/*"command": "pyls",*/
-			/*"filetypes": ["python"],*/
-			/*"trace.server": "verbose"*/
-		/*}*/
-	},
+	}
 }
