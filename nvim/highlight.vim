@@ -12,7 +12,7 @@
 "highlight Folded ctermbg=17 guibg=#303030
 
 " Make the completion menu look not ungodly
-highlight Pmenu guibg=#303030 guifg=#5a95f4
+"highlight Pmenu guibg=#303030 guifg=#5a95f4
 
 " Enable truecolor.
 set termguicolors
@@ -28,7 +28,7 @@ set termguicolors
 
 " Actually be able to see searched stuff
 "highlight Search guibg=#a0a0a0
-highlight Search guibg=#5c5c5c guifg=#ffffff gui=NONE
+"highlight Search guibg=#5c5c5c guifg=#ffffff gui=NONE
 
 command! Hitest :source $VIMRUNTIME/syntax/hitest.vim
 
