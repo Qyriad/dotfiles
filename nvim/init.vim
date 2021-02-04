@@ -16,11 +16,8 @@ source $HOME/.config/nvim/syntax.vim
 source $HOME/.config/nvim/lsp.vim
 source $HOME/.config/nvim/statusline.vim
 
-""" Mapping helper functions
 
-""" Autocommands
-
-" Mappings
+""" Other mappings.
 
 " Copy to tmux.
 vnoremap <leader>y :Tyank<CR>
