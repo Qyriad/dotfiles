@@ -34,11 +34,19 @@ command! Hitest :source $VIMRUNTIME/syntax/hitest.vim
 
 let g:rainbow_active = 1 " luochen1990/rainbow
 
+" Disable rainbow for cmake, mediawiki, and tvtropes
+augroup ft_disable_rainbow
+	autocmd! FileType cmake,mediawiki,tvtropes RainbowToggleOff
+augroup END
+
+
 colorscheme solarized8
 
 highlight Normal                          guibg=#1c1c1c
 highlight LineNr ctermfg=11               guibg=#212728
 
+" The plugins that would be in here if this file didn't have to
+" come after the plugin declarations.
 lua << EOF
 --vim.g.plugins = vim_list_cat(vim.g.plugins, {
 --	"lifepillar/vim-solarized8",

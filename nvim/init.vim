@@ -20,11 +20,6 @@ source $HOME/.config/nvim/statusline.vim
 
 """ Autocommands
 
-augroup disable_rainbow_cmake
-	autocmd! FileType cmake,mediawiki,tvtropes RainbowToggleOff
-augroup END
-
-
 " Mappings
 
 " Copy to tmux.
@@ -147,7 +142,7 @@ Plug 'dhruvasagar/vim-zoom' " <C-w>m
 "Plug 'thinca/vim-ft-vim_fold'
 call plug#end()
 
-" This has to be after the plugin delcarations or the colorscheme won't be found.
+" This has to be after the plugin declarations or the colorscheme won't be found.
 " As such, the plugins that would normally be added in this file are added above.
 source $HOME/.config/nvim/highlight.vim
 
