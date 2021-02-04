@@ -29,7 +29,7 @@ vnoremap <leader>y :Tyank<CR>
 xmap ga <Plug>(EasyAlign)
 
 
-" UNDER CONSIDERATION FOR REMOVAL:
+" PROBATION:
 " Word motion makes `word` defined to be more like a variable segment
 " I really never use Vim's definition of a `WORD`, so I'll replace its mappings to behave like Vim's original `word`s.
 nnoremap W w
@@ -116,8 +116,9 @@ endfor
 
 " Text editing.
 Plug 'tmhedberg/SimpylFold' " Python folds.
-Plug 'inkarkat/vim-UnconditionalPaste'
 Plug 'junegunn/vim-easy-align'
+" Probation:
+Plug 'inkarkat/vim-UnconditionalPaste'
 Plug 'chaoren/vim-wordmotion'
 Plug 'gaving/vim-textobj-argument'
 Plug 'michaeljsmith/vim-indent-object'
@@ -132,6 +133,7 @@ Plug 'rbgrouleff/bclose.vim' " Dependency for ranger.vim
 Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-tbone' " :Tyank and :Tput
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-characterize' " ga
 
 " Display.
 Plug 'lifepillar/vim-solarized8'
@@ -139,7 +141,6 @@ Plug 'chrisbra/colorizer'
 Plug 'luochen1990/rainbow'
 Plug 'dhruvasagar/vim-zoom' " <C-w>m
 
-"Plug 'tpope/vim-characterize'
 "Plug 'Konfekt/vim-alias'
 "Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 "Plug 'thinca/vim-ft-vim_fold'
