@@ -65,6 +65,7 @@ aliases['er'] = edit('~/.config/ranger/rc.conf')
 aliases['ea'] = edit('~/.config/alacritty/alacritty.yml')
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
 aliases['sx'] = 'source ~/.config/rc.xsh'
+aliases['es'] = edit('~/.config/sway/config')
 
 
 # Utilities that I want to modify their default arguments, but also colorize if available.
