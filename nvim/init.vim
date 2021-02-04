@@ -5,7 +5,7 @@ filetype plugin indent on
 
 runtime ftplugin/man.vim
 
-" Each .vim file adds plugins to this list, and we'll install them all at the end.
+" Each sourced .vim file adds plugins to this list, and we'll install them all at the end.
 let g:plugins = []
 
 " Helper functions.
@@ -28,6 +28,8 @@ vnoremap <leader>y :Tyank<CR>
 " Easy-Align
 xmap ga <Plug>(EasyAlign)
 
+
+" UNDER CONSIDERATION FOR REMOVAL:
 " Word motion makes `word` defined to be more like a variable segment
 " I really never use Vim's definition of a `WORD`, so I'll replace its mappings to behave like Vim's original `word`s.
 nnoremap W w
@@ -80,10 +82,12 @@ endif
 "let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-jedi', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
-let g:plugin_strings = []
 
 " The vimscript version is actually cleaner than the lua version.
 " Somehow.
+
+let g:plugin_strings = []
+
 for plugin in g:plugins
 
 	if type(plugin) == v:t_string
