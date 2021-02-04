@@ -157,7 +157,6 @@ Plug 'tpope/vim-tbone' " :Tyank and :Tput
 Plug 'tpope/vim-fugitive'
 
 " Display.
-"Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'chrisbra/colorizer'
 Plug 'luochen1990/rainbow'
