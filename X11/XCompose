@@ -50,3 +50,7 @@ include "%L"
 
 # Emoji shortcuts
 <Multi_key> <m> <l> : ":meemlove: "
+
+
+# macOS bullshit
+<Multi_key> <o> <p> <t> <i> <o> <n> : "⌥"
