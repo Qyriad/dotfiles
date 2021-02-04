@@ -83,6 +83,8 @@ endif
 let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
 
+""" Turn the list of plugins into a list of arguments to pass to vim-plug.
+
 " The vimscript version is actually cleaner than the lua version.
 " Somehow.
 
