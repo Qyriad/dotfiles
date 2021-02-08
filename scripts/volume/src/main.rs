@@ -10,12 +10,33 @@ use anyhow::Result as AResult;
 use anyhow::anyhow;
 
 
+fn wob_process_exists() -> AResult<bool>
+{
+    let processes = psutil::process::processes()?;
+    for process in processes {
+        if process?.name()? == "wob" {
+            return Ok(true);
+        }
+    }
+
+    return Ok(false);
+}
+
+
 fn main() -> AResult<()>
 {
     let args = env::args();
     let adjustment = args.skip(1).next().ok_or(anyhow!("Volume adjustment argument not specified."))?;
+    let mut chars = adjustment.chars();
+    let direction = if chars.next().unwrap() == '-' {
+        "-d"
+    } else {
+        "-i"
+    };
+    let adjustment: &str = chars.as_str();
+    let adjustment = &adjustment[0..adjustment.len() - 1];
 
-    Command::new("pactl").args(&["set-sink-volume", "@DEFAULT_SINK@", &adjustment]).spawn()?;
+    Command::new("pamixer").args(&[direction, adjustment]).spawn()?;
 
     let swaysock = env::var("SWAYSOCK")?;
     let mut wob_path_str = String::from(swaysock);
@@ -28,10 +49,10 @@ fn main() -> AResult<()>
             .spawn()?;
     }
 
-    let processes = psutil::process::processes()?;
-    if processes.into_iter().find(|process| process.as_ref().unwrap().name().unwrap() == "wob").is_none() {
+    if !wob_process_exists().unwrap_or(false) {
         Command::new("swaymsg").arg("exec")
-            .arg(format!("tail -f {} | wob", wob_path_str));
+            .arg(format!("tail -f {} | wob", wob_path_str))
+            .spawn()?;
     }
 
     let current_vol = Command::new("pamixer").arg("--get-volume").output()?;
@@ -39,6 +60,7 @@ fn main() -> AResult<()>
 
     let mut wob = File::with_options().write(true).open(wob_path)?;
     wob.write(current_vol.as_bytes())?;
+    wob.flush()?;
 
     Ok(())
 }

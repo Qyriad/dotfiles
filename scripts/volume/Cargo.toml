@@ -19,3 +19,4 @@ features = ["process"]
 [profile.release]
 lto = true
 strip = "symbols"
+panic = "abort"
