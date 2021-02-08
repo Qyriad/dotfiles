@@ -264,8 +264,10 @@ bar {
 xwayland enable
 
 # Control keyboard special function keys.
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec /home/qyriad/.config/scripts/volume/target/release/volume +5%
+bindsym XF86AudioLowerVolume exec /home/qyriad/.config/scripts/volume/target/release/volume -5%
+bindsym Shift+XF86AudioRaiseVolume exec /home/qyriad/.config/scripts/volume/target/release/volume +2%
+bindsym Shift+XF86AudioLowerVolume exec /home/qyriad/.config/scripts/volume/target/release/volume -2%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-

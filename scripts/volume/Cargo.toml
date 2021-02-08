@@ -1,0 +1,21 @@
+cargo-features = ["strip"]
+
+[package]
+name = "volume"
+version = "0.1.0"
+authors = ["Mikaela Szekely <mikaela.szekely@qyriad.me>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.38"
+
+[dependencies.psutil]
+version = "3.2"
+default-features = false
+features = ["process"]
+
+[profile.release]
+lto = true
+strip = "symbols"
