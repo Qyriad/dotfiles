@@ -7,7 +7,6 @@ set laststatus=2 " Always show statusline
 
 
 function! SyntaxItem()
-	return "" " Disabled right now.
 	let synid = synID(line('.'), col('.'), 1)
 	let trans = synIDtrans(synid)
 	return synIDattr(synid, 'name') . ' | ' . synIDattr(trans, 'name') . ' | ' . synIDattr(trans, 'fg')
@@ -54,7 +53,7 @@ lua << EOF
 vim.g.lightline = {
 	active = {
 		left  = {{"mode", "paste"}, {"readonly", "filename", "modified"}, {"zoomed"}},
-		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {}},
+		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat", "synitem"}, {}},
 	},
 	inactive = {
 		left  = {{"readonly", "filename", "modified"}},
@@ -68,7 +67,7 @@ vim.g.lightline = {
 	},
 	--separator = { left = utf8.char(0xe0b0), right = utf8.char(0xe0b2) },
 	component = { filetype = '%{&ft!=#""?&ft:"no ft"}%<' },
-	component_function = { dir = "HomeRelDir", zoomed = "zoom#statusline" },
+	component_function = { dir = "HomeRelDir", zoomed = "zoom#statusline", synitem = "SyntaxItem" },
 	tab = {
 		active = {"tabnum", "filename", "modified"},
 		inactive = {"tabnum", "filename", "modified"},
