@@ -8,7 +8,11 @@ except ImportError:
 #
 # Xonsh special environment variables.
 #
-$PROMPT = '{env_name}{GREEN}{user}@{hostname} {#af00ff}{cwd}{#87d7d7}{curr_branch: ({})}{GREEN} {prompt_end}{RESET} '
+
+$PROMPT_FIELDS['exit_code'] = lambda : str(_.rtn)
+$PROMPT_FIELDS['exit_color'] = lambda : '{RED}' if _.rtn != 0 else '{GREEN}'
+$PROMPT = '{env_name}{GREEN}{user}@{hostname} {#af00ff}{cwd}{#87d7d7}{curr_branch: ({})}{exit_color} {prompt_end}{RESET} '
+$TITLE = '{cwd} | {exit_code}'
 $CASE_SENSITIVE_COMPLETIONS = True
 $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
@@ -64,7 +68,7 @@ aliases['ev'] = edit('~/.config/nvim/init.vim')
 aliases['er'] = edit('~/.config/ranger/rc.conf')
 aliases['ea'] = edit('~/.config/alacritty/alacritty.yml')
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
-aliases['sx'] = 'source ~/.config/rc.xsh'
+aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
 aliases['es'] = edit('~/.config/sway/config')
 
 
