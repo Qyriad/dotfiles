@@ -54,3 +54,9 @@ include "%L"
 
 # macOS bullshit
 <Multi_key> <o> <p> <t> <i> <o> <n> : "⌥"
+
+# Nordic
+<Multi_key> <E> <t> <h> : "Ð"
+<Multi_key> <e> <t> <h> : "ð"
+<Multi_key> <T> <h> <o> <r> <n> : "Þ"
+<Multi_key> <t> <h> <o> <r> <n> : "þ"
