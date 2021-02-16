@@ -5,6 +5,11 @@ try:
 except ImportError:
 	pass
 
+try:
+	from unidecode import unidecode
+except ImportError:
+	pass
+
 #
 # Xonsh special environment variables.
 #
