@@ -287,7 +287,7 @@ exec_always {
     gsettings set $gnome-schema text-scaling-factor 2
 }
 
-seat seat0 xcursor_theme Adwaita 48
+#seat seat0 xcursor_theme Adwaita 48
 
 
 exec xrdb -override ~/.Xresources
