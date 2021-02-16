@@ -307,6 +307,9 @@ for_window [title="Clipboard_Float"] floating enable
 for_window [title="Clipboard_Float"] resize set width 2000 px height 1300 px
 bindsym $mod+Shift+c exec "kitty --title Clipboard_Float sh -c '/home/qyriad/code/gpc/gpc.py -n 100'"
 
+#bindsym $mod+Shift+s exec "grimshot save area /tmp/screenshot.png"
+bindsym $mod+Shift+s exec "/home/qyriad/.config/scripts/recent/target/release/recent"
+
 workspace 1 output DP-2
 workspace 2 output DP-3
 workspace 3 output DP-1
