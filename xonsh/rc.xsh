@@ -14,8 +14,20 @@ except ImportError:
 # Xonsh special environment variables.
 #
 
-$PROMPT_FIELDS['exit_code'] = lambda : str(_.rtn)
-$PROMPT_FIELDS['exit_color'] = lambda : '{RED}' if _.rtn != 0 else '{GREEN}'
+def exit_code():
+	try:
+		return str(_.rtn)
+	except (AttributeError, NameError):
+		return '0'
+
+def exit_color():
+	try:
+		return '{RED}' if _.rtn != 0 else '{GREEN}'
+	except (AttributeError, NameError):
+		return '{GREEN}'
+
+$PROMPT_FIELDS['exit_code'] = exit_code
+$PROMPT_FIELDS['exit_color'] = exit_color
 $PROMPT = '{env_name}{GREEN}{user}@{hostname} {#af00ff}{cwd}{#87d7d7}{curr_branch: ({})}{exit_color} {prompt_end}{RESET} '
 $TITLE = '{cwd} | {exit_code}'
 $CASE_SENSITIVE_COMPLETIONS = True
