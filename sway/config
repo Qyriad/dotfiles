@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -292,3 +294,6 @@ exec xrdb -override ~/.Xresources
 
 # Mako config
 exec /usr/bin/mako
+
+#exec /usr/lib/gpaste/gpaste-daemon
+
