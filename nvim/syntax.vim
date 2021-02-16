@@ -36,5 +36,6 @@ vim.g.plugins = vim_list_cat(vim.g.plugins, {
 	'dzeban/vim-log-syntax',
 	--"meatballs/vim-xonsh",
 	'linkinpark342/xonsh-vim',
+	'terminalnode/sway-vim-syntax',
 })
 EOF
