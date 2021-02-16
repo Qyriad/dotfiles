@@ -61,7 +61,8 @@ exec_always pkill swayidle; swayidle -d -w timeout 0 'swaylock -f ; sleep 1s ; s
 
 #input "6940:6921:Corsair_Corsair_K70R_Gaming_Keyboard" {
 input type:keyboard {
-	xkb_options caps:escape,compose:ralt # ESC as caps lock, right-alt as compose key
+	# ESC as caps lock, right-alt as compose key
+	xkb_options caps:escape,compose:ralt
 	xkb_numlock enabled
 }
 
