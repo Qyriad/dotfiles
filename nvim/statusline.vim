@@ -53,7 +53,8 @@ lua << EOF
 vim.g.lightline = {
 	active = {
 		left  = {{"mode", "paste"}, {"readonly", "filename", "modified"}, {"zoomed"}},
-		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat", "synitem"}, {}},
+		--right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat", "synitem"}, {}},
+		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {}},
 	},
 	inactive = {
 		left  = {{"readonly", "filename", "modified"}},
