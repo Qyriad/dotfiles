@@ -35,6 +35,7 @@ $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
 #$MOUSE_SUPPORT = True
 $XONSH_AUTOPAIR = True
+$COMMANDS_CACHE_SIZE_WARNING = 8000
 
 $PATH = [f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin'] + $PATH
 
