@@ -82,7 +82,8 @@ aliases['less'] = 'less -R'
 # Edit config shortcuts.
 edit = lambda path : $EDITOR + ' ' + path
 aliases['et'] = edit('~/.config/tmux/tmux.conf')
-aliases['ev'] = edit('~/.config/nvim/init.vim')
+nvim_paths = ['init.vim', 'core.vim', 'syntax.vim', 'lsp.vim', 'statusline.vim']
+aliases['ev'] = edit('-p ' + ' '.join(['~/.config/nvim/' + path for path in nvim_paths]))
 aliases['er'] = edit('~/.config/ranger/rc.conf')
 aliases['ea'] = edit('~/.config/alacritty/alacritty.yml')
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
