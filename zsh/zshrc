@@ -452,6 +452,7 @@ source_if /etc/profile.d/devkitppc.sh
 
 
 source_if /usr/share/zsh/scripts/zplug/init.zsh
+source_if /usr/share/zplug/init.zsh # Debian/Ubuntu location.
 
 #zplug "lambda/zsh-snippets"
 #zplug "ael-code/zsh-colored-man-pages"
