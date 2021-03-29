@@ -296,12 +296,12 @@ exec xrdb -override ~/.Xresources
 # Mako config
 exec /usr/bin/mako
 
-#exec /usr/lib/gpaste/gpaste-daemon
+exec /usr/lib/gpaste/gpaste-daemon
 
 
 # Assignments.
 #assign [title="Discord"] workspace number 2
-for_window [title="Discord"] move container to workspace number 2
+for_window [title="Discord$"] move container to workspace number 2
 
 for_window [title="Clipboard_Float"] floating enable
 for_window [title="Clipboard_Float"] resize set width 2000 px height 1300 px
