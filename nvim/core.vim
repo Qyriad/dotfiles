@@ -204,6 +204,7 @@ nmap dsf dt(<Plug>Dsurround)
 "nmap dst dt<ds>
 nmap dst dt<<Plug>Dsurround>
 
+command! Cfile silent !echo % | tr -d '\n' | tmux load-buffer -
 
 lua << EOF
 vim.g.plugins = vim_list_cat(vim.g.plugins, {
