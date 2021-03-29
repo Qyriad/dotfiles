@@ -79,6 +79,9 @@ endif
 "let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-jedi', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
+let g:ranger_map_keys = 0
+nnoremap <leader>f :RangerCurrentDirectory<CR>
+
 
 """ Turn the list of plugins into a list of arguments to pass to vim-plug.
 
