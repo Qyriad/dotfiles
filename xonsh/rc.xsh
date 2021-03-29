@@ -175,8 +175,12 @@ def _wine32(args):
 aliases['wine32'] = _wine32
 
 def _cmplinux():
-	boot = $(uname -r)
-	installed = $(basename /usr/lib/modules/*arch*)
+	boot = $(uname -r).strip()
+	if boot.find('lts'):
+		installed = $(basename /usr/lib/modules/*lts*).strip()
+	else:
+		installed = $(basename /usr/lib/modules/*arch*).strip()
+
 	if boot != installed:
 		#delta <@(boot) <@(installed) | tail -2
 		sh -c f"delta <(echo {boot}) <(echo {installed}) | tail -2"
