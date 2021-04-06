@@ -204,6 +204,9 @@ nmap dsf dt(<Plug>Dsurround)
 "nmap dst dt<ds>
 nmap dst dt<<Plug>Dsurround>
 
+" Delete an assignment.
+nnoremap da= vf=ld
+
 command! Cfile silent !echo % | tr -d '\n' | tmux load-buffer -
 
 lua << EOF
