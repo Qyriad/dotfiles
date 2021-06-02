@@ -194,7 +194,7 @@ nnoremap <leader>sv <Cmd>tabedit $MYVIMRC<CR>
 " I did not. But I did instead use:
 
 " Delete a Rust-style type annotation for the current variable.
-nnoremap <leader>dta m0f:xwdaw`0
+nnoremap <leader>dta m0f:xwdaW`0
 
 " Delete a function call, leaving the arguments intact.
 "nmap dsf dt(ds)
