@@ -37,7 +37,7 @@ $DYNAMIC_CWD_WIDTH = "40%"
 $XONSH_AUTOPAIR = True
 $COMMANDS_CACHE_SIZE_WARNING = 8000
 
-$PATH = [f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin', f'{$HOME}/.dotnet'] + $PATH
+$PATH = ["/usr/local/bin", f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin', f'{$HOME}/.dotnet'] + $PATH
 
 # Use Neovim for everything.
 $EDITOR = $(which nvim)
