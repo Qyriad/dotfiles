@@ -38,6 +38,7 @@ $XONSH_AUTOPAIR = True
 $COMMANDS_CACHE_SIZE_WARNING = 8000
 
 $PATH = ["/usr/local/bin", f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin', f'{$HOME}/.dotnet'] + $PATH
+aliases['sudo'] = lambda args : $[@($(which -s sudo)) @(aliases.eval_alias(args))]
 
 # Use Neovim for everything.
 $EDITOR = $(which nvim)
