@@ -235,6 +235,24 @@ def _delssh(linenum):
 aliases['delssh'] = _delssh
 
 
+def _gac(name):
+	git cherry-pick -n @(name)
+	git reset
+
+aliases['gac'] = _gac
+
+bashcomp = __xonsh__.completers['bash']
+
+def _gac_complete(prefix, line, start, end, ctx):
+	if line.startswith("gac "):
+		return bashcomp(prefix, line.replace("gac", "git cherry-pick", 1), start, end, ctx)
+	else:
+		return None
+
+__xonsh__.completers["gac"] = _gac_complete
+__xonsh__.completers.move_to_end("gac", last=False)
+
+
 def read_to_bytes(name):
 	with open(name, 'rb') as f:
 		data = f.read()
