@@ -107,7 +107,7 @@ if !(which grc):
 	aliases['grcc'] = grcc
 
 	commands = \
-            ['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'lsof']
+		['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'lsof']
 
 	for command in commands:
 		aliases[command] = 'grc ' + command
@@ -121,8 +121,12 @@ if !(which grc):
 		forced = command + 'c' # Force color, even when piping.
 		aliases[forced] = f"{grcc} {alias}"
 
+	del commands, command, forced
+
 else:
 	aliases.update(maybe_colorize)
+
+del maybe_colorize
 
 
 # Forced normal terminal output for things besides grc, even when piping.
