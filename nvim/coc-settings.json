@@ -38,8 +38,8 @@
 	"python.analysis.useLibraryCodeForTypes": true,
 		/*"--variable-rgx=(?P<snake>[a-z_][a-z0-9_]{0,30}$"],*/
 
-	"rust-analyzer.lens.implementations": false,
 	"rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+	"rust-analyzer.lens.implementations": false,
 	"rust-analyzer.trace.server": "messages",
 
 	"suggest.completionItemKindLabels":
