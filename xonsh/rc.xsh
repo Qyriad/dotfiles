@@ -77,6 +77,7 @@ aliases['chown'] = 'chown -v --preserve-root'
 aliases['chgrp'] = 'chgrp -v --preserve-root'
 aliases['grep'] = 'grep --color=auto'
 aliases['egrep'] = 'egrep --color=auto'
+aliases['sed'] = 'sed -E'
 aliases['less'] = 'less -R'
 
 
