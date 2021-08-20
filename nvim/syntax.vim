@@ -28,6 +28,7 @@ lua << EOF
 vim.g.plugins = vim_list_cat(vim.g.plugins, {
 	'Shirk/vim-gas',
 	'neoclide/jsonc.vim',
+	'cespare/vim-toml',
 	'leafgarland/typescript-vim',
 	'rust-lang/rust.vim',
 	'vim-python/python-syntax',
@@ -37,5 +38,6 @@ vim.g.plugins = vim_list_cat(vim.g.plugins, {
 	--"meatballs/vim-xonsh",
 	'linkinpark342/xonsh-vim',
 	'terminalnode/sway-vim-syntax',
+	'peterhoeg/vim-qml',
 })
 EOF
