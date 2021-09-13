@@ -212,6 +212,11 @@ def _apprg(pattern):
 
 aliases['apprg'] = _apprg
 
+def _tmuxman(what):
+	man tmux | less rf"+/^\s+{what[0]}"
+
+aliases['tmuxman'] = _tmuxman
+
 def _copyfrom(hostname):
 	ssh @(hostname) tmux show-buffer | wl-copy
 
