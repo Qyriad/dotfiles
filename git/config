@@ -33,3 +33,7 @@
 	editor = /usr/bin/nvim
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = delta --color-only
