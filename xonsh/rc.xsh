@@ -249,6 +249,21 @@ def _delssh(linenum):
 
 aliases['delssh'] = _delssh
 
+def _gac(name):
+	git cherry-pick -n @(name)
+	git reset
+
+aliases['gac'] = _gac
+
+
+#def _s(subst):
+	#cmd = $(history show -1 | sed -E @(subst)).strip()
+	#print(cmd)
+	#@(cmd.split())
+
+
+#aliases['s'] = _s
+
 
 def _gac(name):
 	git cherry-pick -n @(name)
