@@ -79,7 +79,7 @@
 			"args": ["-v=2"],
 			"filetypes": ["c", "c.doxygen", "cpp"],
 			"rootPatterns": [".ccls", "compile_commands.json", ".git/"],
-			"trace.server": "messages"
+			"trace.server": "verbose"
 			/*"initializationOptions":*/
 			/*{*/
 				/*"compilationDatabaseDirectory": "firmware/build"*/
