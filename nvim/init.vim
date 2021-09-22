@@ -29,28 +29,28 @@ xmap ga <Plug>(EasyAlign)
 " PROBATION:
 " Word motion makes `word` defined to be more like a variable segment
 " I really never use Vim's definition of a `WORD`, so I'll replace its mappings to behave like Vim's original `word`s.
-nnoremap W w
-nnoremap E e
-nnoremap B b
-nnoremap gE ge
-xnoremap W w
-xnoremap E e
-xnoremap B b
-xnoremap gE ge
-onoremap W w
-onoremap E e
-onoremap B b
-onoremap gE ge
+"nnoremap W w
+"nnoremap E e
+"nnoremap B b
+"nnoremap gE ge
+"xnoremap W w
+"xnoremap E e
+"xnoremap B b
+"xnoremap gE ge
+"onoremap W w
+"onoremap E e
+"onoremap B b
+"onoremap gE ge
 
-xnoremap aW aw
-xnoremap iW iw
+"xnoremap aW aw
+"xnoremap iW iw
 
 " Also a few <leader> mappings for the same thing, particularly for operator-pending mode
-onoremap <leader>w w
-onoremap <leader>iw iw
-onoremap i<leader>w iw
-onoremap <leader>aw aw
-onoremap a<leader>w aw
+"onoremap <leader>w w
+"onoremap <leader>iw iw
+"onoremap i<leader>w iw
+"onoremap <leader>aw aw
+"onoremap a<leader>w aw
 
 
 " Capitalize the last inserted text
