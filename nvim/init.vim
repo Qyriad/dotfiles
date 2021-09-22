@@ -136,6 +136,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'tpope/vim-tbone' " :Tyank and :Tput
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-characterize' " ga
+Plug 'tpope/vim-abolish'
 
 " Display.
 Plug 'lifepillar/vim-solarized8'
