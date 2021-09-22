@@ -23,7 +23,9 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 nnoremap <silent> <Return> <Cmd>call CocActionAsync('doHover')<CR>
 nmap <A-Return> <Plug>(coc-definition)
 nmap <A-]> <Plug>(coc-type-definition)
+nmap <A-t> <Plug>(coc-type-definition)
 nmap <A-[> <Plug>(coc-references)
+nmap <A-r> <Plug>(coc-references)
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
