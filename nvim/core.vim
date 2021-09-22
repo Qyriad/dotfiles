@@ -207,6 +207,13 @@ nmap dst dt<<Plug>Dsurround>
 " Delete an assignment.
 nnoremap da= vf=ld
 
+" Change a member access to a Python style dict access. 'Change Member To Dict'
+nmap cmtd eviwS'va'S]h"_x
+
+" Change a Python style dict access to a member access. 'Change Dict to Member'
+nmap cdtm ds'F[i.<ESC><ESC>f[ds]
+
+
 command! Cfile silent !echo % | tr -d '\n' | tmux load-buffer -
 
 lua << EOF
