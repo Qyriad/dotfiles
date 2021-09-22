@@ -6,6 +6,7 @@
 	tool = vimdiff
 [alias]
 	sub = submodule
+	subinit = submodule update --recursive --init
 	l = log --abbrev-commit --decorate -n 8 --graph
 	s = status
 	curbr = rev-parse --abbrev-ref HEAD
