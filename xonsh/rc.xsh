@@ -258,14 +258,40 @@ aliases['gac'] = _gac
 
 bashcomp = __xonsh__.completers['bash']
 
-def _gac_complete(prefix, line, start, end, ctx):
-	if line.startswith("gac "):
-		return bashcomp(prefix, line.replace("gac", "git cherry-pick", 1), start, end, ctx)
-	else:
-		return None
+#def _gac_complete(prefix, line, start, end, ctx):
+	#if line.startswith("gac "):
+		#return bashcomp(prefix, line.replace("gac", "git cherry-pick", 1), start, end, ctx)
+	#else:
+		#return None
 
-__xonsh__.completers["gac"] = _gac_complete
-__xonsh__.completers.move_to_end("gac", last=False)
+#__xonsh__.completers["gac"] = _gac_complete
+#__xonsh__.completers.move_to_end("gac", last=False)
+
+import xonsh
+from xonsh.completers.tools import *
+from xonsh.parsers.completion_context import CommandArg
+@contextual_completer
+def _gac_completer(context):
+
+	if context.command and context.command.args[0].value == 'gac':
+
+		if len(context.command.args) > 1:
+			old_args = context.command.args[1:]
+		else:
+			old_args = ()
+
+		new_args = (
+			CommandArg(value='git'),
+			CommandArg(value='cherry-pick'),
+		) + old_args
+
+		new_arg_index = context.command.arg_index + 1
+		new_command = context.command._replace(args=new_args, arg_index=new_arg_index)
+		new_context = context._replace(command=new_command, python=None)
+
+		return bashcomp(new_context)
+
+completer add gac_alias _gac_completer
 
 
 def read_to_bytes(name):
