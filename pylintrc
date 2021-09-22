@@ -1,0 +1,5 @@
+[FORMAT]
+good-names=i,j,k,ex,_,e,tl,br
+
+[MESSAGES CONTROL]
+disable=logging-fstring-interpolation
