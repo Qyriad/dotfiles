@@ -273,7 +273,7 @@ from xonsh.parsers.completion_context import CommandArg
 @contextual_completer
 def _gac_completer(context):
 
-	if context.command and context.command.args[0].value == 'gac':
+	if context.command and context.command.args and context.command.args[0].value == 'gac':
 
 		if len(context.command.args) > 1:
 			old_args = context.command.args[1:]
@@ -328,9 +328,7 @@ def _ranger_cd(path=None):
 aliases['ranger'] = _ranger_cd
 
 
-$RUSTFLAGS = "-C target-cpu=native"
-
-
 xontrib load output_search
 xontrib load whole_word_jumping
+#xontrib load argcomplete
 
