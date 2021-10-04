@@ -47,6 +47,9 @@ include "%L"
 <Multi_key> <h> <t> : "♡"
 <Multi_key> <s> <t> : "☆"
 <Multi_key> <p> <a> <r> <a> : "¶" # Also typeable as <compose>p!
+# Long tilde.
+<Multi_key> <tilde> <greater> : "～"
+<Multi_key> <greater> <tilde> : "～"
 
 # Emoji shortcuts
 <Multi_key> <m> <l> : ":meemlove: "
