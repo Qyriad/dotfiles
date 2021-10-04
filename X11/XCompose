@@ -61,3 +61,8 @@ include "%L"
 <Multi_key> <e> <t> <h> : "ð"
 <Multi_key> <T> <h> <o> <r> <n> : "Þ"
 <Multi_key> <t> <h> <o> <r> <n> : "þ"
+
+# Currencies
+<Multi_key> <dollar> <c> : "¢" # Cents
+<Multi_key> <dollar> <p> : "£" # Pounds
+<Multi_key> <dollar> <y> : "¥" # Yen
