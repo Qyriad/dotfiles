@@ -27,13 +27,23 @@ include "%L"
 # Lambda
 <Multi_key> <l> <a> <m> <d> <a> : "λ"
 
+# Pi
 <Multi_key> <p> <i> : "π"
+
+# Omega
+<Multi_key> <o> <m> <e> <g> <a> : "ω"
+<Multi_key> <O> <m> <e> <g> <a> : "Ω"
+<Multi_key> <o> <h> <m> : "Ω"
 
 # Tsu
 <Multi_key> <t> <u> : "つ"
 <Multi_key> <t> <s> <u> : "つ"
 <Multi_key> <t> <t> <u> : "っ"
 <Multi_key> <t> <t> <s> <u> : "っ"
+
+# Hiragana あ shortcuts. Helpful for screaming. aaaaaaaaaaaaaあああああ
+<Multi_key> <h> <a> : "あ"
+<Multi_key> <h> <s> <a> : "ぁ" # Hiragana small A
 
 # Flat
 <Multi_key> <b> <b> : "♭"
@@ -50,6 +60,19 @@ include "%L"
 # Long tilde.
 <Multi_key> <tilde> <greater> : "～"
 <Multi_key> <greater> <tilde> : "～"
+<Multi_key> <s> <e> : "§" # Also typeable as <compose>so
+<Multi_key> <m> <a> : "♂" # Male/Mars sign
+<Multi_key> <f> <e> : "♀" # Female/Venus sign
+<Multi_key> <l> <e> : "⚢" # Lesbian
+<Multi_key> <t> <r> : "⚧" # Trans
+<Multi_key> <m> <e> <r> : "☿" Mercury/Intersex
+<Multi_key> <h> <a> <s> : "☭" # Hammer and sickle
+# Peace symbol
+<Multi_key> <y> <o> : "☮"
+<Multi_key> <o> <y> : "☮"
+# Pentagram
+<Multi_key> <5> <x> : "⛤"
+<Multi_key> <x> <5> : "⛤"
 
 # Emoji shortcuts
 <Multi_key> <m> <l> : ":meemlove: "
