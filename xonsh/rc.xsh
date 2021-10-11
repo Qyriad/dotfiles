@@ -220,7 +220,7 @@ def _copyfrom(hostname):
 aliases['copyfrom'] = _copyfrom
 
 def _rm_transient(name):
-	systemctl --user @(name) -p FragmentPath | cut -d= -f2 | xargs rm -i
+	systemctl --user show @(name) -p FragmentPath | cut -d= -f2 | xargs rm -i
 
 aliases['rm-transient'] = _rm_transient
 
