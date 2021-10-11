@@ -18,6 +18,7 @@
 	b = branch -vv
 	bb = branch -vv --no-merged master
 	sh = show --abbrev-commit --decorate -q
+	diffs = diff --staged
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
