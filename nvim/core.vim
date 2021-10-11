@@ -169,8 +169,12 @@ nnoremap <leader>sb <Cmd>Bs<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " \$ for last charactrer.
-nnoremap <leader>$ $h
-vnoremap <leader>$ $h
+"nnoremap <leader>$ $h
+"vnoremap <leader>$ $h
+
+" Actually, fuck it. $ for last character.
+nnoremap $ $h
+vnoremap $ $h
 
 " <A-CR> to insert and goto line above.
 inoremap <A-CR> <Esc>O
