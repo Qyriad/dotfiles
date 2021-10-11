@@ -37,7 +37,7 @@ $DYNAMIC_CWD_WIDTH = "40%"
 $XONSH_AUTOPAIR = True
 $COMMANDS_CACHE_SIZE_WARNING = 8000
 
-$PATH = ["/usr/local/bin", f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin', f'{$HOME}/.dotnet'] + $PATH
+#$PATH = ["/usr/local/bin", f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin', f'{$HOME}/.dotnet'] + $PATH
 aliases['sudo'] = lambda args : $[@($(which -s sudo)) @(aliases.eval_alias(args))]
 
 # Use Neovim for everything.
@@ -53,9 +53,6 @@ __xonsh__.commands_cache.predict_threadable = no_thread
 	#__xonsh__.commands_cache.threadable_predictors[command] = no_thread
 
 # Make stuff follow XDG.
-$XDG_DATA_HOME = f"{$HOME}/.local/share"
-$XDG_CACHE_HOME = f"{$HOME}/.cache"
-$XDG_CONFIG_HOME = f"{$HOME}/.config"
 $XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
 $CARGO_HOME = $XDG_DATA_HOME + '/cargo'
 $LESSHISTFILE = $XDG_CACHE_HOME + '/less/history'
