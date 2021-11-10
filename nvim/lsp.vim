@@ -73,6 +73,7 @@ endif
 
 lua << EOF
 vim.g.plugins = vim_list_cat(vim.g.plugins, {
+	-- 'do' is a keyword in Lua, so we have to use the arbitrary expression key syntax.
 	{ 'neoclide/coc.nvim', { ['do'] = 'yarn install --frozen-lockfile' } },
 	'liuchengxu/vista.vim',
 	'majutsushi/tagbar'
