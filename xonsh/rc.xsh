@@ -77,6 +77,9 @@ aliases['egrep'] = 'egrep --color=auto'
 aliases['sed'] = 'sed -E'
 aliases['less'] = 'less -R'
 
+# Coreutils-alike
+aliases['rip'] = 'rip --seance'
+
 
 # Edit config shortcuts.
 edit = lambda path : $EDITOR + ' ' + path
