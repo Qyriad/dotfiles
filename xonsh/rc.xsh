@@ -351,6 +351,10 @@ def _ranger_cd(path=None):
 aliases['ranger'] = _ranger_cd
 
 
+xontrib load abbrevs
+
+abbrevs["|&"] = "2>&1 |"
+
 xontrib load output_search
 xontrib load whole_word_jumping
 #xontrib load argcomplete
