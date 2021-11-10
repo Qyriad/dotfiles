@@ -159,8 +159,7 @@ aliases['duf'] = 'duf -hide special'
 aliases['prp'] = 'realpath .' # "Print real path".
 aliases['tn'] = r"tr -d '\n'"
 aliases['remake'] = 'mkdir $PWD ; cd $PWD'
-aliases['rsync'] = 'systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --recursive -hhh --links -v --info=PROGRESS2'
-aliases['rsyncn'] = '/usr/bin/rsync --recursive -hhh --links -v --info=PROGRESS2'
+aliases['rsync'] = '/usr/bin/rsync --recursive -hhh --links -v --info=PROGRESS2'
 aliases['lsync'] = 'systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hhh --links -v --info=PROGRESS2'
 aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
 aliases['rclone'] = 'rclone -P'
