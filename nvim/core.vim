@@ -235,6 +235,7 @@ nmap cmtd eviwS'va'S]h"_x
 " Change a Python style dict access to a member access. 'Change Dict to Member'
 nmap cdtm ds'F[i.<ESC><ESC>f[ds]
 
+command! -range=% Interleave execute 'keeppatterns' (<line2>-<line1>+1)/2+<line1> ',' <line2> 'g/^/<line1> move -1'
 
 function! Redir(command)
 	enew
