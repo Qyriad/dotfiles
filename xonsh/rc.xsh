@@ -248,6 +248,11 @@ def _reenv():
 
 aliases['reenv'] = _reenv
 
+def _reagent():
+	$SSH_AUTH_SOCK = $(gpgconf --list-dirs agent-ssh-socket).strip()
+
+aliases['reagent'] = _reagent
+
 def _rekey():
 	$GPG_TTY = $(tty).strip()
 	$SSH_AUTH_SOCK = $(gpgconf --list-dirs agent-ssh-socket).strip()
