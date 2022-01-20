@@ -137,6 +137,7 @@ Plug 'tpope/vim-tbone' " :Tyank and :Tput
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-characterize' " ga
 Plug 'tpope/vim-abolish'
+Plug 'gennaro-tedesco/nvim-peekup'
 
 " Display.
 Plug 'lifepillar/vim-solarized8'
