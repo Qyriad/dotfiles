@@ -28,7 +28,7 @@ lua << EOF
 vim.g.plugins = vim_list_cat(vim.g.plugins, {
 	'Shirk/vim-gas',
 	'neoclide/jsonc.vim',
-	'cespare/vim-toml',
+	{ 'cespare/vim-toml', { branch = 'main'} },
 	'leafgarland/typescript-vim',
 	'rust-lang/rust.vim',
 	'vim-python/python-syntax',
