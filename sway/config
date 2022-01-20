@@ -10,6 +10,7 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+set $super Mod4
 
 # Home row direction keys, like vim
 set $left h
@@ -55,7 +56,7 @@ bindsym --locked $mod+Mod1+Shift+o output * dpms off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 bindsym $mod+Alt+l exec '0.6s ; loginctl lock-session'
-exec_always pkill swayidle; swayidle -d -w timeout 0 'swaylock -f ; sleep 1s ; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' lock 'pkill -USR1 swayidle'
+exec_always sh -c "pkill swayidle; swayidle -d -w timeout 0 'swaylock -f ; sleep 1s ; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' lock 'pkill -USR1 swayidle'"
 
 ### Input configuration
 
@@ -105,7 +106,7 @@ input type:keyboard {
 	bindsym $mod+Shift+r reload
 
 	# exit sway (logs you out of your Wayland session)
-	bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+	#bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -136,16 +137,26 @@ input type:keyboard {
 # Workspaces:
 #
 	# switch to workspace
-	bindsym $mod+1 exec /home/qyriad/.local/bin/grab_workspace 1
-	bindsym $mod+2 exec /home/qyriad/.local/bin/grab_workspace 2
-	bindsym $mod+3 exec /home/qyriad/.local/bin/grab_workspace 3
-	bindsym $mod+4 exec /home/qyriad/.local/bin/grab_workspace 4
-	bindsym $mod+5 exec /home/qyriad/.local/bin/grab_workspace 5
-	bindsym $mod+6 exec /home/qyriad/.local/bin/grab_workspace 6
-	bindsym $mod+7 exec /home/qyriad/.local/bin/grab_workspace 7
-	bindsym $mod+8 exec /home/qyriad/.local/bin/grab_workspace 8
-	bindsym $mod+9 exec /home/qyriad/.local/bin/grab_workspace 9
-	bindsym $mod+0 exec /home/qyriad/.local/binKgrab_workspace 10
+	#bindsym $mod+1 exec /home/qyriad/.local/bin/grab_workspace 1
+	#bindsym $mod+2 exec /home/qyriad/.local/bin/grab_workspace 2
+	#bindsym $mod+3 exec /home/qyriad/.local/bin/grab_workspace 3
+	#bindsym $mod+4 exec /home/qyriad/.local/bin/grab_workspace 4
+	#bindsym $mod+5 exec /home/qyriad/.local/bin/grab_workspace 5
+	#bindsym $mod+6 exec /home/qyriad/.local/bin/grab_workspace 6
+	#bindsym $mod+7 exec /home/qyriad/.local/bin/grab_workspace 7
+	#bindsym $mod+8 exec /home/qyriad/.local/bin/grab_workspace 8
+	#bindsym $mod+9 exec /home/qyriad/.local/bin/grab_workspace 9
+	#bindsym $mod+0 exec /home/qyriad/.local/binKgrab_workspace 10
+	bindsym $mod+1 workspace number 1
+	bindsym $mod+2 workspace number 2
+	bindsym $mod+3 workspace number 3
+	bindsym $mod+4 workspace number 4
+	bindsym $mod+5 workspace number 5
+	bindsym $mod+6 workspace number 6
+	bindsym $mod+7 workspace number 7
+	bindsym $mod+8 workspace number 8
+	bindsym $mod+9 workspace number 9
+	bindsym $mod+0 workspace number 10
 
 
 	# Switch to prev/next workspace on output, creating one if necessary.
@@ -275,6 +286,11 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+bindsym $super+Shift+e exec /home/qyriad/.local/bin/wofi-emoji
 
 font pango:Inconsolata 20
 
@@ -303,6 +319,8 @@ exec /usr/lib/gpaste/gpaste-daemon
 #assign [title="Discord"] workspace number 2
 for_window [title="Discord$"] move container to workspace number 2
 
+for_window [title="^ViewSB$"] move container to workspace number 7
+
 for_window [title="Clipboard_Float"] floating enable
 for_window [title="Clipboard_Float"] resize set width 2000 px height 1300 px
 bindsym $mod+Shift+c exec "kitty --title Clipboard_Float sh -c '/home/qyriad/code/gpc/gpc.py -n 100'"
@@ -315,3 +333,4 @@ workspace 2 output DP-3
 workspace 3 output DP-1
 workspace 4 output DP-2
 workspace 5 output DP-5
+workspace 7 output DP-3
