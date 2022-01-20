@@ -30,6 +30,7 @@
 	prompt = true
 [diff]
 	tool = vimdiff
+	compactionHeuristic = true
 [core]
 	pager = delta --dark --side-by-side
 	editor = nvim
@@ -37,10 +38,12 @@
 	ff = only
 [init]
 	defaultBranch = main
-[interactive]
+#[interactive]
 	#diffFilter = delta --color-only
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[submodule]
+	fetchJobs = 4
