@@ -32,10 +32,15 @@
 	tool = vimdiff
 [core]
 	pager = delta --dark --side-by-side
-	editor = /usr/bin/nvim
+	editor = nvim
 [pull]
 	ff = only
 [init]
 	defaultBranch = main
 [interactive]
 	#diffFilter = delta --color-only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
