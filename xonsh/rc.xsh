@@ -82,15 +82,15 @@ aliases['rip'] = 'rip --seance'
 
 
 # Edit config shortcuts.
-edit = lambda path : $EDITOR + ' ' + path
-aliases['et'] = edit('~/.config/tmux/tmux.conf')
+edit = lambda path : $EDITOR + ' ' + str(path)
+aliases['et'] = edit(p'~/.config/tmux/tmux.conf')
 nvim_paths = ['init.vim', 'core.vim', 'syntax.vim', 'lsp.vim', 'statusline.vim']
-aliases['ev'] = edit('-p ' + ' '.join(['~/.config/nvim/' + path for path in nvim_paths]))
-aliases['er'] = edit('~/.config/ranger/rc.conf')
-aliases['ea'] = edit('~/.config/alacritty/alacritty.yml')
+aliases['ev'] = edit('-p ' + ' '.join([str(p'~/.config/nvim/') + path for path in nvim_paths]))
+aliases['er'] = edit(p'~/.config/ranger/rc.conf')
+aliases['ea'] = edit(p'~/.config/alacritty/alacritty.yml')
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
 aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
-aliases['es'] = edit('~/.config/sway/config')
+aliases['es'] = edit(p'~/.config/sway/config')
 
 
 # Utilities that I want to modify their default arguments, but also colorize if available.
