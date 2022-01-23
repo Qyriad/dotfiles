@@ -1,4 +1,7 @@
+$SHELL = "xonsh"
+
 import os, sys, json, struct
+
 
 try:
 	from psutils import Process
@@ -37,7 +40,6 @@ $DYNAMIC_CWD_WIDTH = "40%"
 $XONSH_AUTOPAIR = True
 $COMMANDS_CACHE_SIZE_WARNING = 8000
 
-#$PATH = ["/usr/local/bin", f"{$HOME}/.local/bin", f'{$HOME}/.local/share/cargo/bin', f'{$HOME}/.dotnet'] + $PATH
 aliases['sudo'] = lambda args : $[@($(which -s sudo)) @(aliases.eval_alias(args))]
 
 # Use Neovim for everything.
@@ -53,11 +55,13 @@ __xonsh__.commands_cache.predict_threadable = no_thread
 	#__xonsh__.commands_cache.threadable_predictors[command] = no_thread
 
 # Make stuff follow XDG.
-$XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
+if sys.platform != 'darwin':
+	$XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
+	$TMUX_TMPDIR = $XDG_RUNTIME_DIR
+
 $CARGO_HOME = $XDG_DATA_HOME + '/cargo'
 $LESSHISTFILE = $XDG_CACHE_HOME + '/less/history'
 $LESSKEY = $XDG_CONFIG_HOME + '/less/lesskey'
-$TMUX_TMPDIR = $XDG_RUNTIME_DIR
 aliases['tmux'] = 'tmux -u'
 
 $PAGER = 'less'
@@ -98,6 +102,10 @@ maybe_colorize = { }
 maybe_colorize['lspci'] = 'lspci -nn'
 maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 #aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
+
+if sys.platform == 'darwin':
+	aliases['df'] = 'df -P'
+	aliases['rsync'] = '/usr/local/bin/rsync --recursive -hhh --links -v --info=progress2'
 
 # Color output. Note: aliases recursive into aliases other than themselves.
 if !(which grc):
@@ -163,7 +171,7 @@ aliases['rsync'] = '/usr/bin/rsync --recursive -hhh --links -v --info=PROGRESS2'
 aliases['lsync'] = 'systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hhh --links -v --info=PROGRESS2'
 aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
 aliases['rclone'] = 'rclone -P'
-aliases['pgrep'] = 'pgrep --list-full --ignore-case'
+aliases['pgrep'] = 'pgrep -l -i'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
 aliases['userctl'] = 'systemctl --user'
 aliases['ins'] = 'insect'

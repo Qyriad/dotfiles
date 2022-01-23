@@ -1,0 +1,7 @@
+BREW_PREFIX="$(brew --prefix)"
+unset PATH
+eval $(/usr/libexec/path_helper -s)
+export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$HOME/.local/bin:$HOME/.dotnet/tools:$HOME/.local/share/cargo/bin:$PATH"
+export XDG_CONFIG_HOME="/Users/qyriad/.config"
+export XDG_CACHE_HOME="/Users/qyriad/.cache"
+export XDG_DATA_HOME="/Users/qyriad/.local/share"
