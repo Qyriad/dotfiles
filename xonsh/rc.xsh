@@ -364,6 +364,16 @@ def _ranger_cd(path=None):
 aliases['ranger'] = _ranger_cd
 
 
+def _detach_kernel_drivers(dev):
+	for i in range(len(dev.configurations()[0].interfaces())):
+		try:
+			dev.detach_kernel_driver(i)
+		except usb.core.USBError:
+			pass
+
+aliases['detach-kernel-drivers'] = _detach_kernel_drivers
+
+
 xontrib load abbrevs
 
 abbrevs["|&"] = "2>&1 |"
