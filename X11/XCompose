@@ -81,6 +81,7 @@ include "%L"
 # macOS bullshit
 <Multi_key> <o> <p> <t> : "⌥"
 <Multi_key> <c> <m> <d> : "⌘"
+<Multi_key> <o> <p> <t> <i> <o> <n> : "⌥"
 
 # Nordic
 <Multi_key> <E> <t> <h> : "Ð"
