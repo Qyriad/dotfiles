@@ -1,3 +1,11 @@
+echo "ZSH: interactive shell"
+
+if [[ -o l ]]; then
+	PROMPT="%m %# "
+	#emulate -lR zsh
+	return
+fi
+
 FPATH+=":$HOME/.config/zsh/zfunc"
 # Lines configured by zsh-newuser-install
 HISTFILE=$HOME/.cache/zsh/histfile
@@ -131,7 +139,7 @@ bindkey 'u' undo
 bindkey '' _complete_help
 
 
-export PATH="$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/cargo/bin:$PATH"
+#export PATH="$HOME/.local/bin:/usr/local/bin:$HOME/.local/share/cargo/bin:$PATH"
 
 # Use neovim for everything
 export EDITOR="$(which nvim)"
