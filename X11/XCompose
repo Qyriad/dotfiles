@@ -65,7 +65,7 @@ include "%L"
 <Multi_key> <f> <e> : "♀" # Female/Venus sign
 <Multi_key> <l> <e> : "⚢" # Lesbian
 <Multi_key> <t> <r> : "⚧" # Trans
-<Multi_key> <m> <e> <r> : "☿" Mercury/Intersex
+<Multi_key> <m> <e> <r> : "☿" # Mercury/Intersex
 <Multi_key> <h> <a> <s> : "☭" # Hammer and sickle
 # Peace symbol
 <Multi_key> <y> <o> : "☮"
