@@ -58,8 +58,8 @@ include "%L"
 <Multi_key> <s> <t> : "☆"
 <Multi_key> <p> <a> <r> <a> : "¶" # Also typeable as <compose>p!
 # Long tilde.
-<Multi_key> <tilde> <greater> : "～"
-<Multi_key> <greater> <tilde> : "～"
+<Multi_key> <asciitilde> <greater> : "～"
+<Multi_key> <greater> <asciitilde> : "～"
 <Multi_key> <s> <e> : "§" # Also typeable as <compose>so
 <Multi_key> <m> <a> : "♂" # Male/Mars sign
 <Multi_key> <f> <e> : "♀" # Female/Venus sign
