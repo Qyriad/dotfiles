@@ -96,6 +96,8 @@ aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
 aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
 aliases['es'] = edit(p'~/.config/sway/config')
 
+aliases['yt-dlp'] = 'yt-dlp --compat-options filename,format-spec,multistreams'
+
 
 # Utilities that I want to modify their default arguments, but also colorize if available.
 maybe_colorize = { }
