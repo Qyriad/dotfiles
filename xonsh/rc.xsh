@@ -178,6 +178,9 @@ aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
 aliases['userctl'] = 'systemctl --user'
 aliases['ins'] = 'insect'
 
+aliases['cm'] = 'cmake -B build'
+aliases['cmb'] = 'cmake --build build'
+
 def _wine32(args):
 	overrides = {
 		'WINEPREFIX': f"{$HOME}/.wine32",
