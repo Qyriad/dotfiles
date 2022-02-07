@@ -93,3 +93,5 @@ include "%L"
 <Multi_key> <dollar> <c> : "¢" # Cents
 <Multi_key> <dollar> <p> : "£" # Pounds
 <Multi_key> <dollar> <y> : "¥" # Yen
+
+<Multi_key> <m> <t> : "™" # TM
