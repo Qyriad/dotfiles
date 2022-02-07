@@ -1,0 +1,4 @@
+--compat-options format-spec
+--compat-options multistreams
+
+--compat-options abort-on-error
