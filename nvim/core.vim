@@ -50,6 +50,16 @@ set fsync " Syncs the filesystem after :write.
 set updatetime=1000 "Lets languageservers update faster, and shortens the time for CursorHold.
 set noshowmode " We're using lightline, so showing the mode in the command line is redundant.
 
+
+""" Slow down mouse scroll speed.
+" This is intended for macOS touchpads, but ideally the solution should be
+" in the terminal instead. I just need to figure that out >.>
+if hostname() =~? "^keyleth"
+	noremap <ScrollWheelUp> <C-y>
+	noremap <ScrollWheelDown> <C-e>
+endif
+
+
 """
 """ Core autocommands
 """
