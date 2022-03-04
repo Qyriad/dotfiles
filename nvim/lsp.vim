@@ -65,6 +65,15 @@ inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
 "highlight CocRustChainingHint guifg=grey
 
 
+" If we're on our M1 laptop, then we need to tell Pyright to use ARM-Homebrew's Python site-packages.
+if hostname() =~? "^keyleth"
+	function! AddHomebrewPythonForCoc()
+		let l:homebrewPythonSite = "/opt/homebrew/lib/python3.10/site-packages"
+		call coc#config("python.analysis.extraPaths", l:homebrewPythonSite)
+	endfunction
+	call add(g:after_plugin_load_callbacks, function("AddHomebrewPythonForCoc"))
+endif
+
 
 if exists('g:tagbar_sort')
 	unlet g:tagbar_sort
