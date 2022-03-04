@@ -7,6 +7,7 @@ runtime ftplugin/man.vim
 
 " Each sourced .vim file adds plugins to this list, and we'll install them all at the end.
 let g:plugins = []
+let g:after_plugin_load_callbacks = []
 
 " Helper functions.
 luafile $HOME/.config/nvim/common.lua
@@ -90,21 +91,21 @@ nnoremap <leader>f :RangerCurrentDirectory<CR>
 
 let g:plugin_strings = []
 
-for plugin in g:plugins
+for s:plugin in g:plugins
 
-	if type(plugin) == v:t_string
-		call add(g:plugin_strings, "Plug " . string(plugin))
+	if type(s:plugin) == v:t_string
+		call add(g:plugin_strings, "Plug " . string(s:plugin))
 
-	elseif type(plugin) == v:t_list
+	elseif type(s:plugin) == v:t_list
 
-		let actions = ""
-		for [k, v] in items(plugin[1])
+		let s:actions = ""
+		for [k, v] in items(s:plugin[1])
 			let [k, v] = [string(k), string(v)] " Put single quotes around the action-parts.
-			let action = ", { " . k . ": " . v . " }" " Of the form `, { 'key': 'value' }`
-			let actions .= action
+			let s:action = ", { " . k . ": " . v . " }" " Of the form `, { 'key': 'value' }`
+			let s:actions .= s:action
 		endfor
 
-		call add(g:plugin_strings, "Plug " . string(plugin[0]) . actions)
+		call add(g:plugin_strings, "Plug " . string(s:plugin[0]) . s:actions)
 
 	endif
 endfor
@@ -153,6 +154,11 @@ call plug#end()
 " This has to be after the plugin declarations or the colorscheme won't be found.
 " As such, the plugins that would normally be added in this file are added above.
 source $HOME/.config/nvim/highlight.vim
+
+
+for s:callback in g:after_plugin_load_callbacks
+	call s:callback()
+endfor
 
 
 " vim:textwidth=0
