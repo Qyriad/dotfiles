@@ -228,6 +228,14 @@ nmap cmtd eviwS'va'S]h"_x
 nmap cdtm ds'F[i.<ESC><ESC>f[ds]
 
 
+function! Redir(command)
+	enew
+	put =execute(a:command)
+endfunction
+
+command! -nargs=+ -complete=command Redir call Redir(<Q-Args>)
+
+
 command! Cfile silent !echo % | tr -d '\n' | tmux load-buffer -
 
 lua << EOF
