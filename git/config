@@ -32,6 +32,7 @@
 [diff]
 	tool = vimdiff
 	compactionHeuristic = true
+	relative = true
 [core]
 	pager = delta --dark --side-by-side
 	editor = nvim
