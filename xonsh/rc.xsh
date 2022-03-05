@@ -2,6 +2,10 @@ $SHELL = "xonsh"
 
 import os, sys, json, struct
 
+# These variables are set to lambdas, and are not exported to subprocesses
+# unless they have been evaluated at least once, it seems.
+$HOSTNAME
+$HOSTTYPE
 
 try:
 	from psutils import Process
