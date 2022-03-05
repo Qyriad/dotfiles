@@ -1,27 +1,79 @@
 {
-	"suggest.autoTrigger": "always",
-	"suggest.acceptSuggestionOnCommitCharacter": true,
-	"suggest.preferCompleteThanJumpPlaceholder": true,
-	"suggest.maxCompleteItemCount": 100,
+	// set completeopt=preview
 	"suggest.enablePreview": true,
-	"suggest.removeDuplicateItems": true,
+
+	// Floating window for documentation.
+	"suggest.floatEnable": true,
+
+	// Don't require specific trigger characters to open completion menu.
+	"suggest.autoTrigger": "always",
+
+	// Confirm completion instead of jumping to the next placeholder.
+	"suggest.preferCompleteThanJumpPlaceholder": true,
+
+	"suggest.maxCompleteItemCount": 100,
+
+	// Sets CompletionClientCapabilities.completionItem.snippetSupport to false.
+	// Some language servers may not listen.
+	"suggest.snippetsSupport": false,
+	//"coc.preferences.snippets.enable": false, // not needed becauase above?
+
+	// PROBATION: Boost suggestions that appear closer to the cursor position.
 	"suggest.localityBonus": true,
-	"suggest.floatEnable": true, // Floating window for documentation.
-	"suggest.echodocSupport": false,
 
-	"signature.enable": true,
-	"signature.target": "float",
+	// Require at least 3 characters to open completion menu.
+	"suggest.minTriggerInputLength": 3,
 
+	// Use language server provided commit characters to accept completion.
+	"suggest.acceptSuggestionOnCommitCharacter": true,
+
+	// set completeopt=noselect
+	"suggest.noselect": true,
+
+	// PROBATION:
+	"suggest.removeDuplicateItems": true,
+
+	// Enable colors highlight for these filetypes; hopefully that works?
+	"colors.filetypes": ["vim", "c", "cpp", "python", "rust"],
+
+	// Consider: diagnostic.displayByAle: true, maybe.
+
+	// TRIAL: if this shows too many things it might be unreadable?
+	"diagnostic.checkCurrentLine": true,
+
+	// TRIAL: this may also be unreadable?
+	"diagnostic.virtualText": true,
+	"diagnostic.virtualTextLevel": "error",
+	// If hard to parse, consider diagnostic.virtualTextAlignRight: true
+
+	"diagnostic.separateRelatedInformationAsDiagnostics": true,
 	/*"diagnostic.virtualText": true,*/
 	/*"diagnostic.virtualTextPrefix": "\\\\ ",*/
 	/*"diagnostic.virtualTextCurrentLineOnly": false,*/
-	"diagnostic.separateRelatedInformationAsDiagnostics": true,
 
-	"coc.preferences.hoverTarget": "float",
-	"coc.preferences.snippets.enable": false,
+
+	"signature.enable": true,
+	"signature.target": "float",
+	// Consider: signature.preferShownAbove: false
+
+	"hover.target": "float",
+	//"coc.preferences.hoverTarget": "float", // Unnecessary due to above?
+
+	// PROBATION: still not sure what the fuck this actually is.
+	"codeLens.enable": true,
+
+	// TRIAL: not quite sure what this does either.
+	"list.menuAction": true,
+
+	// TRIAL: same here.
+	"coc.preferences.enableMessageDialog": true,
+
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 
-	"codeLens.enable": true,
+	// ……Is this different from colors.filetypes???
+	"semanticTokens.filetypes": ["vim", "c", "cpp", "python", "rust"],
+
+
 
 	"vimlsp.trace.server": "messages",
 
