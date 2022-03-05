@@ -68,8 +68,8 @@ inoremap <F3> <C-o>:call Capitalize_and_return()<CR>
 
 
 
-" vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
+" Install vim-plug if it isn't already and we're not running as root.
+if empty(glob('~/.config/nvim/autoload/plug.vim')) && $USER !=# "root"
 	echomsg 'vim-plug not installed; downloading…'
 	!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	augroup vim_plug
@@ -78,7 +78,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 "let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-jedi', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
-let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
+"let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
 let g:ranger_map_keys = 0
 nnoremap <leader>f :RangerCurrentDirectory<CR>

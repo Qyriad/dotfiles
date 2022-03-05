@@ -80,10 +80,47 @@ if exists('g:tagbar_sort')
 endif
 
 
+" If we're running as root, disable CoC, as it tends to cause… problems.
+if $USER ==# "root"
+	let g:coc_enabled = 0
+endif
+
+
+function! GetCocConfig(nested_key)
+	" Split the key by period, first.
+	let l:key_list = split(a:nested_key, '.')
+
+	" The path is the everything but the last segment of the full key.
+	let l:path = join(l:key_list[0:-2], '.')
+
+	" The non-nested key is the last segment *only*.
+	let l:key = l:key_list[-1]
+
+	" Ask CoC for the configuration dict with that path.
+	let l:coc_reply = coc#util#get_config(l:path)
+
+	if !empty(l:coc_reply)
+		return l:coc_reply[l:key]
+	else
+		" However, if CoC didn't give us anything,
+		" then try again with the full nested key all at once.
+		" And at this point, if CoC still returns {}, then we
+		" might as well just return it.
+		return coc#util#get_config(a:nested_key)
+	endif
+
+endfunction
+
+
 lua << EOF
 vim.g.plugins = vim_list_cat(vim.g.plugins, {
 	-- 'do' is a keyword in Lua, so we have to use the arbitrary expression key syntax.
 	{ 'neoclide/coc.nvim', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'fannheyward/coc-rust-analyzer', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'fannheyward/coc-pyright', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'iamcco/coc-vimlsp', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'neoclide/coc-lists', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'neoclide/coc-git', { ['do'] = 'yarn install --frozen-lockfile' } },
 	'liuchengxu/vista.vim',
 	'majutsushi/tagbar'
 })
