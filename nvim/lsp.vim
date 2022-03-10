@@ -118,6 +118,7 @@ vim.g.plugins = vim_list_cat(vim.g.plugins, {
 	{ 'neoclide/coc.nvim', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'fannheyward/coc-rust-analyzer', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'fannheyward/coc-pyright', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'neoclide/coc-tsserver', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'iamcco/coc-vimlsp', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'neoclide/coc-lists', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'neoclide/coc-git', { ['do'] = 'yarn install --frozen-lockfile' } },
