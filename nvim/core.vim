@@ -16,6 +16,7 @@ set incsearch " Incremental search.
 set tabstop=4 " Number of visual spaces to be displayed per HT.
 set noexpandtab " Don't 'expand' tabs to spaces by default.
 set shiftwidth=0 " Use tabstop value for indenting.
+set softtabstop=-1 " Use tabstop value for expanded tabs too.
 set showcmd " Show the last command on the command line.
 set lazyredraw " Only redraw when we need to.
 set scrolloff=2 " Keep 2 lines between the end of the buffer and the cursor.
