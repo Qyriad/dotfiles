@@ -137,5 +137,11 @@
 				/*"compilationDatabaseDirectory": "firmware/build"*/
 			/*}*/
 		}
-	}
+  },
+  "cSpell.userWords": [
+    "Pyright",
+    "funcobj",
+    "keyleth",
+    "prevchunk"
+  ]
 }
