@@ -9,13 +9,15 @@ runtime ftplugin/man.vim
 let g:plugins = []
 let g:after_plugin_load_callbacks = []
 
-" Helper functions.
-luafile $HOME/.config/nvim/common.lua
+let $CONFIGPATH = stdpath('config')
 
-source $HOME/.config/nvim/core.vim
-source $HOME/.config/nvim/syntax.vim
-source $HOME/.config/nvim/lsp.vim
-source $HOME/.config/nvim/statusline.vim
+" Helper functions.
+luafile $CONFIGPATH/common.lua
+
+source $CONFIGPATH/core.vim
+source $CONFIGPATH/syntax.vim
+source $CONFIGPATH/lsp.vim
+source $CONFIGPATH/statusline.vim
 
 
 """ Other mappings.
