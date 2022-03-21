@@ -77,6 +77,6 @@ vim.g.lightline = {
 
 
 -- And add lightline to the plugin list while we're at it.
-vim.g.plugins = vim_list_cat(vim.g.plugins, {
-	'itchyny/lightline.vim'
+vim.g.plugins = vim.list_extend(vim.g.plugins, {
+	'itchyny/lightline.vim',
 })

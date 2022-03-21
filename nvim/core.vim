@@ -240,10 +240,11 @@ command! -nargs=+ -complete=command Redir call Redir(<Q-Args>)
 command! Cfile silent !echo % | tr -d '\n' | tmux load-buffer -
 
 lua << EOF
-vim.g.plugins = vim_list_cat(vim.g.plugins, {
+vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	'tpope/vim-surround',
 	'scrooloose/nerdcommenter',
 	'vim-scripts/vis', -- Block selection range commands.
 	'editorconfig/editorconfig-vim',
 })
+
 EOF

@@ -25,7 +25,7 @@ let g:python_highlight_class_vars = 1
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' }, 'xonsh': { 'left': '#' } }
 
 lua << EOF
-vim.g.plugins = vim_list_cat(vim.g.plugins, {
+vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	'Shirk/vim-gas',
 	'neoclide/jsonc.vim',
 	{ 'cespare/vim-toml', { branch = 'main'} },

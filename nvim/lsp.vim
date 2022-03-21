@@ -117,7 +117,7 @@ endfunction
 
 " cSpell: disable
 lua << EOF
-vim.g.plugins = vim_list_cat(vim.g.plugins, {
+vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	-- 'do' is a keyword in Lua, so we have to use the arbitrary expression key syntax.
 	{ 'neoclide/coc.nvim', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'fannheyward/coc-rust-analyzer', { ['do'] = 'yarn install --frozen-lockfile' } },
@@ -128,6 +128,6 @@ vim.g.plugins = vim_list_cat(vim.g.plugins, {
 	{ 'neoclide/coc-git', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'iamcco/coc-spell-checker', { ['do'] = 'yarn install --frozen-lockfile' } },
 	'liuchengxu/vista.vim',
-	'majutsushi/tagbar'
+	'majutsushi/tagbar',
 })
 EOF

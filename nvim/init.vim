@@ -11,9 +11,6 @@ let g:after_plugin_load_callbacks = []
 
 let $CONFIGPATH = stdpath('config')
 
-" Helper functions.
-luafile $CONFIGPATH/common.lua
-
 source $CONFIGPATH/core.vim
 source $CONFIGPATH/syntax.vim
 source $CONFIGPATH/lsp.vim
