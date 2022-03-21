@@ -2,3 +2,11 @@
 --compat-options multistreams
 
 --compat-options abort-on-error
+--video-multistreams
+--audio-multistreams
+--sub-langs all,-live_chat
+--embed-subs
+--embed-thumbnail
+--embed-metadata
+--embed-chapters
+--xattrs
