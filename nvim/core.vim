@@ -158,6 +158,13 @@ nnoremap Q <nop>
 inoremap <A-BS> <C-w>
 cnoremap <A-BS> <C-w>
 
+" <A-Left> and <A-Right> to backwards-word and forwards-word
+" This uses Neovim's builtin <S-Left> command.
+inoremap <A-Left> <S-Left>
+cnoremap <A-Left> <S-Left>
+inoremap <A-Right> <S-Right>
+cnoremap <A-Right> <S-Right>
+
 " Add newlines above/below without entering insert mode or moving the cursor.
 nnoremap <leader>o mzo<Esc>`z
 nnoremap <leader>O mzO<Esc>`z
