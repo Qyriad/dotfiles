@@ -13,6 +13,7 @@ let $CONFIGPATH = stdpath('config')
 
 source $CONFIGPATH/core.vim
 source $CONFIGPATH/syntax.vim
+source $CONFIGPATH/highlight.vim
 source $CONFIGPATH/lsp.vim
 source $CONFIGPATH/statusline.vim
 
@@ -140,19 +141,12 @@ Plug 'tpope/vim-abolish'
 Plug 'gennaro-tedesco/nvim-peekup'
 
 " Display.
-Plug 'lifepillar/vim-solarized8'
-Plug 'chrisbra/colorizer'
-Plug 'luochen1990/rainbow'
 Plug 'dhruvasagar/vim-zoom' " <C-w>m
 
 "Plug 'Konfekt/vim-alias'
 "Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 "Plug 'thinca/vim-ft-vim_fold'
 call plug#end()
-
-" This has to be after the plugin declarations or the colorscheme won't be found.
-" As such, the plugins that would normally be added in this file are added above.
-source $HOME/.config/nvim/highlight.vim
 
 
 for s:callback in g:after_plugin_load_callbacks

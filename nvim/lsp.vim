@@ -71,8 +71,8 @@ inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
 " If we're on our M1 laptop, then we need to tell Pyright to use ARM-Homebrew's Python site-packages.
 if hostname() =~? "^keyleth"
 	function! AddHomebrewPythonForCoc()
-		let l:homebrewPythonSite = "/opt/homebrew/lib/python3.10/site-packages"
-		call coc#config("python.analysis.extraPaths", l:homebrewPythonSite)
+		let l:homebrew_python_site = "/opt/homebrew/lib/python3.10/site-packages"
+		call coc#config("python.analysis.extraPaths", l:homebrew_python_site)
 	endfunction
 	call add(g:after_plugin_load_callbacks, function("AddHomebrewPythonForCoc"))
 endif
