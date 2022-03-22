@@ -12,6 +12,7 @@ let g:after_plugin_load_callbacks = []
 let $CONFIGPATH = stdpath('config')
 
 source $CONFIGPATH/core.vim
+source $CONFIGPATH/utils.vim
 source $CONFIGPATH/syntax.vim
 source $CONFIGPATH/highlight.vim
 source $CONFIGPATH/lsp.vim
