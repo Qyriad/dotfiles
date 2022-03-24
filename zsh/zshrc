@@ -508,17 +508,3 @@ compdef _gf greatfet
 h=$(hostname -s) # get hostname
 h=${(L)h} # convert to lowercase
 source_if "$HOME/.config/host/$h/zsh/zshrc"
-
-
-if [ -z "$TMUX" ]; then # If we're not already in a tmux session
-	# and we're not in a tty
-	s="$(tty)"
-	if [[ ! "$(tty)" =~ "/dev/tty" ]]; then
-		if [[ $(tmux list-sessions) =~ '\n' ]]; then # if there's a session, attach
-			#tmux attach-session -d
-		else
-			#tmux new-session -s 0 # otherwise, create one
-		fi
-	fi
-fi
-
