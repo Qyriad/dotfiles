@@ -361,9 +361,11 @@ colors:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/xonsh
-#  args:
-#    - --login
+  program: /usr/bin/zsh
+  args:
+    - --login
+    - -c
+    - "/usr/bin/xonsh"
 
 # Startup directory
 #
