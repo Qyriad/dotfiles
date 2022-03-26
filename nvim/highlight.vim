@@ -18,10 +18,13 @@ augroup END
 
 " We have to set the colorscheme as a after-plugin-load-callback,
 " because :colorscheme requires the colorscheme to already exist!
+" In this case, solarized8_grey is actually a custom colorscheme
+" in our dotfiles, *but* it calls `runtime colors/solarized8.vim`
+" in order to "inherit" from it, and solarized8 won't be in the
+" runtimepath until after vim-plug has done its loading, so this
+" callback is still necessary.
 function! SetColorscheme()
-	colorscheme solarized8
-	highlight Normal            guibg=#1c1c1c
-	highlight LineNr ctermfg=11 guibg=#212728
+	colorscheme solarized8_grey
 endfunction
 call add(g:after_plugin_load_callbacks, function("SetColorscheme"))
 
