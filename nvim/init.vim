@@ -70,12 +70,12 @@ inoremap <F3> <C-o>:call Capitalize_and_return()<CR>
 
 
 " Install vim-plug if it isn't already and we're not running as root.
-if empty(glob('~/.config/nvim/autoload/plug.vim')) && $USER !=# "root"
+if empty(glob(stdpath("data") . "/autoload/plug.vim")) && $USER !=# "root"
 	echomsg 'vim-plug not installed; downloading…'
-	!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	augroup vim_plug
-		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-	augroup END
+	" I will do anything to avoid Vim's multiline syntax.
+	let s:cmd = "!curl -fLo " . stdpath("data") . "/autoload/plug.vim --create-dirs "
+	let s:cmd .= "'https://githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
+	execute s:cmd
 endif
 
 "let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-jedi', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
@@ -94,15 +94,18 @@ let g:plugin_strings = []
 
 for s:plugin in g:plugins
 
+	" The simple case: `Plug 'plugin_url`
 	if type(s:plugin) == v:t_string
 		call add(g:plugin_strings, "Plug " . string(s:plugin))
 
+	" If the plugin was specified as a list, then additional options were specified.
+	" Extract them, and turn them into a string into the format vim-plug likes.
 	elseif type(s:plugin) == v:t_list
 
 		let s:actions = ""
-		for [k, v] in items(s:plugin[1])
-			let [k, v] = [string(k), string(v)] " Put single quotes around the action-parts.
-			let s:action = ", { " . k . ": " . v . " }" " Of the form `, { 'key': 'value' }`
+		for [s:k, s:v] in items(s:plugin[1])
+			let [s:k, s:v] = [string(s:k), string(s:v)] " Put single quotes around the action-parts.
+			let s:action = ", { " . s:k . ": " . s:v . " }" " Of the form `, { 'key': 'value' }`
 			let s:actions .= s:action
 		endfor
 
@@ -111,7 +114,7 @@ for s:plugin in g:plugins
 	endif
 endfor
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(stdpath("data") . '/plugged')
 
 " The .vim files sourced above add plugins to this list. Time to tell vim-plug about them!
 for i in g:plugin_strings
@@ -121,14 +124,6 @@ endfor
 " Text editing.
 Plug 'tmhedberg/SimpylFold' " Python folds.
 Plug 'junegunn/vim-easy-align'
-" Probation:
-Plug 'inkarkat/vim-UnconditionalPaste'
-Plug 'chaoren/vim-wordmotion'
-Plug 'gaving/vim-textobj-argument'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'terryma/vim-expand-region'
-Plug 'bergercookie/vim-debugstring'
-Plug 'mbbill/undotree'
 
 " Utilities.
 Plug 'tpope/vim-eunuch'
