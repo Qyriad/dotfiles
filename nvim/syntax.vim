@@ -22,6 +22,8 @@ let g:python_highlight_space_errors = 1
 let g:python_highlight_class_vars = 1
 "let g:python_highlight_func_calls = 1
 
+let g:xsh_highlight_all = v:true
+
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' }, 'xonsh': { 'left': '#' } }
 
 lua << EOF
