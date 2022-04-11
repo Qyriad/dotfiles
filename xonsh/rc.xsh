@@ -109,10 +109,6 @@ maybe_colorize['lspci'] = 'lspci -nn'
 maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 #aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 
-if sys.platform == 'darwin':
-	aliases['df'] = 'df -P'
-	aliases['rsync'] = '/usr/local/bin/rsync --recursive -hhh --links -v --info=progress2'
-
 # Color output. Note: aliases recursive into aliases other than themselves.
 if !(which grc):
 
@@ -181,6 +177,12 @@ aliases['pgrep'] = 'pgrep -l -i'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
 aliases['userctl'] = 'systemctl --user'
 aliases['ins'] = 'insect'
+
+
+if sys.platform == 'darwin':
+	aliases['df'] = 'df -P'
+	aliases['rsync'] = '/usr/local/bin/rsync --recursive -hhh --links -v --info=progress2'
+
 
 aliases['cm'] = 'cmake -B build'
 aliases['cmb'] = 'cmake --build build'

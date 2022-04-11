@@ -1,6 +1,6 @@
 eval "$(/usr/local/bin/brew shellenv)"
 PATH="/Users/qyriad/.local/bin:$PATH"
-PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python/libexec/bin:/usr/local/MacGPG2/bin:$PATH"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python@3.10/libexec/bin:/usr/local/MacGPG2/bin:$PATH"
 PATH="/Users/qyriad/.local/share/cargo/bin:$PATH"
 export XDG_CACHE_HOME="/Users/qyriad/.cache"
 export XDG_CONFIG_HOME="/Users/qyriad/.config"
