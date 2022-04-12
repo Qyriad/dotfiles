@@ -92,7 +92,7 @@ aliases['rip'] = 'rip --seance'
 # Edit config shortcuts.
 edit = lambda path : $EDITOR + ' ' + str(path)
 aliases['et'] = edit(p'~/.config/tmux/tmux.conf')
-nvim_paths = ['init.vim', 'core.vim', 'syntax.vim', 'lsp.vim', 'statusline.vim']
+nvim_paths = ['init.vim', 'core.vim', 'utils.vim', 'syntax.vim', 'highlight.vim', 'lsp.vim', 'statusline.vim']
 aliases['ev'] = $EDITOR + ' -p ' + (' '.join($HOME + '/.config/nvim/' + path for path in nvim_paths))
 aliases['er'] = edit(p'~/.config/ranger/rc.conf')
 aliases['ea'] = edit(p'~/.config/alacritty/alacritty.yml')
