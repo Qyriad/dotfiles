@@ -109,6 +109,9 @@ maybe_colorize['lspci'] = 'lspci -nn'
 maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 #aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 
+if sys.platform == 'darwin':
+	aliases['df'] = 'df -P'
+
 # Color output. Note: aliases recursive into aliases other than themselves.
 if !(which grc):
 
@@ -169,7 +172,7 @@ aliases['duf'] = 'duf -hide special'
 aliases['prp'] = 'realpath .' # "Print real path".
 aliases['tn'] = r"tr -d '\n'"
 aliases['remake'] = 'mkdir $PWD ; cd $PWD'
-aliases['rsync'] = '/usr/bin/rsync --recursive -hhh --links -v --info=PROGRESS2'
+aliases['rsync'] = 'rsync --recursive -hhh --links -v --info=progress2'
 aliases['lsync'] = 'systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hhh --links -v --info=PROGRESS2'
 aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
 aliases['rclone'] = 'rclone -P'
