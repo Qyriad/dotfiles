@@ -41,7 +41,7 @@ $CASE_SENSITIVE_COMPLETIONS = False
 $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
 #$MOUSE_SUPPORT = True
-$XONSH_AUTOPAIR = True
+$XONSH_AUTOPAIR = False
 $COMMANDS_CACHE_SIZE_WARNING = 8000
 
 aliases['sudo'] = lambda args : $[@($(which -s sudo)) @(aliases.eval_alias(args))]
