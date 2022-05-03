@@ -59,8 +59,7 @@
 	"hover.target": "float",
 	//"coc.preferences.hoverTarget": "float", // Unnecessary due to above?
 
-	// PROBATION: still not sure what the fuck this actually is.
-	"codeLens.enable": true,
+	"codeLens.enable": false,
 
 	// TRIAL: not quite sure what this does either.
 	"list.menuAction": true,
