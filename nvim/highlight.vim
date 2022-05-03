@@ -32,7 +32,7 @@ call add(g:after_plugin_load_callbacks, function("SetColorscheme"))
 lua << EOF
 vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	"lifepillar/vim-solarized8",
-	"chrisbra/colorizer",
+	'gko/vim-coloresque',
 	"luochen1990/rainbow",
 })
 EOF
