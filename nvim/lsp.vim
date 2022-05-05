@@ -63,6 +63,7 @@ inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
 
 
 " LSP-related highlights.
+highlight link CocSemComment SpecialComment
 "highlight link ALEErrorSign Error
 "highlight link ALEWarningSign Todo
 "highlight CocRustChainingHint guifg=grey
