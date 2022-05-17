@@ -70,7 +70,7 @@
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 
 	// ……Is this different from colors.filetypes???
-	"semanticTokens.filetypes": ["vim", "c", "cpp", "python", "rust"],
+	"semanticTokens.filetypes": ["vim", "c", "cpp", "python"],
 
 
 
@@ -140,8 +140,14 @@
   },
   "cSpell.userWords": [
     "Pyright",
+    "Sadface",
+    "errored",
+    "filesize",
     "funcobj",
     "keyleth",
-    "prevchunk"
+    "prevchunk",
+    "struct",
+    "subcommand",
+    "thiserror"
   ]
 }
