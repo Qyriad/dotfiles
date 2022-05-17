@@ -1,8 +1,9 @@
 echo "ZSH: interactive shell"
 
-if [[ -o l ]]; then
+if [[ -o LOGIN ]]; then
+	echo "ZSH: login shell"
 	PROMPT="%m %# "
-	#emulate -lR zsh
+	xonsh && exit
 	return
 fi
 
