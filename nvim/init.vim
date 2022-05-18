@@ -74,7 +74,7 @@ if empty(glob(stdpath("data") . "/autoload/plug.vim")) && $USER !=# "root"
 	echomsg 'vim-plug not installed; downloading…'
 	" I will do anything to avoid Vim's multiline syntax.
 	let s:cmd = "!curl -fLo " . stdpath("data") . "/autoload/plug.vim --create-dirs "
-	let s:cmd .= "'https://githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
+	let s:cmd .= "'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
 	execute s:cmd
 endif
 
