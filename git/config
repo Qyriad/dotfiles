@@ -36,7 +36,6 @@
 [core]
 	pager = delta --dark --side-by-side
 	editor = nvim
-	sshCommand = ssh -l git
 [pull]
 	ff = only
 [init]
