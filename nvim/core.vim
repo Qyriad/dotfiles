@@ -252,5 +252,6 @@ vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	'scrooloose/nerdcommenter',
 	'vim-scripts/vis', -- Block selection range commands.
 	'editorconfig/editorconfig-vim',
+	'wsdjeg/vim-fetch',
 })
 EOF
