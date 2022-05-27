@@ -131,7 +131,7 @@ vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	{ 'neoclide/coc-lists', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'neoclide/coc-git', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'iamcco/coc-spell-checker', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'clangd/coc-clangd', { ['do'] = 'yarn install --frozen-lockfile' } },
 	'liuchengxu/vista.vim',
 	'majutsushi/tagbar',
 })
-EOF
