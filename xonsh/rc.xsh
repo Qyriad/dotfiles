@@ -356,6 +356,10 @@ def read_to_string(name):
 	return s
 
 
+def addr(val):
+	return '0x{:09_x}'.format(val)
+
+
 def _ranger_cd(path=None):
 
 	path = path if path else os.getcwd()
