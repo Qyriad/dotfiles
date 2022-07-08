@@ -54,6 +54,7 @@ vim.g.lightline = {
 	active = {
 		left  = {{"mode", "paste"}, {"readonly", "filename", "modified"}, {"zoomed"}},
 		--right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat", "synitem"}, {}},
+		--right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {"CocStatus", 'SymbolHier'}},
 		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {}},
 	},
 	inactive = {
@@ -68,11 +69,23 @@ vim.g.lightline = {
 	},
 	--separator = { left = utf8.char(0xe0b0), right = utf8.char(0xe0b2) },
 	component = { filetype = '%{&ft!=#""?&ft:"no ft"}%<' },
-	component_function = { dir = "HomeRelDir", zoomed = "zoom#statusline", synitem = "SyntaxItem" },
-	tab = {
-		active = {"tabnum", "filename", "modified"},
-		inactive = {"tabnum", "filename", "modified"},
-	}
+	component_function = {
+		dir = "HomeRelDir",
+		zoomed = "zoom#statusline",
+		synitem = "SyntaxItem",
+		CocStatus = "coc#status",
+		SymbolHier = "SymbolHierarchy",
+	},
+	component_expand = {
+		Symbol = 'SymbolExpanded',
+	},
+	tabline = {
+		right = {{ 'Symbol' }},
+	},
+	--tab = {
+	--	active = {"tabnum", "filename", "modified", 'Symbol'},
+	--	inactive = {"tabnum", "filename", "modified"},
+	--}
 }
 
 
