@@ -20,6 +20,7 @@
 	sh = show --abbrev-commit --decorate -q
 	diffs = diff --staged
 	inf = info --no-config
+	ck = diff --check
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
