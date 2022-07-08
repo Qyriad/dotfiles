@@ -53,8 +53,8 @@ $SYSTEMD_EDITOR = $EDITOR
 $NETCTL_EDITOR = $EDITOR
 
 # Fix Neovim for stuff like git commit.
-no_thread = lambda *a, **kw: False
-__xonsh__.commands_cache.predict_threadable = no_thread
+#no_thread = lambda *a, **kw: False
+#__xonsh__.commands_cache.predict_threadable = no_thread
 #for command in ['nvim', 'git', 'vidir', 'systemctl', 'pacman', 'yay', 'vidir', 'pip', 'pip2', 'pip3']:
 	#__xonsh__.commands_cache.threadable_predictors[command] = no_thread
 
@@ -109,8 +109,6 @@ maybe_colorize['lspci'] = 'lspci -nn'
 maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 #aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 
-if sys.platform == 'darwin':
-	aliases['df'] = 'df -P'
 
 # Color output. Note: aliases recursive into aliases other than themselves.
 if !(which grc):
@@ -140,6 +138,10 @@ else:
 	aliases.update(maybe_colorize)
 
 del maybe_colorize
+
+if sys.platform == 'darwin':
+	#aliases['df'] = 'grc --colour=on df -Ph | rg -v "/System/Volumes.+?/(VM|Preboot|Update)"'
+	aliases['df'] = 'grc df -Ph'
 
 
 # Forced normal terminal output for things besides grc, even when piping.
@@ -180,11 +182,6 @@ aliases['pgrep'] = 'pgrep -l -i'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
 aliases['userctl'] = 'systemctl --user'
 aliases['ins'] = 'insect'
-
-
-if sys.platform == 'darwin':
-	aliases['df'] = 'df -P'
-	aliases['rsync'] = '/usr/local/bin/rsync --recursive -hhh --links -v --info=progress2'
 
 
 aliases['cm'] = 'cmake -B build'
@@ -366,7 +363,7 @@ def _ranger_cd(path=None):
 
 	temp = $(mktemp -t tmp.XXXXXX).strip()
 
-	/usr/bin/ranger --choosedir=@(temp) @(path)
+	@($(which -s ranger).strip()) --choosedir=@(temp) @(path)
 
 	# cd into the new directory, if any.
 	if os.path.exists(temp):
@@ -394,7 +391,7 @@ aliases['detach-kernel-drivers'] = _detach_kernel_drivers
 
 xontrib load abbrevs
 
-abbrevs["|&"] = "2>&1 |"
+#abbrevs["|&"] = "2>&1 |"
 
 xontrib load output_search
 xontrib load whole_word_jumping
