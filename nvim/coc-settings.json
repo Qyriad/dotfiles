@@ -76,7 +76,7 @@
 
 	"vimlsp.trace.server": "messages",
 
-	"git.enableGlobalStatus": false,
+	"git.enableGlobalStatus": true,
 
 	"json.enable": true,
 	"json.trace.server": "messages",
@@ -89,7 +89,7 @@
 	"python.analysis.useLibraryCodeForTypes": true,
 		/*"--variable-rgx=(?P<snake>[a-z_][a-z0-9_]{0,30}$"],*/
 
-	"rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+	"rust-analyzer.serverPath": "rust-analyzer",
 	"rust-analyzer.lens.implementations": false,
 	"rust-analyzer.trace.server": "messages",
 	"rust-analyzer.procMacro.enable": true,
@@ -138,28 +138,25 @@
 			//[>}<]
 		//}
 	//},
+	"cSpell.dictionaryDefinitions": [
 		{
-			"command": "ccls",
-			"args": ["-v=2"],
-			"filetypes": ["c", "c.doxygen", "cpp"],
-			"rootPatterns": [".ccls", "compile_commands.json", ".git/"],
-			"trace.server": "verbose"
-			/*"initializationOptions":*/
-			/*{*/
-				/*"compilationDatabaseDirectory": "firmware/build"*/
-			/*}*/
+			"name": "custom",
+			"path": "~/.config/nvim/custom-en.txt",
 		}
-  },
-  "cSpell.userWords": [
-    "Pyright",
-    "Sadface",
-    "errored",
-    "filesize",
-    "funcobj",
-    "keyleth",
-    "prevchunk",
-    "struct",
-    "subcommand",
-    "thiserror"
-  ]
+	],
+	"cSpell.userWords": [
+		"Pyright",
+		"Sadface",
+		"errored",
+		"filesize",
+		"funcobj",
+		"keyleth",
+		"prevchunk",
+		"struct",
+		"subcommand",
+		"thiserror"
+	],
+	"cSpell.dictionaries": [
+		"custom",
+	],
 }
