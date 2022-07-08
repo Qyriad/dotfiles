@@ -21,6 +21,7 @@
 	diffs = diff --staged
 	inf = info --no-config
 	ck = diff --check
+	ls-upstream = ls-remote --heads
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
