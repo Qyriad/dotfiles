@@ -7,15 +7,22 @@
 
 """ Completion
 
+function! CheckBackspace() abort
+	let l:col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 set completeopt=menu,menuone,preview,noselect,noinsert
 " Close the popup menu with <Esc>.
-inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+"inoremap <expr> <Esc> coc#pum#visible() ? "\<C-e>" : "\<Esc>"
 " Accept the selected completion with <CR>.
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Select the next completion with <Tab>.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
+
 " Select the previous completion with <S-Tab>
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " <C-Space> to force open the completion menu.
 inoremap <silent><expr> <C-Space> coc#refresh()
@@ -63,7 +70,12 @@ inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
 
 
 " LSP-related highlights.
-highlight link CocSemComment SpecialComment
+" These have to be in a callback function so they're called after we set the colorscheme.
+function! LspHighlights() abort
+	highlight! link CocSemComment SpecialComment
+	highlight! link CocMenuSel PmenuSel
+endfunction
+call add(g:after_plugin_load_callbacks, function("LspHighlights"))
 "highlight link ALEErrorSign Error
 "highlight link ALEWarningSign Todo
 "highlight CocRustChainingHint guifg=grey
