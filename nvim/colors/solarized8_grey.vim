@@ -14,5 +14,7 @@ let g:colors_name = "solarized_grey"
 " solarized8 uses.
 " The second one changes the Line number color to go better with said changed Normal
 " background color.
-highlight Normal            guibg=#1c1c1c
+highlight Normal            guibg=#1b1b1b
 highlight LineNR ctermfg=11 guibg=#212728
+
+"highlight link CocMenuSel PmenuSel

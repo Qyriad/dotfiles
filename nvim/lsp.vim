@@ -58,6 +58,7 @@ nmap <leader>a <Plug>(coc-codeaction-cursor)
 
 vmap <leader>p  <Plug>(coc-format-selected)
 
+nnoremap <M-p> <Cmd>:CocList commands<CR>
 nnoremap <F5> <Cmd>:CocList<CR>
 nnoremap <F3> <Cmd>:CtrlPLine<CR>
 nnoremap <F4> <Cmd>:CtrlP<CR>
@@ -65,8 +66,9 @@ nnoremap <F6> <Cmd>:CtrlPBuffer<CR>
 nnoremap <F9> <Cmd>:TagbarToggle<CR>
 nnoremap <leader><BS> <Cmd>:pclose<CR>
 
-command! CocFloatHide call coc#util#float_hide()
-inoremap <C-l> <Cmd>call coc#util#float_hide()<CR>
+command! CocFloatHide call coc#float#close_all()
+inoremap <C-l> <Cmd>call coc#float#close_all()<CR>
+nnoremap <leader><C-l> <Cmd>call coc#float#close_all()<CR>
 
 
 " LSP-related highlights.
