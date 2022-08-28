@@ -32,7 +32,7 @@ set breakindent " Indent soft wrapped lines.
 " Show 'showbreak' value before the soft-indentation, rather than after.
 " And further 'indent' the soft-indentation by an extra four spaces.
 set breakindentopt=sbr,shift:4
-set showbreak=> " Indicator to show at the beginning of visually wrapped lines. FIXME: we probably want some fancy unicode character instead.
+let &showbreak = "\u21f8" " `⇸` as an indicator to show at the beginning of visually wrapped lines.
 set wildmenu " Tab-complete command menu.
 set wildmode=longest:full,full " Most bash-like way.
 set wildignorecase " Ignore case when completing.
