@@ -52,7 +52,7 @@ set cinoptions=l1,j1 " Indent case blocks correct, and indent Java anonymous cla
 " and remove the comment leader when joining lines when it makes sense.
 set formatoptions=cj
 " Don't display . on folds.
-set fillchars=fold:\ 
+let &fillchars = "fold: "
 set diffopt=algorithm:patience
 set fsync " Syncs the filesystem after :write.
 
