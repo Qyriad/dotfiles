@@ -118,7 +118,7 @@ if !(which grc):
 	aliases['grcc'] = grcc
 
 	commands = \
-		['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'lsof']
+		['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'lsof', 'ifconfig']
 
 	for command in commands:
 		aliases[command] = 'grc ' + command
