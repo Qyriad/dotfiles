@@ -135,6 +135,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-characterize' " ga
 Plug 'tpope/vim-abolish'
 Plug 'gennaro-tedesco/nvim-peekup'
+Plug 'windwp/nvim-projectconfig'
 
 " Display.
 Plug 'dhruvasagar/vim-zoom' " <C-w>m
@@ -143,6 +144,15 @@ Plug 'dhruvasagar/vim-zoom' " <C-w>m
 "Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
 "Plug 'thinca/vim-ft-vim_fold'
 call plug#end()
+
+function! LoadNvimProjectConfig()
+	lua << EOF
+	projectconfig = require('nvim-projectconfig')
+	projectconfig.setup()
+EOF
+endfunction
+
+call add(g:after_plugin_load_callbacks, function("LoadNvimProjectConfig"))
 
 
 for s:callback in g:after_plugin_load_callbacks
