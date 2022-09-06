@@ -1,6 +1,7 @@
 $SHELL = "xonsh"
 
 import os, sys, json, struct
+from datetime import datetime, timedelta
 
 # These variables are set to lambdas, and are not exported to subprocesses
 # unless they have been evaluated at least once, it seems.
@@ -387,6 +388,39 @@ def _detach_kernel_drivers(dev):
 			pass
 
 aliases['detach-kernel-drivers'] = _detach_kernel_drivers
+
+
+
+#
+# Horrible datetime convenience functions and types.
+#
+
+def localnow():
+	""" Because datetime.now() returns a timezone-less datetime for some reason. """
+	return datetime.now().astimezone()
+
+def localtz():
+	return localnow().tzinfo
+
+class Nicely:
+	"""
+	This is a terrible yet amazing hack we've come up with to make printing
+	certain kinds of values in convenient formatting easier to read.
+
+	Ex: >>> datetime.now() + timedelta(days=90) - nicely
+	'Sunday, December 12 2022 (12/04/22 5:08:29 PM)'
+
+	Truly, we have become C++.
+	"""
+
+	def _datetime(self, dt: datetime) -> str:
+		return dt.strftime("%A, %B %m %Y (%m/%d/%Y %-I:%M:%S %p) %Z (UTC%z)")
+
+	def __rrshift__(self, other) -> str:
+		if isinstance(other, datetime):
+			return self._datetime(other)
+
+nicely = Nicely()
 
 
 xontrib load abbrevs
