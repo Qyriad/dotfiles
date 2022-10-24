@@ -121,7 +121,7 @@
 		"snippet": "snip",
 		"interface": "interface",
 		"enumMember": "enum member"
-	},
+	}
 
 	//"languageserver":
 	//{
@@ -138,25 +138,25 @@
 			//[>}<]
 		//}
 	//},
-	"cSpell.dictionaryDefinitions": [
-		{
-			"name": "custom",
-			"path": "~/.config/nvim/custom-en.txt",
-		}
-	],
-	"cSpell.userWords": [
-		"Pyright",
-		"Sadface",
-		"errored",
-		"filesize",
-		"funcobj",
-		"keyleth",
-		"prevchunk",
-		"struct",
-		"subcommand",
-		"thiserror"
-	],
-	"cSpell.dictionaries": [
-		"custom",
-	],
+	//"cSpell.dictionaryDefinitions": [
+		//{
+			//"name": "custom",
+			//"path": "~/.config/nvim/custom-en.txt",
+		//}
+	//],
+	//"cSpell.userWords": [
+		//"Pyright",
+		//"Sadface",
+		//"errored",
+		//"filesize",
+		//"funcobj",
+		//"keyleth",
+		//"prevchunk",
+		//"struct",
+		//"subcommand",
+		//"thiserror"
+	//],
+	//"cSpell.dictionaries": [
+		//"custom",
+	//],
 }
