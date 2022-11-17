@@ -93,3 +93,4 @@ vim.g.lightline = {
 vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	'itchyny/lightline.vim',
 })
+EOF
