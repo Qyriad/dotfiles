@@ -185,7 +185,7 @@ function! ContainsCursor(key, value)
 	"if l:current_line == l:start.line
 		"return l:current_col >= l:
 	"endif
-	"if l:current_line >= l:start.line && 
+	"if l:current_line >= l:start.line &&
 	"if l:current_line >= a:value.range.start.line && l:current_line <= a:value.range.end.line
 		"return v:true
 	"endif
@@ -237,6 +237,7 @@ vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	{ 'neoclide/coc-tsserver', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'iamcco/coc-vimlsp', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'josa42/coc-go', { ['do'] = 'yarn install --frozen-lockfile' } },
+	{ 'neoclide/coc-json', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'neoclide/coc-lists', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'neoclide/coc-git', { ['do'] = 'yarn install --frozen-lockfile' } },
 	{ 'iamcco/coc-spell-checker', { ['do'] = 'yarn install --frozen-lockfile' } },
@@ -244,3 +245,4 @@ vim.g.plugins = vim.list_extend(vim.g.plugins, {
 	'liuchengxu/vista.vim',
 	'majutsushi/tagbar',
 })
+EOF
