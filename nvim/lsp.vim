@@ -69,6 +69,8 @@ nnoremap <leader><BS> <Cmd>:pclose<CR>
 command! CocFloatHide call coc#float#close_all()
 inoremap <C-l> <Cmd>call coc#float#close_all()<CR>
 nnoremap <leader><C-l> <Cmd>call coc#float#close_all()<CR>
+nnoremap <leader><esc> <Cmd>CocFloatHide<CR>
+inoremap <leader><esc> <Cmd>CocFloatHide<CR>
 
 
 " LSP-related highlights.
