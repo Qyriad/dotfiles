@@ -1,9 +1,0 @@
-#default-timeout=1
-#layer=background
-default-timeout=4500
-ignore-timeout=1
-group-by=app-name
-height=400
-width=800
-font=monospace 18
-markup=1
