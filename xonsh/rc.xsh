@@ -2,6 +2,8 @@ $SHELL = "xonsh"
 
 import os, sys, json, struct
 from datetime import datetime, timedelta
+import zoneinfo
+from zoneinfo import ZoneInfo
 
 # These variables are set to lambdas, and are not exported to subprocesses
 # unless they have been evaluated at least once, it seems.
@@ -143,6 +145,7 @@ del maybe_colorize
 if sys.platform == 'darwin':
 	#aliases['df'] = 'grc --colour=on df -Ph | rg -v "/System/Volumes.+?/(VM|Preboot|Update)"'
 	aliases['df'] = 'grc df -Ph'
+	aliases['brewfd'] = 'fd --no-ignore-vcs -L'
 
 
 # Forced normal terminal output for things besides grc, even when piping.
@@ -289,6 +292,11 @@ def _gac(name):
 aliases['gac'] = _gac
 
 
+def _gitls(args):
+	git ls-tree HEAD --name-only | xargs @$(which ls) -d @(args)
+
+aliases['gitls'] = _gitls
+
 #def _s(subst):
 	#cmd = $(history show -1 | sed -E @(subst)).strip()
 	#print(cmd)
@@ -402,25 +410,60 @@ def localnow():
 def localtz():
 	return localnow().tzinfo
 
+def utcnow():
+	return datetime.now().astimezone(ZoneInfo('UTC'))
+
 class Nicely:
 	"""
 	This is a terrible yet amazing hack we've come up with to make printing
 	certain kinds of values in convenient formatting easier to read.
 
-	Ex: >>> datetime.now() + timedelta(days=90) - nicely
+	Ex: >>> datetime.now() + timedelta(days=90) >> nicely
 	'Sunday, December 12 2022 (12/04/22 5:08:29 PM)'
 
 	Truly, we have become C++.
 	"""
 
 	def _datetime(self, dt: datetime) -> str:
-		return dt.strftime("%A, %B %m %Y (%m/%d/%Y %-I:%M:%S %p) %Z (UTC%z)")
+		return dt.strftime("%A, %B %d %Y (%m/%d/%Y %-I:%M:%S %p) %Z (UTC%z)")
 
 	def __rrshift__(self, other) -> str:
 		if isinstance(other, datetime):
 			return self._datetime(other)
+		else:
+			raise TypeError()
 
 nicely = Nicely()
+
+class ToZone:
+	""" An even worse hack. """
+
+	def __init__(self, zone):
+		if isinstance(zone, ZoneInfo):
+			self.zone = zone
+		elif isinstance(zone, str):
+			try:
+				self.zone = ZoneInfo(zone)
+			except zoneinfo._common.ZoneInfoNotFoundError:
+				for name in zoneinfo.available_timezones():
+					if name.split('/')[-1].lower() == zone.lower():
+						self.zone = ZoneInfo(name)
+						break
+				else:
+					raise
+		else:
+			raise TypeError()
+
+	def __getattr__(self, attr):
+		return getattr(self.zone, attr)
+
+	def __rrshift__(self, other):
+		if isinstance(other, datetime):
+			return other.astimezone(tz=self.zone)
+		else:
+			raise TypeError()
+
+zone = ToZone
 
 
 xontrib load abbrevs
