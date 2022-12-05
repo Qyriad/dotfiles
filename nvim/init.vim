@@ -3,11 +3,23 @@ scriptencoding utf-8
 syntax on
 filetype plugin indent on
 
-runtime ftplugin/man.vim
+lua << EOF
+-- Bootstrap packer.nvim if necessary.
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	vim.cmd [[echomsg "Installing packer.nvim"]]
+	vim.fn.system {"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
+	vim.cmd [[packadd packer.nvim]]
+end
 
-" Each sourced .vim file adds plugins to this list, and we'll install them all at the end.
-let g:plugins = []
-let g:after_plugin_load_callbacks = []
+-- And initialize it.
+packer = require("packer")
+packer.init()
+packer.reset()
+packer.use "wbthomason/packer.nvim"
+EOF
+
+runtime ftplugin/man.vim
 
 let $CONFIGPATH = stdpath('config')
 
@@ -68,16 +80,6 @@ nnoremap <leader>c :normal `[v`]gU`]a<CR>
 inoremap <F3> <C-o>:call Capitalize_and_return()<CR>
 
 
-
-" Install vim-plug if it isn't already and we're not running as root.
-if empty(glob(stdpath("data") . "/autoload/plug.vim")) && $USER !=# "root"
-	echomsg 'vim-plug not installed; downloading…'
-	" I will do anything to avoid Vim's multiline syntax.
-	let s:cmd = "!curl -fLo " . stdpath("data") . "/autoload/plug.vim --create-dirs "
-	let s:cmd .= "'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'"
-	execute s:cmd
-endif
-
 "let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-jedi', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 "let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-vimlsp', 'coc-json', 'coc-lists', 'coc-git']
 
@@ -85,79 +87,33 @@ let g:ranger_map_keys = 0
 nnoremap <leader>f :RangerCurrentDirectory<CR>
 
 
-""" Turn the list of plugins into a list of arguments to pass to vim-plug.
+lua << EOF
+local use = require("packer").use
+-- Text editing.
+use 'tmhedberg/SimpylFold' -- Python folds.
+use 'junegunn/vim-easy-align'
 
-" The vimscript version is actually cleaner than the lua version.
-" Somehow.
+-- Utilities.
+use 'tpope/vim-eunuch'
+use 'ctrlpvim/ctrlp.vim'
+use 'rbgrouleff/bclose.vim' -- Dependency for ranger.vim
+use 'francoiscabrol/ranger.vim'
+use 'tpope/vim-tbone' -- :Tyank and :Tput
+use 'tpope/vim-fugitive'
+use 'tpope/vim-characterize' -- ga
+use 'tpope/vim-abolish'
+use 'gennaro-tedesco/nvim-peekup'
+use 'windwp/nvim-projectconfig'
+projectconfig = require('nvim-projectconfig')
+projectconfig.setup()
 
-let g:plugin_strings = []
+-- Display.
+use 'dhruvasagar/vim-zoom' -- <C-w>m
 
-for s:plugin in g:plugins
+--use 'Konfekt/vim-alias'
+--use 'Shougo/echodoc.vim' " Displays function signatures from completions
+--use 'thinca/vim-ft-vim_fold'
 
-	" The simple case: `Plug 'plugin_url`
-	if type(s:plugin) == v:t_string
-		call add(g:plugin_strings, "Plug " . string(s:plugin))
-
-	" If the plugin was specified as a list, then additional options were specified.
-	" Extract them, and turn them into a string into the format vim-plug likes.
-	elseif type(s:plugin) == v:t_list
-
-		let s:actions = ""
-		for [s:k, s:v] in items(s:plugin[1])
-			let [s:k, s:v] = [string(s:k), string(s:v)] " Put single quotes around the action-parts.
-			let s:action = ", { " . s:k . ": " . s:v . " }" " Of the form `, { 'key': 'value' }`
-			let s:actions .= s:action
-		endfor
-
-		call add(g:plugin_strings, "Plug " . string(s:plugin[0]) . s:actions)
-
-	endif
-endfor
-
-call plug#begin(stdpath("data") . '/plugged')
-
-" The .vim files sourced above add plugins to this list. Time to tell vim-plug about them!
-for i in g:plugin_strings
-	execute i
-endfor
-
-" Text editing.
-Plug 'tmhedberg/SimpylFold' " Python folds.
-Plug 'junegunn/vim-easy-align'
-
-" Utilities.
-Plug 'tpope/vim-eunuch'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rbgrouleff/bclose.vim' " Dependency for ranger.vim
-Plug 'francoiscabrol/ranger.vim'
-Plug 'tpope/vim-tbone' " :Tyank and :Tput
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-characterize' " ga
-Plug 'tpope/vim-abolish'
-Plug 'gennaro-tedesco/nvim-peekup'
-Plug 'windwp/nvim-projectconfig'
-
-" Display.
-Plug 'dhruvasagar/vim-zoom' " <C-w>m
-
-"Plug 'Konfekt/vim-alias'
-"Plug 'Shougo/echodoc.vim' " Displays function signatures from completions
-"Plug 'thinca/vim-ft-vim_fold'
-call plug#end()
-
-function! LoadNvimProjectConfig()
-	lua << EOF
-	projectconfig = require('nvim-projectconfig')
-	projectconfig.setup()
 EOF
-endfunction
-
-call add(g:after_plugin_load_callbacks, function("LoadNvimProjectConfig"))
-
-
-for s:callback in g:after_plugin_load_callbacks
-	call s:callback()
-endfor
-
 
 " vim:textwidth=0

@@ -74,27 +74,12 @@ inoremap <leader><esc> <Cmd>CocFloatHide<CR>
 
 
 " LSP-related highlights.
-" These have to be in a callback function so they're called after we set the colorscheme.
-function! LspHighlights() abort
-	highlight! link CocSemComment SpecialComment
-	highlight! link CocMenuSel PmenuSel
-endfunction
-call add(g:after_plugin_load_callbacks, function("LspHighlights"))
+" These must be after the `:colorscheme` call in syntax.vim.
+highlight! link CocSemComment SpecialComment
+highlight! link CocMenuSel PmenuSel
 "highlight link ALEErrorSign Error
 "highlight link ALEWarningSign Todo
 "highlight CocRustChainingHint guifg=grey
-
-
-" If we're on our M1 laptop, then we need to tell Pyright to use ARM-Homebrew's Python site-packages.
-if hostname() =~? "^keyleth" " && !empty(globpath(&runtimepath, 'autoload/plug.vim'))
-	function! AddHomebrewPythonForCoc()
-		if &runtimepath =~# 'coc.nvim'
-			let l:homebrew_python_site = "/opt/homebrew/lib/python3.10/site-packages"
-			call coc#config("python.analysis.extraPaths", l:homebrew_python_site)
-		endif
-	endfunction
-	call add(g:after_plugin_load_callbacks, function("AddHomebrewPythonForCoc"))
-endif
 
 
 if exists('g:tagbar_sort')
@@ -110,7 +95,7 @@ endif
 
 function! GetCocConfig(nested_key)
 	" Split the key by period, first.
-	let l:key_list = split(a:nested_key, '.')
+	let l:key_list = split(a:nested_key, '\.')
 
 	" The path is the everything but the last segment of the full key.
 	let l:path = join(l:key_list[0:-2], '.')
@@ -229,20 +214,30 @@ endfunction
 
 " cSpell: disable
 lua << EOF
-vim.g.plugins = vim.list_extend(vim.g.plugins, {
-	-- 'do' is a keyword in Lua, so we have to use the arbitrary expression key syntax.
-	{ 'neoclide/coc.nvim', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'fannheyward/coc-rust-analyzer', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'fannheyward/coc-pyright', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'neoclide/coc-tsserver', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'iamcco/coc-vimlsp', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'josa42/coc-go', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'neoclide/coc-json', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'neoclide/coc-lists', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'neoclide/coc-git', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'iamcco/coc-spell-checker', { ['do'] = 'yarn install --frozen-lockfile' } },
-	{ 'clangd/coc-clangd', { ['do'] = 'yarn install --frozen-lockfile' } },
-	'liuchengxu/vista.vim',
-	'majutsushi/tagbar',
-})
+local use = packer.use
+use {
+	'neoclide/coc.nvim',
+	run = 'yarn install --frozen-lockfile',
+	config = function()
+		-- If we're on our M1 laptop, then we need to tell Pyright to use ARM-Homebrew's Python site-packages.
+		if string.lower(vim.fn.hostname()) == "keyleth" then
+			vim.fn["coc#config"](
+				"python.analysis.extraPaths",
+				"/opt/homebrew/lib/python3.10/site-packages"
+			)
+		end
+	end
+}
+use { 'fannheyward/coc-rust-analyzer', run = 'yarn install --frozen-lockfile' }
+use { 'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile' }
+use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile' }
+use { 'iamcco/coc-vimlsp', run = 'yarn install --frozen-lockfile' }
+use { 'josa42/coc-go', run = 'yarn install --frozen-lockfile' }
+use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
+use { 'neoclide/coc-lists', run = 'yarn install --frozen-lockfile' }
+use { 'neoclide/coc-git', run = 'yarn install --frozen-lockfile' }
+use { 'iamcco/coc-spell-checker', run = 'yarn install --frozen-lockfile' }
+use { 'clangd/coc-clangd', run = 'yarn install --frozen-lockfile' }
+use 'liuchengxu/vista.vim'
+use 'majutsushi/tagbar'
 EOF

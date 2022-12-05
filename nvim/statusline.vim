@@ -90,7 +90,6 @@ vim.g.lightline = {
 
 
 -- And add lightline to the plugin list while we're at it.
-vim.g.plugins = vim.list_extend(vim.g.plugins, {
-	'itchyny/lightline.vim',
-})
+local use = packer.use
+use 'itchyny/lightline.vim'
 EOF

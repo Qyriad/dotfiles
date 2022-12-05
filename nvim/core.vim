@@ -247,11 +247,10 @@ command! -nargs=+ -complete=command Redir call Redir(<Q-Args>)
 
 
 lua << EOF
-vim.g.plugins = vim.list_extend(vim.g.plugins, {
-	'tpope/vim-surround',
-	'scrooloose/nerdcommenter',
-	'vim-scripts/vis', -- Block selection range commands.
-	'editorconfig/editorconfig-vim',
-	'wsdjeg/vim-fetch',
-})
+local use = packer.use
+use 'tpope/vim-surround'
+use 'scrooloose/nerdcommenter'
+use 'vim-scripts/vis' -- Block selection range commands.
+use 'editorconfig/editorconfig-vim'
+use 'wsdjeg/vim-fetch'
 EOF
