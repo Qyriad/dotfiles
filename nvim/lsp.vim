@@ -16,61 +16,61 @@ set completeopt=menu,menuone,preview,noselect,noinsert
 " Close the popup menu with <Esc>.
 "inoremap <expr> <Esc> coc#pum#visible() ? "\<C-e>" : "\<Esc>"
 " Accept the selected completion with <CR>.
-inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+"inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Select the next completion with <Tab>.
-inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
+"inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
 
 " Select the previous completion with <S-Tab>
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " <C-Space> to force open the completion menu.
-inoremap <silent><expr> <C-Space> coc#refresh()
+"inoremap <silent><expr> <C-Space> coc#refresh()
 
 
 " Non-completion LSP mappings.
-nnoremap <silent> <Return> <Cmd>call CocActionAsync('doHover')<CR>
-nmap <A-Return> <Plug>(coc-definition)
-nmap <A-]> <Plug>(coc-type-definition)
-nmap <A-t> <Plug>(coc-type-definition)
-nmap <A-[> <Plug>(coc-references)
-nmap <A-r> <Plug>(coc-references)
+"nnoremap <silent> <Return> <Cmd>call CocActionAsync('doHover')<CR>
+"nmap <A-Return> <Plug>(coc-definition)
+"nmap <A-]> <Plug>(coc-type-definition)
+"nmap <A-t> <Plug>(coc-type-definition)
+"nmap <A-[> <Plug>(coc-references)
+"nmap <A-r> <Plug>(coc-references)
 
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
+"xmap if <Plug>(coc-funcobj-i)
+"omap if <Plug>(coc-funcobj-i)
+"xmap af <Plug>(coc-funcobj-a)
+"omap af <Plug>(coc-funcobj-a)
+"xmap ic <Plug>(coc-classobj-i)
+"omap ic <Plug>(coc-classobj-i)
+"xmap ac <Plug>(coc-classobj-a)
+"omap ac <Plug>(coc-classobj-a)
 
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-nmap gs <Plug>(coc-git-chunkinfo)
+"nmap [g <Plug>(coc-git-prevchunk)
+"nmap ]g <Plug>(coc-git-nextchunk)
+"nmap gs <Plug>(coc-git-chunkinfo)
 
-nmap [d <Plug>(coc-diagnostic-prev)
-nmap ]d <Plug>(coc-diagnostic-next)
-nmap gds <Plug>(coc-diagnostic-info)
+"nmap [d <Plug>(coc-diagnostic-prev)
+"nmap ]d <Plug>(coc-diagnostic-next)
+"nmap gds <Plug>(coc-diagnostic-info)
 
-nmap <leader>gcl <Plug>(coc-codelens-action)
-nmap <leader>a <Plug>(coc-codeaction-cursor)
+"nmap <leader>gcl <Plug>(coc-codelens-action)
+"nmap <leader>a <Plug>(coc-codeaction-cursor)
 
-vmap <leader>p  <Plug>(coc-format-selected)
+"vmap <leader>p  <Plug>(coc-format-selected)
 
-nnoremap <M-p> <Cmd>:CocList commands<CR>
-nnoremap <F5> <Cmd>:CocList<CR>
+"nnoremap <M-p> <Cmd>:CocList commands<CR>
+"nnoremap <F5> <Cmd>:CocList<CR>
 nnoremap <F3> <Cmd>:CtrlPLine<CR>
 nnoremap <F4> <Cmd>:CtrlP<CR>
 nnoremap <F6> <Cmd>:CtrlPBuffer<CR>
 nnoremap <F9> <Cmd>:TagbarToggle<CR>
 nnoremap <leader><BS> <Cmd>:pclose<CR>
 
-command! CocFloatHide call coc#float#close_all()
-inoremap <C-l> <Cmd>call coc#float#close_all()<CR>
-nnoremap <leader><C-l> <Cmd>call coc#float#close_all()<CR>
-nnoremap <leader><esc> <Cmd>CocFloatHide<CR>
-inoremap <leader><esc> <Cmd>CocFloatHide<CR>
+"command! CocFloatHide call coc#float#close_all()
+"inoremap <C-l> <Cmd>call coc#float#close_all()<CR>
+"nnoremap <leader><C-l> <Cmd>call coc#float#close_all()<CR>
+"nnoremap <leader><esc> <Cmd>CocFloatHide<CR>
+"inoremap <leader><esc> <Cmd>CocFloatHide<CR>
 
 
 " LSP-related highlights.
@@ -211,33 +211,113 @@ function! SymbolExpanded()
 	"return ['left', 'middle', 'right']
 endfunction
 
+lua << EOF
+function lsp_on_attach(client, bufnr)
+
+	print("Attaching!")
+
+	local bufopts = { noremap = true, buffer = bufnr }
+
+	local mappings = {
+		{ 'gD', vim.lsp.buf.declaration },
+		{ 'gd', vim.lsp.buf.definition },
+		{ 'K',  vim.lsp.buf.hover },
+		{ '<CR>',  vim.lsp.buf.hover },
+		{ 'gi', vim.lsp.buf.implementation },
+		{ '<C-k>', vim.lsp.buf.signature_help },
+		{ '<leader>D', vim.lsp.buf.type_definition },
+		{ '<leader>a', vim.lsp.buf.code_action }
+	}
+
+	--for i = 1, #mappings do
+		--local keys = mappings[i][1]
+		--local func = mappings[i][2]
+	for i, item in ipairs(mappings) do
+		local keys = item[1]
+		local func = item[2]
+		--print("Mapping " .. keys)
+		vim.keymap.set('n', keys, func, bufopts)
+	end
+end
+EOF
+
 
 " cSpell: disable
 lua << EOF
 local use = packer.use
 use {
-	'neoclide/coc.nvim',
-	run = 'yarn install --frozen-lockfile',
+	'neovim/nvim-lspconfig',
+	--after = {'nvim-cmp', 'cmp-nvim-lsp'},
 	config = function()
-		-- If we're on our M1 laptop, then we need to tell Pyright to use ARM-Homebrew's Python site-packages.
-		if string.lower(vim.fn.hostname()) == "keyleth" then
-			vim.fn["coc#config"](
-				"python.analysis.extraPaths",
-				"/opt/homebrew/lib/python3.10/site-packages"
-			)
+		lspconfig = require('lspconfig')
+	end
+}
+use 'hrsh7th/cmp-nvim-lsp'
+--use 'hrsh7th/vim-vsnip'
+use {
+	'L3MON4D3/LuaSnip',
+	config = function()
+		luasnip = require('luasnip')
+	end
+}
+use {
+	'hrsh7th/nvim-cmp',
+	config = function()
+		local cmp = require('cmp')
+		local lspconfig = require('lspconfig')
+		lsps = {
+			'rust_analyzer',
+			'vimls',
+			{
+				'ccls',
+				filetypes = { "c", "c.doxygen", "cpp", "cpp.doxygen" }
+			},
+			'pyright',
+		}
+
+		cmp.setup {
+			snippet = {
+				expand = function(args)
+					require('luasnip').lsp_expand(args.body)
+				end
+			},
+			preselect = cmp.PreselectMode.Item,
+			mapping = {
+				['<C-Space'] = cmp.mapping.complete(),
+				['<Tab>'] = cmp.mapping.select_next_item(),
+				['<S-Tab>'] = cmp.mapping.select_prev_item(),
+				['<CR>'] = cmp.mapping.confirm({ select = false }),
+			},
+			sources = cmp.config.sources {
+				{ name = 'nvim_lsp' },
+				{ name = 'buffer' },
+			},
+		}
+
+		local cap = require('cmp_nvim_lsp').default_capabilities()
+
+		-- We really, really dislike snippets.
+		cap.textDocument.completion.completionItem.snippetSupport = false
+
+		for i, lsp in ipairs(lsps) do
+			local lsp_name = ''
+			local lsp_args = { }
+			if type(lsp) == 'string' then
+				lsp_name = lsp
+				lsp_args = {
+					on_attach = lsp_on_attach,
+					capabilities = cap,
+				}
+			else
+				local array, lsp_args = separate(lsp)
+				lsp_name = array[1]
+				lsp_args.on_attach = lsp_on_attach
+				lsp_args.capabilities = cap
+			end
+			lspconfig[lsp_name].setup(lsp_args)
 		end
 	end
 }
-use { 'fannheyward/coc-rust-analyzer', run = 'yarn install --frozen-lockfile' }
-use { 'fannheyward/coc-pyright', run = 'yarn install --frozen-lockfile' }
-use { 'neoclide/coc-tsserver', run = 'yarn install --frozen-lockfile' }
-use { 'iamcco/coc-vimlsp', run = 'yarn install --frozen-lockfile' }
-use { 'josa42/coc-go', run = 'yarn install --frozen-lockfile' }
-use { 'neoclide/coc-json', run = 'yarn install --frozen-lockfile' }
-use { 'neoclide/coc-lists', run = 'yarn install --frozen-lockfile' }
-use { 'neoclide/coc-git', run = 'yarn install --frozen-lockfile' }
-use { 'iamcco/coc-spell-checker', run = 'yarn install --frozen-lockfile' }
-use { 'clangd/coc-clangd', run = 'yarn install --frozen-lockfile' }
-use 'liuchengxu/vista.vim'
-use 'majutsushi/tagbar'
+--use 'hrsh7th/cmp-buffer'
+--use 'hrsh7th/cmp-path'
 EOF
