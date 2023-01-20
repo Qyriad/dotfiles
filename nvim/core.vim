@@ -224,7 +224,7 @@ nnoremap <leader>dta m0f:xwdaW`0
 nmap dsf dt(<Plug>Dsurround)
 
 " Delete a GenericWrapper<>, leaving the inner arguments intact.
-"nmap dst dt<ds>
+" 'Delete surrounding template'
 nmap dst dt<<Plug>Dsurround>
 
 " Delete an assignment.
@@ -244,6 +244,30 @@ function! Redir(command)
 endfunction
 
 command! -nargs=+ -complete=command Redir call Redir(<Q-Args>)
+
+""" Implementation for :Bload
+function! Bload(...) abort
+
+	" Build the total list of files.
+	let l:files = []
+	for l:arg in a:000
+		let l:expanded = expand(l:arg, "", v:true)
+		call extend(l:files, l:expanded)
+	endfor
+
+	" Execute :badd for each file.
+	for l:file in l:files
+		execute "badd " . l:file
+	endfor
+
+	" And give us a short summary of what happened.
+	echomsg "Added " . len(l:files) . " buffers."
+
+endfunction
+""" Load the provided filenames as buffers without opening windows for them.
+" Arguments are passed to `expand()`, so the same syntax as commands like `:edit` is supported
+" for each argument.
+command! -nargs=+ -complete=file Bload call Bload(<f-args>)
 
 
 lua << EOF
