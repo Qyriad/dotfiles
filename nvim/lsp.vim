@@ -238,6 +238,13 @@ function lsp_on_attach(client, bufnr)
 		--print("Mapping " .. keys)
 		vim.keymap.set('n', keys, func, bufopts)
 	end
+
+	vim.api.nvim_create_autocmd('DiagnosticChanged', {
+		buffer = bufnr,
+		callback = function()
+			vim.diagnostic.setqflist({ open = false })
+		end,
+	})
 end
 EOF
 
