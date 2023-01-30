@@ -56,4 +56,5 @@ use 'dzeban/vim-log-syntax'
 use 'linkinpark342/xonsh-vim'
 use 'terminalnode/sway-vim-syntax'
 use 'peterhoeg/vim-qml'
+use 'LnL7/vim-nix'
 EOF
