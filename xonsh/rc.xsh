@@ -465,6 +465,7 @@ zone = ToZone
 
 
 xontrib load abbrevs
+xontrib load direnv
 
 #abbrevs["|&"] = "2>&1 |"
 
