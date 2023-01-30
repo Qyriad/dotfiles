@@ -1,5 +1,3 @@
-$SHELL = "xonsh"
-
 import os, sys, json, struct
 from datetime import datetime, timedelta
 import zoneinfo
