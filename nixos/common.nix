@@ -21,15 +21,13 @@ in {
     lfs.enable = true;
   };
 
+  # Other packages we want available on all systems.
   environment.systemPackages = with pkgs; [
-    alacritty
     tmux
     exa
     git
     fd
     ripgrep
-    #xonshPkg
-    nixos-option
     nodePackages.vim-language-server
     curl
     wget
@@ -38,5 +36,6 @@ in {
     grc
     delta
     direnv
+    nixos-option
   ];
 }

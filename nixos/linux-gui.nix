@@ -41,6 +41,7 @@ in {
   services.xserver.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    alacritty
     opera
     wl-clipboard
     ksshaskpass
@@ -52,6 +53,6 @@ in {
   fonts.fonts = [
     nerdFonts
   ];
-
-  xdg.portal.enable = true;
+  # Enable reasonable default fonts for unicode and emoji.
+  fonts.enableDefaultFonts = true;
 }

@@ -9,6 +9,13 @@
     efi.efiSysMountPoint = "/boot/efi";
   };
 
+  # Yes mount /tmp as a tmpfs.
+  boot.tmpOnTmpfs = true;
+
+  # Update timezone based on our location.
+  services.localtimed.enable = true;
+  services.geoclue2.enable = true;
+
   networking.networkmanager.enable = true;
 
   services.xserver = {
@@ -41,5 +48,11 @@
         source $HOME/.config/nvim/init.vim
       '';
     };
+    package = pkgs.neovim-nightly;
   };
+
+  # Other packages we want available on Linux systems.
+  environment.systemPackages = with pkgs; [
+    usbutils
+  ];
 }

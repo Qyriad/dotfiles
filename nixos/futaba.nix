@@ -11,6 +11,8 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  services.fwupd.enable = true;
+
   # Non-NixOS generated hardware configuration.
   hardware.cpu.intel.updateMicrocode = true;
   hardware.bluetooth.enable = true;

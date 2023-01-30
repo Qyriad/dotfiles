@@ -1,4 +1,4 @@
-# vim: shiftwidth=2 expandab
+# vim: shiftwidth=2 expandtab
 { config, pkgs, lib, ... }:
 
 {
