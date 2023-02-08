@@ -260,6 +260,7 @@ use {
 	end
 }
 use 'hrsh7th/cmp-nvim-lsp'
+use 'simrat39/rust-tools.nvim'
 --use 'hrsh7th/vim-vsnip'
 use {
 	'L3MON4D3/LuaSnip',
@@ -273,7 +274,6 @@ use {
 		local cmp = require('cmp')
 		local lspconfig = require('lspconfig')
 		lsps = {
-			'rust_analyzer',
 			'vimls',
 			{
 				'ccls',
@@ -290,7 +290,7 @@ use {
 			},
 			preselect = cmp.PreselectMode.Item,
 			mapping = {
-				['<C-Space'] = cmp.mapping.complete(),
+				['<C-Space>'] = cmp.mapping.complete(),
 				['<Tab>'] = cmp.mapping.select_next_item(),
 				['<S-Tab>'] = cmp.mapping.select_prev_item(),
 				['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -305,6 +305,14 @@ use {
 
 		-- We really, really dislike snippets.
 		cap.textDocument.completion.completionItem.snippetSupport = false
+
+		-- rust-tools wants to setup the LSP itself, so it needs to be configured specially
+		require('rust-tools').setup({
+			server = {
+				on_attach = lsp_on_attach,
+				capabilities = cap,
+			}
+		})
 
 		for i, lsp in ipairs(lsps) do
 			local lsp_name = ''
