@@ -34,13 +34,6 @@ augroup winenter_whitespaceeol
 	"autocmd WinEnter * highlight link WhitespaceEOL Error
 augroup END
 
-augroup fix_lua_heredoc
-	autocmd!
-	autocmd filetype vim syntax clear luaParen
-	autocmd filetype vim syntax clear luaParenError
-augroup END
-
-
 lua << EOF
 local use = packer.use
 use 'Shirk/vim-gas'
