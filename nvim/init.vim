@@ -1,7 +1,9 @@
 scriptencoding utf-8
 
-syntax on
-filetype plugin indent on
+" This will be enabled automatically after initialization scripts run
+" enabling it early will load syntax definitions too soon
+" syntax on
+" filetype plugin indent on
 
 lua << EOF
 -- Bootstrap packer.nvim if necessary.
