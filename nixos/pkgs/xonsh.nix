@@ -13,10 +13,11 @@ let
     };
   };
 
-  xonshPkg = pkgs.xonsh.overrideAttrs (old: {
+  xonshPkg = pkgs.xonsh.overridePythonAttrs (old: {
     propagatedBuildInputs = old.propagatedBuildInputs ++ [
       pip
       xonshDirenvPkg
+      pkgs.python3Packages.ipython
     ];
 
   });

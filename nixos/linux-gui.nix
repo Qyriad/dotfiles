@@ -40,13 +40,17 @@ in {
   # FIXME: Is this necessary?
   services.xserver.libinput.enable = true;
 
+  programs.gnupg.agent.pinentryFlavor = "qt";
+
   environment.systemPackages = with pkgs; [
     alacritty
-    opera
+    mpv
     wl-clipboard
     ksshaskpass
+    opera
     obsidian
     discord
+    calibre
   ];
 
   # The terminal font we use.

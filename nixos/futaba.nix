@@ -8,6 +8,7 @@
     ./common.nix
     ./linux.nix
     ./linux-gui.nix
+    ./dev.nix
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
