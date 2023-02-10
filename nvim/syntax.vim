@@ -50,4 +50,5 @@ use 'linkinpark342/xonsh-vim'
 use 'terminalnode/sway-vim-syntax'
 use 'peterhoeg/vim-qml'
 use 'LnL7/vim-nix'
+use 'nickel-lang/vim-nickel'
 EOF
