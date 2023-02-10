@@ -325,6 +325,12 @@ use {
 		end
 	end
 }
+use {
+	'tamago324/nlsp-settings.nvim',
+	config = function()
+		require('nlspsettings').setup {}
+	end,
+}
 --use 'hrsh7th/cmp-buffer'
 --use 'hrsh7th/cmp-path'
 EOF
