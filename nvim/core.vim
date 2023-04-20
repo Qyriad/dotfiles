@@ -85,7 +85,7 @@ function! Restore_last_position()
 
 	if line("'\"") <= line("$")
 		normal! g`"
-		return 1
+		"return 1
 	endif
 endfunction
 
