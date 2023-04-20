@@ -9,6 +9,7 @@
 	subinit = submodule update --recursive --init
 	l = log --abbrev-commit --decorate -n 8 --graph
 	s = status
+	sd = status .
 	curbr = rev-parse --abbrev-ref HEAD
 	lo = log --abbrev-commit --decorate --graph
 	br = !zsh -c 'cat <(git branch -vv --no-merged) <(git branch -vv --color=always | grep --color=never master)'
