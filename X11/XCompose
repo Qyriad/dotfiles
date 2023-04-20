@@ -95,3 +95,6 @@ include "%L"
 <Multi_key> <dollar> <y> : "¥" # Yen
 
 <Multi_key> <m> <t> : "™" # TM
+
+<Multi_key> <s> <o> : "§" # Section sign.
+<Multi_key> <o> <s> : "§" # Section sign.
