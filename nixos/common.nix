@@ -37,5 +37,6 @@ in {
     delta
     direnv
     nixos-option
+    file
   ];
 }

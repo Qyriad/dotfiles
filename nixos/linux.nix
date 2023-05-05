@@ -54,5 +54,6 @@
   # Other packages we want available on Linux systems.
   environment.systemPackages = with pkgs; [
     usbutils
+    pciutils
   ];
 }
