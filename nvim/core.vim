@@ -35,6 +35,7 @@ set breakindent " Indent soft wrapped lines.
 " And further 'indent' the soft-indentation by an extra four spaces.
 set breakindentopt=sbr,shift:4
 let &showbreak = "\u21f8" " `⇸` as an indicator to show at the beginning of visually wrapped lines.
+set showtabline=2 " Always show the tabline, even if there's only one tab.
 set wildmenu " Tab-complete command menu.
 set wildmode=longest:full,full " Most bash-like way.
 set wildignorecase " Ignore case when completing.
