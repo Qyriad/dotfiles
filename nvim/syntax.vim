@@ -68,6 +68,8 @@ use { 'cespare/vim-toml', branch = 'main' }
 use 'leafgarland/typescript-vim'
 use 'rust-lang/rust.vim'
 use 'vim-python/python-syntax'
+--use 'Glench/Vim-Jinja2-Syntax'
+use 'mitsuhiko/vim-jinja'
 use 'Firef0x/PKGBUILD.vim'
 use 'chikamichi/mediawiki.vim'
 use 'dzeban/vim-log-syntax'
