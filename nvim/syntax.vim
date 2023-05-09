@@ -27,6 +27,32 @@ let g:xsh_highlight_all = v:true
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' }, 'xonsh': { 'left': '#' } }
 
+lua <<EOF
+treesitter_configs_setup = {
+	ensure_installed = {
+		"c",
+		"cpp",
+		"lua",
+		"vim",
+		"vimdoc",
+		"cmake",
+		"python",
+		"toml",
+		"rust",
+	},
+	sync_install = false,
+	auto_install = true,
+
+	-- Treesitter modules.
+	highlight = {
+		enable = true,
+	},
+	indent = {
+		enable = true,
+	},
+}
+EOF
+
 
 augroup winenter_whitespaceeol
 	autocmd!
@@ -51,4 +77,18 @@ use 'terminalnode/sway-vim-syntax'
 use 'peterhoeg/vim-qml'
 use 'LnL7/vim-nix'
 use 'nickel-lang/vim-nickel'
+use {
+	'nvim-treesitter/nvim-treesitter',
+	-- Equivalent to `run = ':TSUpdate'` but doesn't fail if the command doesn't exist yet.
+	run = function()
+		local ts_update = require('nvim-treesitter.install').update {
+			with_sync = true,
+		}
+	end,
+	config = function()
+		treesitter = require('nvim-treesitter')
+		treesitter.configs = require('nvim-treesitter.configs')
+		treesitter.configs.setup(treesitter_configs_setup)
+	end
+}
 EOF
