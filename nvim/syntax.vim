@@ -93,4 +93,5 @@ use {
 		treesitter.configs.setup(treesitter_configs_setup)
 	end
 }
+use 'nvim-treesitter/nvim-treesitter-context'
 EOF
