@@ -226,12 +226,13 @@ function lsp_on_attach(client, bufnr)
 		{ 'gi', vim.lsp.buf.implementation },
 		{ '<C-k>', vim.lsp.buf.signature_help },
 		{ '<leader>D', vim.lsp.buf.type_definition },
-		{ '<leader>a', vim.lsp.buf.code_action }
+		{ '<leader>a', vim.lsp.buf.code_action },
+		-- Diagnostics.
+		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
+		{ '[d', vim.diagnostic.goto_prev },
+		{ ']d', vim.diagnostic.goto_next },
 	}
 
-	--for i = 1, #mappings do
-		--local keys = mappings[i][1]
-		--local func = mappings[i][2]
 	for i, item in ipairs(mappings) do
 		local keys = item[1]
 		local func = item[2]
