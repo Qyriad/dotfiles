@@ -98,3 +98,5 @@ include "%L"
 
 <Multi_key> <s> <o> : "§" # Section sign.
 <Multi_key> <o> <s> : "§" # Section sign.
+
+<Multi_key> <z> <w> <s> : "​" " Zero-width space.
