@@ -148,6 +148,7 @@ nnoremap <leader>; ;
 " I keep accidentially closing Neovim when I just want to write.
 " I don't need :wq. If I want to write and quit, I'll just :w and :q separately.
 cnoreabbrev wq w
+command! Wq wq
 
 " Use line-wrapped movement by default, but specifying a count disables it.
 nnoremap <expr> j (v:count > 0 ? "m'" . v:count . 'j' : 'gj')
@@ -271,6 +272,12 @@ endfunction
 " Arguments are passed to `expand()`, so the same syntax as commands like `:edit` is supported
 " for each argument.
 command! -nargs=+ -complete=file Bload call Bload(<f-args>)
+
+" Like `*` (searches for the current word), but doesn't actually perform the search operation,
+" instead only setting the search pattern *register* (`/`), and re-setting 'hlsearch'.
+" In other words, higlight the current word and all occurences of it, and make the "next"
+" and "previous" search commands (`n` and `N`) also use the current word.
+nnoremap <leader>* <Cmd>let @/ = '\<' . expand("<cword>") . '\>' \| set hlsearch<CR>
 
 
 lua << EOF
