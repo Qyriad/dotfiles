@@ -10,7 +10,7 @@ BREWPREFIX="$HOMEBREW_PREFIX" # Set by eval $(brew shellenv); just making a more
 
 COREUTILSBIN="$BREWPREFIX/opt/coreutils/libexec/gnubin"
 MAKEBIN="$BREWPREFIX/opt/make/libexec/gnubin"
-PYTHONBIN="$BREWPREFIX/opt/python@3.10/libexec/bin"
+PYTHONBIN="$BREWPREFIX/opt/python3/libexec/bin"
 LLVMBIN="$BREWPREFIX/opt/llvm/bin"
 PATH="$COREUTILSBIN:$MAKEBIN:$PYTHONBIN:/usr/local/MacGPG2/bin:$PATH:$LLVMBIN"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
