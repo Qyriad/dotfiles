@@ -281,6 +281,7 @@ use {
 				filetypes = { "c", "c.doxygen", "cpp", "cpp.doxygen" }
 			},
 			'pyright',
+			'jdtls',
 		}
 
 		cmp.setup {
