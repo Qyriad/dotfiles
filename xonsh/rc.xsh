@@ -397,6 +397,11 @@ aliases['detach-kernel-drivers'] = _detach_kernel_drivers
 
 
 
+envs_pattern = re.compile(r"\$(.+?)\b")
+def envs(s: str):
+	return [envs_pattern.sub(lambda varmatch: os.environ.get(varmatch.group(1), ""), s)]
+
+
 #
 # Horrible datetime convenience functions and types.
 #
@@ -471,5 +476,6 @@ xontrib load direnv
 
 xontrib load output_search
 xontrib load whole_word_jumping
+xontrib load term_integration
 #xontrib load argcomplete
 
