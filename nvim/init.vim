@@ -1,5 +1,7 @@
 scriptencoding utf-8
 
+syntax on
+
 " This will be enabled automatically after initialization scripts run
 " enabling it early will load syntax definitions too soon
 " syntax on
