@@ -269,9 +269,9 @@ def _reagent():
 aliases['reagent'] = _reagent
 
 def _rekey():
-	$GPG_TTY = $(tty).strip()
 	$SSH_AUTH_SOCK = $(gpgconf --list-dirs agent-ssh-socket).strip()
-	gpg-connect-agent updatestartuptty reloadagent /bye > /dev/null
+	#$GPG_TTY = $(tty).strip()
+#gpg-connect-agent updatestartuptty reloadagent /bye > /dev/null
 
 aliases['rekey'] = _rekey
 
