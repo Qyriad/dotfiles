@@ -240,6 +240,33 @@ nmap cmtd eviwS'va'S]h"_x
 " Change a Python style dict access to a member access. 'Change Dict to Member'
 nmap cdtm ds'F[i.<ESC><ESC>f[ds]
 
+" Inverts formatoptions' "r" flag, which automatically inserts the comment leader on <CR>
+" in insert mode.
+function! InvertR() abort
+	if &formatoptions =~# "r"
+		setlocal formatoptions-=r
+	else
+		setlocal formatoptions+=r
+	endif
+endfunction
+
+" Invert formatoptoins' "r" flag for exactly one insert mode session.
+function! InsertInvertR() abort
+	call InvertR()
+	augroup InsertInvertR
+		autocmd! InsertLeave * ++once call InvertR()
+	augroup END
+endfunction
+
+" Prefix insert mode entry commands with <leader>r to invert formatoptions' "r" flag for
+" that single insert mode session. We usually have formatoptions' "r" disabled by default,
+" so this will typically temporarily enable it.
+nnoremap <leader>ri :call InsertInvertR()<CR>i
+nnoremap <leader>ro :call InsertInvertR()<CR>o
+nnoremap <leader>rO :call InsertInvertR()<CR>O
+nnoremap <leader>ra :call InsertInvertR()<CR>a
+nnoremap <leader>rA :call InsertInvertR()<CR>A
+
 command! -range=% Interleave execute 'keeppatterns' (<line2>-<line1>+1)/2+<line1> ',' <line2> 'g/^/<line1> move -1'
 
 function! Redir(command)
