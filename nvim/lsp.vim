@@ -276,10 +276,11 @@ use {
 		lsps = {
 			'rust_analyzer',
 			'vimls',
-			{
-				'ccls',
-				filetypes = { "c", "c.doxygen", "cpp", "cpp.doxygen" }
-			},
+			--{
+			--	'ccls',
+			--	filetypes = { "c", "c.doxygen", "cpp", "cpp.doxygen" }
+			--},
+			'clangd',
 			'pyright',
 			'jdtls',
 		}
