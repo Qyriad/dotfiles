@@ -310,6 +310,7 @@ nnoremap <leader>* <Cmd>let @/ = '\<' . expand("<cword>") . '\>' \| set hlsearch
 lua << EOF
 local use = packer.use
 use 'tpope/vim-surround'
+use 'justinmk/vim-sneak'
 use 'scrooloose/nerdcommenter'
 use 'vim-scripts/vis' -- Block selection range commands.
 use 'editorconfig/editorconfig-vim'
