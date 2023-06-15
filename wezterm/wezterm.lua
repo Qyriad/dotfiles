@@ -66,7 +66,7 @@ function format_tab_title(tab, tabs, panes, config, hover, max_width)
 		process_name = utils.basename(pane.foreground_process_name)
 	else
 		local user_vars = pane.user_vars
-		local cmdline = user_vars.WEZTERM_PROG
+		local cmdline = user_vars.WEZTERM_PROG or ""
 		local progname_end = string.find(cmdline, " ")
 		process_name = string.sub(cmdline, 1, progname_end)
 	end
