@@ -108,6 +108,25 @@ config.unix_domains = {
 }
 config.default_gui_startup_args = { "connect", "unix" }
 
+ssh_domain_overrides = {
+	["SSHMUX:yuki"] = {
+		assume_shell = "Posix",
+		multiplexing = "WezTerm",
+	},
+}
+config.ssh_domains = wezterm.default_ssh_domains()
+for _, domain in ipairs(config.ssh_domains) do
+
+	wezterm.log_info("Checking of domain " .. domain.name .. " can be overriden")
+	local domain_override = ssh_domain_overrides[domain.name]
+
+	if domain_override ~= nil then
+		for override_key, override_value in pairs(domain_override) do
+			wezterm.log_info("Overriding domain " .. domain.name .. "." .. override_key .. " to " .. override_value)
+			domain[override_key] = override_value
+		end
+	end
+end
 
 -- Main keybindings. Set up to act kind of like our tmux config.
 config.leader = {
