@@ -57,4 +57,33 @@ function module.current_mux_domain()
 	return current_mux_domain
 end
 
+function module.get_active_domains()
+	local all_domains = wezterm.mux.all_domains()
+	local active_domains = {}
+	for i, domain in ipairs(all_domains) do
+		if domain:has_any_panes() then
+			table.insert(active_domains, domain)
+		end
+	end
+
+	return active_domains
+end
+
+function module.active_domains()
+	local active_domains = module.get_active_domains()
+
+	local domain_infos = {}
+
+	for i, domain in ipairs(active_domains) do
+		table.insert(domain_infos, {
+			name = domain:name(),
+			id = domain:domain_id(),
+			state = domain:state(),
+			label = domain:label(),
+		})
+	end
+
+	return domain_infos
+end
+
 return module
