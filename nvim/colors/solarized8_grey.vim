@@ -17,4 +17,8 @@ let g:colors_name = "solarized_grey"
 highlight Normal            guibg=#1b1b1b
 highlight LineNR ctermfg=11 guibg=#212728
 
+" Differentiate between constants and string literals.
+highlight Constant ctermfg=37 guifg=#2aa1bb
+highlight String ctermfg=37 guifg=#2aa198
+
 "highlight link CocMenuSel PmenuSel
