@@ -8,10 +8,14 @@ utils = require("utils")
 
 local on_macos = string.find(wezterm.target_triple, "darwin") ~= nil
 
-local function bind_leader(key, action)
+local function bind_leader(key, action, extra_mods)
+	local mods = "LEADER"
+	if extra_mods ~= nil then
+		mods = mods .. "|" .. extra_mods
+	end
 	return {
 		key = key,
-		mods = "LEADER",
+		mods = mods,
 		action = action,
 	}
 end
@@ -139,10 +143,10 @@ config.keys = {
 
 	-- Equivalent to `bind-key -T prefix '"' split-window -v`
 	-- domain = "CurrentPaneDomain" is the default.
-	bind_leader('"', wezterm.action.SplitVertical { }),
+	bind_leader('"', wezterm.action.SplitVertical { }, "SHIFT"),
 
 	-- Equivalent to `bind-key -T prefix "%" split-window -h`
-	bind_leader("%", wezterm.action.SplitHorizontal { }),
+	bind_leader("%", wezterm.action.SplitHorizontal { }, "SHIFT"),
 
 	-- Equivalent to `bind-key -T prefix "c" new-window
 	bind_leader("c", wezterm.action.SpawnTab("CurrentPaneDomain")),
