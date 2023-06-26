@@ -48,8 +48,8 @@ end
 
 
 local font_list = {
+	"InconsolataGo Nerd Font Mono",
 	"Monaco",
-	"Inconsolata",
 }
 
 --
