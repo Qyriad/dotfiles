@@ -46,6 +46,7 @@ treesitter_configs_setup = {
 	-- Treesitter modules.
 	highlight = {
 		enable = true,
+		additional_vim_regex_highlighting = true,
 	},
 	indent = {
 		enable = true,
