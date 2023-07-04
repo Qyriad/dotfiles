@@ -181,6 +181,8 @@ config.keys = {
 	-- Equivalent to `bind-key -T prefix "[" copy-mode`
 	bind_leader("[", wezterm.action.ActivateCopyMode),
 
+	bind_leader("d", wezterm.action.DetachDomain "CurrentPaneDomain"),
+
 	bind_leader(":", wezterm.action.ActivateCommandPalette),
 	bind_leader(";", wezterm.action.ActivateCommandPalette),
 
