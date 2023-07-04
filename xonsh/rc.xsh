@@ -101,8 +101,8 @@ aliases['ev'] = $EDITOR + ' -p ' + (' '.join($HOME + '/.config/nvim/' + path for
 aliases['er'] = edit(p'~/.config/ranger/rc.conf')
 aliases['ea'] = edit(p'~/.config/alacritty/alacritty.yml')
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
+aliases['ew'] = f"{$EDITOR} -O ~/.config/wezterm/wezterm.lua ~/.config/wezterm/utils.lua"
 aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
-aliases['es'] = edit(p'~/.config/sway/config')
 
 aliases['yt-dlp'] = 'yt-dlp --compat-options filename,format-spec,multistreams'
 
