@@ -91,7 +91,7 @@ lua << EOF
 function lsp_on_attach(client, bufnr)
 	vim.lsp.set_log_level("info")
 
-	print("Attaching!")
+	vim.notify("Attaching!")
 
 	local bufopts = { noremap = true, buffer = bufnr }
 
