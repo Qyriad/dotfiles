@@ -49,7 +49,7 @@ treesitter_configs_setup = {
 		additional_vim_regex_highlighting = true,
 	},
 	indent = {
-		enable = true,
+		enable = false,
 	},
 }
 EOF
