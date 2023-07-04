@@ -118,6 +118,7 @@ use {
 use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
 use 'gennaro-tedesco/nvim-peekup'
+use 'AndrewRadev/bufferize.vim'
 use 'windwp/nvim-projectconfig'
 projectconfig = require('nvim-projectconfig')
 projectconfig.setup()
