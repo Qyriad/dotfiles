@@ -333,4 +333,5 @@ use {
 use 'vim-scripts/vis' -- Block selection range commands.
 use 'editorconfig/editorconfig-vim'
 use 'wsdjeg/vim-fetch'
+use 'famiu/bufdelete.nvim' -- :Bdelete without messing up window layout.
 EOF
