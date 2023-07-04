@@ -94,6 +94,7 @@ endif
 
 lua << EOF
 function lsp_on_attach(client, bufnr)
+	vim.lsp.set_log_level("info")
 
 	print("Attaching!")
 
@@ -155,7 +156,7 @@ use {
 		local cmp = require('cmp')
 		local lspconfig = require('lspconfig')
 		lsps = {
-			'rust_analyzer',
+			-- rust_analyzer is setup by rust-tools.nvim.
 			'vimls',
 			'clangd',
 			'pyright',
@@ -213,4 +214,15 @@ use {
 }
 --use 'hrsh7th/cmp-buffer'
 --use 'hrsh7th/cmp-path'
+use {
+	'simrat39/rust-tools.nvim',
+	config = function()
+		rust_tools = require("rust-tools")
+		rust_tools.setup {
+			server = {
+				on_attach = lsp_on_attach,
+			},
+		}
+	end,
+}
 EOF
