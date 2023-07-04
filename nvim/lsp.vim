@@ -224,9 +224,15 @@ use {
 use {
 	'tamago324/nlsp-settings.nvim',
 	config = function()
-		require('nlspsettings').setup {}
+		require('nlspsettings').setup {
+			local_settings_dir = ".nlsp-settings",
+			local_settings_root_markers_fallback = { '.git' },
+			append_default_schemas = true,
+			loader = 'json',
+		}
 	end,
 }
+
 --use 'hrsh7th/cmp-buffer'
 --use 'hrsh7th/cmp-path'
 use {
