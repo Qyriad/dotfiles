@@ -91,6 +91,11 @@ let g:ranger_map_keys = 0
 nnoremap <leader>f :RangerCurrentDirectory<CR>
 
 
+nnoremap ]g <Cmd>lua gitsigns.next_hunk({ preview = true })<CR>
+nnoremap [g <Cmd>lua gitsigns.prev_hunk({ preview = true })<CR>
+nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
+
+
 lua << EOF
 local use = require("packer").use
 -- Text editing.
@@ -103,7 +108,13 @@ use 'ctrlpvim/ctrlp.vim'
 use 'rbgrouleff/bclose.vim' -- Dependency for ranger.vim
 use 'francoiscabrol/ranger.vim'
 use 'tpope/vim-tbone' -- :Tyank and :Tput
-use 'tpope/vim-fugitive'
+use {
+	'lewis6991/gitsigns.nvim',
+	config = function()
+		gitsigns = require("gitsigns")
+		gitsigns.setup {}
+	end,
+}
 use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
 use 'gennaro-tedesco/nvim-peekup'

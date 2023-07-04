@@ -45,10 +45,6 @@ set completeopt=menu,menuone,preview,noselect,noinsert
 "xmap ac <Plug>(coc-classobj-a)
 "omap ac <Plug>(coc-classobj-a)
 
-"nmap [g <Plug>(coc-git-prevchunk)
-"nmap ]g <Plug>(coc-git-nextchunk)
-"nmap gs <Plug>(coc-git-chunkinfo)
-
 "nmap [d <Plug>(coc-diagnostic-prev)
 "nmap ]d <Plug>(coc-diagnostic-next)
 "nmap gds <Plug>(coc-diagnostic-info)
