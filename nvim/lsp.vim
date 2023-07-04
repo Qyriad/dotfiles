@@ -61,6 +61,8 @@ nnoremap <F4> <Cmd>:CtrlP<CR>
 nnoremap <F6> <Cmd>:CtrlPBuffer<CR>
 nnoremap <F9> <Cmd>:TagbarToggle<CR>
 nnoremap <leader><BS> <Cmd>:pclose<CR>
+nnoremap <leader>xx :Trouble <C-i>
+nnoremap <leader>xc <Cmd>TroubleToggle<CR>
 
 "command! CocFloatHide call coc#float#close_all()
 "inoremap <C-l> <Cmd>call coc#float#close_all()<CR>
@@ -77,16 +79,13 @@ highlight! link CocMenuSel PmenuSel
 "highlight link ALEWarningSign Todo
 "highlight CocRustChainingHint guifg=grey
 
+highlight! NotifyBackground guibg=#1b1b1b
+
 
 if exists('g:tagbar_sort')
 	unlet g:tagbar_sort
 endif
 
-
-" If we're running as root, disable CoC, as it tends to cause… problems.
-if $USER ==# "root"
-	let g:coc_enabled = 0
-endif
 
 lua << EOF
 function lsp_on_attach(client, bufnr)
@@ -104,7 +103,7 @@ function lsp_on_attach(client, bufnr)
 		{ 'gi', vim.lsp.buf.implementation },
 		{ '<C-k>', vim.lsp.buf.signature_help },
 		{ '<leader>D', vim.lsp.buf.type_definition },
-		{ '<leader>a', vim.lsp.buf.code_action },
+		{ '<leader>a', code_action_menu.open_code_action_menu },
 		-- Diagnostics.
 		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
 		{ '[d', vim.diagnostic.goto_prev },
@@ -124,6 +123,14 @@ function lsp_on_attach(client, bufnr)
 			vim.diagnostic.setqflist({ open = false })
 		end,
 	})
+
+	vim.diagnostic.config({
+		-- We are using lsp_lines for virtual text instead.
+		virtual_text = false,
+		virtual_lines = true,
+	})
+
+	lsp_basics.make_lsp_commands(client, bufnr)
 end
 EOF
 
@@ -183,9 +190,21 @@ use {
 		-- We really, really dislike snippets.
 		cap.textDocument.completion.completionItem.snippetSupport = false
 
+		severity = {
+			"error",
+			"warn",
+			"info",
+			"info", -- Map hint to info
+		}
+
 		for i, lsp in ipairs(lsps) do
 			local lsp_name = ''
 			local lsp_args = { }
+			lsp_args.handlers = {
+				["window/showMessage"] = function(err, meth, params, client_id)
+					vim.notify(meth.message, severity[params.type])
+				end,
+			}
 			if type(lsp) == 'string' then
 				lsp_name = lsp
 				lsp_args = {
@@ -218,6 +237,70 @@ use {
 			server = {
 				on_attach = lsp_on_attach,
 			},
+		}
+	end,
+}
+
+use {
+	'simrat39/symbols-outline.nvim',
+	config = function()
+		symbols_outline = require("symbols-outline")
+	end,
+}
+
+use {
+	'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+	config = function()
+		lsp_lines = require("lsp_lines")
+		lsp_lines.setup {}
+	end,
+}
+
+-- FIXME: This plugin is no longer maintained.
+use {
+	'folke/lsp-colors.nvim',
+	config = function()
+		lsp_colors = require("lsp-colors")
+	end,
+}
+
+use {
+	'folke/trouble.nvim',
+	config = function()
+		trouble = require("trouble")
+		trouble.setup {
+			icons = false,
+		}
+	end,
+}
+
+use {
+	'nanotee/nvim-lsp-basics',
+	config = function()
+		lsp_basics = require("lsp_basics")
+	end,
+}
+
+use {
+	'weilbith/nvim-code-action-menu',
+	config = function()
+		code_action_menu = require("code_action_menu")
+	end,
+}
+
+use {
+	'rcarriga/nvim-notify',
+	config = function()
+		vim.notify = require("notify")
+	end,
+}
+
+use {
+	'mrded/nvim-lsp-notify',
+	config = function()
+		lsp_notify = require("lsp-notify")
+		lsp_notify.setup {
+			stages = "slide",
 		}
 	end,
 }

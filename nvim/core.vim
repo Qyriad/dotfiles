@@ -39,6 +39,7 @@ set showtabline=2 " Always show the tabline, even if there's only one tab.
 set wildmenu " Tab-complete command menu.
 set wildmode=longest:full,full " Most bash-like way.
 set wildignorecase " Ignore case when completing.
+set wildcharm=<C-i> " Allow tab to autocomplete in mappings.
 set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay in Tmux.
 set splitright " Make :vsplit put the new window on the right.
 set splitbelow " Make :split put the new window on the bottom.
