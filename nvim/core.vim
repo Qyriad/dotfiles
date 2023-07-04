@@ -213,7 +213,7 @@ nnoremap <leader>ts <Cmd>tab split<CR>
 
 " Edit and source init.vim shortcuts.
 nnoremap <leader>ev <Cmd>tabedit $MYVIMRC<CR>
-nnoremap <leader>sv <Cmd>tabedit $MYVIMRC<CR>
+nnoremap <leader>sv <Cmd>source $MYVIMRC<CR>
 
 
 " Delete a Python type hint comment on the current line. ...Apparently I used this enough to make this a mapping?
