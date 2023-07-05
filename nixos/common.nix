@@ -38,5 +38,6 @@ in {
     direnv
     nixos-option
     file
+    nodePackages.insect
   ];
 }
