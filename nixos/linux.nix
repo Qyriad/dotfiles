@@ -10,7 +10,7 @@
   };
 
   # Yes mount /tmp as a tmpfs.
-  boot.tmpOnTmpfs = true;
+  boot.tmp.useTmpfs = true;
 
   # Update timezone based on our location.
   services.localtimed.enable = true;
@@ -34,6 +34,8 @@
     shell = pkgs.zsh;
   };
 
+  programs.zsh.enable = true;
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -48,7 +50,6 @@
         source $HOME/.config/nvim/init.vim
       '';
     };
-    package = pkgs.neovim-nightly;
   };
 
   # Other packages we want available on Linux systems.

@@ -2,11 +2,10 @@
 
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
-    neovim-nightly-overlay.url = "git+https://github.com/nix-community/neovim-nightly-overlay";
+    nixpkgs.url = "github:NixOS/nixpkgs/23.05";
   };
 
-  outputs = { self, nixpkgs, neovim-nightly-overlay, } @ inputs:
+  outputs = { self, nixpkgs, } @ inputs:
   rec {
     nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
 
@@ -15,7 +14,6 @@
       system = "x86_64-linux";
       modules = [
         (_: {
-          nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
         })
         ./nixos/futaba.nix
       ];
