@@ -23,6 +23,13 @@ let g:python_highlight_space_errors = 1
 let g:python_highlight_class_vars = 1
 "let g:python_highlight_func_calls = 1
 
+lua <<EOF
+vim.g.python_indent = {
+	closed_paren_align_last_line = false,
+	open_paren = "shiftwidth()",
+}
+EOF
+
 let g:xsh_highlight_all = v:true
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' }, 'xonsh': { 'left': '#' } }
