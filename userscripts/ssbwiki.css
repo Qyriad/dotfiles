@@ -1,0 +1,12 @@
+/* ==UserStyle==
+@name        ssbwiki table images
+@description Add text to ssbwiki tier lists.
+@match       *://*.ssbwiki.com/*
+==/UserStyle== */
+
+/* Make the table image captions small so they don't distrupt the table cell sizes. */
+figure.table-link {
+	font-size: xx-small;
+	line-height: normal;
+	margin: 0px 0px 0px 0px;
+}
