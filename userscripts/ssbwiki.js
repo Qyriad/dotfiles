@@ -25,21 +25,32 @@ for (const td of document.querySelectorAll("table.wikitable td:has(> a > img)").
 		continue;
 	}
 
+	// Save the width of this <td>, before we make any modifications.
+	const imgWidth = img.getBoundingClientRect().width;
+	console.log("Width of img: %o", imgWidth);
+
 	// Strip information we don't need for display from the title.
-	const prettyTitle = title.replace(/ \(SSB.?\)/, "").trim();
+	let prettyTitle = title.replace(/ \(SSB.?\)/, "").trim();
 
 	// Normalize the title for usage as a CSS class.
 	const titleClass = title.toLowerCase().replace(/[ _]/, "-").replace(/[()]/, "");
 
-	// Now wrap the <img> in a <figure>.
+	// Create a <figure> to wrap the <img>...
 	const figureElement = document.createElement("figure");
 	const figcaptionElement = document.createElement("figcaption");
 	const figcaptionText = document.createTextNode(prettyTitle);
-	figcaptionElement.appendChild(figcaptionText);
+
+	// ...set some CSS classes on it...
 	figureElement.setAttribute("class", `table-link table-link-${titleClass}`);
 
+	// ...make sure the text can't be wider than the image...
+	figcaptionElement.style.maxWidth = `${imgWidth}px`;
+
+	// ...organize the children of <figure>...
+	figcaptionElement.appendChild(figcaptionText);
 	figureElement.appendChild(img);
 	figureElement.appendChild(figcaptionElement);
 
+	// ...and finally move them all to a child of the <a>.
 	link.appendChild(figureElement);
 }
