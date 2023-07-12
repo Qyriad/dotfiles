@@ -25,14 +25,14 @@ for (const td of document.querySelectorAll("table.wikitable td:has(> a > img)").
 		continue;
 	}
 
-	// Save the width of this <td>, before we make any modifications.
+	// Save the width of this <img>, before we make any modifications.
 	const imgWidth = img.getBoundingClientRect().width;
-	console.log("Width of img: %o", imgWidth);
 
 	// Strip information we don't need for display from the title.
 	let prettyTitle = title.replace(/ \(SSB.?\)/, "").trim();
 
-	// Normalize the title for usage as a CSS class.
+	// Normalize the title for usage as a CSS class,
+	// replacing spaces and underscores with dashes, and removing parentheses.
 	const titleClass = title.toLowerCase().replace(/[ _]/, "-").replace(/[()]/, "");
 
 	// Create a <figure> to wrap the <img>...
