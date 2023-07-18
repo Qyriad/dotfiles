@@ -95,13 +95,18 @@ aliases['rip'] = 'rip --seance'
 
 # Edit config shortcuts.
 edit = lambda path : $EDITOR + ' ' + str(path)
+# "Edit tmux"
 aliases['et'] = edit(p'~/.config/tmux/tmux.conf')
 nvim_paths = ['init.vim', 'core.vim', 'utils.vim', 'syntax.vim', 'highlight.vim', 'lsp.vim', 'statusline.vim']
+# "Edit vim"
 aliases['ev'] = $EDITOR + ' -p ' + (' '.join($HOME + '/.config/nvim/' + path for path in nvim_paths))
-aliases['er'] = edit(p'~/.config/ranger/rc.conf')
+# "Edit alacritty"
 aliases['ea'] = edit(p'~/.config/alacritty/alacritty.yml')
+# "Edit xonsh"
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
+# "Edit wezterm"
 aliases['ew'] = f"{$EDITOR} -O ~/.config/wezterm/wezterm.lua ~/.config/wezterm/utils.lua"
+# "Source xonsh"
 aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
 
 aliases['yt-dlp'] = 'yt-dlp --compat-options filename,format-spec,multistreams'
