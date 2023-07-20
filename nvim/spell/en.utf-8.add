@@ -172,3 +172,6 @@ docstrings
 macOS
 redistributable
 orderable
+structs
+struct
+overridable
