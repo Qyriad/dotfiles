@@ -108,6 +108,8 @@ function lsp_on_attach(client, bufnr)
 		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
 		{ '[d', vim.diagnostic.goto_prev },
 		{ ']d', vim.diagnostic.goto_next },
+		{ '<leader>h', vim.lsp.buf.document_highlight },
+		{ '<leader>c', vim.lsp.buf.clear_references },
 	}
 
 	for i, item in ipairs(mappings) do
