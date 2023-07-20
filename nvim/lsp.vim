@@ -166,6 +166,7 @@ use {
 			'clangd',
 			'pyright',
 			'jdtls',
+			'html',
 		}
 
 		cmp.setup {
