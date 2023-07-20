@@ -103,5 +103,13 @@ use {
 		treesitter.configs.setup(treesitter_configs_setup)
 	end
 }
+-- Justfile syntax.
+use {
+	'IndianBoy42/tree-sitter-just',
+	config = function()
+		treesitter_just = require("tree-sitter-just")
+		treesitter_just.setup { }
+	end,
+}
 use 'nvim-treesitter/nvim-treesitter-context'
 EOF
