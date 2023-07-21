@@ -83,6 +83,13 @@ use {
 		gitsigns.setup {}
 	end,
 }
+use {
+	'akinsho/git-conflict.nvim',
+	config = function()
+		git_conflict = require("git-conflict")
+		git_conflict.setup()
+	end,
+}
 use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
 use 'gennaro-tedesco/nvim-peekup'
