@@ -119,7 +119,9 @@ for i, filetype in ipairs(lsp_filetypes) do
 				if submodule ~= nil then
 					-- TODO: allow server-specific config.
 					vim.notify("lspconfig." .. submodule_name .. ".setup()", vim.log.levels.TRACE)
-					submodule.setup({})
+					submodule.setup({
+						capabilities = require("coq").lsp_ensure_capabilities({}),
+					})
 				end
 			end
 		end,
@@ -171,8 +173,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		})
 
 		require("lsp_basics").make_lsp_commands(client, bufnr)
+		require("coq").Now("-s")
 	end,
 })
+
+vim.g.coq_settings = {
+	clients = {
+		snippets = {
+			-- Disable warnings about snippets.
+			warn = { }
+		}
+	}
+}
 
 EOF
 
@@ -186,6 +198,10 @@ use {
 	end,
 	-- Setup after high priority stuff, but before lspconfig.
 	priority = 60,
+}
+use {
+	'ms-jpq/coq_nvim',
+	ft = lsp_filetypes,
 }
 use { 'nanotee/nvim-lsp-basics', lazy = true }
 use { 'weilbith/nvim-code-action-menu', lazy = true }
