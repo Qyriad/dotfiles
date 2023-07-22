@@ -88,229 +88,125 @@ endif
 
 
 lua << EOF
-function lsp_on_attach(client, bufnr)
-	vim.lsp.set_log_level("info")
+lsp_filetypes = {
+	"vim",
+	"c",
+	"cpp",
+	"python",
+	"java",
+	"html",
+}
 
-	vim.notify("Attaching!")
+lspconfig_modules = {
+	vim = "vimls",
+	c = "clangd",
+	cpp = "clangd",
+	python = "pyright",
+	java = "jdtls",
+	html = "html",
+}
 
-	local bufopts = { noremap = true, buffer = bufnr }
-
-	local mappings = {
-		{ 'gD', vim.lsp.buf.declaration },
-		{ 'gd', vim.lsp.buf.definition },
-		{ 'K',  vim.lsp.buf.hover },
-		{ '<CR>',  vim.lsp.buf.hover },
-		{ 'gi', vim.lsp.buf.implementation },
-		{ '<C-k>', vim.lsp.buf.signature_help },
-		{ '<leader>D', vim.lsp.buf.type_definition },
-		{ '<leader>a', code_action_menu.open_code_action_menu },
-		-- Diagnostics.
-		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
-		{ '[d', vim.diagnostic.goto_prev },
-		{ ']d', vim.diagnostic.goto_next },
-		{ '<leader>h', vim.lsp.buf.document_highlight },
-		{ '<leader>c', vim.lsp.buf.clear_references },
-	}
-
-	for i, item in ipairs(mappings) do
-		local keys = item[1]
-		local func = item[2]
-		--print("Mapping " .. keys)
-		vim.keymap.set('n', keys, func, bufopts)
-	end
-
-	vim.api.nvim_create_autocmd('DiagnosticChanged', {
-		buffer = bufnr,
-		callback = function()
-			vim.diagnostic.setqflist({ open = false })
+-- Create autocommands to call setup() on the corresponding module when that filetype is detected.
+for i, filetype in ipairs(lsp_filetypes) do
+	local augroup_name = "LspConfig_" .. filetype
+	local group = vim.api.nvim_create_augroup(augroup_name, {})
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = {filetype},
+		callback = function(event)
+			local submodule_name = lspconfig_modules[filetype]
+			if submodule_name ~= nil then
+				local submodule = require("lspconfig")[submodule_name]
+				if submodule ~= nil then
+					-- TODO: allow server-specific config.
+					vim.notify("lspconfig." .. submodule_name .. ".setup()", vim.log.levels.TRACE)
+					submodule.setup({})
+				end
+			end
 		end,
 	})
-
-	vim.diagnostic.config({
-		-- We are using lsp_lines for virtual text instead.
-		virtual_text = false,
-		virtual_lines = true,
-	})
-
-	lsp_basics.make_lsp_commands(client, bufnr)
 end
-EOF
 
+local augroup = vim.api.nvim_create_augroup("LspMappings", {})
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local bufnr = args.buf
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+		local bufopts = { noremap = true, buffer = bufnr }
+		local mappings = {
+			{ 'gD', vim.lsp.buf.declaration },
+			{ 'gd', vim.lsp.buf.definition },
+			{ 'K',  vim.lsp.buf.hover },
+			{ '<CR>',  vim.lsp.buf.hover },
+			{ 'gi', vim.lsp.buf.implementation },
+			{ '<C-k>', vim.lsp.buf.signature_help },
+			{ '<leader>D', vim.lsp.buf.type_definition },
+			{ '<leader>a', require("code_action_menu").open_code_action_menu },
+			-- Diagnostics.
+			{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
+			{ '[d', vim.diagnostic.goto_prev },
+			{ ']d', vim.diagnostic.goto_next },
+			{ '<leader>h', vim.lsp.buf.document_highlight },
+			{ '<leader>c', vim.lsp.buf.clear_references },
+		}
+
+
+		for i, mapspec in ipairs(mappings) do
+			local lhs = mapspec[1]
+			local func = mapspec[2]
+			vim.keymap.set("n", lhs, func, bufopts)
+		end
+
+		vim.api.nvim_create_autocmd("DiagnosticChanged", {
+			buffer = bufnr,
+			callback = function()
+				vim.diagnostic.setqflist({ open = false })
+			end,
+		})
+
+		vim.diagnostic.config({
+			-- We are using lsp_lines for virtual text instead.
+			virtual_text = false,
+			virtual_lines = true,
+		})
+
+		require("lsp_basics").make_lsp_commands(client, bufnr)
+	end,
+})
+
+EOF
 
 " cSpell: disable
 lua << EOF
---local use = packer.use
---use {
---	'neovim/nvim-lspconfig',
---	--after = {'nvim-cmp', 'cmp-nvim-lsp'},
---	config = function()
---		lspconfig = require('lspconfig')
---	end
---}
---use 'hrsh7th/cmp-nvim-lsp'
-----use 'hrsh7th/vim-vsnip'
---use {
---	'L3MON4D3/LuaSnip',
---	config = function()
---		luasnip = require('luasnip')
---	end
---}
---use {
---	'hrsh7th/nvim-cmp',
---	config = function()
---		local cmp = require('cmp')
---		local lspconfig = require('lspconfig')
---		lsps = {
---			-- rust_analyzer is setup by rust-tools.nvim.
---			'vimls',
---			'clangd',
---			'pyright',
---			'jdtls',
---			'html',
---		}
---
---		cmp.setup {
---			snippet = {
---				expand = function(args)
---					require('luasnip').lsp_expand(args.body)
---				end
---			},
---			preselect = cmp.PreselectMode.Item,
---			mapping = {
---				['<C-Space'] = cmp.mapping.complete(),
---				['<Tab>'] = cmp.mapping.select_next_item(),
---				['<S-Tab>'] = cmp.mapping.select_prev_item(),
---				['<CR>'] = cmp.mapping.confirm({ select = false }),
---			},
---			sources = cmp.config.sources {
---				{ name = 'nvim_lsp' },
---				{ name = 'buffer' },
---			},
---		}
---
---		local cap = require('cmp_nvim_lsp').default_capabilities()
---
---		-- We really, really dislike snippets.
---		cap.textDocument.completion.completionItem.snippetSupport = false
---
---		severity = {
---			"error",
---			"warn",
---			"info",
---			"info", -- Map hint to info
---		}
---
---		for i, lsp in ipairs(lsps) do
---			local lsp_name = ''
---			local lsp_args = { }
---			lsp_args.handlers = {
---				["window/showMessage"] = function(err, meth, params, client_id)
---					vim.notify(meth.message, severity[params.type])
---				end,
---			}
---			if type(lsp) == 'string' then
---				lsp_name = lsp
---				lsp_args = {
---					on_attach = lsp_on_attach,
---					capabilities = cap,
---				}
---			else
---				local array, lsp_args = separate(lsp)
---				lsp_name = array[1]
---				lsp_args.on_attach = lsp_on_attach
---				lsp_args.capabilities = cap
---			end
---			lspconfig[lsp_name].setup(lsp_args)
---		end
---	end
---}
---use {
---	'tamago324/nlsp-settings.nvim',
---	config = function()
---		require('nlspsettings').setup {
---			local_settings_dir = ".nlsp-settings",
---			local_settings_root_markers_fallback = { '.git' },
---			append_default_schemas = true,
---			loader = 'json',
---		}
---	end,
---}
-
---use 'hrsh7th/cmp-buffer'
---use 'hrsh7th/cmp-path'
---use {
---	'simrat39/rust-tools.nvim',
---	config = function()
---		rust_tools = require("rust-tools")
---		rust_tools.setup {
---			server = {
---				on_attach = lsp_on_attach,
---			},
---		}
---	end,
---}
---
---use {
---	'simrat39/symbols-outline.nvim',
---	config = function()
---		symbols_outline = require("symbols-outline")
---	end,
---}
---
---use {
---	'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
---	config = function()
---		lsp_lines = require("lsp_lines")
---		lsp_lines.setup {}
---	end,
---}
---
----- FIXME: This plugin is no longer maintained.
---use {
---	'folke/lsp-colors.nvim',
---	config = function()
---		lsp_colors = require("lsp-colors")
---	end,
---}
---
---use {
---	'folke/trouble.nvim',
---	config = function()
---		trouble = require("trouble")
---		trouble.setup {
---			icons = false,
---		}
---	end,
---}
---
---use {
---	'nanotee/nvim-lsp-basics',
---	config = function()
---		lsp_basics = require("lsp_basics")
---	end,
---}
---
---use {
---	'weilbith/nvim-code-action-menu',
---	config = function()
---		code_action_menu = require("code_action_menu")
---	end,
---}
---
---use {
---	'rcarriga/nvim-notify',
---	config = function()
---		vim.notify = require("notify")
---	end,
---}
---
---use {
---	'mrded/nvim-lsp-notify',
---	config = function()
---		lsp_notify = require("lsp-notify")
---		lsp_notify.setup {
---			stages = "slide",
---		}
---	end,
---}
+use { 'neovim/nvim-lspconfig', ft = lsp_filetypes }
+use {
+	'rcarriga/nvim-notify',
+	config = function()
+		vim.notify = require("notify")
+	end,
+	-- Setup after high priority stuff, but before lspconfig.
+	priority = 60,
+}
+use { 'nanotee/nvim-lsp-basics', lazy = true }
+use { 'weilbith/nvim-code-action-menu', lazy = true }
+use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
+use { 'simrat39/rust-tools.nvim', event = "LspAttach" }
+use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
+use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
+-- FIXME: this plugin is no longer maintained.
+use { 'folke/lsp-colors.nvim', event = "LspAttach" }
+use {
+	'folke/trouble.nvim',
+	event = "LspAttach",
+	opts = {
+		icons = false,
+	},
+}
+use {
+	'mrded/nvim-lsp-notify',
+	event = "LspAttach",
+	opts = {
+		stages = "slide",
+	},
+}
 EOF
