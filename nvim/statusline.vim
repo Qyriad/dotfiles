@@ -90,6 +90,5 @@ vim.g.lightline = {
 
 
 -- And add lightline to the plugin list while we're at it.
-local use = packer.use
 use 'itchyny/lightline.vim'
 EOF

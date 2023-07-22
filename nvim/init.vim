@@ -8,19 +8,27 @@ syntax on
 " filetype plugin indent on
 
 lua << EOF
--- Bootstrap packer.nvim if necessary.
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.cmd [[echomsg "Installing packer.nvim"]]
-	vim.fn.system {"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
-	vim.cmd [[packadd packer.nvim]]
+-- Bootstrap lazy.nvim.
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim",
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
--- And initialize it.
-packer = require("packer")
-packer.init()
-packer.reset()
-packer.use "wbthomason/packer.nvim"
+plugin_spec = {}
+post_plugin_callbacks = {}
+function use(spec)
+	table.insert(plugin_spec, spec)
+end
+function post_plugins(fn)
+	table.insert(post_plugin_callbacks, fn)
+end
 EOF
 
 runtime ftplugin/man.vim
@@ -65,7 +73,7 @@ nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
 
 
 lua << EOF
-local use = require("packer").use
+--local use = require("packer").use
 -- Text editing.
 use 'tmhedberg/SimpylFold' -- Python folds.
 use 'junegunn/vim-easy-align'
@@ -74,29 +82,18 @@ use 'junegunn/vim-easy-align'
 use 'tpope/vim-eunuch'
 use 'ctrlpvim/ctrlp.vim'
 use 'rbgrouleff/bclose.vim' -- Dependency for ranger.vim
-use 'francoiscabrol/ranger.vim'
+use {
+	'francoiscabrol/ranger.vim',
+	dependencies = { 'rbgrouleff/bclose.vim' },
+}
 use 'tpope/vim-tbone' -- :Tyank and :Tput
-use {
-	'lewis6991/gitsigns.nvim',
-	config = function()
-		gitsigns = require("gitsigns")
-		gitsigns.setup {}
-	end,
-}
-use {
-	'akinsho/git-conflict.nvim',
-	config = function()
-		git_conflict = require("git-conflict")
-		git_conflict.setup()
-	end,
-}
+use 'lewis6991/gitsigns.nvim'
+use 'akinsho/git-conflict.nvim'
 use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
 use 'gennaro-tedesco/nvim-peekup'
 use 'AndrewRadev/bufferize.vim'
 use 'windwp/nvim-projectconfig'
-projectconfig = require('nvim-projectconfig')
-projectconfig.setup()
 
 -- Display.
 use 'dhruvasagar/vim-zoom' -- <C-w>m
@@ -104,6 +101,14 @@ use 'dhruvasagar/vim-zoom' -- <C-w>m
 --use 'Konfekt/vim-alias'
 --use 'Shougo/echodoc.vim' " Displays function signatures from completions
 --use 'thinca/vim-ft-vim_fold'
+
+lazy = require('lazy')
+lazy.setup(plugin_spec, {
+	install = {
+		missing = true, -- Default
+		colorscheme = { "solorized8_grey" },
+	},
+})
 
 EOF
 

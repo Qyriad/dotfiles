@@ -17,8 +17,16 @@ augroup END
 
 
 lua << EOF
-local use = packer.use
-use { "lifepillar/vim-solarized8", config = function() vim.cmd("colorscheme solarized8_grey") end }
+use {
+	"lifepillar/vim-solarized8",
+	--config = ":colorscheme solarized8_grey",
+	config = function()
+		vim.cmd("colorscheme solarized8_grey")
+	end,
+	lazy = false,
+	priority = 100,
+}
 use "gko/vim-coloresque"
 use "luochen1990/rainbow"
 EOF
+

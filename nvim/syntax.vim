@@ -71,45 +71,35 @@ augroup winenter_whitespaceeol
 augroup END
 
 lua << EOF
-local use = packer.use
-use 'Shirk/vim-gas'
-use 'neoclide/jsonc.vim'
+use { 'Shirk/vim-gas', ft = "gas" }
+use { 'neoclide/jsonc.vim', ft = "jsonc" }
 use { 'cespare/vim-toml', branch = 'main' }
-use 'leafgarland/typescript-vim'
-use 'rust-lang/rust.vim'
-use 'vim-python/python-syntax'
+use { 'leafgarland/typescript-vim', ft = "typescript" }
+use { 'rust-lang/rust.vim', ft = "rust" }
+use {
+	'vim-python/python-syntax',
+	ft = {"python", "xonsh"},
+}
 --use 'Glench/Vim-Jinja2-Syntax'
-use 'mitsuhiko/vim-jinja'
-use 'Firef0x/PKGBUILD.vim'
-use 'chikamichi/mediawiki.vim'
-use 'dzeban/vim-log-syntax'
+--use 'mitsuhiko/vim-jinja'
+use { 'Firef0x/PKGBUILD.vim', ft = "PKGBUILD" }
+use { 'chikamichi/mediawiki.vim', ft = "mediawiki" }
+use { 'dzeban/vim-log-syntax', ft = "log" }
 -- use "meatballs/vim-xonsh"
-use 'linkinpark342/xonsh-vim'
-use 'terminalnode/sway-vim-syntax'
-use 'peterhoeg/vim-qml'
-use 'LnL7/vim-nix'
-use 'nickel-lang/vim-nickel'
+use { 'linkinpark342/xonsh-vim', ft = "xonsh" }
+use { 'terminalnode/sway-vim-syntax', ft = "swayconfig" }
+use { 'peterhoeg/vim-qml', ft = "qml" }
+use { 'LnL7/vim-nix', ft = "nix" }
+use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use {
 	'nvim-treesitter/nvim-treesitter',
-	-- Equivalent to `run = ':TSUpdate'` but doesn't fail if the command doesn't exist yet.
-	run = function()
-		local ts_update = require('nvim-treesitter.install').update {
-			with_sync = true,
-		}
-	end,
+	build = ":TSUpdate",
 	config = function()
 		treesitter = require('nvim-treesitter')
 		treesitter.configs = require('nvim-treesitter.configs')
 		treesitter.configs.setup(treesitter_configs_setup)
-	end
-}
--- Justfile syntax.
-use {
-	'IndianBoy42/tree-sitter-just',
-	config = function()
-		treesitter_just = require("tree-sitter-just")
-		treesitter_just.setup { }
 	end,
 }
+use { 'IndianBoy42/tree-sitter-just', ft = "just" }
 use 'nvim-treesitter/nvim-treesitter-context'
 EOF

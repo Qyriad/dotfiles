@@ -110,6 +110,7 @@ augroup c_ft_headers
 	autocmd FileType c set filetype=c.doxygen
 augroup END
 
+" FIXME: migrate to ftdetect.
 augroup gas_ft
 	autocmd! BufRead,BufNewFile *.S set filetype=gas
 augroup END
@@ -309,26 +310,28 @@ nnoremap <leader>* <Cmd>let @/ = '\<' . expand("<cword>") . '\>' \| set hlsearch
 
 
 lua << EOF
-local use = packer.use
 use 'tpope/vim-surround'
 use 'justinmk/vim-sneak'
 use {
 	'numToStr/Comment.nvim',
-	config = function()
-		Comment = require("Comment")
-		Comment.setup {
-			-- Don't add a space for commented-out lines.
-			padding = false,
-			toggler = {
-				line = "<leader>cc",
-				block = "<leader>bc",
-			},
-			opleader = {
-				line = "<leader>cc",
-				block = "<leader>bc",
-			}
-		}
-	end,
+	opts = {
+		-- Don't add a space for commented-out lines.
+		padding = false,
+		toggler = {
+			line = "<leader>cc",
+			block = "<leader>bc",
+		},
+		opleader = {
+			line = "<leader>cc",
+			block = "<leader>bc",
+		},
+	},
+	keys = {
+		{ "<leader>cc" },
+		{ "<leader>bc" },
+		{ "<leader>cc", mode = "v" },
+		{ "<leader>bc", mode = "v" },
+	},
 }
 use 'vim-scripts/vis' -- Block selection range commands.
 use 'editorconfig/editorconfig-vim'
