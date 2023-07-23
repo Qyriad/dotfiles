@@ -21,4 +21,5 @@ highlight LineNR ctermfg=11 guibg=#212728
 highlight Constant ctermfg=37 guifg=#2aa1bb
 highlight String ctermfg=37 guifg=#2aa198
 
-"highlight link CocMenuSel PmenuSel
+" Make doc-comments be highlighted specially again.
+highlight link @lsp.mod.documentation SpecialComment
