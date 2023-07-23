@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			{ 'K',  vim.lsp.buf.hover },
 			{ '<CR>',  vim.lsp.buf.hover },
 			{ 'gi', vim.lsp.buf.implementation },
-			{ '<C-k>', vim.lsp.buf.signature_help },
+			{ '<C-k>', vim.lsp.buf.signature_help, "i" },
 			{ '<leader>D', vim.lsp.buf.type_definition },
 			{ '<leader>a', require("code_action_menu").open_code_action_menu },
 			-- Diagnostics.
@@ -158,7 +158,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		for i, mapspec in ipairs(mappings) do
 			local lhs = mapspec[1]
 			local func = mapspec[2]
-			vim.keymap.set("n", lhs, func, bufopts)
+			local mode = mapspec[3] or "n"
+			vim.keymap.set(mode, lhs, func, bufopts)
 		end
 
 		vim.api.nvim_create_autocmd("DiagnosticChanged", {
