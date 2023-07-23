@@ -13,49 +13,7 @@ function! CheckBackspace() abort
 endfunction
 
 set completeopt=menu,menuone,preview,noselect,noinsert
-" Close the popup menu with <Esc>.
-"inoremap <expr> <Esc> coc#pum#visible() ? "\<C-e>" : "\<Esc>"
-" Accept the selected completion with <CR>.
-"inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-" Select the next completion with <Tab>.
-"inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
 
-" Select the previous completion with <S-Tab>
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" <C-Space> to force open the completion menu.
-"inoremap <silent><expr> <C-Space> coc#refresh()
-
-
-" Non-completion LSP mappings.
-"nnoremap <silent> <Return> <Cmd>call CocActionAsync('doHover')<CR>
-"nmap <A-Return> <Plug>(coc-definition)
-"nmap <A-]> <Plug>(coc-type-definition)
-"nmap <A-t> <Plug>(coc-type-definition)
-"nmap <A-[> <Plug>(coc-references)
-"nmap <A-r> <Plug>(coc-references)
-
-"xmap if <Plug>(coc-funcobj-i)
-"omap if <Plug>(coc-funcobj-i)
-"xmap af <Plug>(coc-funcobj-a)
-"omap af <Plug>(coc-funcobj-a)
-"xmap ic <Plug>(coc-classobj-i)
-"omap ic <Plug>(coc-classobj-i)
-"xmap ac <Plug>(coc-classobj-a)
-"omap ac <Plug>(coc-classobj-a)
-
-"nmap [d <Plug>(coc-diagnostic-prev)
-"nmap ]d <Plug>(coc-diagnostic-next)
-"nmap gds <Plug>(coc-diagnostic-info)
-
-"nmap <leader>gcl <Plug>(coc-codelens-action)
-"nmap <leader>a <Plug>(coc-codeaction-cursor)
-
-"vmap <leader>p  <Plug>(coc-format-selected)
-
-"nnoremap <M-p> <Cmd>:CocList commands<CR>
-"nnoremap <F5> <Cmd>:CocList<CR>
 nnoremap <F3> <Cmd>:CtrlPLine<CR>
 nnoremap <F4> <Cmd>:CtrlP<CR>
 nnoremap <F6> <Cmd>:CtrlPBuffer<CR>
@@ -64,21 +22,7 @@ nnoremap <leader><BS> <Cmd>:pclose<CR>
 nnoremap <leader>xx :Trouble <C-i>
 nnoremap <leader>xc <Cmd>TroubleToggle<CR>
 
-"command! CocFloatHide call coc#float#close_all()
-"inoremap <C-l> <Cmd>call coc#float#close_all()<CR>
-"nnoremap <leader><C-l> <Cmd>call coc#float#close_all()<CR>
-"nnoremap <leader><esc> <Cmd>CocFloatHide<CR>
-"inoremap <leader><esc> <Cmd>CocFloatHide<CR>
-
-
 " LSP-related highlights.
-" These must be after the `:colorscheme` call in syntax.vim.
-highlight! link CocSemComment SpecialComment
-highlight! link CocMenuSel PmenuSel
-"highlight link ALEErrorSign Error
-"highlight link ALEWarningSign Todo
-"highlight CocRustChainingHint guifg=grey
-
 highlight! NotifyBackground guibg=#1b1b1b
 
 

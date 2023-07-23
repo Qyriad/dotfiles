@@ -73,7 +73,6 @@ nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
 
 
 lua << EOF
---local use = require("packer").use
 -- Text editing.
 use 'tmhedberg/SimpylFold' -- Python folds.
 use 'junegunn/vim-easy-align'
@@ -99,7 +98,6 @@ use 'windwp/nvim-projectconfig'
 use 'dhruvasagar/vim-zoom' -- <C-w>m
 
 --use 'Konfekt/vim-alias'
---use 'Shougo/echodoc.vim' " Displays function signatures from completions
 --use 'thinca/vim-ft-vim_fold'
 
 lazy = require('lazy')
