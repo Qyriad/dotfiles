@@ -92,6 +92,7 @@ lsp_filetypes = {
 	"vim",
 	"c",
 	"cpp",
+	"rust",
 	"python",
 	"java",
 	"html",
@@ -130,6 +131,7 @@ end
 
 local augroup = vim.api.nvim_create_augroup("LspMappings", {})
 vim.api.nvim_create_autocmd("LspAttach", {
+	group = augroup,
 	callback = function(args)
 		local bufnr = args.buf
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -206,7 +208,13 @@ use {
 use { 'nanotee/nvim-lsp-basics', lazy = true }
 use { 'weilbith/nvim-code-action-menu', lazy = true }
 use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
-use { 'simrat39/rust-tools.nvim', event = "LspAttach" }
+use {
+	'simrat39/rust-tools.nvim',
+	ft = "rust",
+	opts = {
+		cmd = { "rust_analyzer" },
+	},
+}
 use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
 use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
 -- FIXME: this plugin is no longer maintained.
