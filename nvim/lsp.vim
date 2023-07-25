@@ -120,7 +120,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		})
 
 		require("lsp_basics").make_lsp_commands(client, bufnr)
-		require("coq").Now("-s")
+		if vim.g.loaded_coq ~= true then
+			require("coq").Now("-s")
+			vim.g.loaded_coq = true
+		end
 	end,
 })
 
