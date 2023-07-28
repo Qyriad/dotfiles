@@ -100,6 +100,10 @@ use {
 		treesitter.configs.setup(treesitter_configs_setup)
 	end,
 }
-use { 'IndianBoy42/tree-sitter-just', ft = "just" }
+use {
+	'IndianBoy42/tree-sitter-just',
+	ft = "just",
+	opts = {},
+}
 use 'nvim-treesitter/nvim-treesitter-context'
 EOF
