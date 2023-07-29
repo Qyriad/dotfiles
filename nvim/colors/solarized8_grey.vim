@@ -23,3 +23,6 @@ highlight String ctermfg=37 guifg=#2aa198
 
 " Make doc-comments be highlighted specially again.
 highlight link @lsp.mod.documentation SpecialComment
+highlight link @comment.documentation SpecialComment
+
+highlight link @lsp.type.typeAlias Typedef
