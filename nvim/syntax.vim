@@ -60,6 +60,7 @@ treesitter_configs_setup = {
 	indent = {
 		enable = false,
 	},
+	context_commentstring = true,
 }
 EOF
 
@@ -93,7 +94,11 @@ use { 'LnL7/vim-nix', ft = "nix" }
 use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use {
 	'nvim-treesitter/nvim-treesitter',
+	lazy = false,
 	build = ":TSUpdate",
+	dependencies = {
+		'JoosepAlviste/nvim-ts-context-commentstring',
+	},
 	config = function()
 		treesitter = require('nvim-treesitter')
 		treesitter.configs = require('nvim-treesitter.configs')
@@ -105,5 +110,13 @@ use {
 	ft = "just",
 	opts = {},
 }
-use 'nvim-treesitter/nvim-treesitter-context'
+use {
+	'nvim-treesitter/nvim-treesitter-context',
+	lazy = false,
+}
+use {
+	'JoosepAlviste/nvim-ts-context-commentstring',
+	lazy = false,
+}
+
 EOF
