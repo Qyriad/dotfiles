@@ -118,5 +118,15 @@ use {
 	'JoosepAlviste/nvim-ts-context-commentstring',
 	lazy = false,
 }
+use {
+	'phelipetls/jsonpath.nvim',
+	ft = {"json"},
+	config = function()
+		jsonpath = require("jsonpath")
+		-- FIXME: we're planning on switching statusline plugins;
+		-- we'll setup how we do winbar stuff properly then.
+		vim.opt_local.winbar = "%#jsonKeyword#%{%v:lua.jsonpath.get()%}"
+	end,
+}
 
 EOF
