@@ -1,12 +1,5 @@
 scriptencoding utf-8
 
-syntax on
-
-" This will be enabled automatically after initialization scripts run
-" enabling it early will load syntax definitions too soon
-" syntax on
-" filetype plugin indent on
-
 lua << EOF
 -- Bootstrap lazy.nvim.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -86,8 +79,14 @@ use {
 	dependencies = { 'rbgrouleff/bclose.vim' },
 }
 use 'tpope/vim-tbone' -- :Tyank and :Tput
-use 'lewis6991/gitsigns.nvim'
-use 'akinsho/git-conflict.nvim'
+use {
+	'lewis6991/gitsigns.nvim',
+	opts = {}
+}
+use {
+	'akinsho/git-conflict.nvim',
+	opts = {},
+}
 use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
 use 'gennaro-tedesco/nvim-peekup'

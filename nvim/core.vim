@@ -5,11 +5,6 @@
 
 scriptencoding utf-8
 
-" This will be enabled automatically after initialization scripts run
-" enabling it early will load syntax definitions too soon
-" syntax on
-" filetype plugin indent on
-
 """ Options
 set number " Show line numbers.
 set modeline " Allow vim commands in text file comments.
