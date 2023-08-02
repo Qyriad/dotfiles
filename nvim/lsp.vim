@@ -38,8 +38,11 @@ lsp_filetypes = {
 	"cpp",
 	"rust",
 	"python",
+	"swift",
 	"java",
 	"html",
+	"javascript",
+	"typescript",
 }
 
 lspconfig_modules = {
@@ -49,6 +52,9 @@ lspconfig_modules = {
 	python = "pyright",
 	java = "jdtls",
 	html = "html",
+	swift = "sourcekit",
+	javascript = "tsserver",
+	typescript = "tsserver",
 }
 
 -- Create autocommands to call setup() on the corresponding module when that filetype is detected.
