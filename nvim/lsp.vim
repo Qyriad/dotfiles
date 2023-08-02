@@ -138,8 +138,14 @@ vim.g.coq_settings = {
 		snippets = {
 			-- Disable warnings about snippets.
 			warn = { }
-		}
-	}
+		},
+		buffers = {
+			enabled = false,
+		},
+		tmux = {
+			enabled = false,
+		},
+	},
 }
 
 EOF
