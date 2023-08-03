@@ -79,57 +79,71 @@ for i, filetype in ipairs(lsp_filetypes) do
 	})
 end
 
+function on_lsp_attach(bufnr, client_id)
+	--local bufnr = args.buf
+	local client = vim.lsp.get_client_by_id(client_id)
+
+	local bufopts = { noremap = true, buffer = bufnr }
+	local mappings = {
+		{ 'gD', vim.lsp.buf.declaration },
+		{ 'gd', vim.lsp.buf.definition },
+		{ 'K',  vim.lsp.buf.hover },
+		{ '<CR>',  vim.lsp.buf.hover },
+		{ 'gi', vim.lsp.buf.implementation },
+		{ '<C-k>', vim.lsp.buf.signature_help, "i" },
+		{ '<leader>D', vim.lsp.buf.type_definition },
+		{ '<leader>a', require("code_action_menu").open_code_action_menu },
+		-- Diagnostics.
+		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
+		{ '[d', vim.diagnostic.goto_prev },
+		{ ']d', vim.diagnostic.goto_next },
+		{ '<leader>h', vim.lsp.buf.document_highlight },
+		{ '<leader>c', vim.lsp.buf.clear_references },
+	}
+
+
+	for i, mapspec in ipairs(mappings) do
+		local lhs = mapspec[1]
+		local func = mapspec[2]
+		local mode = mapspec[3] or "n"
+		vim.keymap.set(mode, lhs, func, bufopts)
+	end
+
+	if client.name == "clangd" then
+		vim.keymap.set("n", "<leader>sh", vim.cmd.ClangdSwitchSourceHeader)
+	end
+
+	vim.api.nvim_create_autocmd("DiagnosticChanged", {
+		buffer = bufnr,
+		callback = function()
+			vim.diagnostic.setqflist({ open = false })
+		end,
+	})
+
+	vim.diagnostic.config({
+		-- We are using lsp_lines for virtual text instead.
+		virtual_text = false,
+		virtual_lines = true,
+	})
+
+	require("lsp_basics").make_lsp_commands(client, bufnr)
+	if vim.g.loaded_coq ~= true then
+		require("coq").Now("-s")
+		vim.g.loaded_coq = true
+	end
+
+	-- Make `vim.lsp.log` available for our convenience.
+	if vim.lsp.log == nil then
+		vim.lsp.log = require("vim.lsp.log")
+	end
+
+end
+
 local augroup = vim.api.nvim_create_augroup("LspMappings", {})
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = augroup,
 	callback = function(args)
-		local bufnr = args.buf
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-		local bufopts = { noremap = true, buffer = bufnr }
-		local mappings = {
-			{ 'gD', vim.lsp.buf.declaration },
-			{ 'gd', vim.lsp.buf.definition },
-			{ 'K',  vim.lsp.buf.hover },
-			{ '<CR>',  vim.lsp.buf.hover },
-			{ 'gi', vim.lsp.buf.implementation },
-			{ '<C-k>', vim.lsp.buf.signature_help, "i" },
-			{ '<leader>D', vim.lsp.buf.type_definition },
-			{ '<leader>a', require("code_action_menu").open_code_action_menu },
-			-- Diagnostics.
-			{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
-			{ '[d', vim.diagnostic.goto_prev },
-			{ ']d', vim.diagnostic.goto_next },
-			{ '<leader>h', vim.lsp.buf.document_highlight },
-			{ '<leader>c', vim.lsp.buf.clear_references },
-		}
-
-
-		for i, mapspec in ipairs(mappings) do
-			local lhs = mapspec[1]
-			local func = mapspec[2]
-			local mode = mapspec[3] or "n"
-			vim.keymap.set(mode, lhs, func, bufopts)
-		end
-
-		vim.api.nvim_create_autocmd("DiagnosticChanged", {
-			buffer = bufnr,
-			callback = function()
-				vim.diagnostic.setqflist({ open = false })
-			end,
-		})
-
-		vim.diagnostic.config({
-			-- We are using lsp_lines for virtual text instead.
-			virtual_text = false,
-			virtual_lines = true,
-		})
-
-		require("lsp_basics").make_lsp_commands(client, bufnr)
-		if vim.g.loaded_coq ~= true then
-			require("coq").Now("-s")
-			vim.g.loaded_coq = true
-		end
+		on_lsp_attach(args.buf, args.data.client_id)
 	end,
 })
 
