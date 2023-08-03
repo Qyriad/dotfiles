@@ -21,6 +21,7 @@ set sidescrolloff=2 " Keep 2 characters between the current column and the scree
 set mouse=n " Enable the mouse in normal mode.
 " This is how many characters I can fit on one line if I have a vertical split.
 set colorcolumn=115
+set cursorline " Highlight the line our cursor is on.
 set signcolumn=number " Show signs in the number column.
 set textwidth=120 " Wrap text at 120 chracters by default.
 set wrap " Visually wrap lines.
