@@ -63,6 +63,8 @@ for i, filetype in ipairs(lsp_filetypes) do
 	local group = vim.api.nvim_create_augroup(augroup_name, {})
 	vim.api.nvim_create_autocmd("FileType", {
 		pattern = {filetype},
+		desc = "Autocommand for LSP config for " .. filetype,
+		once = true,
 		callback = function(event)
 			local submodule_name = lspconfig_modules[filetype]
 			if submodule_name ~= nil then

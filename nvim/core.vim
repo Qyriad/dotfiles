@@ -100,11 +100,7 @@ augroup END
 
 """ Filetype overrides.
 
-augroup c_ft_headers
-	autocmd!
-	autocmd BufRead,BufNewFile *.h set filetype=c.doxygen
-	autocmd FileType c set filetype=c.doxygen
-augroup END
+let g:c_syntax_for_h = 1
 
 " FIXME: migrate to ftdetect.
 augroup gas_ft
