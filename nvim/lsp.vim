@@ -161,6 +161,9 @@ vim.g.coq_settings = {
 		tmux = {
 			enabled = false,
 		},
+		tags = {
+			enabled = false,
+		},
 	},
 }
 
