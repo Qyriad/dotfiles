@@ -45,6 +45,15 @@ lsp_filetypes = {
 	"typescript",
 }
 
+lsp_opts = {
+	clangd = {
+		cmd = {
+			"clangd",
+			"--query-driver=" .. vim.fn.exepath("arm-none-eabi-gcc"),
+		},
+	}
+}
+
 lspconfig_modules = {
 	vim = "vimls",
 	c = "clangd",
@@ -72,9 +81,9 @@ for i, filetype in ipairs(lsp_filetypes) do
 				if submodule ~= nil then
 					-- TODO: allow server-specific config.
 					vim.notify("lspconfig." .. submodule_name .. ".setup()", vim.log.levels.TRACE)
-					submodule.setup({
-						capabilities = require("coq").lsp_ensure_capabilities({}),
-					})
+					opts = lsp_opts[submodule_name]
+					opts.capabilities = require("coq").lsp_ensure_capabilities({})
+					submodule.setup(opts)
 				end
 			end
 		end,
