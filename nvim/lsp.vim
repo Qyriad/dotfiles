@@ -168,6 +168,36 @@ vim.g.coq_settings = {
 	},
 }
 
+function client_by_name(name)
+	if type(name) ~= "string" then
+		error("client_by_name(name): name must be a string")
+	end
+
+	for _i, client in ipairs(vim.lsp.get_active_clients()) do
+		if client.name == name then
+			return client
+		end
+	end
+end
+
+function lsp_active_client_names()
+	names = {}
+	for _i, client in ipairs(vim.lsp.get_active_clients()) do
+		table.insert(names, client.name)
+	end
+	return names
+end
+
+vim.api.nvim_create_user_command(
+	"LspAttachClient",
+	function(args)
+		vim.lsp.buf_attach_client(0, client_by_name(args.args).id)
+	end,
+	{
+		nargs = 1,
+	}
+)
+
 EOF
 
 " cSpell: disable
