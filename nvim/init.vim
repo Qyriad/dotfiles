@@ -120,6 +120,13 @@ use {
 -- Display.
 use 'dhruvasagar/vim-zoom' -- <C-w>m
 
+-- We don't really like the icons but we're getting tired of plugin stuff just showing question marks
+-- and we don't want to worry about overriding it all right now.
+use {
+	'nvim-tree/nvim-web-devicons',
+	opts = {},
+}
+
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
 

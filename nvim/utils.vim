@@ -32,6 +32,13 @@ function separate(value)
 
 	return array, map
 end
+
+-- Calls telescope.builtin.diagnostics with our preferred options.
+function telescope_diagnostics()
+	return telescope.builtin.diagnostics {
+		bufnr = 0,
+	}
+end
 EOF
 
 

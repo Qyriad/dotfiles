@@ -82,7 +82,6 @@ for i, filetype in ipairs(lsp_filetypes) do
 end
 
 function on_lsp_attach(bufnr, client_id)
-	--local bufnr = args.buf
 	local client = vim.lsp.get_client_by_id(client_id)
 
 	local bufopts = { noremap = true, buffer = bufnr }
