@@ -86,6 +86,9 @@ for i, filetype in ipairs(lsp_filetypes) do
 					submodule.setup(opts)
 				end
 			end
+
+			-- Now that our LSP setup is done, run the autostart detection code.
+			lspconfig.clangd.manager.try_add(event.buffer)
 		end,
 	})
 end
@@ -211,7 +214,13 @@ EOF
 
 " cSpell: disable
 lua << EOF
-use { 'neovim/nvim-lspconfig', ft = lsp_filetypes }
+use {
+	'neovim/nvim-lspconfig',
+	ft = lsp_filetypes,
+	config = function()
+		lspconfig = require("lspconfig")
+	end,
+}
 use {
 	'rcarriga/nvim-notify',
 	config = function()
