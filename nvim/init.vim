@@ -102,6 +102,18 @@ use {
 		telescope = require("telescope")
 		telescope.setup {}
 		telescope.builtin = require("telescope.builtin")
+
+		local mappings = {
+			{ "<leader>tg", telescope.builtin.git_files },
+			{ "<leader>tb", telescope.builtin.buffers },
+			{ "<leader>tm", telescope.builtin.marks }, -- Let's see if we use this one.
+		}
+
+		for _i, mapspec in ipairs(mappings) do
+			local lhs = mapspec[1]
+			local func = mapspec[2]
+			vim.keymap.set("n", lhs, func, { noremap = true })
+		end
 	end,
 }
 
