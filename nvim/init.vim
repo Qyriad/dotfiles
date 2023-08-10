@@ -72,7 +72,6 @@ use 'junegunn/vim-easy-align'
 
 -- Utilities.
 use 'tpope/vim-eunuch'
-use 'ctrlpvim/ctrlp.vim'
 use 'rbgrouleff/bclose.vim' -- Dependency for ranger.vim
 use {
 	'francoiscabrol/ranger.vim',
@@ -92,6 +91,19 @@ use 'tpope/vim-abolish'
 use 'gennaro-tedesco/nvim-peekup'
 use 'AndrewRadev/bufferize.vim'
 use 'windwp/nvim-projectconfig'
+
+-- Pickers
+use 'ctrlpvim/ctrlp.vim'
+use 'nvim-lua/plenary.nvim' -- Dependency for telescope.
+use {
+	'nvim-telescope/telescope.nvim',
+	dependencies = { 'nvim-lua/plenary.nvim' },
+	config = function()
+		telescope = require("telescope")
+		telescope.setup {}
+		telescope.builtin = require("telescope.builtin")
+	end,
+}
 
 -- Display.
 use 'dhruvasagar/vim-zoom' -- <C-w>m

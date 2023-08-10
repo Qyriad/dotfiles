@@ -88,12 +88,12 @@ function on_lsp_attach(bufnr, client_id)
 	local bufopts = { noremap = true, buffer = bufnr }
 	local mappings = {
 		{ 'gD', vim.lsp.buf.declaration },
-		{ 'gd', vim.lsp.buf.definition },
+		{ 'gd', telescope.builtin.lsp_definitions },
 		{ 'K',  vim.lsp.buf.hover },
 		{ '<CR>',  vim.lsp.buf.hover },
-		{ 'gi', vim.lsp.buf.implementation },
+		{ 'gi', telescope.builtin.lsp_implementations },
 		{ '<C-k>', vim.lsp.buf.signature_help, "i" },
-		{ '<leader>D', vim.lsp.buf.type_definition },
+		{ '<leader>D', telescope.builtin.lsp_type_definitions },
 		{ '<leader>a', require("code_action_menu").open_code_action_menu },
 		-- Diagnostics.
 		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
