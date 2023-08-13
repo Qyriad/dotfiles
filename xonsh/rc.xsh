@@ -97,9 +97,8 @@ aliases['rip'] = 'rip --seance'
 edit = lambda path : $EDITOR + ' ' + str(path)
 # "Edit tmux"
 aliases['et'] = edit(p'~/.config/tmux/tmux.conf')
-nvim_paths = ['init.vim', 'core.vim', 'utils.vim', 'syntax.vim', 'highlight.vim', 'lsp.vim', 'statusline.vim']
 # "Edit vim"
-aliases['ev'] = $EDITOR + ' -p ' + (' '.join($HOME + '/.config/nvim/' + path for path in nvim_paths))
+aliases['ev'] = f"{$EDITOR} -S ~/.config/Session-nvim.vim"
 # "Edit alacritty"
 aliases['ea'] = edit(p'~/.config/alacritty/alacritty.yml')
 # "Edit xonsh"
