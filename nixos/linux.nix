@@ -34,6 +34,11 @@
     shell = pkgs.zsh;
   };
 
+  nix.settings.trusted-users = [
+    "root"
+    "qyriad"
+  ];
+
   programs.zsh.enable = true;
 
   programs.gnupg.agent = {
