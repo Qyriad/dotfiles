@@ -107,6 +107,8 @@ aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
 aliases['ew'] = f"{$EDITOR} -O ~/.config/wezterm/wezterm.lua ~/.config/wezterm/utils.lua"
 # "Source xonsh"
 aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
+# "Edit Nix"
+aliases['en'] = f"{$EDITOR} -S ~/.config/Session-nix.vim"
 
 aliases['yt-dlp'] = 'yt-dlp --compat-options filename,format-spec,multistreams'
 
