@@ -14,11 +14,20 @@ in {
   # Yes this says xserver. Yes this we're using Wayland. That's correct.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma desktop environment, with systemd integration.
+  # Use a Wayland KDE Plasma desktop environment, with systemd integration.
   services.xserver = {
+
     displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
-    desktopManager.plasma5.runUsingSystemd = true;
+    displayManager = {
+      sddm.enable = true;
+      defaultSession = "plasmawayland";
+    }
+
+    desktopManager = {
+      plasma5.enable = true;
+      plasma5.runUsingSystemd = true;
+      defaultSession = "plasmawayland";
+    };
   };
 
   # Enable sound with Pipewire.
