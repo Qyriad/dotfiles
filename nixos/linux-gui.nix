@@ -48,6 +48,7 @@ in {
     wl-clipboard
     ksshaskpass
     opera
+    firefox
     obsidian
     discord
     calibre
