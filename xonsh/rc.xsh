@@ -415,7 +415,7 @@ class NixWith:
 	def __call__(self, args: list[str]):
 		args, rest = self.parser.parse_known_args(args)
 		packages = [f"nixpkgs#{pkg}" for pkg in args.packages.split()]
-		command = ["nix", "shell", *self.defaults, *packages, *rest]
+		command = ["nix", "shell", *packages, *rest, *self.defaults]
 		print(shlex.join(command))
 		return ![@(command)]
 
