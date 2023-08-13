@@ -1,6 +1,6 @@
 #$SHELL = "xonsh"
 
-import os, sys, json, struct, re
+import os, sys, json, struct, re, shlex
 from datetime import datetime, timedelta
 import zoneinfo
 from zoneinfo import ZoneInfo
@@ -403,7 +403,23 @@ def _detach_kernel_drivers(dev):
 
 aliases['detach-kernel-drivers'] = _detach_kernel_drivers
 
+class NixWith:
+	def __init__(self):
+		import argparse
+		self.parser = argparse.ArgumentParser("nix-with")
+		self.parser.add_argument("packages", type=str)
+		self.defaults = "--log-format bar-with-logs --verbose --command xonsh".split()
 
+		del argparse
+
+	def __call__(self, args: list[str]):
+		args, rest = self.parser.parse_known_args(args)
+		packages = [f"nixpkgs#{pkg}" for pkg in args.packages.split()]
+		command = ["nix", "shell", *self.defaults, *packages, *rest]
+		print(shlex.join(command))
+		return ![@(command)]
+
+aliases["nix-with"] = NixWith()
 
 envs_pattern = re.compile(r"\$(.+?)\b")
 def envs(s: str):
