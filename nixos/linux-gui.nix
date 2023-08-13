@@ -54,10 +54,15 @@ in {
     calibre
   ];
 
-  # The terminal font we use.
+  # Setup the terminal font we use.
   fonts.fonts = [
     nerdFonts
   ];
+  fonts.fontconfig.defaultFonts.monospace = [
+    "InconsolataGo Nerd Font Mono"
+  ];
+
+
   # Enable reasonable default fonts for unicode and emoji.
   fonts.enableDefaultFonts = true;
 }
