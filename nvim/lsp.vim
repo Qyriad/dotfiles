@@ -81,14 +81,14 @@ for i, filetype in ipairs(lsp_filetypes) do
 				if submodule ~= nil then
 					-- TODO: allow server-specific config.
 					vim.notify("lspconfig." .. submodule_name .. ".setup()", vim.log.levels.TRACE)
-					opts = lsp_opts[submodule_name]
+					local opts = lsp_opts[submodule_name] or {}
 					opts.capabilities = require("coq").lsp_ensure_capabilities({})
 					submodule.setup(opts)
 				end
 			end
 
 			-- Now that our LSP setup is done, run the autostart detection code.
-			lspconfig.clangd.manager.try_add(event.buffer)
+			lspconfig[submodule_name].manager.try_add(event.buffer)
 		end,
 	})
 end
