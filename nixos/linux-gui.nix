@@ -49,6 +49,9 @@ in {
 
   programs.gnupg.agent.pinentryFlavor = "qt";
 
+  # Enable udisks2.
+  services.udisks2.enable = true;
+
   environment.systemPackages = with pkgs; [
     alacritty
     mpv
