@@ -17,16 +17,14 @@ in {
   # Use a Wayland KDE Plasma desktop environment, with systemd integration.
   services.xserver = {
 
-    displayManager.sddm.enable = true;
     displayManager = {
       sddm.enable = true;
       defaultSession = "plasmawayland";
-    }
+    };
 
     desktopManager = {
       plasma5.enable = true;
       plasma5.runUsingSystemd = true;
-      defaultSession = "plasmawayland";
     };
   };
 
