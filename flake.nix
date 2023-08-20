@@ -19,5 +19,14 @@
       ];
     };
     nixosConfigurations.Futaba = nixosConfigurations.futaba;
+
+    nixosConfigurations.yuki = nixpkgs.lib.nixosSystem {
+      specialArgs.inputs = inputs;
+      system = "x86_64-linux";
+      modules = [
+        ./nixos/yuki.nix
+      ];
+    };
+    nixosConfigurations.Yuki = nixosConfigurations.yuki;
   };
 }
