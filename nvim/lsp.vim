@@ -106,7 +106,8 @@ function on_lsp_attach(bufnr, client_id)
 		{ '<C-k>', vim.lsp.buf.signature_help, "i" },
 		{ '<leader>D', telescope.builtin.lsp_type_definitions },
 		{ '<leader>a', require("code_action_menu").open_code_action_menu },
-		{ '<leader>ts', telescope.builtin.lsp_dynamic_workspace_symbols },
+		-- tw for "telescope workspace"
+		{ '<leader>tw', telescope.builtin.lsp_dynamic_workspace_symbols },
 		-- Diagnostics.
 		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
 		{ '<leader>td', telescope_diagnostics },
