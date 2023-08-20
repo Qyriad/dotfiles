@@ -64,7 +64,8 @@ $NETCTL_EDITOR = $EDITOR
 
 # Make stuff follow XDG.
 if sys.platform != 'darwin':
-	$XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
+	#$XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
+	$XDG_RUNTIME_DIR = f"/run/user/{os.getuid()}"
 	$TMUX_TMPDIR = $XDG_RUNTIME_DIR
 
 $CARGO_HOME = $XDG_DATA_HOME + '/cargo'
