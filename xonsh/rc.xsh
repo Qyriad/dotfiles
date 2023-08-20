@@ -193,6 +193,7 @@ aliases['rclone'] = 'rclone -P'
 aliases['pgrep'] = 'pgrep -l -i'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
 aliases['userctl'] = 'systemctl --user'
+aliases["busctl"] = ["busctl", "--full", "--verbose"]
 aliases['ins'] = 'insect'
 
 
