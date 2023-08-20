@@ -495,14 +495,20 @@ class ToZone:
 
 zone = ToZone
 
+#$LIB = EnvPath([
+#	'/home/qyriad/.local/opt/xwin/crt/lib/x64/',
+#	'/home/qyriad/.local/opt/xwin/sdk/Lib/ucrt/x64',
+#	'/home/qyriad/.local/opt/xwin/sdk/lib/um/x64/'
+#])
+
 
 xontrib load abbrevs
 xontrib load direnv
 
-#abbrevs["|&"] = "2>&1 |"
+abbrevs["|&"] = "2>&1 |"
 
-xontrib load output_search
-xontrib load whole_word_jumping
+#xontrib load output_search
+#xontrib load whole_word_jumping
 xontrib load term_integration
 #xontrib load argcomplete
 
