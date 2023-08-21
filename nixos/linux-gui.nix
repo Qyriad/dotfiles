@@ -28,6 +28,11 @@ in {
     };
   };
 
+  # And also let Blink stuffs use Wayland.
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   # Enable sound with Pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
