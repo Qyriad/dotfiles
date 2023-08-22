@@ -21,6 +21,11 @@ in {
     lfs.enable = true;
   };
 
+  environment.sessionVariables = {
+    # For my debugging and hacking pleasure, set $NIXPKGS to the version of nixpkgs used by the current system.
+    NIXPKGS = pkgs.path;
+  };
+
   # Other packages we want available on all systems.
   environment.systemPackages = with pkgs; [
     tmux
