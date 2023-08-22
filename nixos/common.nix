@@ -44,5 +44,12 @@ in {
     nixos-option
     file
     nodePackages.insect
+    (pkgs.writeShellScriptBin "rebuild"
+      ''
+      cmd="sudo nixos-rebuild --print-build-logs --verbose $@"
+      echo $cmd
+      exec $cmd
+      ''
+    )
   ];
 }
