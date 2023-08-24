@@ -1,6 +1,9 @@
 # vim: shiftwidth=2 expandtab
 { config, pkgs, ... }:
 
+let
+  udevRulesPkg = pkgs.callPackage ./udev-rules { };
+in
 {
   # Bootloader.
   boot.loader = {
@@ -32,7 +35,7 @@
   users.users.qyriad = {
     isNormalUser = true;
     description = "Qyriad";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" ];
     shell = pkgs.zsh;
   };
 
@@ -58,6 +61,10 @@
       '';
     };
   };
+
+  services.udev.packages = [
+    udevRulesPkg
+  ];
 
   # Other packages we want available on Linux systems.
   environment.systemPackages = with pkgs; [
