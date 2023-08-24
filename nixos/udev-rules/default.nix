@@ -1,5 +1,5 @@
 { pkgs }:
-pkgs.stdenv.mkDerviation {
+pkgs.stdenv.mkDerivation {
   pname = "qyriad-udev-rules";
   meta.description = "Qyriad personal udev rules";
   version = "0.1.0";
