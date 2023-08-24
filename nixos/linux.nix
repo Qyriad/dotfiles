@@ -26,6 +26,8 @@
   # Enable CUPS for printing.
   services.printing.enable = true;
 
+  services.openssh.enable = true;
+
   # Our normal user.
   users.users.qyriad = {
     isNormalUser = true;
