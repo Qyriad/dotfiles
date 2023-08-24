@@ -28,6 +28,14 @@ in {
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-kde
+    ];
+  };
+
   # And also let Blink stuffs use Wayland.
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -67,6 +75,7 @@ in {
     obsidian
     discord
     calibre
+    kicad
   ];
 
   # Setup the terminal font we use.

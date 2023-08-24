@@ -70,5 +70,8 @@ in
   environment.systemPackages = with pkgs; [
     usbutils
     pciutils
+    (gdb.override { enableDebuginfod = true; })
+    qt5.qtbase
   ];
+  services.nixseparatedebuginfod.enable = true;
 }

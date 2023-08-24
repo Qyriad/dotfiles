@@ -1,8 +1,9 @@
 # vim: shiftwidth=2 expandtab
-{ config, pkgs, ... }:
+{ config, pkgs, qyriad, ... }:
 
 let
-  xonshPkg = (import ./pkgs/xonsh.nix { inherit pkgs; });
+  xonshPkg = qyriad."x86_64-linux".packages.xonsh;
+  currentNixpkgs = pkgs.writeTextDir "share/nixpkgs" pkgs.path;
 in {
   # Configuration for things related to Nix itself.
   nixpkgs.config.allowUnfree = true;
@@ -21,7 +22,10 @@ in {
     lfs.enable = true;
   };
 
-  environment.sessionVariables = {
+  # Add ~/.local/bin to system path.
+  environment.localBinInPath = true;
+
+  environment.variables = {
     # For my debugging and hacking pleasure, set $NIXPKGS to the version of nixpkgs used by the current system.
     NIXPKGS = pkgs.path;
   };
@@ -51,5 +55,11 @@ in {
       exec $cmd
       ''
     )
+    (pkgs.writeScriptBin "nixpkgs"
+      ''
+        echo ${pkgs.path}
+      ''
+    )
+    currentNixpkgs
   ];
 }

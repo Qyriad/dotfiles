@@ -18,6 +18,9 @@ let
       pip
       xonshDirenvPkg
       pkgs.python3Packages.ipython
+      # Lets xonsh set its process title to "xonsh" instead of "python3.10", which is much less annoying
+      # in my tmux window names.
+      pkgs.python3Packages.setproctitle
     ];
 
   });
