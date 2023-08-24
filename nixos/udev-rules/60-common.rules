@@ -1,0 +1,3 @@
+# SEGGER stuff
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1366", GROUP="plugdev"
+
