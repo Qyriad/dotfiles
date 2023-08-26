@@ -18,7 +18,11 @@ in {
   services.xserver = {
 
     displayManager = {
-      sddm.enable = true;
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+        settings.General.DisplayServer = "wayland";
+      };
       defaultSession = "plasmawayland";
     };
 
@@ -26,7 +30,7 @@ in {
       plasma5.enable = true;
       plasma5.runUsingSystemd = true;
     };
-  };
+  }; # services.xserver
 
   xdg.portal = {
     enable = true;

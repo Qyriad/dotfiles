@@ -61,5 +61,6 @@ in {
       ''
     )
     currentNixpkgs
+    any-nix-shell
   ];
 }
