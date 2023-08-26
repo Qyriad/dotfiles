@@ -66,6 +66,8 @@ $NETCTL_EDITOR = $EDITOR
 if sys.platform != 'darwin':
 	#$XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
 	$XDG_RUNTIME_DIR = f"/run/user/{os.getuid()}"
+
+if "XDG_RUNTIME_DIR" in ${...}:
 	$TMUX_TMPDIR = $XDG_RUNTIME_DIR
 
 $CARGO_HOME = $XDG_DATA_HOME + '/cargo'
@@ -105,7 +107,7 @@ aliases['ea'] = edit(p'~/.config/alacritty/alacritty.yml')
 # "Edit xonsh"
 aliases['ex'] = edit($XDG_CONFIG_HOME + '/xonsh/rc.xsh')
 # "Edit wezterm"
-aliases['ew'] = f"{$EDITOR} -O ~/.config/wezterm/wezterm.lua ~/.config/wezterm/utils.lua"
+aliases['ew'] = [$EDITOR, "-O", p"~/.config/wezterm/wezterm.lua", p"~/.config/wezterm/utils.lua"]
 # "Source xonsh"
 aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
 # "Edit Nix"
@@ -185,7 +187,8 @@ aliases['diskus'] = 'diskus --size-format binary'
 aliases['duf'] = 'duf -hide special'
 aliases['prp'] = 'realpath .' # "Print real path".
 aliases['tn'] = r"tr -d '\n'"
-aliases['remake'] = 'mkdir $PWD ; cd $PWD'
+# XXX
+#aliases['remake'] = 'mkdir $PWD ; cd $PWD'
 aliases['rsync'] = 'rsync --recursive -hhh --links -v --info=progress2'
 aliases['lsync'] = 'systemd-inhibit --mode=block --what=shutdown:sleep:idle --who=qyriad --why=rsync --no-pager --no-legend rsync --whole-file --recursive -hhh --links -v --info=PROGRESS2'
 aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --info=progress2'
