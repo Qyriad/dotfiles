@@ -80,7 +80,10 @@ use {
 use 'tpope/vim-tbone' -- :Tyank and :Tput
 use {
 	'lewis6991/gitsigns.nvim',
-	opts = {}
+	config = function()
+		gitsigns = require("gitsigns")
+		gitsigns.setup {}
+	end,
 }
 use {
 	'akinsho/git-conflict.nvim',
