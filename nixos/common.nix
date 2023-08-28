@@ -2,7 +2,7 @@
 { config, pkgs, qyriad, ... }:
 
 let
-	xonshPkg = qyriad."x86_64-linux".packages.xonsh;
+	xonshPkg = qyriad.xonsh;
 	currentNixpkgs = pkgs.writeTextDir "share/nixpkgs" pkgs.path;
 in {
 	# Configuration for things related to Nix itself.

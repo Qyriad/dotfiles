@@ -14,27 +14,28 @@
 			qyriad = self.outputs.${system};
 		in
 		{
-			${system}.packages = {
+			packages = {
 				xonsh = pkgs.callPackage ./nixos/pkgs/xonsh.nix { };
 			};
 		}
 	)
 	// rec {
-		nixosConfigurations.futaba = nixpkgs.lib.nixosSystem {
-
-			specialArgs.inputs = inputs;
+		nixosConfigurations.futaba = nixpkgs.lib.nixosSystem rec {
 
 			system = "x86_64-linux";
+			specialArgs.inputs = inputs;
+			specialArgs.qyriad = self.outputs.packages.${system};
 			modules = [
 				./nixos/futaba.nix
+				nixseparatedebuginfod.nixosModules.default
 			];
 		};
 		nixosConfigurations.Futaba = nixosConfigurations.futaba;
 
-		nixosConfigurations.yuki = nixpkgs.lib.nixosSystem {
-			specialArgs.inputs = inputs;
-			specialArgs.qyriad = self.outputs."x86_64-linux";
+		nixosConfigurations.yuki = nixpkgs.lib.nixosSystem rec {
 			system = "x86_64-linux";
+			specialArgs.inputs = inputs;
+			specialArgs.qyriad = self.outputs.packages.${system};
 			modules = [
 				./nixos/yuki.nix
 				nixseparatedebuginfod.nixosModules.default
