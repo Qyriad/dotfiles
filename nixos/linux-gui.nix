@@ -80,6 +80,7 @@ in {
 		discord
 		calibre
 		kicad
+		krita
 	];
 
 	# Setup the terminal font we use.

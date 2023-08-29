@@ -13,5 +13,7 @@
 		#cargo
 		#rustc
 		moar
+		inxi
+		hyfetch
 	];
 }

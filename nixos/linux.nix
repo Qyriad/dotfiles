@@ -38,6 +38,7 @@ in
 		extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" ];
 		shell = pkgs.zsh;
 	};
+	users.groups.plugdev = { };
 
 	nix.settings.trusted-users = [
 		"root"
