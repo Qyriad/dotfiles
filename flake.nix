@@ -8,39 +8,43 @@
 	};
 
 	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod } @ inputs:
-	flake-utils.lib.eachDefaultSystem (system:
 		let
-			pkgs = import nixpkgs { inherit system; };
-			qyriad = self.outputs.${system};
-		in
-		{
-			packages = {
-				xonsh = pkgs.callPackage ./nixos/pkgs/xonsh.nix { };
+			nixosCommon = system: {
+				inherit system;
+				specialArgs.inputs = inputs;
+				specialArgs.qyriad = self.outputs.packages.${system};
 			};
-		}
-	)
-	// rec {
-		nixosConfigurations.futaba = nixpkgs.lib.nixosSystem rec {
+		in
+			# Package outputs, which we want to define for multiple systems.
+			flake-utils.lib.eachDefaultSystem (system:
+				let
+					pkgs = import nixpkgs { inherit system; };
+					qyriad = self.outputs.${system};
+				in
+				{
+					packages = {
+						xonsh = pkgs.callPackage ./nixos/pkgs/xonsh.nix { };
+					};
+				}
+			)
+			// # NixOS configuration outputs, which are each for one specific system.
+			{
+				nixosConfigurations = rec {
+					futaba = nixpkgs.lib.nixosSystem (nixosCommon "x86_64-linux" // {
+						modules = [
+							./nixos/futaba.nix
+							nixseparatedebuginfod.nixosModules.default
+						];
+					});
+					Futaba = futaba;
 
-			system = "x86_64-linux";
-			specialArgs.inputs = inputs;
-			specialArgs.qyriad = self.outputs.packages.${system};
-			modules = [
-				./nixos/futaba.nix
-				nixseparatedebuginfod.nixosModules.default
-			];
-		};
-		nixosConfigurations.Futaba = nixosConfigurations.futaba;
-
-		nixosConfigurations.yuki = nixpkgs.lib.nixosSystem rec {
-			system = "x86_64-linux";
-			specialArgs.inputs = inputs;
-			specialArgs.qyriad = self.outputs.packages.${system};
-			modules = [
-				./nixos/yuki.nix
-				nixseparatedebuginfod.nixosModules.default
-			];
-		};
-		nixosConfigurations.Yuki = nixosConfigurations.yuki;
-	};
+					yuki = nixpkgs.lib.nixosSystem (nixosCommon "x86_64-linux" // {
+						modules = [
+							./nixos/yuki.nix
+							nixseparatedebuginfod.nixosModules.default
+						];
+					});
+					Yuki = yuki;
+				};
+			};
 }
