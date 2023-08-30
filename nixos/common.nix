@@ -2,7 +2,6 @@
 { config, pkgs, qyriad, ... }:
 
 let
-	xonshPkg = qyriad.xonsh;
 	currentNixpkgs = pkgs.writeTextDir "share/nixpkgs" pkgs.path;
 in {
 	# Configuration for things related to Nix itself.
@@ -14,7 +13,7 @@ in {
 
 	programs.xonsh = {
 		enable = true;
-		package = xonshPkg;
+		package = qyriad.xonsh;
 	};
 
 	programs.git = {
@@ -45,9 +44,12 @@ in {
 		grc
 		delta
 		direnv
-		nixos-option
 		file
+		moar
+		inxi
+		hyfetch
 		nodePackages.insect
+		nixos-option
 		(pkgs.writeShellScriptBin "rebuild"
 			''
 			cmd="sudo nixos-rebuild --print-build-logs --verbose $@"
