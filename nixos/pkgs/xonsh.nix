@@ -13,7 +13,7 @@ let
     };
   };
 
-  xonshExtras = with python3Packages; [
+  xonshExtras = with pkgs.python3Packages; [
     ipython
     psutil
     unidecode
