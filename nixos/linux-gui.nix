@@ -33,7 +33,7 @@ in {
 			plasma5.enable = true;
 			plasma5.runUsingSystemd = true;
 		};
-	}; # services.xserver
+	};
 
 	# "A stop job is running for X11—" fuck off.
 	systemd.services.display-manager.serviceConfig.TimeoutStopSec = "10";
