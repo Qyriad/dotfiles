@@ -84,7 +84,7 @@ in {
 	];
 
 	# Setup the terminal font we use.
-	fonts.fonts = [
+	fonts.packages = [
 		nerdFonts
 	];
 	fonts.fontconfig.defaultFonts.monospace = [
@@ -93,5 +93,5 @@ in {
 
 
 	# Enable reasonable default fonts for unicode and emoji.
-	fonts.enableDefaultFonts = true;
+	fonts.enableDefaultPackages = true;
 }
