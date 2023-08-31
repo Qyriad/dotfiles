@@ -1,14 +1,8 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
 
-{ config, pkgs, ... }:
+{ config, pkgs, qyriad, ... }:
 
-let
-	nerdFonts = pkgs.nerdfonts.override {
-		fonts = [
-			"InconsolataGo"
-		];
-	};
-in {
+{
 
 	# Enable GUI stuff in general.
 	# Yes this says xserver. Yes this we're using Wayland. That's correct.
@@ -91,7 +85,7 @@ in {
 
 	# Setup the terminal font we use.
 	fonts.packages = [
-		nerdFonts
+		qyriad.nerdfonts
 	];
 	fonts.fontconfig.defaultFonts.monospace = [
 		"InconsolataGo Nerd Font Mono"
