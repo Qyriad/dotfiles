@@ -11,6 +11,10 @@ let
       inherit pname version;
       sha256 = "Nt8Da1EtMVWZ9mbBDjys7HDutLYifwoQ1HVmI5CN2Ww=";
     };
+
+    propagatedBuildInputs = [
+      pkgs.direnv
+    ];
   };
 
   xonshExtras = with pkgs.python3Packages; [
