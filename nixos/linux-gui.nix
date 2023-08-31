@@ -21,7 +21,10 @@ in {
 			sddm = {
 				enable = true;
 				autoNumlock = true;
-				settings.General.DisplayServer = "wayland";
+				# After updating to unstable NixOS, this setting made SDDM fail to start Plasma
+				# for some reason.
+				# …Also it maybe doesn't work? https://github.com/NixOS/nixpkgs/issues/252577
+				#settings.General.DisplayServer = "wayland";
 			};
 			defaultSession = "plasmawayland";
 		};
@@ -31,6 +34,9 @@ in {
 			plasma5.runUsingSystemd = true;
 		};
 	}; # services.xserver
+
+	# "A stop job is running for X11—" fuck off.
+	systemd.services.display-manager.serviceConfig.TimeoutStopSec = "10";
 
 	xdg.portal = {
 		enable = true;

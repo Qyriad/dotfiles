@@ -15,6 +15,11 @@ in
 	# Yes mount /tmp as a tmpfs.
 	boot.tmp.useTmpfs = true;
 
+	# Make the systemd stop timeout more reasonable.
+	systemd.extraConfig = ''
+		DefaultTimeoutStopSec=20
+	'';
+
 	# Update timezone based on our location.
 	services.localtimed.enable = true;
 	services.geoclue2.enable = true;
