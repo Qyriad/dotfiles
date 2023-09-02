@@ -1,9 +1,6 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, ... }:
+{ config, pkgs, qyriad, ... }:
 
-let
-	udevRulesPkg = pkgs.callPackage ./udev-rules { };
-in
 {
 	# Bootloader.
 	boot.loader = {
@@ -69,7 +66,7 @@ in
 	};
 
 	services.udev.packages = [
-		udevRulesPkg
+		qyriad.udev-rules
 	];
 
 	# Other packages we want available on Linux systems.

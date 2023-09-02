@@ -25,6 +25,7 @@
 					packages = {
 						xonsh = pkgs.callPackage ./nixos/pkgs/xonsh.nix { };
 						nerdfonts = pkgs.callPackage ./nixos/pkgs/nerdfonts.nix { };
+						udev-rules = pkgs.callPackage ./nixos/udev-rules { };
 					};
 				}
 			)
