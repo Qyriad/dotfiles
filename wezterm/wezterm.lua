@@ -46,11 +46,13 @@ local function bind_os(key, action, options)
 	}
 end
 
+local font_list = { }
 
-local font_list = {
-	"InconsolataGo Nerd Font Mono",
-	"Monaco",
-}
+if on_macos then
+	font_list[1] = "Monaco"
+else
+	font_list[1] = "InconsolataGo Nerd Font Mono"
+end
 
 --
 -- Actual config
