@@ -205,6 +205,19 @@ config.keys = {
 	bind_os("-", wezterm.action.DecreaseFontSize),
 }
 
+config.mouse_bindings = {
+	{
+		event = { Up = { streak = 1, button = "Left", } },
+		mods = "SUPER",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
+	{
+		event = { Up = { streak = 1, button = "Left", } },
+		mods = "NONE",
+		action = wezterm.action.CompleteSelection("Clipboard"),
+	},
+}
+
 config.colors = {
 	foreground = "#c7c7c7",
 	background = "#000000",
