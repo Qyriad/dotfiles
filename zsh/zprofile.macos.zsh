@@ -14,3 +14,6 @@ PYTHONBIN="$BREWPREFIX/opt/python/libexec/bin:$HOME/Library/Python/3.11/bin"
 LLVMBIN="$BREWPREFIX/opt/llvm/bin"
 PATH="$COREUTILSBIN:$MAKEBIN:$PYTHONBIN:/usr/local/MacGPG2/bin:$PATH:$LLVMBIN"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
+
+export XDG_RUNTIME_DIR="$TMPDIR/run"
+mkdir -p "$XDG_RUNTIME_DIR"
