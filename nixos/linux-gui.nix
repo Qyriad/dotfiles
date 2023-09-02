@@ -18,7 +18,10 @@
 				# After updating to unstable NixOS, this setting made SDDM fail to start Plasma
 				# for some reason.
 				# …Also it maybe doesn't work? https://github.com/NixOS/nixpkgs/issues/252577
-				#settings.General.DisplayServer = "wayland";
+				settings.General = {
+					DisplayServer = "wayland";
+					InputMethod = "ibus";
+				};
 			};
 			defaultSession = "plasmawayland";
 		};
@@ -81,6 +84,7 @@
 		calibre
 		kicad
 		krita
+		weston
 	];
 
 	# Setup the terminal font we use.
