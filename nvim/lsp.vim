@@ -88,7 +88,10 @@ for i, filetype in ipairs(lsp_filetypes) do
 			end
 
 			-- Now that our LSP setup is done, run the autostart detection code.
-			lspconfig[submodule_name].manager.try_add(event.buffer)
+			-- FIXME: figure out a server-agnostic way to do this.
+			if submodule_name == "clangd" then
+				lspconfig.clangd.manager:try_add(event.buffer)
+			end
 		end,
 	})
 end
