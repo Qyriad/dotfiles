@@ -9,10 +9,13 @@
 
 	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod } @ inputs:
 		let
-			nixosCommon = system: {
+			mkConfig = system: modules: nixpkgs.lib.nixosSystem {
 				inherit system;
 				specialArgs.inputs = inputs;
 				specialArgs.qyriad = self.outputs.packages.${system};
+				modules = modules ++ [
+					nixseparatedebuginfod.nixosModules.default
+				];
 			};
 		in
 			# Package outputs, which we want to define for multiple systems.
@@ -33,20 +36,14 @@
 			// # NixOS configuration outputs, which are each for one specific system.
 			{
 				nixosConfigurations = rec {
-					futaba = nixpkgs.lib.nixosSystem (nixosCommon "x86_64-linux" // {
-						modules = [
-							./nixos/futaba.nix
-							nixseparatedebuginfod.nixosModules.default
-						];
-					});
+					futaba = mkConfig "x86_64-linux" [
+						./nixos/futaba.nix
+					];
 					Futaba = futaba;
 
-					yuki = nixpkgs.lib.nixosSystem (nixosCommon "x86_64-linux" // {
-						modules = [
-							./nixos/yuki.nix
-							nixseparatedebuginfod.nixosModules.default
-						];
-					});
+					yuki = mkConfig "x86_64-linux" [
+						./nixos/yuki.nix
+					];
 					Yuki = yuki;
 				};
 			};
