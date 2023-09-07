@@ -50,18 +50,7 @@ in {
 		hyfetch
 		nodePackages.insect
 		nixos-option
-		(pkgs.writeShellScriptBin "rebuild"
-			''
-			cmd="sudo nixos-rebuild --print-build-logs --verbose $@"
-			echo $cmd
-			exec $cmd
-			''
-		)
-		(pkgs.writeShellScriptBin "nixpkgs"
-			''
-			echo $(nix eval --impure --expr "<nixpkgs>")
-			''
-		)
+		qyriad.nix-helpers
 		currentNixpkgs
 		any-nix-shell
 	];
