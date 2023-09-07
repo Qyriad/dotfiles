@@ -57,9 +57,9 @@ in {
 			exec $cmd
 			''
 		)
-		(pkgs.writeScriptBin "nixpkgs"
+		(pkgs.writeShellScriptBin "nixpkgs"
 			''
-				echo ${pkgs.path}
+				echo $(nix eval --impure --expr "<nixpkgs>")
 			''
 		)
 		currentNixpkgs
