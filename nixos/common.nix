@@ -59,7 +59,7 @@ in {
 		)
 		(pkgs.writeShellScriptBin "nixpkgs"
 			''
-				echo $(nix eval --impure --expr "<nixpkgs>")
+			echo $(nix eval --impure --expr "<nixpkgs>")
 			''
 		)
 		currentNixpkgs
