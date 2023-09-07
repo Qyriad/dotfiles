@@ -2,7 +2,6 @@
 
 let
   inherit (pkgs) writeShellScriptBin stdenv;
-  inherit (builtins) getAttr toString;
 
   rebuild-cmd = pkgs.writeShellScriptBin "rebuild"
     ''
