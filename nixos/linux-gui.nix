@@ -81,12 +81,15 @@
 		calibre
 		kicad
 		krita
+		# TODO: possibly switch to sddm.extraPackages if it's added
+		# https://github.com/NixOS/nixpkgs/pull/242009 (nixos/sddm: enable Wayland support)
 		weston
 	];
 
-	# Setup the terminal font we use.
+	# Setup the terminal font we use, and make CJK render nicely.
 	fonts.packages = [
 		qyriad.nerdfonts
+		pkgs.noto-fonts-cjk-sans
 	];
 	fonts.fontconfig.defaultFonts.monospace = [
 		"InconsolataGo Nerd Font Mono"
