@@ -1,12 +1,22 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, qyriad, ... }:
+{ config, pkgs, inputs, qyriad, ... }:
 
 let
 	currentNixpkgs = pkgs.writeTextDir "share/nixpkgs" pkgs.path;
 in {
 	# Configuration for things related to Nix itself.
 	nixpkgs.config.allowUnfree = true;
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+	nix = {
+		settings.experimental-features = [ "nix-command" "flakes" ];
+		# Let me do things like `nix shell "qyriad#xonsh"`.
+		registry.qyriad = {
+			from = {
+				id = "qyriad";
+				type = "indirect";
+			};
+			flake = inputs.self;
+		};
+	};
 
 	time.timeZone = "America/Denver";
 	i18n.defaultLocale = "en_US.utf8";
