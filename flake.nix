@@ -46,5 +46,9 @@
 					];
 					Yuki = yuki;
 				};
+
+				# Truly dirty hack. This will let us to transparently refer to overriden or not overriden
+				# packages in nixpkgs, as flake.packages.foo is preferred over flake.legacyPacakges.foo.
+				legacyPackages = nixpkgs.legacyPackages;
 			};
 }
