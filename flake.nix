@@ -5,10 +5,17 @@
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		flake-utils.url = "github:numtide/flake-utils";
 		nixseparatedebuginfod.url = "github:symphorien/nixseparatedebuginfod";
+		xonsh = {
+			url = "path:./nixos/pkgs/xonsh";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
-	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod } @ inputs:
+	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod, xonsh } @ inputs:
 		let
+			inherit (nixpkgs.lib.attrsets) genAttrs recursiveUpdate;
+			inherit (builtins) attrNames;
+
 			mkConfig = system: modules: nixpkgs.lib.nixosSystem {
 				inherit system;
 				specialArgs.inputs = inputs;
@@ -17,21 +24,27 @@
 					nixseparatedebuginfod.nixosModules.default
 				];
 			};
+
+			# Turns flake.${system}.packages (etc) into flake.packages (etc).
+			flakeOutputsFor = flake: system: genAttrs (attrNames flake.outputs) (outputName: flake.${outputName}.${system});
 		in
 			# Package outputs, which we want to define for multiple systems.
 			flake-utils.lib.eachDefaultSystem (system:
 				let
 					pkgs = import nixpkgs { inherit system; };
+
 					qyriad = self.outputs.${system};
-				in
-				{
-					packages = {
-						xonsh = pkgs.callPackage ./nixos/pkgs/xonsh.nix { };
-						nerdfonts = pkgs.callPackage ./nixos/pkgs/nerdfonts.nix { };
-						udev-rules = pkgs.callPackage ./nixos/udev-rules { };
-						nix-helpers = pkgs.callPackage ./nixos/pkgs/nix-helpers.nix { };
+
+					non-flake-outputs = {
+						packages = {
+							nerdfonts = pkgs.callPackage ./nixos/pkgs/nerdfonts.nix { };
+							udev-rules = pkgs.callPackage ./nixos/udev-rules { };
+							nix-helpers = pkgs.callPackage ./nixos/pkgs/nix-helpers.nix { };
+						};
 					};
-				}
+					flake-outputs = flakeOutputsFor xonsh system;
+				in
+				recursiveUpdate flake-outputs non-flake-outputs
 			)
 			// # NixOS configuration outputs, which are each for one specific system.
 			{

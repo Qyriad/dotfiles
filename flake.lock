@@ -36,6 +36,24 @@
         "type": "github"
       }
     },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1692799911,
+        "narHash": "sha256-3eihraek4qL744EvQXsK1Ha6C3CR7nnT8X2qWap4RNk=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "f9e7cf818399d17d347f847525c5a5a8032e4e44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1693985761,
@@ -91,7 +109,8 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "nixseparatedebuginfod": "nixseparatedebuginfod"
+        "nixseparatedebuginfod": "nixseparatedebuginfod",
+        "xonsh": "xonsh"
       }
     },
     "systems": {
@@ -121,6 +140,75 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "xonsh": {
+      "inputs": {
+        "flake-utils": "flake-utils_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "xonsh-direnv-src": "xonsh-direnv-src",
+        "xontrib-abbrevs-src": "xontrib-abbrevs-src"
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-UPpCBZzaNREkS3xWye4vMGkNC8ELSlq+7qMnNjdQr1o=",
+        "path": "./nixos/pkgs/xonsh",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nixos/pkgs/xonsh",
+        "type": "path"
+      }
+    },
+    "xonsh-direnv-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1655612855,
+        "narHash": "sha256-979y+jUKZkdIyXx4q0f92jX/crFr9LDrA/5hfXm1CpU=",
+        "owner": "74th",
+        "repo": "xonsh-direnv",
+        "rev": "836161572b3614daf3f441585cb78840e9b96ffe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "74th",
+        "ref": "1.6.1",
+        "repo": "xonsh-direnv",
+        "type": "github"
+      }
+    },
+    "xontrib-abbrevs-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1676561937,
+        "narHash": "sha256-DrZRIU5mzu8RUzm0jak/Eo12wbvWYusJpmqgIAVwe00=",
+        "owner": "xonsh",
+        "repo": "xontrib-abbrevs",
+        "rev": "49a44ba6ed2dabc3aa8823e7ec2c492010b1bbf9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xonsh",
+        "ref": "0.0.1",
+        "repo": "xontrib-abbrevs",
         "type": "github"
       }
     }
