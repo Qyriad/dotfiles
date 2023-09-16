@@ -6,8 +6,8 @@
 		flake-utils.url = "github:numtide/flake-utils";
 		nixseparatedebuginfod.url = "github:symphorien/nixseparatedebuginfod";
 		xonsh = {
-			# FIXME: https://github.com/NixOS/nix/issues/3978
-			url = "github:Qyriad/dotfiles?path=nixos/pkgs/xonsh";
+			# ref=HEAD is apparently necessary: https://github.com/NixOS/nix/issues/3978#issuecomment-1663037086
+			url = "git+file:.?dir=nixos/pkgs/xonsh&ref=HEAD";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
