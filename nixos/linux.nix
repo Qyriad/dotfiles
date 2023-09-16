@@ -37,10 +37,11 @@
 	users.users.qyriad = {
 		isNormalUser = true;
 		description = "Qyriad";
-		extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" ];
+		extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" "video" ];
 		shell = pkgs.zsh;
 	};
 	users.groups.plugdev = { };
+	users.groups.video = { };
 
 	nix.settings.trusted-users = [
 		"root"
