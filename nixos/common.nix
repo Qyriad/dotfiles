@@ -46,6 +46,11 @@ in {
 		git
 		fd
 		ripgrep
+		edir
+		atool
+		unzip
+		xz
+		zstd
 		nodePackages.vim-language-server
 		curl
 		wget
@@ -56,6 +61,7 @@ in {
 		direnv
 		file
 		moar
+		faketty
 		inxi
 		hyfetch
 		nodePackages.insect
