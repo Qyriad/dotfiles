@@ -27,7 +27,17 @@
 			};
 
 			# Turns flake.${system}.packages (etc) into flake.packages (etc).
-			flakeOutputsFor = flake: system: genAttrs (attrNames flake.outputs) (outputName: flake.${outputName}.${system});
+			flakeOutputsFor = flake: system:
+				let
+					# Get the kinds of outputs this flake has.
+					flakeTopLevelOutputNames = attrNames flake.outputs;
+
+					# And for each of those, get that output for the system this function was passed.
+					getFlakeOutput = outputName: flake.${outputName}.${system};
+
+				in
+					genAttrs flakeTopLevelOutputNames getFlakeOutput
+			;
 		in
 			# Package outputs, which we want to define for multiple systems.
 			flake-utils.lib.eachDefaultSystem (system:
