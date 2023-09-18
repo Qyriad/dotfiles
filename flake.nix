@@ -7,7 +7,7 @@
 		nixseparatedebuginfod.url = "github:symphorien/nixseparatedebuginfod";
 		xonsh = {
 			# ref=HEAD is apparently necessary: https://github.com/NixOS/nix/issues/3978#issuecomment-1663037086
-			url = "git+file:.?path=nixos/pkgs/xonsh&ref=HEAD";
+			url = "git+file:.?dir=nixos/pkgs/xonsh&ref=HEAD";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
