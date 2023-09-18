@@ -17,17 +17,31 @@
 			inherit (nixpkgs.lib.attrsets) genAttrs recursiveUpdate;
 			inherit (builtins) attrNames;
 
-			mkConfig = system: modules: nixpkgs.lib.nixosSystem {
-				inherit system;
-				specialArgs.inputs = inputs;
-				specialArgs.qyriad = self.outputs.packages.${system};
-				modules = modules ++ [
-					nixseparatedebuginfod.nixosModules.default
-				];
-			};
+			# Wraps nixpkgs.lib.nixosSystem to generate a NixOS configuration, adding common modules
+			# and special arguments.
+			mkConfig =
+				# "x86_64-linux"-style ("double") system string :: string
+				system:
+				# NixOS modules to add to this NixOS system configuration :: list
+				modules:
+
+				nixpkgs.lib.nixosSystem {
+					inherit system;
+					specialArgs.inputs = inputs;
+					specialArgs.qyriad = self.outputs.packages.${system};
+					modules = modules ++ [
+						nixseparatedebuginfod.nixosModules.default
+					];
+				}
+			;
 
 			# Turns flake.${system}.packages (etc) into flake.packages (etc).
-			flakeOutputsFor = flake: system:
+			flakeOutputsFor =
+				# flake output schema :: attrset
+				flake:
+				# "x86_64-linux"-style ("double") system string :: string
+				system:
+
 				let
 					# Get the kinds of outputs this flake has.
 					flakeTopLevelOutputNames = attrNames flake.outputs;
@@ -38,9 +52,8 @@
 				in
 					genAttrs flakeTopLevelOutputNames getFlakeOutput
 			;
-		in
-			# Package outputs, which we want to define for multiple systems.
-			flake-utils.lib.eachDefaultSystem (system:
+
+			mkPerSystemOutputs = system:
 				let
 					pkgs = import nixpkgs { inherit system; };
 
@@ -53,10 +66,14 @@
 							nix-helpers = pkgs.callPackage ./nixos/pkgs/nix-helpers.nix { };
 						};
 					};
+
 					flake-outputs = flakeOutputsFor xonsh system;
 				in
-				recursiveUpdate flake-outputs non-flake-outputs
-			)
+					recursiveUpdate flake-outputs non-flake-outputs
+			;
+		in
+			# Package outputs, which we want to define for multiple systems.
+			flake-utils.lib.eachDefaultSystem mkPerSystemOutputs
 			// # NixOS configuration outputs, which are each for one specific system.
 			{
 				nixosConfigurations = rec {
@@ -74,5 +91,6 @@
 				# Truly dirty hack. This will let us to transparently refer to overriden or not overriden
 				# packages in nixpkgs, as flake.packages.foo is preferred over flake.legacyPacakges.foo.
 				legacyPackages = nixpkgs.legacyPackages;
-			};
+			}
+	; # outputs
 }
