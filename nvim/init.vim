@@ -93,7 +93,10 @@ use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
 use 'gennaro-tedesco/nvim-peekup'
 use 'AndrewRadev/bufferize.vim'
-use 'windwp/nvim-projectconfig'
+use {
+	'windwp/nvim-projectconfig',
+	opts = { },
+}
 
 -- Pickers
 use 'ctrlpvim/ctrlp.vim'
