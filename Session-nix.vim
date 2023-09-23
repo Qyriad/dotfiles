@@ -16,11 +16,11 @@ endif
 badd +1 flake.nix
 badd +16 nixos/common.nix
 badd +1 nixos/dev.nix
-badd +50 nixos/linux.nix
+badd +40 nixos/linux.nix
 badd +53 nixos/linux-gui.nix
 badd +1 nixos/pkgs/xonsh.nix
-badd +48 nixos/pkgs/xonsh/flake.nix
-badd +0 nixos/pkgs/nix-helpers.nix
+badd +1 nixos/pkgs/nix-helpers.nix
+badd +0 nixos/pkgs/xonsh/default.nix
 argglobal
 %argdel
 $argadd flake.nix
@@ -64,9 +64,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 36 + 41) / 82)
+exe '1resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
-exe '2resize ' . ((&lines * 36 + 41) / 82)
+exe '2resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
 argglobal
 balt nixos/dev.nix
@@ -80,7 +80,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((11 * winheight(0) + 18) / 36)
+let s:l = 16 - ((7 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -103,16 +103,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 13 - ((9 * winheight(0) + 18) / 36)
+let s:l = 13 - ((0 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 13
 normal! 09|
 wincmd w
-exe '1resize ' . ((&lines * 36 + 41) / 82)
+exe '1resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
-exe '2resize ' . ((&lines * 36 + 41) / 82)
+exe '2resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
 tabnext
 edit nixos/linux.nix
@@ -132,7 +132,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
+exe '1resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
+exe '2resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
 argglobal
 balt nixos/linux-gui.nix
@@ -146,7 +148,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 40 - ((39 * winheight(0) + 39) / 79)
+let s:l = 40 - ((19 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -169,17 +171,19 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 53 - ((2 * winheight(0) + 39) / 79)
+let s:l = 53 - ((1 * winheight(0) + 19) / 38)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 53
 normal! 011|
 wincmd w
+exe '1resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
+exe '2resize ' . ((&lines * 38 + 41) / 82)
 exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
 tabnext
-edit nixos/pkgs/xonsh/flake.nix
+edit nixos/pkgs/xonsh/default.nix
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -199,7 +203,6 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 174 + 174) / 349)
 exe 'vert 2resize ' . ((&columns * 174 + 174) / 349)
 argglobal
-balt nixos/pkgs/nix-helpers.nix
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -210,19 +213,18 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 48 - ((41 * winheight(0) + 39) / 79)
+let s:l = 52 - ((51 * winheight(0) + 39) / 79)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 48
-normal! 015|
+keepjumps 52
+normal! 07|
 wincmd w
 argglobal
 if bufexists(fnamemodify("nixos/pkgs/nix-helpers.nix", ":p")) | buffer nixos/pkgs/nix-helpers.nix | else | edit nixos/pkgs/nix-helpers.nix | endif
 if &buftype ==# 'terminal'
   silent file nixos/pkgs/nix-helpers.nix
 endif
-balt nixos/pkgs/xonsh/flake.nix
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -233,7 +235,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 20 - ((19 * winheight(0) + 39) / 79)
+let s:l = 20 - ((1 * winheight(0) + 39) / 79)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
