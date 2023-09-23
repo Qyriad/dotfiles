@@ -5,14 +5,17 @@
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		flake-utils.url = "github:numtide/flake-utils";
 		nixseparatedebuginfod.url = "github:symphorien/nixseparatedebuginfod";
-		xonsh = {
-			# ref=HEAD is apparently necessary: https://github.com/NixOS/nix/issues/3978#issuecomment-1663037086
-			url = "git+file:/home/qyriad/.config?dir=nixos/pkgs/xonsh&ref=HEAD";
-			inputs.nixpkgs.follows = "nixpkgs";
+		xonsh-direnv-src = {
+			url = "github:74th/xonsh-direnv/1.6.1";
+			flake = false;
+		};
+		xontrib-abbrevs-src = {
+			url = "github:xonsh/xontrib-abbrevs/0.0.1";
+			flake = false;
 		};
 	};
 
-	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod, xonsh } @ inputs:
+	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod, ... } @ inputs:
 		let
 			inherit (nixpkgs.lib.attrsets) genAttrs recursiveUpdate;
 			inherit (builtins) attrNames;
@@ -25,14 +28,14 @@
 				# NixOS modules to add to this NixOS system configuration :: list
 				modules:
 
-				nixpkgs.lib.nixosSystem {
-					inherit system;
-					specialArgs.inputs = inputs;
-					specialArgs.qyriad = self.outputs.packages.${system};
-					modules = modules ++ [
-						nixseparatedebuginfod.nixosModules.default
-					];
-				}
+					nixpkgs.lib.nixosSystem {
+						inherit system;
+						specialArgs.inputs = inputs;
+						specialArgs.qyriad = self.outputs.packages.${system};
+						modules = modules ++ [
+							nixseparatedebuginfod.nixosModules.default
+						];
+					}
 			;
 
 			# Turns flake.${system}.packages (etc) into flake.packages (etc).
@@ -42,15 +45,15 @@
 				# "x86_64-linux"-style ("double") system string :: string
 				system:
 
-				let
-					# Get the kinds of outputs this flake has.
-					flakeTopLevelOutputNames = attrNames flake.outputs;
+					let
+						# Get the kinds of outputs this flake has.
+						flakeTopLevelOutputNames = attrNames flake.outputs;
 
-					# And for each of those, get that output for the system this function was passed.
-					getFlakeOutput = outputName: flake.${outputName}.${system};
+						# And for each of those, get that output for the system this function was passed.
+						getFlakeOutput = outputName: flake.${outputName}.${system};
 
-				in
-					genAttrs flakeTopLevelOutputNames getFlakeOutput
+					in
+						genAttrs flakeTopLevelOutputNames getFlakeOutput
 			;
 
 			mkPerSystemOutputs = system:
@@ -59,15 +62,20 @@
 
 					qyriad = self.outputs.${system};
 
+					xonshPkgs = pkgs.callPackage ./nixos/pkgs/xonsh {
+						inherit (inputs) xonsh-direnv-src xontrib-abbrevs-src;
+					};
+
 					non-flake-outputs = {
 						packages = {
 							nerdfonts = pkgs.callPackage ./nixos/pkgs/nerdfonts.nix { };
 							udev-rules = pkgs.callPackage ./nixos/udev-rules { };
 							nix-helpers = pkgs.callPackage ./nixos/pkgs/nix-helpers.nix { };
+							xonsh = xonshPkgs.xonsh;
 						};
 					};
 
-					flake-outputs = flakeOutputsFor xonsh system;
+					flake-outputs = { };
 				in
 					recursiveUpdate flake-outputs non-flake-outputs
 			;
