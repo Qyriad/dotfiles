@@ -5,8 +5,8 @@
 	# General development stuffs.
 
 	environment.systemPackages = with pkgs; [
-		llvmPackages_latest.clangUseLLVM
-		llvmPackages_latest.lld
+		#llvmPackages_latest.clangUseLLVM
+		#llvmPackages_latest.lld
 		clang-tools_15
 		rust-analyzer
 		rustfmt

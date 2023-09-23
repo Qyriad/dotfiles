@@ -51,6 +51,8 @@ in {
 		unzip
 		xz
 		zstd
+		cpio
+		rpm
 		nodePackages.vim-language-server
 		curl
 		wget
@@ -69,5 +71,6 @@ in {
 		qyriad.nix-helpers
 		currentNixpkgs
 		any-nix-shell
+		nix-index
 	];
 }
