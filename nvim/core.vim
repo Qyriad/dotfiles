@@ -221,6 +221,14 @@ nnoremap <leader>dta m0f:xwdaW`0
 "nmap dsf dt(ds)
 nmap dsf dt(<Plug>Dsurround)
 
+" "Delete function application"
+" Deletes a parenthesized function application in the Nix language, leaving the inner arguments intact.
+" Parts:
+" T( — jump to one column after (to the right) of the nearest opening parenthesis
+" <Plug>Dsurround) — Delete surrounding parentheses
+" daw — Delete the current WORD (to include things like dots, in case the function name is qualified).
+nmap <leader>dfa T(<Plug>Dsurround)daW
+
 " Delete a GenericWrapper<>, leaving the inner arguments intact.
 " 'Delete surrounding template'
 nmap dst dt<<Plug>Dsurround>
