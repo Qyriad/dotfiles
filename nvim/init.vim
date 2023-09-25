@@ -136,7 +136,35 @@ use {
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
 
+-- For our convenience, let's create a table that'll have all the main lua modules
+-- for each of our plugins, with a normalized key name.
+p = {}
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyLoad",
+	callback = function(autocmd_event)
+		lazy_import_plugin(autocmd_event.data)
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyDone",
+	callback = function(autocmd_event)
+		for i, lazy_plugin in ipairs(lazy.plugins()) do
+			lazy_import_plugin(lazy_plugin.name, lazy_plugin)
+		end
+	end,
+})
+
 lazy = require('lazy')
+-- These submodules aren't used here, but are used in the above autocommands,
+-- and are also handy for convenience.
+lazy.core = {
+	config = require("lazy.core.config"),
+	util = require("lazy.core.util"),
+	loader = require("lazy.core.loader"),
+}
+
 lazy.setup(plugin_spec, {
 	install = {
 		missing = true, -- Default

@@ -39,6 +39,40 @@ function telescope_diagnostics()
 		bufnr = 0,
 	}
 end
+
+local VERY_MAGIC = [[\v]]
+local PREFIX_PATTERN = VERY_MAGIC .. vim.fn.trim([[ ^(n?)vim[_] ]])
+local SUFFIX_PATTERN = VERY_MAGIC .. vim.fn.trim([[ [_.](n?)vim$ ]])
+
+-- Creates a key in the global table `p`, whose name is the normalized
+-- main lua module of a plugin, and whose value is that module `require()`'d.
+-- This function gets called from some autocommands set in init.vim.
+function lazy_import_plugin(plugin_name, plugin)
+
+	-- The LazyLoad event only passes us the plugin name, so in that case we'll have to find
+	-- the plugin table object that matches that name from Lazy's API.
+	-- The LazyDone event callback passes us the full plugin table, so if that's passed
+	-- then we don't need to worry.
+	if plugin == nil then
+		plugin = lazy.core.config.plugins[plugin_name]
+	end
+
+	if plugin == nil then
+		vim.notify("Cannot import: no plugin called " .. plugin_name, vim.log.levels.WARN)
+		return
+	end
+
+	local main = lazy.core.loader.get_main(plugin)
+	if type(main) ~= "string" or main == "" then
+		return
+	end
+
+	local normalized = lazy.core.util.normname(main)
+
+	vim.notify(normalized .. ' = require("' .. main .. '")', vim.log.levels.DEBUG)
+	p[normalized] = require(main)
+end
+
 EOF
 
 
