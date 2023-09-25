@@ -269,6 +269,30 @@ nnoremap <leader>rO :call InsertInvertR()<CR>O
 nnoremap <leader>ra :call InsertInvertR()<CR>a
 nnoremap <leader>rA :call InsertInvertR()<CR>A
 
+lua << EOF
+function doc_format_options()
+	local pos = vim.inspect_pos(nil, nil, nil, { syntax = false, extmarks = false, semantic_tokens = false })
+
+	if pos == nil then
+		return
+	end
+
+	for i, capture in ipairs(pos.treesitter) do
+		if capture.capture == "comment.documentation" then
+			vim.notify("setting formatoptions+=r", vim.log.levels.INFO)
+			vim.fn["InsertInvertR"]()
+			break
+		end
+	end
+end
+EOF
+
+" Experimental: when entering insert mode while in a doc-comment, setlocal formatoptions+=r
+" for that insert session.
+augroup DocFormatOptions
+	autocmd! InsertEnter * lua doc_format_options()
+augroup END
+
 command! -range=% Interleave execute 'keeppatterns' (<line2>-<line1>+1)/2+<line1> ',' <line2> 'g/^/<line1> move -1'
 
 function! Redir(command)
