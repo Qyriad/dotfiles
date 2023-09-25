@@ -23,6 +23,11 @@
 
 	networking.networkmanager.enable = true;
 
+	services.tailscale = {
+		enable = true;
+		useRoutingFeatures = "both";
+	};
+
 	services.xserver = {
 		layout = "us";
 		xkbVariant = "";
