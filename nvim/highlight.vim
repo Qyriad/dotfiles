@@ -28,5 +28,10 @@ use {
 }
 use "gko/vim-coloresque"
 use "luochen1990/rainbow"
+-- Briefly highlight text that changes during an undo or redo.
+use {
+	"tzachar/highlight-undo.nvim",
+	opts = { },
+}
 EOF
 
