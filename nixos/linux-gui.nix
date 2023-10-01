@@ -97,7 +97,12 @@
 		# TODO: possibly switch to sddm.extraPackages if it's added
 		# https://github.com/NixOS/nixpkgs/pull/242009 (nixos/sddm: enable Wayland support)
 		weston
+		dsview
+		pulseview
 	];
+
+	# Used for noise suppression.
+	#programs.noisetorch.enable = true;
 
 	# Setup the terminal font we use, and make CJK render nicely.
 	fonts.packages = [
