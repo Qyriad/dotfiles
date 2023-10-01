@@ -42,7 +42,7 @@ in {
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
 		tmux
-		exa
+		eza
 		git
 		fd
 		ripgrep
