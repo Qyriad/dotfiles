@@ -26,6 +26,7 @@ include "%L"
 
 # Lambda
 <Multi_key> <l> <a> <m> <d> <a> : "λ"
+<Multi_key> <l> <m> <d> : "λ"
 
 # Pi
 <Multi_key> <p> <i> : "π"
@@ -42,7 +43,7 @@ include "%L"
 <Multi_key> <t> <t> <s> <u> : "っ"
 
 # Hiragana あ shortcuts. Helpful for screaming. aaaaaaaaaaaaaあああああ
-<Multi_key> <h> <a> : "あ"
+<Multi_key> <h> <g> <a> : "あ"
 <Multi_key> <h> <s> <a> : "ぁ" # Hiragana small A
 
 # Flat
