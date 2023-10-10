@@ -27,43 +27,43 @@ li.relationships + li.freeforms {
 	clear: left;
 }
 
-ul.tags li.warnings:first-child:before {
+ul.tags li.warnings:first-child::before {
 	content: "Archive Warning: ";
 	color: #fff;
 	font-weight: bold;
 }
 
-li.warnings + li.relationships:before {
+li.warnings + li.relationships::before {
 	content: "Relationships: ";
 	color: #eee;
 	font-weight: bold;
 }
 
-li.relationships + li.characters:before {
+li.relationships + li.characters::before {
 	content: "Characters: ";
 	color: #eee;
 	font-weight: bold;
 }
 
-li.characters + li.freeforms:before {
+li.characters + li.freeforms::before {
 	content: "Freeform: ";
 	color: #eee;
 	font-weight: bold;
 }
 
-li.warnings + li.characters:before {
+li.warnings + li.characters::before {
 	content: "Characters: ";
 	color: #eee;
 	font-weight: bold;
 }
 
-li.warnings + li.freeforms:before {
+li.warnings + li.freeforms::before {
 	content: "Freeform: ";
 	color: #eee;
 	font-weight: bold;
 }
 
-li.relationships + li.freeforms:before {
+li.relationships + li.freeforms::before {
 	content: "Freeform: ";
 	color: #eee;
 	font-weight: bold;
