@@ -14,62 +14,57 @@
 	background: none;
 }
 
-ul.tags li.warnings,
-ul.tags li.relationships,
-ul.tags li.characters,
-ul.tags li.freeforms {
-	float: left !important;
-}
-
-li.warnings + li.relationships,
-li.relationships + li.characters,
-li.characters + li.freeforms,
-li.warnings + li.characters,
-li.warnings + li.freeforms,
-li.relationships + li.freeforms {
-	clear: left;
-}
-
-ul.tags li.warnings:first-child::before {
+ul.tags li.warnings:first-child a::before {
 	content: "Archive Warning: ";
 	color: #fff;
 	font-weight: bold;
 }
 
-li.warnings + li.relationships::before {
+li.warnings + li.relationships a::before {
 	content: "Relationships: ";
 	color: #eee;
 	font-weight: bold;
 }
 
-li.relationships + li.characters::before {
+li.relationships + li.characters a::before {
 	content: "Characters: ";
 	color: #eee;
 	font-weight: bold;
 }
 
+li.characters + li.freeforms a::before {
+	content: "Freeform: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.warnings + li.characters a::before {
+	content: "Characters: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.warnings + li.freeforms a::before {
+	content: "Freeform: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.relationships + li.freeforms a::before {
+	content: "Freeform: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.warnings + li.relationships::before,
+li.relationships + li.characters::before,
 li.characters + li.freeforms::before {
-	content: "Freeform: ";
-	color: #eee;
-	font-weight: bold;
-}
+	display: table;
+	/* Non-`none` content is needed or display: table won't create a line break. */
+	content: "";
 
-li.warnings + li.characters::before {
-	content: "Characters: ";
-	color: #eee;
-	font-weight: bold;
-}
-
-li.warnings + li.freeforms::before {
-	content: "Freeform: ";
-	color: #eee;
-	font-weight: bold;
-}
-
-li.relationships + li.freeforms::before {
-	content: "Freeform: ";
-	color: #eee;
-	font-weight: bold;
+	/* And add just a lil' bit of vertical margin for each tag category. */
+	margin-bottom: 0.7em;
 }
 
 
@@ -80,15 +75,6 @@ li.relationships + li.freeforms::before {
 .commas.tags li.relationships:has(+ li.characters)::after,
 .commas.tags li.characters:has(+ li.freeforms)::after {
 	content: none !important;
-}
-
-/*
- * And add just a lil' bit of vertical margin for each tag category.
- */
-ul.tags li.warnings:has(+ li.relationships),
-ul.tags li.relationships:has(+ li.characters),
-ul.tags li.characters:has(+ li.freeforms) {
-	margin-bottom: 0.7em !important;
 }
 
 
@@ -107,6 +93,6 @@ ul.tags li {
 ul.tags.commas {
 	margin-left: 0.5em;
 }
-ul.tags li:last-child {
-	margin-bottom: 0.5em;
+ul.tags {
+	margin-bottom: 0.8em;
 }
