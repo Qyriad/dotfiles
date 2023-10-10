@@ -80,11 +80,21 @@ li.relationships + li.freeforms::before {
 }
 
 /*
- * Override reversi's margin for the tags list, so there's not large line breaks
- * between each tag category.
+ * And add just a lil' bit of vertical margin for each tag category.
  */
-p, li, dd, hr {
-	margin: 0.100em 0;
+ul.tags li.warnings:has(+ li.relationships),
+ul.tags li.relationships:has(+ li.characters),
+ul.tags li.characters:has(+ li.freeforms) {
+	margin-bottom: 0.7em !important;
+}
+
+
+/*
+ * Override reversi's margin for the tags list, so there's not large line breaks
+ * between each tag.
+ */
+ul.tags li {
+	margin: 0.1em 0;
 }
 
 /*
@@ -92,8 +102,8 @@ p, li, dd, hr {
  * nice separation from the tags.
  */
 ul.tags.commas {
-	margin-top: 0.300em;
-	margin-bottom: 1.2em;
 	margin-left: 0.5em;
-	margin-right: 0em;
+}
+ul.tags li:last-child {
+	margin-bottom: 0.5em;
 }
