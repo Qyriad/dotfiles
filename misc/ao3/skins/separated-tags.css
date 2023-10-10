@@ -74,15 +74,16 @@ li.relationships + li.freeforms::before {
  * between each tag category.
  */
 p, li, dd, hr {
-	/*margin: .643em 0;*/
-	/*margin: inherit !important;*/
 	margin: 0.100em 0;
 }
 
 /*
- * But put the margin back for the tags area as a whole, so the description has
+ * But put some margins back for the tags area as a whole, so the description has
  * nice separation from the tags.
  */
 ul.tags.commas {
-	margin: 0.643em 0;
+	margin-top: 0.300em;
+	margin-bottom: 1.2em;
+	margin-left: 0.5em;
+	margin-right: 0em;
 }
