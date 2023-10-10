@@ -1,0 +1,88 @@
+/*
+ * Separates tags by relationships, characters, categories, etc.
+ * Based on the [By Line](https://archiveofourown.org/skins/431) skin by Branch.
+ *
+ * Assumes the parent skin is "Reversi" flavored, though it probably won't cause problems
+ * with most other parent skins.
+ */
+
+.blurb .relationships {
+	font-style: italic;
+	background: none;
+}
+
+ul.tags li.warnings,
+ul.tags li.relationships,
+ul.tags li.characters,
+ul.tags li.freeforms {
+	float: left !important;
+}
+
+li.warnings + li.relationships,
+li.relationships + li.characters,
+li.characters + li.freeforms,
+li.warnings + li.characters,
+li.warnings + li.freeforms,
+li.relationships + li.freeforms {
+	clear: left;
+}
+
+ul.tags li.warnings:first-child:before {
+	content: "Archive Warning: ";
+	color: #fff;
+	font-weight: bold;
+}
+
+li.warnings + li.relationships:before {
+	content: "Relationships: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.relationships + li.characters:before {
+	content: "Characters: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.characters + li.freeforms:before {
+	content: "Freeform: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.warnings + li.characters:before {
+	content: "Characters: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.warnings + li.freeforms:before {
+	content: "Freeform: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+li.relationships + li.freeforms:before {
+	content: "Freeform: ";
+	color: #eee;
+	font-weight: bold;
+}
+
+/*
+ * Override reversi's margin for the tags list, so there's not large line breaks
+ * between each tag category.
+ */
+p, li, dd, hr {
+	/*margin: .643em 0;*/
+	/*margin: inherit !important;*/
+	margin: 0.100em 0;
+}
+
+/*
+ * But put the margin back for the tags area as a whole, so the description has
+ * nice separation from the tags.
+ */
+ul.tags.commas {
+	margin: 0.643em 0;
+}
