@@ -6,8 +6,11 @@
  * with most other parent skins.
  */
 
-.blurb .relationships {
-	font-style: italic;
+/*
+ * Since we're separating out the tag categories anyway,
+ * we don't need relationship tags to have a background.
+ */
+.relationships a.tag {
 	background: none;
 }
 
