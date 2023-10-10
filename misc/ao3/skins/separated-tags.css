@@ -69,6 +69,16 @@ li.relationships + li.freeforms::before {
 	font-weight: bold;
 }
 
+
+/*
+ * Okay, now for the commas. We want to remove the last comma for each tag category.
+ */
+.commas.tags li.warnings:has(+ li.relationships)::after,
+.commas.tags li.relationships:has(+ li.characters)::after,
+.commas.tags li.characters:has(+ li.freeforms)::after {
+	content: none !important;
+}
+
 /*
  * Override reversi's margin for the tags list, so there's not large line breaks
  * between each tag category.
