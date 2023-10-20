@@ -270,20 +270,23 @@ nnoremap <leader>ra :call InsertInvertR()<CR>a
 nnoremap <leader>rA :call InsertInvertR()<CR>A
 
 lua << EOF
+-- Returns true if this function inverted fo=r, and false if it did not.
 function doc_format_options()
 	local pos = vim.inspect_pos(nil, nil, nil, { syntax = false, extmarks = false, semantic_tokens = false })
 
 	if pos == nil then
-		return
+		return false
 	end
 
 	for i, capture in ipairs(pos.treesitter) do
 		if capture.capture == "comment.documentation" then
-			vim.notify("setting formatoptions+=r", vim.log.levels.INFO)
+			vim.cmd.echo([['setting formatoptions+=r']])
 			vim.fn["InsertInvertR"]()
-			break
+			return true
 		end
 	end
+
+	return false
 end
 EOF
 
@@ -292,6 +295,9 @@ EOF
 augroup DocFormatOptions
 	autocmd! InsertEnter * lua doc_format_options()
 augroup END
+
+"nnoremap <expr> o (v:lua.doc_format_options() ? "i\<esc>o" : "o") " Need to decide if I want this one
+inoremap <expr> <CR> (v:lua.doc_format_options() ? "\<CR>" : "\<CR>")
 
 command! -range=% Interleave execute 'keeppatterns' (<line2>-<line1>+1)/2+<line1> ',' <line2> 'g/^/<line1> move -1'
 
