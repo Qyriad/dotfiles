@@ -6,6 +6,7 @@
 
 	# Enable GUI stuff in general.
 	# Yes this says xserver. Yes this we're using Wayland. That's correct.
+	# https://github.com/NixOS/nixpkgs/issues/94799
 	services.xserver.enable = true;
 
 	# Use a Wayland KDE Plasma desktop environment, with systemd integration.
@@ -99,7 +100,11 @@
 		weston
 		dsview
 		pulseview
+		makemkv
 	];
+
+	# Enable KDE partition manager.
+	programs.partition-manager.enable = true;
 
 	# Used for noise suppression.
 	#programs.noisetorch.enable = true;
