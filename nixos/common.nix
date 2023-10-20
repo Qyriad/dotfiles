@@ -51,6 +51,7 @@ in {
 		unzip
 		xz
 		zstd
+		unrar
 		cpio
 		rpm
 		nodePackages.vim-language-server
