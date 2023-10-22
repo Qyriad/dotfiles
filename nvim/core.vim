@@ -116,18 +116,6 @@ augroup spellcheck
 	autocmd! FileType gitcommit,markdown,text setlocal spell spelllang=en_us spellcapcheck=
 augroup END
 
-
-" Set these for zsh edit-command-line.
-function! Zshedit()
-	set nomagic inccommand=nosplit
-	cunabbrev wq
-endfunction
-
-augroup zsh_set
-	autocmd! BufRead /tmp/zsh* call Zshedit()
-augroup END
-
-
 """ Core mappings.
 
 " Use backslash as a leader.
