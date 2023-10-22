@@ -263,6 +263,8 @@ use {
 	event = "LspAttach",
 	opts = {
 		stages = "slide",
+		-- FIXME: why does not having this cause nvim-lsp-notify to break nvim-notify.
+		notify = vim.notify,
 	},
 }
 EOF
