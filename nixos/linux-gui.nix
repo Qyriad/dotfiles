@@ -101,6 +101,8 @@
 		dsview
 		pulseview
 		makemkv
+		ffmpeg
+		aegisub
 	];
 
 	# Enable KDE partition manager.
