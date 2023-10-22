@@ -82,7 +82,10 @@ use {
 	'lewis6991/gitsigns.nvim',
 	config = function()
 		gitsigns = require("gitsigns")
-		gitsigns.setup {}
+		gitsigns.setup {
+			-- Don't fill the signcolumn for untracked files.
+			attach_to_untracked = false,
+		}
 	end,
 }
 use {
