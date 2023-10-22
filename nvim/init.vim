@@ -108,6 +108,7 @@ use {
 		telescope = require("telescope")
 		telescope.setup {}
 		telescope.builtin = require("telescope.builtin")
+		telescope.load_extension("ui-select")
 
 		local mappings = {
 			{ "<leader>tg", telescope.builtin.git_files },
@@ -121,6 +122,10 @@ use {
 			vim.keymap.set("n", lhs, func, { noremap = true })
 		end
 	end,
+}
+use {
+	-- Use telescope as the picker for things like vim.lsp.buf.code_action()
+	"nvim-telescope/telescope-ui-select.nvim",
 }
 
 -- Display.
