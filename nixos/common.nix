@@ -68,6 +68,8 @@ in {
 		inxi
 		hyfetch
 		nodePackages.insect
+		jq
+		yt-dlp
 		nixos-option
 		qyriad.nix-helpers
 		currentNixpkgs
