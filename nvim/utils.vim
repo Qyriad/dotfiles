@@ -73,6 +73,40 @@ function lazy_import_plugin(plugin_name, plugin)
 	p[normalized] = require(main)
 end
 
+-- Returns a table, each key of which is a namespace name that corresponds to all extmarks
+-- in that namespace on the current line. extmark values are of the form { extmark_id, row, col }.
+-- Details about an extmark can be retrieved with nvim_buf_get_extmark_by_id()
+function get_extmarks_on_current_line(opts)
+
+	local ret = { }
+
+	-- Line numbers are 1 indexed but row indexes are 0 indexed in the Neovim API, so - 1 it is.
+	local current_row_index = vim.api.nvim_win_get_cursor(0)[1] - 1
+	local range = {
+		current_row = {
+			-- For columns, 0 indicates the start of the column, and -1 indicates the end of the column.
+			col_from_start = { current_row_index, 0 },
+			col_to_end = { current_row_index, -1},
+		},
+	}
+
+	for ns_name, ns_id in pairs(vim.api.nvim_get_namespaces()) do
+		local current_line_extmarks_for_ns = vim.api.nvim_buf_get_extmarks(
+			0, -- 0 to indicate current buffer
+			ns_id,
+			range.current_row.col_from_start,
+			range.current_row.col_to_end,
+			{ details = true, overlap = true }
+		)
+		-- Only add this to the return value if this value isn't empty.
+		if #current_line_extmarks_for_ns > 0 then
+			ret[ns_name] = current_line_extmarks_for_ns
+		end
+	end
+
+	return ret
+end
+
 EOF
 
 
