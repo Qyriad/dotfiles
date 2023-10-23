@@ -59,11 +59,11 @@ vim.g.lightline = {
 		left  = {{"readonly", "filename", "modified"}},
 		right = {{"lineinfo"}, {"percent"}, {"dir"}},
 	},
-	--separator = { left = "\ue0b0", right = "\ue0b2" },
 	separator = {
-		-- Neovim uses lua 5.1, and 5.5 is when lua got unicode literals. Ugh.
-		left = "", -- \ue0b0
-		right = "" -- \ue0b2
+		-- Lua 5.5 is when Lua got \uxxxx escapes, but Lua 5.3 has \u{xx..} style escapes, and
+		-- LuaJIT implements Lua 5.1 that extension from 5.3.
+		left = "\u{e0b0}",
+		right = "\u{e0b2}",
 	},
 	--separator = { left = utf8.char(0xe0b0), right = utf8.char(0xe0b2) },
 	component = { filetype = '%{&ft!=#""?&ft:"no ft"}%<' },
