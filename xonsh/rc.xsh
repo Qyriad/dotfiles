@@ -33,6 +33,8 @@ try:
 		elif self.content:
 			s.append(self.content.decode(errors="backslashreplace"))
 
+		return "\n".join(s)
+
 	requests.Response.__repr__ = response_repr
 
 except ImportError:
