@@ -20,6 +20,24 @@ try:
 except ImportError:
 	pass
 
+try:
+	import requests
+
+	#
+	# You want to see cursed? I'll give you cursed~
+	#
+	def response_repr(self):
+		s = [f"<Response [{self.status_code}]>"]
+		if json_data := self.json():
+			s.append(str(json_data))
+		elif self.content:
+			s.append(self.content.decode(errors="backslashreplace"))
+
+	requests.Response.__repr__ = response_repr
+
+except ImportError:
+	pass
+
 #
 # Xonsh special environment variables.
 #
