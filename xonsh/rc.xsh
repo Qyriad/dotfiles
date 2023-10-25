@@ -1,9 +1,8 @@
-#$SHELL = "xonsh"
-
 import os, sys, json, struct, re, shlex
 from datetime import datetime, timedelta
 import zoneinfo
 from zoneinfo import ZoneInfo
+from pathlib import Path
 
 # These variables are set to lambdas, and are not exported to subprocesses
 # unless they have been evaluated at least once, it seems.
@@ -450,6 +449,35 @@ aliases["nix-with"] = NixWith()
 envs_pattern = re.compile(r"\$(.+?)\b")
 def envs(s: str):
 	return [envs_pattern.sub(lambda varmatch: os.environ.get(varmatch.group(1), ""), s)]
+
+def _bak(args: list):
+	for file in args:
+		# Be a bit smart. If we were given something like `bak foo.txt.bak`,
+		# and `foo.txt` exists but `foo.txt.bak` doesn't, then operate on `foo.txt` instead.
+		# This is particularly helpful for things like pressing <Up> and changing an `unback`
+		# command to a `bak` command without having to change the filename argument.
+		if file.endswith(".bak"):
+			double_bak = Path(f"{file}.bak")
+			if not double_bak.exists():
+				file = str(file).removesuffix(".bak")
+
+		$[mv @(file) f"{file}.bak"]
+
+def _unbak(args: list):
+	for file in args:
+		# Be a bit smart. If we were given something like `unbak foo.txt`,
+		# and `foo.txt` doesn't exist but `foo.txt.bak` does, then operate on `foo.txt.bak` instead.
+		# This is particularly helpful for things like pressing <Up> and changing a `bak`
+		# command to be an `unbak` command without having to change the filename argument.
+		if not file.endswith(".bak"):
+			with_bak = f"{file}.bak"
+			if not Path(file).exists() and Path(with_bak).exists():
+				file = with_bak
+
+		$[mv @(file) f"{file.removesuffix('.bak')}"]
+
+aliases["bak"] = _bak
+aliases["unbak"] = _unbak
 
 
 #
