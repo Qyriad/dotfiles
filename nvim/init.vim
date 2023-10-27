@@ -65,6 +65,15 @@ nnoremap [g <Cmd>lua gitsigns.prev_hunk({ preview = true })<CR>
 nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
 
 
+function CopyOnWrite() abort
+	augroup CopyFile
+		" Yank the entire file into "+
+		autocmd! BufWritePost <buffer> silent %yank +
+	augroup END
+endfunction
+
+command! CopyOnWrite call CopyOnWrite()
+
 lua << EOF
 -- Text editing.
 use 'tmhedberg/SimpylFold' -- Python folds.
