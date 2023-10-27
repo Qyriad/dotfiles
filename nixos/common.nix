@@ -75,5 +75,6 @@ in {
 		currentNixpkgs
 		any-nix-shell
 		nix-index
+		qyriad.niz
 	];
 }

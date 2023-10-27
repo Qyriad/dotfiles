@@ -13,9 +13,6 @@ let
       echo $(nix eval --impure --expr "<nixpkgs>")
   '';
 
-  niz-cmd = pkgs.writeShellScriptBin "niz" ''
-    exec nix --log-format bar-with-logs --print-build-logs --verbose $@ --command xonsh
-  '';
 in
   pkgs.symlinkJoin {
     name = "nix-helpers";
@@ -23,6 +20,5 @@ in
     paths = [
       rebuild-cmd
       nixpkgs-cmd
-      niz-cmd
     ];
   }

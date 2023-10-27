@@ -13,9 +13,14 @@
 			url = "github:xonsh/xontrib-abbrevs/0.0.1";
 			flake = false;
 		};
+		niz = {
+			url = "github:Qyriad/niz";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 	};
 
-	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod, ... } @ inputs:
+	outputs = { self, nixpkgs, flake-utils, nixseparatedebuginfod, niz, ... } @ inputs:
 		let
 			inherit (nixpkgs.lib.attrsets) genAttrs recursiveUpdate;
 			inherit (builtins) attrNames;
@@ -75,7 +80,11 @@
 						};
 					};
 
-					flake-outputs = { };
+					flake-outputs = {
+						packages = {
+							niz = niz.packages.${system}.default;
+						};
+					};
 				in
 					recursiveUpdate flake-outputs non-flake-outputs
 			;

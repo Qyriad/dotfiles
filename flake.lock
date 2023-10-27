@@ -87,11 +87,35 @@
         "type": "github"
       }
     },
+    "niz": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698449996,
+        "narHash": "sha256-rFjMxJEn6lwyn0LV1WKPTDvR7ZcGwQnasUJCBgbq15k=",
+        "owner": "Qyriad",
+        "repo": "niz",
+        "rev": "ccfe45ef999e5af8b41a5205d60356eae81b1dd2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Qyriad",
+        "repo": "niz",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "nixseparatedebuginfod": "nixseparatedebuginfod",
+        "niz": "niz",
         "xonsh-direnv-src": "xonsh-direnv-src",
         "xontrib-abbrevs-src": "xontrib-abbrevs-src"
       }
