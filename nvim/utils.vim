@@ -107,14 +107,70 @@ function get_extmarks_on_current_line(opts)
 	return ret
 end
 
+---@param path string A path in 'runtimepath' to search for.
+---@return string A path in 'runtimepath' if found.
+function rtp(path)
+	return vim.fn.globpath(vim.o.runtimepath, path)
+end
+
+---@param arglead string
+---@param _cmdline string
+---@param _cursorpos integer
+---@return string A newline separated list of completion results.
+function rtp_complete(arglead, _cmdline, _cursorpos)
+
+	local ret = { }
+
+	for _, rtp in ipairs(vim.opt.runtimepath:get()) do
+		-- Append the directory / if we need to.
+		if string.sub(rtp, -1) ~= "/" then
+			rtp = rtp .. "/"
+		end
+
+		local glob_results = vim.fn.glob(rtp .. arglead .. "*", false, true)
+
+		for _, glob_result in ipairs(glob_results) do
+
+			-- Remove the rtp-part from the result.
+			local complete_value = string.sub(glob_result, #rtp + 1)
+
+			-- And if the result is a directory, append a slash.
+			if vim.fn.isdirectory(glob_result) == 1 then
+				complete_value = complete_value .. "/"
+			end
+
+			-- Finally add the finished string to our completion results.
+			if not vim.tbl_contains(ret, complete_value) then
+				table.insert(ret, complete_value)
+			end
+		end
+	end
+
+	return vim.fn.join(ret, "\n")
+end
+
 EOF
+
+""" Returns the specified path in 'runtimepath' if found.
+function! Rtp(path) abort
+	return v:lua.rtp(a:path)
+endfunction
+
+function! RtpCommand(path) abort
+	let l:result = v:lua.rtp(a:path)
+	let @" = l:result
+	echomsg "yanked " . l:result
+endfunction
+
+""" Echos and yanks the specified path in 'runtimepath' if found.
+command! -nargs=1 -complete=custom,v:lua.rtp_complete Rtp call RtpCommand("<args>")
 
 
 " Calls a function, and, if it returns a value, echoes it.
 " If it doesn't return a value, then this function prints nothing,
 " and thus doesn't hide anything callees may have explicitly
 " echoed themselves.
-function CallOrEcho(func_call_expr)
+function! CallOrEcho(func_call_expr)
 	let l:ret = execute("echomsg " . a:func_call_expr)
 	if !empty(l:ret)
 		" Skip the first character, as it's a newline for some reason,
