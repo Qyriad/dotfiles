@@ -16,10 +16,7 @@
 			sddm = {
 				enable = true;
 				autoNumlock = true;
-				settings.General = {
-					DisplayServer = "wayland";
-					InputMethod = "ibus";
-				};
+				wayland.enable = true;
 			};
 			defaultSession = "plasmawayland";
 		};
