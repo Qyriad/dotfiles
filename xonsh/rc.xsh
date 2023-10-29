@@ -1,4 +1,4 @@
-import os, sys, json, struct, re, shlex
+import os, sys, io, json, struct, re, shlex, typing
 from datetime import datetime, timedelta
 import zoneinfo
 from zoneinfo import ZoneInfo
@@ -461,6 +461,17 @@ def _unbak(args: list):
 
 aliases["bak"] = _bak
 aliases["unbak"] = _unbak
+
+def _per_line(args: list, stdin: io.TextIOWrapper):
+	"""
+		Callable alias that you can pass a lambda to to process stdin line-by-line. e.g.:
+		@ cat ./foo.txt | pl @(lambda line: line.split()[2])
+		to get the second whitespace-delimited word of each line.
+	"""
+	callback: typing.Callable[[str], str] = args[0]
+	return "\n".join([callback(line) for line in stdin])
+
+aliases["pl"] = _per_line
 
 
 #
