@@ -39,6 +39,11 @@ in {
 		NIXPKGS = pkgs.path;
 	};
 
+
+	programs.nix-index.enable = true;
+	# Covered by nix-index, not that its integrations support our shell.
+	programs.command-not-found.enable = false;
+
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
 		tmux
@@ -74,7 +79,6 @@ in {
 		qyriad.nix-helpers
 		currentNixpkgs
 		any-nix-shell
-		nix-index
 		qyriad.niz
 	];
 }

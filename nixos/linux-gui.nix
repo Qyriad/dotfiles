@@ -86,7 +86,6 @@
 		wl-clipboard
 		ksshaskpass
 		opera
-		firefox
 		obsidian
 		discord
 		calibre
@@ -102,8 +101,9 @@
 		aegisub
 	];
 
-	# Enable KDE partition manager.
+	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs.partition-manager.enable = true;
+	programs.firefox.enable = true;
 
 	# Used for noise suppression.
 	#programs.noisetorch.enable = true;
