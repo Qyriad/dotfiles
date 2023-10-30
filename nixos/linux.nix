@@ -64,6 +64,7 @@
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
+		withNodeJs = true;
 	};
 
 	services.udev.packages = [
