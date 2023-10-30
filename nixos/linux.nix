@@ -64,12 +64,6 @@
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
-		configure = {
-			customRC = ''
-				lua vim.opt.runtimepath:prepend("/home/qyriad/.config/nvim")
-				source $HOME/.config/nvim/init.vim
-			'';
-		};
 	};
 
 	services.udev.packages = [
