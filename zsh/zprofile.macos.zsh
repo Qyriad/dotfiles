@@ -5,7 +5,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_DISPLAY_INSTALL_TIMES=1
 export HOMEBREW_KEEP_OUTPUT=1
 
-PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.config/bin:$HOME/.local/bin:$PATH"
 BREWPREFIX="$HOMEBREW_PREFIX" # Set by eval $(brew shellenv); just making a more convenient name.
 
 COREUTILSBIN="$BREWPREFIX/opt/coreutils/libexec/gnubin"
