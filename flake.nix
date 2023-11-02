@@ -3,7 +3,7 @@
 {
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-		flake-utils.url = "github:numtide/flake-utils";
+		flake-utils.url = "flake-utils";
 		nixseparatedebuginfod.url = "github:symphorien/nixseparatedebuginfod";
 		xonsh-direnv-src = {
 			url = "github:74th/xonsh-direnv/1.6.1";
@@ -108,6 +108,10 @@
 				# Truly dirty hack. This will let us to transparently refer to overriden or not overriden
 				# packages in nixpkgs, as flake.packages.foo is preferred over flake.legacyPacakges.foo.
 				legacyPackages = nixpkgs.legacyPackages;
+
+				templates.base = {
+					path = ./nixos/templates/base;
+				};
 			}
 	; # outputs
 }
