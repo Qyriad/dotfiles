@@ -195,7 +195,8 @@ aliases['fdi'] = 'fd --no-ignore'
 
 # Miscellaneous.
 aliases['wgetc'] = 'wget --content-disposition' # Uses server filename across redirects.
-aliases['gpc'] = 'gpaste-client'
+aliases['xh'] = 'xh --all --verbose --check-status'
+aliases['xhs'] = 'xhs --all --verbose --check-status'
 aliases['xdgo'] = 'xdg-open'
 aliases['mime'] = 'xdg-mime'
 aliases['ffmpeg'] = 'ffmpeg -hide_banner'

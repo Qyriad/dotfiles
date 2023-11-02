@@ -62,6 +62,7 @@ in {
 		nodePackages.vim-language-server
 		curl
 		wget
+		xh
 		diskus
 		moreutils
 		grc
