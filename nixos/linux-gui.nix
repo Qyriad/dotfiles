@@ -3,6 +3,16 @@
 { config, pkgs, qyriad, ... }:
 
 {
+	fileSystems."/media/shizue/archive" = {
+		device = "//shizue/Archive";
+		fsType = "cifs";
+		options =
+			let
+				automountOpts = "x-systemd.automount,noauto,x-systemd.idle-timeout=15,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+			in
+				[ "${automountOpts},credentials=/etc/secrets/shizue.cred" ]
+		;
+	};
 
 	# On Yuki this costs less than a GiB. Let's try it for now.
 	environment.enableDebugInfo = true;
@@ -102,6 +112,7 @@
 		makemkv
 		ffmpeg
 		aegisub
+		cifs-utils
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
