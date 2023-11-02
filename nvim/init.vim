@@ -126,6 +126,7 @@ use {
 			{ "<leader>tg", telescope.builtin.git_files },
 			{ "<leader>tb", telescope.builtin.buffers },
 			{ "<leader>tm", telescope.builtin.marks }, -- Let's see if we use this one.
+			{ "<leader>tt", telescope.builtin.tags },
 		}
 
 		for _i, mapspec in ipairs(mappings) do
