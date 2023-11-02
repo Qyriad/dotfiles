@@ -8,6 +8,7 @@
 		#llvmPackages_latest.clangUseLLVM
 		#llvmPackages_latest.lld
 		clang-tools_15
+		pyright
 		rust-analyzer
 		rustfmt
 		cargo
