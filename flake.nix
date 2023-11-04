@@ -4,7 +4,11 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		flake-utils.url = "flake-utils";
-		nixseparatedebuginfod.url = "github:symphorien/nixseparatedebuginfod";
+		nixseparatedebuginfod = {
+			url = "github:symphorien/nixseparatedebuginfod";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 		xonsh-direnv-src = {
 			url = "github:74th/xonsh-direnv/1.6.1";
 			flake = false;
