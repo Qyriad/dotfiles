@@ -1,6 +1,15 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
 { config, pkgs, qyriad, ... }:
 
+let
+	builder-slice-config = {
+		CPUWeight = "90";
+		CPUQuota = "2400%"; # 100% * 24 (on a 32-core CPU).
+		MemoryHigh = "20G";
+		MemoryMax = "24G";
+		MemoryPressureWatch = "on";
+	};
+in
 {
 	# Bootloader.
 	boot.loader = {
@@ -16,6 +25,21 @@
 	systemd.extraConfig = ''
 		DefaultTimeoutStopSec=20
 	'';
+
+	systemd.slices.system-builder.sliceConfig = builder-slice-config;
+	systemd.user.slices.user-builder.sliceConfig = builder-slice-config;
+
+	systemd.services.nix-daemon = {
+		serviceConfig = {
+			OOMScoreAdjust = "950";
+			Slice = "system-builder.slice";
+			MemoryPressureWatch = "on";
+		};
+		unitConfig = {
+			ManagedOOMPressure = "kill";
+			ManagedOOMPressureLimit = "85%";
+		};
+	};
 
 	# Update timezone based on our location.
 	services.localtimed.enable = true;
