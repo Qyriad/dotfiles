@@ -140,11 +140,15 @@
 		ffmpeg
 		aegisub
 		cifs-utils
+		sioyek
+		neochat
+		fluffychat
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs.partition-manager.enable = true;
 	programs.firefox.enable = true;
+	programs.kdeconnect.enable = true;
 
 	# Used for noise suppression.
 	#programs.noisetorch.enable = true;
