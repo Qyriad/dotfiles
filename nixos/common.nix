@@ -49,6 +49,7 @@ in {
 		tmux
 		eza
 		git
+		git-extras
 		fd
 		ripgrep
 		edir
@@ -71,6 +72,7 @@ in {
 		file
 		moar
 		faketty
+		htop
 		inxi
 		hyfetch
 		nodePackages.insect
