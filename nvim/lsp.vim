@@ -156,6 +156,10 @@ function on_lsp_attach(bufnr, client_id)
 		vim.lsp.log = require("vim.lsp.log")
 	end
 
+	-- The LSP-provided tagfunc causes more problems than it solves.
+	-- It takes precedence over tag files, and if we *have* tag files in a workspace where we have LSP,
+	-- then there's probably something the tags are giving us that LSP is not.
+	vim.bo.tagfunc = ""
 end
 
 local augroup = vim.api.nvim_create_augroup("LspMappings", {})
