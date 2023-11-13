@@ -54,4 +54,4 @@
 [submodule]
 	fetchJobs = 4
 [url "ssh://git@github.com"]
-	pushInsteadOf = "https://github.com"
+	insteadOf = "https://github.com"
