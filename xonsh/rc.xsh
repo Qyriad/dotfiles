@@ -4,6 +4,8 @@ import zoneinfo
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
+from xonsh.events import events
+
 # These variables are set to lambdas, and are not exported to subprocesses
 # unless they have been evaluated at least once, it seems.
 $HOSTNAME
@@ -472,6 +474,18 @@ def _per_line(args: list, stdin: io.TextIOWrapper):
 	return "\n".join([callback(line) for line in stdin])
 
 aliases["pl"] = _per_line
+
+# The first parentheses are a non-capturing group that matches whitespace or the start of the string.
+# The second parenthese are the group we're interested in.
+# The third is a lookahead assertion (to not consume) for whitespace or the end of the string.
+UNQUOTED_INSTALLABLE_PATTERN = re.compile(r"(?:\s|^)+(\w+#\w+)(?=\s|$)+")
+@events.on_transform_command
+def unfuck_nix_installabes(cmd: str):
+	if installables := UNQUOTED_INSTALLABLE_PATTERN.findall(cmd):
+		for installable in installables:
+			cmd = cmd.replace(installable, f'"""{installable}"""')
+
+	return cmd
 
 
 #
