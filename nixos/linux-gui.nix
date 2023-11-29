@@ -143,7 +143,15 @@
 		sioyek
 		neochat
 		fluffychat
-	];
+		element-desktop
+		bitwig-studio
+		curl
+		glibc.debug
+	] ++ (qyriad.mkDebugForEach [
+		qt5.qtbase
+		kwin
+		plasma-workspace
+	]);
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs.partition-manager.enable = true;
