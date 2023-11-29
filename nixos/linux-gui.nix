@@ -140,6 +140,8 @@
 		ffmpeg
 		aegisub
 		cifs-utils
+		ntfs3g
+		sequoia
 		sioyek
 		neochat
 		fluffychat
