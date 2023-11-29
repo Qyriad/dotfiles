@@ -48,12 +48,14 @@ in {
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
 		tmux
+		zellij
 		eza
 		git
 		git-extras
 		fd
 		ripgrep
 		edir
+		unar
 		atool
 		unzip
 		xz
