@@ -43,6 +43,7 @@ in {
 	programs.nix-index.enable = true;
 	# Covered by nix-index, not that its integrations support our shell.
 	programs.command-not-found.enable = false;
+	programs.bash.enableCompletion = true;
 
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
