@@ -8,11 +8,13 @@
 		#llvmPackages_latest.clangUseLLVM
 		#llvmPackages_latest.lld
 		qyriad.log2compdb
+		dprint
+		just
 		clang-tools_15
 		pyright
-		rust-analyzer
-		rustfmt
-		cargo
-		rustc
+		#rust-analyzer
+		#rustfmt
+		#cargo
+		#rustc
 	];
 }
