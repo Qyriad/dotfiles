@@ -33,6 +33,29 @@ function separate(value)
 	return array, map
 end
 
+function get_visual()
+	local bufnum, start_line, start_col, _start_offset = unpack(vim.fn.getpos("'<"))
+	local _, end_line, end_col, _end_offset = unpack(vim.fn.getpos("'>"))
+	local lines = vim.api.nvim_buf_get_text(
+		bufnum,
+		start_line - 1,
+		start_col - 1,
+		end_line - 1,
+		end_col,
+		{}
+	)
+
+	return vim.fn.join(lines, "\n")
+end
+EOF
+
+" Inserts the current visual selection text into the command-line.
+cnoremap <expr> <C-t> v:lua.get_visual()
+" Inserts the `:help word` under the cursor into the command-line.
+cnoremap <expr> <C-g> expand("<cword>")
+
+lua <<EOF
+
 -- Calls telescope.builtin.diagnostics with our preferred options.
 function telescope_diagnostics()
 	return telescope.builtin.diagnostics {
