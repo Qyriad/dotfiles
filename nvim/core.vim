@@ -326,6 +326,40 @@ command! -nargs=+ -complete=file Bload call Bload(<f-args>)
 " and "previous" search commands (`n` and `N`) also use the current word.
 nnoremap <leader>* <Cmd>let @/ = '\<' . expand("<cword>") . '\>' \| set hlsearch<CR>
 
+lua <<EOF
+local function get_vim_errstr(lua_errstr)
+	-- lua_errstr should look something like `[string ":lua"]:10: Vim:E999: foomsg`
+	-- Vim displays errors like `E999: foomsg`. So let's get that part.
+	local to_strip = string.find(lua_errstr, "Vim:") + #"Vim:"
+	return string.sub(lua_errstr, to_strip)
+end
+-- Make jumping to search matches use a larger 'scrolloff' value.
+vim.keymap.set("n", "n",
+	function()
+		local prev_scrolloff = vim.wo.scrolloff
+		vim.wo.scrolloff = 15
+		local status, err = pcall(function() vim.cmd.normal { args = { "n" }, bang = true } end)
+		if status == false then
+			vim.api.nvim_err_writeln(get_vim_errstr(err))
+		end
+		vim.wo.scrolloff = prev_scrolloff
+	end,
+	{ desc = "Same as normal `n`, but with `scrolloff=15`" }
+)
+vim.keymap.set("n", "N",
+	function()
+		local prev_scrolloff = vim.wo.scrolloff
+		vim.wo.scrolloff = 15
+		local status, err = pcall(function() vim.cmd.normal { args = { "N" }, bang = true } end)
+		if status == false then
+			vim.api.nvim_err_writeln(get_vim_errstr(err))
+		end
+		vim.wo.scrolloff = prev_scrolloff
+	end,
+	{ desc = "Same as normal `N`, but with `scrolloff=15`" }
+)
+EOF
+
 
 lua << EOF
 use 'tpope/vim-surround'
