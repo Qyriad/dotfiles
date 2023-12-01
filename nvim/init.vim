@@ -75,6 +75,40 @@ endfunction
 command! CopyOnWrite call CopyOnWrite()
 
 lua << EOF
+function what_indent()
+	local lines = {}
+	local settings = { "cindent", "autoindent", "smartindent", "indentexpr" }
+	for _, setting in ipairs(settings) do
+		local line = ""
+		local value = vim.o[setting]
+		if value == true then
+			line = line .. "  " .. setting
+		elseif value == false then
+			line = line .. "no" .. setting
+		else
+			line = line .. "  " .. setting .. "=" .. value
+			if setting == "indentexpr" and vim.fn.empty(value) == 0 then
+				local evaled = vim.fn.eval(value)
+				line = line .. "=" .. evaled
+			end
+		end
+		table.insert(lines, line)
+	end
+	return vim.fn.join(lines, "\n")
+end
+EOF
+
+function! WhatIndentCmd(bang) abort
+	if a:bang == "!"
+		lua vim.notify(what_indent())
+	else
+		echo v:lua.what_indent()
+	endif
+endfunction
+
+command! -bang WhatIndent call WhatIndentCmd("<bang>")
+
+lua << EOF
 -- Text editing.
 use 'tmhedberg/SimpylFold' -- Python folds.
 use 'junegunn/vim-easy-align'
