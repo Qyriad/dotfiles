@@ -52,6 +52,38 @@
 
 			deepSeq = val: builtins.deepSeq val val;
 
+			# Utility functions for use in our NixOS modules.
+			# We have to be a little careful here because this is `recursiveUpdate`d into specialArgs.qyriad,
+			# which means these names can shadow packages in `qyriad`.
+			qlib = rec {
+				# This gets used in linux-gui.nix
+				mkDebug = pkg: (pkg.overrideAttrs { separateDebugInfo = true; }).debug;
+				mkDebugForEach = map mkDebug;
+				overrideStdenvForDrv = newStdenv: drv:
+					newStdenv.mkDerivation (drv.overrideAttrs (self: { passthru.attrs = self; })).attrs
+				;
+				mkImpureNative = prev:
+					overrideStdenvForDrv (prev.stdenvAdapters.impureUseNativeOptimizations prev.stdenv)
+				;
+
+				# Gets the original but evaluated arguments to mkDerivation, given a derivation created with
+				# that function.
+				getAttrs =
+					# A mkDerivation derivation
+					drv:
+						assert nixpkgs.lib.assertMsg (drv ? overrideAttrs) "getAttrs passed non-mkDerivation attrset ${toString drv}";
+						(drv.overrideAttrs (prev: { passthru.__attrs = prev; })).passthru.__attrs
+				;
+
+				# Gets the original but evaluate arguments to buildPythonPackage (and friends), given a
+				# derivation created with those functions.
+				getPythonAttrs =
+					# A buildPythonPackage family derivation.
+					drv:
+						(drv.overridePythonAttrs (prev: { passthru.__attrs = prev; })).passthru.__attrs
+				;
+			};
+
 			# Wraps nixpkgs.lib.nixosSystem to generate a NixOS configuration, adding common modules
 			# and special arguments.
 			mkConfig =
@@ -127,6 +159,19 @@
 							xonsh = xonshPkgs.xonsh;
 							strace-process-tree = pkgs.python3Packages.callPackage ./nixos/pkgs/strace-process-tree.nix { };
 						};
+
+						# Truly dirty hack. This will let us transparently refer to overriden
+						# or not overriden packages in nixpkgs, as flake.packages.foo is preferred over
+						# flake.legacyPackages.foo by commands like `nix build`.
+						# We also slip our additional lib functions in here, so we can use them
+						# with the rest of nixpkgs.lib.
+						legacyPackages = recursiveUpdate
+							nixpkgs.legacyPackages.${system}
+							{
+								lib = qlib;
+								pkgs.lib = qlib;
+							}
+						;
 					};
 
 					# FIXME: flakesPerSystem is broken
@@ -144,14 +189,7 @@
 			recursiveUpdate (flake-utils.lib.eachDefaultSystem mkPerSystemOutputs)
 			# NixOS configuration outputs, which are each for one specific system.
 			{
-				# Utility functions for use in our NixOS modules.
-				# We have to be a little careful here because this is `recursiveUpdate`d into specialArgs.qyriad,
-				# which means these names can shadow packages in `qyriad`.
-				lib = rec {
-					# This gets used in linux-gui.nix
-					mkDebug = pkg: (pkg.overrideAttrs { separateDebugInfo = true; }).debug;
-					mkDebugForEach = map mkDebug;
-				};
+				lib = qlib;
 
 				nixosConfigurations = rec {
 					futaba = mkConfig "x86_64-linux" [
@@ -164,10 +202,6 @@
 					];
 					Yuki = yuki;
 				};
-
-				# Truly dirty hack. This will let us to transparently refer to overriden or not overriden
-				# packages in nixpkgs, as flake.packages.foo is preferred over flake.legacyPacakges.foo.
-				legacyPackages = nixpkgs.legacyPackages;
 
 				templates.base = {
 					path = ./nixos/templates/base;
