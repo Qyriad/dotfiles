@@ -13,6 +13,18 @@ let
       echo $(nix eval --impure --expr "<nixpkgs>")
   '';
 
+  nix-print-cmd = pkgs.writeShellScriptBin "nix-print" ''
+    for _i in $(seq $#); do
+      niz eval --raw 'qyriad#pkgs' --apply "pkgs: pkgs.lib.generators.toPretty { allowPrettyValues = true; } ($1)"
+      echo
+      shift
+    done
+  '';
+
+  highlight-nix = pkgs.writeShellScriptBin "hlnix" ''
+    exec ${pkgs.bat}/bin/bat -l nix --no-pager --style=plain $@
+  '';
+
 in
   pkgs.symlinkJoin {
     name = "nix-helpers";
@@ -20,5 +32,7 @@ in
     paths = [
       rebuild-cmd
       nixpkgs-cmd
+      nix-print-cmd
+      highlight-nix
     ];
   }
