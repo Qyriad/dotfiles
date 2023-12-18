@@ -220,6 +220,7 @@ aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
 aliases['userctl'] = 'systemctl --user'
 aliases["busctl"] = ["busctl", "--full", "--verbose"]
 aliases['ins'] = 'insect'
+aliases['silicon'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
 
 
 aliases['cm'] = 'cmake -B build'
