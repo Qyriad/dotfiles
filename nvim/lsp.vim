@@ -43,6 +43,7 @@ lsp_filetypes = {
 	"html",
 	"javascript",
 	"typescript",
+	"lua",
 }
 
 lsp_opts = {
@@ -64,6 +65,7 @@ lspconfig_modules = {
 	swift = "sourcekit",
 	javascript = "tsserver",
 	typescript = "tsserver",
+	lua = "lua_ls",
 }
 
 -- Create autocommands to call setup() on the corresponding module when that filetype is detected.
