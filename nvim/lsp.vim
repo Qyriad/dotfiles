@@ -125,6 +125,8 @@ function on_lsp_attach(bufnr, client_id)
 		-- Diagnostics.
 		{ '<leader>e', vim.diagnostic.open_float }, -- 'e' for 'error'
 		{ '<leader>td', telescope_diagnostics },
+		{ '<leader>tD', telescope.builtin.diagnostics },
+		{ '<leader>tr', telescope.builtin.lsp_references },
 		{ '[d', vim.diagnostic.goto_prev },
 		{ ']d', vim.diagnostic.goto_next },
 		{ '<leader>h', vim.lsp.buf.document_highlight },
