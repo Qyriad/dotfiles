@@ -81,9 +81,9 @@ function! Restore_last_position()
 		return
 	endif
 
-	if line("'\"") <= line("$")
+	let l:last_position = line("'\"")
+	if l:last_position != 0 && l:last_position <= line("$")
 		normal! g`"
-		"return 1
 	endif
 endfunction
 
