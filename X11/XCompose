@@ -103,4 +103,10 @@ include "%L"
 <Multi_key> <z> <w> <s> : "​" # Zero-width space.
 
 # Superscripts
-<Multi_key> <^> <2> : "²"
+<Multi_key> <asciicircum> <2> : "²"
+
+# Left and right mathematical angle brackets, for IPA orthographic transcription.
+<Multi_key> <less> <bracketleft> : "⟨" # U+27EA, Mathematical Left Angle Bracket
+<Multi_key> <bracketleft> <less> : "⟨" # U+27EA, Mathematical Left Angle Bracket
+<Multi_key> <greater> <bracketright> : "⟩" # U+27E9, Mathematical Right Angle Bracket
+<Multi_key> <bracketright> <greater> : "⟩" # U+27E9, Mathematical Right Angle Bracket
