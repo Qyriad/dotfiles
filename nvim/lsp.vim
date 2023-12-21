@@ -44,6 +44,7 @@ lsp_filetypes = {
 	"javascript",
 	"typescript",
 	"lua",
+	"nix",
 }
 
 lsp_opts = {
@@ -66,6 +67,7 @@ lspconfig_modules = {
 	javascript = "tsserver",
 	typescript = "tsserver",
 	lua = "lua_ls",
+	nix = "nil_ls",
 }
 
 -- Create autocommands to call setup() on the corresponding module when that filetype is detected.
