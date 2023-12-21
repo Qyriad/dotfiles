@@ -12,6 +12,8 @@
 		just
 		clang-tools_15
 		pyright
+		nil
+		bear
 		#rust-analyzer
 		#rustfmt
 		#cargo
