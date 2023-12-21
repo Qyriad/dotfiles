@@ -87,6 +87,13 @@ for i, filetype in ipairs(lsp_filetypes) do
 					vim.notify("lspconfig." .. submodule_name .. ".setup()", vim.log.levels.TRACE)
 					local opts = lsp_opts[submodule_name] or {}
 					opts.capabilities = require("coq").lsp_ensure_capabilities({})
+					opts.capabilities.textDocument = {
+						completion = {
+							completionItem = {
+								snippetSupport = false,
+							},
+						},
+					}
 					submodule.setup(opts)
 				end
 			end
