@@ -250,6 +250,11 @@ use {
 	'ms-jpq/coq_nvim',
 	ft = lsp_filetypes,
 }
+-- Make LSP stuff for Neovim's Lua work correctly.
+use {
+	'folke/neodev.nvim',
+	opts = { },
+}
 use { 'nanotee/nvim-lsp-basics', lazy = true }
 use { 'weilbith/nvim-code-action-menu', lazy = true }
 use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
