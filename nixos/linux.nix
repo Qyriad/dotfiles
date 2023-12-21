@@ -75,6 +75,9 @@ in
 
 	nix.settings.trusted-users = [
 		"root"
+	];
+
+	nix.settings.allowed-users = [
 		"qyriad"
 	];
 
