@@ -52,6 +52,7 @@ in {
 		eza
 		git
 		git-extras
+		tig
 		fd
 		ripgrep
 		edir
