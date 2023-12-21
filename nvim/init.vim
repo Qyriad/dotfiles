@@ -75,6 +75,16 @@ endfunction
 command! CopyOnWrite call CopyOnWrite()
 
 lua << EOF
+-- Highlight the cursor's column, briefly
+vim.keymap.set("n", "<leader>hh", function()
+		vim.wo.cursorcolumn = true
+		vim.defer_fn(function() vim.wo.cursorcolumn = false end, vim.o.timeoutlen)
+	end,
+	{
+		desc = "highlight the cursor's column, briefly"
+	}
+)
+
 function what_indent()
 	local lines = {}
 	local settings = { "cindent", "autoindent", "smartindent", "indentexpr" }
