@@ -222,6 +222,13 @@ vim.api.nvim_create_user_command(
 
 EOF
 
+function! SetupFormatOnSave(buffer) abort
+	augroup FormatOnSave
+		autocmd! BufWritePre a:buffer lua vim.lsp.buf.format({ async = false })
+	augroup END
+endfunction
+command! FormatOnSave call SetupFormatOnSave("<buffer>")
+
 " cSpell: disable
 lua << EOF
 use {
