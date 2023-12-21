@@ -103,7 +103,6 @@ in
 		usbutils
 		pciutils
 		(gdb.override { enableDebuginfod = true; })
-		qt5.qtbase
 		qyriad.strace-process-tree
 	];
 	services.nixseparatedebuginfod.enable = true;
