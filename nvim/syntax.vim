@@ -113,6 +113,9 @@ use {
 use {
 	'nvim-treesitter/nvim-treesitter-context',
 	lazy = false,
+	opts = {
+		max_lines = 3,
+	},
 }
 use {
 	'JoosepAlviste/nvim-ts-context-commentstring',
