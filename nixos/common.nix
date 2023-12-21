@@ -82,7 +82,11 @@ in {
 		nodePackages.insect
 		jq
 		yt-dlp
+		pstree
+		silicon
+		hyperfine
 		nixos-option
+		nix-prefetch
 		qyriad.nix-helpers
 		currentNixpkgs
 		any-nix-shell
