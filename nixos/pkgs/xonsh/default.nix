@@ -1,4 +1,4 @@
-{ pkgs, xonsh-direnv-src, xontrib-abbrevs-src, ... }:
+{ pkgs, xonsh-direnv-src, xontrib-abbrevs-src, fetchPypi, ... }:
 
 let
   inherit (builtins) path attrValues;
@@ -38,6 +38,33 @@ let
     };
   };
 
+  pipe =
+    let
+      pname = "pipe";
+      name = pname;
+      version = "2.0";
+    in
+      buildPythonPackage {
+
+        inherit pname version;
+
+        src = fetchPypi {
+          inherit pname version;
+          sha256 = "sha256-oc8/KfmFdrfmVSIxFCvHEejdMkUTosRSX8aMM/R/q60=";
+        };
+
+        format = "pyproject";
+
+        nativeBuildInputs = attrValues {
+          inherit (pkgs.python3Packages)
+            setuptools
+            wheel
+          ;
+        };
+
+      } # buildPythonPackage
+  ; # pipe
+
   xonsh = pkgs.xonsh.overridePythonAttrs (old: {
     propagatedBuildInputs = attrValues {
       inherit (pkgs.python3Packages)
@@ -52,6 +79,7 @@ let
       inherit
         xonsh-direnv
         xontrib-abbrevs
+        pipe
       ;
     } ++ old.propagatedBuildInputs;
 
