@@ -33,6 +33,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
 		};
+		pzl = {
+			url = "github:Qyriad/pzl";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 	};
 
 	outputs = {
@@ -179,6 +184,7 @@
 						packages = {
 							niz = niz.packages.${system}.default;
 							log2compdb = log2compdb.packages.${system}.default;
+							pzl = inputs.pzl.packages.${system}.default;
 						};
 					};
 				in
