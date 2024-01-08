@@ -18,6 +18,11 @@
 			url = "github:xonsh/xontrib-abbrevs/0.0.1";
 			flake = false;
 		};
+		qyriad-nur = {
+			url = "github:Qyriad/nur-packages";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 		niz = {
 			url = "github:Qyriad/niz";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -152,8 +157,16 @@
 				let
 					pkgs = import nixpkgs { inherit system; };
 
+					qyriad-nur = import inputs.qyriad-nur {
+						inherit pkgs;
+					};
+
 					xonshPkgs = pkgs.callPackage ./nixos/pkgs/xonsh {
-						inherit (inputs) xonsh-direnv-src xontrib-abbrevs-src;
+						inherit (qyriad-nur)
+							python-pipe
+							xontrib-abbrevs
+							xonsh-direnv
+						;
 					};
 
 					non-flake-outputs = {

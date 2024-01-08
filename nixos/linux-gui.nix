@@ -120,6 +120,10 @@
 	# for servers.
 	networking.firewall.enable = false;
 
+	nixpkgs.config.permittedInsecurePackages = [
+		"electron-25.9.0" # For Obsidian
+	];
+
 	environment.systemPackages = with pkgs; [
 		alacritty
 		mpv
