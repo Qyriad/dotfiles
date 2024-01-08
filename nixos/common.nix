@@ -16,6 +16,10 @@ in {
 			};
 			flake = inputs.self;
 		};
+		nixPath = [
+			"nixpkgs=${pkgs.path}"
+			"/nix/var/nix/profiles/per-user/root/channels"
+		];
 	};
 
 	time.timeZone = "America/Denver";
