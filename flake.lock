@@ -134,11 +134,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1703013332,
-        "narHash": "sha256-+tFNwMvlXLbJZXiMHqYq77z/RfmpfpiI3yjL6o/Zo9M=",
+        "lastModified": 1703961334,
+        "narHash": "sha256-M1mV/Cq+pgjk0rt6VxoyyD+O8cOUiai8t9Q6Yyq4noY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "54aac082a4d9bb5bbc5c4e899603abfb76a3f6d6",
+        "rev": "b0d36bd0a420ecee3bc916c91886caca87c894e9",
         "type": "github"
       },
       "original": {
@@ -181,11 +181,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703369059,
-        "narHash": "sha256-ZKUCl06WuG0y+SnULKjBAQIbF46KCAbH/BOV/Rapujs=",
+        "lastModified": 1703522125,
+        "narHash": "sha256-IpjQ916k7S5jmH7y9QUikRXx70wp8lZPrQSwDAfNgJw=",
         "owner": "Qyriad",
         "repo": "niz",
-        "rev": "fce1e5b15bf357e426902ffa250b1d2706181547",
+        "rev": "553639d373129b6f8afc224df682ecdc820cf917",
         "type": "github"
       },
       "original": {
@@ -196,11 +196,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1703274336,
-        "narHash": "sha256-1WshKO8MKumqSioWVRMU91+W7nQQfvvMD+iTSNz1QeE=",
+        "lastModified": 1704142590,
+        "narHash": "sha256-4cFVrYDodnB1vJQ79htwm4rAYl1HwHcemiZ68izluLI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3eccbee91a8bf34eb1acc9a582054cc50581fec9",
+        "rev": "0529839a62a15cda326e38353f9c10a4efa01d60",
         "type": "github"
       },
       "original": {
@@ -232,6 +232,29 @@
         "type": "github"
       }
     },
+    "qyriad-nur": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1704762069,
+        "narHash": "sha256-sxIYqfCRpsKKCBoLj4ZT0qjyMkXfFUJGMe2W23EBv+M=",
+        "owner": "Qyriad",
+        "repo": "nur-packages",
+        "rev": "1a8a18d525e4fc882dabf6631e54170765c9f4c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Qyriad",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "caligula": "caligula",
@@ -242,6 +265,7 @@
         "niz": "niz",
         "nur": "nur",
         "pzl": "pzl",
+        "qyriad-nur": "qyriad-nur",
         "xonsh-direnv-src": "xonsh-direnv-src",
         "xontrib-abbrevs-src": "xontrib-abbrevs-src"
       }

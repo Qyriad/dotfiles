@@ -147,7 +147,7 @@
 							udev-rules = pkgs.callPackage ./nixos/udev-rules { };
 							nix-helpers = pkgs.callPackage ./nixos/pkgs/nix-helpers.nix { };
 							xonsh = xonshPkgs.xonsh;
-							strace-process-tree = pkgs.python3Packages.callPackage ./nixos/pkgs/strace-process-tree.nix { };
+							inherit (qyriad-nur) strace-process-tree;
 						};
 
 						# Truly dirty hack. This will let us transparently refer to overriden
