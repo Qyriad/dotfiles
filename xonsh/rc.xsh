@@ -80,6 +80,7 @@ $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
 #$MOUSE_SUPPORT = True
 $XONSH_AUTOPAIR = False
+$AUTO_PUSHD = True
 $COMMANDS_CACHE_SIZE_WARNING = 8000
 $CMD_COMPLETIONS_SHOW_DESC = True # Show path to binary in description of command completions.
 
