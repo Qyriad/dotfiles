@@ -1,8 +1,5 @@
 {
   pkgs,
-  #xonsh-direnv-src,
-  #xontrib-abbrevs-src,
-  #fetchPypi,
   python-pipe,
   xontrib-abbrevs,
   xonsh-direnv,
@@ -35,7 +32,11 @@ let
         setuptools
       ;
     };
+
+    passthru = {
+      qyriad.is-unwrapped = true;
+    };
   });
-in {
-  inherit xonsh xontrib-abbrevs xonsh-direnv python-pipe;
-}
+
+in
+  xonsh

@@ -10,14 +10,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
 		};
-		xonsh-direnv-src = {
-			url = "github:74th/xonsh-direnv/1.6.1";
-			flake = false;
-		};
-		xontrib-abbrevs-src = {
-			url = "github:xonsh/xontrib-abbrevs/0.0.1";
-			flake = false;
-		};
 		qyriad-nur = {
 			url = "github:Qyriad/nur-packages";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -56,11 +48,7 @@
 		...
 	} @ inputs:
 		let
-			inherit (nixpkgs.lib.attrsets) mapAttrs genAttrs recursiveUpdate;
-			inherit (nixpkgs.lib.debug) traceVal traceSeq traceValSeq;
-			inherit (builtins) attrNames;
-
-			deepSeq = val: builtins.deepSeq val val;
+			inherit (nixpkgs.lib.attrsets) recursiveUpdate;
 
 			qlib = import ./nixos/qlib.nix {
 				inherit (nixpkgs) lib;
@@ -85,55 +73,16 @@
 					}
 			;
 
-			# Turns flake.${system}.packages (etc) into flake.packages (etc).
-			flakeOutputsFor =
-				# flake output schema :: attrset
-				flake:
-				# The name of that flake :: string
-				flakeName:
-				# "x86_64-linux"-style ("double") system string :: string
-				system:
-
-					let
-						# Get the kinds of outputs this flake has.
-						flakeTopLevelOutputNames = attrNames flake.outputs;
-
-						# And for each of those, get that output for the system this function was passed,
-						# but rename .default to .${flakeName}
-						getFlakeOutput = outputName: flake.${outputName}.${system};
-
-					in
-						genAttrs flakeTopLevelOutputNames getFlakeOutput
-			;
-
-			flakesPerSystem =
-				# "x86_64-linux"-style ("double") system string :: string
-				system:
-				# A map of names to flake attrsets. The name is used to rename .default outputs, if the flake
-				# has any.
-				flakes:
-
-					mapAttrs (flakeName: flake:
-						let
-							flakeTopLevelOutputNames = traceVal (attrNames flake.outputs);
-
-							# And for each of those, get that output for the system this function was passed.
-							getFlakeOutput = outputName: flake.${outputName}.${system};
-
-						in
-							genAttrs (builtins.trace flakeTopLevelOutputNames (_: [ ])) getFlakeOutput
-					) flakes # mapAttrs
-			;
-
 			mkPerSystemOutputs = system:
 				let
 					pkgs = import nixpkgs { inherit system; };
+					inherit (pkgs) lib;
 
 					qyriad-nur = import inputs.qyriad-nur {
 						inherit pkgs;
 					};
 
-					xonshPkgs = pkgs.callPackage ./nixos/pkgs/xonsh {
+					xonsh = pkgs.callPackage ./nixos/pkgs/xonsh {
 						inherit (qyriad-nur)
 							python-pipe
 							xontrib-abbrevs
@@ -146,7 +95,7 @@
 							nerdfonts = pkgs.callPackage ./nixos/pkgs/nerdfonts.nix { };
 							udev-rules = pkgs.callPackage ./nixos/udev-rules { };
 							nix-helpers = pkgs.callPackage ./nixos/pkgs/nix-helpers.nix { };
-							xonsh = xonshPkgs.xonsh;
+							inherit xonsh;
 							inherit (qyriad-nur) strace-process-tree;
 						};
 
@@ -167,8 +116,8 @@
 					# FIXME: flakesPerSystem is broken
 					flake-outputs = {
 						packages = {
-							niz = niz.packages.${system}.default;
-							log2compdb = log2compdb.packages.${system}.default;
+							niz = import niz { inherit pkgs; };
+							log2compdb = import log2compdb { inherit pkgs; };
 							pzl = inputs.pzl.packages.${system}.default;
 						};
 					};
