@@ -98,5 +98,6 @@ in {
 		currentNixpkgs
 		any-nix-shell
 		qyriad.niz
+		qyriad.pzl
 	];
 }
