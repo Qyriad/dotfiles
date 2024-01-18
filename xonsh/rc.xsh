@@ -22,6 +22,12 @@ except ImportError:
 	pass
 
 try:
+	import pipe
+	from pipe import Pipe, select, where, skip, take
+except ImportError:
+	pass
+
+try:
 	import requests
 
 	#
