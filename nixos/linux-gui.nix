@@ -152,12 +152,18 @@
 		element-desktop
 		bitwig-studio
 		curl
+		kcachegrind
+		thunderbird
 		glibc.debug
 	] ++ (qyriad.mkDebugForEach [
 		qt5.qtbase
+		python3
 		kwin
 		plasma-workspace
-	]);
+		git
+		curl
+	])
+	;
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs.partition-manager.enable = true;
