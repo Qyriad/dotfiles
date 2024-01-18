@@ -29,6 +29,7 @@ in
 	systemd.slices.system-builder.sliceConfig = builder-slice-config;
 	systemd.user.slices.user-builder.sliceConfig = builder-slice-config;
 
+	# Make Nix builds not OOM my machine please.
 	systemd.services.nix-daemon = {
 		serviceConfig = {
 			OOMScoreAdjust = "950";

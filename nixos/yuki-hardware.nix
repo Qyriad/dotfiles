@@ -9,10 +9,31 @@
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
-	boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+	boot.initrd.availableKernelModules = [
+		"nvme"
+		"xhci_pci"
+		"ahci"
+		"usbhid"
+		"usb_storage"
+		"sd_mod"
+	];
 	boot.initrd.kernelModules = [ ];
-	boot.kernelModules = [ "kvm-amd" ];
+	boot.kernelModules = [
+		"kvm-amd"
+		"nvidia"
+	];
 	boot.extraModulePackages = [ ];
+	services.xserver.videoDrivers = [
+		"nvidia"
+	];
+
+	hardware.nvidia = {
+		modesetting.enable = true;
+		package = config.boot.kernelPackages.nvidiaPackages.stable;
+		open = false;
+	};
+	hardware.opengl.driSupport32Bit = true;
+
 
 	fileSystems."/" = {
 		device = "/dev/disk/by-uuid/4a86932f-5e2d-464e-9699-cde6d010847d";
