@@ -40,7 +40,7 @@ set timeoutlen=1000 ttimeoutlen=10 " Remove <Esc> leaving insert mode delay in T
 set splitright " Make :vsplit put the new window on the right.
 set splitbelow " Make :split put the new window on the bottom.
 set selection=old " Make visual mode respect 'virtualedit' setting.
-set foldlevel=5 " Don't fold almost anything by default.
+set foldlevel=10 " Don't fold almost anything by default.
 set hidden " Allow for hidden, modified but not written buffers.
 set bufhidden=hide " Hide buffers instead of deleting or unloading them.
 set ignorecase
