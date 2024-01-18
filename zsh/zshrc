@@ -464,21 +464,24 @@ source_if /usr/share/zsh/scripts/zplug/init.zsh
 source_if /usr/share/zplug/init.zsh # Debian/Ubuntu location.
 source_if /usr/local/opt/zplug/init.zsh # Homebrew location.
 
-#zplug "lambda/zsh-snippets"
-#zplug "ael-code/zsh-colored-man-pages"
-#zplug "agkozak/zsh-z"
+if whence zplug; then
 
-#export X_ZSH_HIGHLIGHT_DIRS_BLACKLIST=('/media/*/*')
-typeset -Ag FAST_HIGHLIGHT
-FAST_HIGHLIGHT[use_async]=1
-zplug zdharma/fast-syntax-highlighting
+	#zplug "lambda/zsh-snippets"
+	#zplug "ael-code/zsh-colored-man-pages"
+	#zplug "agkozak/zsh-z"
 
-zplug zsh-users/zsh-autosuggestions
+	#export X_ZSH_HIGHLIGHT_DIRS_BLACKLIST=('/media/*/*')
+	typeset -Ag FAST_HIGHLIGHT
+	FAST_HIGHLIGHT[use_async]=1
+	zplug zdharma/fast-syntax-highlighting
 
-zplug bigH/git-fuzzy
-zplug wfxr/forgit
+	zplug zsh-users/zsh-autosuggestions
 
-zplug load
+	zplug bigH/git-fuzzy
+	zplug wfxr/forgit
+
+	zplug load
+fi
 
 #alias zsp='zsh_snippets'
 #bindkey "<M-s>" zsh-snippets-widget-expand
