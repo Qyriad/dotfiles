@@ -32,10 +32,6 @@ let
         setuptools
       ;
     };
-
-    passthru = {
-      qyriad.is-unwrapped = true;
-    };
   });
 
 in
