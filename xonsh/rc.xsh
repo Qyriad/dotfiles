@@ -63,10 +63,18 @@ def exit_color():
 	except (AttributeError, NameError):
 		return '{GREEN}'
 
+def shlvl_diff():
+	# The SHLVL above baseline.
+	# Without tmux, the baseline is 1. In tmux, the baseline is 2.
+	if "TMUX" in ${...}:
+		return str(int($SHLVL) - 2)
+	return str(int($SHLVL) - 1)
+
 $PROMPT_FIELDS['exit_code'] = exit_code
 $PROMPT_FIELDS['exit_color'] = exit_color
+$PROMPT_FIELDS['shlvl'] = shlvl_diff
 $PROMPT = '{env_name}{GREEN}{user}@{hostname} {#af00ff}{cwd}{#87d7d7}{curr_branch: ({})}{exit_color} {prompt_end}{RESET} '
-$TITLE = '{cwd} | {exit_code}'
+$TITLE = '{cwd} | {exit_code} | SL {shlvl}'
 $CASE_SENSITIVE_COMPLETIONS = False
 $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
