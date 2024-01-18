@@ -104,6 +104,7 @@ include "%L"
 
 # Superscripts
 <Multi_key> <asciicircum> <2> : "²"
+<Multi_key> <caret> <2> : "²"
 
 # Left and right mathematical angle brackets, for IPA orthographic transcription.
 <Multi_key> <less> <bracketleft> : "⟨" # U+27EA, Mathematical Left Angle Bracket
