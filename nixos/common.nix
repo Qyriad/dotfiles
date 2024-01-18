@@ -71,6 +71,9 @@ in {
 		nodePackages.vim-language-server
 		curl
 		wget
+		man-pages
+		man-pages-posix
+		stdmanpages
 		xh
 		diskus
 		moreutils
