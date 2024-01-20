@@ -125,6 +125,12 @@ use 'junegunn/vim-easy-align'
 
 -- Utilities.
 use 'tpope/vim-eunuch'
+use {
+	'm4xshen/autoclose.nvim', opts = { },
+}
+use {
+	'windwp/nvim-ts-autotag',
+}
 use 'rbgrouleff/bclose.vim' -- Dependency for ranger.vim
 use {
 	'francoiscabrol/ranger.vim',
