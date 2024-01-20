@@ -5,11 +5,6 @@
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		flake-utils.url = "flake-utils";
 		nur.url = "github:nix-community/NUR";
-		nixseparatedebuginfod = {
-			url = "github:symphorien/nixseparatedebuginfod";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
-		};
 		qyriad-nur = {
 			url = "github:Qyriad/nur-packages";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +37,6 @@
 		nixpkgs,
 		flake-utils,
 		nur,
-		nixseparatedebuginfod,
 		niz,
 		log2compdb,
 		...
@@ -67,7 +61,6 @@
 						specialArgs.inputs = inputs;
 						specialArgs.qyriad = recursiveUpdate self.outputs.packages.${system} self.outputs.lib;
 						modules = modules ++ [
-							nixseparatedebuginfod.nixosModules.default
 							nur.nixosModules.nur
 						];
 					}
