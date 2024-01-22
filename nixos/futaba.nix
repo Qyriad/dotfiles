@@ -2,17 +2,25 @@
 { config, pkgs, modulesPath, ... }:
 
 {
-	networking.hostName = "Futaba";
 	imports = [
 		./futaba-hardware.nix
 		./common.nix
 		./linux.nix
 		./linux-gui.nix
 		./dev.nix
+		./resources.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
+	networking.hostName = "Futaba";
+
 	services.fwupd.enable = true;
+
+	# Options from our custom NixOS module in ./resources.nix
+	resources = {
+		memory = 8;
+		cpus = 8;
+	};
 
 	# Non-NixOS generated hardware configuration.
 	hardware.cpu.intel.updateMicrocode = true;

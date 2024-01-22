@@ -2,17 +2,25 @@
 { config, pkgs, modulesPath, ... }:
 
 {
-	networking.hostName = "Yuki";
 	imports = [
 		./yuki-hardware.nix
 		./common.nix
 		./linux.nix
 		./linux-gui.nix
 		./dev.nix
+		./resources.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
+	networking.hostName = "Yuki";
+
 	services.fwupd.enable = true;
+
+	# Options from our custom NixOS module in ./resources.nix
+	resources = {
+		memory = 32;
+		cpus = 32;
+	};
 
 	# Non-NixOS-generated hardware configuration.
 	hardware.cpu.amd.updateMicrocode = true;

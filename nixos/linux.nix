@@ -2,11 +2,15 @@
 { config, pkgs, qyriad, ... }:
 
 let
+	mostCpus = builtins.floor (config.resources.cpus * 0.80);
+	mostMemory = builtins.floor (config.resources.memory * 0.80);
+	maxMemory = builtins.floor (config.resources.memory * 0.90);
+
 	builder-slice-config = {
 		CPUWeight = "90";
-		CPUQuota = "2400%"; # 100% * 24 (on a 32-core CPU).
-		MemoryHigh = "20G";
-		MemoryMax = "24G";
+		CPUQuota = "${toString (mostCpus * 100)}%";
+		MemoryHigh = "${toString mostMemory}G";
+		MemoryMax = "${toString maxMemory}G";
 		MemoryPressureWatch = "on";
 	};
 in
@@ -26,8 +30,8 @@ in
 		DefaultTimeoutStopSec=20
 	'';
 
-	systemd.slices.system-builder.sliceConfig = builder-slice-config;
-	systemd.user.slices.user-builder.sliceConfig = builder-slice-config;
+	systemd.slices.system-builder.sliceConfig = config.resources.builderSliceConfig;
+	systemd.user.slices.user-builder.sliceConfig = config.resources.builderSliceConfig;
 
 	# Make Nix builds not OOM my machine please.
 	systemd.services.nix-daemon = {
