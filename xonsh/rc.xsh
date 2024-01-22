@@ -496,7 +496,7 @@ aliases["pl"] = _per_line
 # The third is a lookahead assertion (to not consume) for whitespace or the end of the string.
 UNQUOTED_INSTALLABLE_PATTERN = re.compile(r"(?:\s|^)+(\w+#\w+)(?=\s|$)+")
 @events.on_transform_command
-def unfuck_nix_installabes(cmd: str):
+def unfuck_nix_installables(cmd: str):
 	if installables := UNQUOTED_INSTALLABLE_PATTERN.findall(cmd):
 		for installable in installables:
 			cmd = cmd.replace(installable, f'"""{installable}"""')
@@ -569,6 +569,50 @@ class ToZone:
 			raise TypeError()
 
 zone = ToZone
+
+# Wrapper to enter a Xonsh shell ala. `nix develop` but with all the bash commands you would normally get.
+# this cleans up after itself properly, though it can only accept a single argument as `nix print-dev-env` only
+# accepts a single installable unlike `nix develop` unfortunately.
+def _xonsh_dev_env(installable):
+	with NamedTemporaryFile('w') as nixenv:
+		# Capture the environment setup commands from Nix.
+		envdata = $(nix print-dev-env @(installable))
+
+		# Handle error when executing the Nix command.
+		if not envdata:
+			return
+
+		# Can't trust Nix to do this...
+		# This actually causes errors, as some Nix scripts just arbitrarily try to edit files that may or
+		# may not exist.
+		#nixenv.write('set -e\n')
+
+		# Write environment setup file. Must be a file or else Xonsh fails when executing imported bash functions.
+		nixenv.write(envdata)
+
+		# Fix the fact that Nix uses $SHELL which might be anything, and therefore needs to be forced to Bash
+		# Ironically Nix *does* define and export `shell` but that's different from `SHELL`!
+		nixenv.write('\n')
+		# Must not contain spaces around '=' because Sh.
+		nixenv.write('SHELL=$shell\n')
+		nixenv.write('export SHELL\n')
+
+		# Flush to make sure it's ready by the time we source it
+		nixenv.flush()
+
+		# Using an RC file allows Xonsh to continue running with the sourced environment
+		with NamedTemporaryFile('w') as xonshrc:
+
+			xonshrc.write(f'source-bash {nixenv.name}\n')
+
+			xonshrc.flush()
+
+			#$SHLVL = int($SHLVL) + 2
+			# Start Xonsh using our environment then the Nix one, this prevents a few issues.
+			# Yes the argument syntax for multiple RC files is cursed like this, lol.
+			![xonsh --rc ~/.config/xonsh/rc.xsh @(xonshrc.name)]
+
+aliases['xonsh-dev-env'] = _xonsh_dev_env
 
 #$LIB = EnvPath([
 #	'/home/qyriad/.local/opt/xwin/crt/lib/x64/',
