@@ -1,0 +1,47 @@
+import = ["/home/qyriad/.config/alacritty/host.yml"]
+
+[colors.bright]
+black = "0x666666"
+blue = "0x7aa6da"
+cyan = "0x54ced6"
+green = "0x9ec400"
+magenta = "0xb77ee0"
+red = "0xff3334"
+white = "0xffffff"
+yellow = "0xe7c547"
+
+[colors.normal]
+black = "0x222222"
+blue = "0x0aa6da"
+cyan = "0x70c0ba"
+green = "0x00cc00"
+magenta = "0x0aa5da"
+red = "0xcf0002"
+white = "0xffffff"
+yellow = "0xe6c540"
+
+[colors.primary]
+background = "0x000000"
+foreground = "0xeaeaea"
+
+[font.normal]
+family = "InconsolataGo Nerd Font Mono"
+
+[[keyboard.bindings]]
+chars = "\u001B08"
+key = "Back"
+mods = "Control"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+multiplier = 1
+
+[shell]
+args = ["--login", "-c", "xonsh"]
+program = "zsh"
+
+[window]
+dynamic_padding = false
+dynamic_title = true
