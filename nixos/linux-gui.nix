@@ -35,13 +35,12 @@
 	# On Yuki this costs less than a GiB. Let's try it for now.
 	environment.enableDebugInfo = true;
 
-	# Enable GUI stuff in general.
+
+	# Enable GUI stuff.
 	# Yes this says xserver. Yes this we're using Wayland. That's correct.
 	# https://github.com/NixOS/nixpkgs/issues/94799
-	services.xserver.enable = true;
-
-	# Use a Wayland KDE Plasma desktop environment, with systemd integration.
 	services.xserver = {
+		enable = true;
 
 		displayManager = {
 			sddm = {
@@ -52,6 +51,7 @@
 			defaultSession = "plasmawayland";
 		};
 
+		# Use a Wayland KDE Plasma desktop environment, with systemd integration.
 		desktopManager = {
 			plasma5.enable = true;
 			plasma5.runUsingSystemd = true;
