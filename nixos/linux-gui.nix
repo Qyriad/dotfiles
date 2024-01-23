@@ -3,43 +3,34 @@
 { config, pkgs, qyriad, ... }:
 
 {
-	fileSystems =
-		let
-			convertOpts =
-				optAttrs:
-					builtins.concatStringsSep "," (pkgs.lib.attrsets.mapAttrsToList (name: value:
-						if value == null then "${name}" else "${name}=${builtins.toString value}"
-					)
-					optAttrs)
-			;
-			mountOpts = convertOpts {
-				"x-systemd.automount" = null;
-				"noauto" = null;
-				"x-systemd.idle-timeout" = 15;
-				"x-systemd.device-timeout" = "5s";
-				"x-systemd.mount-timeout" = "5s";
-				credentials = "/etc/secrets/shizue.cred";
-				gid = "users";
-				file_mode = "0764";
-				dir_mode = "0775";
-			};
-		in {
-			"/media/shizue/archive" = {
-				device = "//shizue/Archive";
-				fsType = "cifs";
-				options = [
-					mountOpts
-				];
-			};
-			"/media/shizue/media" = {
-				device = "//shizue/Media";
-				fsType = "cifs";
-				options = [
-					mountOpts
-				];
-			};
-		}
-	;
+	fileSystems = let
+		mountOpts = qyriad.genMountOpts {
+			"x-systemd.automount" = null;
+			noauto = null;
+			"x-systemd.idle-timeout" = 300;
+			"x-systemd.device-timeout" = "5s";
+			"x-systemd.mount-timeout" = "5s";
+			credentials = "/etc/secrets/shizue.cred";
+			gid = "users";
+			file_mode = "0764";
+			dir_mode = "0775";
+		};
+	in {
+		"/media/shizue/archive" = {
+			device = "//shizue/Archive";
+			fsType = "cifs";
+			options = [
+				mountOpts
+			];
+		};
+		"/media/shizue/media" = {
+			device = "//shizue/Media";
+			fsType = "cifs";
+			options = [
+				mountOpts
+			];
+		};
+	};
 
 	# On Yuki this costs less than a GiB. Let's try it for now.
 	environment.enableDebugInfo = true;

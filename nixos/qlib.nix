@@ -47,6 +47,21 @@ let
 				overriden.__attrs
 	;
 
+	genMountOpts =
+		# `null` values are interpreted as singleton option names, like `noauto`.
+		optionsAttrs: let
+			singletonOrIni = name: value:
+				if isNull value
+				then name
+				else "${name}=${toString value}"
+			;
+		in
+			lib.pipe optionsAttrs [
+				(lib.mapAttrsToList singletonOrIni)
+				(lib.concatStringsSep ",")
+			]
+	;
+
 in {
 	inherit
 		mkDebug
@@ -55,5 +70,6 @@ in {
 		mkImpureNative
 		getAttrs
 		getPythonAttrs
+		genMountOpts
 	;
 }
