@@ -1,16 +1,17 @@
 { pkgs, lib }:
 
 let
-  inherit (pkgs) writeShellScriptBin stdenv;
-
   rebuild-cmd = pkgs.writeShellScriptBin "rebuild" ''
-      cmd="sudo nixos-rebuild --print-build-logs --verbose --flake $HOME/.config $@"
-      echo $cmd
-      exec $cmd
+    cmd="nixos-rebuild --print-build-logs --verbose --flake $HOME/.config $@"
+    if [[ "$@" = *"switch"* ]]; then
+      cmd="sudo $cmd"
+    fi
+    echo $cmd
+    exec $cmd
   '';
 
   nixpkgs-cmd = pkgs.writeShellScriptBin "nixpkgs" ''
-      echo $(nix eval --impure --expr "<nixpkgs>")
+    echo $(nix eval --impure --expr "<nixpkgs>")
   '';
 
   nix-print-cmd = pkgs.writeShellScriptBin "nix-print" ''
@@ -22,7 +23,7 @@ let
   '';
 
   highlight-nix = pkgs.writeShellScriptBin "hlnix" ''
-    exec ${pkgs.bat}/bin/bat -l nix --no-pager --style=plain $@
+    exec bat -l nix --no-pager --style=plain $@
   '';
 
 in
