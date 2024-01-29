@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, inputs, qyriad, ... }:
+{ config, pkgs, lib, inputs, qyriad, ... }:
 
 let
 	currentNixpkgs = pkgs.writeTextDir "share/nixpkgs" pkgs.path;
@@ -25,7 +25,8 @@ in {
 		];
 	};
 
-	time.timeZone = "America/Denver";
+	# On Linux, services.localtimed takes care of this.
+	time.timeZone = lib.optionalString pkgs.stdenv.isLinux "America/Denver";
 	i18n.defaultLocale = "en_US.utf8";
 
 	programs.xonsh = {
