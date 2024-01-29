@@ -5,15 +5,18 @@
 {
 	fileSystems = let
 		mountOpts = qyriad.genMountOpts {
-			"x-systemd.automount" = null;
-			noauto = null;
-			"x-systemd.idle-timeout" = 300;
+			# Try to automatically mount, but don't block boot on it.
+			auto = null;
+			nofail = null;
+			_netdev = null;
+			"x-systemd.idle-timeout" = "300s";
 			"x-systemd.device-timeout" = "5s";
 			"x-systemd.mount-timeout" = "5s";
 			credentials = "/etc/secrets/shizue.cred";
 			gid = "users";
 			file_mode = "0764";
 			dir_mode = "0775";
+			vers = "3.1.1";
 		};
 	in {
 		"/media/shizue/archive" = {
@@ -146,22 +149,24 @@
 		bitwig-studio
 		curl
 		kcachegrind
+		signal-desktop
 		thunderbird
 		glibc.debug
 	] ++ (qyriad.mkDebugForEach [
-		qt5.qtbase
+		#qt5.qtbase
 		python3
-		kwin
-		plasma-workspace
+		#kwin
+		#plasma-workspace
 		git
 		curl
-	])
-	;
+	]);
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
-	programs.partition-manager.enable = true;
-	programs.firefox.enable = true;
-	programs.kdeconnect.enable = true;
+	programs = {
+		partition-manager.enable = true;
+		firefox.enable = true;
+		kdeconnect.enable = true;
+	};
 
 	# Used for noise suppression.
 	#programs.noisetorch.enable = true;
