@@ -241,7 +241,8 @@
         "niz": "niz",
         "nur": "nur",
         "pzl": "pzl",
-        "qyriad-nur": "qyriad-nur"
+        "qyriad-nur": "qyriad-nur",
+        "xil": "xil"
       }
     },
     "rust-overlay": {
@@ -290,6 +291,29 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "xil": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1706630522,
+        "narHash": "sha256-SHZFT+T6OXHBdV4XyocxhfRZt+ju72VAtrNEutXoNvo=",
+        "owner": "Qyriad",
+        "repo": "Xil",
+        "rev": "0ec970ec904278b83341b1a4f23e94532959a676",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Qyriad",
+        "repo": "Xil",
         "type": "github"
       }
     }

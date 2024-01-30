@@ -30,6 +30,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
 		};
+		xil = {
+			url = "github:Qyriad/Xil";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 	};
 
 	outputs = {
@@ -39,6 +44,7 @@
 		nur,
 		niz,
 		log2compdb,
+		xil,
 		...
 	} @ inputs:
 		let
@@ -112,6 +118,7 @@
 							niz = import niz { inherit pkgs; };
 							log2compdb = import log2compdb { inherit pkgs; };
 							pzl = inputs.pzl.packages.${system}.default;
+							inherit (import xil { inherit pkgs; }) xil;
 						};
 					};
 				in

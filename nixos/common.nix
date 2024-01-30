@@ -103,6 +103,7 @@ in {
 		any-nix-shell
 		qyriad.niz
 		qyriad.pzl
+		qyriad.xil
 		bat
 	];
 }
