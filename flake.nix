@@ -113,13 +113,31 @@
 					};
 
 					# FIXME: flakesPerSystem is broken
-					flake-outputs = {
-						packages = {
-							niz = import niz { inherit pkgs; };
-							log2compdb = import log2compdb { inherit pkgs; };
-							pzl = inputs.pzl.packages.${system}.default;
-							inherit (import xil { inherit pkgs; }) xil;
-						};
+					flake-outputs.packages = {
+						niz = import niz { inherit pkgs; };
+						log2compdb = import log2compdb { inherit pkgs; };
+						pzl = inputs.pzl.packages.${system}.default;
+						xil = let
+							base = xil.packages.x86_64-linux.default;
+							withConfig = base.withConfig {
+								callPackageString = ''
+									let
+										nixpkgs = builtins.getFlake "nixpkgs";
+										qyriad = builtins.getFlake "qyriad";
+										pkgs = import nixpkgs { };
+										lib = pkgs.lib;
+										scope = lib.makeScope pkgs.newScope (self: {
+											qlib = qyriad.lib;
+											qyriad = qyriad.packages.${system} // {
+												lib = qyriad.lib;
+											};
+										});
+									in
+										target: scope.callPackage target { }
+								'';
+							};
+					in
+						withConfig;
 					};
 				in
 					recursiveUpdate flake-outputs non-flake-outputs
