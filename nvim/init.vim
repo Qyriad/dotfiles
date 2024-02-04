@@ -126,8 +126,21 @@ use 'junegunn/vim-easy-align'
 -- Utilities.
 use 'tpope/vim-eunuch'
 use {
-	'm4xshen/autoclose.nvim', opts = { },
+	'm4xshen/autoclose.nvim',
+	opts = {
+		options = {
+			disable_command_mode = true,
+			disable_when_touch = true,
+		},
+		keys = {
+			-- Don't autoclose quotes — single or double — or backticks.
+			['"'] = { close = false },
+			["'"] = { close = false },
+			["`"] = { close = false },
+		},
+	},
 }
+use 'windwp/nvim-ts-autotag'
 use {
 	'windwp/nvim-ts-autotag',
 }
@@ -241,6 +254,14 @@ lazy.setup(plugin_spec, {
 	},
 })
 
+-- With the below autocommand, will record Neovim's startup time.
+--function record()
+--	io.open("/tmp/stats.txt", "w+"):write(tostring(require("lazy").stats().startuptime) .. "\n")
+--	vim.cmd("q")
+--end
+
 EOF
+
+"autocmd User VeryLazy lua record()
 
 " vim:textwidth=0
