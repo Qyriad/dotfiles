@@ -47,7 +47,10 @@ set ignorecase
 set smartcase
 set gdefault " Substitute all matches in a line by default.
 set cindent " A good basis/default for many languages, though this is usually overridden by the filetype plugin.
-set cinoptions=l1,j1 " Indent case blocks correct, and indent Java anonymous classes correctly.
+" Indent case blocks and Java anonymous classes correctly.
+" Indent one extra level for function definition continuation.
+" Same but for function calls.
+set cinoptions=l1,j1,(4,W4
 " Autowrap comments using textwidth, inserting the comment leader,
 " and remove the comment leader when joining lines when it makes sense.
 set formatoptions=cj
