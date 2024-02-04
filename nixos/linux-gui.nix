@@ -22,16 +22,12 @@
 		"/media/shizue/archive" = {
 			device = "//shizue/Archive";
 			fsType = "cifs";
-			options = [
-				mountOpts
-			];
+			options = [ mountOpts ];
 		};
 		"/media/shizue/media" = {
 			device = "//shizue/Media";
 			fsType = "cifs";
-			options = [
-				mountOpts
-			];
+			options = [ mountOpts ];
 		};
 	};
 
