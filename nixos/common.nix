@@ -19,8 +19,16 @@ in {
 			};
 			flake = inputs.self;
 		};
+		# Pin nixpkgs.
+		registry.nixpkgs = {
+			from = {
+				id = "nixpkgs";
+				type = "indirect";
+			};
+			flake = inputs.nixpkgs;
+		};
 		nixPath = [
-			"nixpkgs=${pkgs.path}"
+			"nixpkgs=flake:nixpkgs"
 			"/nix/var/nix/profiles/per-user/root/channels"
 		];
 	};
