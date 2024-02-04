@@ -14,6 +14,7 @@
 		pyright
 		nil
 		bear
+		universal-ctags
 		#rust-analyzer
 		#rustfmt
 		#cargo
