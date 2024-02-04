@@ -61,6 +61,16 @@ in {
 	programs.command-not-found.enable = false;
 	programs.bash.enableCompletion = true;
 
+	documentation = {
+		# Include -dev manpages
+		dev.enable = true;
+		# Make apropos(1) work.
+		man.generateCaches = true;
+		# This fails with `cannot lookup '<nixpkgs>' in pure evaluation mode.
+		# TODO: debug
+		#nixos.includeAllModules = true;
+	};
+
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
 		tmux
