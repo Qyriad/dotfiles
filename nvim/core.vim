@@ -308,6 +308,13 @@ endfunction
 
 command! -nargs=+ -complete=command Redir call Redir(<Q-Args>)
 
+function! Notify(command) abort
+	call v:lua.vim.notify(execute(a:command))
+endfunction
+
+" Run a command and show its output as a notification.
+command! -nargs=+ -complete=command Notify call Notify(<Q-Args>)
+
 """ Implementation for :Bload
 function! Bload(...) abort
 
