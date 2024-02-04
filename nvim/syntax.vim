@@ -60,6 +60,23 @@ treesitter_configs_setup = {
 	indent = {
 		enable = false,
 	},
+	autotag = {
+		enable = true,
+	},
+	markid = {
+		enable = true,
+	},
+	textobjects = {
+		move = {
+			enable = true,
+			goto_next_start = {
+				["]]"] = { query = { "@function.outer", "@class.outer" } }
+			},
+			goto_previous_start = {
+				["[["] = { query = { "@function.outer", "@class.outer" } }
+			},
+		}
+	},
 	context_commentstring = true,
 }
 EOF
@@ -122,14 +139,8 @@ use {
 	lazy = false,
 }
 use {
-	'phelipetls/jsonpath.nvim',
-	ft = {"json"},
-	config = function()
-		jsonpath = require("jsonpath")
-		-- FIXME: we're planning on switching statusline plugins;
-		-- we'll setup how we do winbar stuff properly then.
-		vim.opt_local.winbar = "%#jsonKeyword#%{%v:lua.jsonpath.get()%}"
-	end,
+	'nvim-treesitter/nvim-treesitter-textobjects',
+	after = 'nvim-treesitter',
 }
 
 EOF
