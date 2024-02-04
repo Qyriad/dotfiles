@@ -142,6 +142,7 @@ end
 ---@return string A newline separated list of completion results.
 function rtp_complete(arglead, _cmdline, _cursorpos)
 
+
 	local ret = { }
 
 	for _, rtp in ipairs(vim.opt.runtimepath:get()) do
@@ -154,22 +155,30 @@ function rtp_complete(arglead, _cmdline, _cursorpos)
 
 		for _, glob_result in ipairs(glob_results) do
 
-			-- Remove the rtp-part from the result.
-			local complete_value = string.sub(glob_result, #rtp + 1)
+			-- For tab completion, include only directories, .vim files, and .lua files.
+			local is_dir = vim.fn.isdirectory(glob_result) == 1
+			local is_vim = string.match(glob_result, "%.vim$") ~= nil
+			local is_lua = string.match(glob_result, "%.lua$") ~= nil
+			--local is_sourceable = vim.fn.glob(glob_result
+			if is_dir or is_vim or is_lua then
+				-- Remove the rtp-part from the result.
+				local complete_value = string.sub(glob_result, #rtp + 1)
 
-			-- And if the result is a directory, append a slash.
-			if vim.fn.isdirectory(glob_result) == 1 then
-				complete_value = complete_value .. "/"
-			end
+				-- And if the result is a directory, append a slash.
+				if is_dir then
+					complete_value = complete_value .. "/"
+				end
 
-			-- Finally add the finished string to our completion results.
-			if not vim.tbl_contains(ret, complete_value) then
-				table.insert(ret, complete_value)
+				-- Finally add the finished string to our completion results.
+				if not vim.tbl_contains(ret, complete_value) then
+					table.insert(ret, complete_value)
+				end
 			end
 		end
 	end
 
-	return vim.fn.join(ret, "\n")
+	--ret = vim.fn.getcompletion("runtime " .. arglead, "cmdline")
+	return ret
 end
 
 EOF
@@ -179,14 +188,20 @@ function! Rtp(path) abort
 	return v:lua.rtp(a:path)
 endfunction
 
-function! RtpCommand(path) abort
+function! RtpCommand(path, bang) abort
 	let l:result = v:lua.rtp(a:path)
-	let @" = l:result
-	echomsg "yanked " . l:result
+	if a:bang
+		let @" = l:result
+		echomsg "yanked " . l:result
+	else
+		echomsg l:result
+	endif
 endfunction
 
-""" Echos and yanks the specified path in 'runtimepath' if found.
-command! -nargs=1 -complete=custom,v:lua.rtp_complete Rtp call RtpCommand("<args>")
+""" Echos the specified path in 'runtimepath' if found. Yanks if bang is given.
+command! -nargs=1 -bang -complete=customlist,v:lua.rtp_complete Rtp call RtpCommand(<q-args>, <q-bang>)
+
+"command! -nargs=2 -complete=customlist,v:lua.rtp_complete Runtime
 
 
 " Calls a function, and, if it returns a value, echoes it.
@@ -207,4 +222,4 @@ command! -nargs=1 -complete=function Call call CallOrEcho(<args>)
 
 
 " Copy the filepath of the current buffer to Tmux.
-command! Cfile silent !echo % | tr -d '\n' | tmux load-buffer -
+command! Cfile silent !echo % | tr -d '\n' | tmux load-buffer -w -
