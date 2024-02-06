@@ -72,76 +72,10 @@
 					}
 			;
 
-			mkPerSystemOutputs = system:
-				let
-					pkgs = import nixpkgs { inherit system; };
-					inherit (pkgs) lib;
+			mkPerSystemOutputs = system: import ./nixos/per-system.nix {
+				inherit system inputs qlib;
+			};
 
-					qyriad-nur = import inputs.qyriad-nur {
-						inherit pkgs;
-					};
-
-					xonsh = pkgs.callPackage ./nixos/pkgs/xonsh {
-						inherit (qyriad-nur)
-							python-pipe
-							xontrib-abbrevs
-							xonsh-direnv
-						;
-					};
-
-					non-flake-outputs = {
-						packages = {
-							nerdfonts = pkgs.callPackage ./nixos/pkgs/nerdfonts.nix { };
-							udev-rules = pkgs.callPackage ./nixos/udev-rules { };
-							nix-helpers = pkgs.callPackage ./nixos/pkgs/nix-helpers.nix { };
-							inherit xonsh;
-							inherit (qyriad-nur) strace-process-tree;
-						};
-
-						# Truly dirty hack. This will let us transparently refer to overriden
-						# or not overriden packages in nixpkgs, as flake.packages.foo is preferred over
-						# flake.legacyPackages.foo by commands like `nix build`.
-						# We also slip our additional lib functions in here, so we can use them
-						# with the rest of nixpkgs.lib.
-						legacyPackages = recursiveUpdate
-							nixpkgs.legacyPackages.${system}
-							{
-								lib = qlib;
-								pkgs.lib = qlib;
-							}
-						;
-					};
-
-					# FIXME: flakesPerSystem is broken
-					flake-outputs.packages = {
-						niz = import niz { inherit pkgs; };
-						log2compdb = import log2compdb { inherit pkgs; };
-						pzl = inputs.pzl.packages.${system}.default;
-						xil = let
-							base = xil.packages.x86_64-linux.default;
-							withConfig = base.withConfig {
-								callPackageString = ''
-									let
-										nixpkgs = builtins.getFlake "nixpkgs";
-										qyriad = builtins.getFlake "qyriad";
-										pkgs = import nixpkgs { };
-										lib = pkgs.lib;
-										scope = lib.makeScope pkgs.newScope (self: {
-											qlib = qyriad.lib;
-											qyriad = qyriad.packages.${system} // {
-												lib = qyriad.lib;
-											};
-										});
-									in
-										target: scope.callPackage target { }
-								'';
-							};
-					in
-						withConfig;
-					};
-				in
-					recursiveUpdate flake-outputs non-flake-outputs
-			;
 		in
 			# Package outputs, which we want to define for multiple systems.
 			recursiveUpdate (flake-utils.lib.eachDefaultSystem mkPerSystemOutputs)
