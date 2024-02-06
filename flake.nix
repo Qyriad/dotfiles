@@ -37,7 +37,7 @@
 		};
 	};
 
-	outputs = {
+	outputs = inputs @ {
 		self,
 		nixpkgs,
 		flake-utils,
@@ -46,65 +46,63 @@
 		log2compdb,
 		xil,
 		...
-	} @ inputs:
-		let
-			inherit (nixpkgs.lib.attrsets) recursiveUpdate;
+	}: let
+		inherit (nixpkgs.lib.attrsets) recursiveUpdate;
 
-			qlib = import ./nixos/qlib.nix {
-				inherit (nixpkgs) lib;
-			};
+		qlib = import ./nixos/qlib.nix {
+			inherit (nixpkgs) lib;
+		};
 
-			# Wraps nixpkgs.lib.nixosSystem to generate a NixOS configuration, adding common modules
-			# and special arguments.
-			mkConfig =
-				# "x86_64-linux"-style ("double") system string :: string
-				system:
-				# NixOS modules to add to this NixOS system configuration :: list
-				nixosModules: let
+		# Wraps nixpkgs.lib.nixosSystem to generate a NixOS configuration, adding common modules
+		# and special arguments.
+		mkConfig =
+			# "x86_64-linux"-style ("double") system string :: string
+			system:
+			# NixOS modules to add to this NixOS system configuration :: list
+			nixosModules: let
 
-					specialArgs = {
-						inherit inputs;
-						qyriad = recursiveUpdate self.outputs.packages.${system} self.outputs.lib;
-					};
-
-					modules = nixosModules ++ [
-						nur.nixosModules.nur
-					];
-
-				in nixpkgs.lib.nixosSystem {
-					inherit system specialArgs modules;
-				}
-			;
-
-			mkPerSystemOutputs = system: import ./nixos/per-system.nix {
-				inherit system inputs qlib;
-			};
-
-			# Package outputs, which we want to define for multiple systems.
-			perSystemOutputs = flake-utils.lib.eachDefaultSystem mkPerSystemOutputs;
-
-			# NixOS configuration outputs, which are each for one specific system.
-			universalOutputs = {
-				lib = qlib;
-
-				nixosConfigurations = rec {
-					futaba = mkConfig "x86_64-linux" [
-						./nixos/futaba.nix
-					];
-					Futaba = futaba;
-
-					yuki = mkConfig "x86_64-linux" [
-						./nixos/yuki.nix
-					];
-					Yuki = yuki;
+				specialArgs = {
+					inherit inputs;
+					qyriad = recursiveUpdate self.outputs.packages.${system} self.outputs.lib;
 				};
 
-				templates.base = {
-					path = ./nixos/templates/base;
-					description = "barebones flake template";
-				};
+				modules = nixosModules ++ [
+					nur.nixosModules.nur
+				];
+
+			in nixpkgs.lib.nixosSystem {
+				inherit system specialArgs modules;
+			}
+		;
+
+		mkPerSystemOutputs = system: import ./nixos/per-system.nix {
+			inherit system inputs qlib;
+		};
+
+		# Package outputs, which we want to define for multiple systems.
+		perSystemOutputs = flake-utils.lib.eachDefaultSystem mkPerSystemOutputs;
+
+		# NixOS configuration outputs, which are each for one specific system.
+		universalOutputs = {
+			lib = qlib;
+
+			nixosConfigurations = rec {
+				futaba = mkConfig "x86_64-linux" [
+					./nixos/futaba.nix
+				];
+				Futaba = futaba;
+
+				yuki = mkConfig "x86_64-linux" [
+					./nixos/yuki.nix
+				];
+				Yuki = yuki;
 			};
 
-		in recursiveUpdate perSystemOutputs universalOutputs
-	; # outputs
+			templates.base = {
+				path = ./nixos/templates/base;
+				description = "barebones flake template";
+			};
+		};
+
+	in recursiveUpdate perSystemOutputs universalOutputs; # outputs
 }
