@@ -60,27 +60,31 @@
 				# "x86_64-linux"-style ("double") system string :: string
 				system:
 				# NixOS modules to add to this NixOS system configuration :: list
-				modules:
+				nixosModules: let
 
-					nixpkgs.lib.nixosSystem {
-						inherit system;
-						specialArgs.inputs = inputs;
-						specialArgs.qyriad = recursiveUpdate self.outputs.packages.${system} self.outputs.lib;
-						modules = modules ++ [
-							nur.nixosModules.nur
-						];
-					}
+					specialArgs = {
+						inherit inputs;
+						qyriad = recursiveUpdate self.outputs.packages.${system} self.outputs.lib;
+					};
+
+					modules = nixosModules ++ [
+						nur.nixosModules.nur
+					];
+
+				in nixpkgs.lib.nixosSystem {
+					inherit system specialArgs modules;
+				}
 			;
 
 			mkPerSystemOutputs = system: import ./nixos/per-system.nix {
 				inherit system inputs qlib;
 			};
 
-		in
 			# Package outputs, which we want to define for multiple systems.
-			recursiveUpdate (flake-utils.lib.eachDefaultSystem mkPerSystemOutputs)
+			perSystemOutputs = flake-utils.lib.eachDefaultSystem mkPerSystemOutputs;
+
 			# NixOS configuration outputs, which are each for one specific system.
-			{
+			universalOutputs = {
 				lib = qlib;
 
 				nixosConfigurations = rec {
@@ -97,7 +101,10 @@
 
 				templates.base = {
 					path = ./nixos/templates/base;
+					description = "barebones flake template";
 				};
-			}
+			};
+
+		in recursiveUpdate perSystemOutputs universalOutputs
 	; # outputs
 }
