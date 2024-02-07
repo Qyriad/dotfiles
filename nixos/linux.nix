@@ -57,9 +57,9 @@ in
 		useRoutingFeatures = "both";
 	};
 
-	services.xserver = {
+	services.xserver.xkb = {
 		layout = "us";
-		xkbVariant = "";
+		variant = "";
 	};
 
 	# Enable CUPS for printing.
