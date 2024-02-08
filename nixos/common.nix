@@ -120,5 +120,6 @@
 		qyriad.pzl
 		qyriad.xil
 		bat
+		ncdu
 	];
 }
