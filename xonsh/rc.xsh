@@ -480,6 +480,41 @@ def _unbak(args: list):
 aliases["bak"] = _bak
 aliases["unbak"] = _unbak
 
+
+def _git_root(path=None):
+	path = Path(path) if path is not None else Path($PWD)
+	if pf"{path}/.git".is_dir():
+		return path
+	for parent in path.parents:
+		if pf"{parent}/.git".is_dir():
+			return parent
+
+@xonsh.tools.unthreadable
+def _git_workout(args: list):
+	# Get the git root.
+	git_root = _git_root($PWD)
+	branch = args[0]
+	if branch in ["main", "master"]:
+		$[cd @(git_root)]
+		return
+	$[mkdir -p f"{git_root}/w/{branch}"]
+	# Check if the worktree already exists
+	if not pf"{git_root}/w/{branch}/.git".is_file():
+		$[git worktree add f"{git_root}/w/{branch}" f"{branch}"]
+
+	$[cd f"{git_root}/w/{branch}"]
+
+aliases["git-workout"] = _git_workout
+
+@xonsh.tools.unthreadable
+def _git_diff_merge(args: list):
+	main = args[0]
+	feature = args[1]
+	merge_base = $(git merge-base @(feature) @(main)).strip()
+	$[git diff f"{merge_base}..{feature}"]
+
+aliases["git-diff-merge"] = _git_diff_merge
+
 def _per_line(args: list, stdin: io.TextIOWrapper):
 	"""
 		Callable alias that you can pass a lambda to to process stdin line-by-line. e.g.:
