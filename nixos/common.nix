@@ -1,9 +1,7 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
 { config, pkgs, lib, inputs, qyriad, ... }:
 
-let
-	currentNixpkgs = pkgs.writeTextDir "share/nixpkgs" pkgs.path;
-in {
+{
 	# Configuration for things related to Nix itself.
 	nixpkgs.config.allowUnfree = true;
 	nix = {
@@ -117,7 +115,6 @@ in {
 		nixos-option
 		nix-prefetch
 		qyriad.nix-helpers
-		currentNixpkgs
 		any-nix-shell
 		qyriad.niz
 		qyriad.pzl
