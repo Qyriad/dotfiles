@@ -526,6 +526,16 @@ def _per_line(args: list, stdin: io.TextIOWrapper):
 
 aliases["pl"] = _per_line
 
+def _intext(args: list, stdin: io.TextIOWrapper):
+	callback: typing.Callable[[str], str] = args[0]
+	return callback(stdin.read())
+
+# Like per-line, but for the entire stdin text at once.
+aliases["intext"] = _intext
+
+# Append a trailing newline, since some commands don't.
+aliases["withnl"] = lambda args, stdin: _intext([print], stdin)
+
 # The first parentheses are a non-capturing group that matches whitespace or the start of the string.
 # The second parenthese are the group we're interested in.
 # The third is a lookahead assertion (to not consume) for whitespace or the end of the string.
