@@ -41,15 +41,16 @@
 		in lib.recursiveUpdate lhs rhs;
 	};
 
-
 	# Outputs that do directly come from flake inputs.
-	flakeOutputsPackages = {
-		niz = import inputs.niz { inherit pkgs; };
-		pzl = import inputs.pzl { inherit pkgs; };
-		log2compdb = import inputs.log2compdb { inherit pkgs; };
+	flakeOutputsPackages = let
+		inherit (inputs) niz pzl log2compdb xil;
+		basePkg = (import xil { inherit pkgs; }).xil;
+	in {
+		niz = import niz { inherit pkgs; };
+		pzl = import pzl { inherit pkgs; };
+		log2compdb = import log2compdb { inherit pkgs; };
 
 		xil = let
-			basePkg = inputs.xil.packages.${system}.default;
 			callPackageString = ''
 				let
 					nixpkgs = builtins.getFlake "nixpkgs";

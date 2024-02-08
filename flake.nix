@@ -42,9 +42,6 @@
 		nixpkgs,
 		flake-utils,
 		nur,
-		niz,
-		log2compdb,
-		xil,
 		...
 	}: let
 		inherit (nixpkgs.lib.attrsets) recursiveUpdate;
