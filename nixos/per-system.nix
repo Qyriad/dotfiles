@@ -45,8 +45,8 @@
 	# Outputs that do directly come from flake inputs.
 	flakeOutputsPackages = {
 		niz = import inputs.niz { inherit pkgs; };
+		pzl = import inputs.pzl { inherit pkgs; };
 		log2compdb = import inputs.log2compdb { inherit pkgs; };
-		pzl = inputs.pzl.packages.${system}.default;
 
 		xil = let
 			basePkg = inputs.xil.packages.${system}.default;
