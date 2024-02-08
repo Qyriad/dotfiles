@@ -9,7 +9,7 @@
 let
   inherit (builtins) attrValues;
 
-  xonsh = pkgs.xonsh-unwrapped.overridePythonAttrs (old: {
+  xonsh = pkgs.xonsh.overridePythonAttrs (old: {
     propagatedBuildInputs = attrValues {
       inherit (pkgs.python3Packages)
         pip
