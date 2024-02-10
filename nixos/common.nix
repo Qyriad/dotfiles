@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, lib, inputs, qyriad, ... }:
+{ config, pkgs, inputs, qyriad, ... }:
 
 {
 	# Configuration for things related to Nix itself.
@@ -31,8 +31,7 @@
 		];
 	};
 
-	# On Linux, services.localtimed takes care of this.
-	time.timeZone = lib.optionalString pkgs.stdenv.isLinux "America/Denver";
+	time.timeZone = "America/Denver";
 	i18n.defaultLocale = "en_US.utf8";
 
 	programs.xonsh = {
