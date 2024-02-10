@@ -12,6 +12,7 @@
 		just
 		clang-tools_15
 		pyright
+		nodePackages.vim-language-server
 		nil
 		bear
 		universal-ctags

@@ -84,7 +84,6 @@
 		unrar
 		cpio
 		rpm
-		nodePackages.vim-language-server
 		curl
 		wget
 		man-pages
