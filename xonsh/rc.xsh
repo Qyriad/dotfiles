@@ -241,6 +241,7 @@ aliases['userctl'] = 'systemctl --user'
 aliases["busctl"] = ["busctl", "--full", "--verbose"]
 aliases['ins'] = 'insect'
 aliases['silicon'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
+aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 
 
 aliases['cm'] = 'cmake -B build'
