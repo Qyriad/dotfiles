@@ -48,12 +48,6 @@
 	# Add ~/.local/bin to system path.
 	environment.localBinInPath = true;
 
-	environment.variables = {
-		# For my debugging and hacking pleasure, set $NIXPKGS to the version of nixpkgs used by the current system.
-		NIXPKGS = pkgs.path;
-	};
-
-
 	programs.nix-index.enable = true;
 	# Covered by nix-index, not that its integrations support our shell.
 	programs.command-not-found.enable = false;
