@@ -1,19 +1,6 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
 { config, pkgs, qyriad, ... }:
 
-let
-	mostCpus = builtins.floor (config.resources.cpus * 0.80);
-	mostMemory = builtins.floor (config.resources.memory * 0.80);
-	maxMemory = builtins.floor (config.resources.memory * 0.90);
-
-	builder-slice-config = {
-		CPUWeight = "90";
-		CPUQuota = "${toString (mostCpus * 100)}%";
-		MemoryHigh = "${toString mostMemory}G";
-		MemoryMax = "${toString maxMemory}G";
-		MemoryPressureWatch = "on";
-	};
-in
 {
 	# Bootloader.
 	boot.loader = {

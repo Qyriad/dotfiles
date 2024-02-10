@@ -102,6 +102,9 @@
 
 		fcitx5.addons = with pkgs; [
 			fcitx5-mozc
+			#fcitx5-gtk
+			#fcitx-configtool
+			#plasma5Packages.fci5x5-qt
 		];
 	};
 

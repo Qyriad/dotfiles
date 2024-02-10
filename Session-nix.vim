@@ -14,38 +14,80 @@ else
   set shortmess=aoO
 endif
 badd +1 flake.nix
-badd +16 nixos/common.nix
-badd +13 nixos/dev.nix
-badd +40 nixos/linux.nix
-badd +53 nixos/linux-gui.nix
-badd +1 nixos/pkgs/xonsh.nix
-badd +1 nixos/pkgs/nix-helpers.nix
-badd +52 nixos/pkgs/xonsh/default.nix
+badd +1 nixos/per-system.nix
+badd +118 nixos/common.nix
+badd +1 nixos/dev.nix
+badd +1 nixos/linux.nix
+badd +1 nixos/linux-gui.nix
 argglobal
 %argdel
 $argadd flake.nix
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
-tabnew +setlocal\ bufhidden=wipe
 tabrewind
 edit flake.nix
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
 argglobal
+balt nixos/per-system.nix
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=10
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 39) / 79)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 1
 normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("nixos/per-system.nix", ":p")) | buffer nixos/per-system.nix | else | edit nixos/per-system.nix | endif
+if &buftype ==# 'terminal'
+  silent file nixos/per-system.nix
+endif
+balt flake.nix
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=10
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
 tabnext
 edit nixos/common.nix
 let s:save_splitbelow = &splitbelow
@@ -64,25 +106,25 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
-exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
+exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
 argglobal
 balt nixos/dev.nix
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=10
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 39) / 79)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
@@ -95,21 +137,21 @@ setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=10
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 14 - ((13 * winheight(0) + 39) / 79)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 14
-normal! 09|
+keepjumps 1
+normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
-exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
+exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
 tabnext
 edit nixos/linux.nix
 let s:save_splitbelow = &splitbelow
@@ -128,25 +170,25 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
-exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
+exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
 argglobal
 balt nixos/linux-gui.nix
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=10
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 40 - ((39 * winheight(0) + 39) / 79)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 40
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
@@ -159,84 +201,21 @@ setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=10
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 53 - ((2 * winheight(0) + 39) / 79)
+let s:l = 1 - ((0 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 53
-normal! 011|
+keepjumps 1
+normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 175 + 174) / 349)
-exe 'vert 2resize ' . ((&columns * 173 + 174) / 349)
-tabnext
-edit nixos/pkgs/xonsh/default.nix
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 174 + 174) / 349)
-exe 'vert 2resize ' . ((&columns * 174 + 174) / 349)
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=5
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 52 - ((51 * winheight(0) + 39) / 79)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 52
-normal! 07|
-wincmd w
-argglobal
-if bufexists(fnamemodify("nixos/pkgs/nix-helpers.nix", ":p")) | buffer nixos/pkgs/nix-helpers.nix | else | edit nixos/pkgs/nix-helpers.nix | endif
-if &buftype ==# 'terminal'
-  silent file nixos/pkgs/nix-helpers.nix
-endif
-balt nixos/pkgs/xonsh/default.nix
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=5
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 20 - ((1 * winheight(0) + 39) / 79)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 20
-normal! 04|
-wincmd w
-exe 'vert 1resize ' . ((&columns * 174 + 174) / 349)
-exe 'vert 2resize ' . ((&columns * 174 + 174) / 349)
+exe 'vert 1resize ' . ((&columns * 118 + 119) / 238)
+exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

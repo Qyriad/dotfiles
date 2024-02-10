@@ -47,14 +47,7 @@ lsp_filetypes = {
 	"nix",
 }
 
-lsp_opts = {
-	clangd = {
-		cmd = {
-			"clangd",
-			"--query-driver=" .. vim.fn.exepath("arm-none-eabi-gcc"),
-		},
-	}
-}
+lsp_opts = { }
 
 lspconfig_modules = {
 	vim = "vimls",
@@ -117,7 +110,7 @@ function on_lsp_attach(bufnr, client_id)
 		{ 'K',  vim.lsp.buf.hover },
 		{ '<CR>',  vim.lsp.buf.hover },
 		{ 'gi', telescope.builtin.lsp_implementations },
-		{ '<C-k>', vim.lsp.buf.signature_help, "i" },
+		--{ '<C-k>', vim.lsp.buf.signature_help, "i" },
 		{ '<leader>D', telescope.builtin.lsp_type_definitions },
 		{ '<leader>a', require("code_action_menu").open_code_action_menu },
 		-- tw for "telescope workspace"
@@ -143,6 +136,8 @@ function on_lsp_attach(bufnr, client_id)
 
 	if client.name == "clangd" then
 		vim.keymap.set("n", "<leader>sh", vim.cmd.ClangdSwitchSourceHeader)
+		require("clangd_extensions.inlay_hints").setup_autocmd()
+		require("clangd_extensions.inlay_hints").set_inlay_hints()
 	end
 
 	vim.api.nvim_create_autocmd("DiagnosticChanged", {
@@ -274,12 +269,16 @@ use {
 	ft = "rust",
 	opts = {
 		cmd = { "rust_analyzer" },
+		server = {
+			standalone = true,
+		},
 	},
 }
 use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
 use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
 -- FIXME: this plugin is no longer maintained.
 use { 'folke/lsp-colors.nvim', event = "LspAttach" }
+use { 'https://git.sr.ht/~p00f/clangd_extensions.nvim', ft = { "c", "cpp" } }
 use {
 	'folke/trouble.nvim',
 	event = "LspAttach",
@@ -288,12 +287,9 @@ use {
 	},
 }
 use {
-	'mrded/nvim-lsp-notify',
-	event = "LspAttach",
-	opts = {
-		stages = "slide",
-		-- FIXME: why does not having this cause nvim-lsp-notify to break nvim-notify.
-		notify = vim.notify,
-	},
+  "ray-x/lsp_signature.nvim",
+  event = "VeryLazy",
+  opts = {},
+  config = function(_, opts) require'lsp_signature'.setup(opts) end
 }
 EOF

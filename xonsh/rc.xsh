@@ -335,6 +335,66 @@ def _delssh(linenum):
 
 aliases['delssh'] = _delssh
 
+def runlist(cmds: list[list]):
+	with ${...}.swap(RAISE_SUBPROC_ERROR=True):
+		for cmd in cmds:
+			print(' '.join([shlex.quote(arg) for arg in cmd]))
+			@(cmd)
+
+def _proc_get(p, key):
+	if key == "pid":
+		return p.pid
+	return getattr(p, key)()
+
+def procs(**kwargs):
+	import psutil
+	res = []
+	for p in psutil.process_iter():
+		for key, value in kwargs.items():
+			if _proc_get(p, key) == value:
+				res.append(p)
+
+	return res
+
+def _psearch(args: list):
+	args = dict([arg.split("=") for arg in args])
+	processes = procs(**args)
+	return "\n".join([str(p.pid) for p in processes])
+
+aliases["psearch"] = _psearch
+
+def _xonsh_dev_env(installable):
+	from tempfile import NamedTemporaryFile
+	with NamedTemporaryFile('w') as nixenv:
+		# Capture the environment setup commands from Nix.
+		envdata = $(nix print-dev-env @(installable))
+
+		# Handle error when executing the Nix command.
+		if not envdata:
+			return
+
+		# Can't trust Nix to do this...
+		nixenv.write('set -e\n')
+
+		# Write environment setup file. Must be a file or else Xonsh fails when executing imported bash functions.
+		nixenv.write(envdata)
+
+		# Flush to make sure it's ready by the time we source it
+		nixenv.flush()
+
+		# Using an RC file allows Xonsh to continue running with the sourced environment
+		with NamedTemporaryFile('w') as xonshrc:
+
+			xonshrc.write(f'source-bash {nixenv.name}\n')
+
+			xonshrc.flush()
+
+			# Start Xonsh using our environment then the Nix one, this prevents a few issues.
+			# Yes the argument syntax for multiple RC files is cursed like this, lol.
+			![xonsh --rc ~/.config/xonsh/rc.xsh @(xonshrc.name)]
+
+aliases['nix-devenv'] = _xonsh_dev_env
+
 def _gac(name):
 	git cherry-pick -n @(name)
 	git reset
@@ -480,6 +540,15 @@ def _unbak(args: list):
 aliases["bak"] = _bak
 aliases["unbak"] = _unbak
 
+def _nix_create_dev_files(args: list):
+	import platform
+	nix_system = f"{platform.machine()}-{platform.system()}".lower()
+	$[mkdir -p .nix]
+	dev_envs = json.loads($(nix flake show --json | jq f'.devShells["{nix_system}"] | keys'))
+	for dev_env in dev_envs:
+		$[nix print-dev-env f".#{dev_env}" > f".nix/{dev_env}.sh"]
+
+aliases["nix-create-dev-files"] = _nix_create_dev_files
 
 def _git_root(path=None):
 	path = Path(path) if path is not None else Path($PWD)
@@ -622,13 +691,13 @@ zone = ToZone
 #])
 
 
-xontrib load abbrevs
-xontrib load direnv
+xontrib load -s abbrevs, direnv, term_integration
 
-abbrevs["|&"] = "2>&1 |"
+if "abbrevs" in globals():
+	abbrevs["|&"] = "2>&1 |"
 
 #xontrib load output_search
 #xontrib load whole_word_jumping
-xontrib load term_integration
+#xontrib load term_integration
 #xontrib load argcomplete
 

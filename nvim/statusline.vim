@@ -38,6 +38,20 @@ function! CurrentTag()
 	return tagbar#currenttag('%s', '', 'f')
 endfunction
 
+lua << EOF
+function lsp_status_info()
+	if lsp_status ~= nil then
+		return lsp_status.status()
+	else
+		return ""
+	end
+end
+EOF
+
+function! LspStatus() abort
+	return v:lua.lsp_status_info()
+endfunction
+
 function! LightlineReload()
 	call lightline#init()
 	call lightline#colorscheme()
@@ -46,6 +60,24 @@ endfunction
 
 command! LightlineReload call LightlineReload()
 
+lua << EOF
+function tagstack()
+	local stack = vim.fn.gettagstack()
+	local results = { }
+	for i, tag_item in ipairs(stack.items) do
+		if i > stack.curidx then
+			break
+		end
+		table.insert(results, tag_item.tagname)
+	end
+	return vim.fn.join(results, "/")
+end
+EOF
+
+function Tagstack() abort
+	return v:lua.tagstack()
+endfunction
+
 
 " Core lightline config.
 " Gods this looks so much better in lua without vim's line continuation syntax.
@@ -53,7 +85,7 @@ lua << EOF
 vim.g.lightline = {
 	active = {
 		left  = {{"mode", "paste"}, {"readonly", "filename", "modified"}, {"zoomed"}},
-		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {}},
+		right = {{}, {"tagstack", "dir", "filetype", "lineinfo", "percent", "fileformat"}, {}},
 	},
 	inactive = {
 		left  = {{"readonly", "filename", "modified"}},
@@ -71,6 +103,7 @@ vim.g.lightline = {
 		dir = "HomeRelDir",
 		zoomed = "zoom#statusline",
 		synitem = "SyntaxItem",
+		tagstack = "LspStatus",
 	},
 	--tabline = {
 	--	right = {{ 'LspProgress' }},

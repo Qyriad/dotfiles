@@ -42,7 +42,7 @@ source $CONFIGPATH/statusline.vim
 vnoremap <leader>y :Tyank<CR>
 
 " Easy-Align
-xmap ga <Plug>(EasyAlign)
+"xmap ga <Plug>(EasyAlign)
 
 " Capitalize the last inserted text
 function! Capitalize_and_return()
@@ -142,8 +142,13 @@ use {
 }
 use 'windwp/nvim-ts-autotag'
 use {
-	'windwp/nvim-ts-autotag',
+	'johmsalas/text-case.nvim',
+	-- TODO: nnoremap <leader>gac <Cmd>lua vim.fn.setreg("", '_' .. p.textcase.api.to_camel_case(vim.fn.expand('<cword>')))<CR>
+	opts = {
+		prefix = "<leader>a"
+	},
 }
+-- lua vim.print((function() local mappings = vim.api.nvim_get_keymap('n'); local filtered = { }; for i, mapping in ipairs(mappings) do if mapping.rhs ~= nil and string.find(mapping.rhs, 'textcase') then table.insert(filtered, mapping); end end return filtered end)())
 use 'rbgrouleff/bclose.vim' -- Dependency for ranger.vim
 use {
 	'francoiscabrol/ranger.vim',
@@ -166,6 +171,7 @@ use {
 }
 use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
+use 'tpope/vim-obsession'
 use 'gennaro-tedesco/nvim-peekup'
 use 'AndrewRadev/bufferize.vim'
 use {
