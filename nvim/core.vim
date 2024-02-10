@@ -242,6 +242,13 @@ nmap cdtm ds'F[i.<ESC><ESC>f[ds]
 " Change current word to uppercase.
 inoremap <C-u> <esc>mzgUiW`za
 
+" Comment-out the current line, and then duplicate the uncommented version below.
+" 'Yank, comment, paste'
+" yy to yank the current line
+" <leader>cc for comment.nvim's toggle line comment
+" <leader>p to paste without indenting (see above).
+nmap <leader>ycp yy<leader>cc<leader>p
+
 " Inverts formatoptions' "r" flag, which automatically inserts the comment leader on <CR>
 " in insert mode.
 function! InvertR() abort
