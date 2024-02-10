@@ -65,6 +65,8 @@
 
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
+		# The normal bash isn't bash-interactive lol.
+		bashInteractive
 		tmux
 		zellij
 		eza
