@@ -93,6 +93,10 @@ $VISUAL = $EDITOR
 $SYSTEMD_EDITOR = $EDITOR
 $NETCTL_EDITOR = $EDITOR
 
+# Open nvim in read-only mode, pretending that the specified file is not actually a file
+aliases['nvimscratch'] = 'nvim -R "+setlocal buftype=nofile bufhidden=hide noswapfile"'
+aliases['rnvim'] = 'nvim -R'
+
 # Fix Neovim for stuff like git commit.
 #no_thread = lambda *a, **kw: False
 #__xonsh__.commands_cache.predict_threadable = no_thread
