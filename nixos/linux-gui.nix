@@ -121,6 +121,7 @@
 
 	environment.systemPackages = with pkgs; [
 		alacritty
+		wezterm
 		mpv
 		wl-clipboard
 		ksshaskpass
