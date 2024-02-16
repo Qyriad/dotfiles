@@ -38,11 +38,11 @@ which we then do Math™ on.
 		inherit (builtins) floor;
 		mostCpus = floor (config.resources.cpus * 0.80);
 		mostMemory = floor (config.resources.memory * 0.80);
-		maxMemory = floor (config.resources.memory * 0.90);
+		maxMemory = floor (config.resources.memory * 0.85);
 	in {
 		resources.builderSliceConfig = {
 			CPUWeight = lib.mkDefault "90";
-			CPUQuota = "${toString (mostCpus * 100)}%";
+			CPUQuota = "${toString (mostCpus * 90)}%";
 			MemoryHigh = "${toString mostMemory}G";
 			MemoryMax = "${toString maxMemory}G";
 		};
