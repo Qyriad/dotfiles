@@ -26,10 +26,8 @@
 			OOMScoreAdjust = "950";
 			Slice = "system-builder.slice";
 			MemoryPressureWatch = "on";
-		};
-		unitConfig = {
-			ManagedOOMPressure = "kill";
-			ManagedOOMPressureLimit = "85%";
+			ManagedOOMMemoryPressure = "kill";
+			ManagedOOMMemoryPressureLimit = "85%";
 		};
 	};
 
