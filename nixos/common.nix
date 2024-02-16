@@ -115,5 +115,6 @@
 		qyriad.xil
 		bat
 		ncdu
+		lnav
 	];
 }
