@@ -14,6 +14,7 @@
 		pyright
 		nodePackages.vim-language-server
 		nil
+		lua-language-server
 		bear
 		universal-ctags
 		#rust-analyzer
