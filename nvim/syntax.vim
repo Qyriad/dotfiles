@@ -36,6 +36,12 @@ let g:xsh_highlight_all = v:true
 
 let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' }, 'xonsh': { 'left': '#' } }
 
+function! SynNameStack() abort
+	return synstack(line('.'), col('.'))->copy()->map({key, value -> value->synIDattr('name')})
+endfunction
+
+command! SynNameStack echomsg SynNameStack()
+
 lua <<EOF
 treesitter_configs_setup = {
 	ensure_installed = {
