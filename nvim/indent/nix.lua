@@ -171,7 +171,11 @@ function NixIndent(lnum)
 	end
 
 	if PAT.ATTR_LIST_END:match_str(line) then
-		return ret - shiftwidth
+		if not PAT.ATTR_LIST_START:match_str(prevline) then
+			return ret - shiftwidth
+		else
+			return ret
+		end
 	end
 
 	if PAT.PAREN_BLOCK_END:match_str(line) then
