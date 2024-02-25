@@ -5,16 +5,19 @@
   };
 
   outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
+    flake-utils.lib.eachDefaultSystem (system: let
 
-        pkgs = import nixpkgs { inherit system; };
-        inherit (builtins) attrValues;
+      pkgs = import nixpkgs { inherit system; };
 
-      in {
-      }
+      package = pkgs.callPackage ./package.nix { };
 
-    ) # eachDefaultSystem
-
-  ;# outputs
+    in {
+      packages.default = package;
+      devShells.default = pkgs.mkShell {
+        inputsFrom = [
+          package
+        ];
+      };
+    }) # eachDefaultSystem
+  ; # outputs
 }
