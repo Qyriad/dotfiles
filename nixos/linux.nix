@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, qyriad, ... }:
+{ config, pkgs, lib, qyriad, ... }:
 
 {
 	# Bootloader.
@@ -16,6 +16,8 @@
 	systemd.extraConfig = ''
 		DefaultTimeoutStopSec=20
 	'';
+
+	systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
 	systemd.slices.system-builder.sliceConfig = config.resources.builderSliceConfig;
 	systemd.user.slices.user-builder.sliceConfig = config.resources.builderSliceConfig;
