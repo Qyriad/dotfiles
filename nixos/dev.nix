@@ -17,6 +17,8 @@
 		lua-language-server
 		bear
 		universal-ctags
+		nix-doc
+		lazygit
 		#rust-analyzer
 		#rustfmt
 		#cargo
