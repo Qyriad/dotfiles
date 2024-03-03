@@ -221,6 +221,8 @@ use {
 	opts = {},
 }
 
+use 'ii14/neorepl.nvim'
+
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
 
