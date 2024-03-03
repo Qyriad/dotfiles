@@ -116,5 +116,12 @@
 		bat
 		ncdu
 		lnav
+		heh
+		fblog
+		fx
+		chars
+		zenith
+		git-imerge
+		python3Packages.jsondiff
 	];
 }
