@@ -110,6 +110,8 @@
 		pciutils
 		(gdb.override { enableDebuginfod = true; })
 		qyriad.strace-process-tree
+		zps
+		kmon
 	];
 	services.nixseparatedebuginfod.enable = true;
 }
