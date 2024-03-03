@@ -151,6 +151,8 @@
 		kcachegrind
 		signal-desktop
 		thunderbird
+		wtype
+		seer
 		glibc.debug
 	] ++ (qyriad.mkDebugForEach [
 		#qt5.qtbase
