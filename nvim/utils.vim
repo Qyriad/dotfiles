@@ -47,7 +47,18 @@ function get_visual()
 
 	return vim.fn.join(lines, "\n")
 end
+
+-- vim.notify() that is safe to call in restricted functions
+function defer_notify(msg)
+	vim.defer_fn(function() vim.notify(msg) end, 0)
+end
+
 EOF
+
+" Vimscript wrapper to the above
+function! Notify(msg) abort
+	call v:lua.defer_notify(a:msg)
+endfunction
 
 " Inserts the current visual selection text into the command-line.
 cnoremap <expr> <C-t> v:lua.get_visual()
