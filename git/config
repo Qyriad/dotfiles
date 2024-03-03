@@ -24,6 +24,7 @@
 	inf = info --no-config
 	ck = diff --check
 	ls-upstream = ls-remote --heads
+	vls = tag -l --sort=v:refname
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
