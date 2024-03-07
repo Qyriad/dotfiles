@@ -123,5 +123,6 @@
 		zenith
 		git-imerge
 		python3Packages.jsondiff
+		diffoscope
 	];
 }
