@@ -138,7 +138,9 @@ function NixIndent(lnum)
 
 	-- If this is an attrset binding, indent it one more than the line where the binding starts.
 	if nonblank_synid == nixattr_synid then
-		local attrset_start = vim.fn.searchpair('{', '', '}', 'bnW', skip_expr)
+		-- HACK: forcibly ignore the current line without moving the cursor, because for some reason
+		-- moving the cursor first seems to cause other problems for searchpair().
+		local attrset_start = vim.fn.searchpair('{', '', '}', 'bnWz', string.format('nix#syn_should_ignore() || line(".") == %d', lnum))
 		local let_start = vim.fn.searchpair(PAT.LET.string, '', PAT.IN.string, 'bnW', skip_expr)
 		local inherit_start = vim.fn.searchpair(
 			[[\v%(<|^)inherit%(>|$)]],
