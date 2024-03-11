@@ -140,8 +140,9 @@ function NixIndent(lnum)
 	if nonblank_synid == nixattr_synid then
 		-- HACK: forcibly ignore the current line without moving the cursor, because for some reason
 		-- moving the cursor first seems to cause other problems for searchpair().
-		local attrset_start = vim.fn.searchpair('{', '', '}', 'bnWz', string.format('nix#syn_should_ignore() || line(".") == %d', lnum))
-		local let_start = vim.fn.searchpair(PAT.LET.string, '', PAT.IN.string, 'bnW', skip_expr)
+		local very_skip = string.format('nix#syn_should_ignore() || line(".") == %d', lnum)
+		local attrset_start = vim.fn.searchpair('{', '', '}', 'bnWz', very_skip)
+		local let_start = vim.fn.searchpair(PAT.LET.string, '', PAT.IN.string, 'bnW', very_skip)
 		local inherit_start = vim.fn.searchpair(
 			[[\v%(<|^)inherit%(>|$)]],
 			'',
