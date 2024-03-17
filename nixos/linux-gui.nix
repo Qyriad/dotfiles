@@ -47,13 +47,13 @@
 				autoNumlock = true;
 				wayland.enable = true;
 			};
-			defaultSession = "plasmawayland";
+			defaultSession = "plasma";
 		};
 
 		# Use a Wayland KDE Plasma desktop environment, with systemd integration.
 		desktopManager = {
-			plasma5.enable = true;
-			plasma5.runUsingSystemd = true;
+			plasma6.enable = true;
+			plasma6.enableQt5Integration = true;
 		};
 	};
 
@@ -62,10 +62,10 @@
 
 	xdg.portal = {
 		enable = true;
-		extraPortals = [
-			pkgs.xdg-desktop-portal-gtk
-			pkgs.xdg-desktop-portal-kde
-		];
+		#extraPortals = [
+		#	pkgs.xdg-desktop-portal-gtk
+		#	pkgs.xdg-desktop-portal-kde
+		#];
 	};
 
 	# And also let Blink stuffs use Wayland.
