@@ -124,5 +124,7 @@
 		git-imerge
 		python3Packages.jsondiff
 		diffoscope
+		pinfo
+		gron
 	];
 }
