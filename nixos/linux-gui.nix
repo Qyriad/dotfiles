@@ -153,6 +153,7 @@
 		thunderbird
 		wtype
 		seer
+		qyriad.cinny
 		glibc.debug
 	] ++ (qyriad.mkDebugForEach [
 		#qt5.qtbase
