@@ -56,14 +56,14 @@
 					qyriad = builtins.getFlake "qyriad";
 					pkgs = import nixpkgs { };
 					lib = pkgs.lib;
-					scope = lib.makeScope pkgs.newScope (self: {
+					scope = pkgs // {
 						qlib = qyriad.lib;
 						qyriad = qyriad.packages.${system} // {
 							lib = qyriad.lib;
 						};
-					});
+					};
 				in
-					target: scope.callPackage target { }
+					target: import <xil/cleanCallPackageWith> scope target { }
 			'';
 
 			xilWithConfig = basePkg.withConfig { inherit callPackageString; };
