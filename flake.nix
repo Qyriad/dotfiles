@@ -3,7 +3,7 @@
 {
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-		flake-utils.url = "flake-utils";
+		flake-utils.url = "github:numtide/flake-utils";
 		nur.url = "github:nix-community/NUR";
 		qyriad-nur = {
 			url = "github:Qyriad/nur-packages";
