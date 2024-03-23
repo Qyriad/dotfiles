@@ -126,5 +126,6 @@
 		diffoscope
 		pinfo
 		gron
+		git-series
 	];
 }
