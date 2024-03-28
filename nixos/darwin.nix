@@ -5,9 +5,11 @@
 	imports = [
 		./modules/darwin-options.nix
 		./common.nix
+		./dev.nix
 	];
-	nixpkgs.config.allowUnfree = true;
+
 	nixpkgs.config.allowUnsupportedSystem = true;
+
 	users.users.qyriad = {
 		name = "qyriad";
 		description = "Qyriad";
@@ -17,10 +19,6 @@
 	services.nix-daemon.enable = true;
 
 	fonts.fontDir.enable = true;
-
-	nix.settings = {
-		experimental-features = [ "nix-command" "flakes" ];
-	};
 
 	system.activationScripts.applications.text = ''
 		zsh ${./darwin-activate-applications.zsh} "${config.system.build.applications}"
@@ -110,9 +108,6 @@
 		#};
 	};
 
-	#homebrew-custom.autoInstall = true;
-
-
 	#system.activationScripts.extraActivation.text = ''
 	#	# Install homebrew
 	#	brewVersion="$(/opt/homebrew/bin/brew --version)"
@@ -131,5 +126,9 @@
 
 	environment.systemPackages = with pkgs; [
 		ncurses
+		neovim
+		qyriad.xonsh
+		git
+		plistwatch
 	];
 }
