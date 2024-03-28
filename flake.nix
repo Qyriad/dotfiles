@@ -4,6 +4,10 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		flake-utils.url = "github:numtide/flake-utils";
+		nix-darwin = {
+			url = "github:LnL7/nix-darwin";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		nur.url = "github:nix-community/NUR";
 		qyriad-nur = {
 			url = "github:Qyriad/nur-packages";
@@ -62,6 +66,7 @@
 		self,
 		nixpkgs,
 		flake-utils,
+		nix-darwin,
 		nur,
 		...
 	}: let
@@ -119,6 +124,21 @@
 				minimal-aarch64-linux = mkConfig "aarch64-linux" [
 					./nixos/minimal.nix
 				];
+			};
+			darwinConfigurations = {
+				Aigis = nix-darwin.lib.darwinSystem {
+					system = "aarch64-darwin";
+					specialArgs = {
+						inherit inputs;
+						qyriad = recursiveUpdate
+							self.outputs.packages.aarch64-darwin
+							self.outputs.lib;
+					};
+					modules = [
+						./nixos/darwin.nix
+						#./nixos/modules/darwin-options.nix
+					];
+				};
 			};
 
 			templates.base = {

@@ -70,6 +70,11 @@
 		variant = "";
 	};
 
+	i18n.defaultLocale = "en_US.utf8";
+
+	# Add ~/.local/bin to system path.
+	environment.localBinInPath = true;
+
 	# Enable CUPS for printing.
 	services.printing.enable = true;
 
@@ -100,13 +105,20 @@
 	users.groups.video = { };
 	users.groups.cdrom = { };
 
-	nix.settings.trusted-users = [
-		"root"
-	];
+	documentation = {
+		# Include -dev manpages
+		dev.enable = true;
+		# Make apropos(1) work.
+		man.generateCaches = true;
+		# This fails with `cannot lookup '<nixpkgs>' in pure evaluation mode.
+		# TODO: debug
+		#nixos.includeAllModules = true;
+	};
 
-	nix.settings.allowed-users = [
-		"qyriad"
-	];
+	programs.xonsh = {
+		enable = true;
+		package = qyriad.xonsh;
+	};
 
 	programs.zsh.enable = true;
 
@@ -121,9 +133,19 @@
 		withNodeJs = true;
 	};
 
+	programs.git = {
+		enable = true;
+		lfs.enable = true;
+	};
+
+	# Covered by nix-index, not that its integrations support our shell.
+	programs.command-not-found.enable = false;
+
 	services.udev.packages = [
 		qyriad.udev-rules
 	];
+
+	services.nixseparatedebuginfod.enable = true;
 
 	# Other packages we want available on Linux systems.
 	environment.systemPackages = with pkgs; [
@@ -133,6 +155,10 @@
 		qyriad.strace-process-tree
 		zps
 		kmon
+		# Needs AppKit on macOS?
+		heh
+		# apksigner dependency fails to build on macOS
+		diffoscope
+		rpm
 	];
-	services.nixseparatedebuginfod.enable = true;
 }

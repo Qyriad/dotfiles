@@ -5,7 +5,17 @@
 	# Configuration for things related to Nix itself.
 	nixpkgs.config.allowUnfree = true;
 	nix = {
-		settings.experimental-features = [ "nix-command" "flakes" ];
+		settings = {
+			experimental-features = [ "nix-command" "flakes" ];
+
+			trusted-users = [
+				"root"
+			];
+
+			allowed-users = [
+				"qyriad"
+			];
+		};
 
 		#package = pkgs.nixVersions.unstable;
 
@@ -32,35 +42,9 @@
 	};
 
 	time.timeZone = "America/Denver";
-	i18n.defaultLocale = "en_US.utf8";
-
-	programs.xonsh = {
-		enable = true;
-		package = qyriad.xonsh;
-	};
-
-	programs.git = {
-		enable = true;
-		lfs.enable = true;
-	};
-
-	# Add ~/.local/bin to system path.
-	environment.localBinInPath = true;
 
 	programs.nix-index.enable = true;
-	# Covered by nix-index, not that its integrations support our shell.
-	programs.command-not-found.enable = false;
 	programs.bash.enableCompletion = true;
-
-	documentation = {
-		# Include -dev manpages
-		dev.enable = true;
-		# Make apropos(1) work.
-		man.generateCaches = true;
-		# This fails with `cannot lookup '<nixpkgs>' in pure evaluation mode.
-		# TODO: debug
-		#nixos.includeAllModules = true;
-	};
 
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
@@ -82,7 +66,6 @@
 		zstd
 		unrar
 		cpio
-		rpm
 		curl
 		wget
 		man-pages
@@ -116,14 +99,12 @@
 		bat
 		ncdu
 		lnav
-		heh
 		fblog
 		fx
 		chars
 		zenith
 		git-imerge
 		python3Packages.jsondiff
-		diffoscope
 		pinfo
 		gron
 		git-series
