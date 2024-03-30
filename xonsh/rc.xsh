@@ -405,6 +405,8 @@ def _xonsh_dev_env(installable):
 
 aliases['nix-devenv'] = _xonsh_dev_env
 
+aliases['hlas'] = 'bat --paging never -l'
+
 def _gac(name):
 	git cherry-pick -n @(name)
 	git reset
