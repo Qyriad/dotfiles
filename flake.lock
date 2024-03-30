@@ -29,6 +29,21 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "ref": "refs/heads/master",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "revCount": 57,
+        "type": "git",
+        "url": "ssh://git@git.lix.systems/lix-project/flake-compat"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@git.lix.systems/lix-project/flake-compat"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -45,6 +60,65 @@
         "owner": "numtide",
         "repo": "flake-utils",
         "type": "github"
+      }
+    },
+    "flakey-profile": {
+      "locked": {
+        "lastModified": 1711325813,
+        "narHash": "sha256-ygJR5VikyCfK0CUJHboOKJVr6s9HQ1RXcvFEFnv+KIk=",
+        "owner": "lf-",
+        "repo": "flakey-profile",
+        "rev": "3b32c4a71f89b874fe0be2dc125eacb9c3473204",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lf-",
+        "repo": "flakey-profile",
+        "type": "github"
+      }
+    },
+    "lix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711439904,
+        "narHash": "sha256-MTrzytTqD696w5W6gnl3nJe55aWt2BnBKcMeUSx4/oQ=",
+        "ref": "refs/heads/main",
+        "rev": "a536438dab4681e6ae03fd1dbfdac2f2da91faaa",
+        "revCount": 15230,
+        "type": "git",
+        "url": "ssh://git@git.lix.systems/lix-project/lix"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@git.lix.systems/lix-project/lix"
+      }
+    },
+    "lix-module": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "flakey-profile": "flakey-profile",
+        "lix": [
+          "lix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1711399509,
+        "narHash": "sha256-uSGd1oYatzLQ+vQ9HoROnx7FxboElVHkGQxy1vjXVUQ=",
+        "ref": "refs/heads/main",
+        "rev": "5d2b325d3a01040c8b9f1ac09fc73d932548afd5",
+        "revCount": 28,
+        "type": "git",
+        "url": "ssh://git@git.lix.systems/lix-project/nixos-module"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@git.lix.systems/lix-project/nixos-module"
       }
     },
     "log2compdb": {
@@ -116,11 +190,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703522125,
-        "narHash": "sha256-IpjQ916k7S5jmH7y9QUikRXx70wp8lZPrQSwDAfNgJw=",
+        "lastModified": 1711839592,
+        "narHash": "sha256-TTfZoVs+Hz4cP59sAp+ocCzYT+NNI/3FK/YGUX5dkM4=",
         "owner": "Qyriad",
         "repo": "niz",
-        "rev": "553639d373129b6f8afc224df682ecdc820cf917",
+        "rev": "7f35c6149dde11880a802dc59235fd1fd3304c32",
         "type": "github"
       },
       "original": {
@@ -194,6 +268,8 @@
       "inputs": {
         "caligula": "caligula",
         "flake-utils": "flake-utils",
+        "lix": "lix",
+        "lix-module": "lix-module",
         "log2compdb": "log2compdb",
         "naersk": "naersk",
         "nixpkgs": "nixpkgs",

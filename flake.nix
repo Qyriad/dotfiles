@@ -46,6 +46,16 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
 		};
+		lix = {
+			url = "git+ssh://git@git.lix.systems/lix-project/lix";
+			flake = false;
+		};
+		lix-module = {
+			url = "git+ssh://git@git.lix.systems/lix-project/nixos-module";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.lix.follows = "lix";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 	};
 
 	outputs = inputs @ {
@@ -102,8 +112,13 @@
 
 				yuki = mkConfig "x86_64-linux" [
 					./nixos/yuki.nix
+					inputs.lix-module.nixosModules.default
 				];
 				Yuki = yuki;
+
+				minimal-aarch64-linux = mkConfig "aarch64-linux" [
+					./nixos/minimal.nix
+				];
 			};
 
 			templates.base = {
