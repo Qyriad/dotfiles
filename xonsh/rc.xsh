@@ -703,13 +703,13 @@ zone = ToZone
 #])
 
 
-xontrib load -s abbrevs, direnv, term_integration
+# xontrib-abbrevs, xonsh-direnv, xontrib-term-integrations, xontrib-broot
+xontrib load -s abbrevs, direnv, term_integration, broot
 
 if "abbrevs" in globals():
 	abbrevs["|&"] = "2>&1 |"
 
 #xontrib load output_search
 #xontrib load whole_word_jumping
-#xontrib load term_integration
 #xontrib load argcomplete
 
