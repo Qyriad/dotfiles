@@ -156,6 +156,7 @@ aliases['en'] = f"{$EDITOR} -S ~/.config/Session-nix.vim"
 
 aliases['yt-dlp'] = 'yt-dlp --compat-options filename,format-spec,multistreams'
 
+aliases['lg'] = 'lazygit'
 
 # Utilities that I want to modify their default arguments, but also colorize if available.
 maybe_colorize = { }
