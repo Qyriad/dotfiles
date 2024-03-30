@@ -603,7 +603,7 @@ def _per_line(args: list, stdin: io.TextIOWrapper):
 		to get the second whitespace-delimited word of each line.
 	"""
 	callback: typing.Callable[[str], str] = args[0]
-	return "\n".join([callback(line) for line in stdin])
+	return "\n".join([str(callback(line)) for line in stdin])
 
 aliases["pl"] = _per_line
 
