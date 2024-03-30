@@ -1,0 +1,41 @@
+diff --git a/env_config.rb b/env_config.rb
+index c5d04c4082..9d23336f1e 100644
+--- a/env_config.rb
++++ b/env_config.rb
+@@ -404,6 +404,10 @@ module Homebrew
+       SUDO_ASKPASS:                              {
+         description: "If set, pass the `-A` option when calling `sudo`(8).",
+       },
++      HOMEBREW_KEEP_OUTPUT:                      {
++        description: "If set, system commands run by Homebrew will not have their output suppressed.",
++        boolean:     true,
++      },
+       all_proxy:                                 {
+         description: "Use this SOCKS5 proxy for `curl`(1), `git`(1) and `svn`(1) when downloading through Homebrew.",
+       },
+diff --git a/formula.rb b/formula.rb
+index 0a5b11abdc..0caf79c72d 100644
+--- a/formula.rb
++++ b/formula.rb
+@@ -1657,10 +1657,11 @@ class Formula
+       -DCMAKE_INSTALL_LIBDIR=#{install_libdir}
+       -DCMAKE_BUILD_TYPE=Release
+       -DCMAKE_FIND_FRAMEWORK=#{find_framework}
+-      -DCMAKE_VERBOSE_MAKEFILE=ON
+       -Wno-dev
+       -DBUILD_TESTING=OFF
+     ]
++
++    args << "-DCMAKE_VERBOSE_MAKEFILE=ON" if verbose?
+   end
+   alias generic_std_cmake_args std_cmake_args
+ 
+@@ -2770,7 +2771,7 @@ class Formula
+       log.puts Time.now, "", cmd, args, ""
+       log.flush
+ 
+-      if verbose?
++      if verbose? || Homebrew::EnvConfig.keep_output?
+         rd, wr = IO.pipe
+         begin
+           pid = fork do
