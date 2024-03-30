@@ -14,10 +14,6 @@ endfunction
 
 set completeopt=menu,menuone,preview,noselect,noinsert
 
-nnoremap <F3> <Cmd>:CtrlPLine<CR>
-nnoremap <F4> <Cmd>:CtrlP<CR>
-nnoremap <F6> <Cmd>:CtrlPBuffer<CR>
-nnoremap <F9> <Cmd>:TagbarToggle<CR>
 nnoremap <leader><BS> <Cmd>:pclose<CR>
 nnoremap <leader>xx :Trouble <C-i>
 nnoremap <leader>xc <Cmd>TroubleToggle<CR>
@@ -68,7 +64,7 @@ for i, filetype in ipairs(lsp_filetypes) do
 	local augroup_name = "LspConfig_" .. filetype
 	local group = vim.api.nvim_create_augroup(augroup_name, {})
 	vim.api.nvim_create_autocmd("FileType", {
-		pattern = {filetype},
+		pattern = { filetype },
 		desc = "Autocommand for LSP config for " .. filetype,
 		once = true,
 		callback = function(event)
@@ -125,7 +121,6 @@ function on_lsp_attach(bufnr, client_id)
 		{ '<leader>h', vim.lsp.buf.document_highlight },
 		{ '<leader>c', vim.lsp.buf.clear_references },
 	}
-
 
 	for i, mapspec in ipairs(mappings) do
 		local lhs = mapspec[1]
