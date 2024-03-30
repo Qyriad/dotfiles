@@ -12,3 +12,6 @@ export XDG_CONFIG_HOME="/Users/qyriad/.config"
 export XDG_DATA_HOME="/Users/qyriad/.local/share"
 
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
