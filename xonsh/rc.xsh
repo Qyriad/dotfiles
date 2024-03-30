@@ -578,12 +578,12 @@ def _git_workout(args: list):
 	if branch in ["main", "master"]:
 		$[cd @(git_root)]
 		return
-	$[mkdir -p f"{git_root}/w/{branch}"]
+	$[mkdir -p f"{git_root}/.w/{branch}"]
 	# Check if the worktree already exists
-	if not pf"{git_root}/w/{branch}/.git".is_file():
-		$[git worktree add f"{git_root}/w/{branch}" f"{branch}"]
+	if not pf"{git_root}/.w/{branch}/.git".is_file():
+		$[git worktree add f"{git_root}/.w/{branch}" f"{branch}"]
 
-	$[cd f"{git_root}/w/{branch}"]
+	$[cd f"{git_root}/.w/{branch}"]
 
 aliases["git-workout"] = _git_workout
 
