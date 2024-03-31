@@ -130,7 +130,7 @@ function get_extmarks_on_current_line(opts)
 			ns_id,
 			range.current_row.col_from_start,
 			range.current_row.col_to_end,
-			{ details = true, overlap = true }
+			{ details = true }
 		)
 		-- Only add this to the return value if this value isn't empty.
 		if #current_line_extmarks_for_ns > 0 then
