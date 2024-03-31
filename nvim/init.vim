@@ -120,8 +120,15 @@ command! -bang WhatIndent call WhatIndentCmd("<bang>")
 
 lua << EOF
 -- Text editing.
-use 'tmhedberg/SimpylFold' -- Python folds.
-use 'junegunn/vim-easy-align'
+use {
+	-- Python folds.
+	'tmhedberg/SimpylFold',
+	filetype = "python",
+}
+use {
+	'junegunn/vim-easy-align',
+	lazy = true,
+}
 
 -- Utilities.
 use 'tpope/vim-eunuch'
