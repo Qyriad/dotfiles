@@ -129,9 +129,13 @@
 		neovim
 		qyriad.xonsh
 		git
-		plistwatch
+		coreutils-full
 		iterm2
 		karabiner-elements
-		coreutils-full
+		rectangle
+		gnupg
+		plistwatch
+		man
+		less
 	];
 }
