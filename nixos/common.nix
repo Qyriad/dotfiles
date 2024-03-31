@@ -46,6 +46,11 @@
 	programs.nix-index.enable = true;
 	programs.bash.enableCompletion = true;
 
+	programs.gnupg.agent = {
+		enable = true;
+		enableSSHSupport = true;
+	};
+
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
 		# The normal bash isn't bash-interactive lol.

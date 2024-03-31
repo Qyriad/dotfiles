@@ -130,5 +130,8 @@
 		qyriad.xonsh
 		git
 		plistwatch
+		iterm2
+		karabiner-elements
+		coreutils-full
 	];
 }
