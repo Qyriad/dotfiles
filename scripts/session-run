@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import argparse
+from datetime import datetime
+import shlex
+import shutil
+import subprocess
+import sys
+
+def eprint(*args, **kwargs):
+    kwargs['file'] = sys.stderr
+    return print(*args, **kwargs)
+
+def main():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('cmd', nargs='+')
+    parser.add_argument('--slice', type=str, default='app.slice',
+        help='The user slice to run this service under (default: %(default)s)',
+    )
+
+    args = parser.parse_args()
+    print(args)
+
+    cmd = args.cmd
+    cmdname = cmd[0]
+
+    localnow = datetime.now().astimezone().strftime('systemdrun-%Hh-%Mm')
+    unit_name = f'{localnow}-{cmdname}'
+
+    run_args = ['systemd-run', '--user', '--collect', '--same-dir', '--slice=app.slice', f'--unit={unit_name}', *cmd]
+    eprint('\x1b[1m{}'.format(shlex.join(run_args)))
+    subprocess.call(run_args)
+
+    journal_args = ['journalctl', '--user', '--follow', '--output=cat', f'--unit={unit_name}']
+    if grc := shutil.which('grc'):
+        journal_args.insert(0, grc)
+
+    eprint('\x1b[1m{}'.format(shlex.join(journal_args)))
+    eprint('session-run: showing logs from newly launched command; press Ctrl-C to stop following logs')
+    try:
+        subprocess.call(journal_args)
+    except KeyboardInterrupt:
+        pass
+
+if __name__ == '__main__':
+    sys.exit(main())

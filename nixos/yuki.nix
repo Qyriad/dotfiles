@@ -25,6 +25,22 @@
 	# Non-NixOS-generated hardware configuration.
 	hardware.cpu.amd.updateMicrocode = true;
 
+	services.freshrss = {
+	};
+
+	nix.buildMachines = let
+		ashyn = {
+			hostName = "ashyn";
+			system = "aarch64-linux";
+			protocol = "ssh-ng";
+
+		};
+	in [
+		ashyn
+	];
+
+	nix.distributedBuilds = true;
+
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
 	# on your system were taken. It‘s perfectly fine and recommended to leave

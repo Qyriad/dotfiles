@@ -76,12 +76,23 @@ treesitter_configs_setup = {
 		move = {
 			enable = true,
 			goto_next_start = {
-				["]]"] = { query = { "@function.outer", "@class.outer" } }
+				["]]"] = { query = { "@function.inner", "@class.inner", '@block.inner' } },
+				[']p'] = { query = { '@parameter.inner' } },
 			},
 			goto_previous_start = {
-				["[["] = { query = { "@function.outer", "@class.outer" } }
+				["[["] = { query = { "@function.inner", "@class.inner", '@block.inner' } },
+				['[p'] = { query = { '@parameter.inner' } },
 			},
-		}
+		},
+		select = {
+			enable = true,
+			keymaps = {
+				ip = '@parameter.inner',
+				ap = '@parameter.outer',
+				ib = '@block.inner',
+				ab = '@block.outer',
+			},
+		},
 	},
 	context_commentstring = true,
 }

@@ -249,6 +249,18 @@ aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 aliases['cm'] = 'cmake -B build'
 aliases['cmb'] = 'cmake --build build'
 
+xontrib load abbrevs
+if 'abbrevs' not in globals():
+	aliases['mesoncomp'] = 'meson compile -C build'
+	aliases['mesoncompile'] = 'meson compile -C build'
+	aliases['mesontest'] = 'meson test -C build'
+	aliases['mesoninstall'] = 'meson install -C build'
+else:
+	abbrevs['mesoncomp'] = 'meson compile -C build'
+	abbrevs['mesoncompile'] = 'meson compile -C build'
+	abbrevs['mesontest'] = 'meson test -C build'
+	abbrevs['mesoninstall'] = 'meson install -C build'
+
 def _wine32(args):
 	overrides = {
 		'WINEPREFIX': f"{$HOME}/.wine32",
@@ -404,6 +416,20 @@ def _xonsh_dev_env(installable):
 			![xonsh --rc ~/.config/xonsh/rc.xsh @(xonshrc.name)]
 
 aliases['nix-devenv'] = _xonsh_dev_env
+#aliases['nix-json-to-raw'] = """
+#	jq '. | map(.fields[0]) | map(select(type == "string")) | join("\n")' --raw-output --slurp
+#""".strip()
+aliases['nix-internal-to-json'] = [
+	'sed',
+	's/^@nix //',
+]
+aliases['nix-json-to-raw'] = [
+	"jq",
+	r'. | map(.fields[0]) | map(select(type == "string")) | join("\n")',
+	'--raw-output',
+	'--slurp',
+]
+
 
 aliases['hlas'] = 'bat --paging never -l'
 
@@ -574,14 +600,22 @@ def _git_root(path=None):
 def _git_workout(args: list):
 	# Get the git root.
 	git_root = _git_root($PWD)
+	# Get available branches.
+	branches = $(git branch --list '--format=%(refname:lstrip=2)').strip().split('\n')
 	branch = args[0]
+	echo f"git-workout: using branch {branch}"
 	if branch in ["main", "master"]:
 		$[cd @(git_root)]
 		return
 	$[mkdir -p f"{git_root}/.w/{branch}"]
 	# Check if the worktree already exists
 	if not pf"{git_root}/.w/{branch}/.git".is_file():
-		$[git worktree add f"{git_root}/.w/{branch}" f"{branch}"]
+		if branch not in branches:
+			echo f':: git worktree add -b "{git_root}/.w/{branch}" f"{branch}"'
+			$[git worktree add f"{git_root}/.w/{branch}" -b f"{branch}"]
+		else:
+			echo f':: git worktree add "{git_root}/.w/{branch}" f"{branch}"'
+			$[git worktree add f"{git_root}/.w/{branch}" f"{branch}"]
 
 	$[cd f"{git_root}/.w/{branch}"]
 

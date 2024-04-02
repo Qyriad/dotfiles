@@ -63,6 +63,9 @@ set fsync " Syncs the filesystem after :write.
 set updatetime=1000 "Lets languageservers update faster, and shortens the time for CursorHold.
 set noshowmode " We're using lightline, so showing the mode in the command line is redundant.
 
+let grepprg = 'rg --vimgrep --no-heading --smartcase'
+nnoremap <leader>g :Notify lgrep<Space>
+
 
 """ Slow down mouse scroll speed.
 " This is intended for macOS touchpads, but ideally the solution should be
@@ -150,10 +153,10 @@ vnoremap < <gv
 nnoremap gp `[v`]
 
 " Default to pasting with fixed indentation, with <leader> to escape.
-nnoremap p p`[v`]=
-nnoremap <leader>p p
-nnoremap P P`[v`]=
-nnoremap <leader>P P
+"nnoremap p p`[v`]=
+"nnoremap <leader>p p
+"nnoremap P P`[v`]=
+"nnoremap <leader>P P
 
 " unmap Q
 nnoremap Q <nop>
@@ -248,6 +251,9 @@ inoremap <C-u> <esc>mzgUiW`za
 " <leader>cc for comment.nvim's toggle line comment
 " <leader>p to paste without indenting (see above).
 nmap <leader>ycp yy<leader>cc<leader>p
+
+" Yank, then comment out, on a visual selection.
+vmap <leader>Y Ygv<leader>cc
 
 " Inverts formatoptions' "r" flag, which automatically inserts the comment leader on <CR>
 " in insert mode.

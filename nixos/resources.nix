@@ -45,6 +45,8 @@ which we then do Math™ on.
 			CPUQuota = "${toString (mostCpus * 90)}%";
 			MemoryHigh = "${toString mostMemory}G";
 			MemoryMax = "${toString maxMemory}G";
+			IOWeight = 20;
+			IOMemoryAccounting = true;
 		};
 	};
 }

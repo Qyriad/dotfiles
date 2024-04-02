@@ -30,8 +30,29 @@
 			MemoryPressureWatch = "on";
 			ManagedOOMMemoryPressure = "kill";
 			ManagedOOMMemoryPressureLimit = "85%";
+			MemoryHigh = config.resources.builderSliceConfig.MemoryHigh;
+			MemoryMax = config.resources.builderSliceConfig.MemoryMax;
+			IOWeight = 20;
+			IOMemoryAccounting = true;
 		};
 	};
+
+	boot.binfmt.emulatedSystems = [
+		"aarch64-linux"
+		"armv6l-linux"
+		"armv7l-linux"
+		"i386-linux"
+		"i486-linux"
+		"i586-linux"
+		"i686-linux"
+		"mips-linux"
+		"mips64-linux"
+		"powerpc-linux"
+		"powerpc64-linux"
+		"riscv32-linux"
+		"riscv64-linux"
+		"sparc-linux"
+	];
 
 	# Update timezone based on our location.
 	services.localtimed.enable = true;

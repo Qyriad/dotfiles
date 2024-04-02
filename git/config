@@ -4,7 +4,7 @@
 	signingKey = CCDB0B4CC492BD790C8B6F7F4EE0258832AA41CA
 [merge]
 	tool = vimdiff
-	conflictstyle = diff3
+	conflictStyle = zdiff3
 [alias]
 	sub = submodule
 	subinit = submodule update --recursive --init
@@ -58,3 +58,5 @@
 	pushInsteadOf = "https://github.com"
 [git-extras "get"]
 	clone-path = /Users/qyriad/code/builds
+[rerere]
+	enabled = true

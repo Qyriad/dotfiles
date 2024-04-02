@@ -33,6 +33,9 @@
 
 	# On Yuki this costs less than a GiB. Let's try it for now.
 	environment.enableDebugInfo = true;
+	environment.extraOutputsToInstall = [
+		"dev"
+	];
 
 
 	# Enable GUI stuff.
@@ -153,7 +156,9 @@
 		thunderbird
 		wtype
 		seer
+		mattermost-desktop
 		qyriad.cinny
+		#firefoxpwa
 		glibc.debug
 	] ++ (qyriad.mkDebugForEach [
 		#qt5.qtbase

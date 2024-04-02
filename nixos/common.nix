@@ -7,7 +7,7 @@
 	nix = {
 		settings.experimental-features = [ "nix-command" "flakes" ];
 
-		package = pkgs.nixVersions.unstable;
+		#package = pkgs.nixVersions.unstable;
 
 		# Let me do things like `nix shell "qyriad#xonsh"`.
 		registry.qyriad = {
@@ -127,5 +127,9 @@
 		pinfo
 		gron
 		git-series
+		git-revise
+		dogdns
+		doggo
+		magic-wormhole
 	];
 }
