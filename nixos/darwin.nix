@@ -103,9 +103,11 @@
 			"mas"
 		];
 
-		#masApps = {
-		#	Amphetamine = 937984704;
-		#};
+		masApps = {
+			Amphetamine = 937984704;
+			"1Blocker" = 1365531024;
+			Bitwarden = 1352778147;
+		};
 	};
 
 	#system.activationScripts.extraActivation.text = ''
