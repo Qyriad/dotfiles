@@ -743,6 +743,8 @@ xontrib load -s abbrevs, direnv, term_integration, broot
 if "abbrevs" in globals():
 	abbrevs["|&"] = "2>&1 |"
 
+abbrevs['procinfo'] = 'ps -wwch -o user,pid,ppid,ucomm,state,%mem=MEM%,%cpu=CPU%,args -p'
+
 #xontrib load output_search
 #xontrib load whole_word_jumping
 #xontrib load argcomplete
