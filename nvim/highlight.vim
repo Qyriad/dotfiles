@@ -33,6 +33,5 @@ use {
 	"tzachar/highlight-undo.nvim",
 	opts = { },
 }
-use 'David-Kunz/markid'
 EOF
 

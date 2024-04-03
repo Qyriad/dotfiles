@@ -69,9 +69,6 @@ treesitter_configs_setup = {
 	autotag = {
 		enable = true,
 	},
-	markid = {
-		enable = true,
-	},
 	textobjects = {
 		move = {
 			enable = true,
