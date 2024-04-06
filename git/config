@@ -4,15 +4,18 @@
 	signingKey = CCDB0B4CC492BD790C8B6F7F4EE0258832AA41CA
 [merge]
 	tool = vimdiff
-	conflictStyle = zdiff3
+	conflictStyle = diff3
 [alias]
 	sub = submodule
 	subinit = submodule update --recursive --init
 	l = log --abbrev-commit --decorate -n 8 --graph
 	s = status
 	sd = status .
+	se = series
+	ss = series status
+	sl = series log
 	curbr = rev-parse --abbrev-ref HEAD
-	lo = log --abbrev-commit --decorate --graph
+	lo = log --abbrev-commit --decorate --graph --stat
 	br = !zsh -c 'cat <(git branch -vv --no-merged) <(git branch -vv --color=always | grep --color=never master)'
 	r = remote -v
 	clean-fw = clean -e firmware/build -e compile_commands.json -e .gdbinit
@@ -39,14 +42,23 @@
 	compactionHeuristic = true
 	relative = true
 [core]
-	pager = delta --dark --side-by-side
+	pager = delta
 	editor = nvim
+[delta]
+	dark = true
+	side-by-side = true
+	tabs = 4
+	navigate = true
+	commit-regex = ^[|* ]+commit [A-Fa-f0-9]+
+	commit-decoration-style = box
+	hunk-header-style = file line-number syntax
+	inline-hint-style = yellow # What does this do??
 [pull]
 	ff = only
 [init]
 	defaultBranch = main
-#[interactive]
-	#diffFilter = delta --color-only
+[interactive]
+	diffFilter = delta --color-only
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
