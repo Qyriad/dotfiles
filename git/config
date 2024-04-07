@@ -22,7 +22,8 @@
 	cleang = clean -e firmware/build -e compile_commands.json -e .gdbinit
 	b = branch -vv
 	bb = branch -vv --no-merged master
-	sh = show --abbrev-commit --decorate -q
+	sh = show --stat --patch
+	stat = show --stat
 	diffs = diff --staged
 	inf = info --no-config
 	ck = diff --check
