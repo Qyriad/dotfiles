@@ -80,9 +80,10 @@
 		diskus
 		moreutils
 		grc
-		delta
-		direnv
 		file
+		delta
+		difftastic
+		direnv
 		moar
 		faketty
 		htop
