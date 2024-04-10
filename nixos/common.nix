@@ -118,5 +118,6 @@
 		dogdns
 		doggo
 		magic-wormhole
+		age
 	];
 }
