@@ -32,10 +32,10 @@
 	};
 
 	# On Yuki this costs less than a GiB. Let's try it for now.
-	environment.enableDebugInfo = true;
-	environment.extraOutputsToInstall = [
-		"dev"
-	];
+	#environment.enableDebugInfo = true;
+	#environment.extraOutputsToInstall = [
+	#	"dev"
+	#];
 
 
 	# Enable GUI stuff.
@@ -95,7 +95,7 @@
 	# FIXME: Is this necessary?
 	services.xserver.libinput.enable = true;
 
-	programs.gnupg.agent.pinentryFlavor = "qt";
+	programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
 
 	# Input method stuff.
 	i18n.inputMethod = {
@@ -156,18 +156,19 @@
 		thunderbird
 		wtype
 		seer
-		mattermost-desktop
+		#mattermost-desktop
 		qyriad.cinny
 		#firefoxpwa
 		glibc.debug
-	] ++ (qyriad.mkDebugForEach [
-		#qt5.qtbase
-		python3
-		#kwin
-		#plasma-workspace
-		git
-		curl
-	]);
+	];
+	#++ (qyriad.mkDebugForEach [
+	#	#qt5.qtbase
+	#	python3
+	#	#kwin
+	#	#plasma-workspace
+	#	git
+	#	curl
+	#]);
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs = {

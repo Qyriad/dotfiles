@@ -32,7 +32,8 @@
 		package = config.boot.kernelPackages.nvidiaPackages.stable;
 		open = false;
 	};
-	hardware.opengl.driSupport32Bit = true;
+	# This is causing buildfailures that I don't feel like debugging right now.
+	#hardware.opengl.driSupport32Bit = true;
 
 
 	fileSystems."/" = {

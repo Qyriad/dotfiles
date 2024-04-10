@@ -107,7 +107,7 @@
 
 	documentation = {
 		# Include -dev manpages
-		dev.enable = true;
+		#dev.enable = true;
 		# Make apropos(1) work.
 		man.generateCaches = true;
 		# This fails with `cannot lookup '<nixpkgs>' in pure evaluation mode.
@@ -153,7 +153,9 @@
 		# Needs AppKit on macOS?
 		heh
 		# apksigner dependency fails to build on macOS
-		diffoscope
+		# FIXME: something is causing this to fail to build, which is interesting since it should
+		# just be substituting anyway.
+		(diffoscope.overridePythonAttrs { doCheck = false; dontPytestCheck = true; })
 		rpm
 	];
 }
