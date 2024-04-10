@@ -65,7 +65,7 @@ let
 	drvListByName =
 		list:
 			assert lib.assertMsg (lib.isList list) "drvListToAttrs passed non-list ${toString list}";
-			lib.listToAttrs (builtins.map (val: { name = val.pname or val.name; value = val; }) list)
+			lib.listToAttrs (lib.forEach list (drv: { name = drv.pname or drv.name; value = drv; }))
 	;
 
 in {

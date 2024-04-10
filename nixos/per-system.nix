@@ -43,7 +43,7 @@
 	# Outputs that do directly come from flake inputs.
 	flakeOutputs.packages = let
 		inherit (inputs) niz pzl log2compdb xil;
-		basePkg = (import xil { inherit pkgs; }).xil;
+		baseXil = (import xil { inherit pkgs; }).xil;
 	in {
 		niz = import niz { inherit pkgs; };
 		pzl = import pzl { inherit pkgs; };
@@ -68,7 +68,7 @@
 					target: import <xil/cleanCallPackageWith> scope target { }
 			'';
 
-			xilWithConfig = basePkg.withConfig { inherit callPackageString; };
+			xilWithConfig = baseXil.withConfig { inherit callPackageString; };
 		in xilWithConfig;
 	}; # flakeOutputsPackages
 
