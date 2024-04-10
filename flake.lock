@@ -80,11 +80,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1712365532,
-        "narHash": "sha256-R2fKG/Mz5HjdopxGDEU1zdJTOQSb/ZbPE73C6+f1m1Y=",
+        "lastModified": 1712763603,
+        "narHash": "sha256-jHLmzZqtDoUY58ly3kODdFMbbOGzjUOQEsPqIW/Uw9I=",
         "ref": "refs/heads/main",
-        "rev": "cbc7136fdd0189060aacc3b87abd5bc97d6f72ad",
-        "revCount": 15331,
+        "rev": "5ecef3e133ecc33fb4ea96212c7649b43bd3edde",
+        "revCount": 15383,
         "type": "git",
         "url": "ssh://git@git.lix.systems/lix-project/lix"
       },
@@ -108,11 +108,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712377825,
-        "narHash": "sha256-YLliaWMaatyf0qOrgd6XIDgMh8AsAV5dAUg27bjU9VU=",
+        "lastModified": 1712601650,
+        "narHash": "sha256-Tl4l8B577b9KpJ1uuuL3lzuzwJMPQybsdqkXeAdVY4M=",
         "ref": "refs/heads/main",
-        "rev": "93ce1e3f5defd0091a1da2b1964a89a748257ada",
-        "revCount": 41,
+        "rev": "bf047623b535e21deaf964f4959d836d1bbfae9d",
+        "revCount": 43,
         "type": "git",
         "url": "ssh://git@git.lix.systems/lix-project/nixos-module"
       },
@@ -312,11 +312,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1710123130,
-        "narHash": "sha256-EoGL/WSM1M2L099Q91mPKO/FRV2iu2ZLOEp3y5sLfiE=",
+        "lastModified": 1712715149,
+        "narHash": "sha256-uOx7GaLV+5hekAYtm/CBr627Pi7+d1Yh70hwKmVjYYo=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "73aca260afe5d41d3ebce932c8d896399c9d5174",
+        "rev": "9ef1eca23bee5fb8080863909af3802130b2ee57",
         "type": "github"
       },
       "original": {
@@ -350,11 +350,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1709860889,
-        "narHash": "sha256-SprGDoZiiNZqGMcbGp1ursy67Blmu7LMMFbH9w0szOA=",
+        "lastModified": 1711125793,
+        "narHash": "sha256-4tlh3SZRmoZX0Mr//xHxpvuRLRP/df20wlJDi/zThLY=",
         "owner": "Qyriad",
         "repo": "Xil",
-        "rev": "ac0225c468c1e1c6401fdc34e77a6de70d4bc0e2",
+        "rev": "710f71a0b1f3784382ada5f5b2f2223711717d11",
         "type": "github"
       },
       "original": {
