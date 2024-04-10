@@ -23,5 +23,6 @@
 		#rustfmt
 		#cargo
 		#rustc
+		git-gr
 	];
 }
