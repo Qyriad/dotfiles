@@ -41,23 +41,17 @@
 	# Enable GUI stuff.
 	# Yes this says xserver. Yes this we're using Wayland. That's correct.
 	# https://github.com/NixOS/nixpkgs/issues/94799
-	services.xserver = {
+	services.displayManager = {
+		sddm.enable = true;
+		sddm.autoNumlock = true;
+		sddm.wayland.enable = true;
+		defaultSession = "plasma";
+	};
+
+	# Use a Wayland KDE Plasma desktop environment, with systemd integration.
+	services.desktopManager.plasma6 = {
 		enable = true;
-
-		displayManager = {
-			sddm = {
-				enable = true;
-				autoNumlock = true;
-				wayland.enable = true;
-			};
-			defaultSession = "plasma";
-		};
-
-		# Use a Wayland KDE Plasma desktop environment, with systemd integration.
-		desktopManager = {
-			plasma6.enable = true;
-			plasma6.enableQt5Integration = true;
-		};
+		enableQt5Integration = true;
 	};
 
 	# "A stop job is running for X11—" fuck off.
