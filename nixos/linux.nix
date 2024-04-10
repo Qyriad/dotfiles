@@ -33,7 +33,8 @@
 			MemoryHigh = config.resources.builderSliceConfig.MemoryHigh;
 			MemoryMax = config.resources.builderSliceConfig.MemoryMax;
 			IOWeight = 20;
-			IOMemoryAccounting = true;
+			MemoryAccounting = true;
+			IOAccounting = true;
 		};
 	};
 

@@ -46,7 +46,8 @@ which we then do Math™ on.
 			MemoryHigh = "${toString mostMemory}G";
 			MemoryMax = "${toString maxMemory}G";
 			IOWeight = 20;
-			IOMemoryAccounting = true;
+			MemoryAccounting = true;
+			IOAccounting = true;
 		};
 	};
 }
