@@ -10,7 +10,6 @@
 			nofail = null;
 			_netdev = null;
 			"x-systemd.idle-timeout" = "300s";
-			#"x-systemd.device-timeout" = "5s"; # Ignored?
 			"x-systemd.mount-timeout" = "5s";
 			"x-systemd.requires" = "network-online.target";
 			credentials = "/etc/secrets/shizue.cred";
