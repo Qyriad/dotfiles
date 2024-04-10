@@ -62,7 +62,7 @@
 							lib = qyriad.lib;
 						};
 						inherit (builtins) currentSystem getFlake;
-						f = builtins.getFlake ("git+file:" + (toString ./.))
+						f = builtins.getFlake ("git+file:" + (toString ./.));
 					};
 				in
 					target: import <xil/cleanCallPackageWith> scope target { }
