@@ -54,6 +54,8 @@
 		"sparc-linux"
 	];
 
+	services.dbus.implementation = "dbus";
+
 	# Update timezone based on our location.
 	services.localtimed.enable = true;
 	services.geoclue2.enable = true;
