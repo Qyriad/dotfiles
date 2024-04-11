@@ -152,12 +152,6 @@ vnoremap < <gv
 " gp to select last pasted text.
 nnoremap gp `[v`]
 
-" Default to pasting with fixed indentation, with <leader> to escape.
-"nnoremap p p`[v`]=
-"nnoremap <leader>p p
-"nnoremap P P`[v`]=
-"nnoremap <leader>P P
-
 " unmap Q
 nnoremap Q <nop>
 
