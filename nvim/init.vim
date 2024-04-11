@@ -245,7 +245,11 @@ use {
 	opts = {},
 }
 
-use 'ii14/neorepl.nvim'
+use {
+	'ii14/neorepl.nvim',
+	lazy = true,
+	cmd = "Repl",
+}
 
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
