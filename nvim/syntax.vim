@@ -142,6 +142,20 @@ use {
 	opts = {},
 }
 use {
+	'windwp/nvim-ts-autotag',
+	ft = {
+		"html",
+		"javascript",
+		"jsx",
+		"markdown",
+		"php",
+		"svelte",
+		"tsx",
+		"typescript",
+		"xml",
+	},
+}
+use {
 	'nvim-treesitter/nvim-treesitter-context',
 	lazy = false,
 	opts = {

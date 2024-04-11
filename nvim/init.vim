@@ -147,7 +147,6 @@ use {
 		},
 	},
 }
-use 'windwp/nvim-ts-autotag'
 use {
 	'johmsalas/text-case.nvim',
 	-- TODO: nnoremap <leader>gac <Cmd>lua vim.fn.setreg("", '_' .. p.textcase.api.to_camel_case(vim.fn.expand('<cword>')))<CR>
