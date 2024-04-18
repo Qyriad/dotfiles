@@ -84,6 +84,14 @@
 			# NixOS modules to add to this NixOS system configuration :: list
 			nixosModules: let
 
+				system' = nixpkgs.lib.systems.elaborate system;
+
+				# Use nixpkgs.lib.nixosSystem on Linux
+				mkConfigFn = {
+					linux = nixpkgs.lib.nixosSystem;
+					darwin = nix-darwin.lib.darwinSystem;
+				};
+
 				specialArgs = {
 					inherit inputs;
 					qyriad = recursiveUpdate self.outputs.packages.${system} self.outputs.lib;
@@ -93,7 +101,7 @@
 					nur.nixosModules.nur
 				];
 
-			in nixpkgs.lib.nixosSystem {
+			in mkConfigFn.${system'.parsed.kernel.name} {
 				inherit system specialArgs modules;
 			}
 		;
@@ -126,19 +134,9 @@
 				];
 			};
 			darwinConfigurations = {
-				Aigis = nix-darwin.lib.darwinSystem {
-					system = "aarch64-darwin";
-					specialArgs = {
-						inherit inputs;
-						qyriad = recursiveUpdate
-							self.outputs.packages.aarch64-darwin
-							self.outputs.lib;
-					};
-					modules = [
-						./nixos/darwin.nix
-						#./nixos/modules/darwin-options.nix
-					];
-				};
+				Aigis = mkConfig "aarch64-darwin" [
+					./nixos/darwin.nix
+				];
 			};
 
 			templates.base = {
