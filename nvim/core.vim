@@ -121,6 +121,7 @@ augroup END
 augroup spellcheck
 	autocmd! FileType gitcommit,markdown,text setlocal spell spelllang=en_us spellcapcheck=
 augroup END
+" Note: spell check is also explicitly disabled in after/ftplugin/xonsh.vim
 
 """ Core mappings.
 
