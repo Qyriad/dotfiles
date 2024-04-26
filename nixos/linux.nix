@@ -141,6 +141,7 @@
 		kmon
 		# Needs AppKit on macOS?
 		heh
+		sysstat
 		# apksigner dependency fails to build on macOS
 		# FIXME: something is causing this to fail to build, which is interesting since it should
 		# just be substituting anyway.
