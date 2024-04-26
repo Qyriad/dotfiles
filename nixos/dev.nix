@@ -24,5 +24,8 @@
 		#cargo
 		#rustc
 		git-gr
+		nix-eval-jobs
+		colmena
+		rr
 	];
 }
