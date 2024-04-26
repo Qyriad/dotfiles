@@ -49,5 +49,7 @@ which we then do Math™ on.
 			MemoryAccounting = true;
 			IOAccounting = true;
 		};
+
+		nix.settings.cores = mostCpus;
 	};
 }
