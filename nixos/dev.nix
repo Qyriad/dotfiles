@@ -4,6 +4,16 @@
 {
 	# General development stuffs.
 
+	environment.pathsToLink = [
+		"/include"
+	];
+
+	environment.extraOutputsToInstall = [
+		"dev"
+		"info"
+		"doc"
+	];
+
 	environment.systemPackages = with pkgs; [
 		#llvmPackages_latest.clangUseLLVM
 		#llvmPackages_latest.lld
