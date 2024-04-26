@@ -44,19 +44,8 @@ command! SynNameStack echomsg SynNameStack()
 
 lua <<EOF
 treesitter_configs_setup = {
-	ensure_installed = {
-		"c",
-		"cpp",
-		"lua",
-		"vim",
-		"vimdoc",
-		"cmake",
-		"python",
-		"toml",
-		"rust",
-	},
 	sync_install = false,
-	auto_install = true,
+	auto_install = false,
 
 	-- Treesitter modules.
 	highlight = {
@@ -64,7 +53,7 @@ treesitter_configs_setup = {
 		additional_vim_regex_highlighting = true,
 	},
 	indent = {
-		enable = false,
+		enable = true,
 	},
 	autotag = {
 		enable = true,
@@ -126,13 +115,16 @@ use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use {
 	'nvim-treesitter/nvim-treesitter',
 	lazy = false,
-	build = ":TSUpdate",
+	--build = ":TSUpdate",
 	dependencies = {
 		'JoosepAlviste/nvim-ts-context-commentstring',
 	},
 	config = function()
 		treesitter = require('nvim-treesitter')
 		treesitter.configs = require('nvim-treesitter.configs')
+		treesitter.install = require('nvim-treesitter.install')
+		treesitter.utils = require('nvim-treesitter.utils')
+		treesitter.info = require('nvim-treesitter.info')
 		treesitter.configs.setup(treesitter_configs_setup)
 	end,
 }
