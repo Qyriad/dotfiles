@@ -10,7 +10,7 @@
 		qyriad.log2compdb
 		dprint
 		just
-		clang-tools_15
+		clang-tools_18
 		pyright
 		nodePackages.vim-language-server
 		nil
