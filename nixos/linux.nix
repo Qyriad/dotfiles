@@ -147,5 +147,7 @@
 		# just be substituting anyway.
 		(diffoscope.overridePythonAttrs { doCheck = false; dontPytestCheck = true; })
 		rpm
+		binutils
+		lsof
 	];
 }
