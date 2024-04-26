@@ -28,6 +28,13 @@ endif
 
 
 lua << EOF
+
+vim.lsp.log = require('vim.lsp.log')
+function lsp_format(...)
+	return ...
+end
+vim.lsp.log.set_format_func(lsp_format)
+
 lsp_filetypes = {
 	"vim",
 	"c",
