@@ -19,6 +19,7 @@ let
         # in my tmux window names.
         setproctitle
         psutil
+        requests
       ;
       inherit
         xonsh-direnv
