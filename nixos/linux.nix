@@ -106,6 +106,10 @@
 		package = qyriad.xonsh;
 	};
 
+	environment.sessionVariables = {
+		BASH_COMPLETIONS = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
+	};
+
 	programs.zsh.enable = true;
 
 	programs.neovim = {
