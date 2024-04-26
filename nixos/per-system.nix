@@ -32,7 +32,7 @@
 		# flake.legacyPackages.foo by commands like `nix build`.
 		# We also slip our additional lib functions in here, so we can use them
 		# with the rest of nixpkgs.lib.
-		lhs = inputs.nixpkgs.legacyPackages.${system};
+		lhs = import inputs.nixpkgs { inherit system; };
 		rhs = {
 			lib = qlib;
 			pkgs.lib = qlib;
@@ -58,8 +58,8 @@
 					lib = pkgs.lib;
 					scope = pkgs // {
 						qlib = qyriad.lib;
-						qyriad = qyriad.packages.${system} // {
-							lib = qyriad.lib;
+						qyriad = qyriad.packages.${system} // qyriad.lib // {
+							inherit (qyriad) lib;
 						};
 						inherit (builtins) currentSystem getFlake;
 						f = builtins.getFlake ("git+file:" + (toString ./.));
@@ -68,8 +68,10 @@
 					target: import <xil/cleanCallPackageWith> scope target { }
 			'';
 
-			xilWithConfig = baseXil.withConfig { inherit callPackageString; };
-		in xilWithConfig;
+		in baseXil.withConfig {
+			inherit callPackageString;
+		}; # xil
+
 	}; # flakeOutputsPackages
 
 in lib.recursiveUpdate flakeOutputs nonFlakeOutputs
