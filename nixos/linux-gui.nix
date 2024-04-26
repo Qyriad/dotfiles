@@ -152,7 +152,8 @@
 		seer
 		#mattermost-desktop
 		qyriad.cinny
-		#firefoxpwa
+		firefoxpwa
+		darling
 		glibc.debug
 	];
 	#++ (qyriad.mkDebugForEach [
