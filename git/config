@@ -8,14 +8,14 @@
 [alias]
 	sub = submodule
 	subinit = submodule update --recursive --init
-	l = log --abbrev-commit --decorate -n 8 --graph
+	l = log --abbrev-commit --decorate -n 8 --graph --stat
 	s = status
 	sd = status .
 	se = series
 	ss = series status
 	sl = series log
 	curbr = rev-parse --abbrev-ref HEAD
-	lo = log --abbrev-commit --decorate --graph --stat
+	lo = log --abbrev-commit --decorate --graph --stat --format=fuller
 	br = !zsh -c 'cat <(git branch -vv --no-merged) <(git branch -vv --color=always | grep --color=never master)'
 	r = remote -v
 	clean-fw = clean -e firmware/build -e compile_commands.json -e .gdbinit
