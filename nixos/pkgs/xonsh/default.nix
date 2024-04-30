@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   python-pipe,
   xontrib-abbrevs,
   xonsh-direnv,
@@ -7,16 +8,13 @@
  }:
 
 let
+  inherit (pkgs.python3Packages) setuptools;
   inherit (builtins) attrValues;
 
-  xonsh = pkgs.xonsh.overridePythonAttrs (old: {
-    propagatedBuildInputs = attrValues {
-      inherit (pkgs.python3Packages)
-        pip
-        ipython
+  xonsh = pkgs.xonsh.override {
+    extraPackages = p: lib.attrValues {
+      inherit (p)
         unidecode
-        # Lets xonsh set its process title to "xonsh" instead of "python3.10", which is much less annoying
-        # in my tmux window names.
         setproctitle
         psutil
         requests
@@ -26,14 +24,8 @@ let
         xontrib-abbrevs
         python-pipe
       ;
-    } ++ old.propagatedBuildInputs;
-
-    buildInputs = attrValues {
-      inherit (pkgs.python3Packages)
-        setuptools
-      ;
     };
-  });
+  };
 
 in
   xonsh
