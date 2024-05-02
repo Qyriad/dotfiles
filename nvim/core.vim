@@ -46,7 +46,6 @@ set bufhidden=hide " Hide buffers instead of deleting or unloading them.
 set ignorecase
 set smartcase
 set gdefault " Substitute all matches in a line by default.
-set cindent " A good basis/default for many languages, though this is usually overridden by the filetype plugin.
 " Indent case blocks and Java anonymous classes correctly.
 " Indent one extra level for function definition continuation.
 " Same but for function calls.
