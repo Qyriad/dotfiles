@@ -56,6 +56,23 @@
 		variant = "";
 	};
 
+	#boot.binfmt.emulatedSystems = [
+	#	"aarch64-linux"
+	#	#"armv6l-linux"
+	#	#"armv7l-linux"
+	#	#"i386-linux"
+	#	#"i486-linux"
+	#	#"i586-linux"
+	#	#"i686-linux"
+	#	#"mips-linux"
+	#	#"mips64-linux"
+	#	#"powerpc-linux"
+	#	#"powerpc64-linux"
+	#	#"riscv32-linux"
+	#	#"riscv64-linux"
+	#	#"sparc-linux"
+	#];
+
 	i18n.defaultLocale = "en_US.utf8";
 
 	# Add ~/.local/bin to system path.
