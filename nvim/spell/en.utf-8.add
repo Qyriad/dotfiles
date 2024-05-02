@@ -199,3 +199,15 @@ metatables
 multiline
 executables
 orphening
+timelines
+PRs
+evaluator
+libcmd
+ProfileElement
+ProfileManifest
+env
+NixOS
+github
+https
+FileError
+SysError
