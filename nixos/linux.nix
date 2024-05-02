@@ -169,5 +169,7 @@
 		rpm
 		binutils
 		lsof
+		difftastic
+		qyriad.xonsh.python
 	];
 }
