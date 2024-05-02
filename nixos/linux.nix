@@ -160,7 +160,12 @@
 		heh
 		sysstat
 		# apksigner dependency fails to build on macOS
-		diffoscope
+		# https://github.com/NixOS/nixpkgs/pull/307337
+		#(diffoscope.overrideAttrs {
+		#	doCheck = false;
+		#	dontUsePytestCheck = true;
+		#	dontUseSetuptoolsCheck = true;
+		#})
 		rpm
 		binutils
 		lsof
