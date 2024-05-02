@@ -34,6 +34,7 @@
 		#cargo
 		#rustc
 		git-gr
+		git-imerge
 		nix-eval-jobs
 		colmena
 		rr
