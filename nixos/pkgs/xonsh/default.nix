@@ -8,23 +8,26 @@
  }:
 
 let
-  inherit (pkgs.python3Packages) setuptools;
-  inherit (builtins) attrValues;
+  mkXonsh = {
+    xonsh,
+    python-pipe,
+    xonsh-direnv,
+    xontrib-abbrevs,
+  }: xonsh.override {
+    extraPackages = p: with p; [
+      unidecode
+      setproctitle
+      psutil
+      requests
+      xonsh-direnv
+      xontrib-abbrevs
+      python-pipe
+    ];
+  };
 
-  xonsh = pkgs.xonsh.override {
-    extraPackages = p: lib.attrValues {
-      inherit (p)
-        unidecode
-        setproctitle
-        psutil
-        requests
-      ;
-      inherit
-        xonsh-direnv
-        xontrib-abbrevs
-        python-pipe
-      ;
-    };
+  xonsh = pkgs.python3Packages.callPackage mkXonsh {
+    inherit (pkgs) xonsh;
+    inherit xonsh-direnv xontrib-abbrevs python-pipe;
   };
 
 in
