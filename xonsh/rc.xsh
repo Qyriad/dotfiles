@@ -116,7 +116,8 @@ $LESSHISTFILE = $XDG_CACHE_HOME + '/less/history'
 $LESSKEY = $XDG_CONFIG_HOME + '/less/lesskey'
 aliases['tmux'] = 'tmux -u'
 
-$PAGER = 'less'
+$PAGER = $(which moar).strip()
+$DELTA_PAGER = 'less'
 
 def Pipe__repr__(self):
 	return str(self())
