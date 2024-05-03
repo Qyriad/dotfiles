@@ -254,6 +254,8 @@ aliases['userctl'] = 'systemctl --user'
 aliases["busctl"] = ["busctl", "--full", "--verbose"]
 aliases['ins'] = 'insect'
 aliases['silicon'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
+aliases['jg'] = 'jj'
+aliases['jgn'] = 'jj --ignore-working-copy --no-pager'
 aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 
 
