@@ -128,7 +128,9 @@ if 'Pipe' in globals():
 aliases['tolist'] = 'Pipe(list)'
 
 # Coreutils.
-aliases['ls'] = 'exa --header --group --group-directories-first --classify --binary'
+aliases['ls'] = 'eza -l --header --group --group-directories-first --classify --binary'
+# You know. For mODified.
+aliases['lsod'] = 'eza -l --header --group --group-directories-first --classify --binary --sort=modified'
 aliases['cp'] = 'cp -vi'
 aliases['mv'] = 'mv -vi'
 aliases['rm'] = 'rm -vI'
