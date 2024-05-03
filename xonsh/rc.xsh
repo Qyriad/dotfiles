@@ -118,6 +118,14 @@ aliases['tmux'] = 'tmux -u'
 
 $PAGER = 'less'
 
+def Pipe__repr__(self):
+	return str(self())
+
+if 'Pipe' in globals():
+	Pipe.__repr__ = Pipe__repr__
+
+aliases['tolist'] = 'Pipe(list)'
+
 # Coreutils.
 aliases['ls'] = 'exa --header --group --group-directories-first --classify --binary'
 aliases['cp'] = 'cp -vi'
