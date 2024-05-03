@@ -384,7 +384,7 @@ def _proc_get(p, key):
 		return p.pid
 	return getattr(p, key)()
 
-def procs(**kwargs):
+def _procs(**kwargs):
 	import psutil
 	res = []
 	for p in psutil.process_iter():
@@ -396,7 +396,7 @@ def procs(**kwargs):
 
 def _psearch(args: list):
 	args = dict([arg.split("=") for arg in args])
-	processes = procs(**args)
+	processes = _procs(**args)
 	return "\n".join([str(p.pid) for p in processes])
 
 aliases["psearch"] = _psearch
