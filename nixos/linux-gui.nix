@@ -116,6 +116,8 @@
 		"electron-25.9.0" # For Obsidian
 	];
 
+	services.espanso.enable = true;
+
 	environment.systemPackages = with pkgs; [
 		alacritty
 		wezterm
