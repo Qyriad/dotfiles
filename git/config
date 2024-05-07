@@ -40,8 +40,12 @@
 	prompt = true
 [diff]
 	tool = vimdiff
+	# algorithm = patience?
 	compactionHeuristic = true
 	relative = true
+	colorMoved = dimmed-zebra
+	context = 10
+	# TODO: do something with diff.orderFile
 [core]
 	pager = delta
 	editor = nvim
