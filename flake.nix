@@ -51,11 +51,11 @@
 			inputs.flake-utils.follows = "flake-utils";
 		};
 		lix = {
-			url = "git+ssh://git@git.lix.systems/lix-project/lix";
+			url = "git+https://git.lix.systems/lix-project/lix";
 			flake = false;
 		};
 		lix-module = {
-			url = "git+ssh://git@git.lix.systems/lix-project/nixos-module";
+			url = "git+https://git.lix.systems/lix-project/nixos-module";
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.lix.follows = "lix";
 			inputs.flake-utils.follows = "flake-utils";
