@@ -1,1 +1,1 @@
-set formatprg=python\ -m\ json.tool
+let &l:formatprg = "python -m json.tool"
