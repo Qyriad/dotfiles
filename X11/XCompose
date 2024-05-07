@@ -115,3 +115,6 @@ include "%L"
 # Shruggie
 <Multi_key> <s> <h> : "¯\_(ツ)_/¯"
 <Multi_key> <p> <n> : "😔"
+
+# Thin space
+<Multi_key> <s> <p> : " "
