@@ -99,6 +99,7 @@
 
 				modules = nixosModules ++ [
 					nur.nixosModules.nur
+					inputs.lix-module.nixosModules.default
 				];
 
 			in mkConfigFn.${system'.parsed.kernel.name} {
