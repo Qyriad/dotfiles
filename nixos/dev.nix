@@ -38,5 +38,6 @@
 		nix-eval-jobs
 		colmena
 		rr
+		nixfmt-rfc-style
 	];
 }
