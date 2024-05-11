@@ -84,3 +84,5 @@
 	clone-path = /Users/qyriad/code/builds
 [rerere]
 	enabled = true
+[log]
+	date = format-local:%a, %B %d %r (%Z) — %Y/%m/%d %R (%z)
