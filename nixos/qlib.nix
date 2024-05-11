@@ -1,4 +1,4 @@
-# vim: tabstop=4 shiftwidth=4 noexpandtab
+# vim: tabstop=2 shiftwidth=0 noexpandtab
 
 # Utility functions for use in our NixOS modules.
 # We have to be a little careful here because this is `recursiveUpdate`d into specialArgs.qyriad,
@@ -15,6 +15,10 @@ let
 	overrideStdenvForDrv = newStdenv: drv:
 		newStdenv.mkDerivation (drv.overrideAttrs (self: { passthru.attrs = self; })).attrs
 	;
+
+	overrideStdenvForDerivation = newStdenv: drv: let
+		prevAttrs = getAttrs drv;
+	in newStdenv.mkDerivation prevAttrs;
 
 	mkImpureNative = prev:
 		overrideStdenvForDrv (prev.stdenvAdapters.impureUseNativeOptimizations prev.stdenv)
