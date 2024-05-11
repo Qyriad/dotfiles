@@ -29,7 +29,11 @@
 	inf = info --no-config
 	ck = diff --check
 	ls-upstream = ls-remote --heads
-	vls = tag -l --sort=v:refname
+	# "version list"
+	vls = tag --list --sort=v:refname
+	# "name list". List tags that aren't versions
+	nls = tag --list --sort=committerdate "[!v0-9]*"
+	res = restore -p
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
