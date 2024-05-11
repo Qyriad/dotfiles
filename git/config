@@ -8,9 +8,10 @@
 [alias]
 	sub = submodule
 	subinit = submodule update --recursive --init
-	l = log --abbrev-commit --decorate -n 8 --graph --stat
+	l = log --abbrev-commit --decorate -n 8 --graph --stat --format=fuller
 	s = status
 	sd = status .
+	sdo = status --untracked=no .
 	se = series
 	ss = series status
 	sl = series log
@@ -22,8 +23,8 @@
 	cleang = clean -e firmware/build -e compile_commands.json -e .gdbinit
 	b = branch -vv
 	bb = branch -vv --no-merged master
-	sh = show --stat --patch
-	stat = show --stat
+	sh = show --stat --patch --format=fuller
+	stat = show --stat --format=fuller
 	diffs = diff --staged
 	inf = info --no-config
 	ck = diff --check
