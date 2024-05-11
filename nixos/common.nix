@@ -130,5 +130,6 @@
 		magic-wormhole
 		age
 		asciinema
+		ranger
 	];
 }
