@@ -126,13 +126,12 @@
 
 				yuki = mkConfig "x86_64-linux" [
 					./nixos/yuki.nix
-					inputs.lix-module.nixosModules.default
 				];
 				Yuki = yuki;
 
-				minimal-aarch64-linux = mkConfig "aarch64-linux" [
-					./nixos/minimal.nix
-				];
+				#minimal-aarch64-linux = mkConfig "aarch64-linux" [
+				#	./nixos/minimal.nix
+				#];
 			};
 			darwinConfigurations = {
 				Aigis = mkConfig "aarch64-darwin" [
