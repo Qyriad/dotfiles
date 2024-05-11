@@ -39,8 +39,10 @@
 	autostash = true
 [commit]
 	verbose = true
-[mergetool "vimdiff"]
-	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "nvimdiff"]
+	#cmd = nvim -d $LOCAL $REMOTE $MERGED
+	trustExitCode = false
+	layout = LOCAL,BASE,REMOTE / MERGED + BASE,LOCAL + BASE,REMOTE
 [difftool]
 	prompt = true
 [diff]
