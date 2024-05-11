@@ -1,4 +1,4 @@
-# vim: tabstop=4 shiftwidth=4 noexpandtab
+# vim: tabstop=4 shiftwidth=0 noexpandtab
 {
 	system,
 	inputs, # should be flake inputs
@@ -49,28 +49,9 @@
 		pzl = import pzl { inherit pkgs; };
 		log2compdb = import log2compdb { inherit pkgs; };
 
-		xil = let
-			callPackageString = ''
-				let
-					nixpkgs = builtins.getFlake "nixpkgs";
-					qyriad = builtins.getFlake "qyriad";
-					pkgs = import nixpkgs { };
-					lib = pkgs.lib;
-					scope = pkgs // {
-						qlib = qyriad.lib;
-						qyriad = qyriad.packages.${system} // qyriad.lib // {
-							inherit (qyriad) lib;
-						};
-						inherit (builtins) currentSystem getFlake;
-						f = builtins.getFlake ("git+file:" + (toString ./.));
-					};
-				in
-					target: import <xil/cleanCallPackageWith> scope target { }
-			'';
-
-		in baseXil.withConfig {
-			inherit callPackageString;
-		}; # xil
+		xil = baseXil.withConfig {
+			callPackageString = builtins.readFile ./xil-config.nix;
+		};
 
 	}; # flakeOutputsPackages
 
