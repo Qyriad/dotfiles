@@ -105,6 +105,7 @@ end
 
 function on_lsp_attach(bufnr, client_id)
 	local client = vim.lsp.get_client_by_id(client_id)
+	vim.notify(string.format("LSP %s attached to %d", client.name or "<unknown>", bufnr))
 
 	local bufopts = { noremap = true, buffer = bufnr }
 	local mappings = {
