@@ -230,3 +230,7 @@ flakeref
 attrpath
 realised
 nixpkgs
+chroot
+adhoc
+LOC
+parameterized
