@@ -59,6 +59,9 @@ inoremap <F3> <C-o>:call Capitalize_and_return()<CR>
 let g:ranger_map_keys = 0
 nnoremap <leader>f :RangerCurrentDirectory<CR>
 
+" NetRW
+nnoremap <leader>fb <Cmd>Explore<CR>
+
 
 nnoremap ]g <Cmd>lua gitsigns.next_hunk({ preview = true })<CR>
 nnoremap [g <Cmd>lua gitsigns.prev_hunk({ preview = true })<CR>
