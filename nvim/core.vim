@@ -181,8 +181,37 @@ nnoremap <leader>J mzr<CR>ddkP`z
 nnoremap <C-f> 11<c-e>
 nnoremap <C-b> 11<C-y>
 
-" Switch buffer.
-nnoremap <leader>sb <Cmd>Bs<CR>
+" Tired:
+function! SwitchSourceHeader() abort
+	let l:ext = expand("%:e")
+	let l:stem = expand("%:r")
+	if ["c", "cpp", "cxx", "cc"]->index(l:ext)
+		if filereadable(l:stem .. ".hh")
+			execute printf("edit %s", l:stem .. ".hh")
+		elseif filereadable(l:stem .. ".hpp")
+			execute printf("edit %s", l:stem .. ".hpp")
+		elseif filereadable(l:stem .. ".h")
+			execute printf("edit %s", l:stem .. ".h")
+		endif
+	else
+		if filereadable(l:stem .. ".cc")
+			execute printf("edit %s", l:stem .. ".cc")
+		elseif filereadable(l:stem .. ".cpp")
+			execute printf("edit %s", l:stem .. ".cpp")
+		elseif filereadable(l:stem .. ".c")
+			execute printf("edit %s", l:stem .. ".c")
+		endif
+	endif
+	echomsg "No matching header file found"
+endfunction
+
+nnoremap <leader>sh <Cmd>call SwitchSourceHeader()<CR>
+
+" Wired:
+cnoremap <C-r> %:r<tab>
+noremap <A-r> %:r<tab>
+cnoremap <C-e> %:h/<tab>
+cnoremap <A-e> %:h/<tab>
 
 " Use escape to exit terminal mode.
 tnoremap <Esc> <C-\><C-n>
