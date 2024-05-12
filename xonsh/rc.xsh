@@ -511,6 +511,9 @@ def _gac_completer(context):
 
 		return bashcomp(new_context)
 
+if 'gac_alias' in XSH.completers:
+	completer remove gac_alias
+
 completer add gac_alias _gac_completer
 
 
