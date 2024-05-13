@@ -39,5 +39,7 @@
 		colmena
 		rr
 		nixfmt-rfc-style
+		quickemu
+		gh
 	];
 }
