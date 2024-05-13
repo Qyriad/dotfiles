@@ -4,7 +4,7 @@
 # We have to be a little careful here because this is `recursiveUpdate`d into specialArgs.qyriad,
 # which means these names can shadow packages in `qyriad`.
 {
-	lib,
+	lib ? import <nixpkgs/lib>,
 }:
 
 let
