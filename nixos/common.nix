@@ -131,5 +131,7 @@
 		age
 		asciinema
 		ranger
+		nix-output-monitor
+		qyriad.git-point
 	];
 }

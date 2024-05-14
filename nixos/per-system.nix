@@ -42,12 +42,16 @@
 
 	# Outputs that do directly come from flake inputs.
 	flakeOutputs.packages = let
-		inherit (inputs) niz pzl log2compdb xil;
+		inherit (inputs) niz pzl log2compdb git-point xil;
 		baseXil = (import xil { inherit pkgs; }).xil;
 	in {
 		niz = import niz { inherit pkgs; };
 		pzl = import pzl { inherit pkgs; };
 		log2compdb = import log2compdb { inherit pkgs; };
+		git-point = import git-point {
+			inherit pkgs;
+			craneLib = import git-point.inputs.crane { inherit pkgs; };
+		};
 
 		xil = baseXil.withConfig {
 			callPackageString = builtins.readFile ./xil-config.nix;

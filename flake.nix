@@ -45,6 +45,11 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
 		};
+		git-point = {
+			url = "github:Qyriad/git-point";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 		xil = {
 			url = "github:Qyriad/Xil";
 			inputs.nixpkgs.follows = "nixpkgs";

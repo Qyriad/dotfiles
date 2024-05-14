@@ -29,6 +29,27 @@
         "type": "github"
       }
     },
+    "crane": {
+      "inputs": {
+        "nixpkgs": [
+          "git-point",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1715274763,
+        "narHash": "sha256-3Iv1PGHJn9sV3HO4FlOVaaztOxa9uGLfOmUWrH7v7+A=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "27025ab71bdca30e7ed0a16c88fd74c5970fc7f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -59,6 +80,30 @@
       "original": {
         "owner": "lf-",
         "repo": "flakey-profile",
+        "type": "github"
+      }
+    },
+    "git-point": {
+      "inputs": {
+        "crane": "crane",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1715649118,
+        "narHash": "sha256-RUXqHeoCnstH91nK1K7W6EXhAiiXy+kU2zRHicKoUo4=",
+        "owner": "Qyriad",
+        "repo": "git-point",
+        "rev": "3a05ef3328a47bf53822d484bee8b32901cdd6c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Qyriad",
+        "repo": "git-point",
         "type": "github"
       }
     },
@@ -272,6 +317,7 @@
       "inputs": {
         "caligula": "caligula",
         "flake-utils": "flake-utils",
+        "git-point": "git-point",
         "lix": "lix",
         "lix-module": "lix-module",
         "log2compdb": "log2compdb",
