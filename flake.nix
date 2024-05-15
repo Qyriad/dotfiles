@@ -144,10 +144,17 @@
 				];
 			};
 
-			templates.base = {
-				path = ./nixos/templates/base;
-				description = "barebones flake template";
+			templates = {
+				base = {
+					path = ./nixos/templates/base;
+					description = "barebones flake template";
+				};
+				rust = {
+					path = ./nixos/templates/rust;
+					description = "rust flake template";
+				};
 			};
+
 		};
 
 	in recursiveUpdate perSystemOutputs universalOutputs; # outputs
