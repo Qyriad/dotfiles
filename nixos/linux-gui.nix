@@ -87,7 +87,7 @@
 	};
 
 	# FIXME: Is this necessary?
-	services.xserver.libinput.enable = true;
+	services.libinput.enable = true;
 
 	programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
 
