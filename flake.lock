@@ -94,11 +94,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715649118,
-        "narHash": "sha256-RUXqHeoCnstH91nK1K7W6EXhAiiXy+kU2zRHicKoUo4=",
+        "lastModified": 1715742479,
+        "narHash": "sha256-YJbrbgsuX+XQ/WYPvwdkudgyilx1yFfRrG9q0S+lfRM=",
         "owner": "Qyriad",
         "repo": "git-point",
-        "rev": "3a05ef3328a47bf53822d484bee8b32901cdd6c4",
+        "rev": "edd7d842ea5b0ea0e5963b95cb378cd06879ff3b",
         "type": "github"
       },
       "original": {
