@@ -30,3 +30,6 @@ highlight link @lsp.mod.documentation SpecialComment
 highlight link @comment.documentation SpecialComment
 
 highlight link @lsp.type.typeAlias Typedef
+
+" Idk what's up with this one.
+highlight! link @variable Identifier
