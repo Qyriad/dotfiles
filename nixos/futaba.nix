@@ -22,6 +22,8 @@
 		cpus = 8;
 	};
 
+	boot.tmp.useTmpfs = lib.mkForce false;
+
 	# Non-NixOS generated hardware configuration.
 	hardware.cpu.intel.updateMicrocode = true;
 	hardware.bluetooth.enable = true;
