@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, modulesPath, ... }:
+{ config, pkgs, lib, modulesPath, ... }:
 
 {
 	imports = [
