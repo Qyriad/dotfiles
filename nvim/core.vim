@@ -102,6 +102,9 @@ augroup insert_nohlsearch
 	autocmd! InsertEnter * nohlsearch
 augroup END
 
+"let &listchars = "tab:\u21e5 ,trail:-,nbsp:+"
+set listchars=tab:\\u21e5\ ,trail:-,nbsp:+
+
 
 """ Filetype overrides.
 
