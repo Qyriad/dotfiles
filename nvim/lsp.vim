@@ -261,7 +261,8 @@ use {
 }
 use {
 	'ms-jpq/coq_nvim',
-	ft = lsp_filetypes,
+	event = "LspAttach",
+	--ft = lsp_filetypes,
 }
 -- Make LSP stuff for Neovim's Lua work correctly.
 use {
