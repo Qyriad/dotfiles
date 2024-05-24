@@ -143,6 +143,10 @@ function on_lsp_attach(bufnr, client_id)
 		require("clangd_extensions.inlay_hints").set_inlay_hints()
 	end
 
+	if client.name == 'nil_ls' then
+		client.server_capabilities.semanticTokensProvider = nil
+	end
+
 	vim.api.nvim_create_autocmd("DiagnosticChanged", {
 		buffer = bufnr,
 		callback = function()
