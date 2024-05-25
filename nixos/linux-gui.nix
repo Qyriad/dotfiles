@@ -12,6 +12,7 @@
 			"x-systemd.idle-timeout" = "300s";
 			"x-systemd.mount-timeout" = "5s";
 			"x-systemd.requires" = "network-online.target";
+			"x-systemd.after" = "network-online.target";
 			credentials = "/etc/secrets/shizue.cred";
 			gid = "users";
 			file_mode = "0764";
