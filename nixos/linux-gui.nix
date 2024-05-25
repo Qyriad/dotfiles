@@ -157,15 +157,10 @@
 		firefoxpwa
 		darling
 		glibc.debug
+		qt6.qtbase
+		qemu_full
+		qemu-utils
 	];
-	#++ (qyriad.mkDebugForEach [
-	#	#qt5.qtbase
-	#	python3
-	#	#kwin
-	#	#plasma-workspace
-	#	git
-	#	curl
-	#]);
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs = {
