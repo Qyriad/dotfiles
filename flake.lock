@@ -9,11 +9,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1715450852,
-        "narHash": "sha256-DjFq16hHeVaq9J3aigj+X53Uc44H4knmocj4176Shpo=",
+        "lastModified": 1716733585,
+        "narHash": "sha256-rej+NjldIDF+osMRou9pNXWGWDNp263cSSGN9pRMdFo=",
         "ref": "refs/heads/main",
-        "rev": "825dbc5325979f076e2bcb107f9ca21a8f83eb13",
-        "revCount": 248,
+        "rev": "45135d249b47f95846854e0145028b6f6e30dea1",
+        "revCount": 250,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/buildbot-nix"
       },
@@ -153,11 +153,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1716658929,
-        "narHash": "sha256-QOOs6IaYsxep+0SXmiOT3pcigMyPY5SehFH4pb8Z8ao=",
+        "lastModified": 1716718600,
+        "narHash": "sha256-VXsSaj3athaUjgbX9bovTNhSOgevU+8qWx9pgaQePdE=",
         "ref": "refs/heads/main",
-        "rev": "dd53bce476805b41f2e9858e64e38574a88db77f",
-        "revCount": 15650,
+        "rev": "5986a720d47041b79ead2d1f58a172f410d29db5",
+        "revCount": 15653,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -282,11 +282,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715985727,
-        "narHash": "sha256-il1WxuGb3yqtZD1kkRtMwApHqdeWIGKUzCXHg34JaYw=",
+        "lastModified": 1716744269,
+        "narHash": "sha256-nYv9KxJOkRWuaVqnAWf84llcVkQzbTSl6X8fCZQqGvE=",
         "owner": "Qyriad",
         "repo": "niz",
-        "rev": "f8d72447aeef4d40ebec2c136b1e03911fa93657",
+        "rev": "10adb2bccbab720c99089f3eac0c9863a3b35d18",
         "type": "github"
       },
       "original": {
@@ -297,11 +297,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1716655037,
-        "narHash": "sha256-z3v6jGCx3A1/H9hz5mlPOjGJ1ONgVSQBB37y7lmgwXE=",
+        "lastModified": 1716744271,
+        "narHash": "sha256-kWcgbBgV76MMbK47dBZuBnqqnPc7JaJEzVSO9BhcIVo=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "17144726caa4a8ca2897d0fbeb04cee0c7f39253",
+        "rev": "01b0df69a81b17640c3d5358af74ecbd98a8b575",
         "type": "github"
       },
       "original": {
@@ -386,11 +386,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716603336,
-        "narHash": "sha256-81u/zd7V+XRTq88zwRLxw5GnwZyEiAvGA2BvAXUe864=",
+        "lastModified": 1716689906,
+        "narHash": "sha256-tQYQM9zT4P1fFf739/AIZuTIGPxtEIpV7K7VieU60Io=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "4d0f1e4d5d65c23cdbb77e4b0d91940be7309bd4",
+        "rev": "3b6e1e221b04965427f3eee11fd6b6ea7b5f579b",
         "type": "github"
       },
       "original": {
