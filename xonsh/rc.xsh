@@ -270,6 +270,8 @@ aliases['nopager'] = 'env PAGER=cat'
 aliases['cm'] = 'cmake -B build'
 aliases['cmb'] = 'cmake --build build'
 
+$YTDLP_YOUTUBE = '%(channel)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
+
 xontrib load abbrevs
 if 'abbrevs' not in globals():
 	aliases['mesoncomp'] = 'meson compile -C build'
