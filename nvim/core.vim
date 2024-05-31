@@ -102,6 +102,27 @@ augroup insert_nohlsearch
 	autocmd! InsertEnter * nohlsearch
 augroup END
 
+function! PagerMode() abort
+	nnoremap <buffer> J <C-e>j
+	nnoremap <buffer> K <C-y>k
+endfunction
+
+function! NoPagerMode() abort
+	nunmap <buffer> J
+	nunmap <buffer> K
+endfunction
+
+command! PagerMode call PagerMode()
+command! NoPagerMode call NoPagerMode()
+
+" When modifiable is off, we're probably using Neovim like a pager.
+" Use capital J and K to move the cursor and the screen at the same time.
+augroup PagerMode
+	autocmd!
+	autocmd OptionSet modifiable if v:option_new == v:false | call PagerMode() | endif
+	autocmd OptionSet modifiable if v:option_new == v:false | call PagerMode() | endif
+augroup END
+
 "let &listchars = "tab:\u21e5 ,trail:-,nbsp:+"
 set listchars=tab:\\u21e5\ ,trail:-,nbsp:+
 
