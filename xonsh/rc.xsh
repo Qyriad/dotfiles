@@ -4,6 +4,7 @@ import zoneinfo
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
+import xonsh
 from xonsh.events import events
 
 # These variables are set to lambdas, and are not exported to subprocesses
@@ -156,7 +157,7 @@ edit = lambda path : $EDITOR + ' ' + str(path)
 # "Edit tmux"
 aliases['et'] = edit(p'~/.config/tmux/tmux.conf')
 # "Edit vim"
-aliases['ev'] = f"{$EDITOR} -S ~/.config/Session-nvim.vim"
+aliases['ev'] = f"$EDITOR -S ~/.config/Session-nvim.vim"
 # "Edit alacritty"
 aliases['ea'] = edit(p'~/.config/alacritty/alacritty.yml')
 # "Edit xonsh"
@@ -166,7 +167,7 @@ aliases['ew'] = [$EDITOR, "-O", p"~/.config/wezterm/wezterm.lua", p"~/.config/we
 # "Source xonsh"
 aliases['sx'] = 'source ~/.config/xonsh/rc.xsh'
 # "Edit Nix"
-aliases['en'] = f"{$EDITOR} -S ~/.config/Session-nix.vim"
+aliases['en'] = f"$EDITOR -S ~/.config/Session-nix.vim"
 
 aliases['yt-dlp'] = 'yt-dlp --compat-options filename,format-spec,multistreams'
 
@@ -283,7 +284,7 @@ else:
 
 def _wine32(args):
 	overrides = {
-		'WINEPREFIX': f"{$HOME}/.wine32",
+		'WINEPREFIX': f"$HOME/.wine32",
 		'WINEARCH': 'win32',
 	}
 
