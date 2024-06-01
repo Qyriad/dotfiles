@@ -4,6 +4,13 @@
 {
 	# Configuration for things related to Nix itself.
 	nixpkgs.config.allowUnfree = true;
+	# Commented out because I don't want them by default, but they're handy.
+	#nixpkgs.config.showDerivationWarnings = [
+	#	"maintainerless"
+	#	"unknown-meta"
+	#	"broken-outputs"
+	#	"non-source"
+	#];
 	nix = {
 		settings = {
 			experimental-features = [ "nix-command" "flakes" ];
@@ -23,9 +30,12 @@
 			allowed-users = [
 				"qyriad"
 			];
-		};
 
-		#package = pkgs.nixVersions.unstable;
+			keep-outputs = true;
+			keep-derivations = true;
+
+			repl-overlays = [ ../nix/repl-overlay.nix ];
+		};
 
 		# Let me do things like `nix shell "qyriad#xonsh"`.
 		registry.qyriad = {
