@@ -451,7 +451,7 @@ aliases['nix-json-to-raw'] = [
 ]
 
 
-aliases['hlas'] = 'bat --paging never -l'
+aliases['hlas'] = 'bat --paging never --tabs=4 --style=plain -l'
 
 def _gac(name):
 	git cherry-pick -n @(name)
