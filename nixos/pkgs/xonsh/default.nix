@@ -8,6 +8,21 @@
  }:
 
 let
+  xonshPath = pkgs.path + "/pkgs/by-name/xo/xonsh/unwrapped.nix";
+  xonsh-unwrapped = pkgs.callPackage xonshPath { };
+  pythonEnv = pkgs.python3.withPackages (ps: [
+    (ps.toPythonModule xonsh-unwrapped)
+    xonsh-direnv
+    xontrib-abbrevs
+    python-pipe
+  ] ++ (with ps; [
+    unidecode
+    setproctitle
+    psutil
+    requests
+    pygments
+  ]));
+
   mkXonsh = {
     xonsh,
     python-pipe,
@@ -22,6 +37,7 @@ let
       xonsh-direnv
       xontrib-abbrevs
       python-pipe
+      pygments
     ];
   };
 
@@ -31,4 +47,5 @@ let
   };
 
 in
-  xonsh
+  #xonsh
+  pythonEnv // { inherit (xonsh-unwrapped) pname version meta passthru; }
