@@ -62,7 +62,7 @@ set fsync " Syncs the filesystem after :write.
 set updatetime=1000 "Lets languageservers update faster, and shortens the time for CursorHold.
 set noshowmode " We're using lightline, so showing the mode in the command line is redundant.
 
-let &grepprg = 'rg --vimgrep --no-heading --smartcase'
+let &grepprg = 'rg --vimgrep --no-heading --smart-case'
 nnoremap <leader>g :Notify lgrep<Space>
 
 
