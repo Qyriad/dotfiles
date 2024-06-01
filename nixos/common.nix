@@ -45,18 +45,6 @@
 			};
 			flake = inputs.self;
 		};
-		# Pin nixpkgs.
-		registry.nixpkgs = {
-			from = {
-				id = "nixpkgs";
-				type = "indirect";
-			};
-			flake = inputs.nixpkgs;
-		};
-		nixPath = [
-			"nixpkgs=flake:nixpkgs"
-			"/nix/var/nix/profiles/per-user/root/channels"
-		];
 	};
 
 	time.timeZone = "America/Denver";
