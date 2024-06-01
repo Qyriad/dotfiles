@@ -263,6 +263,7 @@ aliases['hyfetch'] = 'env SHELL=xonsh hyfetch'
 aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
+aliases['nopager'] = 'env PAGER=cat'
 
 
 aliases['cm'] = 'cmake -B build'
