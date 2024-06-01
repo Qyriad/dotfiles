@@ -23,7 +23,7 @@
 		udev-rules = pkgs.callPackage ./udev-rules { };
 		nix-helpers = pkgs.callPackage ./pkgs/nix-helpers.nix { };
 		inherit xonsh;
-		inherit (qyriad-nur) strace-process-tree cinny;
+		inherit (qyriad-nur) strace-process-tree strace-with-colors cinny;
 	};
 
 	nonFlakeOutputs.legacyPackages = let

@@ -169,7 +169,9 @@
 		rpm
 		binutils
 		lsof
+		iotop
 		difftastic
 		qyriad.xonsh.python
+		qyriad.strace-with-colors
 	];
 }
