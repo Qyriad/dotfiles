@@ -72,7 +72,6 @@
 		nixpkgs,
 		flake-utils,
 		nix-darwin,
-		nur,
 		...
 	}: let
 		inherit (nixpkgs.lib.attrsets) recursiveUpdate;
@@ -91,24 +90,41 @@
 
 				system' = nixpkgs.lib.systems.elaborate system;
 
+				qyriad-overlay = import ./nixos/make-overlay.nix {
+					inherit (nixpkgs) lib;
+					inherit (inputs)
+						qyriad-nur
+						niz
+						log2compdb
+						pzl
+						git-point
+						xil
+					;
+				};
+
+				flake-module = { ... }: {
+					nixpkgs.overlays = [ qyriad-overlay ];
+
+					# Point "qyriad" to this here flake.
+					nix.registry.qyriad = {
+						from = { id = "qyriad"; type = "indirect"; };
+						flake = self;
+					};
+				};
+
 				# Use nixpkgs.lib.nixosSystem on Linux
 				mkConfigFn = {
 					linux = nixpkgs.lib.nixosSystem;
 					darwin = nix-darwin.lib.darwinSystem;
 				};
 
-				specialArgs = {
-					inherit inputs;
-					qyriad = recursiveUpdate self.outputs.packages.${system} self.outputs.lib;
-				};
-
 				modules = nixosModules ++ [
-					nur.nixosModules.nur
 					inputs.lix-module.nixosModules.default
+					flake-module
 				];
 
 			in mkConfigFn.${system'.parsed.kernel.name} {
-				inherit system specialArgs modules;
+				inherit system modules;
 			}
 		;
 

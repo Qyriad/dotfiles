@@ -1,10 +1,10 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
 
-{ config, pkgs, qyriad, ... }:
+{ config, pkgs, ... }:
 
 {
 	fileSystems = let
-		mountOpts = qyriad.genMountOpts {
+		mountOpts = pkgs.qlib.genMountOpts {
 			# Try to automatically mount, but don't block boot on it.
 			auto = null;
 			nofail = null;
@@ -173,9 +173,9 @@
 	#programs.noisetorch.enable = true;
 
 	# Setup the terminal font we use, and make CJK render nicely.
-	fonts.packages = [
+	fonts.packages = with pkgs; [
 		qyriad.nerdfonts
-		pkgs.noto-fonts-cjk-sans
+		noto-fonts-cjk-sans
 	];
 	fonts.fontconfig.defaultFonts.monospace = [
 		"InconsolataGo Nerd Font Mono"

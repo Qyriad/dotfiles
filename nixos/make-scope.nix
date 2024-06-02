@@ -7,6 +7,7 @@
 	log2compdb,
 	pzl,
 	git-point,
+	crane ? git-point.inputs.crane,
 	xil,
 }: let
 
@@ -42,7 +43,7 @@ in lib.makeScope pkgs.newScope (self: {
 	pzl = import pzl { inherit pkgs; };
 	git-point = import git-point {
 		inherit pkgs;
-		craneLib = import git-point.inputs.crane {
+		craneLib = import crane {
 			inherit pkgs;
 		};
 	};

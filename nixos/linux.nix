@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, lib, qyriad, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 	# Bootloader.
@@ -120,7 +120,7 @@
 
 	programs.xonsh = {
 		enable = true;
-		package = qyriad.xonsh;
+		package = pkgs.qyriad.xonsh;
 	};
 
 	environment.sessionVariables = {
@@ -143,7 +143,7 @@
 	programs.command-not-found.enable = false;
 
 	services.udev.packages = [
-		qyriad.udev-rules
+		pkgs.qyriad.udev-rules
 	];
 
 	services.nixseparatedebuginfod.enable = true;

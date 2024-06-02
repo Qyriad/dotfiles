@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, inputs, qyriad, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 	# Configuration for things related to Nix itself.
@@ -35,15 +35,6 @@
 			keep-derivations = true;
 
 			repl-overlays = [ ../nix/repl-overlay.nix ];
-		};
-
-		# Let me do things like `nix shell "qyriad#xonsh"`.
-		registry.qyriad = {
-			from = {
-				id = "qyriad";
-				type = "indirect";
-			};
-			flake = inputs.self;
 		};
 	};
 
