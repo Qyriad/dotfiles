@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -8,17 +8,15 @@
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "qyriad" ];
-      repl-overlays = [ ../nix/../nix/repl-overlay.nix ];
-    };
-
-    registry.qyriad = {
-      from = {
-        id = "qyriad";
-        type = "indirect";
-      };
-      flake = inputs.self;
+      repl-overlays = [ ../nix/repl-overlay.nix ];
     };
 
     nixPath = [ "nixpkgs=flake:nixpkgs" ];
   };
+
+  environment.systemPackages = with pkgs; [
+    qyriad.xil
+    qyriad.niz
+    qyriad.git-point
+  ];
 }
