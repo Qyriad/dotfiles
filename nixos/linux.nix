@@ -160,12 +160,7 @@
 		heh
 		sysstat
 		# apksigner dependency fails to build on macOS
-		# https://github.com/NixOS/nixpkgs/pull/307337
-		#(diffoscope.overrideAttrs {
-		#	doCheck = false;
-		#	dontUsePytestCheck = true;
-		#	dontUseSetuptoolsCheck = true;
-		#})
+		diffoscope
 		rpm
 		binutils
 		lsof
@@ -173,5 +168,7 @@
 		difftastic
 		qyriad.xonsh.python
 		qyriad.strace-with-colors
+		exfatprogs
+		caligula
 	];
 }

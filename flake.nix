@@ -24,22 +24,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
 		};
-		caligula = {
-			url = "github:ifd3f/caligula";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
-			inputs.rust-overlay.follows = "rust-overlay";
-			inputs.naersk.follows = "naersk";
-		};
-		rust-overlay = {
-			url = "github:oxalica/rust-overlay";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
-		};
-		naersk = {
-			url = "github:nix-community/naersk";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 		pzl = {
 			url = "github:Qyriad/pzl";
 			inputs.nixpkgs.follows = "nixpkgs";
