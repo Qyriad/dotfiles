@@ -380,11 +380,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713401104,
-        "narHash": "sha256-F6xsowtye3+tJpRm8s1pYSY6Yi7tquTnsV2CpQ3pCl8=",
+        "lastModified": 1717356499,
+        "narHash": "sha256-FnfuAc1yCQDw2UsChBHKDKtS3mo7DzKMqHKodwvmLzU=",
         "owner": "Qyriad",
         "repo": "Xil",
-        "rev": "b9f3a54411fdba7607d376569b9f952401aa2cd9",
+        "rev": "4940f0651a8f47afd4b07ff3e6b24f40113fcc46",
         "type": "github"
       },
       "original": {
