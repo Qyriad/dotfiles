@@ -34,6 +34,9 @@
 	# "name list". List tags that aren't versions
 	nls = tag --list --sort=committerdate "[!v0-9]*"
 	res = restore -p
+	track = add -N
+	su = status --untracked-files=no
+	si = status --untracked-files=no
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
