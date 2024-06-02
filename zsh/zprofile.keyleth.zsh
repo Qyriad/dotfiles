@@ -1,3 +1,5 @@
+source /etc/bashrc
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_DISPLAY_INSTALL_TIMES=1
 export HOMEBREW_KEEP_OUTPUT=1
@@ -14,6 +16,6 @@ export XDG_DATA_HOME="/Users/qyriad/.local/share"
 if whence gpgconf 2>&1 >/dev/null; then
 	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
-if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
-	source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
+#if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+#	source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+#fi

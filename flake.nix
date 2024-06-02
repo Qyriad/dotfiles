@@ -138,10 +138,16 @@
 				#	./nixos/minimal.nix
 				#];
 			};
-			darwinConfigurations = {
+			darwinConfigurations = rec {
 				Aigis = mkConfig "aarch64-darwin" [
 					./nixos/darwin.nix
 				];
+				aigis = Aigis;
+
+				Keyleth = mkConfig "aarch64-darwin" [
+					./nixos/keyleth.nix
+				];
+				keyleth = Keyleth;
 			};
 
 			templates = {
