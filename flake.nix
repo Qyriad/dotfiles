@@ -8,7 +8,6 @@
 			url = "github:LnL7/nix-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		nur.url = "github:nix-community/NUR";
 		qyriad-nur = {
 			url = "github:Qyriad/nur-packages";
 			inputs.nixpkgs.follows = "nixpkgs";
