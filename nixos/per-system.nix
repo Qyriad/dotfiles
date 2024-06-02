@@ -2,25 +2,16 @@
 {
 	system,
 	inputs, # should be flake inputs
-	qlib,
 }: let
-	pkgs = import inputs.nixpkgs { inherit system; };
-	inherit (pkgs) lib;
+	inherit (inputs.nixpkgs) lib;
 
-	scope = import ./make-scope.nix {
-		inherit pkgs lib;
-		inherit (inputs)
-			qyriad-nur
-			niz
-			log2compdb
-			pzl
-			git-point
-			xil
-		;
+	pkgs = import inputs.nixpkgs {
+		inherit system;
+		overlays = [ inputs.self.overlays.default ];
 	};
 
 in {
-	packages = lib.filterAttrs (lib.const lib.isDerivation) scope;
+	packages = lib.filterAttrs (lib.const lib.isDerivation) pkgs.qyriad;
 	# Truly dirty hack. This will let us transparently refer to overriden
 	# or not overriden packages in nixpkgs, as flake.packages.foo is preferred over
 	# flake.legacyPackages.foo by commands like `nix build`.

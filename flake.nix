@@ -57,10 +57,11 @@
 		nix-darwin,
 		...
 	}: let
-		inherit (nixpkgs.lib.attrsets) recursiveUpdate;
+		inherit (nixpkgs) lib;
+		inherit (lib.attrsets) recursiveUpdate;
 
 		qlib = import ./nixos/qlib.nix {
-			inherit (nixpkgs) lib;
+			inherit lib;
 		};
 
 		# Wraps nixpkgs.lib.nixosSystem to generate a NixOS configuration, adding common modules
@@ -71,22 +72,10 @@
 			# NixOS modules to add to this NixOS system configuration :: list
 			nixosModules: let
 
-				system' = nixpkgs.lib.systems.elaborate system;
-
-				qyriad-overlay = import ./nixos/make-overlay.nix {
-					inherit (nixpkgs) lib;
-					inherit (inputs)
-						qyriad-nur
-						niz
-						log2compdb
-						pzl
-						git-point
-						xil
-					;
-				};
+				system' = lib.systems.elaborate system;
 
 				flake-module = { ... }: {
-					nixpkgs.overlays = [ qyriad-overlay ];
+					nixpkgs.overlays = [ self.overlays.default ];
 
 					# Point "qyriad" to this here flake.
 					nix.registry.qyriad = {
@@ -97,7 +86,7 @@
 
 				# Use nixpkgs.lib.nixosSystem on Linux
 				mkConfigFn = {
-					linux = nixpkgs.lib.nixosSystem;
+					linux = lib.nixosSystem;
 					darwin = nix-darwin.lib.darwinSystem;
 				};
 
@@ -112,7 +101,7 @@
 		;
 
 		mkPerSystemOutputs = system: import ./nixos/per-system.nix {
-			inherit system inputs qlib;
+			inherit system inputs;
 		};
 
 		# Package outputs, which we want to define for multiple systems.
@@ -121,6 +110,18 @@
 		# NixOS configuration outputs, which are each for one specific system.
 		universalOutputs = {
 			lib = qlib;
+
+			overlays.default = import ./nixos/make-overlay.nix {
+				inherit (nixpkgs) lib;
+				inherit (inputs)
+					qyriad-nur
+					niz
+					log2compdb
+					pzl
+					git-point
+					xil
+				;
+			};
 
 			nixosConfigurations = rec {
 				futaba = mkConfig "x86_64-linux" [

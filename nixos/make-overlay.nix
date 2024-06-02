@@ -7,24 +7,22 @@
 	pzl,
 	git-point,
 	xil,
-}: let
-	overlay = final: prev: let
+	getScope ? pkgs: import ./make-scope.nix {
+		inherit
+			pkgs
+			lib
+			qyriad-nur
+			niz
+			log2compdb
+			pzl
+			git-point
+			xil
+		;
+	}, # getScope
 
-		scope = import ./make-scope.nix {
-			pkgs = final;
-			inherit
-				lib
-				qyriad-nur
-				niz
-				log2compdb
-				pzl
-				git-point
-				xil
-			;
-		};
-	in {
-		qyriad = scope;
-		qlib = scope.lib;
-	};
-
-in overlay
+}: final: prev: let
+	scope = getScope final;
+in {
+	qyriad = scope;
+	qlib = scope.lib;
+}
