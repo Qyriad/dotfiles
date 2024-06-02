@@ -7,7 +7,7 @@ let
   scope = pkgs // {
     inherit getFlake currentSystem;
     qlib = qyriad.lib;
-    qyriad = qyriad.packages.${currentSystem} // qyriad.lib // {
+    qyriad = (builtins.getAttr currentSystem qyriad.packages) // qyriad.lib // {
       inherit (qyriad) lib;
     };
     f = getFlake ("git+file:" + (toString ./.));
