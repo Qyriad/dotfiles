@@ -48,5 +48,5 @@ in lib.makeScope pkgs.newScope (self: {
 		};
 	};
 
-	lib = import ./qlib.nix { inherit lib; };
+	qlib = import ./qlib.nix { inherit lib; };
 })

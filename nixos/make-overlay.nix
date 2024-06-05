@@ -17,12 +17,16 @@
 			pzl
 			git-point
 			xil
+			xonsh-source
 		;
 	}, # getScope
 
-}: final: prev: let
-	scope = getScope final;
-in {
-	qyriad = scope;
-	qlib = scope.lib;
-}
+}: let
+	overlay = final: prev: let
+		scope = getScope final;
+	in {
+		qyriad = scope;
+		inherit (scope) qlib;
+	};
+
+in overlay
