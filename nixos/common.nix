@@ -104,7 +104,6 @@
 		chars
 		zenith
 		git-imerge
-		python3Packages.jsondiff
 		pinfo
 		gron
 		git-series
