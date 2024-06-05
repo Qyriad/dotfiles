@@ -9,6 +9,7 @@
 	git-point,
 	crane ? git-point.inputs.crane,
 	xil,
+	xonsh-source,
 }: let
 
 	qyriad-nur' = import qyriad-nur { inherit pkgs; };
@@ -20,6 +21,7 @@ in lib.makeScope pkgs.newScope (self: {
 		xontrib-abbrevs
 		xonsh-direnv
 	;
+	inherit xonsh-source;
 	xonsh = self.callPackage ./pkgs/xonsh { };
 
 	inherit (qyriad-nur')

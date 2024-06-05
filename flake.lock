@@ -261,7 +261,8 @@
         "niz": "niz",
         "pzl": "pzl",
         "qyriad-nur": "qyriad-nur",
-        "xil": "xil"
+        "xil": "xil",
+        "xonsh-source": "xonsh-source"
       }
     },
     "systems": {
@@ -299,6 +300,22 @@
       "original": {
         "owner": "Qyriad",
         "repo": "Xil",
+        "type": "github"
+      }
+    },
+    "xonsh-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717437789,
+        "narHash": "sha256-BNzwFhztlRsiRvisWC5N7aDxxMxEToFag9se0caQnWs=",
+        "owner": "xonsh",
+        "repo": "xonsh",
+        "rev": "5afb83d67e0846d3401b9bc0581b6c6a33ff5d76",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xonsh",
+        "repo": "xonsh",
         "type": "github"
       }
     }

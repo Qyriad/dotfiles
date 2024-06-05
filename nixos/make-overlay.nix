@@ -7,6 +7,7 @@
 	pzl,
 	git-point,
 	xil,
+	xonsh-source,
 	getScope ? pkgs: import ./make-scope.nix {
 		inherit
 			pkgs

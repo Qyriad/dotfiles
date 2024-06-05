@@ -48,6 +48,10 @@
 			inputs.lix.follows = "lix";
 			inputs.flake-utils.follows = "flake-utils";
 		};
+		xonsh-source = {
+			url = "github:xonsh/xonsh";
+			flake = false;
+		};
 	};
 
 	outputs = inputs @ {
@@ -120,6 +124,7 @@
 					pzl
 					git-point
 					xil
+					xonsh-source
 				;
 			};
 
