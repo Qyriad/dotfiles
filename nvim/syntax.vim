@@ -106,7 +106,6 @@ use { 'dzeban/vim-log-syntax', ft = "log" }
 use { 'linkinpark342/xonsh-vim', ft = "xonsh" }
 use { 'terminalnode/sway-vim-syntax', ft = "swayconfig" }
 use { 'peterhoeg/vim-qml', ft = "qml" }
-use { 'LnL7/vim-nix', ft = "nix" }
 use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use {
 	'nvim-treesitter/nvim-treesitter',
