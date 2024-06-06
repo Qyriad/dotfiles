@@ -23,6 +23,23 @@ function module.table.combine(first, second)
 	return out
 end
 
+function module.table.merge(first, second)
+	if first == nil then
+		wezterm.log_error("table.merge(first) called with nil; second =")
+		wezterm.log_error(second)
+		error("table.merge(first) called with nil")
+	end
+	if second == nil then
+		wezterm.log_error("table.merge(second) called with nil; first =")
+		wezterm.log_error(first)
+		error("table.merge(second) called with nil")
+	end
+
+	for k, v in pairs(second) do
+		first[k] = v
+	end
+end
+
 
 function module.tab_title(tab_info)
 	local title = tab_info.tab_title

@@ -60,9 +60,14 @@ end
 
 local config = wezterm.config_builder()
 
-config.tab_bar_at_bottom = true
-config.use_fancy_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
+utils.table.merge(config, {
+	tab_bar_at_bottom = true,
+	use_fancy_tab_bar = true,
+	hide_tab_bar_if_only_one_tab = true,
+	use_ime = true,
+	log_unknown_escape_sequences = true,
+	alternate_buffer_wheel_scroll_speed = 5,
+})
 
 function format_tab_title(tab, tabs, panes, config, hover, max_width)
 	local title = utils.tab_title(tab)
@@ -89,24 +94,36 @@ end
 
 wezterm.on("format-tab-title", format_tab_title)
 
-config.default_prog = { "zsh", "--login", "-c", "exec xonsh" }
+wezterm.on('update-right-status', function(window, pane)
+	--local dt = wezterm.stftime('%Y-%m')
+	local display = wezterm.to_string
+	local dn = display(pane:get_domain_name())
+	local title = display(pane:get_title())
+	window:set_right_status(wezterm.format{
+		--{ Foreground = { AnsiColor = "magenta" } },
+		{ Text = string.format('%s | %s', display(pane), title)}
+	})
+end)
 
-config.font = wezterm.font_with_fallback(font_list)
-config.font_size = 12
-config.font_rules = {
-	{
-		intensity = "Bold",
-		font = wezterm.font_with_fallback(
-			font_list,
-			{
-				foreground = "#fffeff",
-				bold = true,
-			}
-		)
-	}
-}
+utils.table.merge(config, {
+	default_prog = { "zsh", "--login", "-c", "exec xonsh" },
+	font = wezterm.font_with_fallback(font_list),
+	font_size = 11.5,
+	font_rules = {
+		{
+			intensity = "Bold",
+			font = wezterm.font_with_fallback(
+				font_list,
+				{
+					foreground = "#fffeff",
+					bold = true,
+				}
+			)
+		},
+	},
+	bold_brightens_ansi_colors = "BrightAndBold"
+})
 
-config.bold_brightens_ansi_colors = "BrightAndBold"
 
 
 -- Multiplexing.
@@ -255,7 +272,7 @@ config.colors = {
 }
 
 wezterm.on("mux-is-process-stateful", function(process)
-	is_xonsh = process.argv[1] == "xonsh"
+	local is_xonsh = process.argv[1] == "xonsh"
 	if is_xonsh then
 		return false
 	end
