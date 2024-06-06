@@ -9,4 +9,6 @@
 --embed-thumbnail
 --embed-metadata
 --embed-chapters
+--embed-info-json
 --xattrs
+--sponsorblock-mark sponsor
