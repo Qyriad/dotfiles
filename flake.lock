@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1717025063,
-        "narHash": "sha256-dIubLa56W9sNNz0e8jGxrX3CAkPXsq7snuFA/Ie6dn8=",
+        "lastModified": 1717535930,
+        "narHash": "sha256-1hZ/txnbd/RmiBPNUs7i8UQw2N89uAK3UzrGAWdnFfU=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "480dff0be03dac0e51a8dfc26e882b0d123a450e",
+        "rev": "55e7754ec31dac78980c8be45f8a28e80e370946",
         "type": "github"
       },
       "original": {
@@ -65,11 +65,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1717200567,
-        "narHash": "sha256-/fK2c3aR9yDi0HcUvIsOik3PGz8Ly8qw6ao605IAiPA=",
+        "lastModified": 1717784279,
+        "narHash": "sha256-fluRTmGqPPIVGe6cRUIw3K+y7ivirNKm8PSxfTOAi3c=",
         "owner": "Qyriad",
         "repo": "git-point",
-        "rev": "970d75f1b16db89d9d71748e07b60af60a3dfe9c",
+        "rev": "03ee4ca183ff201b5f2ab3621a154c85a6f11d57",
         "type": "github"
       },
       "original": {
@@ -81,11 +81,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1717643294,
-        "narHash": "sha256-RFdTEMalpklp2uqSkUZF+Mr6o6oU25/nEJ/eRsA9c7Q=",
+        "lastModified": 1717732411,
+        "narHash": "sha256-cxK0tBbUxXtIYKLbjHpH+swiIzEoj61c82I/pN/yBoE=",
         "ref": "refs/heads/main",
-        "rev": "8f9bcd20ebc1a4bdf44e8c1b16cac9a905c505d9",
-        "revCount": 15730,
+        "rev": "4f94531209510c7d580e525a017ea01f18894ded",
+        "revCount": 15739,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -306,11 +306,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1717437789,
+        "lastModified": 1717772629,
         "narHash": "sha256-BNzwFhztlRsiRvisWC5N7aDxxMxEToFag9se0caQnWs=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "5afb83d67e0846d3401b9bc0581b6c6a33ff5d76",
+        "rev": "9e86938c4dc3aacfca989b9e474d78c69394b763",
         "type": "github"
       },
       "original": {
