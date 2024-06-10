@@ -120,5 +120,6 @@
 		nix-output-monitor
 		qyriad.git-point
 		git-branchless
+		btop
 	];
 }
