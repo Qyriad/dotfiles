@@ -121,5 +121,5 @@ include "%L"
 
 <Multi_key> <z> <m> : "🔴M>"
 <Multi_key> <z> <l> : "🔵L>"
-<Mutli_key> <z> <v> : "🟣V>"
+<Multi_key> <z> <v> : "🟣V>"
 <Multi_key> <z> <c> : "🟢C>"
