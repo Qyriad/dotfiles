@@ -107,12 +107,22 @@
 			}
 		;
 
-		mkPerSystemOutputs = system: import ./nixos/per-system.nix {
-			inherit system inputs;
-		};
-
 		# Package outputs, which we want to define for multiple systems.
-		perSystemOutputs = flake-utils.lib.eachDefaultSystem mkPerSystemOutputs;
+		perSystemOutputs = flake-utils.lib.eachDefaultSystem (system: let
+			pkgs = import nixpkgs {
+				inherit system;
+				overlays = [ self.overlays.default ];
+			};
+			filterDerivations = lib.filterAttrs (lib.const lib.isDerivation);
+		in {
+			# This flake's packages output is just a re-export of the stuff
+			# our overlay adds.
+			packages = filterDerivations pkgs.qyriad;
+			# Truly dirty hack. This will let us transparently refer to overriden
+			# or not overriden packages in nixpkgs, as flake.packages.foo is preferred over
+			# flake.legacyPackages.foo by commands like `nix build`.
+			legacyPackages = pkgs;
+		});
 
 		# NixOS configuration outputs, which are each for one specific system.
 		universalOutputs = {
