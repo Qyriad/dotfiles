@@ -68,6 +68,19 @@
 			inherit lib;
 		};
 
+		/** NixOS module for configs defined in this flake.
+		 This is the only module that relies on flakeyness directly.
+		*/
+		flake-module = { ... }: {
+			nixpkgs.overlays = [ self.overlays.default ];
+
+			# Point "qyriad" to this here flake.
+			nix.registry.qyriad = {
+				from = { id = "qyriad"; type = "indirect"; };
+				flake = self;
+			};
+		};
+
 		# Wraps nixpkgs.lib.nixosSystem to generate a NixOS configuration, adding common modules
 		# and special arguments.
 		mkConfig =
@@ -78,19 +91,9 @@
 
 				system' = lib.systems.elaborate system;
 
-				flake-module = { ... }: {
-					nixpkgs.overlays = [ self.overlays.default ];
-
-					# Point "qyriad" to this here flake.
-					nix.registry.qyriad = {
-						from = { id = "qyriad"; type = "indirect"; };
-						flake = self;
-					};
-				};
-
 				# Use nixpkgs.lib.nixosSystem on Linux
 				mkConfigFn = {
-					linux = lib.nixosSystem;
+					linux = nixpkgs.lib.nixosSystem;
 					darwin = nix-darwin.lib.darwinSystem;
 				};
 
