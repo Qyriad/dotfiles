@@ -280,6 +280,9 @@ nmap <leader>dfa T(<Plug>Dsurround)daW
 " 'Delete surrounding template'
 nmap dst dt<<Plug>Dsurround>
 
+" 'Delete after comma'
+nnoremap <leader>da, viwf,ld
+
 " Delete an assignment.
 nnoremap da= vf=ld
 
