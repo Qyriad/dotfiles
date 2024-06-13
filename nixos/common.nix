@@ -121,5 +121,7 @@
 		qyriad.git-point
 		git-branchless
 		btop
+		numbat
+		dust
 	];
 }
