@@ -5,13 +5,12 @@
   python-pipe,
   xontrib-abbrevs,
   xonsh-direnv,
-  ...
- }:
+}:
 
 let
-  xonshPath = pkgs.path + "/pkgs/by-name/xo/xonsh/unwrapped.nix";
 
   xonsh-unwrapped = let
+    xonshPath = pkgs.path + "/pkgs/by-name/xo/xonsh/unwrapped.nix";
     xonsh-unwrapped-nixpkgs = pkgs.callPackage xonshPath { };
   in xonsh-unwrapped-nixpkgs.overridePythonAttrs (prev: {
     src = xonsh-source;
@@ -32,6 +31,8 @@ let
     py.requests
     py.pygments
     py.jsondiff
+    py.setproctitle
+    py.httpx
     xonsh-direnv
     xontrib-abbrevs
     python-pipe
