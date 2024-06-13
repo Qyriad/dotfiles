@@ -17,7 +17,8 @@
 			gid = "users";
 			file_mode = "0764";
 			dir_mode = "0775";
-			vers = "3.1.1";
+			vers = "3";
+			#unix = null;
 		};
 	in {
 		"/media/shizue/archive" = {
@@ -136,7 +137,7 @@
 		dsview
 		pulseview
 		makemkv
-		ffmpeg
+		ffmpeg-full
 		aegisub
 		cifs-utils
 		nfs-utils
@@ -161,6 +162,8 @@
 		qt6.qtbase
 		qemu_full
 		qemu-utils
+		xorg.xlsclients
+		kooha
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
