@@ -8,6 +8,11 @@
 }:
 
 let
+
+	trimString = str: let
+		result = builtins.match "[[:space:]]*(.*[^[:space:]])[[:space:]]*";
+	in lib.optionalString (result != null) (lib.head result);
+
 	# This gets used in linux-gui.nix
 	mkDebug = pkg: (pkg.overrideAttrs { separateDebugInfo = true; }).debug;
 	mkDebugForEach = map mkDebug;
@@ -94,5 +99,6 @@ in {
 		drvListByName
 		genAttrs'
 		cleanMeta
+		trimString
 	;
 }
