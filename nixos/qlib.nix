@@ -72,6 +72,16 @@ let
 			lib.listToAttrs (lib.forEach list (drv: { name = drv.pname or drv.name; value = drv; }))
 	;
 
+	/** Like lib.genAttrs, but allows the name to be changed. */
+	genAttrs' =
+		list:
+		mkPair:
+		lib.listToAttrs (lib.concatMap (name: [ (mkPair name) ]) list);
+
+	removeAttrs' = lib.flip builtins.removeAttrs;
+
+	cleanMeta = removeAttrs' [ "maintainers" "platforms" ];
+
 in {
 	inherit
 		mkDebug
@@ -82,5 +92,7 @@ in {
 		getPythonAttrs
 		genMountOpts
 		drvListByName
+		genAttrs'
+		cleanMeta
 	;
 }
