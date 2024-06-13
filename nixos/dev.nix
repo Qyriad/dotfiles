@@ -42,5 +42,8 @@
 		nixpkgs-review
 		quickemu
 		gh
+		shellcheck
+		nodePackages.prettier
+		awscli2
 	];
 }
