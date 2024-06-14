@@ -769,9 +769,9 @@ class ShortcutAutovar:
 		return getattr(self.value, key)
 
 # Git dir
-from xonsh.prompt import gitstatus
-$gitd = ShortcutAutovar(lambda : Path($PROMPT_FIELDS['gitstatus.branch'].value).resolve())
-$gitb = ShortcutAutovar(xonsh.prompt.vc.current_branch)
+#from xonsh.prompt import gitstatus
+#$gitd = ShortcutAutovar(lambda : Path($PROMPT_FIELDS['gitstatus.branch'].value).resolve())
+#$gitb = ShortcutAutovar(xonsh.prompt.vc.current_branch)
 
 #$LIB = EnvPath([
 #	'/home/qyriad/.local/opt/xwin/crt/lib/x64/',
