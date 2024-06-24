@@ -190,11 +190,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719002739,
-        "narHash": "sha256-zY6xLJ94cubwHm+AbEge0rnsSufaYKzJaqEgiqqg4uk=",
+        "lastModified": 1719241224,
+        "narHash": "sha256-rsZZBGK8/PTCpuYYglBbFQj1lYNhyW0eL1mNpbeWfWA=",
         "owner": "Qyriad",
         "repo": "niz",
-        "rev": "029211f4a23d6f3c2e678aa8dfd5669192ed6ca3",
+        "rev": "f5b4a5468f7a86c9be8c017473f41ffcbd76dfaa",
         "type": "github"
       },
       "original": {
