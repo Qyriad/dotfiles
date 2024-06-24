@@ -8,7 +8,9 @@ rec {
     system = info.currentSystem;
     overlays = attrValues qyriad.overlays;
   };
+  nixos = qyriad.nixosConfigurations.${builtins.getEnv "HOSTNAME"};
   inherit (pkgs) lib qlib;
   f = builtins.getFlake "git+file:${builtins.getEnv "PWD"}";
+  local = import ./. { };
   currentSystem = info.currentSystem;
 }
