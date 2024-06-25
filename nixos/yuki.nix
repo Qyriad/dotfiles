@@ -25,6 +25,11 @@
 	# Non-NixOS-generated hardware configuration.
 	hardware.cpu.amd.updateMicrocode = true;
 
+	boot.kernelModules = [
+		# For MakeMKV on blu rays.
+		"sg"
+	];
+
 	services.freshrss = {
 	};
 
@@ -66,6 +71,10 @@
 	];
 
 	nix.distributedBuilds = true;
+
+	environment.systemPackages = with pkgs; [
+		makemkv
+	];
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
