@@ -10,8 +10,7 @@
 let
 
   xonsh-unwrapped = let
-    xonshPath = pkgs.path + "/pkgs/by-name/xo/xonsh/unwrapped.nix";
-    xonsh-unwrapped-nixpkgs = pkgs.callPackage xonshPath { };
+    xonsh-unwrapped-nixpkgs = pkgs.xonsh-unwrapped;
   in xonsh-unwrapped-nixpkgs.overridePythonAttrs (prev: {
     src = xonsh-source;
 
