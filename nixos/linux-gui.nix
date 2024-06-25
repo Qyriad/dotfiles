@@ -136,7 +136,6 @@
 		weston
 		dsview
 		pulseview
-		makemkv
 		ffmpeg-full
 		aegisub
 		cifs-utils
@@ -146,6 +145,7 @@
 		sioyek
 		neochat
 		fluffychat
+		nheko
 		element-desktop
 		bitwig-studio
 		curl
