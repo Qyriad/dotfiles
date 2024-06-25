@@ -14,7 +14,6 @@ else
   set shortmess=aoO
 endif
 badd +75 flake.nix
-badd +23 nixos/per-system.nix
 badd +80 nixos/qlib.nix
 badd +4 default.nix
 badd +1 nixos/linux-gui.nix
@@ -82,10 +81,6 @@ keepjumps 3
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("nixos/per-system.nix", ":p")) | buffer nixos/per-system.nix | else | edit nixos/per-system.nix | endif
-if &buftype ==# 'terminal'
-  silent file nixos/per-system.nix
-endif
 balt default.nix
 setlocal fdm=manual
 setlocal fde=0
@@ -109,7 +104,6 @@ exe 'vert 2resize ' . ((&columns * 119 + 119) / 238)
 tabnext
 edit nixos/common.nix
 argglobal
-balt nixos/per-system.nix
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
