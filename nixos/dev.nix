@@ -23,6 +23,7 @@
 		clang-tools_18
 		pyright
 		nodePackages.vim-language-server
+		javascript-typescript-langserver
 		nil
 		lua-language-server
 		bear
