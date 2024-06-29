@@ -166,11 +166,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1719254875,
-        "narHash": "sha256-ECni+IkwXjusHsm9Sexdtq8weAq/yUyt1TWIemXt3Ko=",
+        "lastModified": 1719506693,
+        "narHash": "sha256-C8e9S7RzshSdHB7L+v9I51af1gDM5unhJ2xO1ywxNH8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2893f56de08021cffd9b6b6dfc70fd9ccd51eb60",
+        "rev": "b2852eb9365c6de48ffb0dc2c9562591f652242a",
         "type": "github"
       },
       "original": {
@@ -236,11 +236,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716206633,
-        "narHash": "sha256-JaYHYodpODNOdEdOq6HdbCzvZxJ5x61YtabVUCVnuUQ=",
+        "lastModified": 1719695478,
+        "narHash": "sha256-X3N8Tt/WUwYbKIoSnaQb1UqFlTRAU7vl3Mbex+Do0Pw=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "e8ae702a837ff378c2988f1d930c4763b823b7c4",
+        "rev": "587587d7f9cbce0c7d88fc52d3d8556265e5f0a2",
         "type": "github"
       },
       "original": {
@@ -306,11 +306,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1719619275,
-        "narHash": "sha256-hp59bWl98/bkzqRKdgCKSuUdsOcktJ7NBBYGwsPMx/Q=",
+        "lastModified": 1719671219,
+        "narHash": "sha256-XlCTYe2+aDA5HQ004d1B2xjgjVhOclYmUmUsdmj+dm4=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "2ef4e329f7d02a3b3b76c769cea2ba568fde0999",
+        "rev": "00c6d4042c1a71012f75547583b5f5cf51b96867",
         "type": "github"
       },
       "original": {
