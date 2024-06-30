@@ -236,11 +236,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719695478,
-        "narHash": "sha256-X3N8Tt/WUwYbKIoSnaQb1UqFlTRAU7vl3Mbex+Do0Pw=",
+        "lastModified": 1719700462,
+        "narHash": "sha256-5s9oywOr+9AccLEYjbiN+qhc41cNZC2bLdW2N/fO8s8=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "587587d7f9cbce0c7d88fc52d3d8556265e5f0a2",
+        "rev": "1f3060d2a3101edb208eeaca491b2f194664add9",
         "type": "github"
       },
       "original": {
@@ -306,11 +306,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1719671219,
-        "narHash": "sha256-XlCTYe2+aDA5HQ004d1B2xjgjVhOclYmUmUsdmj+dm4=",
+        "lastModified": 1719700111,
+        "narHash": "sha256-cs2ysTIjwOFMkfSBxszxpAGkjcDXFbgWMLfeRZxJTZY=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "00c6d4042c1a71012f75547583b5f5cf51b96867",
+        "rev": "6860388c887abb647e6082517faf3f8a5a8754b3",
         "type": "github"
       },
       "original": {
