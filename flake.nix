@@ -177,6 +177,10 @@
 					path = ./nixos/templates/rust;
 					description = "rust flake template";
 				};
+				meson-cpp = {
+					path = ./nixos/templates/cpp-meson;
+					description = "C++ Meson flake template";
+				};
 			};
 
 		};
