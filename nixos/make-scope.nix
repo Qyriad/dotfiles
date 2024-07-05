@@ -16,11 +16,6 @@
 	xil' = import xil { inherit pkgs; };
 
 in lib.makeScope pkgs.newScope (self: {
-	inherit (qyriad-nur')
-		python-pipe
-		xontrib-abbrevs
-		xonsh-direnv
-	;
 	inherit xonsh-source;
 	xonsh = self.callPackage ./pkgs/xonsh { };
 
@@ -28,6 +23,9 @@ in lib.makeScope pkgs.newScope (self: {
 		strace-process-tree
 		strace-with-colors
 		cinny
+		python-pipe
+		xontrib-abbrevs
+		xonsh-direnv
 	;
 
 	nerdfonts = self.callPackage ./pkgs/nerdfonts.nix { };
