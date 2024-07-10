@@ -17,6 +17,24 @@ let
 	mkDebug = pkg: (pkg.overrideAttrs { separateDebugInfo = true; }).debug;
 	mkDebugForEach = map mkDebug;
 
+	/** This basically doesn't work yet. But its here to save our WIP state. */
+	flakeInputToUrl = { type, ... } @ input: let
+		mkFromGithub = { type, owner, repo, rev, ... }:
+			assert type == "github";
+			"https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
+		mkFromGit = { type, url, rev, ... }:
+			assert type == "git";
+			url;
+
+		typeMap = {
+			github = mkFromGithub;
+			git = mkFromGit;
+		};
+	in
+		typeMap.${type} input;
+
+	#getFlakeInputs = lockJson: let
+
 	overrideStdenvForDrv = newStdenv: drv:
 		newStdenv.mkDerivation (drv.overrideAttrs (self: { passthru.attrs = self; })).attrs
 	;
@@ -144,6 +162,7 @@ in {
 		getPythonAttrs
 		genMountOpts
 		drvListByName
+		flakeInputToUrl
 		genAttrs'
 		cleanMeta
 		trimString
