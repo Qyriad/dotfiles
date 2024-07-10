@@ -123,7 +123,36 @@ let
 
 	removeAttrs' = lib.flip builtins.removeAttrs;
 
-	cleanMeta = removeAttrs' [ "maintainers" "platforms" ];
+	# TODO: map meta.license to (map (getAttr meta.license.shortName)) or something.
+	cleanMeta = removeAttrs' [ "maintainers" "platforms" "license" ];
+
+	/** Gives a nice overview of a derivation's attributes that aren't details for building
+	 * said derivation.
+	 */
+	nonDrvAttrs = drv: let
+		# name, pname, and version are included in `drvAttrs`, but they're useful.
+		# And `outputs` is handy since it can subtly change a lot of behavior.
+		toKeep = [ "name" "pname" "version" "outputs" ];
+		inDrvAttrsToRemove = let
+			initialAcc = lib.attrNames drv.drvAttrs;
+			# A little counter-intuitive. We're building the list of names to remove from
+			# the derivation attrset, and we want to *keep* some attrs, so we need to remove
+			# the names we want to keep from the list of attrs to remove. lol.
+		in lib.foldl' (acc: elemToKeep: lib.lists.remove elemToKeep acc) initialAcc toKeep;
+
+		# These ones aren't included in `drvAttrs`, but we still want to remove them.
+		allDrvAttrs = [
+			"type"
+			"outPath"
+			"drvPath"
+			"drvAttrs" # We also want to remove drvAttrs itself.
+		] ++ inDrvAttrsToRemove;
+
+	in (removeAttrs' allDrvAttrs drv) // {
+		# This really is highly specific to us, but these meta attrs just take too much screen output.
+		# If I want it, I'll ask for it.
+		meta = cleanMeta (drv.meta or { });
+	};
 
 	/** Like nixpkgs.lib.nixosSystem, but doesn't assume it's being called
 	from a flake.
@@ -171,7 +200,6 @@ let
 		inherit system modules;
 	};
 
-
 in {
 	inherit
 		mkDebug
@@ -185,6 +213,7 @@ in {
 		flakeInputToUrl
 		genAttrs'
 		cleanMeta
+		nonDrvAttrs
 		trimString
 		nixosSystem
 		evalNixos
