@@ -88,17 +88,23 @@ let
 				overriden.__attrs
 	;
 
+	/**
+	Generate a suitable for passing to `mount -o` or the fs_mntops field of fstab entries
+	from a structured representation of the options.
+
+	Each option accepted by `mount -o`/fs_mntops is either a single keyword,
+	*/
 	genMountOpts =
-		# `null` values are interpreted as singleton option names, like `noauto`.
+		# `null` values are interpreted as keyword option names, like `noauto`.
 		optionsAttrs: let
-			singletonOrIni = name: value:
+			keywordOrIni = name: value:
 				if isNull value
 				then name
 				else "${name}=${toString value}"
 			;
 		in
 			lib.pipe optionsAttrs [
-				(lib.mapAttrsToList singletonOrIni)
+				(lib.mapAttrsToList keywordOrIni)
 				(lib.concatStringsSep ",")
 			]
 	;
