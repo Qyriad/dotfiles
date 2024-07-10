@@ -35,8 +35,6 @@
 
 
 	# Enable GUI stuff.
-	# Yes this says xserver. Yes this we're using Wayland. That's correct.
-	# https://github.com/NixOS/nixpkgs/issues/94799
 	services.displayManager = {
 		sddm.enable = true;
 		sddm.autoNumlock = true;
