@@ -87,6 +87,53 @@ let
 
 	cleanMeta = removeAttrs' [ "maintainers" "platforms" ];
 
+	/** Like nixpkgs.lib.nixosSystem, but doesn't assume it's being called
+	from a flake.
+	*/
+	nixosSystem = {
+		nixpkgs ? <nixpkgs>,
+		system ? builtins.currentSystem or null,
+		configuration,
+	}: let
+		nixos = nixpkgs + "/nixos";
+	in import nixos {
+		inherit system configuration;
+	};
+
+	evalNixos = {
+		nixpkgs ? <nixpkgs>,
+		system ? builtins.currentSystem or null,
+		modules,
+	}: let
+		nixos = nixpkgs + "/nixos";
+		eval-config = nixos + "/lib/eval-config.nix";
+	in import eval-config {
+		inherit system modules;
+	};
+
+	/** Like nix-darwin.lib.darwinSystem, but doesn't assume it's being called
+	from a flake.
+	*/
+	darwinSystem = {
+		nixpkgs ? <nixpkgs>,
+		nix-darwin ? fetchGit "https://github.com/LnL7/nix-darwin",
+		system ? builtins.currentSystem or null,
+		configuration,
+	}: import nix-darwin {
+		inherit nixpkgs system configuration;
+	};
+
+	evalDarwin = {
+		nix-darwin ? fetchGit "https://github.com/LnL7/nix-darwin",
+		system ? builtins.currentSystem or null,
+		modules,
+	}: let
+		eval-config = nix-darwin + "/eval-config.nix";
+	in import eval-config {
+		inherit system modules;
+	};
+
+
 in {
 	inherit
 		mkDebug
@@ -100,5 +147,9 @@ in {
 		genAttrs'
 		cleanMeta
 		trimString
+		nixosSystem
+		evalNixos
+		darwinSystem
+		evalDarwin
 	;
 }
