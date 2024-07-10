@@ -180,5 +180,5 @@
 		age-plugin-yubikey
 		yubikey-manager
 		systeroid
-	];
+	] ++ config.systemd.packages; # I want system services to also be in /run/current-system please.
 }
