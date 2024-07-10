@@ -8,6 +8,7 @@
 	pzl,
 	git-point,
 	crane ? git-point.inputs.crane,
+	craneLib ? import crane { inherit pkgs; },
 	xil,
 	xonsh-source,
 }: let
@@ -47,6 +48,8 @@ in lib.makeScope pkgs.newScope (self: {
 			"psutil"
 		];
 	};
+	git-point = import git-point { inherit pkgs craneLib; };
+
 
 	qlib = import ./qlib.nix { inherit lib; };
 })
