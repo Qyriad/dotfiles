@@ -121,7 +121,7 @@
 		ksshaskpass
 		opera
 		obsidian
-		discord
+		vesktop
 		calibre
 		kicad
 		krita
