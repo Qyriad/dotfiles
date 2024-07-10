@@ -18,6 +18,9 @@ def main():
     parser.add_argument('--slice', type=str, default='app.slice',
         help='The user slice to run this service under (default: %(default)s)',
     )
+    parser.add_argument('-E', '--setenv', action='append', type=str,
+        help='NAME=VALUE pair of environment variables to set for the process',
+    )
 
     args = parser.parse_args()
     print(args)
@@ -28,7 +31,9 @@ def main():
     localnow = datetime.now().astimezone().strftime('systemdrun-%Hh-%Mm')
     unit_name = f'{localnow}-{cmdname}'
 
-    run_args = ['systemd-run', '--user', '--collect', '--same-dir', '--slice=app.slice', f'--unit={unit_name}', *cmd]
+    env_args = [f'--setenv={entry}' for entry in args.setenv]
+
+    run_args = ['systemd-run', '--user', '--collect', '--same-dir', '--slice=app.slice', f'--unit={unit_name}', *env_args, *cmd]
     eprint('\x1b[1m{}'.format(shlex.join(run_args)))
     subprocess.call(run_args)
 
