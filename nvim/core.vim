@@ -234,8 +234,11 @@ nnoremap <leader>sh <Cmd>call SwitchSourceHeader()<CR>
 " Wired:
 cnoremap <C-r> %:r<tab>
 noremap <A-r> %:r<tab>
-cnoremap <C-e> %:h/<tab>
-cnoremap <A-e> %:h/<tab>
+" Expands to the directory of the current filename, using ~ for $HOME,
+" and using path relative to the current directory if applicable.
+" `help fnamemodify()`
+cnoremap <C-e> %:~:.:h/<tab>
+cnoremap <A-e> %:~:.:h/<tab>
 
 " Use escape to exit terminal mode.
 tnoremap <Esc> <C-\><C-n>
