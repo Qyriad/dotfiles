@@ -79,6 +79,7 @@
 
 	environment.systemPackages = with pkgs; [
 		makemkv
+		valgrind
 	];
 
 	# This value determines the NixOS release from which the default
