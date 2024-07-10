@@ -30,6 +30,11 @@
 		"sg"
 	];
 
+	environment.enableDebugInfo = true;
+	environment.extraOutputsToInstall = [
+		"dev"
+	];
+
 	services.freshrss = {
 	};
 

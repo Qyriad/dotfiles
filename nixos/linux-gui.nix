@@ -33,12 +33,6 @@
 		};
 	};
 
-	# On Yuki this costs less than a GiB. Let's try it for now.
-	#environment.enableDebugInfo = true;
-	#environment.extraOutputsToInstall = [
-	#	"dev"
-	#];
-
 
 	# Enable GUI stuff.
 	# Yes this says xserver. Yes this we're using Wayland. That's correct.
