@@ -160,8 +160,9 @@
 		darling
 		glibc.debug
 		qt6.qtbase
-		qemu_full
-		qemu-utils
+		# Broken after the Python 3.12 migration for some reason. Check back later.
+		#qemu_full
+		#qemu-utils
 		xorg.xlsclients
 		kooha
 	];

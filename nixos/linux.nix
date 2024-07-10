@@ -163,7 +163,7 @@
 		heh
 		sysstat
 		# apksigner dependency fails to build on macOS
-		diffoscope
+		#diffoscope # Broken (again) in Nixpkgs. Check back later.
 		rpm
 		binutils
 		lsof

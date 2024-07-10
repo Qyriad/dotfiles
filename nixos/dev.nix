@@ -41,7 +41,8 @@
 		rr
 		nixfmt-rfc-style
 		nixpkgs-review
-		quickemu
+		# Broken after the Python 3.12 migration for some reason. Check back later.
+		#quickemu
 		gh
 		shellcheck
 		nodePackages.prettier

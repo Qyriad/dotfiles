@@ -40,12 +40,12 @@ in lib.makeScope pkgs.newScope (self: {
 
 	log2compdb = import log2compdb { inherit pkgs; };
 	niz = import niz { inherit pkgs; };
-	pzl = import pzl { inherit pkgs; };
-	git-point = import git-point {
-		inherit pkgs;
-		craneLib = import crane {
-			inherit pkgs;
-		};
+	pzl = let
+		pzl' = import pzl { inherit pkgs; };
+	in pzl'.overridePythonAttrs {
+		pythonRelaxDeps = [
+			"psutil"
+		];
 	};
 
 	qlib = import ./qlib.nix { inherit lib; };
