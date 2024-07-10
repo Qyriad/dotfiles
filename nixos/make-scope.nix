@@ -50,6 +50,39 @@ in lib.makeScope pkgs.newScope (self: {
 	};
 	git-point = import git-point { inherit pkgs craneLib; };
 
+	#armcord = pkgs.armcord.overrideAttrs (prev: {
+	#	installPhase = ''
+	#		runHook preInstall
+	#		mkdir -p "$out/bin"
+	#		cp -R "opt" "$out"
+	#		cp -R "usr/share" "$out/share"
+	#		chmod -R g-w "$out"
+	#
+	#		# Wrap the startup command
+	#		makeWrapper $out/opt/ArmCord/armcord $out/bin/armcord \
+	#			"''${gappsWrapperArgs[@]}" \
+	#			--prefix XDG_DATA_DIRS : "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/" \
+	#			--add-flags "--ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer" \
+	#			--prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath prev.buildInputs}" \
+	#			--suffix PATH : ${lib.makeBinPath [ pkgs.xdg-utils ]}
+	#
+	#		# Fix desktop link
+	#		substituteInPlace $out/share/applications/armcord.desktop \
+	#			--replace /opt/ArmCord/ $out/bin/
+	#
+	#		runHook postInstall
+	#	'';
+	#});
+
+	#unpackSource = self.callPackage ./unpack-source.nix { };
+	#/** Convenience shortcut for `unpackSource { inherit (drv) src; }; */
+	#unpackDrvSrc = drv: self.unpackSource { inherit (drv) src; };
+	#unpackSource = { url, hash ? null, ... }: fetchTarball ({
+	#	inherit url;
+	#} // lib.optionalAttrs (hash != null) {
+	#	sha256 = hash;
+	#});
+	#unpackDrvSrc = drv: self.unpackSource { inherit (drv.src) url; };
 
 	qlib = import ./qlib.nix { inherit lib; };
 })
