@@ -154,6 +154,17 @@ let
 		meta = cleanMeta (drv.meta or { });
 	};
 
+
+	/** Partial application for lambdas with formals!
+	 * Why isn't this in nixpkgs lib…?
+	*/
+	partial = partialArgs: fn: {
+		__functor = self: fnArgs: fn (fnArgs // partialArgs);
+		# Hurray for lib.functionArgs using __functionArgs for functors.
+		__functionArgs = removeAttrs' (lib.attrNames partialArgs) (lib.functionArgs fn);
+	};
+
+
 	/** Like nixpkgs.lib.nixosSystem, but doesn't assume it's being called
 	from a flake.
 	*/
@@ -215,6 +226,7 @@ in {
 		cleanMeta
 		nonDrvAttrs
 		trimString
+		partial
 		nixosSystem
 		evalNixos
 		darwinSystem
