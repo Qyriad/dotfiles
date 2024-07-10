@@ -159,6 +159,10 @@
 		#qemu-utils
 		xorg.xlsclients
 		kooha
+		waypipe
+		wayvnc
+		wev
+		seer
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
