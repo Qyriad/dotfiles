@@ -35,6 +35,20 @@ let
 
 	#getFlakeInputs = lockJson: let
 
+	/** Fallable alternative to <nixpkgs> syntax.
+	 * Returns the path if found, or null if not.
+	*/
+	tryLookupPath = lookupPath: let
+		# This covers both pure evaluation mode and the path not being in nixPath.
+		tried = builtins.tryEval (
+			builtins.findFile builtins.nixPath lookupPath
+		);
+	in if tried.success then tried.value else null;
+
+	lookupPathOr = lookupPath: fallback: let
+		tried = tryLookupPath lookupPath;
+	in if tried != null then tried else fallback;
+
 	overrideStdenvForDrv = newStdenv: drv:
 		newStdenv.mkDerivation (drv.overrideAttrs (self: { passthru.attrs = self; })).attrs
 	;
@@ -134,7 +148,7 @@ let
 	*/
 	darwinSystem = {
 		nixpkgs ? <nixpkgs>,
-		nix-darwin ? fetchGit "https://github.com/LnL7/nix-darwin",
+		nix-darwin ? lookupPathOr "nix-darwin" (fetchGit "https://github.com/LnL7/nix-darwin"),
 		system ? builtins.currentSystem or null,
 		configuration,
 	}: import nix-darwin {
@@ -142,7 +156,7 @@ let
 	};
 
 	evalDarwin = {
-		nix-darwin ? fetchGit "https://github.com/LnL7/nix-darwin",
+		nix-darwin ? lookupPathOr "nix-darwin" (fetchGit "https://github.com/LnL7/nix-darwin"),
 		system ? builtins.currentSystem or null,
 		modules,
 	}: let
