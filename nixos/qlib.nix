@@ -88,6 +88,13 @@ let
 				overriden.__attrs
 	;
 
+	/** Assumes that your overrides compose in any order. Which is *probably* true. */
+	mkOverrides = overrideSets: pkg: let
+		folder = acc: overrider: overrideArgs: let
+			overrideFn = acc.${overrider} or (throw "package ${pkg.name} does not an override method '${overrider}'");
+		in overrideFn overrideArgs;
+	in lib.foldlAttrs folder pkg overrideSets;
+
 	/**
 	Generate a suitable for passing to `mount -o` or the fs_mntops field of fstab entries
 	from a structured representation of the options.
@@ -231,5 +238,6 @@ in {
 		evalNixos
 		darwinSystem
 		evalDarwin
+		mkOverrides
 	;
 }
