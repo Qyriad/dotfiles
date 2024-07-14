@@ -26,6 +26,7 @@ if exists('g:tagbar_sort')
 	unlet g:tagbar_sort
 endif
 
+nnoremap <leader>gr <Cmd>Telescope lsp_references<CR>
 
 lua << EOF
 
