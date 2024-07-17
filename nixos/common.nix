@@ -47,6 +47,8 @@
 
 	# Other packages we want available on all systems.
 	environment.systemPackages = with pkgs; [
+		# Include xonsh's Python
+		qyriad.xonsh.python
 		# The normal bash isn't bash-interactive lol.
 		bashInteractive
 		tmux
