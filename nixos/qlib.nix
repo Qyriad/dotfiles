@@ -239,5 +239,6 @@ in {
 		darwinSystem
 		evalDarwin
 		mkOverrides
+		removeAttrs'
 	;
 }
