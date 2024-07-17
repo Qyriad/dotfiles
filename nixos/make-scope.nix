@@ -25,6 +25,7 @@ in lib.makeScope pkgs.newScope (self: {
 		strace-with-colors
 		cinny
 		otree
+		cyme
 		python-pipe
 		xontrib-abbrevs
 		xonsh-direnv
