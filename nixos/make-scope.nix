@@ -86,5 +86,15 @@ in lib.makeScope pkgs.newScope (self: {
 	#});
 	#unpackDrvSrc = drv: self.unpackSource { inherit (drv.src) url; };
 
+	glances = pkgs.glances.overridePythonAttrs (prev: {
+		propagatedBuildInputs = with pkgs.python3Packages; prev.propagatedBuildInputs ++ [
+			batinfo
+			nvidia-ml-py
+			pysmart-smartx
+			wifi
+			zeroconf
+		];
+	});
+
 	qlib = import ./qlib.nix { inherit lib; };
 })
