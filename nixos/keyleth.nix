@@ -23,5 +23,6 @@
     nil
     nix-output-monitor
     nix-index
+    rustup
   ];
 }
