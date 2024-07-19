@@ -35,6 +35,9 @@
 			IOWeight = 20;
 			MemoryAccounting = true;
 			IOAccounting = true;
+			# Make the nix-daemon not kill our computer, at all costs.
+			IOSchedulingClass = lib.mkForce "idle";
+			IOSchedulingPriority = lib.mkForce 7; # Lowest priority.
 		};
 	};
 
