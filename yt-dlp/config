@@ -10,5 +10,6 @@
 --embed-metadata
 --embed-chapters
 --embed-info-json
---xattrs
+#--xattrs
+--write-playlist-metafiles
 --sponsorblock-mark sponsor
