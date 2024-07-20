@@ -115,7 +115,7 @@ function on_lsp_attach(bufnr, client_id)
 		{ 'K',  vim.lsp.buf.hover },
 		{ '<CR>',  vim.lsp.buf.hover },
 		{ 'gi', telescope.builtin.lsp_implementations },
-		--{ '<C-k>', vim.lsp.buf.signature_help, "i" },
+		{ '<C-k>', vim.lsp.buf.signature_help, "i" },
 		{ '<leader>D', telescope.builtin.lsp_type_definitions },
 		{ '<leader>a', require("code_action_menu").open_code_action_menu },
 		-- tw for "telescope workspace"
@@ -140,8 +140,8 @@ function on_lsp_attach(bufnr, client_id)
 
 	if client.name == "clangd" then
 		vim.keymap.set("n", "<leader>sh", vim.cmd.ClangdSwitchSourceHeader)
-		require("clangd_extensions.inlay_hints").setup_autocmd()
-		require("clangd_extensions.inlay_hints").set_inlay_hints()
+		--require("clangd_extensions.inlay_hints").setup_autocmd()
+		--require("clangd_extensions.inlay_hints").set_inlay_hints()
 	end
 
 	if client.name == 'nil_ls' then
