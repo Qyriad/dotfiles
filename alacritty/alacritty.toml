@@ -39,7 +39,8 @@ hide_when_typing = false
 multiplier = 1
 
 [shell]
-args = ["--login", "-c", "xonsh"]
+#args = ["--login", "-c", "xonsh"]
+args = ["--login"]
 program = "zsh"
 
 [window]
