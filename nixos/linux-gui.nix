@@ -118,7 +118,7 @@
 		ksshaskpass
 		opera
 		obsidian
-		vesktop
+		qyriad.vesktop
 		calibre
 		kicad
 		krita

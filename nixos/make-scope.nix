@@ -96,5 +96,11 @@ in lib.makeScope pkgs.newScope (self: {
 		];
 	});
 
+	vesktop = pkgs.vesktop.overrideAttrs (prev: {
+		desktopItems = lib.forEach prev.desktopItems (item: item.override {
+			exec = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --use-wayland-ime %U";
+		});
+	});
+
 	qlib = import ./qlib.nix { inherit lib; };
 })
