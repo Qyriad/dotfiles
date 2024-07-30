@@ -26,6 +26,7 @@
 		javascript-typescript-langserver
 		nil
 		lua-language-server
+		zls
 		bear
 		universal-ctags
 		nix-doc
