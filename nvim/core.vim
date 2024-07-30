@@ -286,6 +286,9 @@ nmap dst dt<<Plug>Dsurround>
 " 'Delete after comma'
 nnoremap <leader>da, viwf,ld
 
+ "Visual select to after <noun>.
+"nnoremap <leader>vt
+
 " Delete an assignment.
 nnoremap da= vf=ld
 
@@ -314,6 +317,16 @@ function! InvertR() abort
 	if &formatoptions =~# "r"
 		setlocal formatoptions-=r
 	else
+		setlocal formatoptions+=r
+	endif
+endfunction
+
+function! InvertRAndEcho() abort
+	if &formatoptions =~# "r"
+		echomsg "Comment continuation off"
+		setlocal formatoptions-=r
+	else
+		echomsg "Comment continuation on"
 		setlocal formatoptions+=r
 	endif
 endfunction
@@ -364,6 +377,36 @@ augroup END
 
 "nnoremap <expr> o (v:lua.doc_format_options() ? "i\<esc>o" : "o") " Need to decide if I want this one
 inoremap <expr> <CR> (v:lua.doc_format_options() ? "\<CR>" : "\<CR>")
+
+
+" Okay okay wait, let's try a more flexible version of the "I only want fo+=r for a sec"
+let g:insert_r_inverted = v:false
+function! CheckInvertedR() abort
+	if g:insert_r_inverted == v:true
+		setlocal formatoptions-=r
+		echomsg "Comment continuation off"
+	endif
+endfunction
+augroup CheckInvertedR
+	autocmd! InsertLeave * call CheckInvertedR()
+augroup END
+lua << EOF
+function invert_r_temporarily()
+	local current_r = vim.opt_local.formatoptions:get().r
+	-- Will be either nil or false, the two falsey values.
+	if not current_r then
+		vim.cmd.echomsg [["Comment continuation on"]]
+		vim.opt_local.formatoptions:append { r = true }
+	else
+		vim.cmd.echomsg [["Comment continuation off"]]
+		vim.opt_local.formatoptions:append { r = false }
+	end
+	vim.g.insert_r_inverted = true
+end
+
+-- <A-d> for "_D_oc-comment... or something"
+vim.keymap.set('i', '<A-d>', invert_r_temporarily)
+EOF
 
 command! -range=% Interleave execute 'keeppatterns' (<line2>-<line1>+1)/2+<line1> ',' <line2> 'g/^/<line1> move -1'
 
