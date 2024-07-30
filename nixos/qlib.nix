@@ -119,7 +119,10 @@ let
 	drvListByName =
 		list:
 			assert lib.assertMsg (lib.isList list) "drvListToAttrs passed non-list ${toString list}";
-			lib.listToAttrs (lib.forEach list (drv: { name = drv.pname or drv.name; value = drv; }))
+			lib.listToAttrs (lib.forEach list (drv: {
+				name = drv.pname or drv.name;
+				value = drv;
+			}))
 	;
 
 	/** Like lib.genAttrs, but allows the name to be changed. */
