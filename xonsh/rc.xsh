@@ -258,6 +258,7 @@ aliases['userctl'] = 'systemctl --user'
 aliases["busctl"] = ["busctl", "--full", "--verbose"]
 aliases['ins'] = 'insect'
 aliases['silicon'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
+aliases["moaro"] = [$PAGER, "-quit-if-one-screen"]
 aliases['jg'] = 'jj'
 aliases['jgn'] = 'jj --ignore-working-copy --no-pager'
 aliases['hyfetch'] = 'env SHELL=xonsh hyfetch'
@@ -439,9 +440,6 @@ def _xonsh_dev_env(installable):
 			![xonsh --rc ~/.config/xonsh/rc.xsh @(xonshrc.name)]
 
 aliases['nix-devenv'] = _xonsh_dev_env
-#aliases['nix-json-to-raw'] = """
-#	jq '. | map(.fields[0]) | map(select(type == "string")) | join("\n")' --raw-output --slurp
-#""".strip()
 aliases['nix-internal-to-json'] = [
 	'sed',
 	's/^@nix //',
@@ -494,7 +492,6 @@ bashcomp = __xonsh__.completers['bash']
 #__xonsh__.completers["gac"] = _gac_complete
 #__xonsh__.completers.move_to_end("gac", last=False)
 
-import xonsh
 from xonsh.completers.tools import *
 from xonsh.parsers.completion_context import CommandArg
 @contextual_completer
