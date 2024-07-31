@@ -56,7 +56,7 @@ pulse
 Trolltech.conf
 menus/
 Code/User/workspace*
-vim/plugins
+/vim/plugins
 spotify
 libreoffice
 systemd/*
