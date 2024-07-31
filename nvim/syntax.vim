@@ -157,5 +157,21 @@ use {
 	'nvim-treesitter/nvim-treesitter-textobjects',
 	after = 'nvim-treesitter',
 }
+use {
+	'phelipetls/jsonpath.nvim',
+	ft = {"json"},
+	config = function()
+		jsonpath = require("jsonpath")
+		-- FIXME: we're planning on switching statusline plugins;
+		-- we'll setup how we do winbar stuff properly then.
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "json",
+			once = true,
+			callback = function(details)
+				vim.opt_local.winbar = "%#jsonKeyword#%{%v:lua.jsonpath.get()%}"
+			end,
+		})
+	end,
+}
 
 EOF
