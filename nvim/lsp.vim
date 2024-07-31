@@ -268,13 +268,20 @@ use {
 -- Make LSP stuff for Neovim's Lua work correctly.
 use {
 	'folke/neodev.nvim',
+	ft = { "vim", "lua" },
 	opts = { },
 }
-use { 'nanotee/nvim-lsp-basics', lazy = true }
-use { 'weilbith/nvim-code-action-menu', lazy = true }
+use { 'nanotee/nvim-lsp-basics', event = "LspAttach" }
+use { 'weilbith/nvim-code-action-menu', event = "LspAttach" }
+use {
+	'dgagn/diagflow.nvim',
+	event = 'LspAttach',
+	opts = { },
+}
 use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
 use {
 	'simrat39/rust-tools.nvim',
+	lazy = true,
 	ft = "rust",
 	opts = {
 		cmd = { "rust_analyzer" },
