@@ -11,6 +11,7 @@ rec {
   nixos = qyriad.nixosConfigurations.${builtins.getEnv "HOSTNAME"};
   inherit (pkgs) lib qlib;
   f = builtins.getFlake "git+file:${builtins.getEnv "PWD"}";
-  local = import ./. { };
+  #local = import ./. { };
+  local = import (builtins.getEnv "PWD") { };
   currentSystem = info.currentSystem;
 }
