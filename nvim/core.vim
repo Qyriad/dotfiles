@@ -55,9 +55,9 @@ set cinoptions=l1,j1,(4,W4
 set formatoptions=cj
 " Don't display . on folds.
 let &fillchars = "fold: "
-" Use ⇥ to indicate tabs, a - for trailing whitespace, and · for multiple leading spaces.
+" Use » to indicate tabs, a - for trailing whitespace, and · for multiple leading spaces.
 set list
-let &listchars = "tab:\u21e5 ,trail:-,nbsp:+,leadmultispace:\u00b7"
+let &listchars = "tab:\u00bb ,trail:-,nbsp:+,leadmultispace:\u00b7"
 set diffopt=algorithm:patience
 set fsync " Syncs the filesystem after :write.
 
