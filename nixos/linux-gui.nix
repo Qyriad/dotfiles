@@ -132,7 +132,7 @@
 		cifs-utils
 		nfs-utils
 		ntfs3g
-		sequoia
+		#sequoia
 		sioyek
 		neochat
 		fluffychat
@@ -148,7 +148,7 @@
 		#mattermost-desktop
 		qyriad.cinny
 		firefoxpwa
-		darling
+		#darling
 		glibc.debug
 		qt6.qtbase
 		# Broken after the Python 3.12 migration for some reason. Check back later.

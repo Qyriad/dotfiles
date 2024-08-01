@@ -99,7 +99,7 @@
 		any-nix-shell
 		qyriad.niz
 		qyriad.pzl
-		qyriad.xil
+		#qyriad.xil
 		bat
 		ncdu
 		lnav
