@@ -23,6 +23,9 @@ let g:python_highlight_space_errors = 1
 let g:python_highlight_class_vars = 1
 "let g:python_highlight_func_calls = 1
 
+" Fuck off.
+let g:zig_fmt_autosave = v:false
+
 lua <<EOF
 vim.g.python_indent = {
 	closed_paren_align_last_line = false,
