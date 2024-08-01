@@ -55,6 +55,9 @@ set cinoptions=l1,j1,(4,W4
 set formatoptions=cj
 " Don't display . on folds.
 let &fillchars = "fold: "
+" Use ⇥ to indicate tabs, a - for trailing whitespace, and · for multiple leading spaces.
+set list
+let &listchars = "tab:\u21e5 ,trail:-,nbsp:+,leadmultispace:\u00b7"
 set diffopt=algorithm:patience
 set fsync " Syncs the filesystem after :write.
 
@@ -120,11 +123,8 @@ command! NoPagerMode call NoPagerMode()
 augroup PagerMode
 	autocmd!
 	autocmd OptionSet modifiable if v:option_new == v:false | call PagerMode() | endif
-	autocmd OptionSet modifiable if v:option_new == v:false | call PagerMode() | endif
+	autocmd OptionSet modifiable if v:option_new == v:true | call NoPagerMode() | endif
 augroup END
-
-"let &listchars = "tab:\u21e5 ,trail:-,nbsp:+"
-set listchars=tab:\\u21e5\ ,trail:-,nbsp:+
 
 
 """ Filetype overrides.

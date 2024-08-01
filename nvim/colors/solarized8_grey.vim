@@ -25,6 +25,9 @@ highlight CursorLine guibg=#13282d
 highlight Constant ctermfg=37 guifg=#2aa1bb
 highlight String ctermfg=37 guifg=#2aa198
 
+" Make 'listchars' characters less conspicuous.
+highlight Whitespace cterm=NONE ctermfg=239 gui=NONE guifg=#323334
+
 " Make doc-comments be highlighted specially again.
 highlight link @lsp.mod.documentation SpecialComment
 highlight link @comment.documentation SpecialComment
