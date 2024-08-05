@@ -41,6 +41,7 @@ lsp_filetypes = {
 	"c",
 	"cpp",
 	"rust",
+	"zig",
 	"python",
 	"swift",
 	"java",
@@ -51,7 +52,25 @@ lsp_filetypes = {
 	"nix",
 }
 
-lsp_opts = { }
+lsp_opts = {
+	clangd = {
+		trace = {
+			server = "verbose"
+		},
+		cmd = {
+			"clangd",
+			"--rename-file-limit=100",
+		},
+	},
+	lua_ls = {
+		diagnostics = {
+			globals = { 'vim' },
+		},
+		workspace = {
+			library = vim.api.nvim_get_runtime_file("", true),
+		},
+	},
+}
 
 lspconfig_modules = {
 	vim = "vimls",
@@ -61,10 +80,13 @@ lspconfig_modules = {
 	java = "jdtls",
 	html = "html",
 	swift = "sourcekit",
-	javascript = "tsserver",
-	typescript = "tsserver",
+	--javascript = "tsserver",
+	--typescript = "tsserver",
+	javascript = "denols",
+	typescript = "denols",
 	lua = "lua_ls",
 	nix = "nil_ls",
+	zig = "zls",
 }
 
 -- Create autocommands to call setup() on the corresponding module when that filetype is detected.
@@ -83,14 +105,6 @@ for i, filetype in ipairs(lsp_filetypes) do
 					-- TODO: allow server-specific config.
 					vim.notify("lspconfig." .. submodule_name .. ".setup()", vim.log.levels.TRACE)
 					local opts = lsp_opts[submodule_name] or {}
-					opts.capabilities = require("coq").lsp_ensure_capabilities({})
-					opts.capabilities.textDocument = {
-						completion = {
-							completionItem = {
-								snippetSupport = false,
-							},
-						},
-					}
 					submodule.setup(opts)
 				end
 			end
@@ -108,6 +122,8 @@ function on_lsp_attach(bufnr, client_id)
 	local client = vim.lsp.get_client_by_id(client_id)
 	vim.notify(string.format("LSP %s attached to %d", client.name or "<unknown>", bufnr))
 
+	require('lsp_compl').attach(client, bufnr)
+
 	local bufopts = { noremap = true, buffer = bufnr }
 	local mappings = {
 		{ 'gD', vim.lsp.buf.declaration },
@@ -117,7 +133,7 @@ function on_lsp_attach(bufnr, client_id)
 		{ 'gi', telescope.builtin.lsp_implementations },
 		{ '<C-k>', vim.lsp.buf.signature_help, "i" },
 		{ '<leader>D', telescope.builtin.lsp_type_definitions },
-		{ '<leader>a', require("code_action_menu").open_code_action_menu },
+		{ '<leader>a', vim.lsp.buf.code_action },
 		-- tw for "telescope workspace"
 		{ '<leader>tw', telescope.builtin.lsp_dynamic_workspace_symbols },
 		-- Diagnostics.
@@ -162,15 +178,11 @@ function on_lsp_attach(bufnr, client_id)
 	})
 
 	require("lsp_basics").make_lsp_commands(client, bufnr)
-	if vim.g.loaded_coq ~= true then
-		require("coq").Now("-s")
-		vim.g.loaded_coq = true
-	end
 
 	-- Make `vim.lsp.log` available for our convenience.
-	if vim.lsp.log == nil then
-		vim.lsp.log = require("vim.lsp.log")
-	end
+	--if vim.lsp.log == nil then
+	--	vim.lsp.log = require("vim.lsp.log")
+	--end
 
 	-- The LSP-provided tagfunc causes more problems than it solves.
 	-- It takes precedence over tag files, and if we *have* tag files in a workspace where we have LSP,
@@ -185,24 +197,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		on_lsp_attach(args.buf, args.data.client_id)
 	end,
 })
-
-vim.g.coq_settings = {
-	clients = {
-		snippets = {
-			-- Disable warnings about snippets.
-			warn = { }
-		},
-		buffers = {
-			enabled = false,
-		},
-		tmux = {
-			enabled = false,
-		},
-		tags = {
-			enabled = false,
-		},
-	},
-}
 
 function client_by_name(name)
 	if type(name) ~= "string" then
@@ -261,9 +255,8 @@ use {
 	priority = 60,
 }
 use {
-	'ms-jpq/coq_nvim',
-	event = "LspAttach",
-	--ft = lsp_filetypes,
+	'mfussenegger/nvim-lsp-compl',
+	event = 'LspAttach',
 }
 -- Make LSP stuff for Neovim's Lua work correctly.
 use {
@@ -278,6 +271,8 @@ use {
 	event = 'LspAttach',
 	opts = { },
 }
+use { 'nanotee/nvim-lsp-basics', lazy = true }
+--use { 'weilbith/nvim-code-action-menu', lazy = true }
 use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
 use {
 	'simrat39/rust-tools.nvim',
@@ -305,7 +300,11 @@ use {
 use {
   "ray-x/lsp_signature.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+	toggle_key = '<C-s>',
+	floating_window_above_cur_line = true,
+	fix_pos = true,
+  },
   config = function(_, opts) require'lsp_signature'.setup(opts) end
 }
 EOF
