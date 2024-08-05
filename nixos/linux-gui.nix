@@ -160,6 +160,9 @@
 		wayvnc
 		wev
 		seer
+		obs-studio
+		v4l-utils
+		gajim
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
