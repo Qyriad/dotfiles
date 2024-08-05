@@ -2,6 +2,9 @@
 " Configuration of Neovim-builtin syntax stuff.
 "
 
+" Highlighted as an error in our colorscheme.
+match TrailingWhitespace /\s\+$/
+
 " Fold augroups, functions, Lua, and Python
 let g:vimsyn_folding = 'aflP'
 " Support embedded Lua and Python.
@@ -86,13 +89,6 @@ treesitter_configs_setup = {
 	context_commentstring = true,
 }
 EOF
-
-
-augroup winenter_whitespaceeol
-	autocmd!
-	autocmd WinEnter * match Error /\s\+$/
-	"autocmd WinEnter * highlight link WhitespaceEOL Error
-augroup END
 
 lua << EOF
 use { 'Shirk/vim-gas', ft = "gas" }

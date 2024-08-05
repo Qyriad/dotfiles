@@ -23,7 +23,7 @@ highlight CursorLine guibg=#13282d
 
 " Differentiate between constants and string literals.
 highlight Constant ctermfg=37 guifg=#2aa1bb
-highlight String ctermfg=37 guifg=#2aa198
+highlight String   ctermfg=37 guifg=#2aa198
 
 " Make 'listchars' characters less conspicuous.
 highlight Whitespace cterm=NONE ctermfg=239 gui=NONE guifg=#323334
@@ -36,3 +36,5 @@ highlight link @lsp.type.typeAlias Typedef
 
 " Idk what's up with this one.
 highlight! link @variable Identifier
+
+highlight! link TrailingWhitespace Error
