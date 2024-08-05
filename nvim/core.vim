@@ -111,8 +111,8 @@ function! PagerMode() abort
 endfunction
 
 function! NoPagerMode() abort
-	nunmap <buffer> J
-	nunmap <buffer> K
+	silent nunmap <buffer> J
+	silent nunmap <buffer> K
 endfunction
 
 command! PagerMode call PagerMode()
@@ -123,7 +123,7 @@ command! NoPagerMode call NoPagerMode()
 augroup PagerMode
 	autocmd!
 	autocmd OptionSet modifiable if v:option_new == v:false | call PagerMode() | endif
-	autocmd OptionSet modifiable if v:option_new == v:true | call NoPagerMode() | endif
+	"autocmd OptionSet modifiable if v:option_new == v:true | call NoPagerMode() | endif
 augroup END
 
 
