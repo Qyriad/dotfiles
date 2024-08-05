@@ -146,6 +146,11 @@ use {
 	lazy = false,
 	opts = {
 		max_lines = 3,
+		on_attach = function(bufnr)
+			if vim.bo[bufnr].filetype == "markdown" then
+				return false
+			end
+		end,
 	},
 }
 use {
