@@ -39,6 +39,7 @@
 	track = add -N
 	su = status --untracked-files=no
 	si = status --untracked-files=no
+	cb = branch --show-current
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
