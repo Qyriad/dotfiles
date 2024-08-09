@@ -135,5 +135,6 @@
 		qyriad.cyme
 		srgn
 		jujutsu
+		repgrep
 	] ++ config.fonts.packages; # I want font stuff to also be in /run/current-system please.
 }
