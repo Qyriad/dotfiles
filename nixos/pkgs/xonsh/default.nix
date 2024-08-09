@@ -18,12 +18,13 @@ let
       py.jsondiff
       py.setproctitle
       py.httpx
+      py.tqdm
       xonsh-direnv
       xontrib-abbrevs
       python-pipe
     ];
 
-    xonsh = pkgs.xonsh.overridePythonAttrs { dontWrapPythonPrograms = true; };
+    #xonsh = pkgs.xonsh.overridePythonAttrs { dontWrapPythonPrograms = true; };
   };
 
 in xonshEnv
