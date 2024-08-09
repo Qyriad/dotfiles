@@ -284,6 +284,9 @@ lazy.setup(plugin_spec, {
 	},
 })
 
+-- Let us use :Lazy commands right after startup, like for `nvim -c`.
+require('lazy.view.commands').setup()
+
 -- With the below autocommand, will record Neovim's startup time.
 --function record()
 --	io.open("/tmp/stats.txt", "w+"):write(tostring(require("lazy").stats().startuptime) .. "\n")
