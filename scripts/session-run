@@ -27,11 +27,12 @@ def main():
 
     cmd = args.cmd
     cmdname = cmd[0]
+    setenv = args.setenv if args.setenv is not None else []
 
     localnow = datetime.now().astimezone().strftime('systemdrun-%Hh-%Mm')
     unit_name = f'{localnow}-{cmdname}'
 
-    env_args = [f'--setenv={entry}' for entry in args.setenv]
+    env_args = [f'--setenv={entry}' for entry in setenv]
 
     run_args = ['systemd-run', '--user', '--collect', '--same-dir', '--slice=app.slice', f'--unit={unit_name}', *env_args, *cmd]
     eprint('\x1b[1m{}'.format(shlex.join(run_args)))
