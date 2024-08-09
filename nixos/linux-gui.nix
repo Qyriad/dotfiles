@@ -51,6 +51,10 @@
 	# "A stop job is running for X11—" fuck off.
 	systemd.services.display-manager.serviceConfig.TimeoutStopSec = "10";
 
+	# Enabling a display manager automatically enables a text to speech daemon, in NixOS,
+	# but we don't need this.
+	services.speechd.enable = false;
+
 	xdg.portal = {
 		enable = true;
 		#extraPortals = [
