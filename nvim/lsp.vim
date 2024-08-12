@@ -78,17 +78,13 @@ nnoremap <leader>sh <Cmd>ClangdSwitchSourceHeader<CR>
 
 lua << EOF
 
-function close_all_float()
-	local wins = vim.api.nvim_list_wins()
-	for _, winid in ipairs(wins) do
-		local win = vim.api.nvim_win_get_config(winid)
-		if win.relative ~= "" then
-			vim.api.nvim_win_close(winid, false)
-		end
-	end
+function lsp_quiet()
+	-- This function is called in map-expr context, where we can't change text in
+	-- buffers. The signature floating window is also a buffer, so that applies.
+	vim.defer_fn(p.lspsignature.toggle_float_win, 0)
+	return vim.keycode('<C-e>')
 end
-
-vim.keymap.set('i', '<C-f>', close_all_float)
+vim.keymap.set('i', '<C-s>', lsp_quiet, { expr = true })
 
 vim.lsp.log = require('vim.lsp.log')
 vim.lsp.protocol = require('vim.lsp.protocol')
@@ -325,9 +321,9 @@ use {
 }
 use {
   "ray-x/lsp_signature.nvim",
-  event = "VeryLazy",
+  event = "LspAttach",
   opts = {
-	toggle_key = '<C-s>',
+	toggle_key_flip_floatwin_setting = true,
 	floating_window_above_cur_line = true,
 	fix_pos = true,
   },
