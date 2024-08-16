@@ -16,7 +16,9 @@
 	qyriad-nur' = import qyriad-nur { inherit pkgs; };
 	xil' = import xil { inherit pkgs; };
 
-in lib.makeScope pkgs.newScope (self: {
+in lib.makeScope pkgs.newScope (self: let
+	inherit (self) qlib;
+in {
 	inherit xonsh-source;
 	xonsh = self.callPackage ./pkgs/xonsh { };
 
