@@ -417,12 +417,22 @@ endfunction
 
 command! -nargs=+ -complete=command Redir call Redir(<Q-Args>)
 
-function! Notify(command) abort
-	call v:lua.vim.notify(execute(a:command))
-endfunction
+"function! Notify(command) abort
+"	" vim.api.nvim_exec2('jumps', { output = true })
+"	lua vim.notify(vim.api.nvim_exec2(command, { output = true }).output)
+"	"call v:lua.vim.notify(execute(a:command))
+"endfunction
+
+lua <<EOF
+function notify_impl(command)
+	vim.print({ command = command })
+	vim.notify(vim.api.nvim_exec2(command, { output = true }).output)
+end
+EOF
 
 " Run a command and show its output as a notification.
-command! -nargs=+ -complete=command Notify call Notify(<Q-Args>)
+command! -nargs=+ -complete=command Notify call v:lua.notify_impl(<Q-Args>)
+command! Jumps Notify jumps
 
 """ Implementation for :Bload
 function! Bload(...) abort
