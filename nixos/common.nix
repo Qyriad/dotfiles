@@ -13,7 +13,7 @@
 	#];
 	nix = {
 		settings = {
-			experimental-features = [ "nix-command" "flakes" ];
+			experimental-features = [ "nix-command" "flakes" "pipe-operator" ];
 
 			extra-substituters = [
 				"https://cache.lix.systems"
