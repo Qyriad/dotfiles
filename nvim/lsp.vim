@@ -70,8 +70,8 @@ nnoremap <leader>tw <Cmd>Telescope lsp_dynamic_workspace_symbols<CR>
 nnoremap <leader>e <Cmd>call v:lua.vim.diagnostic.open_float()<CR>
 nnoremap <leader>td <Cmd>Telescope diagnostics<CR>
 nnoremap <leader>tr <Cmd>Telescope lsp_references<CR>
-nnoremap [d <Cmd>call v:lua.diagnostic.goto_prev()<CR>
-nnoremap ]d <Cmd>call v:lua.diagnostic.goto_next()<CR>
+nnoremap [d <Cmd>call v:lua.vim.diagnostic.goto_prev()<CR>
+nnoremap ]d <Cmd>call v:lua.vim.diagnostic.goto_next()<CR>
 nnoremap <leader>h <Cmd>v:lua.lsp.buf.document_highlight()<CR>
 nnoremap <leader>c <Cmd>v:lua.lsp.buf.clear_references()<CR>
 nnoremap <leader>sh <Cmd>ClangdSwitchSourceHeader<CR>
