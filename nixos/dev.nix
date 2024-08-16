@@ -25,6 +25,7 @@
 		nodePackages.vim-language-server
 		javascript-typescript-langserver
 		nil
+		nixd
 		lua-language-server
 		zls
 		bear
@@ -34,6 +35,9 @@
 		#rust-analyzer
 		#rustfmt
 		#cargo
+		cargo-limit
+		cargo-info
+		cargo-clone
 		#rustc
 		git-gr
 		git-imerge
@@ -48,5 +52,7 @@
 		shellcheck
 		nodePackages.prettier
 		awscli2
+		pkgdiff
+		ast-grep
 	];
 }
