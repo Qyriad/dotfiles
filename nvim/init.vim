@@ -67,16 +67,27 @@ nnoremap ]g <Cmd>lua gitsigns.next_hunk({ preview = true })<CR>
 nnoremap [g <Cmd>lua gitsigns.prev_hunk({ preview = true })<CR>
 nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
 
-lua << EOF
+nnoremap <leader>tg <Cmd>Telescope git_files<CR>
+nnoremap <leader>tb <Cmd>Telescope buffers<CR>
+nnoremap <C-p> <Cmd>lua telescope.builtin.buffers { sort_mru = true }<CR>
+nnoremap <C-p> <Cmd>Telescope buffers sort_mru=true<CR>
+nnoremap <leader>tm <Cmd>Telescope marks<CR>
+nnoremap <leader>tt <Cmd>Telescope tags<CR>
+nnoremap <leader>tl <Cmd>Telescope loclist<CR>
+
+lua <<EOF
+function _hl_cursor_col()
+	vim.wo.cursorcolumn = true
+	local function curcol_off()
+		vim.wo.cursorcolumn = false
+	end
+	vim.defer_fn(curcol_off, vim.o.timeoutlen)
+end
+
 -- Highlight the cursor's column, briefly
-vim.keymap.set("n", "<leader>hh", function()
-		vim.wo.cursorcolumn = true
-		vim.defer_fn(function() vim.wo.cursorcolumn = false end, vim.o.timeoutlen)
-	end,
-	{
-		desc = "highlight the cursor's column, briefly"
-	}
-)
+vim.keymap.set("n", "<leader>hh", _hl_cursor_col, {
+	desc = "highlight the cursor's column, briefly"
+})
 
 function what_indent()
 	local lines = {}
