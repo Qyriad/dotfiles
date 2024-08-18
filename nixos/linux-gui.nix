@@ -116,6 +116,7 @@
 
 	environment.systemPackages = with pkgs; [
 		libinput
+		libva-utils
 		alacritty
 		wezterm
 		mpv
@@ -168,6 +169,7 @@
 		obs-studio
 		v4l-utils
 		gajim
+		#inlyne
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
