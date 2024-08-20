@@ -71,8 +71,13 @@
 		/** NixOS module for configs defined in this flake.
 		 This is the only module that relies on flakeyness directly.
 		*/
-		flake-module = { ... }: {
+		flake-module = { lib, ... }: {
+			imports = [ ./nixos/modules/keep-paths.nix ];
+
 			nixpkgs.overlays = [ self.overlays.default ];
+
+			# Prevent our flake input trees from being garbage collected.
+			storePathsToKeep = lib.attrValues inputs;
 
 			# Point "qyriad" to this here flake.
 			nix.registry.qyriad = {
