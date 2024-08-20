@@ -3,35 +3,53 @@
 { config, pkgs, ... }:
 
 {
-	fileSystems = let
-		mountOpts = pkgs.qlib.genMountOpts {
-			# Try to automatically mount, but don't block boot on it.
+	systemd.mounts = let
+		shizueOpts = pkgs.qlib.genMountOpts {
 			auto = null;
-			nofail = null;
 			_netdev = null;
-			"x-systemd.idle-timeout" = "300s";
-			"x-systemd.mount-timeout" = "5s";
-			"x-systemd.requires" = "network-online.target";
-			"x-systemd.after" = "network-online.target";
 			credentials = "/etc/secrets/shizue.cred";
 			gid = "users";
 			file_mode = "0764";
 			dir_mode = "0775";
-			vers = "3";
-			#unix = null;
+			vers = "3.1.1";
 		};
-	in {
-		"/media/shizue/archive" = {
-			device = "//shizue/Archive";
-			fsType = "cifs";
-			options = [ mountOpts ];
+
+		media-shizue-media = {
+			type = "cifs";
+			what = "//shizue/Media";
+			where = "/media/shizue/media";
+
+			after = [ "network-online.target" "multi-user.target" ];
+			requires = [ "network-online.target" "multi-user.target" ];
+			wantedBy = [ "remote-fs.target" ];
+			mountConfig = {
+				TimeoutSec = "10s";
+				Options = shizueOpts;
+			};
+
+			unitConfig = {
+				StartLimitIntervalSec = "30s";
+				StartLimitBurst = "1";
+			};
 		};
-		"/media/shizue/media" = {
-			device = "//shizue/Media";
-			fsType = "cifs";
-			options = [ mountOpts ];
+
+		media-shizue-archive = {
+			type = "cifs";
+			what = "//shizue/Archive";
+			where = "/media/shizue/archive";
+
+			after = [ "network-online.target" "multi-user.target" ];
+			requires = [ "network-online.target" "multi-user.target" ];
+			wantedBy = [ "remote-fs.target" ];
+			mountConfig = {
+				TimeoutSec = "10s";
+				Options = shizueOpts;
+			};
 		};
-	};
+	in [
+		media-shizue-media
+		media-shizue-archive
+	];
 
 
 	# Enable GUI stuff.
