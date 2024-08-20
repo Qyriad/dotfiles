@@ -20,6 +20,19 @@
 	# "A stop job is running for X11—" fuck off.
 	systemd.services.display-manager.serviceConfig.TimeoutStopSec = "10";
 
+	# Plasma Shell also seems to not deal well with other user services
+	# crashing instead of stopping properly.
+	# Leave the start timeout at the default 40 seconds, but decrease the
+	# stop timeout to something real short.
+	systemd.user.services.plasma-plasmashell.serviceConfig = {
+		TimeoutStartSec = "40";
+		TimeoutStopSec = "10";
+	};
+	# And tbh let's just shorten the stop timeout for all user units a bit.
+	systemd.user.extraConfig = ''
+		DefaultTimeoutStopSec=20
+	'';
+
 	# Enabling a display manager automatically enables a text to speech daemon, in NixOS,
 	# but we don't need this.
 	services.speechd.enable = false;
