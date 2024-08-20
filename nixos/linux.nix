@@ -189,5 +189,9 @@
 		yubikey-manager
 		systeroid
 		poke
-	] ++ config.systemd.packages; # I want system services to also be in /run/current-system please.
+	]
+	++ config.systemd.packages # I want system services to also be in /run/current-system please.
+	++ config.services.udev.packages # Same for udev...
+	++ config.fonts.packages # and fonts...
+	++ config.console.packages; # and including console fonts too.
 }
