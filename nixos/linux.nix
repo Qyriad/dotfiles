@@ -9,6 +9,9 @@
 		efi.efiSysMountPoint = "/boot/efi";
 	};
 
+	# We want sysrqs to work.
+	boot.kernelParams = [ "sysrq_always_enabled" ];
+
 	# Yes mount /tmp as a tmpfs.
 	boot.tmp.useTmpfs = true;
 

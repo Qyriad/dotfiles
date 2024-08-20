@@ -19,6 +19,17 @@
 in lib.makeScope pkgs.newScope (self: let
 	inherit (self) qlib;
 in {
+	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
+	# which do things like check man pages and patch ELFs.
+	runCommandMinimal = name: attrs: text: let
+		userPreHook = if attrs ? preHook then attrs.preHook + "\n" else "";
+		attrs' = attrs // {
+			preHook = userPreHook + ''
+				defaultNativeBuildInputs=()
+			'';
+		};
+	in pkgs.runCommandLocal name attrs' text;
+
 	inherit xonsh-source;
 	xonsh = self.callPackage ./pkgs/xonsh { };
 
