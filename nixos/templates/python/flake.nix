@@ -1,29 +1,30 @@
 {
-  inputs = {
-    nixpkgs.url = "nixpkgs";
-    flake-utils.url = "flake-utils";
-  };
+	inputs = {
+		nixpkgs.url = "nixpkgs";
+		flake-utils.url = "flake-utils";
+	};
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-        inherit (builtins) attrValues;
+	outputs = {
+		self,
+		nixpkgs,
+		flake-utils,
+	}: flake-utils.lib.eachDefaultSystem (system: let
 
-        foo = pkgs.callPackage ./. { };
+		pkgs = import nixpkgs { inherit system; };
 
-      in {
-        packages.default = foo;
-        devShells.default = pkgs.mkShell {
-          inputsFrom = [
-            foo
-          ];
-          packages = attrValues {
-            inherit (pkgs)
-              pyright
-            ;
-          };
-        };
-      }
-    )
-  ; # outputs
+		PROJECT_NAME = import ./default.nix { inherit pkgs; };
+
+	in {
+		packages = {
+			default = PROJECT_NAME;
+			inherit PROJECT_NAME;
+
+			devShells.default = pkgs.callPackage PROJECT_NAME.mkDevShell { };
+
+			checks = {
+				package = self.packages.${system}.PROJECT_NAME;
+				devShell = self.devShells.${system}.default;
+			};
+		};
+	});
+}

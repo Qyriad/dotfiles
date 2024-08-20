@@ -23,7 +23,7 @@
 		devShells.default = pkgs.callPackage PROJECT_NAME.mkDevShell { };
 
 		checks = {
-			package = self.packages.${system}.git-point;
+			package = self.packages.${system}.PROJECT_NAME;
 			devShell = self.devShells.${system}.default;
 		};
 	}); # outputs

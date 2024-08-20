@@ -8,23 +8,26 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, flake-utils, crane }:
-		flake-utils.lib.eachDefaultSystem (system: let
+	outputs = {
+		self,
+		nixpkgs,
+		flake-utils,
+		crane,
+	}: flake-utils.lib.eachDefaultSystem (system: let
 
-			pkgs = import nixpkgs { inherit system; };
-			craneLib = import crane { inherit pkgs; };
+		pkgs = import nixpkgs { inherit system; };
+		craneLib = import crane { inherit pkgs; };
 
-			localPkgs = import ./default.nix { inherit pkgs craneLib; };
-			inherit (localPkgs) some-pkg;
+		localPkgs = import ./default.nix { inherit pkgs craneLib; };
+		inherit (localPkgs) some-pkg;
 
-		in {
-			packages = {
-				default = some-pkg;
-				inherit some-pkg;
-			};
+	in {
+		packages = {
+			default = some-pkg;
+			inherit some-pkg;
+		};
 
-			devShells.default = pkgs.callPackage some-pkg.mkDevShell { self = some-pkg; };
+		devShells.default = pkgs.callPackage some-pkg.mkDevShell { self = some-pkg; };
 
-		}) # eachDefaultSystem
-	; # outputs
+	}); # outputs
 }
