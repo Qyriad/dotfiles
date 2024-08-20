@@ -53,6 +53,11 @@
 		enable = true;
 		useRoutingFeatures = "both";
 	};
+	systemd.services.tailscaled.serviceConfig = {
+		# Tailscaled is a biiiit too logspamy, and it's pretty stable.
+		# We'll shove its logs to /var/log instead of our system journal.
+		StandardOutput = "file:/var/log/tailscaled.log";
+	};
 
 	services.xserver.xkb = {
 		layout = "us";
