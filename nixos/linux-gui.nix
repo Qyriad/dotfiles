@@ -24,10 +24,10 @@
 	# crashing instead of stopping properly.
 	# Leave the start timeout at the default 40 seconds, but decrease the
 	# stop timeout to something real short.
-	systemd.user.services.plasma-plasmashell.serviceConfig = {
-		TimeoutStartSec = "40";
-		TimeoutStopSec = "10";
-	};
+	#systemd.user.services.plasma-plasmashell.serviceConfig = {
+	#	TimeoutStartSec = "40";
+	#	TimeoutStopSec = "10";
+	#};
 	# And tbh let's just shorten the stop timeout for all user units a bit.
 	systemd.user.extraConfig = ''
 		DefaultTimeoutStopSec=20
