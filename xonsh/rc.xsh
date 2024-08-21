@@ -1,5 +1,6 @@
 # XXX VERY HACK for NixOS
-if p'/etc/static'.exists():
+import xonsh
+if xonsh.__path__[0].startswith('/nix/store'):
 	to_delete = []
 	for elem in $PATH:
 		if pf'{elem}/xonsh'.is_file() and not elem.startswith('/run'):
