@@ -9,7 +9,7 @@
 
 let
 
-  xonshEnv = pkgs.xonsh.wrapper.override {
+  xonshEnv = pkgs.xonsh.override {
     extraPackages = py: [
       py.unidecode
       py.psutil

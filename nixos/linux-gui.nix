@@ -35,7 +35,7 @@
 
 	# Enabling a display manager automatically enables a text to speech daemon, in NixOS,
 	# but we don't need this.
-	services.speechd.enable = false;
+	#services.speechd.enable = false;
 
 	xdg.portal = {
 		enable = true;
@@ -93,6 +93,8 @@
 
 	nixpkgs.config.permittedInsecurePackages = [
 		"electron-25.9.0" # For Obsidian
+		"olm-3.2.16" # For Cinny
+		"jitsi-meet-1.0.8043" # For Element
 	];
 
 
@@ -123,7 +125,7 @@
 		#sequoia
 		sioyek
 		neochat
-		fluffychat
+		#fluffychat
 		nheko
 		element-desktop
 		bitwig-studio
