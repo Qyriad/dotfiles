@@ -141,6 +141,53 @@ function get_extmarks_on_current_line(opts)
 	return ret
 end
 
+function save_tabpage_layout()
+	local wins = { }
+	for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+		local winconfig = vim.api.nvim_win_get_config(winid)
+		if winconfig.relative == '' then
+			wins[tostring(winid)] = winconfig
+		end
+	end
+
+	vim.t.saved_layout = wins
+
+	return wins
+end
+
+function restore_tabpage_layout()
+	local wins = vim.t.saved_layout
+	for winid, winconfig in pairs(wins) do
+		vim.api.nvim_win_set_config(tonumber(winid), winconfig)
+	end
+	vim.cmd.doautocmd("WinResized")
+end
+
+function try_restore_tabpage_layout()
+	local wins = vim.t.saved_layout
+	if wins == nil then
+		return
+	end
+	for winid, winconfig in pairs(wins) do
+		vim.api.nvim_win_set_config(tonumber(winid), winconfig)
+	end
+	vim.cmd.doautocmd("WinResized")
+end
+
+EOF
+
+command! SaveTabpageLayout call v:lua.save_tabpage_layout()
+command! RestoreTabpageLayout call v:lua.restore_tabpage_layout()
+command! TryRestoreTabpageLayout call v:lua.try_restore_tabpage_layout()
+nnoremap <leader>st <Cmd>SaveTabpageLayout<CR>
+nnoremap <leader>rt <Cmd>RestoreTabpageLayout<CR>
+
+"augroup WinchTabLayout
+"	autocmd! Signal SIGWINCH autocmd ++once WinResized * TryRestoreTabpageLayout
+"augroup END
+
+lua <<EOF
+
 ---@param path string A path in 'runtimepath' to search for.
 ---@return string A path in 'runtimepath' if found.
 function rtp(path)
