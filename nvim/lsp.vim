@@ -65,6 +65,7 @@ nnoremap gi <Cmd>Telescope lsp_implementations<CR>
 inoremap <C-k> <Cmd>call v:lua.vim.lsp.buf.signature_help()<CR>
 "lua vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help)
 nnoremap <leader>D <Cmd>Telescope lsp_type_definitions<CR>
+nnoremap <leader>tT <Cmd>Telescope lsp_type_definitions<CR>
 nnoremap <leader>a <Cmd>call v:lua.vim.lsp.buf.code_action()<CR>
 nnoremap <leader>tw <Cmd>Telescope lsp_dynamic_workspace_symbols<CR>
 nnoremap <leader>e <Cmd>call v:lua.vim.diagnostic.open_float()<CR>

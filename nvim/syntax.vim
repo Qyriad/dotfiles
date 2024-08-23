@@ -48,6 +48,11 @@ endfunction
 
 command! SynNameStack echomsg SynNameStack()
 
+nnoremap [c <Cmd>TSTextobjectGotoPreviousStart @class.inner<CR>
+nnoremap ]c <Cmd>TSTextobjectGotoNextStart @class.inner<CR>
+nnoremap <leader>[c <Cmd>TSTextobjectGotoPreviousEnd @class.inner<CR>
+nnoremap <leader>]c <Cmd>TSTextobjectGotoNextEnd @class.inner<CR>
+
 lua <<EOF
 treesitter_configs_setup = {
 	sync_install = false,

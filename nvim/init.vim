@@ -202,37 +202,6 @@ use {
 		telescope.builtin = require('telescope.builtin')
 		telescope.sorters = require('telescope.sorters')
 		telescope.load_extension("ui-select")
-
-		local ctrlp = function()
-			return telescope.builtin.buffers {
-				--show_all_buffers = false,
-				sort_mru = true,
-				--sort_buffers = function(bufnr_a, bufnr_b)
-				--	local bufa_path = vim.fn.expand(string.format('#%d:p:h', bufnr_a))
-				--	local bufb_path = vim.fn.expand(string.format('#%d:p:h', bufnr_b))
-				--	local cwd = vim.fn.getcwd()
-				--	if bufa_path == cwd then
-				--		return true
-				--	end
-				--	return telescope.sorters.get_fzy_sorter(bufnr_a, bufnr_b)
-				--end,
-			}
-		end
-
-		local mappings = {
-			{ "<leader>tg", telescope.builtin.git_files },
-			{ "<leader>tb", telescope.builtin.buffers },
-			{ "<C-p>", ctrlp },
-			{ "<leader>tm", telescope.builtin.marks }, -- Let's see if we use this one.
-			{ "<leader>tt", telescope.builtin.tags },
-			{ "<leader>tl", telescope.builtin.loclist },
-		}
-
-		for _i, mapspec in ipairs(mappings) do
-			local lhs = mapspec[1]
-			local func = mapspec[2]
-			vim.keymap.set("n", lhs, func, { noremap = true })
-		end
 	end,
 }
 use {
