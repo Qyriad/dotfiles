@@ -255,7 +255,7 @@ EOF
 
 function! SetupFormatOnSave(buffer) abort
 	augroup FormatOnSave
-		autocmd! BufWritePre a:buffer lua vim.lsp.buf.format({ async = false })
+		autocmd! BufWritePre <buffer=a:buffer> lua vim.lsp.buf.format({ async = false })
 	augroup END
 endfunction
 command! FormatOnSave call SetupFormatOnSave("<buffer>")
