@@ -38,6 +38,8 @@
 		cargo-limit
 		cargo-info
 		cargo-clone
+		cargo-outdated
+		cargo-edit
 		#rustc
 		git-gr
 		git-imerge
