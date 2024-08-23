@@ -165,6 +165,16 @@
 
 	services.nixseparatedebuginfod.enable = true;
 
+	systemd.user.services.waydroid-session = lib.mkIf config.virtualisation.waydroid.enable {
+		serviceConfig = {
+			Type = "simple";
+			ExecStart = "${lib.getExe pkgs.waydroid} session start";
+			ExecStop = "${lib.getExe pkgs.waydroid} session stop";
+		};
+		enable = false;
+		wantedBy = [ "default.target" ];
+	};
+
 	# Other packages we want available on Linux systems.
 	environment.systemPackages = with pkgs; [
 		usbutils
