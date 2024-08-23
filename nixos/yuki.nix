@@ -39,6 +39,8 @@
 	services.freshrss = {
 	};
 
+	virtualisation.waydroid.enable = true;
+
 	services.samba = {
 		enable = true;
 		openFirewall = true;
