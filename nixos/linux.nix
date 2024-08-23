@@ -10,7 +10,10 @@
 	};
 
 	# We want sysrqs to work.
-	boot.kernelParams = [ "sysrq_always_enabled" ];
+	#boot.kernelParams = [ "sysrq_always_enabled" ];
+	boot.kernel.sysctl = {
+		"kernel.sysrq" = "1";
+	};
 
 	# Yes mount /tmp as a tmpfs.
 	boot.tmp.useTmpfs = true;
