@@ -51,6 +51,7 @@
 		# Broken after the Python 3.12 migration for some reason. Check back later.
 		#quickemu
 		gh
+		gql
 		shellcheck
 		nodePackages.prettier
 		awscli2
