@@ -116,23 +116,6 @@
 				hash = "sha256-MHQ+XZq4vbiTcLcuVAjLmOaaZwStQYtgUmRoHeHIju8=";
 			};
 		};
-
-		# Nice one, T-libs-api.
-		# https://github.com/rust-lang/rust/issues/127343
-		cargo-outdated = let
-			src = final.fetchFromGitHub {
-				owner = "Qyriad";
-				repo = "cargo-outdated";
-				rev = "refs/heads/master";
-				hash = "sha256-dVrWvZ+uSU5jrgIUcSf21s/UKc777AVAESGxQouInKI=";
-			};
-		in prev.cargo-outdated.overrideAttrs {
-			inherit src;
-			cargoDeps = final.rustPlatform.fetchCargoTarball {
-				inherit src;
-				hash = "sha256-7H40ftCSTSbjWqG3mmSIJbeOB+XyyBjlV7z6zfPtHWY=";
-			};
-		};
 	};
 
 in overlay
