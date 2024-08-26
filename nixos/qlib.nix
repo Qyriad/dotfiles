@@ -112,11 +112,9 @@ let
 				then name
 				else "${name}=${toString value}"
 			;
-		in
-			lib.pipe optionsAttrs [
-				(lib.mapAttrsToList keywordOrIni)
-				(lib.concatStringsSep ",")
-			]
+		in optionsAttrs
+		|> lib.mapAttrsToList keywordOrIni
+		|> lib.concatStringsSep ","
 	;
 
 	drvListByName =
@@ -128,11 +126,24 @@ let
 			}))
 	;
 
+	drvListByNamePipe =
+		list:
+			assert "drvListToAttrs passed non-list ${toString list}" |> lib.assertMsg (lib.isList list);
+			(drv: {
+				name = drv.pname or drv.name;
+				value = drv;
+			})
+			|> lib.forEach list
+			|> lib.listToAttrs
+	;
+
 	/** Like lib.genAttrs, but allows the name to be changed. */
 	genAttrs' =
 		list:
 		mkPair:
-		lib.listToAttrs (lib.concatMap (name: [ (mkPair name) ]) list);
+		#lib.listToAttrs (lib.concatMap (name: [ (mkPair name) ]) list);
+		lib.concatMap (name: [ (mkPair name ) ] list)
+		|> lib.listToAttrs;
 
 	removeAttrs' = lib.flip builtins.removeAttrs;
 
@@ -207,7 +218,7 @@ let
 	*/
 	darwinSystem = {
 		nixpkgs ? <nixpkgs>,
-		nix-darwin ? lookupPathOr "nix-darwin" (fetchGit "https://github.com/LnL7/nix-darwin"),
+		nix-darwin ? lookupPathOr "nix-darwin" <| fetchGit "https://github.com/LnL7/nix-darwin",
 		system ? builtins.currentSystem or null,
 		configuration,
 	}: import nix-darwin {
@@ -215,7 +226,7 @@ let
 	};
 
 	evalDarwin = {
-		nix-darwin ? lookupPathOr "nix-darwin" (fetchGit "https://github.com/LnL7/nix-darwin"),
+		nix-darwin ? lookupPathOr "nix-darwin" <| fetchGit "https://github.com/LnL7/nix-darwin",
 		system ? builtins.currentSystem or null,
 		modules,
 	}: let
@@ -223,6 +234,14 @@ let
 	in import eval-config {
 		inherit system modules;
 	};
+
+
+	override = pkg: pkg.override;
+	overrideAttrs = pkg: pkg.overrideAttrs;
+	overridePythonAttrs = pkg: pkg.overridePythonAttrs;
+	override'            = attrs: pkg: pkg.override attrs;
+	overrideAttrs'       = attrs: pkg: pkg.overrideAttrs attrs;
+	overridePythonAttrs' = attrs: pkg: pkg.overridePythonAttrs attrs;
 
 in {
 	inherit
@@ -248,5 +267,12 @@ in {
 		evalDarwin
 		mkOverrides
 		removeAttrs'
+		drvListByNamePipe
+		override
+		overrideAttrs
+		overridePythonAttrs
+		override'
+		overrideAttrs'
+		overridePythonAttrs'
 	;
 }
