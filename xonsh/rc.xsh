@@ -145,6 +145,7 @@ aliases['tolist'] = 'Pipe(list)'
 aliases['ls'] = 'eza -l --header --group --group-directories-first --classify --binary'
 # You know. For mODified.
 aliases['lsod'] = 'eza -l --header --group --group-directories-first --classify --binary --sort=modified'
+aliases['lsg'] = 'eza -l --header --group --group-directories-first --classify --binary --git --git-ignore'
 aliases['cp'] = 'cp -vi'
 aliases['mv'] = 'mv -vi'
 aliases['rm'] = 'rm -vI'
