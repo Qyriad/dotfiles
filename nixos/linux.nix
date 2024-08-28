@@ -164,6 +164,27 @@
 	services.pcscd.enable = true;
 
 	services.nixseparatedebuginfod.enable = true;
+	systemd.services.nixseparatedebuginfod.serviceConfig = {
+		PrivateTmp = lib.mkForce false;
+	};
+	systemd.services.ModemManager.serviceConfig = {
+		PrivateTmp = lib.mkForce false;
+	};
+	systemd.services.cups.serviceConfig = {
+		PrivateTmp = lib.mkForce false;
+	};
+	systemd.services.power-profiles-daemon.serviceConfig = {
+		PrivateTmp = lib.mkForce false;
+	};
+	systemd.services.upower.serviceConfig = {
+		PrivateTmp = lib.mkForce false;
+	};
+	systemd.services.nscd.serviceConfig = {
+		PrivateTmp = lib.mkForce false;
+	};
+	systemd.services.geoclue.serviceConfig = {
+		PrivateTmp = lib.mkForce false;
+	};
 
 	systemd.user.services.waydroid-session = lib.mkIf config.virtualisation.waydroid.enable {
 		serviceConfig = {
