@@ -175,6 +175,14 @@
 		wantedBy = [ "default.target" ];
 	};
 
+	security.wrappers."dmesg" = {
+		owner = "root";
+		group = "users";
+		source = lib.getExe' pkgs.util-linux "dmesg";
+		capabilities = "cap_syslog+ep";
+		permissions = "u+r,g+rx,o+r";
+	};
+
 	# Other packages we want available on Linux systems.
 	environment.systemPackages = with pkgs; [
 		usbutils
