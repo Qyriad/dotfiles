@@ -192,8 +192,6 @@
 			ExecStart = "${lib.getExe pkgs.waydroid} session start";
 			ExecStop = "${lib.getExe pkgs.waydroid} session stop";
 		};
-		enable = false;
-		wantedBy = [ "default.target" ];
 	};
 
 	security.wrappers."dmesg" = {
