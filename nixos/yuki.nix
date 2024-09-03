@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 {
 	imports = [
@@ -40,6 +40,17 @@
 	};
 
 	virtualisation.waydroid.enable = true;
+
+	systemd.user.services.capturecard-loopback = let
+		pw-loopback = lib.getExe' config.services.pipewire.package "pw-loopback";
+		capture = "alsa_input.usb-AVerMedia_Live_Gamer_Ultra-Video_5202418300266-02.analog-stereo";
+		playback = "alsa_output.usb-Focusrite_Scarlett_Solo_USB_Y7Y663P27FB970-00.HiFi__Line1__sink";
+	in {
+		serviceConfig = {
+			Type = "simple";
+			ExecStart = "${pw-loopback} -C ${capture} -P ${playback} -n loopback.capturecard";
+		};
+	};
 
 	services.samba = {
 		enable = true;
