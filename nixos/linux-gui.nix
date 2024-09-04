@@ -43,6 +43,7 @@
 		#	pkgs.xdg-desktop-portal-gtk
 		#	pkgs.xdg-desktop-portal-kde
 		#];
+		xdgOpenUsePortal = true;
 	};
 
 	# And also let Blink stuffs use Wayland.
