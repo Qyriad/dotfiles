@@ -118,6 +118,8 @@ include "%L"
 
 # Thin space
 <Multi_key> <s> <p> : " "
+# Narrow no-break space (NNBSP)
+<Multi_key> <n> <s> <p> : " "
 
 <Multi_key> <z> <m> : "🔴M>"
 <Multi_key> <z> <l> : "🔵L>"
