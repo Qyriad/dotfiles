@@ -151,7 +151,7 @@
 		wayvnc
 		wev
 		seer
-		obs-studio
+		qyriad.obs-studio
 		v4l-utils
 		gajim
 		#inlyne

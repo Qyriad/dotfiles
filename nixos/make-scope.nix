@@ -42,7 +42,14 @@ in {
 		python-pipe
 		xontrib-abbrevs
 		xonsh-direnv
+		obs-chapter-marker-manager
 	;
+
+	obs-studio = pkgs.wrapOBS {
+		plugins = [
+			self.obs-chapter-marker-manager
+		];
+	};
 
 	nerdfonts = self.callPackage ./pkgs/nerdfonts.nix { };
 
