@@ -51,23 +51,6 @@
 
 		# Nice one, T-libs-api.
 		# https://github.com/rust-lang/rust/issues/127343
-		silicon = let
-			src = final.fetchFromGitHub {
-				owner = "Aloxaf";
-				repo = "silicon";
-				rev = "ec433c460a8ce392f2537da118153b8b13155c73";
-				hash = "sha256-tKJdK+A5LJAYNC5ucW/B/3XHn9cNe81Hm2BEFdTqK+c=";
-			};
-		in prev.silicon.overrideAttrs (prev: {
-			inherit src;
-			cargoDeps = final.rustPlatform.fetchCargoTarball {
-				inherit src;
-				hash = "sha256-b5qgHX/SeQl/d7//MVagpTJthDcbwbM9QRoPeYEzsQs=";
-			};
-		});
-
-		# Nice one, T-libs-api.
-		# https://github.com/rust-lang/rust/issues/127343
 		cargo-clone = let
 			src = final.fetchFromGitHub {
 				owner = "Qyriad";
