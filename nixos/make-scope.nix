@@ -48,6 +48,7 @@ in {
 	obs-studio = pkgs.wrapOBS {
 		plugins = [
 			self.obs-chapter-marker-manager
+			pkgs.obs-studio-plugins.input-overlay
 		];
 	};
 
