@@ -169,6 +169,9 @@ nnoremap <expr> k (v:count > 0 ? "m'" . v:count . 'k' : 'gk')
 " Stop highlighting last search with \/
 nnoremap <leader>/ <Cmd>nohlsearch<CR>
 
+" In visual mode, press v again to change to line-select.
+vnoremap v V
+
 " Have the visual-selection indent commands re-highlight the last visual selection after indenting.
 vnoremap > >gv
 vnoremap < <gv
