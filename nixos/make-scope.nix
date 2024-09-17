@@ -48,8 +48,13 @@ in {
 	obs-studio = pkgs.wrapOBS {
 		plugins = [
 			self.obs-chapter-marker-manager
-			pkgs.obs-studio-plugins.input-overlay
-		];
+		] ++ lib.attrValues {
+			inherit (pkgs.obs-studio-plugins)
+				input-overlay
+				obs-pipewire-audio-capture
+				obs-vkcapture
+			;
+		};
 	};
 
 	nerdfonts = self.callPackage ./pkgs/nerdfonts.nix { };
