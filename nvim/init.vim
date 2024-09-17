@@ -225,6 +225,18 @@ use {
 	cmd = "Repl",
 }
 
+use {
+	'chentoast/marks.nvim',
+	opts = {
+		default_mappings = false,
+		default_marks = {
+			"'", -- position of the latest jump
+			"^", -- position of last InsertExit
+			".", -- position last change was made
+		},
+	},
+}
+
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
 
