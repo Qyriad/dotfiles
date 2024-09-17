@@ -30,6 +30,7 @@
 		zls
 		bear
 		universal-ctags
+		patchelf
 		nix-doc
 		lazygit
 		#rust-analyzer
