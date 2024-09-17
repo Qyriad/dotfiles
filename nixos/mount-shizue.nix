@@ -12,37 +12,39 @@
 			vers = "3.1.1";
 		};
 
+        after = [
+          "network-online.target"
+          "multi-user.target"
+          "avahi-daemon.service"
+        ];
+        requires = after;
+
+        mountConfig = {
+          TimeoutSec = "10s";
+          Options = shizueOpts;
+        };
+
+        unitConfig = {
+          StartLimitIntervalSec = "30s";
+          StartLimitBurst = "1";
+        };
+
+        wantedBy = [ "multi-user.target" ];
+
 		media-shizue-media = {
 			type = "cifs";
-			what = "//shizue/Media";
+			what = "//shizue.local/Media";
 			where = "/media/shizue/media";
 
-			after = [ "network-online.target" "multi-user.target" ];
-			requires = [ "network-online.target" "multi-user.target" ];
-			wantedBy = [ "remote-fs.target" ];
-			mountConfig = {
-				TimeoutSec = "10s";
-				Options = shizueOpts;
-			};
-
-			unitConfig = {
-				StartLimitIntervalSec = "30s";
-				StartLimitBurst = "1";
-			};
+            inherit after requires wantedBy mountConfig unitConfig;
 		};
 
 		media-shizue-archive = {
 			type = "cifs";
-			what = "//shizue/Archive";
+			what = "//shizue.local/Archive";
 			where = "/media/shizue/archive";
 
-			after = [ "network-online.target" "multi-user.target" ];
-			requires = [ "network-online.target" "multi-user.target" ];
-			wantedBy = [ "remote-fs.target" ];
-			mountConfig = {
-				TimeoutSec = "10s";
-				Options = shizueOpts;
-			};
+            inherit after requires wantedBy mountConfig unitConfig;
 		};
 	in [
 		media-shizue-media
