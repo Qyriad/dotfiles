@@ -157,6 +157,12 @@
 		v4l-utils
 		gajim
 		#inlyne
+		smile
+	] ++ lib.optionals config.services.pipewire.enable [
+		pavucontrol
+		lxqt.pavucontrol-qt
+		pwvucontrol
+		wayfarer
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
