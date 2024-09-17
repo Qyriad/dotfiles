@@ -58,5 +58,6 @@
 		awscli2
 		pkgdiff
 		ast-grep
+		nmap
 	];
 }
