@@ -19,6 +19,7 @@ let
       py.setproctitle
       py.httpx
       py.tqdm
+      py.pip
       xonsh-direnv
       xontrib-abbrevs
       python-pipe
