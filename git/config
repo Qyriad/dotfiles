@@ -42,6 +42,7 @@
 	cb = branch --show-current
 	id = show --no-patch --pretty=%H
 	shid = show --no-patch --pretty=%h
+	where = name-rev --no-undefined --always --name-only
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
