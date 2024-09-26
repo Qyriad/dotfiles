@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  system.stateVersion = 5;
+
   nixpkgs.config.allowUnfree = true;
   services.nix-daemon.enable = true;
 
