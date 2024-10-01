@@ -144,9 +144,8 @@
 		#darling
 		glibc.debug
 		qt6.qtbase
-		# Broken after the Python 3.12 migration for some reason. Check back later.
-		#qemu_full
-		#qemu-utils
+		qemu_full
+		qemu-utils
 		xorg.xlsclients
 		kooha
 		waypipe
