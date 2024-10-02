@@ -282,10 +282,24 @@ use {
 	event = 'LspAttach',
 }
 -- Make LSP stuff for Neovim's Lua work correctly.
+--use {
+--	'folke/neodev.nvim',
+--	ft = { "vim", "lua" },
+--	opts = { },
+--}
 use {
-	'folke/neodev.nvim',
+	"folke/lazydev.nvim",
 	ft = { "vim", "lua" },
-	opts = { },
+	opts = {
+		library = {
+			{ path = "luavit-meta/library", words = { "vim%.uv" } },
+		},
+	},
+}
+use {
+	-- vim.uv typings
+	"Bilal2453/luvit-meta",
+	ft = { "vim", "lua" },
 }
 use { 'nanotee/nvim-lsp-basics', event = "LspAttach" }
 use { 'weilbith/nvim-code-action-menu', event = "LspAttach" }
