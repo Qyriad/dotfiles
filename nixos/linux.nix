@@ -126,7 +126,7 @@
 		# Include -dev manpages
 		#dev.enable = true;
 		# Make apropos(1) work.
-		#man.generateCaches = true;
+		man.generateCaches = true;
 		# This fails with `cannot lookup '<nixpkgs>' in pure evaluation mode.
 		# TODO: debug
 		#nixos.includeAllModules = true;
