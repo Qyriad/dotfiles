@@ -157,6 +157,7 @@
 		gajim
 		#inlyne
 		smile
+		gst_all_1.gstreamer
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
