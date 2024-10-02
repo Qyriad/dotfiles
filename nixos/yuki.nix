@@ -129,6 +129,13 @@
 	environment.systemPackages = with pkgs; [
 		makemkv
 		valgrind
+		ryujinx
+		shotcut
+		davinci-resolve
+		blender
+		jetbrains.rust-rover
+		config.boot.kernelPackages.perf
+		obs-cmd
 	];
 
 	# This value determines the NixOS release from which the default
