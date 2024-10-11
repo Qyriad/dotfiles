@@ -1,0 +1,2 @@
+# vim: filetype=udevrules
+KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", ATTRS{idVendor}=="07ca", ATTRS{idProduct}=="0553", SYMLINK+="video-avermedia-capture-$attr{index}"

@@ -1,10 +1,23 @@
-{ stdenv }:
+{
+  lib,
+  stdenvNoCC,
+}:
 
-stdenv.mkDerivation {
+stdenvNoCC.mkDerivation {
   pname = "qyriad-udev-rules";
   version = "0.1.0";
 
-  src = ./.;
+  strictDeps = true;
+  __structuredAttrs = true;
+
+  src = lib.fileset.toSource {
+    root = ./.;
+    fileset = lib.fileset.unions [
+      ./60-common.rules
+      ./60-openocd.rules
+      ./70-avermedia-symlink.rules
+    ];
+  };
 
   dontBuild = true;
   dontConfigure = true;
