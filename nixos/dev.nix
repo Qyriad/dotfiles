@@ -41,6 +41,7 @@
 		cargo-clone
 		cargo-outdated
 		cargo-edit
+		cargo-cache
 		#rustc
 		git-gr
 		git-imerge
