@@ -147,6 +147,7 @@
 		qemu_full
 		qemu-utils
 		xorg.xlsclients
+		xorg.xset # Make OBS shut up.
 		kooha
 		waypipe
 		wayvnc
