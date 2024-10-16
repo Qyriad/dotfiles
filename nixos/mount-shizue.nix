@@ -1,3 +1,4 @@
+# vim: shiftwidth=4 tabstop=4 noexpandtab
 { pkgs, ... }:
 
 {
@@ -12,31 +13,31 @@
 			vers = "3.1.1";
 		};
 
-        after = [
-          "network-online.target"
-          "multi-user.target"
-          "avahi-daemon.service"
-        ];
-        requires = after;
+		after = [
+			"network-online.target"
+			"multi-user.target"
+			"avahi-daemon.service"
+		];
+		requires = after;
 
-        mountConfig = {
-          TimeoutSec = "10s";
-          Options = shizueOpts;
-        };
+		mountConfig = {
+			TimeoutSec = "10s";
+			Options = shizueOpts;
+		};
 
-        unitConfig = {
-          StartLimitIntervalSec = "30s";
-          StartLimitBurst = "1";
-        };
+		unitConfig = {
+			StartLimitIntervalSec = "30s";
+			StartLimitBurst = "1";
+		};
 
-        wantedBy = [ "multi-user.target" ];
+		wantedBy = [ "multi-user.target" ];
 
 		media-shizue-media = {
 			type = "cifs";
 			what = "//shizue.local/Media";
 			where = "/media/shizue/media";
 
-            inherit after requires wantedBy mountConfig unitConfig;
+			inherit after requires wantedBy mountConfig unitConfig;
 		};
 
 		media-shizue-archive = {
@@ -44,7 +45,7 @@
 			what = "//shizue.local/Archive";
 			where = "/media/shizue/archive";
 
-            inherit after requires wantedBy mountConfig unitConfig;
+			inherit after requires wantedBy mountConfig unitConfig;
 		};
 	in [
 		media-shizue-media
