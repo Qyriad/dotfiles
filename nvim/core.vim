@@ -204,6 +204,9 @@ nnoremap <leader><CR> mzi<CR><Esc>`z
 " Useful for moving comments to their own line.
 nnoremap <leader>J mzr<CR>ddkP`z
 
+" <leader>l<BS> to closing the location list.
+nnoremap <leader>l<BS> <Cmd>lclose<CR>
+
 " Make <C-f> and <C-b> scroll 11 instead, by default.
 nnoremap <C-f> 11<c-e>
 nnoremap <C-b> 11<C-y>
