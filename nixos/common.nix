@@ -140,5 +140,6 @@
 		dysk
 		uni
 		xcp
+		ansi2html
 	] ++ config.fonts.packages; # I want font stuff to also be in /run/current-system please.
 }
