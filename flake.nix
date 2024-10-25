@@ -4,6 +4,10 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		flake-utils.url = "github:numtide/flake-utils";
+		agenix = {
+			url = "github:ryantm/agenix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		nix-darwin = {
 			url = "github:LnL7/nix-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -59,6 +63,7 @@
 		nixpkgs,
 		flake-utils,
 		nix-darwin,
+		agenix,
 		...
 	}: let
 		inherit (nixpkgs) lib;
@@ -136,6 +141,7 @@
 			overlays.default = import ./nixos/make-overlay.nix {
 				inherit (nixpkgs) lib;
 				inherit (inputs)
+					agenix
 					qyriad-nur
 					niz
 					log2compdb

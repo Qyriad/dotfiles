@@ -2,6 +2,7 @@
 {
 	pkgs,
 	lib,
+	agenix,
 	qyriad-nur,
 	niz,
 	log2compdb,
@@ -15,6 +16,7 @@
 
 	qyriad-nur' = import qyriad-nur { inherit pkgs; };
 	xil' = import xil { inherit pkgs; };
+	agenix' = import agenix { inherit pkgs; };
 
 in lib.makeScope pkgs.newScope (self: let
 	inherit (self) qlib;
@@ -35,6 +37,8 @@ in {
 
 	inherit xonsh-source;
 	xonsh = self.callPackage ./pkgs/xonsh { };
+
+	inherit (agenix') agenix;
 
 	inherit (qyriad-nur')
 		strace-process-tree

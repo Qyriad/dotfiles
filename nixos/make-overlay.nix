@@ -1,6 +1,7 @@
 # vim: tabstop=4 shiftwidth=0 noexpandtab
 {
 	lib,
+	agenix,
 	qyriad-nur,
 	niz,
 	log2compdb,
@@ -12,6 +13,7 @@
 		inherit
 			pkgs
 			lib
+			agenix
 			qyriad-nur
 			niz
 			log2compdb

@@ -5,6 +5,7 @@ in {
 	pkgs ? import <nixpkgs> { },
 	lib ? pkgs.lib,
 	nix-darwin ? fetchGit "https://github.com/LnL7/nix-darwin",
+	agenix ? fetchGithub "ryantm/agenix",
 	qyriad-nur ? fetchGit "https://github.com/Qyriad/nur-packages",
 	niz ? fetchGit "https://github.com/Qyriad/niz",
 	log2compdb ? fetchGit "https://github.com/Qyriad/log2compdb",
