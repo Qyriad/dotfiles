@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, pkgs, modulesPath, ... }:
 
 {
 	imports = [
@@ -42,6 +42,9 @@
 	virtualisation.waydroid.enable = true;
 
 	services.pipewire.extraConfig.pipewire = {
+		"10-allowed-rates" = {
+			"default.clock.allowed-rates" = [ 44100 48000 ];
+		};
 		# FIXME: figure out what of these are actually necessary/useful.
 		"10-capturecard-loopback-module"."context.modules" = let
 			capturecard-loopback-module = {
@@ -85,6 +88,11 @@
 		in [
 			capturecard-loopback-module
 		];
+	};
+	services.pipewire.extraConfig.pipewire-pulse = {
+		"10-min-req" = {
+			"pulse.min.req" = "1024/48000";
+		};
 	};
 
 	services.samba = {
