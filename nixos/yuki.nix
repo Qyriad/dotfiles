@@ -121,17 +121,6 @@
 		#'';
 	};
 
-	nix.buildMachines = let
-		ashyn = {
-			hostName = "ashyn";
-			system = "aarch64-linux";
-			protocol = "ssh-ng";
-
-		};
-	in [
-		ashyn
-	];
-
 	nix.distributedBuilds = true;
 
 	environment.systemPackages = with pkgs; [
