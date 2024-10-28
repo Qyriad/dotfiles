@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 	# Configuration for things related to Nix itself.
@@ -35,7 +35,8 @@
 		};
 	};
 
-	time.timeZone = "America/Denver";
+	# Default to Denver, let localtimed override it instantly when it is able to.
+	time.timeZone = lib.mkForce "America/Denver";
 
 	programs.nix-index.enable = true;
 	programs.bash.completion.enable = true;
