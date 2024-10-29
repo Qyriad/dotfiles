@@ -16,7 +16,7 @@
 		after = [
 			"network-online.target"
 			"multi-user.target"
-			"avahi-daemon.service"
+			#"avahi-daemon.service"
 		];
 		requires = after;
 

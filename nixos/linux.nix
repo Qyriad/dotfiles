@@ -53,7 +53,9 @@
 	services.localtimed.enable = true;
 	services.geoclue2.enable = true;
 
+	services.resolved.enable = true;
 	networking.networkmanager.enable = true;
+	networking.networkmanager.dns = "systemd-resolved";
 
 	services.tailscale = {
 		enable = true;
@@ -97,19 +99,19 @@
 
 	services.openssh.enable = true;
 
-	# Avahi is on most systems by default but not NixOS, it's quite useful to have mDNS support.
-	services.avahi = {
-		enable = true;
-
-		# Enable support for resolving names from other systems over mDNS.
-		nssmdns4 = true;
-
-		# Enable support for other systems resolving us via mDNS.
-		publish = {
-			enable = true;
-			addresses = true;
-		};
-	};
+	## Avahi is on most systems by default but not NixOS, it's quite useful to have mDNS support.
+	#services.avahi = {
+	#	enable = true;
+	#
+	#	# Enable support for resolving names from other systems over mDNS.
+	#	nssmdns4 = true;
+	#
+	#	# Enable support for other systems resolving us via mDNS.
+	#	publish = {
+	#		enable = true;
+	#		addresses = true;
+	#	};
+	#};
 
 	# Our normal user.
 	users.users.qyriad = {
