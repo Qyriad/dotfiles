@@ -110,6 +110,8 @@
 		opera
 		obsidian
 		qyriad.vesktop
+		# For voice.
+		discord
 		calibre
 		kicad
 		krita
