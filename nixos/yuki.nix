@@ -139,6 +139,7 @@
 		jetbrains.rust-rover
 		config.boot.kernelPackages.perf
 		obs-cmd
+		odin2
 	];
 
 	# This value determines the NixOS release from which the default
