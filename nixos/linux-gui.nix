@@ -107,7 +107,6 @@
 		mpv
 		wl-clipboard
 		ksshaskpass
-		opera
 		obsidian
 		qyriad.vesktop
 		# For voice.
