@@ -45,8 +45,8 @@
 		#rustc
 		git-gr
 		git-imerge
-		nix-eval-jobs
-		colmena
+		#nix-eval-jobs
+		#colmena
 		rr
 		nixfmt-rfc-style
 		nixpkgs-review
