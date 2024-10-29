@@ -129,7 +129,8 @@
 	};
 
 	environment.systemPackages = with pkgs; [
-		steam-run
+		qyriad.steam-launcher-script
+		config.programs.steam.package.run
 		makemkv
 		valgrind
 		ryujinx

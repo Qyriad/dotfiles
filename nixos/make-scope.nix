@@ -35,6 +35,16 @@ in {
 		};
 	in pkgs.runCommandLocal name attrs' text;
 
+	steam-launcher-script = pkgs.writeShellScriptBin "launch-steam" ''
+		export STEAM_FORCE_DESKTOPUI_SCALING=2.0
+		export GDK_SCALE=2
+		# Fix crackling audio in Rivals 2.
+		export PULSE_LATENCY_MSEC=126
+		export PIPEWIRE_LATENCY="2048/48000"
+
+		exec /run/current-system/sw/bin/steam-run /run/current-system/sw/lib/steam/bin_steam.sh "$@"
+	'';
+
 	inherit xonsh-source;
 	xonsh = self.callPackage ./pkgs/xonsh { };
 
