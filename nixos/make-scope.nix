@@ -50,6 +50,7 @@ in {
 		xontrib-abbrevs
 		xonsh-direnv
 		obs-chapter-marker-manager
+		age-plugin-openpgp-card
 	;
 
 	obs-studio = pkgs.wrapOBS {

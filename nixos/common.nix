@@ -143,5 +143,6 @@
 		xcp
 		ansi2html
 		qyriad.agenix
+		qyriad.age-plugin-openpgp-card
 	] ++ config.fonts.packages; # I want font stuff to also be in /run/current-system please.
 }
