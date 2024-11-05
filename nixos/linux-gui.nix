@@ -104,7 +104,7 @@
 		libva-utils
 		alacritty
 		wezterm
-		mpv
+		qyriad.mpv
 		wl-clipboard
 		ksshaskpass
 		obsidian

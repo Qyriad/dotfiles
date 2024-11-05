@@ -75,6 +75,12 @@ in {
 		};
 	};
 
+	mpv = pkgs.mpv.override {
+		scripts = with pkgs.mpvScripts; [
+			mpv-webm
+		];
+	};
+
 	nerdfonts = self.callPackage ./pkgs/nerdfonts.nix { };
 
 	udev-rules = self.callPackage ./udev-rules { };
