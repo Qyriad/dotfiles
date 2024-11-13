@@ -227,7 +227,7 @@
 		bpftrace
 		exfatprogs
 		caligula
-		trash-cli
+		trashy
 		socat
 		# Let us use our yubikey with age.
 		age-plugin-yubikey
