@@ -141,6 +141,7 @@
 		config.boot.kernelPackages.perf
 		obs-cmd
 		odin2
+		qyriad.nvtop-yuki
 	];
 
 	# This value determines the NixOS release from which the default

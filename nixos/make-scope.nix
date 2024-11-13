@@ -75,6 +75,11 @@ in {
 		};
 	};
 
+	nvtop-yuki = pkgs.nvtopPackages.full.override {
+		amd = true;
+		nvidia = true;
+	};
+
 	mpv = pkgs.mpv.override {
 		scripts = with pkgs.mpvScripts; [
 			mpv-webm
@@ -137,7 +142,7 @@ in {
 	#unpackDrvSrc = drv: self.unpackSource { inherit (drv.src) url; };
 
 	glances = pkgs.glances.overridePythonAttrs (prev: {
-		propagatedBuildInputs = with pkgs.python3Packages; prev.propagatedBuildInputs ++ [
+		propagatedBuildInputs = with pkgs.python3Packages; (prev.propagatedBuildInputs or [ ]) ++ [
 			batinfo
 			nvidia-ml-py
 			pysmart-smartx
