@@ -33,7 +33,7 @@
 		patchelf
 		nix-doc
 		lazygit
-		#rust-analyzer
+		rust-analyzer
 		#rustfmt
 		#cargo
 		cargo-limit
