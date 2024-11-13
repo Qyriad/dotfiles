@@ -31,7 +31,7 @@
 
 	hardware.nvidia = {
 		modesetting.enable = true;
-		package = config.boot.kernelPackages.nvidiaPackages.beta;
+		package = config.boot.kernelPackages.nvidiaPackages.stable;
 		open = false;
 	};
 	# This is causing buildfailures that I don't feel like debugging right now.
