@@ -48,23 +48,6 @@
 				hash = "sha256-+BnPLSzIJbS7TIYvATiGFliAEDmScw4bPcj8ZC6RKqM=";
 			};
 		};
-
-		# Nice one, T-libs-api.
-		# https://github.com/rust-lang/rust/issues/127343
-		fcp = let
-			src = final.fetchFromGitHub {
-				owner = "Qyriad";
-				repo = "fcp";
-				rev = "refs/heads/master";
-				hash = "sha256-unl+4VrrJLs6UHI32zmlaM+hzNIvPohO2Q+BXFFb7U8=";
-			};
-		in prev.fcp.overrideAttrs {
-			inherit src;
-			cargoDeps = final.rustPlatform.fetchCargoTarball {
-				inherit src;
-				hash = "sha256-MHQ+XZq4vbiTcLcuVAjLmOaaZwStQYtgUmRoHeHIju8=";
-			};
-		};
 	};
 
 in overlay
