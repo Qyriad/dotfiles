@@ -20,6 +20,12 @@ let
       py.httpx
       py.tqdm
       py.pip
+      py.pydbus
+      py.pygobject3
+      py.jeepney
+      pkgs.gobject-introspection
+      pkgs.gtk3
+      pkgs.glib
       xonsh-direnv
       xontrib-abbrevs
       python-pipe
