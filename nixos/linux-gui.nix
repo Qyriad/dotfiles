@@ -106,7 +106,6 @@
 		wezterm
 		qyriad.mpv
 		wl-clipboard
-		ksshaskpass
 		obsidian
 		qyriad.vesktop
 		# For voice.
