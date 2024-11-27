@@ -154,8 +154,17 @@ in {
 	vesktop = pkgs.vesktop.overrideAttrs (prev: {
 		desktopItems = lib.forEach prev.desktopItems (item: item.override {
 			exec = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --use-wayland-ime %U";
+				"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
 		});
 	});
 
-	qlib = import ./qlib.nix { inherit lib; };
+	qlib = let
+		qlib = import ./qlib.nix { inherit lib; };
+		# Nixpkgs lib with additions from qyriad-nur.
+		nurLib = qyriad-nur'.lib;
+		# The additions to lib from qyriad-nur without Nixpkgs lib.
+		nurAdditions = qlib.removeAttrs' (lib.attrNames lib) nurLib;
+		qlibWithAdditions = nurAdditions // qlib;
+		# And then finally we'll force the result. Nothing here should be recursive or fail evaluation.
+	in qlib.force qlibWithAdditions;
 })
