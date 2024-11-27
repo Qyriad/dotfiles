@@ -162,6 +162,34 @@
 		gst_all_1.gstreamer
 		libnotify
 		tenacity
+		chromium
+		kdePackages.dragon
+		kdePackages.filelight
+		kdePackages.ffmpegthumbs
+		kdePackages.kalgebra
+		kdePackages.kcalc
+		kdePackages.kcharselect
+		kdePackages.kcolorchooser
+		kdePackages.kcolorpicker
+		kdePackages.kde-dev-scripts
+		kdePackages.kde-dev-utils
+		kdePackages.kdebugsettings
+		kdePackages.kde-inotify-survey
+		kdePackages.kdeplasma-addons
+		kdePackages.kdf
+		kdePackages.kfind
+		kdePackages.kget
+		kdePackages.kimageannotator
+		kdePackages.kio-zeroconf
+		kdePackages.kompare
+		kdePackages.kontrast
+		kdePackages.krdc
+		kdePackages.ksshaskpass
+		kdePackages.ksystemlog
+		kdePackages.plasma-disks
+		kdePackages.sddm-kcm
+		kdePackages.flatpak-kcm
+		kdePackages.sweeper
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
