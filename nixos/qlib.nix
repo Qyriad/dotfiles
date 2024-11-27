@@ -235,6 +235,7 @@ let
 		inherit system modules;
 	};
 
+	force = value: lib.deepSeq value value;
 
 	override = pkg: pkg.override;
 	overrideAttrs = pkg: pkg.overrideAttrs;
@@ -268,6 +269,7 @@ in {
 		mkOverrides
 		removeAttrs'
 		drvListByNamePipe
+		force
 		override
 		overrideAttrs
 		overridePythonAttrs
