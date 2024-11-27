@@ -154,8 +154,14 @@ in {
 
 	vesktop = pkgs.vesktop.overrideAttrs (prev: {
 		desktopItems = lib.forEach prev.desktopItems (item: item.override {
-			exec = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --use-wayland-ime %U";
+			exec = lib.concatStringsSep " " [
 				"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
+				"--ozone-platform-hint=wayland"
+				"--gtk-version=4"
+				"--enable-wayland-ime"
+				"--wayland-text-input-version=3"
+			];
+			#exec = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --use-wayland-ime %U";
 		});
 	});
 
