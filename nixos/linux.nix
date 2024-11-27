@@ -223,6 +223,7 @@
 		iotop
 		difftastic
 		qyriad.strace-with-colors
+		qyriad.intentrace
 		ltrace
 		bpftrace
 		exfatprogs

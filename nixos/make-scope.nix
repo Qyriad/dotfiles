@@ -53,6 +53,7 @@ in {
 	inherit (qyriad-nur')
 		strace-process-tree
 		strace-with-colors
+		intentrace
 		cinny
 		otree
 		cyme
