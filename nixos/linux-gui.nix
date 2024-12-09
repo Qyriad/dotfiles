@@ -106,7 +106,7 @@
 		wezterm
 		qyriad.mpv
 		wl-clipboard
-		obsidian
+		qyriad.obsidian
 		qyriad.vesktop
 		# For voice.
 		discord

@@ -165,6 +165,20 @@ in {
 		});
 	});
 
+	obsidian = pkgs.obsidian.overrideAttrs (prev: {
+		desktopItem = prev.desktopItem.override {
+			exec = lib.concatStringsSep " " [
+				"obsidian"
+				"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
+				"--ozone-platform-hint=wayland"
+				"--gtk-version=4"
+				"--enable-wayland-ime"
+				"--wayland-text-input-version=3"
+				"%U"
+			];
+		};
+	});
+
 	qlib = let
 		qlib = import ./qlib.nix { inherit lib; };
 		# Nixpkgs lib with additions from qyriad-nur.
