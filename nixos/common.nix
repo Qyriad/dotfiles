@@ -87,7 +87,6 @@
 		htop
 		inxi
 		hyfetch
-		nodePackages.insect
 		jq
 		yt-dlp
 		pstree
