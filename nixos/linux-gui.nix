@@ -104,6 +104,8 @@
 		libva-utils
 		alacritty
 		wezterm
+		# Backup.
+		#konsole
 		qyriad.mpv
 		wl-clipboard
 		qyriad.obsidian
