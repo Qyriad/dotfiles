@@ -87,6 +87,8 @@ in {
 		];
 	};
 
+	nerdfonts = self.callPackage ./pkgs/nerdfonts.nix { };
+
 	udev-rules = self.callPackage ./udev-rules { };
 
 	nix-helpers = self.callPackage ./pkgs/nix-helpers.nix { };

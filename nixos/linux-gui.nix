@@ -210,7 +210,7 @@
 
 	# Setup the terminal font we use, and make CJK render nicely.
 	fonts.packages = with pkgs; [
-		nerd-fonts.inconsolata-go
+		qyriad.nerdfonts
 		noto-fonts-cjk-sans
 	];
 	fonts.fontconfig.defaultFonts.monospace = [
