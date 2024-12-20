@@ -19,13 +19,19 @@ stdenvNoCC.mkDerivation {
     ];
   };
 
-  dontBuild = true;
   dontConfigure = true;
+  dontBuild = true;
 
   installPhase = ''
+    runHook preInstall
+
     mkdir -p $out/lib/udev/rules.d
     cp -v $src/*.rules $out/lib/udev/rules.d
+
+    runHook postInstall
   '';
+
+  dontFixup = true;
 
   meta = {
     description = "Qyriad personal udev rules";

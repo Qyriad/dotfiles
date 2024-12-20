@@ -5,3 +5,8 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="1366", GROUP="plugdev"
 # Black Magic Probe
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="6018", GROUP="plugdev"
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="6017", GROUP="plugdev"
+
+# LUNA
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="615b", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="615c", GROUP="plugdev"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="05a5", GROUP="plugdev"
