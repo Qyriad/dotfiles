@@ -148,6 +148,9 @@
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
+		package = pkgs.neovim-unwrapped.overrideAttrs {
+			separateDebugInfo = true;
+		};
 	};
 
 	programs.git = {
