@@ -38,3 +38,7 @@ highlight link @lsp.type.typeAlias Typedef
 highlight! link @variable Identifier
 
 highlight! link TrailingWhitespace Error
+
+" Override search-highlights with the cursor on them to actually be distinguishable.
+" Otherwise `CurSearch` is just linked to `Search`, which is not helpful.
+highlight CurSearch ctermfg=0 ctermbg=11 guifg=NvimLightGrey1 guibg=NvimLightYellow
