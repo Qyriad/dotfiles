@@ -42,7 +42,7 @@ in {
 		export PULSE_LATENCY_MSEC=126
 		export PIPEWIRE_LATENCY="2048/48000"
 
-		exec /run/current-system/sw/bin/steam-run /run/current-system/sw/lib/steam/bin_steam.sh "$@"
+		exec /run/current-system/sw/bin/steam-run /lib/steam/bin_steam.sh "$@"
 	'';
 
 	inherit xonsh-source;
