@@ -128,7 +128,7 @@
 		ntfs3g
 		#sequoia
 		sioyek
-		neochat
+		#neochat
 		#fluffychat
 		nheko
 		element-desktop
