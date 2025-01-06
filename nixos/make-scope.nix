@@ -142,11 +142,12 @@ in {
 
 	glances = pkgs.glances.overridePythonAttrs (prev: {
 		propagatedBuildInputs = with pkgs.python3Packages; (prev.propagatedBuildInputs or [ ]) ++ [
-			batinfo
 			nvidia-ml-py
 			pysmart-smartx
-			wifi
 			zeroconf
+		] ++ lib.optionals pkgs.stdenv.isLinux [
+			batinfo
+			wifi
 		];
 	});
 

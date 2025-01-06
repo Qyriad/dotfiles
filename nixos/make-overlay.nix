@@ -27,6 +27,7 @@
 }: let
 	overlay = final: prev: let
 		scope = getScope final;
+		availableOnHost = lib.meta.availableOn final.stdenv.hostPlatform;
 
 	in {
 		qyriad = scope;
@@ -47,6 +48,16 @@
 				inherit src;
 				hash = "sha256-+BnPLSzIJbS7TIYvATiGFliAEDmScw4bPcj8ZC6RKqM=";
 			};
+		};
+
+		numbat = prev.numbat.overrideAttrs (prev: lib.recursiveUpdate prev {
+			# It's marked as broken on Darwin but seems to work fine.
+			meta.broken = false;
+		});
+
+		lnav = prev.lnav.override {
+			# Nixpkgs forgot to make this dependency conditional on not-Darwin.
+			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
 		};
 	};
 
