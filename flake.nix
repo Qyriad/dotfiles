@@ -52,6 +52,11 @@
 			inputs.lix.follows = "lix";
 			inputs.flake-utils.follows = "flake-utils";
 		};
+		mac-app-util = {
+			url = "github:hraban/mac-app-util";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.flake-utils.follows = "flake-utils";
+		};
 		xonsh-source = {
 			url = "github:xonsh/xonsh";
 			flake = false;
@@ -110,6 +115,8 @@
 				modules = nixosModules ++ [
 					inputs.lix-module.nixosModules.default
 					flake-module
+				] ++ lib.optionals system'.isDarwin [
+					inputs.mac-app-util.darwinModules.default
 				];
 
 			in mkConfigFn.${system'.parsed.kernel.name} {
@@ -177,6 +184,11 @@
 					./nixos/keyleth.nix
 				];
 				keyleth = Keyleth;
+
+				Sodachi = mkConfig "aarch64-darwin" [
+					./nixos/sodachi.nix
+				];
+				sodachi = Sodachi;
 			};
 
 			templates = {
