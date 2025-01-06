@@ -23,6 +23,7 @@ let
       py.pydbus
       py.pygobject3
       py.jeepney
+      py.ds-store
       pkgs.gobject-introspection
       pkgs.gtk3
       pkgs.glib
