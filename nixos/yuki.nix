@@ -31,6 +31,8 @@
 		"sg"
 	];
 
+	boot.kernelPackages = pkgs.linuxPackages_latest;
+
 	environment.enableDebugInfo = true;
 	environment.extraOutputsToInstall = [
 		"dev"
