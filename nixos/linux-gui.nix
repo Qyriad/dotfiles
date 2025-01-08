@@ -146,8 +146,8 @@
 		#darling
 		glibc.debug
 		qt6.qtbase
-		qemu_full
-		qemu-utils
+		#qemu_full
+		#qemu-utils
 		xorg.xlsclients
 		xorg.xset # Make OBS shut up.
 		kooha
