@@ -141,7 +141,7 @@
 		wtype
 		seer
 		#mattermost-desktop
-		qyriad.cinny
+		#qyriad.cinny
 		firefoxpwa
 		#darling
 		glibc.debug
