@@ -29,9 +29,17 @@
 	boot.kernelModules = [
 		# For MakeMKV on blu rays.
 		"sg"
+		# For virtual /dev/video devices.
+		"v4l2loopback"
 	];
 
-	boot.kernelPackages = pkgs.linuxPackages_latest;
+	boot.kernelPackages = pkgs.linuxPackages_6_12;
+
+	environment.etc."modprobe.d/v4l2loopback.conf" = {
+		text = ''
+			options video_nr=10,11,12 card_label=Virt0,Virt1,Virt2 exclusive_caps=1,1,1
+		'';
+	};
 
 	environment.enableDebugInfo = true;
 	environment.extraOutputsToInstall = [
