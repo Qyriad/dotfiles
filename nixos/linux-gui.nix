@@ -109,6 +109,7 @@
 		qyriad.mpv
 		wl-clipboard
 		qyriad.obsidian
+		pandoc
 		qyriad.vesktop
 		# For voice.
 		discord
