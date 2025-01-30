@@ -160,6 +160,7 @@
 		v4l-utils
 		gajim
 		inlyne
+		tesseract
 		smile
 		gst_all_1.gstreamer
 		libnotify
