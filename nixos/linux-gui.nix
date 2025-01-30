@@ -159,7 +159,7 @@
 		qyriad.obs-studio
 		v4l-utils
 		gajim
-		#inlyne
+		inlyne
 		smile
 		gst_all_1.gstreamer
 		libnotify
