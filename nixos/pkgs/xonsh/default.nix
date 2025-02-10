@@ -25,6 +25,7 @@ let
     py.tqdm
     py.pip
     py.pydbus
+    py.jeepney
     py.pygobject3
     py.jeepney
     py.ds-store
