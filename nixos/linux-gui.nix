@@ -168,6 +168,10 @@
 		libnotify
 		tenacity
 		chromium
+		musescore
+		fluidsynth
+		#soundfont-fluid
+		soundfont-ydp-grand
 		kdePackages.dragon
 		kdePackages.filelight
 		kdePackages.ffmpegthumbs
