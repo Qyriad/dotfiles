@@ -123,6 +123,8 @@
 		#dsview
 		pulseview
 		ffmpeg-full
+		(lib.getBin x264)
+		(lib.getBin x265)
 		aegisub
 		cifs-utils
 		nfs-utils
