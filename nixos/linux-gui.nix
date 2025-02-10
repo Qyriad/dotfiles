@@ -129,7 +129,7 @@
 		cifs-utils
 		nfs-utils
 		ntfs3g
-		#sequoia
+		sequoia
 		sioyek
 		#neochat
 		#fluffychat
