@@ -97,6 +97,7 @@
 		nix-prefetch
 		qyriad.nix-helpers
 		any-nix-shell
+		nix-du
 		qyriad.niz
 		qyriad.pzl
 		#qyriad.xil
