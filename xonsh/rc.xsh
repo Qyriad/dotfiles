@@ -160,15 +160,20 @@ aliases['grep'] = 'grep --color=auto'
 aliases['egrep'] = 'egrep --color=auto'
 aliases['sed'] = 'sed -E'
 aliases['less'] = 'less -R'
+aliases['tp'] = 'trash-put -v'
+aliases['lsof'] = 'grc lsof +c0'
+#aliases['man'] = ['env', 'MANWIDTH=@(min(int($(tput cols)), 120))',  'man']
 
 # Coreutils-alike
 aliases['rip'] = 'rip --seance'
 
 
 # Edit config shortcuts.
-edit = lambda path : $EDITOR + ' ' + str(path)
+#edit = lambda path : $EDITOR + ' ' + str(path)
+def edit(path):
+	return [$EDITOR, Path(path).as_posix()]
 # "Edit tmux"
-aliases['et'] = edit(p'~/.config/tmux/tmux.conf')
+aliases['et'] = [$EDITOR, p"~/.config/tmux/tmux.conf".as_posix()]
 # "Edit vim"
 aliases['ev'] = f"$EDITOR -S ~/.config/Session-nvim.vim"
 # "Edit alacritty"
