@@ -13,6 +13,7 @@ import os, sys, io, json, struct, re, shlex, typing, textwrap
 from datetime import datetime, timedelta
 import zoneinfo
 from zoneinfo import ZoneInfo
+import pathlib
 from pathlib import Path
 
 import xonsh
