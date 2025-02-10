@@ -76,6 +76,7 @@
 		stdmanpages
 		xh
 		diskus
+		parallel-disk-usage
 		moreutils
 		grc
 		file
