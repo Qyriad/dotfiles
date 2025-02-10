@@ -6,6 +6,7 @@
 		shizueOpts = pkgs.qlib.genMountOpts {
 			auto = null;
 			_netdev = null;
+			nofail = null;
 			credentials = "/etc/secrets/shizue.cred";
 			gid = "users";
 			file_mode = "0764";
