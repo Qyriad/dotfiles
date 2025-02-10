@@ -36,7 +36,7 @@
 	};
 
 	# Default to Denver, let localtimed override it instantly when it is able to.
-	time.timeZone = lib.mkForce "America/Denver";
+	#time.timeZone = lib.mkForce "America/Denver";
 
 	programs.nix-index.enable = true;
 	programs.bash.completion.enable = true;
