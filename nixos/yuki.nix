@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, modulesPath, ... }:
+{ config, pkgs, lib, modulesPath, ... }:
 
 {
 	imports = [
@@ -36,9 +36,9 @@
 	boot.kernelPackages = pkgs.linuxPackages_6_12;
 
 	environment.etc."modprobe.d/v4l2loopback.conf" = {
-		text = ''
-			options video_nr=10,11,12 card_label=Virt0,Virt1,Virt2 exclusive_caps=1,1,1
-		'';
+		text = (lib.trim ''
+			options v4l2loopback video_nr=10,11,12 card_label=Virt0,Virt1,Virt2 exclusive_caps=1,1,1
+		'') + "\n";
 	};
 
 	environment.enableDebugInfo = true;
