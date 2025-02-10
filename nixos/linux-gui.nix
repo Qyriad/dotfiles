@@ -1,6 +1,6 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
 	# Enable GUI stuff.
@@ -98,6 +98,10 @@
 		"jitsi-meet-1.0.8043" # For Element
 	];
 
+	package-groups = {
+		music-production.enable = lib.mkDefault true;
+		wayland-tools.enable = lib.mkDefault true;
+	};
 
 	environment.systemPackages = with pkgs; [
 		libinput
@@ -107,7 +111,6 @@
 		# Backup.
 		#konsole
 		qyriad.mpv
-		wl-clipboard
 		qyriad.obsidian
 		pandoc
 		qyriad.vesktop
@@ -140,7 +143,6 @@
 		flamegraph
 		signal-desktop
 		thunderbird
-		wtype
 		seer
 		#mattermost-desktop
 		#qyriad.cinny
@@ -148,14 +150,10 @@
 		#darling
 		glibc.debug
 		qt6.qtbase
-		#qemu_full
-		#qemu-utils
+		qemu_full
+		qemu-utils
 		xorg.xlsclients
 		xorg.xset # Make OBS shut up.
-		kooha
-		waypipe
-		wayvnc
-		wev
 		seer
 		qyriad.obs-studio
 		v4l-utils

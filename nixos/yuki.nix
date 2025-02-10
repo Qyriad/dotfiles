@@ -19,8 +19,6 @@
 	services.fwupd.enable = true;
 
 
-	package-groups.music-production.enable = true;
-
 	# Options from our custom NixOS module in ./resources.nix
 	resources = {
 		memory = 32;
