@@ -18,6 +18,11 @@
 	# Yes mount /tmp as a tmpfs.
 	boot.tmp.useTmpfs = true;
 
+	services.smartd = {
+		enable = true;
+		autodetect = true;
+	};
+
 	# Make the systemd stop timeout more reasonable.
 	systemd.extraConfig = ''
 		DefaultTimeoutStopSec=20
@@ -240,6 +245,9 @@
 		poke
 		libtree
 		lurk
+	]
+	++ lib.optionals config.services.smartd.enable [
+		pkgs.smartmontools
 	]
 	++ config.systemd.packages # I want system services to also be in /run/current-system please.
 	++ config.services.udev.packages # Same for udev...
