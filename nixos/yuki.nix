@@ -10,12 +10,16 @@
 		./dev.nix
 		./resources.nix
 		./mount-shizue.nix
+		./modules/package-groups.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
 	networking.hostName = "Yuki";
 
 	services.fwupd.enable = true;
+
+
+	package-groups.music-production.enable = true;
 
 	# Options from our custom NixOS module in ./resources.nix
 	resources = {

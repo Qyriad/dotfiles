@@ -135,7 +135,6 @@
 		#fluffychat
 		nheko
 		element-desktop
-		bitwig-studio
 		curl
 		kcachegrind
 		flamegraph
@@ -166,12 +165,7 @@
 		smile
 		gst_all_1.gstreamer
 		libnotify
-		tenacity
 		chromium
-		musescore
-		fluidsynth
-		#soundfont-fluid
-		soundfont-ydp-grand
 		kdePackages.dragon
 		kdePackages.filelight
 		kdePackages.ffmpegthumbs
