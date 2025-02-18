@@ -6,6 +6,7 @@
 	niz,
 	log2compdb,
 	pzl,
+	cappy,
 	git-point,
 	xil,
 	xonsh-source,
@@ -18,6 +19,7 @@
 			niz
 			log2compdb
 			pzl
+			cappy
 			git-point
 			xil
 			xonsh-source

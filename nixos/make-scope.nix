@@ -7,6 +7,7 @@
 	niz,
 	log2compdb,
 	pzl,
+	cappy,
 	git-point,
 	crane ? git-point.inputs.crane,
 	craneLib ? import crane { inherit pkgs; },
@@ -104,6 +105,7 @@ in {
 			"psutil"
 		];
 	};
+	cappy = import cappy { inherit pkgs; };
 	git-point = import git-point { inherit pkgs craneLib; };
 
 	#armcord = pkgs.armcord.overrideAttrs (prev: {

@@ -32,6 +32,10 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
 		};
+		cappy = {
+			url = "github:Qyriad/cappy";
+			flake = false;
+		};
 		git-point = {
 			url = "github:Qyriad/git-point";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -153,6 +157,7 @@
 					niz
 					log2compdb
 					pzl
+					cappy
 					git-point
 					xil
 					xonsh-source

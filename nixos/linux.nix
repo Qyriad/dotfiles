@@ -245,6 +245,7 @@
 		poke
 		libtree
 		lurk
+		qyriad.cappy
 	]
 	++ lib.optionals config.services.smartd.enable [
 		pkgs.smartmontools

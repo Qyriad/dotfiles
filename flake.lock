@@ -23,6 +23,22 @@
         "type": "github"
       }
     },
+    "cappy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739797122,
+        "narHash": "sha256-Pxy9FhN2AgCKruGcTWwBRHqZG3cPrV7RadMuK31CJ1s=",
+        "owner": "Qyriad",
+        "repo": "cappy",
+        "rev": "760a7f082b24e51f2312438cafd6a504c9032efd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Qyriad",
+        "repo": "cappy",
+        "type": "github"
+      }
+    },
     "cl-nix-lite": {
       "locked": {
         "lastModified": 1728174978,
@@ -370,6 +386,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "cappy": "cappy",
         "flake-utils": "flake-utils",
         "git-point": "git-point",
         "lix": "lix",
