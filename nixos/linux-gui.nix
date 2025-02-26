@@ -192,6 +192,7 @@
 		kdePackages.sddm-kcm
 		kdePackages.flatpak-kcm
 		kdePackages.sweeper
+		kdePackages.kconfig
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
