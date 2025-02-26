@@ -162,6 +162,7 @@
 		tesseract
 		smile
 		gst_all_1.gstreamer
+		gjs
 		libnotify
 		chromium
 		kdePackages.dragon
