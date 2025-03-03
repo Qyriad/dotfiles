@@ -159,7 +159,7 @@ in {
 				"vesktop"
 				"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
 				"--ozone-platform-hint=wayland"
-				"--gtk-version=4"
+				#"--gtk-version=4"
 				"--enable-wayland-ime"
 				"--wayland-text-input-version=3"
 				"%U"
