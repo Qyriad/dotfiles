@@ -5,6 +5,9 @@
   python-pipe,
   xontrib-abbrevs,
   xonsh-direnv,
+  # Setting programs.xonsh.package to this causes NixOS to call
+  # `.override { extraPackages = }` on us.
+  extraPackages ? lib.const [ ],
 }:
 
 let
@@ -35,5 +38,5 @@ let
     xonsh-direnv
     xontrib-abbrevs
     python-pipe
-  ]);
+  ] ++ (extraPackages py));
 in xonshEnv
