@@ -1,5 +1,12 @@
 include "%L"
 
+# Apostrophe. Specifically:
+# U+02BC MODIFIER LETTER APOSTROPHE
+<Multi_key> <slash> <quotedbl> : "ʼ"
+<Multi_key> <quotedbl> <slash> : "ʼ"
+<Multi_key> <slash> <apostrophe> : "ʼ"
+#<Multi_key> <apostrophe> <slash> : "ʼ" # Conflicts with <apostrophe> <slash> <o> : "ǿ"
+
 <Multi_key> <d> <d> : "ð"
 <Multi_key> <period> <quotedbl>	: "•"
 <Multi_key> <quotedbl> <period>	: "•"
