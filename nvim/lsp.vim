@@ -260,6 +260,13 @@ function! SetupFormatOnSave(buffer) abort
 endfunction
 command! FormatOnSave call SetupFormatOnSave("<buffer>")
 
+function! StopFormatOnSave(buffer) abort
+	augroup FormatOnSave
+		autocmd! BufWritePre <buffer=a:buffer>
+	augroup END
+endfunction
+command! NoFormatOnSave call StopFormatOnSave("<buffer>")
+
 " cSpell: disable
 lua << EOF
 use {
