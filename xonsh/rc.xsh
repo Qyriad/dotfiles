@@ -303,6 +303,7 @@ else:
 	abbrevs['mesoncompile'] = 'meson compile -C build'
 	abbrevs['mesontest'] = 'meson test -C build'
 	abbrevs['mesoninstall'] = 'meson install -C build'
+	abbrevs['gitcb'] = lambda buffer, word: XSH.shell.shell.prompt_formatter('<edit>{curr_branch}')
 
 def _wine32(args):
 	overrides = {
