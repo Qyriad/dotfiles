@@ -16,6 +16,11 @@
 
 	networking.hostName = "Yuki";
 
+	environment.etc."xkb" = {
+		enable = true;
+		source = pkgs.qyriad.xkeyboard_config-patched-inet;
+	};
+
 	services.fwupd.enable = true;
 
 
