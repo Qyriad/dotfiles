@@ -285,6 +285,7 @@ aliases['striptext'] = lambda args, stdin: stdin.read().strip()
 aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
 aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat'
+aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--signal=!all', '-zfe' 'execve']
 
 
 aliases['cm'] = 'cmake -B build'
