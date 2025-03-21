@@ -12,12 +12,18 @@ function! CheckBackspace() abort
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-set completeopt=menu,menuone,preview,noselect,noinsert
+set completeopt=menu,menuone,popup,noselect,noinsert
+
+" Wrapper just so the `accept_pum()` return value doesn't plop into our <expr> mapping.
+function! AcceptPum() abort
+	call v:lua.p.lspcomp.accept_pum()
+endfunction
 
 inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <expr> <S-tab> pumvisible() ? "\<C-p>" : "\<S-tab>"
 " Hm, Eunich is messing this up
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <CR> pumvisible() ? AcceptPum() : "\<CR>"
 inoremap <C-Space> <C-x><C-o>
 "inoremap <expr> <C-e> pumvisible() ? "\<C-e>" : v:lua.close_all_float()
 
@@ -67,17 +73,61 @@ inoremap <C-k> <Cmd>call v:lua.vim.lsp.buf.signature_help()<CR>
 nnoremap <leader>D <Cmd>Telescope lsp_type_definitions<CR>
 nnoremap <leader>tT <Cmd>Telescope lsp_type_definitions<CR>
 nnoremap <leader>a <Cmd>call v:lua.vim.lsp.buf.code_action()<CR>
+nnoremap <leader>ca <Cmd> call v:lua.vim.lsp.buf.code_action()<CR>
 nnoremap <leader>tw <Cmd>Telescope lsp_dynamic_workspace_symbols<CR>
 nnoremap <leader>e <Cmd>call v:lua.vim.diagnostic.open_float()<CR>
 nnoremap <leader>td <Cmd>Telescope diagnostics<CR>
 nnoremap <leader>tr <Cmd>Telescope lsp_references<CR>
-nnoremap [d <Cmd>call v:lua.vim.diagnostic.goto_prev()<CR>
-nnoremap ]d <Cmd>call v:lua.vim.diagnostic.goto_next()<CR>
-nnoremap <leader>h <Cmd>v:lua.lsp.buf.document_highlight()<CR>
-nnoremap <leader>c <Cmd>v:lua.lsp.buf.clear_references()<CR>
+lua vim.g.diagnostic_severity = { min = vim.diagnostic.severity.WARN }
+nnoremap [d <Cmd>call v:lua.vim.diagnostic.goto_prev({ "severity": g:diagnostic_severity })<CR>
+nnoremap ]d <Cmd>call v:lua.vim.diagnostic.goto_next({ "severity": g:diagnostic_severity })<CR>
+nnoremap <leader>h <Cmd>call v:lua.vim.lsp.buf.document_highlight()<CR>
+nnoremap <leader>c <Cmd>call v:lua.vim.lsp.buf.clear_references()<CR>
+" 'Symbol rename'
+nnoremap <leader>sr <Cmd>call v:lua.vim.lsp.buf.rename()<CR>
 nnoremap <leader>sh <Cmd>ClangdSwitchSourceHeader<CR>
 
+" 'Notification dismiss'.
+nnoremap <leader>nd <Cmd>lua p.notify.dismiss({ pending = true })<CR>
+
+function! DiagnosticsComplete(arglead, cmdline, cursorpos) abort
+	return ["error", "warn", "info", "hint"]
+endfunction
+
+command! -complete=customlist,DiagnosticsComplete -nargs=? Diagnostics call v:lua._cmd_diagnostics_impl(<f-args>)
+
 lua << EOF
+
+function _cmd_diagnostics_impl(severity)
+	vim.validate {
+		["vim.g.diagnostic_severity.min"] = { vim.g.diagnostic_severity.min, "number" },
+	}
+
+	if not severity then
+		local current = vim.diagnostic.severity[vim.g.diagnostic_severity.min]
+		assert(type(current) == "string")
+		vim.cmd.echomsg(string.format([["%s"]], current))
+		return
+	end
+	vim.validate {
+		severity = { severity, "string" },
+	}
+
+	local sev = vim.diagnostic.severity[string.upper(severity)]
+	if not sev then
+		vim.api.nvim_err_writeln(string.format("invalid severity '%s'", severity))
+		return
+	end
+
+	-- Apply the new settings.
+	vim.g.diagnostic_severity = {
+		min = sev,
+	}
+
+	vim.diagnostic.config {
+		signs = { severity = vim.g.diagnostic_severity },
+	}
+end
 
 function lsp_quiet()
 	-- This function is called in map-expr context, where we can't change text in
@@ -90,7 +140,7 @@ vim.keymap.set('i', '<C-s>', lsp_quiet, { expr = true })
 vim.lsp.log = require('vim.lsp.log')
 vim.lsp.protocol = require('vim.lsp.protocol')
 function lsp_format(...)
-	return ...
+	return vim.inspect(...)
 end
 vim.lsp.log.set_format_func(lsp_format)
 
