@@ -83,11 +83,20 @@ def shlvl_diff():
 		return str(int($SHLVL) - 2)
 	return str(int($SHLVL) - 1)
 
+if "TMUX" in ${...}:
+	def _prompt_escape():
+		return "\001\x1b]133;A\x1b\\\002"
+else:
+	def _prompt_escape():
+		return ""
+
+
 $PROMPT_FIELDS['exit_code'] = exit_code
 $PROMPT_FIELDS['exit_color'] = exit_color
 $PROMPT_FIELDS['shlvl'] = shlvl_diff
+$PROMPT_FIELDS['prompt_escape'] = _prompt_escape
 $TITLE = '{cwd} | {exit_code} | SL {shlvl}'
-$PROMPT = '{env_name}{GREEN}{user}@{hostname} {PURPLE}{cwd}{INTENSE_CYAN}{curr_branch: ({})}{exit_color} {prompt_end}{RESET} '
+$PROMPT = '{env_name}{GREEN}{user}@{hostname} {PURPLE}{cwd}{INTENSE_CYAN}{curr_branch: ({})}{exit_color} {prompt_end}{RESET} {prompt_escape}'
 $CASE_SENSITIVE_COMPLETIONS = False
 $DYNAMIC_CWD_ELISION_CHAR = "…"
 $DYNAMIC_CWD_WIDTH = "40%"
