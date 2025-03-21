@@ -144,12 +144,6 @@ function lsp_format(...)
 end
 vim.lsp.log.set_format_func(lsp_format)
 
--- We are using lsp_lines for virtual text instead.
-vim.diagnostic.config {
-	virtual_text = false,
-	virtal_lines = false,
-}
-
 lsp_filetypes = {
 	"vim",
 	"c",
@@ -380,7 +374,7 @@ use {
 	},
 }
 use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
-use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
+--use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
 -- FIXME: this plugin is no longer maintained.
 use { 'folke/lsp-colors.nvim', event = "LspAttach" }
 use { 'https://git.sr.ht/~p00f/clangd_extensions.nvim', ft = { "c", "cpp" } }
