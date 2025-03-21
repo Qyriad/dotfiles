@@ -378,13 +378,13 @@ use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
 -- FIXME: this plugin is no longer maintained.
 use { 'folke/lsp-colors.nvim', event = "LspAttach" }
 use { 'https://git.sr.ht/~p00f/clangd_extensions.nvim', ft = { "c", "cpp" } }
-use {
-	'folke/trouble.nvim',
-	event = "LspAttach",
-	opts = {
-		icons = false,
-	},
-}
+--use {
+--	'folke/trouble.nvim',
+--	event = "LspAttach",
+--	opts = {
+--		icons = false,
+--	},
+--}
 use {
   "ray-x/lsp_signature.nvim",
   event = "LspAttach",
