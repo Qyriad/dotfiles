@@ -75,6 +75,15 @@ nnoremap <leader>tm <Cmd>Telescope marks<CR>
 nnoremap <leader>tt <Cmd>Telescope tags<CR>
 nnoremap <leader>tl <Cmd>Telescope loclist<CR>
 
+" Fix buffer names that should be relative paths.
+function! FixName() abort
+	call assert_true(&l:modified == v:true)
+	lua vim.cmd.file(vim.fn.expand("%:."))
+	edit!
+endfunction
+command! Fixname call FixName()
+command! FixName call FixName()
+
 lua <<EOF
 function _hl_cursor_col()
 	vim.wo.cursorcolumn = true
