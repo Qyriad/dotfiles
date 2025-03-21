@@ -42,6 +42,8 @@
 		cargo-outdated
 		cargo-edit
 		cargo-cache
+		cargo-workspaces
+		cargo-show-asm
 		#rustc
 		git-gr
 		git-imerge
