@@ -284,7 +284,7 @@ aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 aliases['striptext'] = lambda args, stdin: stdin.read().strip()
 aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
-aliases['nopager'] = 'env PAGER=cat'
+aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat'
 
 
 aliases['cm'] = 'cmake -B build'
