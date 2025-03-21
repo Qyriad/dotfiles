@@ -12,7 +12,7 @@
 	sub = submodule
 	subinit = submodule update --recursive --init
 	l = log --abbrev-commit --decorate --graph
-	lo = log --abbrev-commit --decorate --graph --stat --format=fuller
+	lo = log --abbrev-commit --decorate --graph --stat --format=fuller --notes
 	s = status
 	sd = status .
 	sdo = status --untracked=no .
