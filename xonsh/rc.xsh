@@ -293,6 +293,8 @@ aliases['cmb'] = 'cmake --build build'
 $YTDLP_YOUTUBE = '%(channel)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
 $YTDLP_TWITCH  = '%(uploader)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
 
+$FFMPEG_MUX_ONLY = shlex.split("-map_metadata 0 -map_chapters 0 -map 0 -c:v copy -c:a copy -c:s copy")
+
 xontrib load abbrevs
 if 'abbrevs' not in globals():
 	aliases['mesoncomp'] = 'meson compile -C build'
