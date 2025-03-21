@@ -23,7 +23,7 @@
 		clang-tools_18
 		basedpyright
 		nodePackages.vim-language-server
-		javascript-typescript-langserver
+		#javascript-typescript-langserver
 		nil
 		nixd
 		lua-language-server
@@ -37,7 +37,7 @@
 		#rustfmt
 		#cargo
 		cargo-limit
-		cargo-info
+		#cargo-info
 		cargo-clone
 		cargo-outdated
 		cargo-edit
