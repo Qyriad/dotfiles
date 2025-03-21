@@ -52,7 +52,7 @@ function! Capitalize_and_return()
 endfunction
 
 " Usable from <C-o>
-nnoremap <leader>c :normal `[v`]gU`]a<CR>
+"nnoremap <leader>c :normal `[v`]gU`]a<CR>
 " Usable from insert mode, and replaces - with _
 inoremap <F3> <C-o>:call Capitalize_and_return()<CR>
 
