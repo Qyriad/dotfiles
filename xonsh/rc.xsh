@@ -85,7 +85,7 @@ def shlvl_diff():
 
 if "TMUX" in ${...}:
 	def _prompt_escape():
-		return "\001\x1b]133;A\x1b\\\002"
+		return "\x01\x1b]133;A\x1b\\\x02"
 else:
 	def _prompt_escape():
 		return ""
