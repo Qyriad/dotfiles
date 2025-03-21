@@ -66,7 +66,7 @@ set updatetime=1000 "Lets languageservers update faster, and shortens the time f
 set noshowmode " We're using lightline, so showing the mode in the command line is redundant.
 
 let &grepprg = 'rg --vimgrep --no-heading --smart-case'
-nnoremap <leader>g :Notify lgrep<Space>
+"nnoremap <leader>g :Notify lgrep<Space>
 
 
 """ Slow down mouse scroll speed.
