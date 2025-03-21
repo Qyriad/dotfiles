@@ -362,16 +362,21 @@ use {
 use { 'nanotee/nvim-lsp-basics', lazy = true }
 --use { 'weilbith/nvim-code-action-menu', lazy = true }
 use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
-use {
-	'simrat39/rust-tools.nvim',
-	lazy = true,
-	ft = "rust",
-	opts = {
-		cmd = { "rust_analyzer" },
-		server = {
-			standalone = true,
+---@type rustaceanvim.Opts
+vim.g.rustaceanvim = {
+	cmd = { "rust_analyzer" },
+	settings = {
+		["rust-analyzer"] = {
+			inlayHints = {
+				maxLength = 5,
+			},
 		},
 	},
+}
+use {
+	"mrcjkb/rustaceanvim",
+	lazy = false,
+	--ft = "rust",
 }
 use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
 --use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
