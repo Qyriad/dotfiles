@@ -54,7 +54,7 @@ endfunction
 
 function! JumpDefinition() abort
 	if exists('b:lsp_client')
-		call v:lua.vim.lsp.buf.definition()
+		Telescope lsp_definitions
 	elseif !empty(taglist(expand('<cword>')))
 		echo "jumped to tag"
 		normal! g
