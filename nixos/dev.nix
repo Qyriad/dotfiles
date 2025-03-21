@@ -21,7 +21,7 @@
 		dprint
 		just
 		clang-tools_18
-		pyright
+		basedpyright
 		nodePackages.vim-language-server
 		javascript-typescript-langserver
 		nil
