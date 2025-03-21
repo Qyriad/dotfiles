@@ -52,8 +52,7 @@
 		rr
 		nixfmt-rfc-style
 		nixpkgs-review
-		# Broken after the Python 3.12 migration for some reason. Check back later.
-		#quickemu
+		quickemu
 		gh
 		gql
 		shellcheck
