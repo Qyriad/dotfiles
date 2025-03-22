@@ -76,7 +76,11 @@ treesitter_configs_setup = {
 				["]]"] = { query = { "@function.inner", "@class.inner", '@block.inner' } },
 				[']p'] = { query = { '@parameter.inner' } },
 			},
+			goto_next_end = {
+				["]f"] = { query = { "@function.inner" } },
+			},
 			goto_previous_start = {
+				["[f"] = { query = { "@function.inner" } },
 				["[["] = { query = { "@function.inner", "@class.inner", '@block.inner' } },
 				['[p'] = { query = { '@parameter.inner' } },
 			},
