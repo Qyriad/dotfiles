@@ -52,6 +52,8 @@ nnoremap [c <Cmd>TSTextobjectGotoPreviousStart @class.inner<CR>
 nnoremap ]c <Cmd>TSTextobjectGotoNextStart @class.inner<CR>
 nnoremap <leader>[c <Cmd>TSTextobjectGotoPreviousEnd @class.inner<CR>
 nnoremap <leader>]c <Cmd>TSTextobjectGotoNextEnd @class.inner<CR>
+nnoremap ]f <Cmd>TSTextobjectGotoNextEnd @function.inner<CR>
+nnoremap [f <Cmd>TSTextobjectGotoPreviousStart @function.inner<CR>
 
 lua <<EOF
 treesitter_configs_setup = {
@@ -76,11 +78,7 @@ treesitter_configs_setup = {
 				["]]"] = { query = { "@function.inner", "@class.inner", '@block.inner' } },
 				[']p'] = { query = { '@parameter.inner' } },
 			},
-			goto_next_end = {
-				["]f"] = { query = { "@function.inner" } },
-			},
 			goto_previous_start = {
-				["[f"] = { query = { "@function.inner" } },
 				["[["] = { query = { "@function.inner", "@class.inner", '@block.inner' } },
 				['[p'] = { query = { '@parameter.inner' } },
 			},
