@@ -52,8 +52,11 @@ nnoremap [c <Cmd>TSTextobjectGotoPreviousStart @class.inner<CR>
 nnoremap ]c <Cmd>TSTextobjectGotoNextStart @class.inner<CR>
 nnoremap <leader>[c <Cmd>TSTextobjectGotoPreviousEnd @class.inner<CR>
 nnoremap <leader>]c <Cmd>TSTextobjectGotoNextEnd @class.inner<CR>
+
 nnoremap ]f <Cmd>TSTextobjectGotoNextEnd @function.inner<CR>
+xnoremap ]f <Cmd>TSTextobjectGotoNextEnd @function.inner<CR>
 nnoremap [f <Cmd>TSTextobjectGotoPreviousStart @function.inner<CR>
+xnoremap [f <Cmd>TSTextobjectGotoPreviousStart @function.inner<CR>
 
 lua <<EOF
 treesitter_configs_setup = {
