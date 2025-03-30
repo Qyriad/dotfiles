@@ -115,14 +115,12 @@
 	services.samba = {
 		enable = true;
 		openFirewall = true;
-		shares = {
-			public = {
-				path = "/";
-				"read only" = false;
-				"browsable" = "yes";
-			};
-		};
 		nsswins = true;
+		settings.public = {
+			path = "/";
+			"read only" = false;
+			"browsable" = "yes";
+		};
 		settings.global = {
 			workgroup = "WORKGROUP";
 			"server string" = "yuki";
