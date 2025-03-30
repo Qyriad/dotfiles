@@ -14,6 +14,10 @@ endfunction
 
 set completeopt=menu,menuone,popup,noselect,noinsert
 
+if has("nvim-0.11")
+	set winborder=rounded
+endif
+
 " Wrapper just so the `accept_pum()` return value doesn't plop into our <expr> mapping.
 function! AcceptPum() abort
 	call v:lua.p.lspcomp.accept_pum()
@@ -135,7 +139,16 @@ function lsp_quiet()
 	vim.defer_fn(p.lspsignature.toggle_float_win, 0)
 	return vim.keycode('<C-e>')
 end
-vim.keymap.set('i', '<C-s>', lsp_quiet, { expr = true })
+-- `help i_CTRL-E`, by default it inserts the character that is in the same position as the cursor one line below.
+-- Not the most useful.
+vim.keymap.set('i', '<C-e>', lsp_quiet, {
+	expr = true,
+	desc = "Close LSP popup and floating windows",
+})
+
+if not vim.fn.has("nvim-0.11.0") then
+	vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { })
+end
 
 vim.lsp.log = require('vim.lsp.log')
 vim.lsp.protocol = require('vim.lsp.protocol')

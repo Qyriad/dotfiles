@@ -42,3 +42,17 @@ highlight! link TrailingWhitespace Error
 " Override search-highlights with the cursor on them to actually be distinguishable.
 " Otherwise `CurSearch` is just linked to `Search`, which is not helpful.
 highlight CurSearch ctermfg=0 ctermbg=11 guifg=NvimLightGrey1 guibg=NvimDarkYellow
+
+if has("nvim-0.11")
+	" Possibly temporary? They made %#CustomHighlight% in 'statusline' relative to 'hl-StatusLine'
+	" instead of relative to 'hl-Normal', so not sure if there's a more sensible value here.
+	highlight! link StatusLine Normal
+	highlight! link StatusLineNC StatusLine
+	highlight! link TabLineFill StatusLine
+
+	" `vim.lsp.buf.hover()` now highlights the target with this.
+	highlight clear LspReferenceTarget
+	" guibg=oklch(0.29 0.0918 219.65)
+	highlight LspReferenceTarget cterm=bold ctermbg=326 gui=bold guibg=#003244
+endif
+

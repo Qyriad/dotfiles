@@ -68,6 +68,9 @@ set noshowmode " We're using lightline, so showing the mode in the command line 
 let &grepprg = 'rg --vimgrep --no-heading --smart-case'
 "nnoremap <leader>g :Notify lgrep<Space>
 
+if has("nvim-0.11")
+	set messagesopt=wait:2000,messages:10000
+endif
 
 """ Slow down mouse scroll speed.
 " This is intended for macOS touchpads, but ideally the solution should be
