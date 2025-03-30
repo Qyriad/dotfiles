@@ -69,7 +69,7 @@ let &grepprg = 'rg --vimgrep --no-heading --smart-case'
 "nnoremap <leader>g :Notify lgrep<Space>
 
 if has("nvim-0.11")
-	set messagesopt=wait:2000,messages:10000
+	set messagesopt=wait:2000,history:1000
 endif
 
 """ Slow down mouse scroll speed.
