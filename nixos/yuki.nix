@@ -14,6 +14,12 @@
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
+	fileSystems."/media/data" = {
+		device = "/dev/disk/by-label/YukiExtdata";
+		fsType = "ext4";
+		options = [ "discard" "nofail" ];
+	};
+
 	networking.hostName = "Yuki";
 
 	environment.etc."xkb" = {
