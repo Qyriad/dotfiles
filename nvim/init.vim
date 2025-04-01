@@ -66,6 +66,8 @@ nnoremap <leader>fb <Cmd>Explore<CR>
 nnoremap ]g <Cmd>lua gitsigns.next_hunk({ preview = true })<CR>
 nnoremap [g <Cmd>lua gitsigns.prev_hunk({ preview = true })<CR>
 nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
+nnoremap <leader>ga <Cmd>Gitsigns stage_hunk<CR>
+nnoremap <leader>gb <Cmd>Gitsigns blame_line<CR>
 
 nnoremap <leader>tg <Cmd>Telescope git_files<CR>
 nnoremap <leader>tb <Cmd>Telescope buffers<CR>
