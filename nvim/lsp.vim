@@ -464,8 +464,6 @@ use {
 }
 use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
 --use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
--- FIXME: this plugin is no longer maintained.
-use { 'folke/lsp-colors.nvim', event = "LspAttach" }
 use { 'https://git.sr.ht/~p00f/clangd_extensions.nvim', ft = { "c", "cpp" } }
 --use {
 --	'folke/trouble.nvim',
