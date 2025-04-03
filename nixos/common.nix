@@ -91,6 +91,7 @@
 		hyfetch
 		jq
 		yq
+		watchlog
 		yt-dlp
 		pstree
 		silicon
