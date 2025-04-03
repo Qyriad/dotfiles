@@ -29,6 +29,7 @@
 
 	services.fwupd.enable = true;
 
+	services.hardware.bolt.enable = true;
 
 	# Options from our custom NixOS module in ./resources.nix
 	resources = {
