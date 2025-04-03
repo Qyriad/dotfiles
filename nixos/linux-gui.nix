@@ -135,6 +135,7 @@
 		cifs-utils
 		nfs-utils
 		ntfs3g
+		ddcutil
 		sequoia
 		sioyek
 		#neochat
