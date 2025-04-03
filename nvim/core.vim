@@ -310,7 +310,7 @@ inoremap <C-u> <esc>mzgUiW`za
 " yy to yank the current line
 " <leader>cc for comment.nvim's toggle line comment
 " <leader>p to paste without indenting (see above).
-nmap <leader>ycp yy<leader>cc<leader>p
+nmap <leader>ycp yy<leader>ccp
 
 " Yank, then comment out, on a visual selection.
 vmap <leader>Y Ygv<leader>cc
