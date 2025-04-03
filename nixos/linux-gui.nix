@@ -108,6 +108,7 @@
 	environment.systemPackages = with pkgs; [
 		libinput
 		libva-utils
+		glxinfo
 		alacritty
 		wezterm
 		# Backup.
