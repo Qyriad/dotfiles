@@ -251,7 +251,7 @@
 		qyriad.cappy
 	]
 	++ lib.optionals config.services.smartd.enable [
-		pkgs.smartmontools
+		smartmontools
 	]
 	++ config.systemd.packages # I want system services to also be in /run/current-system please.
 	++ config.services.udev.packages # Same for udev...
