@@ -53,8 +53,8 @@ set cinoptions=l1,j1,(4,W4
 " Autowrap comments using textwidth, inserting the comment leader,
 " and remove the comment leader when joining lines when it makes sense.
 set formatoptions=cj
-" Don't display . on folds.
-let &fillchars = "fold: "
+" Display • on folds.
+let &fillchars = "fold:\u2022"
 " Use » to indicate tabs, a - for trailing whitespace, and · for multiple leading spaces.
 set list
 let &listchars = "tab:\u00bb ,trail:-,nbsp:+,leadmultispace:\u00b7"
