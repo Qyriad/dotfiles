@@ -90,6 +90,7 @@
 		inxi
 		hyfetch
 		jq
+		yq
 		yt-dlp
 		pstree
 		silicon
