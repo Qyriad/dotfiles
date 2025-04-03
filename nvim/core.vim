@@ -335,7 +335,7 @@ function! InvertRAndEcho() abort
 	endif
 endfunction
 
-" Invert formatoptoins' "r" flag for exactly one insert mode session.
+" Invert formatoptions' "r" flag for exactly one insert mode session.
 function! InsertInvertR() abort
 	call InvertR()
 	augroup InsertInvertR
