@@ -243,7 +243,8 @@
 		# Let us use our yubikey with age.
 		age-plugin-yubikey
 		yubikey-manager
-		systeroid
+		# Broken at the moment as dependency `pkgs.linux-doc` is broken.
+		#systeroid
 		poke
 		libtree
 		lurk
