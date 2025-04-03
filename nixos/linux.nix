@@ -214,6 +214,8 @@
 
 	# Other packages we want available on Linux systems.
 	environment.systemPackages = with pkgs; [
+		efibootmgr
+		efivar
 		usbutils
 		pciutils
 		(gdb.override { enableDebuginfod = true; })
