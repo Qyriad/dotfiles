@@ -88,6 +88,8 @@
 	# Enable udisks2.
 	services.udisks2.enable = true;
 
+	services.colord.enable = true;
+
 	# A little bit cursed to put this in linux-gui, but generally this is the file that won't be sourced
 	# for servers.
 	networking.firewall.enable = false;
