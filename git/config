@@ -46,6 +46,7 @@
 	where = name-rev --no-undefined --always --name-only
 	common = rev-parse --git-common-dir
 	short = rev-parse --short
+	show-upstream = name-rev --no-undefined --name-only "--refs=remotes/*" "@{u}"
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
