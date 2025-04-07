@@ -36,6 +36,7 @@ let
     py.python-box
     py.pillow
     py.pytesseract
+    py.beautifulsoup4
     pkgs.gobject-introspection
     pkgs.gtk3
     pkgs.glib
