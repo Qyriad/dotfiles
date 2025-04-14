@@ -18,16 +18,19 @@ if has("nvim-0.11")
 	set winborder=rounded
 endif
 
-" Wrapper just so the `accept_pum()` return value doesn't plop into our <expr> mapping.
-function! AcceptPum() abort
-	call v:lua.p.lspcomp.accept_pum()
-endfunction
-
 inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <expr> <S-tab> pumvisible() ? "\<C-p>" : "\<S-tab>"
-" Hm, Eunich is messing this up
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <CR> pumvisible() ? AcceptPum() : "\<CR>"
+lua <<EOF
+-- Make autoclose.nvim work with the other <CR> mappings we have.
+function handle_cr()
+	local autoclose_handler = vim.tbl_get(_G.p or { }, 'autoclose', 'new_cr', 'callback')
+	if autoclose_handler then
+		return vim.keycode(autoclose_handler())
+	end
+	return vim.keycode("<CR>")
+end
+EOF
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : v:lua.handle_cr()
 inoremap <C-Space> <C-x><C-o>
 "inoremap <expr> <C-e> pumvisible() ? "\<C-e>" : v:lua.close_all_float()
 

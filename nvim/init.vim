@@ -162,8 +162,35 @@ use {
 			['"'] = { close = false },
 			["'"] = { close = false },
 			["`"] = { close = false },
+			--["<CR>"] = { close = false },
 		},
 	},
+	config = function(plugin, opts)
+		-- HACK: autoclose overrides all our other <CR> mappings (eunuch, pum-accept).
+		-- But stupid private functions mean we can't just `require('autoclose.nvim').autoclose_cr()
+		-- or anything.
+		-- So here we run autoclose's normal setup, and then restore the original mapping, but save
+		-- the autoclose mapping in our plugin shortcut global `p.autoclose`.
+		local pl = lazy.core.config.plugins['autoclose.nvim']
+		local main_name = lazy.core.loader.get_main(plugin)
+		local main = require(main_name)
+
+		-- Get the <CR> mapping before calling setup().
+		local existing_cr = vim.fn.maparg('<CR>', 'i', false, true)
+		p.autoclose = qyriad.tbl_override(p.autoclose, { previous_cr = existing_cr })
+
+		-- Let autoclose mess with things.
+		main.setup(opts)
+
+
+		-- Save the mapping information from autoclose.
+		p.autoclose.new_cr = vim.fn.maparg('<CR>', 'i', false, true)
+
+		-- And then restore the original mapping.
+		if not vim.tbl_isempty(existing_cr) then
+			vim.fn.mapset(existing_cr)
+		end
+	end,
 }
 use {
 	'johmsalas/text-case.nvim',
