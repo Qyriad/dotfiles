@@ -193,4 +193,17 @@ in {
 		qlibWithAdditions = nurAdditions // qlib;
 		# And then finally we'll force the result. Nothing here should be recursive or fail evaluation.
 	in qlib.force qlibWithAdditions;
+
+	# The wrapped environment variables for kdePackages.khelpcenter are a bit... overkill,
+	# and seem to result in duplicate entries all over the place.
+	# Let's just make a version that assumes it's running under NixOS.
+	nixos-khelpcenter = pkgs.kdePackages.khelpcenter.overrideAttrs (prev: {
+		dontWrapQtApps = true;
+
+		postFixup = ''
+			wrapProgram "$out/bin/khelpcenter" \
+				--set QT_PLUGIN_PATH '/run/current-system/sw/lib/qt-6/plugins' \
+				--set NIXPKGS_QT6_QML_IMPORT_PATH '/run/current-system/sw/lib/qt-6/qml'
+		'';
+	});
 })

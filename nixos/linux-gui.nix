@@ -17,6 +17,11 @@
 		enableQt5Integration = true;
 	};
 
+	environment.plasma6.excludePackages = with pkgs.kdePackages; [
+		# We use our patched nixos-khelpcenter instead.
+		khelpcenter
+	];
+
 	# "A stop job is running for X11—" fuck off.
 	systemd.services.display-manager.serviceConfig.TimeoutStopSec = "10";
 
@@ -197,6 +202,7 @@
 		kdePackages.flatpak-kcm
 		kdePackages.sweeper
 		kdePackages.kconfig
+		qyriad.nixos-khelpcenter
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
