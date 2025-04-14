@@ -155,7 +155,7 @@
 		thunderbird
 		seer
 		#mattermost-desktop
-		#qyriad.cinny
+		cinny-desktop
 		firefoxpwa
 		#darling
 		glibc.debug
