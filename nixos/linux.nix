@@ -256,6 +256,14 @@
 	++ lib.optionals config.services.smartd.enable [
 		smartmontools
 	]
+	++ lib.optionals config.hardware.openrazer.enable [
+		razer-cli
+		polychromatic
+		razergenie
+	]
+	++ lib.optionals config.services.ratbagd.enable [
+		config.services.ratbagd.package
+	]
 	++ config.systemd.packages # I want system services to also be in /run/current-system please.
 	++ config.services.udev.packages # Same for udev...
 	++ config.fonts.packages # and fonts...
