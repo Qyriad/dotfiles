@@ -209,6 +209,8 @@
 		lxqt.pavucontrol-qt
 		pwvucontrol
 		wayfarer
+	] ++ lib.optionals config.services.ratbagd.enable [
+		piper
 	];
 
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
