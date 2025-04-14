@@ -197,7 +197,7 @@ vim.lsp.enable({
 	'rust-analyzer',
 	'vimls',
 	'luals',
-
+	'clangd',
 })
 
 --lsp_vim_capabilities = vim.lsp.protocol.make_client_capabilities()
