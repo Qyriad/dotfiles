@@ -125,6 +125,7 @@
 		# For voice.
 		discord
 		calibre
+		_1password-gui
 		kicad
 		krita
 		olive-editor
