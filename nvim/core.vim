@@ -488,8 +488,14 @@ lua <<EOF
 local function get_vim_errstr(lua_errstr)
 	-- lua_errstr should look something like `[string ":lua"]:10: Vim:E999: foomsg`
 	-- Vim displays errors like `E999: foomsg`. So let's get that part.
-	local to_strip = string.find(lua_errstr, "Vim:") + #"Vim:"
-	return string.sub(lua_errstr, to_strip)
+	-- 2025/04/14: Apparently now lua_errstr looks something like
+	-- `vim/_editor.lua:0: nvim_exec2(), line 1: Vim(normal):E999 foomsg`.
+	-- Soooo lets just look for the colon, E, and numbers, shall we?
+	local match_start = lua_errstr:find(":E%d+:")
+	if not match_start then
+		error(string.format("get_vim_errstr: could not find Vim error in %s", lua_errstr))
+	end
+	return lua_errstr:sub(match_start + 1)
 end
 -- Make jumping to search matches use a larger 'scrolloff' value.
 vim.keymap.set("n", "n",
