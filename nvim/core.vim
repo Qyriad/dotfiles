@@ -502,7 +502,7 @@ vim.keymap.set("n", "n",
 	function()
 		local prev_scrolloff = vim.wo.scrolloff
 		vim.wo.scrolloff = 15
-		local status, err = pcall(function() vim.cmd.normal { args = { "n" }, bang = true } end)
+		local status, err = pcall(function() vim.cmd[[normal! n]] end)
 		if status == false then
 			vim.api.nvim_err_writeln(get_vim_errstr(err))
 		end
@@ -514,7 +514,7 @@ vim.keymap.set("n", "N",
 	function()
 		local prev_scrolloff = vim.wo.scrolloff
 		vim.wo.scrolloff = 15
-		local status, err = pcall(function() vim.cmd.normal { args = { "N" }, bang = true } end)
+		local status, err = pcall(function() vim.cmd[[normal! N]] end)
 		if status == false then
 			vim.api.nvim_err_writeln(get_vim_errstr(err))
 		end
