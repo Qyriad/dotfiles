@@ -1,5 +1,56 @@
 local M = {}
 
+--- Like `vim.tbl_get`, but the opposite.
+---
+---`M.tbl_set({}, { 'first', 'second' }, 10) == { first = { second = 10 } }`
+---
+---@param tbl table
+---@param key_list string[]
+---@param value any
+---@return table
+function M.tbl_set(tbl, key_list, value)
+	local next_tbl = tbl
+	local final_key
+	local final_tbl
+	for _, key in ipairs(key_list) do
+		if next_tbl[key] == nil then
+			next_tbl[key] = { }
+		end
+		final_key = key
+		final_tbl = next_tbl
+		next_tbl = next_tbl[key]
+	end
+
+	final_tbl[final_key] = value
+
+	return tbl
+end
+
+function M.nested_tbl(tbl)
+	local ret = { }
+	for key, value in pairs(tbl) do
+		if type(key) == 'string' then
+			local split_key = vim.split(key, '.', {
+				plain = true,
+				trimempty = true,
+			})
+			if type(value) == 'table' then
+				M.tbl_set(ret, split_key, M.nested_tbl(value))
+			else
+				M.tbl_set(ret, split_key, value)
+			end
+		else
+			if type(value) == 'table' then
+				ret[key] = M.nested_tbl(value)
+			else
+				ret[key] = value
+			end
+		end
+	end
+
+	return ret
+end
+
 M.MODE_MAP = {
 	n = 'NORMAL',
 	i = 'INSERT',
