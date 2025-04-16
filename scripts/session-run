@@ -21,6 +21,9 @@ def main():
     parser.add_argument('-E', '--setenv', action='append', type=str,
         help='NAME=VALUE pair of environment variables to set for the process',
     )
+    parser.add_argument('--no-watch', action='store_true',
+        help="don't show the logs from the newly launched command",
+    )
 
     args = parser.parse_args()
     print(args)
@@ -37,6 +40,9 @@ def main():
     run_args = ['systemd-run', '--user', '--collect', '--same-dir', '--slice=app.slice', f'--unit={unit_name}', *env_args, *cmd]
     eprint('\x1b[1m{}'.format(shlex.join(run_args)))
     subprocess.call(run_args)
+
+    if args.no_watch:
+        return
 
     journal_args = ['journalctl', '--user', '--follow', '--output=cat', f'--unit={unit_name}']
     if grc := shutil.which('grc'):
