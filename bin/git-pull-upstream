@@ -1,0 +1,25 @@
+#!/usr/bin/env xonsh
+# vim: filetype=xonsh
+
+import shlex
+import sys
+
+$XONSH_SUBPROC_OUTPUT_FORMAT = 'stream_lines'
+$RAISE_SUBPROC_ERROR = True
+
+current_branch = $(git branch --show-current)
+upstream_remote = $(git config --local --get f"branch.{current_branch}.remote")
+upstream_ref = $(git config --local --get f"branch.{current_branch}.merge")
+
+args = [
+	"git",
+	"pull",
+	upstream_remote,
+	upstream_ref,
+	*sys.argv[1:],
+]
+
+joined = shlex.join(args)
+
+print(f"\x1b[1m{joined}\x1b[0m", file=sys.stderr)
+@(args)

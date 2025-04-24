@@ -1,0 +1,35 @@
+#!/usr/bin/env xonsh
+# vim: filetype=xonsh
+
+import errno
+import shlex
+import sys
+from subprocess import CalledProcessError
+
+$XONSH_SUBPROC_OUTPUT_FORMAT = 'stream_lines'
+$RAISE_SUBPROC_ERROR = True
+
+try:
+	git symbolic-ref -q HEAD
+	print("git-attach: error: head is not detached", file=sys.stderr)
+	sys.exit(-errno.EINVAL)
+except CalledProcessError:
+	pass
+
+attach_target = $(git name-rev --no-undefined --name-only HEAD)
+
+if not attach_target:
+	print("git-attach: error: no attach point found for current branch", file=sys.stderr)
+	sys.exit(-errno.ENOENT)
+
+args = [
+	"git",
+	"switch",
+	attach_target,
+	sys.argv[1:],
+]
+
+joined = shlex.join(args)
+
+print(f"\x1b[1m{joined}\x1b[0m", file=sys.stderr)
+@(args)
