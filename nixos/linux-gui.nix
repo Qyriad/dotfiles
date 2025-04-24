@@ -218,6 +218,12 @@
 		partition-manager.enable = true;
 		firefox.enable = true;
 		kdeconnect.enable = true;
+		_1password-gui = {
+			enable = true;
+			polkitPolicyOwners = [
+				"qyriad"
+			];
+		};
 	};
 
 	# Used for noise suppression.
