@@ -219,7 +219,7 @@
 		firefox.enable = true;
 		kdeconnect.enable = true;
 		_1password-gui = {
-			enable = true;
+			enable = false; # XXX: 1password GUI seems very broken on Wayland at the moment.
 			polkitPolicyOwners = [
 				"qyriad"
 			];
