@@ -5,7 +5,7 @@
   python-pipe,
   xontrib-abbrevs,
   xonsh-direnv,
-  # Setting programs.xonsh.package to this causes NixOS to call
+  # Setting `programs.xonsh.package` to this causes NixOS to call
   # `.override { extraPackages = }` on us.
   extraPackages ? lib.const [ ],
 }:
@@ -34,6 +34,7 @@ let
     py.ds-store
     py.xmltodict
     py.python-box
+    py.matplotlib
     py.pillow
     py.pytesseract
     py.beautifulsoup4
