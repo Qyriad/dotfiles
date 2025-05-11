@@ -255,6 +255,7 @@
 	]
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
+		pulsemixer
 	]
 	++ lib.optionals config.services.smartd.enable [
 		smartmontools
