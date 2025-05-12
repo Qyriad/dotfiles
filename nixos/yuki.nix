@@ -56,6 +56,8 @@
 		"sg"
 		# For virtual /dev/video devices.
 		"v4l2loopback"
+		# For DDC/CI.
+		"i2c-dev"
 	];
 
 	boot.kernelPackages = pkgs.linuxPackages_6_12;
