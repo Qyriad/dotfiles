@@ -31,6 +31,17 @@
 
 	services.hardware.bolt.enable = true;
 
+	hardware.openrazer = {
+		# Probably.
+		enable = false;
+		users = let
+			usersInUsersGroup = lib.filterAttrs (name: group:
+				group.group == "users" || lib.elem "users" group.extraGroups
+			) config.users.users;
+		in lib.mapAttrsToList (_: user: user.name) usersInUsersGroup;
+	};
+	services.ratbagd.enable = true;
+
 	# Options from our custom NixOS module in ./resources.nix
 	resources = {
 		memory = 32;
