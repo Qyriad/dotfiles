@@ -151,7 +151,7 @@
 		curl
 		kdePackages.kcachegrind
 		flamegraph
-		signal-desktop
+		signal-desktop-source
 		thunderbird
 		seer
 		#mattermost-desktop
