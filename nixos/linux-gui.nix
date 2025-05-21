@@ -135,6 +135,7 @@
 		#dsview
 		pulseview
 		ffmpeg-full
+		imagemagick
 		(lib.getBin x264)
 		(lib.getBin x265)
 		aegisub
