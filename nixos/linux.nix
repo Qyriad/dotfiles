@@ -97,7 +97,7 @@
 	#	#"sparc-linux"
 	#];
 
-	i18n.defaultLocale = "en_US.utf8";
+	i18n.defaultLocale = "en_US.UTF-8";
 
 	# Add ~/.local/bin to system path.
 	environment.localBinInPath = true;
