@@ -489,7 +489,26 @@ endfunction
 " Deletes buffers that are not visible in any window.
 command! Bcleanup call Bcleanup(<f-args>)
 
-command! -bar -nargs=? -complete=help Help help <args> | only
+" Opens help for `subject` in the current window.
+function! HelpCurwin(subject) abort
+	" Open the help subject in a new tab.
+	execute "tab help " .. a:subject
+
+	" Keep track of the buffer view state in the new help window.
+	let l:helpbuf = bufnr()
+	let l:save_view = winsaveview()
+
+	" Go to the tab we were previously in, and then attach its window to the help buffer.
+	tabnext #
+	execute "buffer " .. l:helpbuf
+
+	" Restore the viewstate of the help window to the original window.
+	call winrestview(l:save_view)
+
+	" And finally close that help tab.
+	tabclose #
+endfunction
+command! -nargs=? -complete=help Help call HelpCurwin(<q-args>)
 
 " Like `*` (searches for the current word), but doesn't actually perform the search operation,
 " instead only setting the search pattern *register* (`/`), and re-setting 'hlsearch'.
