@@ -478,6 +478,17 @@ endfunction
 " for each argument.
 command! -nargs=+ -complete=file Bload call Bload(<f-args>)
 
+function! Bcleanup() abort
+	let l:buffers = getbufinfo({ 'buflisted': v:true })
+	for buffer in l:buffers
+		if empty(l:buffer.windows)
+			execute "echo bdelete " .. l:buffer.bufnr
+		endif
+	endfor
+endfunction
+" Deletes buffers that are not visible in any window.
+command! Bcleanup call Bcleanup(<f-args>)
+
 " Like `*` (searches for the current word), but doesn't actually perform the search operation,
 " instead only setting the search pattern *register* (`/`), and re-setting 'hlsearch'.
 " In other words, higlight the current word and all occurences of it, and make the "next"
