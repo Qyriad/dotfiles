@@ -489,6 +489,8 @@ endfunction
 " Deletes buffers that are not visible in any window.
 command! Bcleanup call Bcleanup(<f-args>)
 
+command! -bar -nargs=? -complete=help Help help <args> | only
+
 " Like `*` (searches for the current word), but doesn't actually perform the search operation,
 " instead only setting the search pattern *register* (`/`), and re-setting 'hlsearch'.
 " In other words, higlight the current word and all occurences of it, and make the "next"
