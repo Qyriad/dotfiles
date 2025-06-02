@@ -65,6 +65,10 @@
 			url = "github:xonsh/xonsh";
 			flake = false;
 		};
+		nil-source = {
+			url = "github:oxalica/nil";
+			flake = false;
+		};
 	};
 
 	outputs = inputs @ {

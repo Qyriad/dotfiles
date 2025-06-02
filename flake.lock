@@ -256,6 +256,22 @@
         "type": "github"
       }
     },
+    "nil-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741118843,
+        "narHash": "sha256-ggXU3RHv6NgWw+vc+HO4/9n0GPufhTIUjVuLci8Za8c=",
+        "owner": "oxalica",
+        "repo": "nil",
+        "rev": "577d160da311cc7f5042038456a0713e9863d09e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "nil",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -380,6 +396,7 @@
         "lix-module": "lix-module",
         "log2compdb": "log2compdb",
         "mac-app-util": "mac-app-util",
+        "nil-source": "nil-source",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
         "niz": "niz",
