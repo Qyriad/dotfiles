@@ -373,11 +373,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747851878,
-        "narHash": "sha256-0PciKmD2rCY6jYWMSwYGinlzWiWyMzum2oQ1LcUu+8w=",
+        "lastModified": 1749038157,
+        "narHash": "sha256-jyxCzW6e0x3jDu2KUT0zGzaktm5zv8FzBS4xHWOhPzo=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "2200861ef7baec3c779ab0de482d4ab760d34429",
+        "rev": "2f660d94fcfe548c62db411c5eb8f3d14665d2e2",
         "type": "github"
       },
       "original": {
