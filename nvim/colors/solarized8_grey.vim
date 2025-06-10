@@ -9,6 +9,15 @@ runtime colors/solarized8.vim
 " Override the set name from above.
 let g:colors_name = "solarized_grey"
 
+" 1 below treesitter's default of 100.
+"lua vim.hl.priorities.semantic_tokens = 99
+lua vim.api.nvim_set_hl(0, "@lsp.type.comment.lua", {})
+
+" Unlink the Treesitter and LSP comment modifiers (which also get applied to doc-comments),
+" so the italics
+highlight @lsp.type.comment.rust cterm=italic ctermfg=242
+highlight @comment.rust cterm=italic ctermfg=242
+
 " Override just these specific colors.
 " The first one makes the normal background a medium-dark grey, instead of the blue
 " solarized8 uses.
@@ -33,6 +42,9 @@ highlight link @lsp.mod.documentation SpecialComment
 highlight link @comment.documentation SpecialComment
 
 highlight link @lsp.type.typeAlias Typedef
+
+" These tend to override doc-comments from syntax or treesitter.
+highlight clear @lsp.type.comment
 
 " Idk what's up with this one.
 highlight! link @variable Identifier
