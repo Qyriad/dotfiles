@@ -396,7 +396,7 @@ augroup DocFormatOptions
 augroup END
 
 "nnoremap <expr> o (v:lua.doc_format_options() ? "i\<esc>o" : "o") " Need to decide if I want this one
-inoremap <expr> <CR> (v:lua.doc_format_options() ? "\<CR>" : "\<CR>")
+"inoremap <expr> <CR> (v:lua.doc_format_options() ? "\<CR>" : "\<CR>")
 
 
 " Okay okay wait, let's try a more flexible version of the "I only want fo+=r for a sec"
