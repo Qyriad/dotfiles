@@ -75,9 +75,23 @@ nnoremap gs <Cmd>Gitsigns preview_hunk<CR>
 nnoremap <leader>ga <Cmd>Gitsigns stage_hunk greedy=false<CR>
 nnoremap <leader>gb <Cmd>Gitsigns blame_line<CR>
 
-nnoremap <leader>tg <Cmd>Telescope git_files<CR>
-nnoremap <leader>tb <Cmd>Telescope buffers<CR>
-nnoremap <C-p> <Cmd>lua telescope.builtin.buffers { sort_mru = true }<CR>
+nnoremap <leader>tg <Cmd>Telescope live_grep<CR>
+"nnoremap <leader>tb <Cmd>Telescope buffers<CR>
+lua <<EOF
+vim.keymap.set("n", "<leader>tb", "", {
+	callback = function()
+		p.telescope.builtin.buffers {
+			prompt_title = "select buffer",
+			attach_mappings = function(_, map)
+				map({ "n" }, "dd", telescope.actions.delete_buffer)
+				local extend_default_mappings = true
+				return extend_default_mappings
+			end,
+		}
+	end,
+})
+EOF
+"nnoremap <C-p> <Cmd>lua telescope.builtin.buffers { sort_mru = true }<CR>
 nnoremap <C-p> <Cmd>Telescope buffers sort_mru=true<CR>
 nnoremap <leader>tm <Cmd>Telescope marks<CR>
 nnoremap <leader>tt <Cmd>Telescope tags<CR>
@@ -238,14 +252,27 @@ use {
 
 -- Pickers
 --use 'ctrlpvim/ctrlp.vim'
-use 'nvim-lua/plenary.nvim' -- Dependency for telescope.
+-- Dependency for telescope.
+use {
+	'nvim-lua/plenary.nvim',
+	config = function()
+		plenary = require('plenary')
+	end,
+}
 use {
 	'nvim-telescope/telescope.nvim',
 	dependencies = { 'nvim-lua/plenary.nvim' },
 	config = function()
 		telescope = require('telescope')
-		telescope.setup {}
+		telescope.setup {
+			--defaults = {
+			--
+			--}
+			--create_layout = function(picker)
+			--end,
+		}
 		telescope.builtin = require('telescope.builtin')
+		telescope.actions = require('telescope.actions')
 		telescope.sorters = require('telescope.sorters')
 		telescope.load_extension("ui-select")
 	end,
