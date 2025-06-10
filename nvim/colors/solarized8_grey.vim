@@ -55,6 +55,8 @@ highlight! link TrailingWhitespace Error
 " Otherwise `CurSearch` is just linked to `Search`, which is not helpful.
 highlight CurSearch ctermfg=0 ctermbg=11 guifg=NvimLightGrey1 guibg=NvimDarkYellow
 
+highlight FoldColumn guifg=NvimDarkCyan
+
 if has("nvim-0.11")
 	" Possibly temporary? They made %#CustomHighlight% in 'statusline' relative to 'hl-StatusLine'
 	" instead of relative to 'hl-Normal', so not sure if there's a more sensible value here.
