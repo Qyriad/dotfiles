@@ -229,7 +229,7 @@
 		heh
 		sysstat
 		# apksigner dependency fails to build on macOS
-		diffoscope
+		(diffoscope.overrideAttrs { enableBloat = false; })
 		rpm
 		binutils
 		lsof
