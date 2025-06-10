@@ -66,10 +66,13 @@ nnoremap <leader>f :RangerCurrentDirectory<CR>
 nnoremap <leader>fb <Cmd>Explore<CR>
 
 
-nnoremap ]g <Cmd>lua gitsigns.next_hunk({ preview = true })<CR>
-nnoremap [g <Cmd>lua gitsigns.prev_hunk({ preview = true })<CR>
-nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
-nnoremap <leader>ga <Cmd>Gitsigns stage_hunk<CR>
+"nnoremap ]g <Cmd>lua gitsigns.nav_hunk('next', { preview = true })
+nnoremap ]g <Cmd>Gitsigns nav_hunk next preview=true<CR>
+"nnoremap [g <Cmd>lua gitsigns.nav_hunk('prev', { preview = true })
+nnoremap [g <Cmd>Gitsigns nav_hunk prev preview=true<CR>
+"nnoremap gs <Cmd>lua gitsigns.preview_hunk()<CR>
+nnoremap gs <Cmd>Gitsigns preview_hunk<CR>
+nnoremap <leader>ga <Cmd>Gitsigns stage_hunk greedy=false<CR>
 nnoremap <leader>gb <Cmd>Gitsigns blame_line<CR>
 
 nnoremap <leader>tg <Cmd>Telescope git_files<CR>
