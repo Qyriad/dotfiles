@@ -182,6 +182,12 @@ in {
 
 	xkeyboard_config-patched-inet = self.callPackage ./pkgs/xkb-config-patched-inet.nix { };
 
+	nix-update = pkgs.nix-update.overrideAttrs (prev: {
+		patches = (prev.patches or [ ]) ++ [
+			./pkgs/nix-update.patch
+		];
+	});
+
 	qlib = let
 		qlib = import ./qlib.nix { inherit lib; };
 		# Nixpkgs lib with additions from qyriad-nur.

@@ -1,0 +1,54 @@
+diff --git a/nix_update/__init__.py b/nix_update/__init__.py
+index aeca20e..1c5d034 100644
+--- a/nix_update/__init__.py
++++ b/nix_update/__init__.py
+@@ -146,21 +146,21 @@ def parse_args(args: list[str]) -> Options:
+     parser.add_argument(
+         "--option",
+         help="Nix option to set",
+         action="append",
+         nargs=2,
+         metavar=("name", "value"),
+         default=[],
+     )
+ 
+     a = parser.parse_args(args)
+-    extra_flags = ["--extra-experimental-features", "flakes nix-command"]
++    extra_flags = ["--extra-experimental-features", "flakes nix-command pipe-operator pipe-operators"]
+     if a.system:
+         extra_flags.extend(["--system", a.system])
+     for name, value in a.option:
+         extra_flags.extend(["--option", name, value])
+ 
+     return Options(
+         import_path=os.path.realpath(a.file),
+         quiet=a.quiet or a.print_commit_message,
+         flake=a.flake,
+         build=a.build,
+diff --git a/nix_update/update.py b/nix_update/update.py
+index 7b1914a..eb37699 100644
+--- a/nix_update/update.py
++++ b/nix_update/update.py
+@@ -78,21 +78,21 @@ def to_sri(hashstr: str) -> str:
+     elif length in (64, 52):
+         prefix = "sha256:"
+     elif length in (103, 128):
+         prefix = "sha512:"
+     else:
+         return hashstr
+ 
+     cmd = [
+         "nix",
+         "--extra-experimental-features",
+-        "nix-command",
++        "nix-command flakes pipe-operator pipe-operators",
+         "hash",
+         "to-sri",
+         f"{prefix}{hashstr}",
+     ]
+     proc = run(cmd)
+     return proc.stdout.rstrip("\n")
+ 
+ 
+ def replace_hash(filename: str, current: str, target: str) -> None:
+     normalized_hash = to_sri(target)

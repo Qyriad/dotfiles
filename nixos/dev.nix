@@ -47,6 +47,7 @@
 		#rustc
 		git-gr
 		git-imerge
+		nix-update
 		#nix-eval-jobs
 		#colmena
 		rr
