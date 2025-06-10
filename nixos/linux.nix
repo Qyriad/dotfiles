@@ -252,6 +252,7 @@
 		libtree
 		lurk
 		qyriad.cappy
+		bluetui
 	]
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
