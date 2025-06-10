@@ -248,7 +248,7 @@ endfunction
 
 function! RtpCommand(path, bang) abort
 	let l:result = v:lua.rtp(a:path)
-	if a:bang
+	if !empty(a:bang)
 		let @" = l:result
 		echomsg "yanked " . l:result
 	else
