@@ -7,6 +7,7 @@ rec {
   nixpkgs-master = getFlake "github:NixOS/nixpkgs/master";
   nixpkgs-unstable = getFlake "github:NixOS/nixpkgs/nixpkgs-unstable";
   fenix = getFlake "github:nix-community/fenix";
+  fenixLib = import fenix { inherit pkgs; };
   pkgs = import nixpkgs {
     system = info.currentSystem;
     overlays = attrValues qyriad.overlays;
