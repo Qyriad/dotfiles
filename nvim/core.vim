@@ -542,8 +542,9 @@ vim.keymap.set("n", "n",
 	end,
 	{ desc = "Same as normal `n`, but with `scrolloff=15`" }
 )
-vim.keymap.set("n", "N",
-	function()
+vim.keymap.set("n", "N", "", {
+	desc = "Same as normal `N`, but with `scrolloff=15`",
+	callback = function()
 		local prev_scrolloff = vim.wo.scrolloff
 		vim.wo.scrolloff = 15
 		local status, err = pcall(function() vim.cmd[[normal! N]] end)
@@ -552,8 +553,7 @@ vim.keymap.set("n", "N",
 		end
 		vim.wo.scrolloff = prev_scrolloff
 	end,
-	{ desc = "Same as normal `N`, but with `scrolloff=15`" }
-)
+})
 EOF
 
 
