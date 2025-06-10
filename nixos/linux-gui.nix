@@ -175,6 +175,7 @@
 		gjs
 		libnotify
 		chromium
+		kdePackages.kdialog
 		kdePackages.dragon
 		kdePackages.filelight
 		kdePackages.ffmpegthumbs
