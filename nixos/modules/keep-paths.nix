@@ -20,6 +20,14 @@
 		readOnly = true;
 	};
 
+	options.echoKeptStorePaths = lib.mkOption {
+		type = lib.types.bool;
+		default = true;
+		description = ''
+			Whether to echo the store paths kept by `options.storePathsToKeep` during build or not.
+		'';
+	};
+
 	# Implementation.
 	config = lib.mkIf (lib.lists.length config.storePathsToKeep > 0) {
 
@@ -28,20 +36,9 @@
 		systemKeptPaths = pkgs.qyriad.runCommandMinimal "system-kept-paths" {
 
 			closureText = pkgs.writeClosure config.storePathsToKeep;
+			inherit (config) echoKeptStorePaths;
 
-		} <| lib.trim ''
-			mkdir -p "$out/share/nix-support"
-			# All we need to prevent garbage collection of a store path is to have that
-			# store path's text exist in the output of a derivation that is included in
-			# our system derivation.
-			# Easy enough!
-			echo "preventing the following store paths from being garbage collected:"
-			local storePathLine
-			while IFS= read -r storePathLine; do
-				echo "  $storePathLine"
-			done < "$closureText"
-			cp "$closureText" "$out/share/nix-support/propagated-build-inputs"
-		'';
+		} <| lib.readFile ./keep-paths.sh;
 
 		environment.systemPackages = [ config.systemKeptPaths ];
 	};
