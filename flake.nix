@@ -165,6 +165,7 @@
 					git-point
 					xil
 					xonsh-source
+					nil-source
 				;
 			};
 
