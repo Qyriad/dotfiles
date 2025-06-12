@@ -95,7 +95,7 @@
 			nixpkgs.overlays = [ self.overlays.default ];
 
 			# Prevent our flake input trees from being garbage collected.
-			storePathsToKeep = lib.attrValues inputs;
+			storePathsToKeep = inputs;
 
 			# Point "qyriad" to this here flake.
 			nix.registry.qyriad = {
