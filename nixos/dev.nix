@@ -28,6 +28,7 @@
 		nixd
 		lua-language-server
 		zls
+		mesonlsp
 		bear
 		universal-ctags
 		patchelf
