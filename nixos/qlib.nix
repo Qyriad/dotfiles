@@ -178,6 +178,10 @@ let
 		meta = cleanMeta (drv.meta or { });
 	};
 
+	importAutocall = path: let
+		imported = import path;
+	in if lib.isFunction imported then imported { } else imported;
+
 
 	/** Partial application for lambdas with formals!
 	 * Why isn't this in nixpkgs lib…?
@@ -261,6 +265,7 @@ in {
 		joinPaths
 		joinPaths'
 		trimString
+		importAutocall
 		partial
 		nixosSystem
 		evalNixos
