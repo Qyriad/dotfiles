@@ -24,13 +24,11 @@
 		};
 		log2compdb = {
 			url = "github:Qyriad/log2compdb";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
+			flake = false;
 		};
 		pzl = {
 			url = "github:Qyriad/pzl";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
+			flake = false;
 		};
 		cappy = {
 			url = "github:Qyriad/cappy";
