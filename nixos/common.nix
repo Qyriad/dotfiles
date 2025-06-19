@@ -103,7 +103,7 @@
 		nix-du
 		qyriad.niz
 		qyriad.pzl
-		#qyriad.xil
+		qyriad.xil
 		bat
 		ncdu
 		lnav

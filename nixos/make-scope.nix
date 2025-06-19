@@ -14,7 +14,6 @@
 }: let
 
 	qpkgs = import qyriad-nur { inherit pkgs; };
-	xil' = import xil { inherit pkgs; };
 	agenix' = import agenix { inherit pkgs; };
 
 in lib.makeScope pkgs.newScope (self: let
@@ -90,8 +89,13 @@ in {
 
 	nix-helpers = self.callPackage ./pkgs/nix-helpers.nix { };
 
-	xil = xil'.xil.withConfig {
-		callPackageString = builtins.readFile ./xil-config.nix;
+	xil = let
+		xil' = import xil { inherit pkgs; };
+		withNixpkgsLix = xil'.override {
+			inherit (pkgs.lixPackageSets.stable) lix;
+		};
+	in withNixpkgsLix.withConfig {
+		callPackageString = lib.readFile ./xil-config.nix;
 	};
 
 	log2compdb = import log2compdb { inherit pkgs; };
