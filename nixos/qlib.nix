@@ -142,7 +142,7 @@ let
 		list:
 		mkPair:
 		#lib.listToAttrs (lib.concatMap (name: [ (mkPair name) ]) list);
-		lib.concatMap (name: [ (mkPair name ) ] list)
+		lib.concatMap (name: [ (mkPair name ) ]) list
 		|> lib.listToAttrs;
 
 	removeAttrs' = lib.flip builtins.removeAttrs;
