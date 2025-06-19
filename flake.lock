@@ -127,15 +127,7 @@
       }
     },
     "git-point": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "qyriad-nur": "qyriad-nur"
-      },
+      "flake": false,
       "locked": {
         "lastModified": 1748958585,
         "narHash": "sha256-I9Vr715H4DImc0DC03HYkCGXpmla0ECFZcPQ2xzsIRc=",
@@ -309,14 +301,7 @@
       }
     },
     "niz": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
+      "flake": false,
       "locked": {
         "lastModified": 1719242478,
         "narHash": "sha256-rrvSpu9hFWxKbIM2jWsocdW7ZTJrhKO3UA9PD5tkqTw=",
@@ -350,29 +335,6 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1747851878,
-        "narHash": "sha256-0PciKmD2rCY6jYWMSwYGinlzWiWyMzum2oQ1LcUu+8w=",
-        "owner": "Qyriad",
-        "repo": "nur-packages",
-        "rev": "2200861ef7baec3c779ab0de482d4ab760d34429",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Qyriad",
-        "repo": "nur-packages",
-        "type": "github"
-      }
-    },
-    "qyriad-nur_2": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
         "lastModified": 1749038157,
         "narHash": "sha256-jyxCzW6e0x3jDu2KUT0zGzaktm5zv8FzBS4xHWOhPzo=",
         "owner": "Qyriad",
@@ -401,7 +363,7 @@
         "nixpkgs": "nixpkgs",
         "niz": "niz",
         "pzl": "pzl",
-        "qyriad-nur": "qyriad-nur_2",
+        "qyriad-nur": "qyriad-nur",
         "xil": "xil",
         "xonsh-source": "xonsh-source"
       }
@@ -461,11 +423,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719236664,
-        "narHash": "sha256-AUXjPlfHpUQs+gKznmiHRaWZNWpKRNDE3R85oR/6hlY=",
+        "lastModified": 1750332928,
+        "narHash": "sha256-N6KfZItdlYAQbePYLaSp64ImYgxL67+eazB3pJtpKjo=",
         "owner": "Qyriad",
         "repo": "Xil",
-        "rev": "563229c826e6b37a64e72d29154ab96e8ee18fcb",
+        "rev": "88e886f5693a0adc30312bd17509a4b22359d48d",
         "type": "github"
       },
       "original": {
