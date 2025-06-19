@@ -14,13 +14,11 @@
 		};
 		qyriad-nur = {
 			url = "github:Qyriad/nur-packages";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
+			flake = false;
 		};
 		niz = {
 			url = "github:Qyriad/niz";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
+			flake = false;
 		};
 		log2compdb = {
 			url = "github:Qyriad/log2compdb";
@@ -36,8 +34,7 @@
 		};
 		git-point = {
 			url = "github:Qyriad/git-point";
-			inputs.nixpkgs.follows = "nixpkgs";
-			inputs.flake-utils.follows = "flake-utils";
+			flake = false;
 		};
 		xil = {
 			url = "github:Qyriad/Xil";
