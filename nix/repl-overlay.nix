@@ -32,11 +32,6 @@ rec {
   nixos = qyriad.nixosConfigurations.${HOSTNAME};
   darwin = qyriad.darwinConfigurations.${HOSTNAME};
 
-  ## Basically just used for the stuff below.
-  #importAutocall = exprPath: let
-  #  expr = import exprPath;
-  #in if lib.isFunction expr then expr { } else expr;
-
   # Stuff that lets me inspect the current directory easily.
   f = getFlake "git+file:${PWD}";
   flakePackages = f.packages.${currentSystem};
