@@ -24,11 +24,10 @@ rec {
     system = info.currentSystem;
     overlays = attrValues qyriad.overlays;
   };
+  fenixLib = import fenix { inherit pkgs; };
 
   # `pkgs.lib` is soooooo much typing.
   inherit (pkgs) lib qlib stdenv;
-
-  fenixLib = import fenix { inherit pkgs; };
 
   nixos = qyriad.nixosConfigurations.${HOSTNAME};
   darwin = qyriad.darwinConfigurations.${HOSTNAME};
