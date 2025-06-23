@@ -97,6 +97,9 @@
 				from = { id = "qyriad"; type = "indirect"; };
 				flake = self;
 			};
+
+			# And for fun, let NixOS know our Git commit hash, if we have one.
+			system.configurationRevision = self.rev or self.sourceInfo.dirtyRev;
 		};
 
 		# Wraps nixpkgs.lib.nixosSystem to generate a NixOS configuration, adding common modules
