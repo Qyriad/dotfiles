@@ -1,8 +1,11 @@
 " Extended from lifepillar/vim-solarized8.
 
+" Reset all custom highlight groups.
 highlight clear
+" Reset highlighting (does not actually reset syntax items).
 syntax reset
 
+let g:solarized_extra_hi_groups = v:false
 " Load the "base" colorscheme.
 runtime colors/solarized8.vim
 
