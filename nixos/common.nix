@@ -13,7 +13,16 @@
 	#];
 	nix = {
 		settings = {
-			experimental-features = [ "nix-command" "flakes" "pipe-operator" ];
+			experimental-features = [
+				"nix-command"
+				"flakes"
+				"pipe-operator"
+				"no-url-literals"
+				"lix-custom-sub-commands"
+				#"impure-derivations"
+				"cgroups"
+				"auto-allocate-uids"
+			];
 
 			extra-substituters = [
 				"https://cache.lix.systems"
