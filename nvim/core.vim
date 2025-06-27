@@ -241,7 +241,7 @@ endfunction
 nnoremap <leader>sh <Cmd>call SwitchSourceHeader()<CR>
 
 " Wired:
-cnoremap <C-r> %:r<tab>
+cnoremap <A-r> %:r<tab>
 noremap <A-r> %:r<tab>
 " Expands to the directory of the current filename, using ~ for $HOME,
 " and using path relative to the current directory if applicable.
