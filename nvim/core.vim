@@ -513,6 +513,34 @@ function! HelpCurwin(subject) abort
 endfunction
 command! -nargs=? -complete=help Help call HelpCurwin(<q-args>)
 
+" Opens Man page for `subject` in the current window.
+function! ManCurwin(subject) abort
+	echomsg a:subject
+	" Open the man page in a new tab.
+	execute "tab Man " .. a:subject
+
+	" Keep track of the buffer view state in the new help window.
+	let l:manbuf = bufnr()
+	let l:save_view = winsaveview()
+
+	" Go to the tab we were previously in, and then attach its window to the Man buffer.
+	tabnext #
+	execute "buffer " .. l:manbuf
+
+	" Restore the viewstate of the help window to the original window.
+	call winrestview(l:save_view)
+
+	" And finally close that help.
+	tabclose #
+endfunction
+
+lua <<EOF
+vim.api.nvim_create_user_command('ManCur', function(params) vim.fn.ManCurwin(params.args) end, {
+	complete = require('man').man_complete,
+	nargs = '*',
+})
+EOF
+
 " Like `*` (searches for the current word), but doesn't actually perform the search operation,
 " instead only setting the search pattern *register* (`/`), and re-setting 'hlsearch'.
 " In other words, higlight the current word and all occurences of it, and make the "next"
