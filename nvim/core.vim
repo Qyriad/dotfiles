@@ -261,6 +261,9 @@ inoremap <C-L> <C-o>A
 " Copy current command line.
 cnoremap <C-y> <C-f>Vy<C-c>
 
+" Open the current file again in a vsplit.
+nnoremap <leader>vs <Cmd>vsplit<CR>
+
 " Open the current file again in a new tab.
 nnoremap <leader>ts <Cmd>tab split<CR>
 
