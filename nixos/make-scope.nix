@@ -184,6 +184,13 @@ in {
 		};
 	});
 
+	grc = pkgs.grc.overrideAttrs (prev: {
+		permitUserSite = true;
+		makeWrapperArgs = prev.makeWrapperArgs or [ ] ++ [
+			"--set-default" "PYTHONUNBUFFERED" "1"
+		];
+	});
+
 	xkeyboard_config-patched-inet = self.callPackage ./pkgs/xkb-config-patched-inet.nix { };
 
 	nix-update = pkgs.nix-update.overrideAttrs (prev: {

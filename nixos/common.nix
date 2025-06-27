@@ -88,7 +88,7 @@
 		diskus
 		parallel-disk-usage
 		moreutils
-		grc
+		qyriad.grc
 		file
 		delta
 		difftastic
