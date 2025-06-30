@@ -11,7 +11,7 @@
   ESC = "";
 
   extraTargets = [
-    "wasm32-unknown-unknown"
+    #"wasm32-unknown-unknown"
   ];
 
   toolchainHashes = {

@@ -11,10 +11,15 @@ rec {
 
   # Bare flakes I use frequently enough.
   qyriad = getFlake "qyriad";
+  # The version of `qyriad` that hasn't been deployed yet.
+  staging = let
+    dotfiles = getEnv "XDG_CONFIG_HOME";
+  in getFlake ("git+file:${dotfiles}");
   nixpkgs = getFlake "nixpkgs";
   nixpkgs-master = getFlake "github:NixOS/nixpkgs/master";
   nixpkgs-unstable = getFlake "github:NixOS/nixpkgs/nixpkgs-unstable";
   fenix = getFlake "github:nix-community/fenix";
+  qyriad-nur = getFlake "github:Qyriad/nur-packages";
 
   currentSystem = info.currentSystem;
   system = info.currentSystem;
@@ -25,6 +30,7 @@ rec {
     overlays = attrValues qyriad.overlays;
   };
   fenixLib = import fenix { inherit pkgs; };
+  qpkgs = import qyriad-nur { inherit pkgs; };
 
   # `pkgs.lib` is soooooo much typing.
   inherit (pkgs) lib qlib stdenv;
