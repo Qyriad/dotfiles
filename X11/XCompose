@@ -55,6 +55,12 @@ include "%L"
 
 # Flat
 <Multi_key> <b> <b> : "♭"
+# "Accidental: flat"
+<Multi_key> <a> <b> : "♭"
+# "Accidental: sharp"
+<Multi_key> <a> <s> : "♯"
+# "Accidental: natural"
+<Multi_key> <a> <n> : "♮"
 
 # ¯\_(ツ)_/¯
 <Multi_key> <s> <h> : "¯\\_(ツ)_/¯"
