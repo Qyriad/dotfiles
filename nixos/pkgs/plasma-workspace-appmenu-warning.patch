@@ -1,0 +1,168 @@
+diff --git a/appmenu/CMakeLists.txt b/appmenu/CMakeLists.txt
+index 6d4493de3..4465b2255 100644
+--- a/appmenu/CMakeLists.txt
++++ b/appmenu/CMakeLists.txt
+@@ -12,34 +12,37 @@ set(kded_appmenu_SRCS
+ 
+ qt_add_dbus_adaptor(kded_appmenu_SRCS com.canonical.AppMenu.Registrar.xml
+     menuimporter.h MenuImporter menuimporteradaptor MenuImporterAdaptor)
+ 
+ qt_add_dbus_adaptor(kded_appmenu_SRCS org.kde.kappmenu.xml
+     appmenu_dbus.h AppmenuDBus appmenuadaptor AppmenuAdaptor)
+ 
+ kcoreaddons_add_plugin(appmenu SOURCES ${kded_appmenu_SRCS} INSTALL_NAMESPACE "kf6/kded")
+ 
+ pkg_check_modules(XKBCommon REQUIRED IMPORTED_TARGET xkbcommon)
++if (HAVE_X11)
++    pkg_check_modules(XCBErrors REQUIRED IMPORTED_TARGET xcb-errors)
++endif()
+ 
+ target_link_libraries(appmenu
+     Qt::DBus
+     Qt::WaylandClientPrivate
+     KF6::DBusAddons
+     KF6::KIOCore
+     Plasma::KWaylandClient
+     KF6::WindowSystem
+     Wayland::Client
+     PkgConfig::XKBCommon
+     dbusmenuqt
+ )
+ if (HAVE_X11)
+-    target_link_libraries(appmenu XCB::XCB)
++    target_link_libraries(appmenu XCB::XCB PkgConfig::XCBErrors)
+ endif()
+ 
+ ecm_qt_declare_logging_category(appmenu
+     HEADER appmenu_debug.h
+     IDENTIFIER APPMENU_DEBUG
+     CATEGORY_NAME org.kde.plasma.appmenu
+     DESCRIPTION "appmenu"
+     EXPORT PLASMAWORKSPACE
+ )
+ 
+diff --git a/appmenu/appmenu.cpp b/appmenu/appmenu.cpp
+index ec18e0047..35352c37b 100644
+--- a/appmenu/appmenu.cpp
++++ b/appmenu/appmenu.cpp
+@@ -8,20 +8,23 @@
+ 
+ #include "appmenu.h"
+ #include "../c_ptr.h"
+ #include "appmenu_dbus.h"
+ #include "appmenu_debug.h"
+ #include "appmenuadaptor.h"
+ #include "kdbusimporter.h"
+ #include "menuimporteradaptor.h"
+ #include "verticalmenu.h"
+ 
++#include <optional>
++#include <string_view>
++
+ #include <QApplication>
+ #include <QDBusInterface>
+ #include <QMenu>
+ #include <QPainter>
+ #include <QRasterWindow>
+ #include <private/qwaylanddisplay_p.h>
+ #include <private/qwaylandinputdevice_p.h>
+ #include <private/qwaylandwindow_p.h>
+ 
+ #include <KWayland/Client/connection_thread.h>
+@@ -112,20 +115,41 @@ AppMenuModule::AppMenuModule(QObject *parent, const QList<QVariant> &)
+ 
+ AppMenuModule::~AppMenuModule()
+ {
+ #if HAVE_X11
+     if (m_xcbConn) {
+         xcb_disconnect(m_xcbConn);
+     }
+ #endif
+ }
+ 
++std::optional<std::string_view> getXcbRequestError(xcb_generic_error_t *error, xcb_connection_t *conn)
++{
++	assert(error != nullptr);
++	assert(conn != nullptr);
++
++    xcb_errors_context_t *ctx = nullptr;
++
++    bool const success = xcb_errors_context_new(conn, &ctx);
++	if (!success) {
++		qCWarning(APPMENU_DEBUG) << "couldn't allocate new XCB error context";
++		return std::nullopt;
++	}
++
++	char const *name = xcb_errors_get_name_for_error(ctx, error->error_code, nullptr);
++	assert(name != nullptr);
++
++	xcb_errors_context_free(ctx);
++
++	return std::make_optional(std::string_view(name));
++}
++
+ void AppMenuModule::slotWindowRegistered(WId id, const QString &serviceName, const QDBusObjectPath &menuObjectPath)
+ {
+ #if HAVE_X11
+     auto interface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
+     auto *c = interface ? interface->connection() : nullptr;
+     if (!c) {
+         c = m_xcbConn;
+     }
+ 
+     if (c) {
+@@ -140,21 +164,27 @@ void AppMenuModule::slotWindowRegistered(WId id, const QString &serviceName, con
+                     return;
+                 }
+                 atom = reply->atom;
+                 if (atom == XCB_ATOM_NONE) {
+                     return;
+                 }
+             }
+ 
+             auto cookie = xcb_change_property_checked(c, XCB_PROP_MODE_REPLACE, id, atom, XCB_ATOM_STRING, 8, value.length(), value.constData());
+             if (xcb_generic_error_t *error = xcb_request_check(c, cookie)) {
+-                qCWarning(APPMENU_DEBUG) << "Got an error";
++                auto const name = getXcbRequestError(error, c);
++                if (name.has_value()) {
++                    qCWarning(APPMENU_DEBUG) << "XCB change property request failed with error:" << error->error_code << *name;
++                } else {
++                    qCWarning(APPMENU_DEBUG) << "XCB change property request failed with error:" << error->error_code;
++                }
++
+                 free(error);
+                 return;
+             }
+         };
+ 
+         // TODO only set the property if it doesn't already exist
+ 
+         constexpr QByteArrayView s_x11AppMenuServiceNamePropertyName("_KDE_NET_WM_APPMENU_SERVICE_NAME");
+         constexpr QByteArrayView s_x11AppMenuObjectPathPropertyName("_KDE_NET_WM_APPMENU_OBJECT_PATH");
+ 
+diff --git a/appmenu/appmenu.h b/appmenu/appmenu.h
+index f4234dcac..afe5b69b1 100644
+--- a/appmenu/appmenu.h
++++ b/appmenu/appmenu.h
+@@ -4,20 +4,21 @@
+     SPDX-FileCopyrightText: 2016 Kai Uwe Broulik <kde@privat.broulik.de>
+ 
+     SPDX-License-Identifier: MIT
+ */
+ 
+ #pragma once
+ 
+ #include <config-X11.h>
+ #ifdef HAVE_X11
+ #include <xcb/xcb.h>
++#include <xcb/xcb_errors.h>
+ #endif
+ 
+ #include <kdedmodule.h>
+ 
+ #include "menuimporter.h"
+ #include <QPointer>
+ 
+ class QDBusServiceWatcher;
+ class KDBusMenuImporter;
+ class AppmenuDBus;

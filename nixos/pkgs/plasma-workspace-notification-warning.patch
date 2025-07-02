@@ -1,0 +1,26 @@
+diff --git a/libnotificationmanager/abstractnotificationsmodel.cpp b/libnotificationmanager/abstractnotificationsmodel.cpp
+index 18a8ba18b..f0dfa4b37 100644
+--- a/libnotificationmanager/abstractnotificationsmodel.cpp
++++ b/libnotificationmanager/abstractnotificationsmodel.cpp
+@@ -82,20 +82,21 @@ void AbstractNotificationsModel::Private::onNotificationAdded(const Notification
+     q->endInsertRows();
+ }
+ 
+ void AbstractNotificationsModel::Private::onNotificationReplaced(uint replacedId, const Notification &notification)
+ {
+     const int row = q->rowOfNotification(replacedId);
+ 
+     if (row == -1) {
+         qCWarning(NOTIFICATIONMANAGER) << "Trying to replace notification with id" << replacedId
+                                        << "which doesn't exist, creating a new one. This is an application bug!";
++        qCWarning(NOTIFICATIONMANAGER) << "Note: notification summary: " << notification.summary();
+         onNotificationAdded(notification);
+         return;
+     }
+ 
+     setupNotificationTimeout(notification);
+ 
+     Notification newNotification(notification);
+ 
+     const Notification &oldNotification = notifications.at(row);
+     // As per spec a notification must be replaced atomically with no visual cues.

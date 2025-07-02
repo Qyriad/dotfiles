@@ -56,6 +56,36 @@
 			# Nixpkgs forgot to make this dependency conditional on not-Darwin.
 			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
 		};
+
+		kdePackages = prev.kdePackages.overrideScope (kdeFinal: kdePrev: {
+			# Ripples to:
+			# - kdeconnect-kde
+			# - plasma-pa
+			#pulseaudio-qt = kdePrev.pulseaudio-qt.overrideAttrs (pkgPrev: {
+			#	patches = (pkgPrev.patches or [ ]) ++ [
+			#		./pkgs/pulseaudio-qt.patch
+			#	];
+			#});
+
+			# Ripples to:
+			# - plasma-browser-integration
+			# - powerdevil
+			# - plasma-desktop
+			# - kdeplasma-addons
+			# - plasma-pa
+			plasma-workspace = kdePrev.plasma-workspace.overrideAttrs (pkgPrev: {
+				patches = (pkgPrev.patches or [ ]) ++ [
+					# Give me XCB error information instead of "Got an error"
+					./pkgs/plasma-workspace-appmenu-warning.patch
+					# Give me information about the notification that didn't have an ID.
+					./pkgs/plasma-workspace-notification-warning.patch
+				];
+
+				buildInputs = pkgPrev.buildInputs or [ ] ++ [
+					final.xorg.xcbutilerrors
+				];
+			});
+		});
 	};
 
 in overlay
