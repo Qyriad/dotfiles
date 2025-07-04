@@ -40,7 +40,7 @@ EOF
 
 let g:xsh_highlight_all = v:true
 
-let g:NERDCustomDelimiters = { 'dosini': { 'left': '#' }, 'xonsh': { 'left': '#' } }
+nnoremap <leader>I <Cmd>Inspect<CR>
 
 function! SynNameStack() abort
 	return synstack(line('.'), col('.'))->copy()->map({key, value -> value->synIDattr('name')})
