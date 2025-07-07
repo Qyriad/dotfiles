@@ -469,6 +469,10 @@ EOF
 command! -nargs=+ -complete=command Notify call v:lua.notify_impl(<Q-Args>)
 command! Jumps Notify jumps
 
+" `:vert sview`
+command! -nargs=+ -complete=file Vsview vert sview <args>
+cnoreabbrev vsview Vsview
+
 """ Implementation for :Bload
 function! Bload(...) abort
 
