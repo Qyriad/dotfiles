@@ -49,7 +49,12 @@
 		fsType = "vfat";
 	};
 
+	# All partitions of GPT type "Linux swap", per the Linux Userspace API Group's
+	# Discoverable Partitions Speficiation, will be automatically `swapon()`'d, by
+	# systemd-gpt-auto-generator(8).
 	swapDevices = [ ];
+
+	boot.resumeDevice = "/dev/disk/by-label/I660-Swap-FS";
 
 	# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
 	# (the default) this is the recommended approach. When using systemd-networkd it's
