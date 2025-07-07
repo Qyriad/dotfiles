@@ -20,7 +20,7 @@
 	ss = series status
 	sl = series log
 	curbr = rev-parse --abbrev-ref HEAD
-	br = !zsh -c 'cat <(git branch -vv --no-merged) <(git branch -vv --color=always | grep --color=never master)'
+	br = !zsh -c 'env GIT_PAGER=cat git branch -vv --remotes'
 	r = remote -v
 	b = branch -vv
 	bb = branch -vv --no-merged master
