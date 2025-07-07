@@ -46,6 +46,9 @@
 	common = rev-parse --git-common-dir
 	short = rev-parse --short
 	show-upstream = name-rev --no-undefined --name-only "--refs=remotes/*" "@{u}"
+	# For working with git-series
+	current-series = rev-parse --abbrev-ref SHEAD
+	abbrev-ref = rev-parse --abbrev-ref
 	#c = !tmux split-window -v "git commit && exit"
 [rebase]
 	autostash = true
