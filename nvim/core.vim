@@ -508,6 +508,16 @@ endfunction
 " Deletes buffers that are not visible in any window.
 command! Bcleanup call Bcleanup(<f-args>)
 
+function! Expand(...) abort
+	if a:0 == 0
+		echo expand("%")
+	else
+		echo expand(a:1)
+	endif
+endfunction
+command! -nargs=? -complete=file Expand call Expand(<f-args>)
+
+
 " Opens help for `subject` in the current window.
 function! HelpCurwin(subject) abort
 	" Open the help subject in a new tab.
