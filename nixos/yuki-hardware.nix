@@ -32,7 +32,7 @@
 	hardware.nvidia = {
 		modesetting.enable = true;
 		package = config.boot.kernelPackages.nvidiaPackages.stable;
-		open = false;
+		open = true;
 	};
 	# This is causing buildfailures that I don't feel like debugging right now.
 	#hardware.opengl.driSupport32Bit = true;
