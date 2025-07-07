@@ -1,3 +1,5 @@
 .gdb_history
 .DS_Store
 gdb-session.log
+/tags
+*.bak
