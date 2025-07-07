@@ -325,8 +325,9 @@ use {
 use {
 	'chentoast/marks.nvim',
 	opts = {
-		default_mappings = false,
-		default_marks = {
+		-- Sure, let's try it.
+		default_mappings = true,
+		builtin_marks = {
 			"'", -- position of the latest jump
 			"^", -- position of last InsertExit
 			".", -- position last change was made
