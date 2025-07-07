@@ -179,8 +179,17 @@ vnoremap v V
 vnoremap > >gv
 vnoremap < <gv
 
+" Reserve the marks 'o and 'p for the last put.
+command! CopyPutMark execute "'[mark o | ']mark p"
+noremap p p<Cmd>CopyPutMark<CR>
+noremap P P<Cmd>CopyPutMark<CR>
+
 " gp to select last pasted text.
-nnoremap gp `[v`]
+" Same as:
+" nnoremap gp `[v`]
+" but uses our reserved marks which won't get clobbered by other operations.
+" We use capital V to use non-charwise.
+nnoremap gp `oV`p
 
 " unmap Q
 nnoremap Q <nop>
