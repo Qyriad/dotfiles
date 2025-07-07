@@ -36,7 +36,7 @@ hide_when_typing = false
 [scrolling]
 multiplier = 1
 
-[shell]
+[terminal.shell]
 #args = ["--login", "-c", "xonsh"]
 args = ["--login"]
 program = "zsh"
