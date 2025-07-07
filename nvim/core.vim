@@ -216,6 +216,9 @@ nnoremap <leader><CR> mzi<CR><Esc>`z
 " Useful for moving comments to their own line.
 nnoremap <leader>J mzr<CR>ddkP`z
 
+" https://vi.stackexchange.com/questions/2105/how-to-reverse-the-order-of-lines/2107#2107
+command! -bar -range=% Reverse <line1>,<line2>global/^/move<line1>-1
+
 " <leader>l<BS> to closing the location list.
 nnoremap <leader>l<BS> <Cmd>lclose<CR>
 
