@@ -96,15 +96,39 @@ nnoremap <C-p> <Cmd>Telescope buffers sort_mru=true<CR>
 nnoremap <leader>tm <Cmd>Telescope marks<CR>
 nnoremap <leader>tt <Cmd>Telescope tags<CR>
 nnoremap <leader>tl <Cmd>Telescope loclist<CR>
+nnoremap <leader>tj <Cmd>Telescope jumplist<CR>
+
+"augroup TelescopeMappings
+"
+"augroup END
 
 " Fix buffer names that should be relative paths.
 function! FixName() abort
-	call assert_true(&l:modified == v:true)
+	if &l:modifiable != v:true
+		throw "buffer must be modifiable"
+	endif
+
 	lua vim.cmd.file(vim.fn.expand("%:."))
 	edit!
 endfunction
 command! Fixname call FixName()
-command! FixName call FixName()
+
+function! FixNameIfNeeded() abort
+	if &l:modifiable != v:true
+		return
+	endif
+
+	let l:expanded = expand("%:.")
+	if l:expanded != bufname()
+		execute "keepalt file " .. l:expanded
+	endif
+endfunction
+
+"augroup AutoFixName
+"	autocmd! BufReadPost * call FixNameIfNeeded()
+"augroup END
+
+"command! FixName call FixName()
 
 lua <<EOF
 function _hl_cursor_col()
