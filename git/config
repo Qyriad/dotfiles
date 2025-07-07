@@ -23,7 +23,6 @@
 	br = !zsh -c 'env GIT_PAGER=cat git branch -vv --remotes'
 	r = remote -v
 	b = branch -vv
-	bb = branch -vv --no-merged master
 	sh = show --stat --patch --format=fuller
 	# Print out the raw commit message of a commit, by itself. Suitable for copying, etc.
 	msg = show --no-patch --format=format:%B
