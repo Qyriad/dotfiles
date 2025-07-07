@@ -128,9 +128,11 @@
 		extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" "video" "cdrom" ];
 		shell = pkgs.zsh;
 	};
-	users.groups.plugdev = { };
-	users.groups.video = { };
-	users.groups.cdrom = { };
+	users.groups = {
+		plugdev = { };
+		video = { };
+		cdrom = { };
+	};
 
 	documentation = {
 		# Include -dev manpages
