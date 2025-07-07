@@ -104,7 +104,7 @@ function lazy_import_plugin(plugin_name, plugin)
 	local normalized = lazy.core.util.normname(main)
 
 	vim.notify(normalized .. ' = require("' .. main .. '")', vim.log.levels.DEBUG)
-	p[normalized] = require(main)
+	p[normalized] = vim.tbl_extend('force', p[normalized] or { }, require(main))
 end
 
 -- Returns a table, each key of which is a namespace name that corresponds to all extmarks
