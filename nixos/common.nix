@@ -4,6 +4,7 @@
 {
 	imports = [
 		./modules/package-groups.nix
+		./modules/modlib.nix
 	];
 
 	# Configuration for things related to Nix itself.

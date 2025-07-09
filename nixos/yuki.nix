@@ -33,11 +33,7 @@
 	hardware.openrazer = {
 		# Probably.
 		enable = false;
-		users = let
-			usersInUsersGroup = lib.filterAttrs (name: group:
-				group.group == "users" || lib.elem "users" group.extraGroups
-			) config.users.users;
-		in lib.mapAttrsToList (_: user: user.name) usersInUsersGroup;
+		users = config.modlib.usersInGroup "users" |> lib.mapAttrsToList (_: user: user.name);
 	};
 	services.ratbagd.enable = true;
 
