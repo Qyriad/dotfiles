@@ -21,7 +21,6 @@
 	boot.kernelModules = [
 		"kvm-amd"
 		"nvidia"
-		"v4l2loopback"
 	];
 	boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 	environment.systemPackages = with config.boot.kernelPackages; [ v4l2loopback ];
