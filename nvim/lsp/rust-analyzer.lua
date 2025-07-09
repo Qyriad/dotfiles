@@ -1,6 +1,6 @@
 local qyriad = require('qyriad')
 
-vim.lsp.config('rust-analyzer', qyriad.nested_tbl {
+return qyriad.nested_tbl {
 	filetypes = { 'rust' },
 	cmd = { 'rust-analyzer' },
 	['settings.rust-analyzer'] = {
@@ -21,4 +21,4 @@ vim.lsp.config('rust-analyzer', qyriad.nested_tbl {
 			})
 		end
 	end,
-})
+}
