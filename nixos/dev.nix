@@ -49,8 +49,8 @@
 		git-gr
 		git-imerge
 		nix-update
-		#nix-eval-jobs
-		#colmena
+		nix-eval-jobs
+		colmena
 		rr
 		nixfmt-rfc-style
 		nixpkgs-review
