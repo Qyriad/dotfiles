@@ -10,7 +10,6 @@
 		./dev.nix
 		./resources.nix
 		./mount-shizue.nix
-		./modules/package-groups.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 

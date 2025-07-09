@@ -2,6 +2,10 @@
 { config, pkgs, lib, ... }:
 
 {
+	imports = [
+		./modules/package-groups.nix
+	];
+
 	# Configuration for things related to Nix itself.
 	nixpkgs.config.allowUnfree = true;
 	# Commented out because I don't want them by default, but they're handy.
