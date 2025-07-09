@@ -15,6 +15,7 @@
 	#	"broken-outputs"
 	#	"non-source"
 	#];
+	#nixpkgs.config.fetchedSourceNameDefault = "versioned";
 	nix = {
 		settings = {
 			experimental-features = [
