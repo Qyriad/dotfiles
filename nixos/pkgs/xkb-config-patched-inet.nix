@@ -1,5 +1,4 @@
 {
-  lib,
   runCommandLocal,
   xkeyboard_config,
 }: runCommandLocal "xkeyboard-config-patched-inet" {
@@ -9,7 +8,8 @@
     ../keyboard-config.patch
   ];
 
-  meta.description = lib.literalExpression ''
+  meta.description = ''
+    Use like so:
     environment.etc."xkb".source = pkgs.qyriad.xkeyboard_config-patched-inet;
   '';
 
