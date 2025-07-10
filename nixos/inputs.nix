@@ -15,22 +15,29 @@ let
     concatStringsSep
   ;
 
-  parseInput = attrs: if attrs ? url then
-    parseFlakeRef attrs.url
-  else removeAttrs attrs [
+  # I'm going to be abusing `{ ... }:` syntax as poor-woman's-typechecking.
+
+  parseInput = flakeRefAttrs @ {
+    ...
+  }: if flakeRefAttrs ? url then
+    parseFlakeRef flakeRefAttrs.url
+  else removeAttrs flakeRefAttrs [
     "flake" # flake = false
     "inputs" # inputs.foo.follows
   ];
 
-  fetchInput = spec: parseInput spec |> fetchTree;
+  fetchInput = spec @ {
+    ...
+  }: parseInput spec |> fetchTree;
 
   # Of the shape:
   # { nixpkgs = { url = "…"; }; lix-module = { inputs = { … }; url = "…"}; … }
   flakeInputs = (import ../flake.nix).inputs;
 
-  fetchedInputs = mapAttrs (_: spec: fetchInput spec) flakeInputs;
+  # Of the shape { nixpkgs = { outPath = "/nix/store/…"; rev = "…"; … }; log2compdb = …; }
+  fetchedInputs = mapAttrs (_: spec @ { ... }: fetchInput spec) flakeInputs;
 
-  getter = { ... } @ explicitInputs: let
+  getter = explicitInputs @ { ... }: let
     validNames = attrNames flakeInputs;
     givenButInvalidNames = attrNames (removeAttrs explicitInputs validNames);
     errorNames = concatStringsSep ", " givenButInvalidNames;
