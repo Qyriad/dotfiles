@@ -66,6 +66,9 @@
 		# Include xonsh's Python
 		# The normal bash isn't bash-interactive lol.
 		bashInteractive
+		# `programs.bash.completion.enable` does not actually do this.
+		# For some reason.
+		config.programs.bash.completion.package
 		tmux
 		zellij
 		eza
