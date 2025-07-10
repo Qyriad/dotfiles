@@ -12,8 +12,8 @@ include "%L"
 <Multi_key> <quotedbl> <period>	: "•"
 <Multi_key> <u> <r> : "┏"
 <Multi_key> <d> <r> : "┗"
-<Multi_key> <e> <n> : "♪"
-<Multi_key> <q> <n> : "♩"
+<Multi_key> <e> <n> : "♪" # Eighth note
+<Multi_key> <q> <n> : "♩" # Quarter note
 
 # Delta
 <Multi_key> <slash> <backslash> : "Δ"
@@ -62,9 +62,6 @@ include "%L"
 # "Accidental: natural"
 <Multi_key> <a> <n> : "♮"
 
-# ¯\_(ツ)_/¯
-<Multi_key> <s> <h> : "¯\\_(ツ)_/¯"
-
 # Miscellaneous symbols
 <Multi_key> <colon> <colon> : "•"
 <Multi_key> <8> <n> <t> : "♪"
@@ -108,6 +105,8 @@ include "%L"
 <Multi_key> <dollar> <c> : "¢" # Cents
 <Multi_key> <dollar> <p> : "£" # Pounds
 <Multi_key> <dollar> <y> : "¥" # Yen
+<Multi_key> <dollar> <e> : "€" # Euro
+<Multi_key> <e> <dollar> : "€" # Euro
 
 <Multi_key> <m> <t> : "™" # TM
 
@@ -127,7 +126,7 @@ include "%L"
 <Multi_key> <bracketright> <greater> : "⟩" # U+27E9, Mathematical Right Angle Bracket
 
 # Shruggie
-<Multi_key> <s> <h> : "¯\_(ツ)_/¯"
+<Multi_key> <s> <h> : "¯\\\\_(ツ)_/¯"
 <Multi_key> <p> <n> : "😔"
 
 # Thin space
