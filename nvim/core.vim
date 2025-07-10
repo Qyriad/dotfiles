@@ -573,6 +573,20 @@ EOF
 " and "previous" search commands (`n` and `N`) also use the current word.
 nnoremap <leader>* <Cmd>let @/ = '\<' . expand("<cword>") . '\>' \| set hlsearch<CR>
 
+command! -range DeleteConflictMarkers <line1>,<line2>global/\v^[=<>|]{7}/delete _
+" This doesn't seem to work? Not sure why.
+"vnoremap <leader>gdc :DeleteConflictMarkers<CR>
+
+"vnoremap <leader>gdc <Cmd>execute "g/\v^[=<>|]{7}/d"<CR>
+
+"lua vim.g.GIT_CONFLICT_PATTERN = [[\v^(\<|\||\=|\>){4,}]]
+"function! SearchGitConflict() abort
+"	let @/ = g:GIT_CONFLICT_PATTERN
+"	lockmarks normal! mzn'z
+"endfunction
+"command! SearchGitConflict call SearchGitConflict()
+"nnoremap <leader>gc <Cmd>let @/ = g:GIT_CONFLICT_PATTERN \| set hlsearch<CR>
+
 lua <<EOF
 local function get_vim_errstr(lua_errstr)
 	-- lua_errstr should look something like `[string ":lua"]:10: Vim:E999: foomsg`
