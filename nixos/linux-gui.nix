@@ -34,7 +34,7 @@
 	#	TimeoutStopSec = "10";
 	#};
 	# And tbh let's just shorten the stop timeout for all user units a bit.
-	systemd.user.extraConfig = ''
+	systemd.user.extraConfig = lib.trim ''
 		DefaultTimeoutStopSec=20
 	'';
 

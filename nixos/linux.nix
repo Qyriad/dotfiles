@@ -24,7 +24,7 @@
 	};
 
 	# Make the systemd stop timeout more reasonable.
-	systemd.extraConfig = ''
+	systemd.extraConfig = lib.trim ''
 		DefaultTimeoutStopSec=20
 	'';
 
