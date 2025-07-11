@@ -259,6 +259,7 @@
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
+		qyriad.wiremix
 	]
 	++ lib.optionals config.services.smartd.enable [
 		smartmontools
