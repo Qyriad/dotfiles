@@ -109,6 +109,10 @@
 		remotePlay.openFirewall = true;
 		dedicatedServer.openFirewall = true;
 	};
+	# I don't need steam hardware support. This is enabled by default with
+	# `programs.steam.enable`.
+	# Priority exactly 1 stronger than the default.
+	hardware.steam-hardware.enable = lib.mkForce false;
 
 	environment.systemPackages = with pkgs; [
 		qyriad.steam-launcher-script
