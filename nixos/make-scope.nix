@@ -18,7 +18,7 @@
 
 in lib.makeScope pkgs.newScope (self: let
 	inherit (self) qlib;
-in {
+in qpkgs // {
 	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
 	# which do things like check man pages and patch ELFs.
 	runCommandMinimal = name: attrs: text: let
@@ -47,20 +47,6 @@ in {
 	xonsh = self.callPackage ./pkgs/xonsh { };
 
 	inherit (agenix') agenix;
-
-	inherit (qpkgs)
-		strace-process-tree
-		strace-with-colors
-		intentrace
-		cinny
-		otree
-		cyme
-		python-pipe
-		xontrib-abbrevs
-		xonsh-direnv
-		obs-chapter-marker-manager
-		age-plugin-openpgp-card
-	;
 
 	obs-studio = pkgs.wrapOBS {
 		plugins = [
