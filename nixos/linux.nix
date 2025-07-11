@@ -39,8 +39,7 @@
 			MemoryPressureWatch = "on";
 			ManagedOOMMemoryPressure = "kill";
 			ManagedOOMMemoryPressureLimit = "85%";
-			MemoryHigh = config.resources.builderSliceConfig.MemoryHigh;
-			MemoryMax = config.resources.builderSliceConfig.MemoryMax;
+			inherit (config.resources.builderSliceConfig) MemoryHigh MemoryMax;
 			IOWeight = 20;
 			MemoryAccounting = true;
 			IOAccounting = true;
