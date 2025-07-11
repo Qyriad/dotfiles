@@ -38,6 +38,8 @@ let
     py.pillow
     py.pytesseract
     py.beautifulsoup4
+    py.python-fontconfig
+    py.keyring
     pkgs.gobject-introspection
     pkgs.gtk3
     pkgs.glib
