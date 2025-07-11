@@ -86,6 +86,16 @@
 				];
 			});
 		});
+
+		# Our license only covers Bitwig 5.2.7.
+		bitwig-studio5-unwrapped = prev.bitwig-studio5-unwrapped.overrideAttrs (pkgFinal: pkgPrev: {
+			version = "5.2.7";
+			src = final.fetchurl {
+				name = "bitwig-studio-${pkgFinal.version}.deb";
+				url = "https://www.bitwig.com/dl/Bitwig%20Studio/${pkgFinal.version}/installer_linux/";
+				hash = "sha256-Tyi7qYhTQ5i6fRHhrmz4yHXSdicd4P4iuF9FRKRhkMI=";
+			};
+		});
 	};
 
 in overlay
