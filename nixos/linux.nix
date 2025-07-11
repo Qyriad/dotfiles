@@ -62,6 +62,9 @@
 	'';
 	networking.networkmanager.enable = true;
 	networking.networkmanager.dns = "systemd-resolved";
+	# Automatically enabled by enabling NetworkManager.
+	# I don't need it though.
+	networking.modemmanager.enable = false;
 
 	services.tailscale = {
 		enable = true;
