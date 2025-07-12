@@ -73,6 +73,17 @@
 	editor = nvim
 	attributesfile = ~/.config/git/gitattributes
 [delta]
+	features = default side
+[delta "default"]
+	dark = true
+	side-by-side = false
+	tabs = 4
+	navigate = true
+	#commit-regex = ^[|* ]+commit [A-Fa-f0-9]+
+	commit-decoration-style = box
+	hunk-header-style = file line-number syntax
+	inline-hint-style = yellow # What does this do??
+[delta "side"]
 	dark = true
 	side-by-side = true
 	tabs = 4
