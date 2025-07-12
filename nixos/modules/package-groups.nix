@@ -59,6 +59,7 @@ in
 				wayvnc
 				kooha
 				wev
+				wayfarer
 			];
 		};
 

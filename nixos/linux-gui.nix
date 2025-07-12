@@ -209,7 +209,6 @@
 		pavucontrol
 		lxqt.pavucontrol-qt
 		pwvucontrol
-		wayfarer
 	] ++ lib.optionals config.services.ratbagd.enable [
 		piper
 	];
