@@ -26,7 +26,6 @@ in
 			type = t.listOf t.package;
 			readOnly = true;
 			default = with pkgs; [
-				bitwig-studio
 				ardour
 				musescore
 				fluidsynth
