@@ -256,6 +256,7 @@
 		lurk
 		qyriad.cappy
 		bluetui
+		watchlog
 	]
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
