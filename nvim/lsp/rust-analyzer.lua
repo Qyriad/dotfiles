@@ -15,10 +15,12 @@ return qyriad.nested_tbl {
 	},
 
 	before_init = function(init_params, config)
-		if config.settings and config.settings['rust-analyzer'] then
-			init_params = vim.tbl_deep_extend('force', init_params, {
-				initializationOptions = config.settings['rust-analyzer'],
-			})
-		end
+		local init_options = init_params.initializationOptions or { }
+		init_params.initializationOptions = vim.tbl_deep_extend(
+			'force',
+			init_options,
+			config.settings['rust-analyzer']
+		)
+		return init_params
 	end,
 }
