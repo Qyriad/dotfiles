@@ -258,6 +258,7 @@
 		bluetui
 		watchlog
 		dysk
+		xcp
 	]
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils

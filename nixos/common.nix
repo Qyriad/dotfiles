@@ -160,7 +160,6 @@
 		repgrep
 		rink
 		uni
-		xcp
 		ansi2html
 		qyriad.agenix
 		qyriad.age-plugin-openpgp-card
