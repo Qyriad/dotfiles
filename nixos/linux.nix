@@ -257,6 +257,7 @@
 		qyriad.cappy
 		bluetui
 		watchlog
+		dysk
 	]
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils

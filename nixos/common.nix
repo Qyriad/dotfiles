@@ -159,7 +159,6 @@
 		jujutsu
 		repgrep
 		rink
-		dysk
 		uni
 		xcp
 		ansi2html
