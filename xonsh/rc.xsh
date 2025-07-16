@@ -9,7 +9,9 @@ if "IN_NIX_SHELL" not in ${...}:
 		for elem in to_delete:
 			$PATH.remove(elem)
 
-import os, sys, io, json, struct, re, shlex, typing, textwrap
+import builtins, operator, typing
+import os, sys, io, errno, ctypes
+import struct, re, shlex, textwrap, functools
 from datetime import datetime, timedelta
 import zoneinfo
 from zoneinfo import ZoneInfo
