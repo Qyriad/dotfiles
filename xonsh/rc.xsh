@@ -176,6 +176,10 @@ aliases['lsof'] = 'grc lsof +c0'
 # Coreutils-alike
 aliases['rip'] = 'rip --seance'
 
+def _rmlink(args: list):
+	""" Like `unlink(1)`, but allows multiple arguments. """
+	echo @(args) | xargs -n1 echo-exec unlink
+aliases['rmlink'] = _rmlink
 
 # Edit config shortcuts.
 #edit = lambda path : $EDITOR + ' ' + str(path)
