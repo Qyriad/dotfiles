@@ -699,13 +699,17 @@ def _per_line(args: list, stdin: io.TextIOWrapper):
 		to get the second whitespace-delimited word of each line.
 	"""
 	callback: typing.Callable[[str], str] = args[0]
-	return "\n".join([str(callback(line)) for line in stdin])
+	output = "\n".join([str(callback(line)) for line in stdin])
+	print(output)
+	return output
 
 aliases["pl"] = _per_line
 
 def _intext(args: list, stdin: io.TextIOWrapper):
 	callback: typing.Callable[[str], str] = args[0]
-	return callback(stdin.read())
+	output = callback(stdin.read())
+	print(output)
+	return output
 
 # Like per-line, but for the entire stdin text at once.
 aliases["intext"] = _intext
