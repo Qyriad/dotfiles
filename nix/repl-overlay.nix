@@ -37,6 +37,8 @@ rec {
 
   nixos = qyriad.nixosConfigurations.${HOSTNAME};
   darwin = qyriad.darwinConfigurations.${HOSTNAME};
+  stagingNixos = staging.nixosConfigurations.${HOSTNAME};
+  stagingDarwin = staging.darwinConfigurations.${HOSTNAME};
 
   # Stuff that lets me inspect the current directory easily.
   f = getFlake "git+file:${PWD}";
