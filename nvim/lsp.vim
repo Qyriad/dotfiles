@@ -101,50 +101,23 @@ function! DiagnosticsComplete(arglead, cmdline, cursorpos) abort
 	return ["error", "warn", "info", "hint"]
 endfunction
 
-command! -complete=customlist,DiagnosticsComplete -nargs=? Diagnostics call v:lua._cmd_diagnostics_impl(<f-args>)
+"command! -complete=customlist,DiagnosticsComplete -nargs=? Diagnostics call v:lua._cmd_diagnostics_impl(<f-args>)
 
 lua << EOF
-
-function _cmd_diagnostics_impl(severity)
-	vim.validate {
-		["vim.g.diagnostic_severity.min"] = { vim.g.diagnostic_severity.min, "number" },
-	}
-
-	if not severity then
-		local current = vim.diagnostic.severity[vim.g.diagnostic_severity.min]
-		assert(type(current) == "string")
-		vim.cmd.echomsg(string.format([["%s"]], current))
-		return
-	end
-	vim.validate {
-		severity = { severity, "string" },
-	}
-
-	local sev = vim.diagnostic.severity[string.upper(severity)]
-	if not sev then
-		vim.api.nvim_err_writeln(string.format("invalid severity '%s'", severity))
-		return
-	end
-
-	-- Apply the new settings.
-	vim.g.diagnostic_severity = {
-		min = sev,
-	}
-
-	vim.diagnostic.config {
-		signs = { severity = vim.g.diagnostic_severity },
-	}
-end
-
 function lsp_quiet()
 	-- This function is called in map-expr context, where we can't change text in
 	-- buffers. The signature floating window is also a buffer, so that applies.
-	vim.defer_fn(p.lspsignature.toggle_float_win, 0)
-	return vim.keycode('<C-e>')
+	if vim.fn.pumvisible() == 1 then
+		return vim.keycode('<C-e>')
+	end
+	pcall(function() vim.defer_fn(p.lspsignature.toggle_float_win, 10) end)
+	return ""
+	--return vim.keycode[[<Ignore>]]
 end
 -- `help i_CTRL-E`, by default it inserts the character that is in the same position as the cursor one line below.
 -- Not the most useful.
-vim.keymap.set('i', '<C-e>', lsp_quiet, {
+vim.keymap.set('i', '<C-e>', '', {
+	callback = lsp_quiet,
 	expr = true,
 	desc = "Close LSP popup and floating windows",
 })
