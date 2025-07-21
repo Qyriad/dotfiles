@@ -174,6 +174,7 @@ lsp_filetypes = {
 	"typescript",
 	"lua",
 	"nix",
+	'make',
 }
 
 vim.lsp.config('*', {
@@ -198,6 +199,7 @@ vim.lsp.enable({
 	'vimls',
 	'luals',
 	'clangd',
+	'autotools',
 })
 
 --lsp_vim_capabilities = vim.lsp.protocol.make_client_capabilities()
