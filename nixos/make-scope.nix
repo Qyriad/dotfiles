@@ -72,6 +72,7 @@ in qpkgs // {
 	};
 
 	udev-rules = self.callPackage ./udev-rules { };
+	udev-rules-i2c = self.callPackage ./udev-rules/i2c-package.nix { };
 
 	nix-helpers = self.callPackage ./pkgs/nix-helpers.nix { };
 

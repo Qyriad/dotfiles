@@ -173,6 +173,7 @@
 
 	services.udev.packages = [
 		pkgs.qyriad.udev-rules
+		pkgs.qyriad.udev-rules-i2c
 	];
 
 	# Let us use our yubikey with age.
