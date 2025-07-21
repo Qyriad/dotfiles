@@ -155,10 +155,7 @@ end
 
 vim.lsp.log = require('vim.lsp.log')
 vim.lsp.protocol = require('vim.lsp.protocol')
-function lsp_format(...)
-	return vim.inspect(...)
-end
-vim.lsp.log.set_format_func(lsp_format)
+vim.lsp.set_log_level(vim.lsp.log_levels.INFO)
 
 lsp_filetypes = {
 	"vim",
