@@ -63,5 +63,6 @@
 		pkgdiff
 		ast-grep
 		nmap
+		autotools-language-server
 	];
 }
