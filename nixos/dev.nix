@@ -64,5 +64,6 @@
 		ast-grep
 		nmap
 		autotools-language-server
+		qyriad.lsptrace
 	];
 }
