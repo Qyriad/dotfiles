@@ -15,13 +15,9 @@
     fileset = lib.fileset.unions [
       ./60-common.rules
       ./60-openocd.rules
-      ./60-i2c.rules
+      #./60-i2c.rules
       ./70-avermedia-symlink.rules
     ];
-  };
-
-  src = replaceVars self.srcRaw {
-    setfacl = lib.getExe' acl "setfacl";
   };
 
   dontConfigure = true;
