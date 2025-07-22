@@ -68,6 +68,7 @@ in qpkgs // {
 	mpv = pkgs.mpv.override {
 		scripts = with pkgs.mpvScripts; [
 			mpv-webm
+			uosc
 		];
 	};
 
