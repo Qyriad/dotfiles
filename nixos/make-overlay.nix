@@ -73,18 +73,18 @@
 			# - plasma-desktop
 			# - kdeplasma-addons
 			# - plasma-pa
-			plasma-workspace = kdePrev.plasma-workspace.overrideAttrs (pkgPrev: {
-				patches = (pkgPrev.patches or [ ]) ++ [
-					# Give me XCB error information instead of "Got an error"
-					./pkgs/plasma-workspace-appmenu-warning.patch
-					# Give me information about the notification that didn't have an ID.
-					./pkgs/plasma-workspace-notification-warning.patch
-				];
-
-				buildInputs = pkgPrev.buildInputs or [ ] ++ [
-					final.xorg.xcbutilerrors
-				];
-			});
+			#plasma-workspace = kdePrev.plasma-workspace.overrideAttrs (pkgPrev: {
+			#	patches = (pkgPrev.patches or [ ]) ++ [
+			#		# Give me XCB error information instead of "Got an error"
+			#		./pkgs/plasma-workspace-appmenu-warning.patch
+			#		# Give me information about the notification that didn't have an ID.
+			#		./pkgs/plasma-workspace-notification-warning.patch
+			#	];
+			#
+			#	buildInputs = pkgPrev.buildInputs or [ ] ++ [
+			#		final.xorg.xcbutilerrors
+			#	];
+			#});
 		});
 
 		# Our license only covers Bitwig 5.2.7.
