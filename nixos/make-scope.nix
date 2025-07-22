@@ -143,6 +143,25 @@ in qpkgs // {
 		];
 	});
 
+	# Optimize Ghostty for x86-64-v4
+	ghostty = pkgs.ghostty.overrideAttrs (prev: let
+		inherit (pkgs.stdenv) hostPlatform;
+		zig = pkgs.zig_0_13;
+
+		newZigHook = zig.hook.overrideAttrs {
+			zig_default_flags = "-Doptimize=ReleaseFast --color off"
+			+ lib.optionalString hostPlatform.isx86 " -Dcpu=x86_64_v4";
+		};
+
+		hookName = lib.getName zig.hook;
+
+		withoutZigHook = lib.filter (p: lib.getName p != hookName) prev.nativeBuildInputs;
+	in {
+		nativeBuildInputs = withoutZigHook ++ [
+			newZigHook
+		];
+	});
+
 	vesktop = pkgs.vesktop.overrideAttrs (prev: {
 		desktopItems = lib.forEach prev.desktopItems (item: item.override {
 			exec = lib.concatStringsSep " " [
