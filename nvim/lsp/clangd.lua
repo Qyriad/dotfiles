@@ -1,8 +1,6 @@
 local qyriad = require('qyriad')
 
-M = { }
-
-vim.lsp.config('clangd', qyriad.nested_tbl {
+return qyriad.nested_tbl {
 	filetypes = {
 		'c',
 		'cpp',
@@ -35,5 +33,4 @@ vim.lsp.config('clangd', qyriad.nested_tbl {
 	--	textDocument = { completion = { editsNearCursor = true } },
 	--	offsetEncoding = { 'utf-8', 'utf-16' },
 	--},
-})
-
+}

@@ -1,4 +1,4 @@
-vim.lsp.config('vimls',  {
+return  {
 	filetypes = { 'vim' },
 	cmd = { 'vim-language-server', '--stdio' },
 	init_options = {
@@ -11,4 +11,4 @@ vim.lsp.config('vimls',  {
 			fromVimruntime = "",
 		},
 	},
-})
+}

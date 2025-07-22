@@ -6,9 +6,10 @@ local lua_runtime_paths = vim.iter(vim.api.nvim_get_runtime_file("lua/", true))
 	end)
 	:totable()
 
-vim.lsp.config('luals', {
+return {
 	filetypes = { 'lua' },
 	cmd = { 'lua-language-server' },
+	root_markers = { 'init.vim', 'init.lua' },
 	settings = {
 		Lua = {
 			runtime = {
@@ -25,4 +26,4 @@ vim.lsp.config('luals', {
 			},
 		},
 	},
-})
+}
