@@ -251,11 +251,11 @@
     "nil-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1752799399,
-        "narHash": "sha256-Uy2qzd+fMoBcp4NPSO7DavEC1pGMegmAqoEMvmXbIQU=",
+        "lastModified": 1751341694,
+        "narHash": "sha256-zXag1+8iZC3H5yVFP7KhIi4ps9z8xKrFIkyaeXlZ7Uo=",
         "owner": "oxalica",
         "repo": "nil",
-        "rev": "524ae2d67dd84d99a10f409ed6cd8e4e7b3cae3f",
+        "rev": "b043bfe1f3f4c4be4b688e24c5ae96e81f525805",
         "type": "github"
       },
       "original": {
@@ -286,11 +286,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1753250450,
-        "narHash": "sha256-i+CQV2rPmP8wHxj0aq4siYyohHwVlsh40kV89f3nw1s=",
+        "lastModified": 1751984180,
+        "narHash": "sha256-LwWRsENAZJKUdD3SpLluwDmdXY9F45ZEgCb0X+xgOL0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fc02ee70efb805d3b2865908a13ddd4474557ecf",
+        "rev": "9807714d6944a957c2e036f84b0ff8caf9930bc0",
         "type": "github"
       },
       "original": {
@@ -439,11 +439,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1753331551,
-        "narHash": "sha256-CT1vVcGFq5ti8YWOPo8MnItXU4UbqRGSy0jjNKjklOE=",
+        "lastModified": 1751911369,
+        "narHash": "sha256-wCxIuTJN5WRT1KcxsOcw1u9fN3aNxoujweTunTR/AyQ=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "cc7236c06dec9a9d22df01ab85393d45402fd42a",
+        "rev": "ddcbbe284d5d8a84ea9275baff1156574fd69ec9",
         "type": "github"
       },
       "original": {
