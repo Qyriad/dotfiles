@@ -320,9 +320,6 @@ aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--sig
 aliases['objdumpx'] = ['objdump', '--special-syms', '--disassembler-color=extended', '--visualize-jumps=extended-color']
 
 
-aliases['cm'] = 'cmake -B build'
-aliases['cmb'] = 'cmake --build build'
-
 $YTDLP_YOUTUBE = '%(channel)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
 $YTDLP_TWITCH  = '%(uploader)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
 
