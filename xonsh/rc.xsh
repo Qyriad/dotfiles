@@ -314,6 +314,11 @@ aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat'
 aliases['stracey'] = ['strace', '-yyY', '-s', '128', '--silence=attach,exit', '--signal=none', '--tips=id:random,format:compact']
 aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--signal=!all', '--successful-only' '--follow-forks' '--seccomp-bpf', '-e' 'execve']
 
+# objdump handy arguments:
+# -M intel
+# --demangle
+aliases['objdumpx'] = ['objdump', '--special-syms', '--disassembler-color=extended', '--visualize-jumps=extended-color']
+
 
 aliases['cm'] = 'cmake -B build'
 aliases['cmb'] = 'cmake --build build'
