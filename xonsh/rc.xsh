@@ -300,7 +300,19 @@ aliases['striptext'] = lambda args, stdin: stdin.read().strip()
 aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
 aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat'
-aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--signal=!all', '-zfe' 'execve']
+# strace --color=always --silence=attach,exit --signal=none -y -e read,write -s999
+# strace handy arguments:
+# -z / --successful-only
+# -Z --failed-only
+# --silence=attach,exit
+# --signal=none
+# -y / --decode-fds
+# -Y / --decode-pids=comm (print command names for pids)
+# -X verbose / --const-print-style=verbose (output named constants as numbers with name as a comment)
+# -s 64 --string-limit=64
+# --tips / --tips=id:random,format:compact
+aliases['stracey'] = ['strace', '-yyY', '-s', '128', '--silence=attach,exit', '--signal=none', '--tips=id:random,format:compact']
+aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--signal=!all', '--successful-only' '--follow-forks' '--seccomp-bpf', '-e' 'execve']
 
 
 aliases['cm'] = 'cmake -B build'
