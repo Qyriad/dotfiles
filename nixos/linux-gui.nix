@@ -103,7 +103,6 @@
 	networking.firewall.enable = false;
 
 	nixpkgs.config.permittedInsecurePackages = [
-		"electron-25.9.0" # For Obsidian
 		"olm-3.2.16" # For Cinny
 		"jitsi-meet-1.0.8043" # For Element
 	];
