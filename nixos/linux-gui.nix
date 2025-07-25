@@ -17,6 +17,9 @@
 		enableQt5Integration = true;
 	};
 
+	# Use Qt settings from KDE.
+	qt.platformTheme = "kde6";
+
 	environment.plasma6.excludePackages = with pkgs.kdePackages; [
 		# We use our patched nixos-khelpcenter instead.
 		khelpcenter
