@@ -125,7 +125,7 @@
 	users.users.qyriad = {
 		isNormalUser = true;
 		description = "Qyriad";
-		extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" "video" "cdrom" ];
+		extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" "video" "cdrom" "i2c" ];
 		shell = pkgs.zsh;
 	};
 	users.groups = {
