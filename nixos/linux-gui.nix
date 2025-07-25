@@ -205,6 +205,8 @@
 		kdePackages.sweeper
 		kdePackages.kconfig
 		qyriad.nixos-khelpcenter
+		systemdgenie
+		kdotool
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
