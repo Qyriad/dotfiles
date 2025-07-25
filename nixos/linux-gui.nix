@@ -217,6 +217,33 @@
 		piper
 	];
 
+	hardware.i2c.enable = true;
+
+	# Convenience systemd unit group to check and restart
+	# - plasma-plasmashell.service
+	# - plasma-krunner.service
+	# Since we often have to restart these together.
+	#systemd.user.targets.plasma-group = {
+	#	#unitConfig = {
+	#	#	#PartOf = "plasma-
+	#	#};
+	#	wantedBy = [ "default.target" ];
+	#	#unitConfig = {
+	#	#};
+	#};
+	#systemd.user.services.plasma-plasmashell = {
+	#	overrideStrategy = "asDropin";
+	#	unitConfig = {
+	#		PartOf = "plasma-group.target";
+	#	};
+	#};
+	#systemd.user.services.plasma-krunner = {
+	#	overrideStrategy = "asDropin";
+	#	unitConfig = {
+	#		PartOf = "plasma-group.target";
+	#	};
+	#};
+
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs = {
 		partition-manager.enable = true;
