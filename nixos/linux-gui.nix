@@ -211,6 +211,8 @@
 		pavucontrol
 		lxqt.pavucontrol-qt
 		pwvucontrol
+		sonusmix
+		wayfarer
 	] ++ lib.optionals config.services.ratbagd.enable [
 		piper
 	];
