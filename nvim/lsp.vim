@@ -147,21 +147,14 @@ lsp_filetypes = {
 	'make',
 }
 
-vim.lsp.config('*', {
+local qyriad = require('qyriad')
+vim.lsp.config('*', qyriad.nested_tbl {
 	root_markers = { '.git' },
 
 	trace = 'messages',
 
 	-- I hate snippets.
-	capabilities = {
-		textDocument = {
-			completion = {
-				completionItem = {
-					snippetSupport = false,
-				},
-			},
-		},
-	},
+	['capabilities.textDocument.completion.completionItem.snippetSupport'] = false,
 })
 
 vim.lsp.enable({
