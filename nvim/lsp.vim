@@ -162,6 +162,10 @@ vim.lsp.enable({
 	'vimls',
 	'luals',
 	'clangd',
+	'nil',
+	'mesonlsp',
+	'basedpyright',
+	'taplo',
 	'autotools',
 })
 

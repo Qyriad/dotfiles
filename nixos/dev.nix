@@ -63,7 +63,10 @@
 		pkgdiff
 		ast-grep
 		nmap
-		autotools-language-server
+		taplo
+		oxlint
+		scspell
+		#autotools-language-server
 		qyriad.lsptrace
 	];
 }
