@@ -137,6 +137,16 @@ let
 			|> lib.listToAttrs
 	;
 
+	referencedDrvs = drv: assert lib.isDerivation drv; let
+		f = item:
+			if lib.isList item then
+				lib.filter lib.isDerivation item
+			else if lib.isDerivation item then
+				lib.concatMap f (lib.attrValues item.drvAttrs)
+			else [ ];
+	in lib.concatMap f (lib.attrValues drv.drvAttrs);
+
+
 	/** Like lib.genAttrs, but allows the name to be changed. */
 	genAttrs' =
 		list:
@@ -258,6 +268,7 @@ in {
 		getPythonAttrs
 		genMountOpts
 		drvListByName
+		referencedDrvs
 		flakeInputToUrl
 		genAttrs'
 		cleanMeta
