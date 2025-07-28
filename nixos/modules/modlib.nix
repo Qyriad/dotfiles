@@ -2,7 +2,7 @@
 { lib, options, config, ... }:
 
 /** Library functions that operate on a NixOS configuration.
- * 
+ *
  * Honestly this is probably not at all the best way to do this but whatever.
  */
 
