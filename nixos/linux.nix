@@ -220,6 +220,10 @@
 		permissions = "u+r,g+rx,o+r";
 	};
 
+	boot.kernelModules = lib.optionals config.package-groups.music-production.enable [
+		"snd_virmidi"
+	];
+
 	# Other packages we want available on Linux systems.
 	environment.systemPackages = with pkgs; [
 		efibootmgr
