@@ -50,6 +50,7 @@ nnoremap <leader>gr <Cmd>Telescope lsp_references<CR>
 
 function! JumpDeclaration() abort
 	if exists('b:lsp_client')
+		autocmd BufReadPost * ++once Fixname
 		call v:lua.vim.lsp.buf.declaration()
 	elseif !empty(taglist(expand('<cword>')))
 		echo "jumped to tag"
@@ -61,6 +62,7 @@ endfunction
 
 function! JumpDefinition() abort
 	if exists('b:lsp_client')
+		autocmd BufReadPost * ++once Fixname
 		Telescope lsp_definitions
 	elseif !empty(taglist(expand('<cword>')))
 		echo "jumped to tag"
@@ -70,11 +72,16 @@ function! JumpDefinition() abort
 	endif
 endfunction
 
+function! JumpImplementations() abort
+	autocmd BufReadPost * ++once Fixname
+	Telescope lsp_implementations
+endfunction
+
 nnoremap gD <Cmd>call JumpDeclaration()<CR>
 nnoremap gd <Cmd>call JumpDefinition()<CR>
 nnoremap K <Cmd>call v:lua.vim.lsp.buf.hover()<CR>
 nnoremap <CR> <Cmd>call v:lua.vim.lsp.buf.hover()<CR>
-nnoremap gi <Cmd>Telescope lsp_implementations<CR>
+nnoremap gi <Cmd>call JumpImplementations()<CR>
 inoremap <C-k> <Cmd>call v:lua.vim.lsp.buf.signature_help()<CR>
 "lua vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help)
 nnoremap <leader>D <Cmd>Telescope lsp_type_definitions<CR>
@@ -89,7 +96,7 @@ lua vim.g.diagnostic_severity = { min = vim.diagnostic.severity.WARN }
 nnoremap [d <Cmd>call v:lua.vim.diagnostic.goto_prev({ "severity": g:diagnostic_severity })<CR>
 nnoremap ]d <Cmd>call v:lua.vim.diagnostic.goto_next({ "severity": g:diagnostic_severity })<CR>
 nnoremap <leader>h <Cmd>call v:lua.vim.lsp.buf.document_highlight()<CR>
-nnoremap <leader>c <Cmd>call v:lua.vim.lsp.buf.clear_references()<CR>
+"nnoremap <leader>c <Cmd>call v:lua.vim.lsp.buf.clear_references()<CR>
 " 'Symbol rename'
 nnoremap <leader>sr <Cmd>call v:lua.vim.lsp.buf.rename()<CR>
 nnoremap <leader>sh <Cmd>ClangdSwitchSourceHeader<CR>
@@ -290,6 +297,7 @@ vim.api.nvim_create_user_command(
 EOF
 
 function! SetupFormatOnSave(buffer) abort
+	let b:format_on_save = v:true
 	augroup FormatOnSave
 		autocmd! BufWritePre <buffer=a:buffer> lua vim.lsp.buf.format({ async = false })
 	augroup END
@@ -297,6 +305,7 @@ endfunction
 command! FormatOnSave call SetupFormatOnSave("<buffer>")
 
 function! StopFormatOnSave(buffer) abort
+	let b:format_on_save = v:false
 	augroup FormatOnSave
 		autocmd! BufWritePre <buffer=a:buffer>
 	augroup END
@@ -365,11 +374,11 @@ vim.g.rustaceanvim = {
 		},
 	},
 }
-use {
-	"mrcjkb/rustaceanvim",
-	lazy = false,
-	--ft = "rust",
-}
+--use {
+--	"mrcjkb/rustaceanvim",
+--	lazy = false,
+--	--ft = "rust",
+--}
 use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
 --use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
 use { 'https://git.sr.ht/~p00f/clangd_extensions.nvim', ft = { "c", "cpp" } }
@@ -388,6 +397,6 @@ use {
 	floating_window_above_cur_line = true,
 	fix_pos = true,
   },
-  config = function(_, opts) require'lsp_signature'.setup(opts) end
+  config = function(_, opts) require('lsp_signature').setup(opts) end
 }
 EOF
