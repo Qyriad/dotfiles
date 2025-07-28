@@ -52,6 +52,8 @@ highlight clear @lsp.type.comment
 " Idk what's up with this one.
 highlight! link @variable Identifier
 
+highlight @lsp.type.unresolvedReference gui=undercurl
+
 highlight! link TrailingWhitespace Error
 
 " Override search-highlights with the cursor on them to actually be distinguishable.
