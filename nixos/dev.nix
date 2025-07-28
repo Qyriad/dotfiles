@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
 	# General development stuffs.
@@ -69,5 +69,7 @@
 		scspell
 		#autotools-language-server
 		qyriad.lsptrace
+	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
+		systemd-lsp
 	];
 }
