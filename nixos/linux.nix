@@ -171,6 +171,8 @@
 	# Covered by nix-index, not that its integrations support our shell.
 	programs.command-not-found.enable = false;
 
+	programs.usbtop.enable = true;
+
 	services.udev.packages = [
 		pkgs.qyriad.udev-rules
 		pkgs.qyriad.udev-rules-i2c
