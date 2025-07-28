@@ -3,9 +3,14 @@
  */
 flake:
 
-# Technically this module doesn't need to be a function, but is for clarity and type-checking.
-{ ... }:
+{ lib, config, ... }:
 
+let
+	csi = builtins.fromJSON ''"\u001b"'';
+	green = "${csi}[32m";
+  	normal = "${csi}[0m";
+	bold = "${csi}[1m";
+in
 {
 	nixpkgs.overlays = [
 		flake.overlays.default
@@ -23,5 +28,10 @@ flake:
 	nixpkgs.flake.source = flake.inputs.nixpkgs.outPath;
 
 	# And for fun, let NixOS know our Git commit hash, if we have one.
-	system.configurationRevision = flake.rev or flake.sourceInfo.dirtyRev;
+	system.configurationRevision = let
+		rev = flake.rev or flake.sourceInfo.dirtyRev;
+		msg = lib.trim ''
+			${green}note${normal}: '${config.system.name}' system configuration revision ${bold}${rev}${normal}
+		'';
+	in builtins.trace msg rev;
 }
