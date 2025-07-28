@@ -9,7 +9,7 @@ local lua_runtime_paths = vim.iter(vim.api.nvim_get_runtime_file("lua/", true))
 return {
 	filetypes = { 'lua' },
 	cmd = { 'lua-language-server' },
-	root_markers = { 'init.vim', 'init.lua' },
+	root_markers = { 'init.vim', 'init.lua', '.git' },
 	settings = {
 		Lua = {
 			runtime = {
