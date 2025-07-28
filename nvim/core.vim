@@ -383,7 +383,7 @@ vim.g.clipboard = {
 
 -- Returns true if this function inverted fo=r, and false if it did not.
 function doc_format_options()
-	local pos = vim.inspect_pos(nil, nil, nil, { syntax = false, extmarks = false, semantic_tokens = false })
+	local pos = vim.inspect_pos(nil, nil, nil, { syntax = true, extmarks = false, semantic_tokens = false })
 
 	if pos == nil then
 		return false
