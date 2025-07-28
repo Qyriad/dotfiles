@@ -7,10 +7,6 @@ flake:
 { ... }:
 
 {
-	imports = [
-		./keep-paths.nix
-	];
-
 	nixpkgs.overlays = [
 		flake.overlays.default
 	];

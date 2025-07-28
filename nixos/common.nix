@@ -5,6 +5,7 @@
 	imports = [
 		./modules/package-groups.nix
 		./modules/modlib.nix
+		./modules/keep-paths.nix
 	];
 
 	# Configuration for things related to Nix itself.
