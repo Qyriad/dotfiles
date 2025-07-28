@@ -76,4 +76,3 @@ if has("nvim-0.11")
 	" guibg=oklch(0.29 0.0918 219.65)
 	highlight LspReferenceTarget cterm=bold ctermbg=326 gui=bold guibg=#003244
 endif
-
