@@ -167,6 +167,7 @@
 		qemu-utils
 		xorg.xlsclients
 		xorg.xset # Make OBS shut up.
+		xorg.xcursorgen
 		seer
 		qyriad.obs-studio
 		v4l-utils
