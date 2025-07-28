@@ -317,9 +317,6 @@ nmap cmtd eviwS'va'S]h"_x
 " Change a Python style dict access to a member access. 'Change Dict to Member'
 nmap cdtm ds'F[i.<ESC><ESC>f[ds]
 
-" Change current word to uppercase.
-inoremap <C-u> <esc>mzgUiW`za
-
 " Comment-out the current line, and then duplicate the uncommented version below.
 " 'Yank, comment, paste'
 " yy to yank the current line
