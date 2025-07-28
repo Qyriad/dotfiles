@@ -145,6 +145,11 @@ vim.keymap.set("n", "<leader>hh", _hl_cursor_col, {
 	desc = "highlight the cursor's column, briefly"
 })
 
+-- Ughhh autoclose.nvim is overriding this.
+--vim.keymap.set("i", "<C-h>", _hl_cursor_col, {
+--	desc = "highlight the cursor's column, briefly",
+--})
+
 function what_indent()
 	local lines = {}
 	local settings = { "cindent", "autoindent", "smartindent", "indentexpr" }
