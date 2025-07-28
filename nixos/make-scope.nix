@@ -16,9 +16,7 @@
 	qpkgs = import qyriad-nur { inherit pkgs; };
 	agenix' = import agenix { inherit pkgs; };
 
-in lib.makeScope pkgs.newScope (self: let
-	inherit (self) qlib;
-in qpkgs // {
+in lib.makeScope pkgs.newScope (self: qpkgs // {
 	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
 	# which do things like check man pages and patch ELFs.
 	runCommandMinimal = name: attrs: text: let
@@ -208,13 +206,7 @@ in qpkgs // {
 
 	qlib = let
 		qlib = import ./qlib.nix { inherit lib; };
-		# Nixpkgs lib with additions from qyriad-nur.
-		nurLib = qpkgs.lib;
-		# The additions to lib from qyriad-nur without Nixpkgs lib.
-		nurAdditions = qlib.removeAttrs' (lib.attrNames lib) nurLib;
-		qlibWithAdditions = nurAdditions // qlib;
-		# And then finally we'll force the result. Nothing here should be recursive or fail evaluation.
-	in qlib.force qlibWithAdditions;
+	in lib // qpkgs.lib // qlib;
 
 	# The wrapped environment variables for kdePackages.khelpcenter are a bit... overkill,
 	# and seem to result in duplicate entries all over the place.
