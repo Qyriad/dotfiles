@@ -52,6 +52,8 @@ highlight clear @lsp.type.comment
 " Idk what's up with this one.
 highlight! link @variable Identifier
 
+highlight! link @keyword.import PreProc
+
 highlight @lsp.type.unresolvedReference gui=undercurl
 
 highlight! link TrailingWhitespace Error
