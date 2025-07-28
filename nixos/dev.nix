@@ -21,6 +21,7 @@
 		dprint
 		just
 		clang-tools_18
+		ruby
 		basedpyright
 		nodePackages.vim-language-server
 		#javascript-typescript-langserver
