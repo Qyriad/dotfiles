@@ -45,6 +45,7 @@
 	# but we don't need this.
 	#services.speechd.enable = false;
 
+	xdg.terminal-exec.enable = true;
 	xdg.portal = {
 		enable = true;
 		#extraPortals = [
