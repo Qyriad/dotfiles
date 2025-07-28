@@ -178,6 +178,7 @@
 		gst_all_1.gstreamer
 		gjs
 		libnotify
+		# Sigh.
 		chromium
 		kdePackages.kdialog
 		kdePackages.dragon
