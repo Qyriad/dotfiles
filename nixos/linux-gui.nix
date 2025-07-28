@@ -117,6 +117,7 @@
 		libva-utils
 		glxinfo
 		alacritty
+		qyriad.ghostty
 		wezterm
 		# Backup.
 		#konsole
