@@ -23,10 +23,14 @@
 		autodetect = true;
 	};
 
-	# Make the systemd stop timeout more reasonable.
-	systemd.extraConfig = lib.trim ''
-		DefaultTimeoutStopSec=20
-	'';
+	systemd.settings.Manager = {
+		# Make the systemd stop timeout more reasonable.
+		DefaultTimeoutStopSec = 20;
+
+		# I think these are default but I'm forcing the issue.
+		DefaultMemoryAccounting = "yes";
+		DefaultTasksAccounting = "yes";
+	};
 
 	systemd.slices.system-builder.sliceConfig = config.resources.builderSliceConfig;
 	systemd.user.slices.user-builder.sliceConfig = config.resources.builderSliceConfig;
