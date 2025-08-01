@@ -25,11 +25,11 @@ include "%L"
 <Multi_key> <a> <l> <p> <h> <a> : "α"
 
 # Beta
-<Multi_key> <b> <e> <t> <a> : "β"
+#<Multi_key> <b> <e> <t> <a> : "β"
 
 # Theta
 <Multi_key> <T> <h> <e> <t> <a> : "Θ"
-<Multi_key> <t> <h> <e> <t> <a> : "θ"
+#<Multi_key> <t> <h> <e> <t> <a> : "θ"
 
 # Lambda
 <Multi_key> <l> <a> <m> <d> <a> : "λ"
@@ -80,7 +80,7 @@ include "%L"
 <Multi_key> <h> <a> <s> : "☭" # Hammer and sickle
 # Peace symbol
 <Multi_key> <y> <o> : "☮"
-<Multi_key> <o> <y> : "☮"
+#<Multi_key> <o> <y> : "☮"
 # Pentagram
 <Multi_key> <5> <x> : "⛤"
 <Multi_key> <x> <5> : "⛤"
@@ -92,7 +92,7 @@ include "%L"
 # macOS bullshit
 <Multi_key> <o> <p> <t> : "⌥"
 <Multi_key> <c> <m> <d> : "⌘"
-<Multi_key> <o> <p> <t> <i> <o> <n> : "⌥"
+#<Multi_key> <o> <p> <t> <i> <o> <n> : "⌥"
 <Multi_key> <a> <p> <p> : ""
 
 # Nordic
@@ -110,13 +110,13 @@ include "%L"
 
 <Multi_key> <m> <t> : "™" # TM
 
-<Multi_key> <s> <o> : "§" # Section sign.
-<Multi_key> <o> <s> : "§" # Section sign.
+#<Multi_key> <s> <o> : "§" # Section sign.
+#<Multi_key> <o> <s> : "§" # Section sign.
 
 <Multi_key> <z> <w> <s> : "​" # Zero-width space.
 
 # Superscripts
-<Multi_key> <asciicircum> <2> : "²"
+#<Multi_key> <asciicircum> <2> : "²"
 <Multi_key> <caret> <2> : "²"
 
 # Left and right mathematical angle brackets, for IPA orthographic transcription.
