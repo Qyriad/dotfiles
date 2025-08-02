@@ -1,0 +1,79 @@
+#!/usr/bin/env xonsh
+# vim: ft=xonsh
+
+$RAISE_SUBPROC_ERROR = True
+$XONSH_SUBPROC_OUTPUT_FORMAT = 'stream_lines'
+$XONSH_SHOW_TRACEBACK = True
+
+import argparse
+import enum
+from enum import StrEnum
+import functools
+from pathlib import Path
+from typing import Optional
+
+_uses_xdg = None
+def uses_xdg() -> bool:
+	global _uses_xdg
+	if _uses_xdg is None:
+		_uses_xdg = 'true' in $(nix config show | rg use-xdg-base-directories)
+	return _uses_xdg
+
+_xdg_state = None
+def xdg_state() -> Path:
+	global _xdg_state
+	if _xdg_state is None:
+		try:
+			_xdg_state = Path($XDG_STATE_DIR)
+		except KeyError:
+			_xdg_state = p'~/.local/state'.expanduser()
+	return _xdg_state
+
+class ProfileKind(StrEnum):
+	system = enum.auto()
+	user = enum.auto()
+
+	def _base(self) -> str:
+		match self:
+			case 'system':
+				return '/nix/var/nix/profiles/'
+			case 'user':
+				if uses_xdg():
+					return f'{xdg_state().as_posix()}/nix/profiles/'
+				else:
+					return p'~/.nix'.expanduser().as_posix()
+
+	def _stem(self) -> str:
+		match self:
+			case 'system':
+				return 'system'
+			case 'user':
+				return 'profile'
+
+	def get(self, gen: Optional[int]) -> str:
+		base = self._base()
+		stem = self._stem()
+		#print(f'{base=}')
+		if gen is None:
+			return f'{base}{stem}'
+
+
+		gens = $(fd -t l @(f'^{stem}-') @(base) | sort --numeric-sort).splitlines()
+		gen_path = gens[gen]
+		return gen_path
+
+parser = argparse.ArgumentParser()
+parser.add_argument('profile_kind', default='system', nargs='?', type=ProfileKind, choices=ProfileKind)
+parser.add_argument('-u', '--user', type=str, help="Override user to use for 'user' type profile")
+parser.add_argument('-g', '--generation', required=False, type=int,
+	help='if negative, indexes from the most recent. -1 is the most recent, -2 is the next most recent',
+)
+parser.add_argument('-c', '--current', action='store_true',
+	help='equivalent to --generation=-1',
+)
+
+args = parser.parse_args()
+if args.current:
+	args.generation = -1
+
+print(args.profile_kind.get(args.generation))
