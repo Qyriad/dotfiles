@@ -57,6 +57,15 @@
 			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
 		};
 
+		colmena = prev.colmena.overrideAttrs (prev: {
+			# We don't need to wrap colmena *just* to put `nix` in its PATH...
+			preFixup = lib.trim ''
+				if [[ -f "$out/bin/.colmena-wrapped" ]]; then
+					mv -vf "$out/bin/.colmena-wrapped" "$out/bin/colmena"
+				fi
+			'';
+		});
+
 		kdePackages = prev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 			# Ripples to:
 			# - kdeconnect-kde
