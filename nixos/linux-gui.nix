@@ -219,6 +219,10 @@
 		pwvucontrol
 		sonusmix
 		wayfarer
+		qpwgraph
+		# Cursed. But gives me access to pactl.
+		pulseaudio
+		qyriad.qjackctl
 	] ++ lib.optionals config.services.ratbagd.enable [
 		piper
 	];
