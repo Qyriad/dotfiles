@@ -96,6 +96,19 @@
 			#});
 		});
 
+		obs-studio = prev.obs-studio.overrideAttrs (prev: let
+			inherit (final) libGL libvlc;
+		in {
+			dontWrapQtApps = final.stdenv.hostPlatform.isLinux;
+			postFixup = prev.postFixup + (lib.trim ''
+
+			  patchelf --add-needed "$out/lib/libobs-opengl.so" "$out/bin/obs"
+			  patchelf --add-needed "${lib.getLib libGL}/lib/libGL.so" "$out/bin/obs"
+			  patchelf --add-needed "${lib.getLib libvlc}/lib/libvlc.so" "$out/bin/obs"
+			  patchelf --add-needed "$out/lib/obs-plugins/decklink.so" "$out/bin/obs"
+			'');
+		});
+
 		# Our license only covers Bitwig 5.2.7.
 		bitwig-studio5-unwrapped = prev.bitwig-studio5-unwrapped.overrideAttrs (pkgFinal: pkgPrev: {
 			version = "5.2.7";
