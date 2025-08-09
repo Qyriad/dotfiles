@@ -29,9 +29,10 @@ in
 
 	# And for fun, let NixOS know our Git commit hash, if we have one.
 	system.configurationRevision = let
-		rev = flake.rev or flake.sourceInfo.dirtyRev;
+		rev = flake.rev or flake.dirtyRev;
+		sysName = config.system.name or config.system.darwinLabel;
 		msg = lib.trim ''
-			${green}note${normal}: '${config.system.name}' system configuration revision ${bold}${rev}${normal}
+			${green}note${normal}: '${sysName}' system configuration revision ${bold}${rev}${normal}
 		'';
 	in builtins.trace msg rev;
 }
