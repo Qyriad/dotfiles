@@ -43,6 +43,8 @@
 		cpus = 32;
 	};
 
+	systemd.services.nix-daemon.serviceConfig.IOWriteBandwidthMax = "/dev/nvme3n1p2 30M";
+
 	# Non-NixOS-generated hardware configuration.
 	hardware.cpu.amd.updateMicrocode = true;
 
