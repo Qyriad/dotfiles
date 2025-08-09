@@ -17,6 +17,8 @@
       ./60-openocd.rules
       #./60-i2c.rules
       ./70-avermedia-symlink.rules
+      # Okay this seems broken actually
+      #./20-v4l2-loopback-ids.rules
     ];
   };
 
