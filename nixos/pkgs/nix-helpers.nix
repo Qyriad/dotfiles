@@ -5,7 +5,7 @@ let
     cmd="nixos-rebuild --print-build-logs --verbose --flake $HOME/.config $@"
     if [[ -z "''${SUDO_USER:-}" ]]; then
       if [[ "$@" = *"switch"* ]]; then
-        cmd="sudo $cmd"
+        cmd="$cmd --sudo --no-reexec"
       fi
     fi
     echo $cmd
