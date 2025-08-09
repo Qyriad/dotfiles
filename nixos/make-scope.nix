@@ -139,8 +139,6 @@ in lib.makeScope qpkgs.newScope (self: {
 			batinfo
 			wifi
 		];
-
-		doCheck = false;
 	});
 
 	# Optimize Ghostty for x86-64-v4
