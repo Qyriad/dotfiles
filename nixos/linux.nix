@@ -189,9 +189,6 @@
 	systemd.services.nixseparatedebuginfod.serviceConfig = {
 		PrivateTmp = lib.mkForce false;
 	};
-	systemd.services.ModemManager.serviceConfig = {
-		PrivateTmp = lib.mkForce false;
-	};
 	systemd.services.cups.serviceConfig = {
 		PrivateTmp = lib.mkForce false;
 	};
