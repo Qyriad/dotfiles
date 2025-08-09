@@ -40,6 +40,9 @@ highlight String   ctermfg=37 guifg=#2aa198
 " Make 'listchars' characters less conspicuous.
 highlight Whitespace cterm=NONE ctermfg=239 gui=NONE guifg=#323334
 
+" vim.diagnostic `:help diagnostic-highlights`
+highlight DiagnosticUnderlineInfo cterm=nocombine,underdashed gui=nocombine,underdashed
+
 " Make doc-comments be highlighted specially again.
 highlight link @lsp.mod.documentation SpecialComment
 highlight link @comment.documentation SpecialComment
