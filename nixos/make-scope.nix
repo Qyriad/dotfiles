@@ -160,42 +160,6 @@ in lib.makeScope pkgs.newScope (self: qpkgs // {
 		];
 	});
 
-	vesktop = pkgs.vesktop.overrideAttrs (prev: {
-		desktopItems = lib.forEach prev.desktopItems (item: item.override {
-			exec = lib.concatStringsSep " " [
-				"vesktop"
-				"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
-				"--ozone-platform-hint=wayland"
-				#"--gtk-version=4"
-				"--enable-wayland-ime"
-				"--wayland-text-input-version=3"
-				"%U"
-			];
-			#exec = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --use-wayland-ime %U";
-		});
-	});
-
-	obsidian = pkgs.obsidian.overrideAttrs (prev: {
-		desktopItem = prev.desktopItem.override {
-			exec = lib.concatStringsSep " " [
-				"obsidian"
-				"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
-				"--ozone-platform-hint=wayland"
-				"--gtk-version=4"
-				"--enable-wayland-ime"
-				"--wayland-text-input-version=3"
-				"%U"
-			];
-		};
-	});
-
-	grc = pkgs.grc.overrideAttrs (prev: {
-		permitUserSite = true;
-		makeWrapperArgs = prev.makeWrapperArgs or [ ] ++ [
-			"--set-default" "PYTHONUNBUFFERED" "1"
-		];
-	});
-
 	xkeyboard_config-patched-inet = self.callPackage ./pkgs/xkb-config-patched-inet.nix { };
 
 	nix-update = pkgs.nix-update.overrideAttrs (prev: {

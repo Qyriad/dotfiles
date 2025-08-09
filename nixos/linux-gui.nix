@@ -118,14 +118,14 @@
 		libva-utils
 		glxinfo
 		alacritty
-		qyriad.ghostty
+		ghostty
 		wezterm
 		# Backup.
 		#konsole
 		qyriad.mpv
-		qyriad.obsidian
+		obsidian
 		pandoc
-		qyriad.vesktop
+		vesktop
 		# For voice.
 		discord
 		calibre

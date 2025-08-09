@@ -118,6 +118,61 @@
 				hash = "sha256-Tyi7qYhTQ5i6fRHhrmz4yHXSdicd4P4iuF9FRKRhkMI=";
 			};
 		});
+
+		vesktop = prev.vesktop.overrideAttrs (prev: {
+			desktopItems = lib.forEach prev.desktopItems (item: item.override {
+				exec = lib.concatStringsSep " " [
+					"vesktop"
+					"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
+					"--ozone-platform-hint=wayland"
+					#"--gtk-version=4"
+					"--enable-wayland-ime"
+					"--wayland-text-input-version=3"
+					"%U"
+				];
+				#exec = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --use-wayland-ime %U";
+			});
+		});
+
+		obsidian = prev.obsidian.overrideAttrs (prev: {
+			desktopItem = prev.desktopItem.override {
+				exec = lib.concatStringsSep " " [
+					"obsidian"
+					"--enable-features=UseOzonePlatform,WaylandWindowDecorations,WebRTCPipeWireCapturer"
+					"--ozone-platform-hint=wayland"
+					"--gtk-version=4"
+					"--enable-wayland-ime"
+					"--wayland-text-input-version=3"
+					"%U"
+				];
+			};
+		});
+
+		grc = prev.grc.overrideAttrs (prev: {
+			permitUserSite = true;
+			makeWrapperArgs = prev.makeWrapperArgs or [ ] ++ [
+				"--set-default" "PYTHONUNBUFFERED" "1"
+			];
+		});
+
+		# Optimize Ghostty for x86-64-v4
+		ghostty = prev.ghostty.overrideAttrs (prev: let
+			inherit (final.stdenv) hostPlatform;
+			zig = final.zig_0_13;
+
+			newZigHook = zig.hook.overrideAttrs {
+				zig_default_flags = "-Doptimize=ReleaseFast --color off"
+				+ lib.optionalString hostPlatform.isx86 " -Dcpu=x86_64_v4";
+			};
+
+			hookName = lib.getName zig.hook;
+
+			withoutZigHook = lib.filter (p: lib.getName p != hookName) prev.nativeBuildInputs;
+		in {
+			nativeBuildInputs = withoutZigHook ++ [
+				newZigHook
+			];
+		});
 	};
 
 in overlay
