@@ -11,7 +11,6 @@ return qyriad.nested_tbl {
 		},
 		['hover.actions.references.enable'] = true,
 		['lens.references.method.enable'] = false,
-		['cargo.features'] = 'all',
 	},
 
 	before_init = function(init_params, config)
