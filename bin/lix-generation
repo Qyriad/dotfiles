@@ -65,7 +65,7 @@ class ProfileKind(StrEnum):
 parser = argparse.ArgumentParser()
 parser.add_argument('profile_kind', default='system', nargs='?', type=ProfileKind, choices=ProfileKind)
 parser.add_argument('-u', '--user', type=str, help="Override user to use for 'user' type profile")
-parser.add_argument('-g', '--generation', required=False, type=int,
+parser.add_argument('-g', '--generation', required=False, type=int, metavar="GEN",
 	help='if negative, indexes from the most recent. -1 is the most recent, -2 is the next most recent',
 )
 parser.add_argument('-c', '--current', action='store_true',
