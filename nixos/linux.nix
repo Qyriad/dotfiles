@@ -266,6 +266,10 @@
 		watchlog
 		dysk
 		xcp
+		ttylog
+		app2unit
+		#systemd-wait # cannot import GLib, introspection typelib not found
+		pipectl
 	]
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
