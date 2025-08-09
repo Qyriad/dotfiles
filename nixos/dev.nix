@@ -68,7 +68,7 @@
 		oxlint
 		scspell
 		#autotools-language-server
-		qyriad.lsptrace
+		qpkgs.lsptrace
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
 	];

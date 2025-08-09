@@ -154,8 +154,8 @@
 		fcp
 		mediainfo
 		qyriad.glances
-		qyriad.otree
-		qyriad.cyme
+		qpkgs.otree
+		qpkgs.cyme
 		srgn
 		jujutsu
 		repgrep
@@ -163,7 +163,7 @@
 		uni
 		ansi2html
 		qyriad.agenix
-		qyriad.age-plugin-openpgp-card
+		qpkgs.age-plugin-openpgp-card
 		abcmidi
 		pastel
 		jo

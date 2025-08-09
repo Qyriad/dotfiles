@@ -235,7 +235,7 @@
 		usbutils
 		pciutils
 		(gdb.override { enableDebuginfod = true; })
-		qyriad.strace-process-tree
+		qpkgs.strace-process-tree
 		zps
 		kmon
 		# Needs AppKit on macOS?
@@ -248,8 +248,8 @@
 		lsof
 		iotop
 		difftastic
-		qyriad.strace-with-colors
-		qyriad.intentrace
+		qpkgs.strace-with-colors
+		qpkgs.intentrace
 		ltrace
 		bpftrace
 		exfatprogs
@@ -273,7 +273,7 @@
 	++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
-		qyriad.wiremix
+		qpkgs.wiremix
 	]
 	++ lib.optionals config.services.smartd.enable [
 		smartmontools

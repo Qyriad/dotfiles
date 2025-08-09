@@ -11,12 +11,12 @@
 	xil,
 	xonsh-source,
 	nil-source,
-	getScope ? pkgs: import ./make-scope.nix {
+	getScope ? { pkgs, lib, qpkgs }: import ./make-scope.nix {
 		inherit
 			pkgs
 			lib
 			agenix
-			qyriad-nur
+			qpkgs
 			niz
 			log2compdb
 			pzl
@@ -29,12 +29,30 @@
 
 }: let
 	overlay = final: prev: let
-		scope = getScope final;
 		availableOnHost = lib.meta.availableOn final.stdenv.hostPlatform;
-
 	in {
-		qyriad = scope;
-		inherit (final.qyriad) qlib;
+		qyriad = getScope {
+			pkgs = final;
+			lib = prev.lib;
+			inherit (final) qpkgs;
+		};
+
+		qpkgs = import qyriad-nur {
+			pkgs = final;
+			lib = prev.lib;
+		};
+
+		inherit (final.qpkgs) nurLib;
+
+		#lib = prev.lib // final.qpkgs.nurLib;
+		# XXX: FIXME: ^ SHOULD work but isn't. so we're doing this for now.
+		lib = if prev ? qpkgs then (
+			prev.lib // final.qpkgs.nurLib // final.qlib
+		) else (
+			prev.lib
+		);
+
+		qlib = final.qyriad.qlib;
 
 		# I don't need to build aws-sdk-cpp every time, tbh.
 		nix = prev.nix.override { aws-sdk-cpp = null; };

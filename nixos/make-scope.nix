@@ -3,7 +3,8 @@
 	pkgs,
 	lib,
 	agenix,
-	qyriad-nur,
+	qyriad-nur ? throw "provide either qyriad-nur or qpkgs",
+	qpkgs ? import qyriad-nur { inherit pkgs lib; },
 	niz,
 	log2compdb,
 	pzl,
@@ -13,10 +14,9 @@
 	xonsh-source,
 }: let
 
-	qpkgs = import qyriad-nur { inherit pkgs; };
 	agenix' = import agenix { inherit pkgs; };
 
-in lib.makeScope pkgs.newScope (self: qpkgs // {
+in lib.makeScope qpkgs.newScope (self: {
 	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
 	# which do things like check man pages and patch ELFs.
 	runCommandMinimal = name: attrs: text: let
@@ -48,7 +48,7 @@ in lib.makeScope pkgs.newScope (self: qpkgs // {
 
 	obs-studio = pkgs.wrapOBS {
 		plugins = [
-			self.obs-chapter-marker-manager
+			qpkgs.obs-chapter-marker-manager
 		] ++ lib.attrValues {
 			inherit (pkgs.obs-studio-plugins)
 				input-overlay

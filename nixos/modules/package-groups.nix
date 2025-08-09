@@ -32,6 +32,7 @@ in
 				soundfont-ydp-grand
 				soundfont-fluid
 				tenacity
+				pkgs.qpkgs.qsynth
 			];
 		};
 
