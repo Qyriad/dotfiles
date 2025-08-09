@@ -1,0 +1,7 @@
+# vim: filetype=udevrules
+ACTION=="remove", GOTO="v4l2_loopback_ids_end"
+SUBSYSTEM!="video4linux", GOTO="v4l2_loopback_ids_end"
+
+KERNEL=="video*", ENV{ID_USB_DRIVER}=="", ENV{ID_USB_DRIVER}="video4linux2", ENV{ID_PATH}="virtual-$attr{name}", ENV{ID_BUS}="virtual-$attr{name}"
+
+LABEL="v4l2_loopback_ids_end"
