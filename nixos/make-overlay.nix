@@ -114,18 +114,10 @@
 			#});
 		});
 
-		obs-studio = prev.obs-studio.overrideAttrs (prev: let
-			inherit (final) libGL libvlc;
-		in {
-			dontWrapQtApps = final.stdenv.hostPlatform.isLinux;
-			postFixup = prev.postFixup + (lib.trim ''
-
-			  patchelf --add-needed "$out/lib/libobs-opengl.so" "$out/bin/obs"
-			  patchelf --add-needed "${lib.getLib libGL}/lib/libGL.so" "$out/bin/obs"
-			  patchelf --add-needed "${lib.getLib libvlc}/lib/libvlc.so" "$out/bin/obs"
-			  patchelf --add-needed "$out/lib/obs-plugins/decklink.so" "$out/bin/obs"
-			'');
-		});
+		# FIXME: this is a pretty weird way of overriding the final OBS...
+		wrapOBS = prev.wrapOBS.override {
+			obs-studio = final.qpkgs.obs-studio-unwrapped;
+		};
 
 		# Our license only covers Bitwig 5.2.7.
 		bitwig-studio5-unwrapped = prev.bitwig-studio5-unwrapped.overrideAttrs (pkgFinal: pkgPrev: {
