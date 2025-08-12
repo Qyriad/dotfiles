@@ -164,8 +164,9 @@
 		#darling
 		glibc.debug
 		qt6.qtbase
-		qemu_full
-		qemu-utils
+		# ceph is broken. again.
+		#qemu_full
+		#qemu-utils
 		xorg.xlsclients
 		xorg.xset # Make OBS shut up.
 		xorg.xcursorgen
