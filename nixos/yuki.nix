@@ -121,7 +121,7 @@
 		config.programs.steam.package.run
 		makemkv
 		valgrind
-		ryujinx
+		ryubing
 		shotcut
 		davinci-resolve
 		blender
