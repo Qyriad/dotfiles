@@ -177,7 +177,7 @@
 		tesseract
 		smile
 		gst_all_1.gstreamer
-		gjs
+		#gjs
 		libnotify
 		# Sigh.
 		chromium
