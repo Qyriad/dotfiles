@@ -303,11 +303,11 @@
     "niz": {
       "flake": false,
       "locked": {
-        "lastModified": 1750327399,
-        "narHash": "sha256-bdnOoa20k7QrpGbbPv2Y4XLYQ/BYRTRPXkIse/kFfew=",
+        "lastModified": 1755082622,
+        "narHash": "sha256-CTTdCnK5fBfGM4fUCyMFcGXoNNAZI0dopNP/rV/EaNA=",
         "owner": "Qyriad",
         "repo": "niz",
-        "rev": "270232497ee9bba74fb7bf4acd64cddd56bfb206",
+        "rev": "73404307a3175de0f49a76c3b0429551b398a177",
         "type": "github"
       },
       "original": {
