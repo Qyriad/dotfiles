@@ -114,7 +114,6 @@ use { 'chikamichi/mediawiki.vim', ft = "mediawiki" }
 use { 'dzeban/vim-log-syntax', ft = "log" }
 -- use "meatballs/vim-xonsh"
 use { 'linkinpark342/xonsh-vim', ft = "xonsh" }
-use { 'terminalnode/sway-vim-syntax', ft = "swayconfig" }
 use { 'peterhoeg/vim-qml', ft = "qml" }
 use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use {
