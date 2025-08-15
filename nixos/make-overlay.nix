@@ -65,11 +65,6 @@
 			};
 		};
 
-		numbat = prev.numbat.overrideAttrs (prev: lib.recursiveUpdate prev {
-			# It's marked as broken on Darwin but seems to work fine.
-			meta.broken = false;
-		});
-
 		lnav = prev.lnav.override {
 			# Nixpkgs forgot to make this dependency conditional on not-Darwin.
 			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
