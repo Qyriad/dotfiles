@@ -107,6 +107,8 @@
 	fetchJobs = 4
 [url "ssh://git@github.com"]
 	pushInsteadOf = "https://github.com"
+[url "ssh://git@codeberg.org"]
+	pushInsteadOf = "https://codeberg.org"
 [git-extras "get"]
 	clone-path = /Users/qyriad/code/builds
 [rerere]
