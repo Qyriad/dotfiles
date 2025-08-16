@@ -106,6 +106,7 @@
 	nixpkgs.config.permittedInsecurePackages = [
 		"olm-3.2.16" # For Cinny
 		"jitsi-meet-1.0.8043" # For Element
+		"libsoup-2.74.3" # For Cinny?
 	];
 
 	package-groups = {
