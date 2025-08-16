@@ -116,6 +116,7 @@ use { 'dzeban/vim-log-syntax', ft = "log" }
 use { 'linkinpark342/xonsh-vim', ft = "xonsh" }
 use { 'peterhoeg/vim-qml', ft = "qml" }
 use { 'nickel-lang/vim-nickel', ft = "nickel" }
+use { 'qnighy/lalrpop.vim' }
 use {
 	'nvim-treesitter/nvim-treesitter',
 	lazy = false,
