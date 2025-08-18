@@ -270,26 +270,23 @@
 		app2unit
 		#systemd-wait # cannot import GLib, introspection typelib not found
 		pipectl
-	]
-	++ lib.optionals config.services.pipewire.enable [
+	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
 		qpkgs.wiremix
-	]
-	++ lib.optionals config.services.smartd.enable [
+	] ++ lib.optionals config.services.smartd.enable [
 		smartmontools
-	]
-	++ lib.optionals config.hardware.openrazer.enable [
+	] ++ lib.optionals config.hardware.openrazer.enable [
 		razer-cli
 		polychromatic
 		razergenie
-	]
-	++ lib.optionals config.services.ratbagd.enable [
+	] ++ lib.optionals config.services.ratbagd.enable [
 		config.services.ratbagd.package
-	]
-	++ config.systemd.packages # I want system services to also be in /run/current-system please.
-	++ config.services.udev.packages # Same for udev...
-	++ config.fonts.packages # and fonts...
-	++ config.console.packages # and including console fonts too...
-	++ config.boot.extraModulePackages; # and extra kernel modules.
+	] ++ lib.concatLists [
+		config.systemd.packages # I want system services to also be in /run/current-system please.
+		config.services.udev.packages # Same for udev...
+		config.fonts.packages # and fonts...
+		config.console.packages # and including console fonts too...
+		config.boot.extraModulePackages # and extra kernel modules.
+	];
 }
