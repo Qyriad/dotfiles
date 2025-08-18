@@ -270,7 +270,7 @@
 	};
 
 	# Used for noise suppression.
-	#programs.noisetorch.enable = true;
+	programs.noisetorch.enable = true;
 
 	# Setup the terminal font we use, and make CJK render nicely.
 	fonts.packages = with pkgs; [
