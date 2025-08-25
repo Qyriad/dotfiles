@@ -129,13 +129,32 @@
 			# or not overriden packages in nixpkgs, as flake.packages.foo is preferred over
 			# flake.legacyPackages.foo by commands like `nix build`.
 			legacyPackages = pkgs;
+
+			#checks = {
+			#	nixosEvals = self.nixosConfigurations
+			#	|> lib.mapAttrs (nixos: lib.deepSeq (toString nixos.config.system.build.toplevel) pkgs.empty)
+			#	;
+			#};
+			#checks = self.nixosConfigurations
+			#|> lib.mapAttrs (host: nixos: lib.deepSeq (toString nixos.config.system.build.toplevel) pkgs.empty);
+			#checks.yuki = pkgs.empty.overrideAttrs (prev: {
+			#	env = {
+			#		yuki = let
+			#			nixos = self.nixosConfigurations.yuki;
+			#		in lib.seq (toString nixos.config.system.build.toplevel) nixos.config.system.build.toplevel.drvPath;
+			#	};
+			#});
 		});
 
 		# NixOS configuration outputs, which are each for one specific system.
 		universalOutputs = {
-			lib = qlib;
+			lib = let
+				pkgs = import nixpkgs {
+					overlays = [ self.overlays.default ];
+				};
+			in pkgs.qlib;
 
-			overlays.default = import ./nixos/make-overlay.nix {
+			overlays.main = import ./nixos/make-overlay.nix {
 				inherit (nixpkgs) lib;
 				inherit (inputs)
 					agenix
@@ -150,6 +169,12 @@
 					nil-source
 				;
 			};
+			overlays.killWrappers = import ./nixos/kill-wrappers-overlay.nix;
+
+			overlays.default = lib.composeManyExtensions [
+				self.overlays.main
+				self.overlays.killWrappers
+			];
 
 			nixosConfigurations = rec {
 				futaba = mkConfig "x86_64-linux" [
