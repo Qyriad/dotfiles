@@ -56,26 +56,26 @@ let
 		newStdenv.mkDerivation (drv.overrideAttrs (self: { passthru.attrs = self; })).attrs
 	;
 
-	overrideStdenvForDerivation = newStdenv: drv: let
-		prevAttrs = getAttrs drv;
-	in newStdenv.mkDerivation prevAttrs;
+	#overrideStdenvForDerivation = newStdenv: drv: let
+	#	prevAttrs = getAttrs drv;
+	#in newStdenv.mkDerivation prevAttrs;
 
 	mkImpureNative = prev:
 		overrideStdenvForDrv (prev.stdenvAdapters.impureUseNativeOptimizations prev.stdenv)
 	;
 
 	# Gets the original but evaluated arguments to mkDerivation, given a derivation created with mkDerivation.
-	getAttrs =
-		# A mkDerivation derivation.
-		drv:
-			assert lib.assertMsg (drv ? overrideAttrs) "getAttrs passed non-mkDerivation attrset ${toString drv}";
-			let
-				overriden = drv.overrideAttrs (prev: {
-					passthru.__attrs = prev;
-				});
-			in
-				overriden.__attrs
-	;
+	#getAttrs =
+	#	# A mkDerivation derivation.
+	#	drv:
+	#		assert lib.assertMsg (drv ? overrideAttrs) "getAttrs passed non-mkDerivation attrset ${toString drv}";
+	#		let
+	#			overriden = drv.overrideAttrs (prev: {
+	#				passthru.__attrs = prev;
+	#			});
+	#		in
+	#			overriden.__attrs
+	#;
 
 	# Gets the original but evaluated arguments to buildPythonPackage (and friends), given a derivation
 	# created with one of those functions.
@@ -264,7 +264,7 @@ in {
 		mkDebugForEach
 		overrideStdenvForDrv
 		mkImpureNative
-		getAttrs
+		#getAttrs
 		getPythonAttrs
 		genMountOpts
 		drvListByName
