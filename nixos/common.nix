@@ -18,6 +18,20 @@
 	#	"non-source"
 	#];
 	#nixpkgs.config.fetchedSourceNameDefault = "versioned";
+	# HACK: I'm trying out this fancy new thing called "-N"
+	nixpkgs.overlays = let
+		patchLixOverlay = final: prev: {
+			nix = prev.nix.overrideAttrs (prev: {
+				doInstallCheck = false;
+				patches = [
+					./pkgs/lix-nix-build-short-no-link.patch
+				];
+			});
+		};
+	in [
+		patchLixOverlay
+	];
+
 	nix = {
 		settings = {
 			experimental-features = [

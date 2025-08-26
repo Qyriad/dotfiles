@@ -1,0 +1,26 @@
+diff --git a/lix/nix/build.cc b/lix/nix/build.cc
+index f3a2a5e5f..5d4177d5f 100644
+--- a/lix/nix/build.cc
++++ b/lix/nix/build.cc
+@@ -84,20 +84,21 @@ struct CmdBuild : InstallablesCommand, MixDryRun, MixJSON, MixProfile
+             .longName = "out-link",
+             .shortName = 'o',
+             .description = "Use *path* as prefix for the symlinks to the build results. It defaults to `result`.",
+             .labels = {"path"},
+             .handler = {&outLink},
+             .completer = completePath
+         });
+ 
+         addFlag({
+             .longName = "no-link",
++            .shortName = 'N',
+             .description = "Do not create symlinks to the build results.",
+             .handler = {&outLink, Path("")},
+         });
+ 
+         addFlag({
+             .longName = "print-out-paths",
+             .description = "Print the resulting output paths",
+             .handler = {&printOutputPaths, true},
+         });
+ 
