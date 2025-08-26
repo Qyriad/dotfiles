@@ -1,3 +1,6 @@
+if not $XONSH_INTERACTIVE:
+	$RAISE_SUBPROC_ERROR = True
+
 try:
 	# Nixpkgs likes to set this for purity, but I want Xonsh to be able to use
 	# --user packages.
