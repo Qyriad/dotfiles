@@ -1,3 +1,10 @@
+try:
+	# Nixpkgs likes to set this for purity, but I want Xonsh to be able to use
+	# --user packages.
+	del $PYTHONNOUSERSITE
+except KeyError:
+	pass
+
 # XXX VERY HACK for NixOS
 import xonsh
 if "IN_NIX_SHELL" not in ${...}:
