@@ -4,12 +4,17 @@
 {
 	imports = [
 		./common.nix
+		# FIXME: this import should probably be moved to a generic darwin.nix or something.
+		./modules/darwin-nixos-compat.nix
 	];
 
 	system.stateVersion = 5;
 
 	nixpkgs.config.allowUnfree = true;
 	ids.gids.nixbld = 30000;
+
+	networking.computerName = "Keyleth";
+	networking.localHostName = "Keyleth";
 
 	nix = {
 		settings = {
