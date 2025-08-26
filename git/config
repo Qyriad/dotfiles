@@ -50,6 +50,9 @@
 	current-series = rev-parse --abbrev-ref SHEAD
 	abbrev-ref = rev-parse --abbrev-ref
 	#c = !tmux split-window -v "git commit && exit"
+	rl = reflog --pretty=reflog
+[pretty]
+	reflog = %C(auto)%h %<|(20)%gd %C(blue)%cr%C(reset) %gs (%s)
 [rebase]
 	autostash = true
 [commit]
