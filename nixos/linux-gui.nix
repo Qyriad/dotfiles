@@ -18,7 +18,7 @@
 	};
 
 	# Use Qt settings from KDE.
-	qt.platformTheme = "kde6";
+	qt.platformTheme = "kde";
 
 	environment.plasma6.excludePackages = with pkgs.kdePackages; [
 		# We use our patched nixos-khelpcenter instead.

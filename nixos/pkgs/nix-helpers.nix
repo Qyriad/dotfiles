@@ -2,7 +2,7 @@
 
 let
   rebuild-cmd = pkgs.writeShellScriptBin "rebuild" ''
-    cmd="nixos-rebuild --print-build-logs --verbose --flake $HOME/.config $@"
+    cmd="nixos-rebuild --log-format multiline-with-logs --verbose --flake $HOME/.config $@"
     if [[ -z "''${SUDO_USER:-}" ]]; then
       if [[ "$@" = *"switch"* ]]; then
         cmd="$cmd --sudo --no-reexec"
