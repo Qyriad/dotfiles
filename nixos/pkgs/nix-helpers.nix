@@ -1,7 +1,12 @@
-{ pkgs, lib }:
+{
+  lib,
+  stdenvNoCC,
+  writeShellScriptBin,
+  symlinkJoin,
+}:
 
 let
-  rebuild-cmd = pkgs.writeShellScriptBin "rebuild" ''
+  rebuild-nixos = writeShellScriptBin "rebuild" ''
     cmd="nixos-rebuild --log-format multiline-with-logs --verbose --flake $HOME/.config $@"
     if [[ -z "''${SUDO_USER:-}" ]]; then
       if [[ "$@" = *"switch"* ]]; then
@@ -12,16 +17,27 @@ let
     exec $cmd
   '';
 
-  highlight-nix = pkgs.writeShellScriptBin "hlnix" ''
+  rebuild-darwin = writeShellScriptBin "rebuild" ''
+    cmd="darwin-rebuild --log-format multiline-with-logs --verbose --flake $HOME/.config --option extra-experimental-features 'nix-command flakes pipe-operator' $@"
+    echo $cmd
+    exec $cmd
+  '';
+
+  rebuild-cmd =
+    if stdenvNoCC.hostPlatform.isDarwin then
+      rebuild-darwin
+    else
+      rebuild-nixos;
+
+  highlight-nix = writeShellScriptBin "hlnix" ''
     exec bat -l nix --no-pager --style=plain $@
   '';
 
-in
-  pkgs.symlinkJoin {
-    name = "nix-helpers";
-    inherit rebuild-cmd;
-    paths = [
-      rebuild-cmd
-      highlight-nix
-    ];
-  }
+in symlinkJoin {
+  name = "nix-helpers";
+  inherit rebuild-cmd;
+  paths = [
+    rebuild-cmd
+    highlight-nix
+  ];
+}
