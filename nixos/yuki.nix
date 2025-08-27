@@ -76,7 +76,7 @@
 		'') + "\n";
 	};
 
-	environment.enableDebugInfo = true;
+	#environment.enableDebugInfo = true;
 	environment.extraOutputsToInstall = [
 		"dev"
 	];
