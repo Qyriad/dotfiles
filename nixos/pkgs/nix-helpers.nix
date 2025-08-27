@@ -18,7 +18,7 @@ let
   '';
 
   rebuild-darwin = writeShellScriptBin "rebuild" ''
-    cmd="darwin-rebuild --log-format multiline-with-logs --verbose --flake $HOME/.config --option extra-experimental-features 'nix-command flakes pipe-operator' $@"
+    cmd="darwin-rebuild --print-build-logs --verbose --flake $HOME/.config --option extra-experimental-features pipe-operator $@"
     echo $cmd
     exec $cmd
   '';
