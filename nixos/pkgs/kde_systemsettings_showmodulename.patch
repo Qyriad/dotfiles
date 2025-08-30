@@ -1,0 +1,30 @@
+diff --git a/app/SettingsBase.cpp b/app/SettingsBase.cpp
+index bade6cad..39a5084c 100644
+--- a/app/SettingsBase.cpp
++++ b/app/SettingsBase.cpp
+@@ -283,20 +283,24 @@ void SettingsBase::loadCurrentView()
+         if (reportGeneralBugAction) {
+             reportGeneralBugAction->setVisible(!reportPageSpecificBugAction->isVisible());
+         }
+     });
+ 
+     show();
+ }
+ 
+ void SettingsBase::viewChange(bool state)
+ {
+-    setCaption(view->moduleView()->activeModuleName(), state);
++    KPluginMetaData const activeModule = this->view->moduleView()->activeModuleMetadata();
++    QString const captionFormat(QStringLiteral("%1 (%2)"));
++    bool const modifiedAsterisk = state;
++
++    this->setCaption(captionFormat.arg(activeModule.name(), activeModule.pluginId()), modifiedAsterisk);
+ }
+ 
+ void SettingsBase::slotGeometryChanged()
+ {
+     setMinimumSize(SettingsBase::sizeHint());
+     setSettingsDirty();
+ }
+ 
+ #include "moc_SettingsBase.cpp"

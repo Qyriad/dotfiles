@@ -108,6 +108,12 @@
 			#		final.xorg.xcbutilerrors
 			#	];
 			#});
+
+			systemsettings = kdePrev.systemsettings.overrideAttrs (pkgPrev: {
+				patches = pkgPrev.patches or [ ] ++ [
+					./pkgs/kde_systemsettings_showmodulename.patch
+				];
+			});
 		});
 
 		# FIXME: this is a pretty weird way of overriding the final OBS...
