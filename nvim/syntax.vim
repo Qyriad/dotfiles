@@ -48,6 +48,19 @@ endfunction
 
 command! SynNameStack echomsg SynNameStack()
 
+" Allow us to `let b/w/t/g:cpp = v:true` to make `.h` files count as C++.
+" FIXME: this needs a better name
+let g:cpp = v:false
+function! MaybeCppHeaders() abort
+	if get(b:, 'cpp', get(w:, 'cpp', get(t:, 'cpp', get(g:, 'cpp', v:false))))
+		set filetype=cpp
+	endif
+endfunction
+
+augroup CppHeaders
+	autocmd! BufRead,BufNewFile *.h call MaybeCppHeaders()
+augroup END
+
 " NOTE: In Rust, "@class" is each "item".
 nnoremap ]c <Cmd>TSTextobjectGotoNextEnd @class.outer<CR>
 xnoremap ]c <Cmd>TSTextobjectGotoNextEnd @class.outer<CR>
