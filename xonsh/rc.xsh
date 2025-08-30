@@ -335,19 +335,6 @@ $YTDLP_TWITCH  = '%(uploader)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - 
 
 $FFMPEG_MUX_ONLY = shlex.split("-map_metadata 0 -map_chapters 0 -map 0 -c:v copy -c:a copy -c:s copy")
 
-xontrib load abbrevs
-if 'abbrevs' not in globals():
-	aliases['mesoncomp'] = 'meson compile -C build'
-	aliases['mesoncompile'] = 'meson compile -C build'
-	aliases['mesontest'] = 'meson test -C build'
-	aliases['mesoninstall'] = 'meson install -C build'
-else:
-	abbrevs['mesoncomp'] = 'meson compile -C build'
-	abbrevs['mesoncompile'] = 'meson compile -C build'
-	abbrevs['mesontest'] = 'meson test -C build'
-	abbrevs['mesoninstall'] = 'meson install -C build'
-	abbrevs['gitcb'] = lambda buffer, word: XSH.shell.shell.prompt_formatter('<edit>{curr_branch}')
-
 def _wine32(args):
 	overrides = {
 		'WINEPREFIX': f"$HOME/.wine32",
