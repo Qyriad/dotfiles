@@ -138,6 +138,12 @@ $NETCTL_EDITOR = $EDITOR
 # Open nvim in read-only mode, pretending that the specified file is not actually a file
 aliases['nvimscratch'] = 'nvim -R "+setlocal buftype=nofile bufhidden=hide noswapfile"'
 aliases['rnvim'] = 'nvim -R'
+def _vimman(args: list):
+	assert len(args) == 1, f"should only be one argument: {args=}"
+	topic = args[0]
+	$[nvim -c @("ManCur {}".format(topic))]
+
+aliases['vimman'] = _vimman
 
 # Fix Neovim for stuff like git commit.
 #no_thread = lambda *a, **kw: False
