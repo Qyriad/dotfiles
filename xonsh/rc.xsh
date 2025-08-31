@@ -96,8 +96,12 @@ def shlvl_diff():
 	return str(int($SHLVL) - 1)
 
 if "TMUX" in ${...}:
+	# "Start of heading"
+	SOH = "\x01"
+	# "Start of text"
+	STX = "\x02"
 	def _prompt_escape():
-		return "\x01\x1b]133;A\x1b\\\x02"
+		return f"{SOH}\x1b]133;A\x1b\\{STX}"
 else:
 	def _prompt_escape():
 		return ""
