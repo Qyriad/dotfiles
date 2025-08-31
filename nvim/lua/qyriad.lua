@@ -80,4 +80,10 @@ function M.tbl_override(lhs, rhs)
 	return vim.tbl_extend('force', lhs or { }, rhs)
 end
 
+function M.lsp_iter_clients()
+	return vim.iter(vim.lsp.get_clients())
+		:map(function(c) return {id = c.id, name = c.name } end)
+		:totable()
+end
+
 return M

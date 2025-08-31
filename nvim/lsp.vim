@@ -41,6 +41,8 @@ nnoremap <leader>xc <Cmd>TroubleToggle<CR>
 " LSP-related highlights.
 highlight! NotifyBackground guibg=#1b1b1b
 
+command! LspClients echo v:lua.qyriad.lsp_iter_clients()
+
 
 if exists('g:tagbar_sort')
 	unlet g:tagbar_sort
