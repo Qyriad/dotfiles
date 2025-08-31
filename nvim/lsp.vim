@@ -166,7 +166,7 @@ vim.lsp.config('*', qyriad.nested_tbl {
 	['capabilities.textDocument.completion.completionItem.snippetSupport'] = false,
 })
 
-vim.lsp.enable({
+local lsp_modules = {
 	'rust-analyzer',
 	'vimls',
 	'luals',
@@ -176,7 +176,20 @@ vim.lsp.enable({
 	'basedpyright',
 	'taplo',
 	'autotools',
-})
+}
+for _, modname in ipairs(lsp_modules) do
+	local config = vim.lsp.config[modname]
+	if not config then
+		vim.notify(string.format("LSP '%s' requested but no config available", modname), vim.log.levels.WARN)
+	else
+		local exe = config.cmd[1]
+		if vim.fn.executable(exe) ~= 1 then
+			vim.notify(string.format("LSP '%s' requested but executable '%s' not found", modname, exe), vim.log.levels.WARN)
+		end
+	end
+end
+
+vim.lsp.enable(lsp_modules)
 
 --lsp_vim_capabilities = vim.lsp.protocol.make_client_capabilities()
 
