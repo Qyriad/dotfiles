@@ -103,6 +103,7 @@ else:
 		return ""
 
 
+$ENABLE_ASYNC_PROMPT = True
 $PROMPT_FIELDS['exit_code'] = exit_code
 $PROMPT_FIELDS['exit_color'] = exit_color
 $PROMPT_FIELDS['shlvl'] = shlvl_diff
