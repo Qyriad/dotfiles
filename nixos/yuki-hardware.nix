@@ -31,6 +31,7 @@
 		modesetting.enable = true;
 		package = config.boot.kernelPackages.nvidiaPackages.stable;
 		open = true;
+		powerManagement.enable = true;
 	};
 	hardware.graphics.enable32Bit = true;
 
