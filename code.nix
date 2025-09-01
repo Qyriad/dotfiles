@@ -17,6 +17,7 @@
   toolchainHashes = {
     stable-1_84 = { name = "1.84"; sha256 = "sha256-vMlz0zHduoXtrlu0Kj1jEp71tYFXyymACW8L4jzrzNA="; };
     stable-1_85 = { name = "1.85"; sha256 = "sha256-Hn2uaQzRLidAWpfmRwSRdImifGUCAb9HeAqTYFXWeQk="; };
+    stable-1_88 = { name = "1.88"; sha256 = "sha256-Qxt8XAuaUR2OMdKbN4u8dBJOhSHxS+uS06Wl9+flVEk="; };
   };
 
   mkRustToolchain = toolchainHashInfo: let
@@ -32,6 +33,7 @@
 
   stable-1_84 = mkRustToolchain toolchainHashes.stable-1_84;
   stable-1_85 = mkRustToolchain toolchainHashes.stable-1_85;
+  stable-1_88 = mkRustToolchain toolchainHashes.stable-1_88;
 
   rust-pwd-toolchain = let
     pwd = builtins.getEnv "PWD";
@@ -101,6 +103,7 @@
   rust-stable = mkRustShell fenixLib.stable.toolchain;
   rust-1_84 = mkRustShell stable-1_84;
   rust-1_85 = mkRustShell stable-1_85;
+  rust-1_88 = mkRustShell stable-1_88;
   rust-pwd = mkRustShell rust-pwd-toolchain;
   #rust-1_85 = mkRustShell (fenixLib.combine [ stable-1_85.toolchain wasm32-unknown-unknown.toolchain ]);
 
@@ -152,5 +155,5 @@
     ];
   });
 in builtins.deepSeq [ pkgs.path fenix.outPath ] {
-  inherit rust-nightly rust-stable rust-1_84 rust-1_85 rust-pwd tauri c-cpp kde;
+  inherit rust-nightly rust-stable rust-1_84 rust-1_85 rust-1_88 rust-pwd tauri c-cpp kde;
 }
