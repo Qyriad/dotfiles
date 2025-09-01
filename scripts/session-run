@@ -21,6 +21,9 @@ def main():
     parser.add_argument('-E', '--setenv', action='append', type=str,
         help='NAME=VALUE pair of environment variables to set for the process',
     )
+    parser.add_argument('-p', '--property', action='append', type=str,
+        help='NAME=VALUE pair of systemd unit properties',
+    )
     parser.add_argument('--no-watch', action='store_true',
         help="don't show the logs from the newly launched command",
     )
@@ -31,14 +34,16 @@ def main():
     cmd = args.cmd
     cmdname = cmd[0]
     setenv = args.setenv if args.setenv is not None else []
+    props = args.property if args.property is not None else []
 
     localnow = datetime.now().astimezone().strftime('systemdrun-%Hh-%Mm')
     unit_name = f'{localnow}-{cmdname}'
 
     env_args = [f'--setenv={entry}' for entry in setenv]
+    prop_args = [f'--property={entry}' for entry in props]
 
-    run_args = ['systemd-run', '--user', '--collect', '--same-dir', '--slice=app.slice', f'--unit={unit_name}', *env_args, *cmd]
-    eprint('\x1b[1m{}'.format(shlex.join(run_args)))
+    run_args = ['systemd-run', '--user', '--collect', '--same-dir', '--slice=app.slice', f'--unit={unit_name}', *env_args, *prop_args, *cmd]
+    eprint('\x1b[1m{}\x1b[0m'.format(shlex.join(run_args)))
     subprocess.call(run_args)
 
     if args.no_watch:
@@ -48,7 +53,7 @@ def main():
     if grc := shutil.which('grc'):
         journal_args.insert(0, grc)
 
-    eprint('\x1b[1m{}'.format(shlex.join(journal_args)))
+    eprint('\x1b[1m{}\x1b[0m'.format(shlex.join(journal_args)))
     eprint('session-run: showing logs from newly launched command; press Ctrl-C to stop following logs')
     try:
         subprocess.call(journal_args)
