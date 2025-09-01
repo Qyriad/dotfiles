@@ -109,6 +109,21 @@
 			#	];
 			#});
 
+			# Ripples to:
+			# - systemsettings
+			# - kinfocenter
+			# - kwin-x11
+			# - plasma-browser-integration
+			# - powerdevil
+			# - plasma-pa
+			# - plasma-desktop
+			# - kdeplasma-addons
+			# - firefox (wrapper)
+			plasma-workspace = kdePrev.plasma-workspace.overrideAttrs (pkgPrev: {
+				dontWrapQtApps = true;
+			});
+
+			# Ripples to:
 			systemsettings = kdePrev.systemsettings.overrideAttrs (pkgPrev: {
 				patches = pkgPrev.patches or [ ] ++ [
 					./pkgs/kde_systemsettings_showmodulename.patch
