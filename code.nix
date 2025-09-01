@@ -95,7 +95,7 @@
       pkgs.nodejs
       pkgs.nodePackages.npm
       pkgs.nodePackages.typescript
-      pkgs.webkitgtk
+      pkgs.webkitgtk_4_0
     ];
   };
 
