@@ -341,6 +341,11 @@ aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--sig
 # --demangle
 aliases['objdumpx'] = ['objdump', '--special-syms', '--disassembler-color=extended', '--visualize-jumps=extended-color']
 
+aliases['@lines'] = SpecAttrDecoratorAlias(dict(output_format="list_lines"), "Use list_lines output format")
+aliases['@path'] = SpecAttrDecoratorAlias({
+	"output_format": lambda lines: Path(":".join(lines)),
+})
+
 
 $YTDLP_YOUTUBE = '%(channel)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
 $YTDLP_TWITCH  = '%(uploader)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
