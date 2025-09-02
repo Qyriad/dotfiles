@@ -342,8 +342,17 @@ aliases['nix-tmp'] = _nix_tmp
 # -X verbose / --const-print-style=verbose (output named constants as numbers with name as a comment)
 # -s 64 --string-limit=64
 # --tips / --tips=id:random,format:compact
-aliases['stracey'] = ['strace', '-yyY', '-s', '128', '--silence=attach,exit', '--signal=none', '--tips=id:random,format:compact']
-aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--signal=!all', '--successful-only' '--follow-forks' '--seccomp-bpf', '-e' 'execve']
+#aliases['stracey'] = ['strace', '-yyY', '-s', '128', '--silence=attach,exit', '--signal=none', '--tips=id:random,format:compact']
+aliases['stracey'] = [
+	'strace',
+	'--decode-fds=all', # -yy
+	'--decode-pids=comm', # -Y
+	'--string-limit=128', # -s128
+	'--silence=attach,exit',
+	'--signal=none',
+	'--tips=id:random,format:compact',
+]
+aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--signal=!all', '--successful-only', '--follow-forks', '--seccomp-bpf', '-e', 'execve']
 
 # objdump handy arguments:
 # -M intel
