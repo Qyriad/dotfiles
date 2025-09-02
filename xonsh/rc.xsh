@@ -322,6 +322,15 @@ aliases['striptext'] = lambda args, stdin: stdin.read().strip()
 aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
 aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat'
+aliases['nosleep'] = 'systemd-inhibit --what=sleep'
+def _nix_tmp(pkg: list):
+	""" Build a package, symlink it in /tmp, and ls --tree it """
+	pkg, *rest = pkg
+	for out_path in $(@lines niz build f"nixpkgs#{pkg}" -o f"/tmp/result-{pkg}" @(rest)):
+		print(out_path, flush=True)
+		ls --tree @(out_path)
+
+aliases['nix-tmp'] = _nix_tmp
 # strace --color=always --silence=attach,exit --signal=none -y -e read,write -s999
 # strace handy arguments:
 # -z / --successful-only
