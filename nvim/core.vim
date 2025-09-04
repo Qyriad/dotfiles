@@ -538,7 +538,6 @@ command! -nargs=? -complete=help Help call HelpCurwin(<q-args>)
 
 " Opens Man page for `subject` in the current window.
 function! ManCurwin(subject) abort
-	echomsg a:subject
 	" Open the man page in a new tab.
 	execute "tab Man " .. a:subject
 
