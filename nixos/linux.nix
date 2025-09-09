@@ -18,6 +18,8 @@
 	# Yes mount /tmp as a tmpfs.
 	boot.tmp.useTmpfs = true;
 
+	nix.settings.use-cgroups = true;
+
 	services.smartd = {
 		enable = true;
 		autodetect = true;
