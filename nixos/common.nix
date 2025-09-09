@@ -60,6 +60,7 @@
 
 			keep-outputs = true;
 			keep-derivations = true;
+			show-trace = true;
 
 			repl-overlays = [ ../nix/repl-overlay.nix ];
 		};
