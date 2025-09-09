@@ -132,6 +132,17 @@
 			});
 		});
 
+		# lsp-tree-sitter isn't broken anymore.
+		python3 = prev.python3.override {
+			packageOverrides = pyFinal: pyPrev: {
+				lsp-tree-sitter = pyPrev.lsp-tree-sitter.overrideAttrs (pkgFinal: pkgPrev: {
+					meta = pkgPrev.meta // {
+						broken = false;
+					};
+				});
+			};
+		};
+
 		# FIXME: this is a pretty weird way of overriding the final OBS...
 		wrapOBS = prev.wrapOBS.override {
 			obs-studio = final.qpkgs.obs-studio-unwrapped;
