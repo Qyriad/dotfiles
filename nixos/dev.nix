@@ -67,7 +67,7 @@
 		taplo
 		oxlint
 		scspell
-		#autotools-language-server
+		autotools-language-server
 		qpkgs.lsptrace
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
