@@ -29,6 +29,11 @@ def xdg_state() -> Path:
 			_xdg_state = p'~/.local/state'.expanduser()
 	return _xdg_state
 
+def generation_spec(arg: int | str) -> int | str:
+	if arg != "all":
+		return int(arg)
+	return arg
+
 class ProfileKind(StrEnum):
 	system = enum.auto()
 	user = enum.auto()
@@ -50,30 +55,44 @@ class ProfileKind(StrEnum):
 			case 'user':
 				return 'profile'
 
+	def _gens(self, base: str, stem: str) -> list[str]:
+		return $(fd -t l @(f'^{stem}-') @(base) | sort --numeric-sort).splitlines()
+
 	def get(self, gen: Optional[int]) -> str:
 		base = self._base()
 		stem = self._stem()
-		#print(f'{base=}')
 		if gen is None:
 			return f'{base}{stem}'
 
-
-		gens = $(fd -t l @(f'^{stem}-') @(base) | sort --numeric-sort).splitlines()
-		gen_path = gens[gen]
+		gen_path = self._gens(base, stem)[gen]
 		return gen_path
+
+	def list(self) -> list[str]:
+		base = self._base()
+		stem = self._stem()
+
+		return self._gens(base, stem)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('profile_kind', default='system', nargs='?', type=ProfileKind, choices=ProfileKind)
 parser.add_argument('-u', '--user', type=str, help="Override user to use for 'user' type profile")
-parser.add_argument('-g', '--generation', required=False, type=int, metavar="GEN",
+parser.add_argument('-g', '--generation', required=False, type=generation_spec, metavar="GEN",
 	help='if negative, indexes from the most recent. -1 is the most recent, -2 is the next most recent',
+)
+parser.add_argument('-a', '--all', action='store_true',
+	help='equivalent to --generation=all',
 )
 parser.add_argument('-c', '--current', action='store_true',
 	help='equivalent to --generation=-1',
 )
 
 args = parser.parse_args()
+if args.all:
+	args.generation = "all"
 if args.current:
 	args.generation = -1
 
-print(args.profile_kind.get(args.generation))
+if args.generation == "all":
+	print("\n".join(args.profile_kind.list()))
+else:
+	print(args.profile_kind.get(args.generation))
