@@ -17,6 +17,10 @@
 		enableQt5Integration = true;
 	};
 
+	# Things NixOS enables by default with Plasma 6 but we don't need.
+	services.accounts-daemon.enable = lib.mkForce false;
+	services.orca.enable = false;
+
 	# Use Qt settings from KDE.
 	qt.platformTheme = "kde";
 
