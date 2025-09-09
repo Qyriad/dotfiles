@@ -232,6 +232,7 @@
 		wayfarer
 		qpwgraph
 		# Cursed. But gives me access to pactl.
+		(lib.getBin pulseaudio)
 		pulseaudio
 		qpkgs.qjackctl
 	] ++ lib.optionals config.services.ratbagd.enable [
