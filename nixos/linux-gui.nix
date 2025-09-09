@@ -222,6 +222,8 @@
 		kid3-kde
 		# Might want to use this to hack some idle detection scripts or something.
 		#awatcher
+		# Symlink the thing that includes the default XCompose files into current-system
+		xorg.libX11
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
