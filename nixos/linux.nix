@@ -190,6 +190,11 @@
 
 	programs.usbtop.enable = true;
 
+	services.keyd = {
+		# TODO: configure
+		enable = false;
+	};
+
 	services.udev.packages = [
 		pkgs.qyriad.udev-rules
 		pkgs.qyriad.udev-rules-i2c
