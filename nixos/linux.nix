@@ -259,7 +259,7 @@
 		# apksigner dependency fails to build on macOS
 		(diffoscope.overrideAttrs { enableBloat = false; })
 		rpm
-		binutils
+		qyriad.binutils-nolink
 		lsof
 		iotop
 		difftastic

@@ -184,4 +184,28 @@ in lib.makeScope qpkgs.newScope (self: {
 				--set NIXPKGS_QT6_QML_IMPORT_PATH '/run/current-system/sw/lib/qt-6/qml'
 		'';
 	});
+
+	# binutils without "toolchain" stuff like `ld`, `ar`, etc.
+	binutils-nolink = self.runCommandMinimal "binutils-nolink" {
+		inherit (pkgs) binutils;
+		outputs = [ "out" "man" "info" ];
+		binutilsMan = lib.getMan pkgs.binutils;
+		binutilsInfo = lib.getOutput "info" pkgs.binutils;
+		passthru = pkgs.binutils;
+		commandNames = [
+			"addr2line"
+			"nm"
+			"objdump"
+			"readelf"
+			"size"
+			"strings"
+		];
+	} (lib.trim ''
+		for name in "${shellArray "commandNames"}"; do
+			install -Dm655 "$binutils/bin/$name" --target-directory "$out/bin/"
+		done
+
+		cp --reflink=auto -r "$binutilsMan" "$man"
+		cp --reflink=auto -r "$binutilsInfo" "$info"
+	'');
 })
