@@ -171,6 +171,7 @@
 		qyriad.glances
 		qpkgs.otree
 		qpkgs.cyme
+		qpkgs.sequin
 		srgn
 		jujutsu
 		repgrep
