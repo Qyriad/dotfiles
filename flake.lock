@@ -251,11 +251,11 @@
     "nil-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1754679101,
-        "narHash": "sha256-nFK2XhrDS5igmkDQWmyTcgiJsEr3KOcR31DaSy+Fy9s=",
+        "lastModified": 1757219451,
+        "narHash": "sha256-ImGN436GYd50HjoKTeRK+kWYIU/7PkDv15UmoUCPDUk=",
         "owner": "oxalica",
         "repo": "nil",
-        "rev": "f80fe365cb441624d1608235e6e793e5dce47fb0",
+        "rev": "01e573c9e31ba3be7eaa848ba7dfcbd04260163e",
         "type": "github"
       },
       "original": {
@@ -335,11 +335,11 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1756739959,
-        "narHash": "sha256-8JVlJYWuWit+7dP0H/hxOAvilLXzdUoEm5tQ+hwS4fc=",
+        "lastModified": 1757166568,
+        "narHash": "sha256-QIAtfZ3rol5GYI5BvkI1vny4zariR0Yilh4ICBlAGR4=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "ed83f6a9d22fa0f27645901e6c0de866b46911c6",
+        "rev": "664f870fc88e580121394a955853e1d48c8ec1e6",
         "type": "github"
       },
       "original": {
