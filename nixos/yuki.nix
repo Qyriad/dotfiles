@@ -141,6 +141,7 @@
 		obs-cmd
 		odin2
 		qyriad.nvtop-yuki
+		libreoffice-qt6-fresh
 	];
 
 	# This value determines the NixOS release from which the default
