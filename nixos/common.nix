@@ -176,6 +176,7 @@
 		jujutsu
 		repgrep
 		rink
+		duf
 		uni
 		ansi2html
 		qyriad.agenix
