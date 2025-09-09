@@ -219,6 +219,7 @@
 		qyriad.nixos-khelpcenter
 		systemdgenie
 		kdotool
+		kid3-kde
 		# Might want to use this to hack some idle detection scripts or something.
 		#awatcher
 	] ++ lib.optionals config.services.pipewire.enable [
