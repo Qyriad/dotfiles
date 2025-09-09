@@ -119,9 +119,10 @@
 			# - plasma-desktop
 			# - kdeplasma-addons
 			# - firefox (wrapper)
-			plasma-workspace = kdePrev.plasma-workspace.overrideAttrs (pkgPrev: {
-				dontWrapQtApps = true;
-			});
+			# This *seemed* to work until it broke a lot.
+			#plasma-workspace = kdePrev.plasma-workspace.overrideAttrs (pkgPrev: {
+			#	dontWrapQtApps = true;
+			#});
 
 			# Ripples to:
 			systemsettings = kdePrev.systemsettings.overrideAttrs (pkgPrev: {
