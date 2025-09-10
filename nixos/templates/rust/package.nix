@@ -1,30 +1,81 @@
 {
 	lib,
-	craneLib,
+	stdenv,
+	rustHooks,
+	rustPlatform,
+	cargo,
+	clippy,
+	versionCheckHook,
 }: let
+	cargoToml = lib.importTOML ./Cargo.toml;
+	cargoPackage = cargoToml.package;
 
-	commonArgs = {
-		src = craneLib.cleanCargoSource ./.;
-		strictDeps = true;
+in stdenv.mkDerivation (self: {
+	pname = cargoPackage.name;
+	version = cargoPackage.version;
+
+	strictDeps = true;
+	__structuredAttrs = true;
+
+	doCheck = true;
+	doInstallCheck = true;
+
+	src = lib.fileset.toSource {
+		root = ./.;
+		fileset = lib.fileset.unions [
+			./Cargo.toml
+			./Cargo.lock
+			./src
+		];
 	};
 
-	cargoArtifacts = craneLib.buildDepsOnly commonArgs;
+	cargoDeps = rustPlatform.importCargoLock {
+		lockFile = ./Cargo.lock;
+	};
 
-in craneLib.buildPackage (commonArgs // {
+	versionCheckProgramArg = "--version";
 
-	inherit cargoArtifacts;
+	nativeBuildInputs = rustHooks.asList ++ [
+		cargo
+	];
+
+	nativeInstallCheckInputs = [
+		versionCheckHook
+	];
 
 	passthru.mkDevShell = {
-		self,
-		rust-analyzer,
-	}: craneLib.devShell {
-		inputsFrom = [ self ];
-		packages = [ rust-analyzer ];
+		mkShell,
+	}: let
+		mkShell' = mkShell.override { stdenv = stdenv; };
+	in mkShell' {
+		name = "${self.pname}-devshell-${self.version}";
+		inputsFrom = [ self.finalPackage ];
 	};
 
+	passthru.tests.clippy = self.finalPackage.overrideAttrs (prev: {
+		pname = "${self.pname}-clippy";
+
+		nativeCheckInputs = prev.nativeCheckInputs or [ ] ++ [
+			clippy
+		];
+
+		dontConfigure = true;
+		dontBuild = true;
+		doCheck = true;
+		dontFixup = true;
+		dontInstallCheck = true;
+
+		checkPhase = lib.trim ''
+			echo "cargoClippyPhase()"
+			cargo clippy --all-targets --profile "$cargoCheckType" -- --deny warnings
+		'';
+
+		installPhase = lib.trim ''
+			touch "$out"
+		'';
+	});
+
 	meta = {
-		mainProgram = null;
-		maintainers = with lib.maintainers; [ qyriad ];
-		license = with lib.licenses; [ mit ];
+		mainProgram = "PKGNAME";
 	};
 })

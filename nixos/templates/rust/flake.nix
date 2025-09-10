@@ -1,10 +1,13 @@
 {
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+		nixpkgs = {
+			url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+			flake = false;
+		};
 		flake-utils.url = "github:numtide/flake-utils";
-		crane = {
-			url = "github:ipetkov/crane";
-			inputs.nixpkgs.follows = "nixpkgs";
+		qyriad-nur = {
+			url = "github:Qyriad/nur-packages";
+			flake = false;
 		};
 	};
 
@@ -12,22 +15,31 @@
 		self,
 		nixpkgs,
 		flake-utils,
-		crane,
+		qyriad-nur,
 	}: flake-utils.lib.eachDefaultSystem (system: let
-
 		pkgs = import nixpkgs { inherit system; };
-		craneLib = import crane { inherit pkgs; };
+		qpkgs = import qyriad-nur { inherit pkgs; };
+		inherit (qpkgs) lib;
 
-		localPkgs = import ./default.nix { inherit pkgs craneLib; };
-		inherit (localPkgs) some-pkg;
+		PKGNAME = import ./default.nix { inherit pkgs qpkgs; };
+		extraVersions = lib.mapAttrs' (stdenvName: value: {
+			name = "${stdenvName}-PKGNAME";
+			inherit value;
+		}) PKGNAME.byStdenv;
 
+		devShell = import ./shell.nix { inherit pkgs qpkgs PKGNAME; };
+		extraDevShells = lib.mapAttrs' (stdenvName: value: {
+			name = "${stdenvName}-PKGNAME";
+			inherit value;
+		}) PKGNAME.byStdenv;
 	in {
-		packages = {
-			default = some-pkg;
-			inherit some-pkg;
+		packages = extraVersions // {
+			default = PKGNAME;
+			inherit PKGNAME;
 		};
 
-		devShells.default = pkgs.callPackage some-pkg.mkDevShell { self = some-pkg; };
-
-	}); # outputs
+		devShells = extraDevShells // {
+			default = devShell;
+		};
+	});
 }

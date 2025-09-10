@@ -1,15 +1,20 @@
-# Unlocked version. For locked inputs, use the flake.
 {
 	pkgs ? import <nixpkgs> { },
-	craneLib ? let
-		crane = fetchGit {
-			url = "https://github.com/ipetkov/crane";
-		};
-	in import crane { inherit pkgs; },
-}:
+	qpkgs ? let
+		src = fetchTree (builtins.parseFlakeRef "github:Qyriad/nur-packages");
+	in import src { inherit pkgs; },
+}: let
+	inherit (qpkgs) lib;
 
-{
-	some-pkg = pkgs.callPackage ./package.nix {
-		inherit craneLib;
-	};
-}
+	PKGNAME = qpkgs.callPackage ./package.nix { };
+
+	byStdenv = lib.mapAttrs (stdenvName: stdenv: let
+		withStdenv = PKGNAME.override { inherit stdenv; };
+		PKGNAME' = withStdenv.overrideAttrs (prev: {
+			pname = "${prev.pname}-${stdenvName}";
+		});
+	in PKGNAME') qpkgs.validStdenvs;
+
+in PKGNAME.overrideAttrs (prev: lib.recursiveUpdate prev {
+	passthru = { inherit byStdenv; };
+})
