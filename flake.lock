@@ -271,11 +271,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757130842,
-        "narHash": "sha256-4i7KKuXesSZGUv0cLPLfxbmF1S72Gf/3aSypgvVkwuA=",
+        "lastModified": 1757430124,
+        "narHash": "sha256-MhDltfXesGH8VkGv3hmJ1QEKl1ChTIj9wmGAFfWj/Wk=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "15f067638e2887c58c4b6ba1bdb65a0b61dc58c5",
+        "rev": "830b3f0b50045cf0bcfd4dab65fad05bf882e196",
         "type": "github"
       },
       "original": {
@@ -335,11 +335,11 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1757166568,
-        "narHash": "sha256-QIAtfZ3rol5GYI5BvkI1vny4zariR0Yilh4ICBlAGR4=",
+        "lastModified": 1757453553,
+        "narHash": "sha256-pFrQqmR/F2EUF29fLW+S0uWi2VHM4t1zw7qvUitvBnQ=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "664f870fc88e580121394a955853e1d48c8ec1e6",
+        "rev": "3ef2004675062095c5e3d26f51be2a97b7a5d2af",
         "type": "github"
       },
       "original": {
