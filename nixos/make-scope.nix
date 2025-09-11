@@ -15,6 +15,7 @@
 }: let
 
 	agenix' = import agenix { inherit pkgs; };
+	shellArray = name: "\${${name}[@]}";
 
 in lib.makeScope qpkgs.newScope (self: {
 	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
