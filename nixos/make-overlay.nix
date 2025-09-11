@@ -195,23 +195,23 @@
 		});
 
 		# Optimize Ghostty for x86-64-v4
-		ghostty = prev.ghostty.overrideAttrs (prev: let
-			inherit (final.stdenv) hostPlatform;
-			zig = final.zig_0_13;
-
-			newZigHook = zig.hook.overrideAttrs {
-				zig_default_flags = "-Doptimize=ReleaseFast --color off"
-				+ lib.optionalString hostPlatform.isx86 " -Dcpu=x86_64_v4";
-			};
-
-			hookName = lib.getName zig.hook;
-
-			withoutZigHook = lib.filter (p: lib.getName p != hookName) prev.nativeBuildInputs;
-		in {
-			nativeBuildInputs = withoutZigHook ++ [
-				newZigHook
-			];
-		});
+		#ghostty = prev.ghostty.overrideAttrs (prev: let
+		#	inherit (final.stdenv) hostPlatform;
+		#	zig = final.zig_0_13;
+		#
+		#	newZigHook = zig.hook.overrideAttrs {
+		#		zig_default_flags = "-Doptimize=ReleaseFast --color off"
+		#		+ lib.optionalString hostPlatform.isx86 " -Dcpu=x86_64_v4";
+		#	};
+		#
+		#	hookName = lib.getName zig.hook;
+		#
+		#	withoutZigHook = lib.filter (p: lib.getName p != hookName) prev.nativeBuildInputs;
+		#in {
+		#	nativeBuildInputs = withoutZigHook ++ [
+		#		newZigHook
+		#	];
+		#});
 	};
 
 in overlay
