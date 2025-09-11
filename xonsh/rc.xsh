@@ -126,6 +126,10 @@ $XONSH_HISTORY_BACKEND = 'sqlite'
 
 aliases['ni-ignore'] = ['rg', '-v', r'(-usr)|(-env)|(-fhs)|(-extracted)']
 aliases['nej'] = ['nix-eval-jobs', '--log-format', 'bar-with-logs', '--option', 'allow-import-from-derivation', 'false', '--verbose']
+@aliases.return_command
+def _sudo(args: list) -> str:
+	return [$(which -s sudo), *aliases.eval_alias(args)]
+aliases['sudo'] = _sudo
 
 aliases['sudo'] = lambda args : $[@($(which -s sudo)) @(aliases.eval_alias(args))]
 
