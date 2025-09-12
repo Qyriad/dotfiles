@@ -27,6 +27,7 @@
   tqdm,
   pip,
   pydbus,
+  sdbus,
   jeepney,
   pygobject3,
   ds-store,
@@ -58,6 +59,7 @@
     tqdm
     pip
     pydbus
+    sdbus
     jeepney
     pygobject3
     ds-store
