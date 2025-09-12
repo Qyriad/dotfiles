@@ -68,7 +68,7 @@
 		"i2c-dev"
 	];
 
-	boot.kernelPackages = pkgs.linuxPackages_latest;
+	#boot.kernelPackages = pkgs.linuxPackages_latest;
 
 	environment.etc."modprobe.d/v4l2loopback.conf" = {
 		text = (lib.trim ''
