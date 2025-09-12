@@ -76,7 +76,8 @@ nnoremap <leader>ga <Cmd>Gitsigns stage_hunk greedy=false<CR>
 nnoremap <leader>gb <Cmd>Gitsigns blame_line<CR>
 
 nnoremap <leader>tg <Cmd>Telescope live_grep<CR>
-nnoremap <leader>tf <Cmd>Telescope find_files<CR>
+nnoremap <leader>tf <Cmd>Telescope git_files<CR>
+nnoremap <leader>tF <Cmd>Telescope find_files<CR>
 "nnoremap <leader>tb <Cmd>Telescope buffers<CR>
 lua <<EOF
 vim.keymap.set("n", "<leader>tb", "", {
