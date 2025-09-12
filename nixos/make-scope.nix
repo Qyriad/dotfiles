@@ -26,6 +26,8 @@ in lib.makeScope qpkgs.newScope (self: {
 		else
 			"";
 		attrs' = attrs // {
+			__structuredAttrs = true;
+			strictDeps = true;
 			preHook = userPreHook + ''
 				defaultNativeBuildInputs=()
 			'';
