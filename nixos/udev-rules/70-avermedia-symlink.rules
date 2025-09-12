@@ -3,4 +3,3 @@ KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", ATTRS{idVendor}=="07ca", ATTRS{
 
 # Elgato HD60 S+
 KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006a", SYMLINK+="video-elgato-hd60s-$attr{index}"
-
