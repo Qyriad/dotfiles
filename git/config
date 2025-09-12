@@ -52,7 +52,7 @@
 	#c = !tmux split-window -v "git commit && exit"
 	rl = reflog --pretty=reflog
 [pretty]
-	reflog = %C(auto)%h %<|(20)%gd %C(blue)%cr%C(reset) %gs (%s)
+	reflog = %C(auto)%h %<|(20)%gd %C(blue)%cr%C(reset) %gs (%s, %C(blue)%ar%C(reset))
 [rebase]
 	autostash = true
 [commit]
