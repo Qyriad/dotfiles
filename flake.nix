@@ -130,6 +130,19 @@
 			# flake.legacyPackages.foo by commands like `nix build`.
 			legacyPackages = pkgs;
 
+			# Whatever.
+			apps.nix-flake-upgrade-most = let
+				mostInputs = lib.removeAttrs inputs [ "nixpkgs" ] |> lib.attrNames;
+				drv = pkgs.writeShellScriptBin "nix-flake-upgrade-most" (lib.trim ''
+					set -euo pipefail
+					niz flake update --commit-lock-file ${lib.concatStringsSep " " mostInputs}
+					systemd-inhibit --what=sleep rebuild build
+				'');
+			in {
+				program = lib.getExe drv;
+				type = "app";
+			};
+
 			#checks = {
 			#	nixosEvals = self.nixosConfigurations
 			#	|> lib.mapAttrs (nixos: lib.deepSeq (toString nixos.config.system.build.toplevel) pkgs.empty)
