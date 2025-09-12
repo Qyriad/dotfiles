@@ -228,7 +228,6 @@
 		pavucontrol
 		lxqt.pavucontrol-qt
 		pwvucontrol
-		sonusmix
 		wayfarer
 		qpwgraph
 		# Cursed. But gives me access to pactl.
