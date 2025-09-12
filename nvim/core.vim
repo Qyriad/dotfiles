@@ -583,6 +583,12 @@ command! -range DeleteConflictMarkers <line1>,<line2>global/\v^[=<>|]{7}/delete 
 "command! SearchGitConflict call SearchGitConflict()
 "nnoremap <leader>gc <Cmd>let @/ = g:GIT_CONFLICT_PATTERN \| set hlsearch<CR>
 
+" Use Tab and Shift-Tab to jump between sneaks.
+nmap <expr> <Tab> sneak#is_sneaking() ? '<Plug>Sneak_;' : '<Tab>'
+nmap <expr> <S-Tab> sneak#is_sneaking() ? '<Plug>Sneak_,' : '<S-Tab>'
+
+let g:sneak#s_next = 1
+
 lua <<EOF
 local function get_vim_errstr(lua_errstr)
 	-- lua_errstr should look something like `[string ":lua"]:10: Vim:E999: foomsg`
