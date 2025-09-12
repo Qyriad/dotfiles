@@ -267,6 +267,7 @@
 		qpkgs.intentrace
 		ltrace
 		bpftrace
+		watchexec
 		exfatprogs
 		caligula
 		trashy
