@@ -69,7 +69,8 @@
     pillow
     pytesseract
     beautifulsoup4
-    python-fontconfig
+    # Nixpkgs broke it.
+    #python-fontconfig
     keyring
     pygobject3
     gtk4
