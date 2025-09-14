@@ -177,14 +177,16 @@ local lsp_modules = {
 	'taplo',
 	'autotools',
 }
+local req_no_config = setmetatable({ }, { __index = table })
+local req_no_exe = setmetatable({ }, { __index = table })
 for _, modname in ipairs(lsp_modules) do
 	local config = vim.lsp.config[modname]
 	if not config then
-		vim.notify(string.format("LSP '%s' requested but no config available", modname), vim.log.levels.WARN)
+		req_no_config:insert(modname)
 	else
 		local exe = config.cmd[1]
 		if vim.fn.executable(exe) ~= 1 then
-			vim.notify(string.format("LSP '%s' requested but executable '%s' not found", modname, exe), vim.log.levels.WARN)
+			req_no_exe:insert(modname)
 		end
 	end
 end
