@@ -13,6 +13,8 @@
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
+	package-groups.music-production.enable = false;
+
 	networking.hostName = "Futaba";
 
 	services.fwupd.enable = true;
