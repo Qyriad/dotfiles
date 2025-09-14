@@ -189,6 +189,18 @@ for _, modname in ipairs(lsp_modules) do
 	end
 end
 
+if #req_no_config > 0 then
+	req_no_config = string.format([['%s']], vim.iter(req_no_config):join(", '"))
+	vim.notify(string.format("LSP: requested but no config: %s", req_no_config), vim.log.levels.WARN)
+end
+if #req_no_exe > 0 then
+	req_no_exe = string.format([['%s']], vim.iter(req_no_exe):join(", '"))
+	vim.notify(string.format("LSP: requested but no executable: %s", req_no_exe), vim.log.levels.WARN)
+end
+--req_no_exe:foreachi(function(modname)
+--	vim.notify(string.format("LSP '%s' requested but executable '%s' not found", modname, exe), vim.log.levels.WARN)
+--end)
+
 vim.lsp.enable(lsp_modules)
 
 --lsp_vim_capabilities = vim.lsp.protocol.make_client_capabilities()
