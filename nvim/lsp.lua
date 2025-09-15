@@ -1,5 +1,4 @@
-" cSpell:enableCompoundWords
-
+vim.cmd[[
 "
 " Configuration related to LSP and LSP-like stuff, such as autocompletion and linting.
 "
@@ -111,8 +110,8 @@ function! DiagnosticsComplete(arglead, cmdline, cursorpos) abort
 endfunction
 
 "command! -complete=customlist,DiagnosticsComplete -nargs=? Diagnostics call v:lua._cmd_diagnostics_impl(<f-args>)
+]]
 
-lua << EOF
 function lsp_quiet()
 	-- This function is called in map-expr context, where we can't change text in
 	-- buffers. The signature floating window is also a buffer, so that applies.
@@ -208,13 +207,12 @@ vim.lsp.enable(lsp_modules)
 --lsp_vim_capabilities = vim.lsp.protocol.make_client_capabilities()
 
 clients = {}
-EOF
 
+vim.cmd[[
 augroup DiagnosticToQfList
 	autocmd! DiagnosticChanged * lua vim.diagnostic.setqflist({ open = false })
 augroup END
-
-lua <<EOF
+]]
 
 last_completion_item = { }
 
@@ -323,8 +321,8 @@ vim.api.nvim_create_user_command(
 	}
 )
 
-EOF
 
+vim.cmd[[
 function! SetupFormatOnSave(buffer) abort
 	let b:format_on_save = v:true
 	augroup FormatOnSave
@@ -340,9 +338,8 @@ function! StopFormatOnSave(buffer) abort
 	augroup END
 endfunction
 command! NoFormatOnSave call StopFormatOnSave("<buffer>")
+]]
 
-" cSpell: disable
-lua << EOF
 use {
 	'neovim/nvim-lspconfig',
 	ft = lsp_filetypes,
@@ -428,4 +425,3 @@ use {
   },
   config = function(_, opts) require('lsp_signature').setup(opts) end
 }
-EOF

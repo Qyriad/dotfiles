@@ -18,7 +18,7 @@ badd +1 nvim/core.vim
 badd +0 nvim/utils.vim
 badd +0 nvim/syntax.vim
 badd +0 nvim/highlight.vim
-badd +0 nvim/lsp.vim
+badd +0 nvim/lsp.lua
 badd +0 nvim/statusline.vim
 argglobal
 %argdel
@@ -119,7 +119,7 @@ normal! zt
 keepjumps 1
 normal! 0
 tabnext
-edit nvim/lsp.vim
+edit nvim/lsp.lua
 argglobal
 balt nvim/highlight.vim
 setlocal fdm=syntax
@@ -139,7 +139,7 @@ normal! 0
 tabnext
 edit nvim/statusline.vim
 argglobal
-balt nvim/lsp.vim
+balt nvim/lsp.lua
 setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
