@@ -127,6 +127,13 @@
 	# Priority exactly 1 stronger than the default.
 	hardware.steam-hardware.enable = lib.mkForce false;
 
+	programs.wireshark = {
+		enable = true;
+		package = pkgs.wireshark-qt;
+		usbmon.enable = true;
+	};
+	users.users.qyriad.extraGroups = [ "wireshark" ];
+
 	environment.systemPackages = with pkgs; [
 		qyriad.steam-launcher-script
 		config.programs.steam.package.run
