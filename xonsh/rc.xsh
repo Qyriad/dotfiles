@@ -30,6 +30,7 @@ from pathlib import Path
 
 import xonsh
 from xonsh.events import events
+from xonsh.procs.specs import SpecAttrDecoratorAlias
 
 # These variables are set to lambdas, and are not exported to subprocesses
 # unless they have been evaluated at least once, it seems.
