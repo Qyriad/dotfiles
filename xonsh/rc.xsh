@@ -36,6 +36,12 @@ from xonsh.events import events
 $HOSTNAME
 $HOSTTYPE
 
+# Not available on Windows.
+try:
+	import fcntl
+except ImportError:
+	pass
+
 try:
 	import psutil
 	from psutils import Process
