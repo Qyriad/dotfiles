@@ -267,7 +267,7 @@ if shutil.which('grc'):
 	aliases['grcc'] = grcc
 
 	commands = \
-		['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'lsof', 'ifconfig']
+		['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'ifconfig']
 
 	for command in commands:
 		aliases[command] = 'grc ' + command
