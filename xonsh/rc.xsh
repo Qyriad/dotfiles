@@ -137,6 +137,7 @@ if 'abbrevs' not in globals():
 	maybe_abbrevs = aliases
 else:
 	maybe_abbrevs = abbrevs
+	abbrevs['gitcb'] = lambda buffer, word: XSH.shell.shell.prompt_formatter('<edit>{curr_branch}')
 
 
 aliases['ni-ignore'] = ['rg', '-v', r'(-usr)|(-env)|(-fhs)|(-extracted)']
