@@ -260,7 +260,7 @@ maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 
 
 # Color output. Note: aliases recursive into aliases other than themselves.
-if !(which grc):
+if shutil.which('grc'):
 
 	# Forced color grc.
 	grcc = 'grc --colour=on'
