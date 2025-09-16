@@ -21,7 +21,7 @@ if "IN_NIX_SHELL" not in ${...}:
 
 import builtins, operator, typing
 import os, sys, io, errno, ctypes
-import struct, re, shlex, textwrap, functools
+import struct, re, shlex, shutil, textwrap, functools
 from datetime import datetime, timedelta
 import zoneinfo
 from zoneinfo import ZoneInfo
