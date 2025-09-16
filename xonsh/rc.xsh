@@ -214,7 +214,10 @@ aliases['grep'] = 'grep --color=auto'
 aliases['egrep'] = 'egrep --color=auto'
 aliases['sed'] = 'sed -E'
 aliases['less'] = 'less -R'
-aliases['tp'] = 'trash-put -v'
+if shutil.which("trash-put"):
+	aliases['tp'] = 'trash-put'
+else:
+	aliases['tp'] = 'trash put'
 aliases['lsof'] = 'grc lsof +c0'
 #aliases['man'] = ['env', 'MANWIDTH=@(min(int($(tput cols)), 120))',  'man']
 
