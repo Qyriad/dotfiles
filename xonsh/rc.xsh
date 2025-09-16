@@ -37,6 +37,7 @@ $HOSTNAME
 $HOSTTYPE
 
 try:
+	import psutil
 	from psutils import Process
 except ImportError:
 	pass
