@@ -1,0 +1,98 @@
+# vim: tabstop=2
+
+[revset-aliases]
+here = "::@"
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'fork(for)' = '@..for | (@..for)-'
+
+[aliases]
+s = ["status", "--no-pager"]
+tug = [
+	"bookmark",
+	"move",
+	"--from", "closest_bookmark(@-)",
+	"--to", "@-",
+]
+here = ['log', '-r', 'here']
+last = ['show', '-r', '@-']
+
+[templates]
+log = 'builtin_log_comfortable'
+
+[colors]
+qshortest = { fg = "bright blue", bold = true }
+qshort = { fg = "blue", bold = false }
+
+[template-aliases]
+# Format an ID highlighting the shortest prefix in bold and color,
+# the rest of the "short" prefix in unbolded color,
+# and the rest in the "rest" grey color.
+'format_id_short_without_shortest(id)' = 'id.short().remove_prefix(id.shortest())'
+'format_id_without_short(id)' = 'stringify(id).remove_prefix(id.short())'
+
+'format_id(id)' = '''
+	concat(
+		label("qshortest", id.shortest()),
+		label("qshort", format_id_short_without_shortest(id)),
+		label("rest", format_id_without_short(id)),
+	)
+'''
+
+'qformat_id(id)' = '''
+	concat(
+		label("qshortest", id.shortest()),
+		label("qshort", id.short().remove_prefix(id.shortest())),
+		label("rest", stringify(id).remove_prefix(id.short())),
+	)
+'''
+
+'format_timestamp_combined(timestamp)' = '''
+	timestamp.local().format("%a, %B %d %r (%Z)")
+	++ " —  UTC "
+	++ timestamp.utc().format("%Y/%m/%d %R")
+'''
+
+# OVERRIDE: builtin `format_timestamp`.
+'format_timestamp(timestamp)' = 'format_timestamp_combined(timestamp)'
+
+'qformat_signature(signature)' = '''
+	coalesce(signature.name(), name_placeholder)
+	++ " <" ++ coalesce(signature.email(), email_placeholder) ++ ">"
+	++ " (" ++ format_timestamp_combined(signature.timestamp()) ++ ")"
+'''
+
+qlog = '''
+	concat(
+		"Commit ID: " ++ qformat_id(commit_id) ++ "\n",
+		"Change ID: " ++ qformat_id(change_id) ++ "\n",
+		surround("Bookmarks: ", "\n", separate(" ", local_bookmarks, remote_bookmarks)),
+		surround("Tags     : ", "\n", tags),
+		"Author:    " ++ format_detailed_signature(author) ++ "\n",
+		"Committer: " ++ format_detailed_signature(committer)  ++ "\n",
+		if(config("ui.show-cryptographic-signatures").as_boolean(),
+			"Signature: " ++ format_detailed_cryptographic_signature(signature) ++ "\n"
+		),
+		"\n",
+		indent("    ",
+			if(description,
+				description.trim_end(),
+				label(if(empty, "empty"), description_placeholder)
+			) ++ "\n"
+		),
+		"\n",
+		indent("  ", diff.stat()),
+		"\n",
+	)
+'''
+
+[snapshot]
+auto-track = "none()"
+
+[user]
+name = "Qyriad"
+email = "qyriad@qyriad.me"
+
+[ui]
+pager = "delta"
+diff-formatter = ":git"
+#log-word-wrap = true
