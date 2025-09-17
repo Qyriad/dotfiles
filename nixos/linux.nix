@@ -289,6 +289,7 @@
 		app2unit
 		#systemd-wait # cannot import GLib, introspection typelib not found
 		pipectl
+		appimage-run
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
