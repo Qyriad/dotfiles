@@ -186,6 +186,17 @@ use {
 	after = 'nvim-treesitter',
 }
 use {
+	'Wansmer/treesj',
+	dependencies = { 'nvim-treesitter/nvim-treesitter' },
+	opts = {
+		use_default_keymaps = false,
+	},
+	keys = {
+		{ 'gS', '<Cmd>TSJSplit<CR>', desc = "Split block" },
+		{ 'gJ', '<Cmd>TSJJoin<CR>', desc = 'Join block' },
+	},
+}
+use {
 	'phelipetls/jsonpath.nvim',
 	ft = {"json"},
 	config = function()
