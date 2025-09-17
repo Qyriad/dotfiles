@@ -52,6 +52,8 @@
 		optimizeLix
 	];
 
+	security.pam.sshAgentAuth.enable = true;
+
 	environment.etc."xkb" = {
 		enable = true;
 		source = pkgs.qyriad.xkeyboard_config-patched-inet;
