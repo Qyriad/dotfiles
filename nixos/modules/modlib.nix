@@ -10,8 +10,8 @@ let
 	t = lib.types;
 in
 {
-	options = {
-		modlib.usersInGroup = lib.mkOption {
+	options.modlib = {
+		usersInGroup = lib.mkOption {
 			internal = true;
 			type = t.functionTo (options.users.users.type);
 		};
