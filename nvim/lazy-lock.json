@@ -47,6 +47,7 @@
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "text-case.nvim": { "branch": "main", "commit": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457" },
   "tree-sitter-just": { "branch": "main", "commit": "bb0c898a80644de438e6efe5d88d30bf092935cd" },
+  "treesj": { "branch": "main", "commit": "4770492244ccecdc9b01e0e81fa8f2f6b4a23841" },
   "typescript-vim": { "branch": "master", "commit": "4740441db1e070ef8366c888c658000dd032e4cb" },
   "vim-abolish": { "branch": "master", "commit": "dcbfe065297d31823561ba787f51056c147aa682" },
   "vim-characterize": { "branch": "master", "commit": "a8bffac6cead6b2869d939ecad06312b187a4c79" },
