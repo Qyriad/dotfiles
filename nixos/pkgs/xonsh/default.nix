@@ -1,5 +1,6 @@
 {
   lib,
+  stdenvNoCC,
   xonsh-source,
   stdlib,
   python3Packages,
@@ -58,10 +59,6 @@
     httpx
     tqdm
     pip
-    pydbus
-    sdbus
-    jeepney
-    pygobject3
     ds-store
     xmltodict
     python-box
@@ -72,11 +69,15 @@
     # Nixpkgs broke it.
     #python-fontconfig
     keyring
-    pygobject3
-    gtk4
     #glib
     #graphene
     #gobject-introspection
+  ] ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [
+    pydbus
+    sdbus
+    jeepney
+    pygobject3
+    gtk4
   ] ++ lib.concatLists [
     self.xonsh.propagatedBuildInputs
   ];
