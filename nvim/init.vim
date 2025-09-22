@@ -343,6 +343,25 @@ use {
 	},
 }
 
+use {
+	'walkersumida/fusen.nvim',
+	event = "VimEnter",
+	opts = {
+		keymaps = {
+			add_mark = '<leader>me',
+			clear_mark = '<leader>mc',
+			next_mark = '<leader>]m',
+			prev_mark = '<leader>[m',
+		},
+		annotation_display = {
+			mode = 'both',
+		},
+	},
+}
+vim.cmd[[
+nnoremap <leader>ml <Cmd>Telescope fusen marks<CR>
+]]
+
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
 
