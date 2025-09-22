@@ -210,6 +210,8 @@ use {
 			['"'] = { close = false },
 			["'"] = { close = false },
 			["`"] = { close = false },
+			-- Don't autoclose square brackets either.
+			["["] = { close = false },
 			--["<CR>"] = { close = false },
 		},
 	},
