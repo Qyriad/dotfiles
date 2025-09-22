@@ -81,4 +81,3 @@ if has("nvim-0.11")
 endif
 
 highlight! link FusenMark MarkVirtTextHL
-
