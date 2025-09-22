@@ -46,6 +46,28 @@ function lsp_status_info()
 		return ""
 	end
 end
+
+--LAST_PROGRESS = { }
+
+vim.api.nvim_create_autocmd('LspProgress', {
+	---@param tbl { id: integer, event: string, data: any }
+	callback = function(tbl)
+		-- TODO: maybe use a custom popup window
+		vim.print(vim.lsp.status())
+		--LAST_PROGRESS_ID = vim.notify(vim.lsp.status(), vim.log.levels.INFO, {
+		--	title = string.format("LSP Status for client %d", tbl.data.client_id),
+		--	timeout = 500,
+		--	replace = LAST_PROGRESS.id or nil,
+		--	hide_from_history = true,
+		--})
+	end,
+})
+
+vim.api.nvim_create_autocmd('LspNotify', {
+	callback = function(tbl)
+		--vim.print(tbl.data.method)
+	end
+})
 EOF
 
 function! LspStatus() abort
@@ -85,7 +107,7 @@ lua << EOF
 vim.g.lightline = {
 	active = {
 		left  = {{"mode", "paste"}, {"readonly", "filename", "modified"}, {"zoomed"}},
-		right = {{}, {"tagstack", "dir", "filetype", "lineinfo", "percent", "fileformat"}, {}},
+		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {"lspstatus"}},
 	},
 	inactive = {
 		left  = {{"readonly", "filename", "modified"}},
@@ -103,7 +125,8 @@ vim.g.lightline = {
 		dir = "HomeRelDir",
 		zoomed = "zoom#statusline",
 		synitem = "SyntaxItem",
-		tagstack = "LspStatus",
+		--tagstack = "LspStatus",
+		lspstatus = "LspStatus",
 	},
 	--tabline = {
 	--	right = {{ 'LspProgress' }},
