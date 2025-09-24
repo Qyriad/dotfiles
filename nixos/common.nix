@@ -133,6 +133,12 @@
 		qyriad.nix-helpers
 		any-nix-shell
 		nix-du
+		nix-tree
+		nix-btm
+		nix-info
+		nix-query-tree-viewer
+		nix-top
+		#nix-visualize
 		qyriad.niz
 		qyriad.pzl
 		#qyriad.xil
