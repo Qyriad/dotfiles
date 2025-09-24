@@ -36,6 +36,9 @@ hide_when_typing = false
 [scrolling]
 multiplier = 1
 
+[terminal]
+osc52 = "CopyPaste"
+
 [terminal.shell]
 #args = ["--login", "-c", "xonsh"]
 args = ["--login"]
