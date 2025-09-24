@@ -165,6 +165,7 @@
 		nix-output-monitor
 		qyriad.git-point
 		git-branchless
+		openssl
 		btop
 		numbat
 		dust
