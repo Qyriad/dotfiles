@@ -15,6 +15,8 @@ tug = [
 ]
 here = ['log', '-r', 'here']
 last = ['show', '-r', '@-']
+# Non-mutating `jj op log`
+op-inspect = ['op', 'log', '--at-op=@', '--ignore-working-copy']
 
 [templates]
 log = 'builtin_log_comfortable'
