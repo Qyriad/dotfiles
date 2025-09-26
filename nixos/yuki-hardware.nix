@@ -39,7 +39,7 @@
 	fileSystems."/" = {
 		device = "/dev/disk/by-uuid/4a86932f-5e2d-464e-9699-cde6d010847d";
 		fsType = "ext4";
-		options = [ "discard" ];
+		options = [ "discard" "lazytime" "data=writeback" ];
 	};
 
 	fileSystems."/boot/efi" = {
