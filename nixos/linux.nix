@@ -256,6 +256,7 @@
 		# Needs AppKit on macOS?
 		heh
 		sysstat
+		lm_sensors
 		# apksigner dependency fails to build on macOS
 		(diffoscope.overrideAttrs { enableBloat = false; })
 		rpm
