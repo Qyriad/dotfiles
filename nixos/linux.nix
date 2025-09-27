@@ -292,6 +292,7 @@
 		pipectl
 		appimage-run
 		havn
+		below
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
