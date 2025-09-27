@@ -178,6 +178,8 @@
 		qpkgs.otree
 		qpkgs.cyme
 		qpkgs.sequin
+		# OSC52 tool. Mostly for debugging.
+		osc
 		srgn
 		jujutsu
 		repgrep
