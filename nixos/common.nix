@@ -196,6 +196,8 @@
 		dasel
 		graphviz
 		dyff
-		sacad
+		sacad # Download album covers
+		trippy # Network diagnostic tool
+		carl # Calendar
 	] ++ config.fonts.packages; # I want font stuff to also be in /run/current-system please.
 }
