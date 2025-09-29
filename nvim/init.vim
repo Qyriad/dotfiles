@@ -358,6 +358,7 @@ use {
 		annotation_display = {
 			mode = 'both',
 		},
+		sign_priority = 100,
 	},
 }
 vim.cmd[[
