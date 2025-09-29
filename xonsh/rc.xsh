@@ -132,7 +132,7 @@ $COMMANDS_CACHE_SIZE_WARNING = 8000
 $CMD_COMPLETIONS_SHOW_DESC = True # Show path to binary in description of command completions.
 $XONSH_HISTORY_BACKEND = 'sqlite'
 
-xontrib load abbrevs
+xontrib load -s abbrevs
 if 'abbrevs' not in globals():
 	maybe_abbrevs = aliases
 else:
