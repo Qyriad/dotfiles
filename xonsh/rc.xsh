@@ -146,7 +146,11 @@ aliases['nej'] = ['nix-eval-jobs', '--log-format', 'bar-with-logs', '--option', 
 @aliases.register
 @aliases.return_command
 def _sudo(args: list) -> str:
-	return [$(which -s sudo), *aliases.eval_alias(args)]
+	if not args:
+		return "sudo"
+	if expanded := aliases.eval_alias(args):
+		return [$(which -s sudo), *expanded]
+	return args
 
 aliases['sudo'] = lambda args : $[@($(which -s sudo)) @(aliases.eval_alias(args))]
 
