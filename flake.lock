@@ -303,11 +303,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1758690382,
-        "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
+        "lastModified": 1759036355,
+        "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e643668fd71b949c53f8626614b21ff71a07379d",
+        "rev": "e9f00bd893984bc8ce46c895c3bf7cac95331127",
         "type": "github"
       },
       "original": {
@@ -352,11 +352,11 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1758198231,
-        "narHash": "sha256-tREt0UwtvPDbGSHWGXJzfGKz5JVVjWQ3hd4l2G8yFb8=",
+        "lastModified": 1759155021,
+        "narHash": "sha256-yNig5UQmcqyXBs5gD5ebAfWGWhRO50uiuCOWjGiItoQ=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "5276734509ab716446e235fb1a01a7d0a5d06690",
+        "rev": "dc00529c534766636186dbdb071cb01282b9f2bb",
         "type": "github"
       },
       "original": {
