@@ -56,6 +56,7 @@
     libclang
     clangStdenv
     pkg-config
+    llvmPackages
   ;
 
   callPackageFrom = fromSet: f: fromSet.callPackage f { };
@@ -70,6 +71,7 @@
       rustToolchain
       pkg-config
       libclang
+      llvmPackages.bintools
       pkgs.cargo-show-asm
       pkgs.cargo-nextest
       pkgs.gnuplot
