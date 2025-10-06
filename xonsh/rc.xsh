@@ -156,7 +156,10 @@ def _sudo(args: list) -> str:
 		return [$(which -s sudo), *expanded]
 	return args
 
-aliases['sudo'] = lambda args : $[@($(which -s sudo)) @(aliases.eval_alias(args))]
+def _penv(args):
+	cat f'/proc/{args[0]}/environ' | tr '\0' '\n'
+
+aliases['penv'] = _penv
 
 # Use Neovim for everything.
 $EDITOR = $(which nvim)
