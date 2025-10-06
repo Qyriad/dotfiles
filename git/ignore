@@ -3,3 +3,4 @@
 gdb-session.log
 /tags
 *.bak
+/.jj
