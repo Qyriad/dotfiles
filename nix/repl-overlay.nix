@@ -24,11 +24,15 @@ rec {
   currentSystem = info.currentSystem;
   system = info.currentSystem;
 
+  config = { allowUnfree = true; };
+
   # Instantiated forms of those flakes.
   pkgs = import nixpkgs {
     system = info.currentSystem;
     overlays = attrValues qyriad.overlays;
+    inherit config;
   };
+  nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; };
   fenixLib = import fenix { inherit pkgs; };
   qpkgs = import qyriad-nur { inherit pkgs; };
 
