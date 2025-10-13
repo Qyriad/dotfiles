@@ -88,6 +88,8 @@
 		"i2c-dev"
 	];
 
+	systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+
 	#boot.kernelPackages = pkgs.linuxPackages_latest;
 
 	environment.etc."modprobe.d/v4l2loopback.conf" = {
