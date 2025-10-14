@@ -67,6 +67,8 @@ self = rec {
   flakePackages = f.packages.${currentSystem};
   local = qlib.importAutocall PWD;
   shell = qlib.importAutocall (PWD + "/shell.nix");
+
+  t = lib.types;
 };
 
 # HACK: don't fetch the flakes for these lazily.
