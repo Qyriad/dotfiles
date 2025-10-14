@@ -25,6 +25,12 @@ in
 		flake = flake;
 	};
 
+	# Experimental: literally just add *all* our flake inputs as <nixPath> things.
+	nix.nixPath = lib.removeAttrs flake.inputs [ "nixpkgs" ]
+	|> lib.attrsToList
+	|> lib.map ({ name, value }: "${name}=${value}")
+	|> lib.trivial.concat [ "nixpkgs=flake:nixpkgs" ];
+
 	nixpkgs.flake.source = flake.inputs.nixpkgs.outPath;
 
 	# And for fun, let NixOS know our Git commit hash, if we have one.
