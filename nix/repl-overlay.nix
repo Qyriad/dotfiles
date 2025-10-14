@@ -26,8 +26,25 @@ rec {
 
   config = { allowUnfree = true; };
 
+	/** HACK: `import` that ignores deprecation warnings. */
+	importQuiet = let
+		ESC = "";
+		bt = builtins;
+		isDeprecated = s: bt.match ''${ESC}\[1;35m(evaluation warning:.*deprecated).*'' s != null;
+		traceNoDeprecated = msg: v: if bt.isString msg && isDeprecated msg then (
+			v
+		) else (
+			bt.trace msg v
+		);
+	in scopedImport {
+		builtins = builtins // {
+			trace = traceNoDeprecated;
+		};
+		import = importQuiet;
+	};
+
   # Instantiated forms of those flakes.
-  pkgs = import nixpkgs {
+  pkgs = importQuiet nixpkgs {
     system = info.currentSystem;
     overlays = attrValues qyriad.overlays;
     inherit config;
