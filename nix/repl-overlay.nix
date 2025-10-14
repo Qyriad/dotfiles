@@ -1,6 +1,7 @@
 info: final: prev:
 
-rec {
+let
+self = rec {
   # Things I don't want to have to type `builtins.` before.
   inherit (builtins) attrValues attrNames getFlake parseFlakeRef flakeRefToString typeOf getEnv tryEval;
 
@@ -66,4 +67,7 @@ rec {
   flakePackages = f.packages.${currentSystem};
   local = qlib.importAutocall PWD;
   shell = qlib.importAutocall (PWD + "/shell.nix");
-}
+};
+
+# HACK: don't fetch the flakes for these lazily.
+in builtins.seq self.lib builtins.seq self.qyriad builtins.seq self.pkgs self
