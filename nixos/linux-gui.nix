@@ -216,6 +216,7 @@
 		kdePackages.flatpak-kcm
 		kdePackages.sweeper
 		kdePackages.kconfig
+		kdePackages.konversation
 		qyriad.nixos-khelpcenter
 		systemdgenie
 		kdotool
