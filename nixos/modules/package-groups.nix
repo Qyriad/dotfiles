@@ -118,14 +118,8 @@ in
 		};
 
 		# External effects.
-		environment.systemPackages = let
-			musicProduction = lib.optionals cfg.music-production.enable cfg.music-production.final-packages;
-			waylandTools = lib.optionals cfg.wayland-tools.enable cfg.wayland-tools.final-packages;
-			networkTools = lib.optionals cfg.network-tools.enable cfg.network-tools.final-packages;
-		in lib.concatLists [
-			musicProduction
-			waylandTools
-			networkTools
-		];
+		environment.systemPackages = cfg
+		|> lib.mapAttrsToList (name: group: lib.optionals group.enable group.final-packages)
+		|> lib.concatLists;
 	};
 }
