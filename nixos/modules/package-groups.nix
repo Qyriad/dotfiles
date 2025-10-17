@@ -74,11 +74,11 @@ in
 	options.package-groups.network-tools = {
 		enable = mkOption {
 			type = t.bool;
-			default = lib.any lib.id [
+			default = pkgs.stdenv.hostPlatform.isLinux && (lib.any lib.id [
 				(config.networking.networkmanager.enable)
 				(config.networking.dhcpcd.enable)
 				(config.systemd.network.enable)
-			];
+			]);
 			description = "Add tunctl, bridge-utils, etc";
 		};
 		default-packages = mkOption {
