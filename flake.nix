@@ -64,6 +64,10 @@
 			url = "github:oxalica/nil";
 			flake = false;
 		};
+		disko = {
+			url = "github:nix-community/disko/latest";
+			inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = inputs @ {
@@ -103,6 +107,7 @@
 				};
 
 				modules = nixosModules ++ [
+					inputs.disko.nixosModules.disko
 					inputs.lix-module.nixosModules.default
 					flake-module
 				] ++ lib.optionals system'.isDarwin [

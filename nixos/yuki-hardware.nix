@@ -7,6 +7,7 @@
 {
 	imports = [
 		(modulesPath + "/installer/scan/not-detected.nix")
+		./yuki-disko.nix
 	];
 
 	boot.initrd.availableKernelModules = [
@@ -36,23 +37,23 @@
 	hardware.graphics.enable32Bit = true;
 
 
-	fileSystems."/" = {
-		device = "/dev/disk/by-uuid/4a86932f-5e2d-464e-9699-cde6d010847d";
-		fsType = "ext4";
-		options = [ "discard" "lazytime" "data=writeback" ];
-	};
-
-	fileSystems."/boot/efi" = {
-		device = "/dev/disk/by-uuid/137E-C800";
-		fsType = "vfat";
-	};
+	#fileSystems."/" = {
+	#	device = "/dev/disk/by-uuid/4a86932f-5e2d-464e-9699-cde6d010847d";
+	#	fsType = "ext4";
+	#	options = [ "discard" "lazytime" "data=writeback" ];
+	#};
+	#
+	#fileSystems."/boot/efi" = {
+	#	device = "/dev/disk/by-uuid/137E-C800";
+	#	fsType = "vfat";
+	#};
 
 	# All partitions of GPT type "Linux swap", per the Linux Userspace API Group's
 	# Discoverable Partitions Speficiation, will be automatically `swapon()`'d, by
 	# systemd-gpt-auto-generator(8).
-	swapDevices = [ ];
-
-	boot.resumeDevice = "/dev/disk/by-label/I660-Swap-FS";
+	#swapDevices = [ ];
+	#
+	#boot.resumeDevice = "/dev/disk/by-label/I660-Swap-FS";
 
 	# Does… this do anything?
 	hardware.deviceTree.enable = true;
