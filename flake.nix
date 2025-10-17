@@ -107,7 +107,6 @@
 				};
 
 				modules = nixosModules ++ [
-					inputs.disko.nixosModules.disko
 					inputs.lix-module.nixosModules.default
 					flake-module
 				] ++ lib.optionals system'.isDarwin [
@@ -202,6 +201,7 @@
 
 				yuki = mkConfig "x86_64-linux" [
 					./nixos/yuki
+					inputs.disko.nixosModules.disko
 				];
 				Yuki = yuki;
 
