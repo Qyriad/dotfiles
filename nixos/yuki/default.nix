@@ -163,7 +163,6 @@
 		shotcut
 		davinci-resolve
 		blender
-		jetbrains.rust-rover
 		config.boot.kernelPackages.perf
 		obs-cmd
 		odin2
