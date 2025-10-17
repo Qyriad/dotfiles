@@ -102,6 +102,8 @@ nnoremap <leader>h <Cmd>call v:lua.vim.lsp.buf.document_highlight()<CR>
 nnoremap <leader>sr <Cmd>call v:lua.vim.lsp.buf.rename()<CR>
 nnoremap <leader>sh <Cmd>ClangdSwitchSourceHeader<CR>
 
+" NOTE: no explicit binding for formatting. gq will use `formatexpr`.
+
 " 'Notification dismiss'.
 nnoremap <leader>nd <Cmd>lua p.notify.dismiss({ pending = true })<CR>
 
