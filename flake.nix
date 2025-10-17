@@ -201,7 +201,7 @@
 				Futaba = futaba;
 
 				yuki = mkConfig "x86_64-linux" [
-					./nixos/yuki.nix
+					./nixos/yuki
 				];
 				Yuki = yuki;
 

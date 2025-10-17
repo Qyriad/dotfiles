@@ -3,13 +3,13 @@
 
 {
 	imports = [
-		./yuki-hardware.nix
-		./common.nix
-		./linux.nix
-		./linux-gui.nix
-		./dev.nix
-		./resources.nix
-		./mount-shizue.nix
+		./hardware.nix
+		../common.nix
+		../linux.nix
+		../linux-gui.nix
+		../dev.nix
+		../resources.nix
+		#./mount-shizue.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 

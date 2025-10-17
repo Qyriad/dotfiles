@@ -7,7 +7,7 @@
 {
 	imports = [
 		(modulesPath + "/installer/scan/not-detected.nix")
-		./yuki-disko.nix
+		./disko.nix
 	];
 
 	boot.initrd.availableKernelModules = [
