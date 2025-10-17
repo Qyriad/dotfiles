@@ -71,6 +71,35 @@ in
 		};
 	};
 
+	options.package-groups.network-tools = {
+		enable = mkOption {
+			type = t.bool;
+			default = lib.any lib.id [
+				(config.networking.networkmanager.enable)
+				(config.networking.dhcpcd.enable)
+				(config.systemd.network.enable)
+			];
+			description = "Add tunctl, bridge-utils, etc";
+		};
+		default-packages = mkOption {
+			default = with pkgs; [
+				# iproute2 is already handled by NixOS.
+				tunctl
+				bridge-utils
+			];
+		};
+		remove-packages = mkOption {
+			type = t.listOf t.package;
+			default = [ ];
+			description = "Packages normally included in network-tools to instead not include.";
+		};
+
+		final-packages = mkOption {
+			type = t.listOf t.package;
+			internal = true;
+		};
+	};
+
 	# Implementation.
 	config = {
 		# Internal finals.
@@ -82,13 +111,21 @@ in
 			wayland-tools.final-packages = lib.filter (pkg:
 				! (lib.elem pkg cfg.wayland-tools.remove-packages)
 			) cfg.wayland-tools.default-packages;
+
+			network-tools.final-packages = lib.filter (pkg:
+				! (lib.elem pkg cfg.network-tools.remove-packages)
+			) cfg.network-tools.default-packages;
 		};
 
 		# External effects.
 		environment.systemPackages = let
 			musicProduction = lib.optionals cfg.music-production.enable cfg.music-production.final-packages;
 			waylandTools = lib.optionals cfg.wayland-tools.enable cfg.wayland-tools.final-packages;
-		in musicProduction
-		++ waylandTools;
+			networkTools = lib.optionals cfg.network-tools.enable cfg.network-tools.final-packages;
+		in lib.concatLists [
+			musicProduction
+			waylandTools
+			networkTools
+		];
 	};
 }
