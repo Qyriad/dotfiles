@@ -84,20 +84,6 @@
 			content = {
 				type = "gpt";
 
-				#partitions.ESP = {
-				#	# ef00 EFI system partition.
-				#	type = "EF00";
-				#	size = "2G";
-				#	content = {
-				#		type = "filesystem";
-				#		format = "vfat";
-				#		mountpoint = "/boot/efi";
-				#
-				#		# For mkfs.vfat
-				#		extraArgs = [ "-n" "yuki-esp" ];
-				#	};
-				#};
-
 				partitions.root = {
 					# 8304 Linux x86-64 root
 					type = "8304";
