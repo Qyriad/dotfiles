@@ -69,6 +69,7 @@
 		scspell
 		autotools-language-server
 		qpkgs.lsptrace
+		mergiraf
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
 	];
