@@ -96,6 +96,11 @@
 						format = "ext4";
 						mountpoint = "/";
 
+						mountOptions = [
+							"defaults"
+							"discard"
+						];
+
 						# For mkfs.ext4
 						extraArgs = [ "-L" "yuki-root" ];
 					};
