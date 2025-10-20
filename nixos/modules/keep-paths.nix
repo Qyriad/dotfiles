@@ -18,6 +18,15 @@
 	options.systemKeptPaths = lib.mkOption {
 		type = lib.types.nullOr lib.types.package;
 		readOnly = true;
+
+		default = pkgs.qyriad.runCommandMinimal "system-kept-paths" {
+			# Load bearing. keep-paths.sh does not work without structured attrs.
+			__structuredAttrs = true;
+
+			storePathNames = lib.attrNames config.storePathsToKeep;
+			storePathValues = lib.map pkgs.writeClosure (lib.attrValues config.storePathsToKeep);
+			inherit (config) echoKeptStorePaths;
+		} <| lib.readFile ./keep-paths.sh;
 	};
 
 	options.echoKeptStorePaths = lib.mkOption {
@@ -29,20 +38,10 @@
 	};
 
 	# Implementation.
-	config = {
-		environment.pathsToLink = lib.mkIf (config.storePathsToKeep != { }) [ "/share/nix-support" ];
+	config = lib.mkIf (config.storePathsToKeep != { }) {
+		environment.pathsToLink = [ "/share/nix-support" ];
 
-		systemKeptPaths = pkgs.qyriad.runCommandMinimal "system-kept-paths" {
-			# Load bearing. keep-paths.sh does not work without structured attrs.
-			__structuredAttrs = true;
-
-			storePathNames = lib.attrNames config.storePathsToKeep;
-			storePathValues = lib.map pkgs.writeClosure (lib.attrValues config.storePathsToKeep);
-			inherit (config) echoKeptStorePaths;
-
-		} <| lib.readFile ./keep-paths.sh;
-
-		environment.systemPackages = lib.mkIf (config.storePathsToKeep != { }) [ config.systemKeptPaths ];
+		environment.systemPackages = [ config.systemKeptPaths ];
 	};
 
 }
