@@ -1,23 +1,21 @@
-{ python3Packages }:
+{
+	pkgs ? import <nixpkgs> { },
+	python3Packages ? pkgs.python3Packages,
+	qpkgs ? let
+		src = fetchTarball "https://github.com/Qyriad/nur-packages/archive/main.tar.gz";
+	in import src { inherit pkgs; },
+}:
 
 let
-  inherit (builtins) attrValues readFile fromTOML;
-  version = fromTOML (readFile ./pyproject.toml);
-in
-  python3Packages.buildPythonApplication {
-    name = "foo";
-    inherit version;
-    src = ./.;
-    format = "pyproject";
+	inherit (pkgs) lib;
+	PKGNAME = qpkgs.callPackage ./package.nix { inherit python3Packages; };
 
-    checkImports = [
-      "foo"
-    ];
+	byPythonVersion = qpkgs.pythonScopes
+	|> lib.mapAttrs (_: python3Packages: PKGNAME.override { inherit python3Packages; })
+	|> lib.filterAttrs (_: PKGNAME': !(PKGNAME'.meta.disabled or false));
 
-    nativeBuildInputs = attrValues {
-      inherit (python3Packages)
-        setuptools
-        wheel
-      ;
-    };
-  };
+in PKGNAME.overrideAttrs (prev: lib.recursiveUpdate prev {
+	passthru = prev.passthru or { } // {
+		inherit byPythonVersion;
+	};
+})

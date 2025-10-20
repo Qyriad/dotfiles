@@ -1,12 +1,23 @@
+[project]
+name = "PKGNAME"
+version = "0.1.0"
+#description = ""
+readme = "README.md"
+authors = [
+	{ name = "Qyriad", email = "qyriad@qyriad.me" },
+]
+#requires-python = ""
+
+[project.urls]
+Homepage = "https://github.com/Qyriad/PKGNAME"
+Repository = "https://github.com/Qyriad/PKGNAME"
+
+[project.scripts]
+PKGNAME = "PKGNAME:main"
+
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "foo"
-version = "0.0.1"
-dependencies = [
-]
-
-[project.scripts]
-foo = "foo:main"
+#[project.optional-dependencies]
+#dev = ["argparse-manpage>=4.6"]

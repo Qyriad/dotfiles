@@ -1,30 +1,49 @@
 {
 	inputs = {
-		nixpkgs.url = "nixpkgs";
-		flake-utils.url = "flake-utils";
+		nixpkgs = {
+			url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+			flake = false;
+		};
+		flake-utils.url = "github:numtide/flake-utils";
+		qyriad-nur = {
+			url = "github:Qyriad/nur-packages";
+			flake = false;
+		};
 	};
 
 	outputs = {
 		self,
 		nixpkgs,
 		flake-utils,
+		qyriad-nur,
 	}: flake-utils.lib.eachDefaultSystem (system: let
-
 		pkgs = import nixpkgs { inherit system; };
+		qpkgs = import qyriad-nur { inherit pkgs; };
+		inherit (pkgs) lib;
 
-		PROJECT_NAME = import ./default.nix { inherit pkgs; };
+		PKGNAME = import ./default.nix { inherit pkgs qpkgs; };
+
+		# default.nix exposes PKGNAME evaluated for multiple `pythonXPackages` sets,
+		# so let's translate that to additional flake output attributes.
+		extraVersions = lib.mapAttrs' (pyName: value: {
+			name = "${pyName}-PKGNAME";
+			inherit value;
+		}) PKGNAME.byPythonVersion;
+
+		devShell = import ./shell.nix { inherit pkgs qpkgs; };
+		extraDevShells = lib.mapAttrs' (pyName: value: {
+			name = "${pyName}-PKGNAME";
+			inherit value;
+		}) devShell.byPythonVersion;
 
 	in {
-		packages = {
-			default = PROJECT_NAME;
-			inherit PROJECT_NAME;
+		packages = extraVersions // {
+			default = PKGNAME;
+			inherit PKGNAME;
+		};
 
-			devShells.default = pkgs.callPackage PROJECT_NAME.mkDevShell { };
-
-			checks = {
-				package = self.packages.${system}.PROJECT_NAME;
-				devShell = self.devShells.${system}.default;
-			};
+		devShells = extraDevShells // {
+			default = devShell;
 		};
 	});
 }
