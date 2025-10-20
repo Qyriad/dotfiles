@@ -155,7 +155,6 @@
 		git-series
 		git-revise
 		p7zip
-		dig
 		dogdns
 		doggo
 		magic-wormhole

@@ -19,7 +19,7 @@
 	disko ? <disko>,
 	extraModules ? [
 		(disko + "/module.nix")
-	] ++ <nixpkgs/nixos/modules/module-list.nix>,
+	] ++ import <nixpkgs/nixos/modules/module-list.nix>,
 }: let
 	inherit (builtins)
 		getEnv
