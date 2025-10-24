@@ -46,11 +46,9 @@
 
 		#lib = prev.lib // final.qpkgs.nurLib;
 		# XXX: FIXME: ^ SHOULD work but isn't. so we're doing this for now.
-		lib = if prev ? qpkgs then (
-			prev.lib // final.qpkgs.nurLib // final.qlib
-		) else (
-			prev.lib
-		);
+		lib = prev.lib // import (qyriad-nur + "/lib") {
+			lib = prev.lib;
+		};
 
 		qlib = final.qyriad.qlib;
 
