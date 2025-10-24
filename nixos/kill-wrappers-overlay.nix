@@ -4,7 +4,7 @@ final: prev: let
 in {
 	colmena = prev.colmena.overrideAttrs (prev: {
 		# We don't need to wrap colmena *just* to put `nix` in its PATH...
-		preFixup = lib.trim ''
+		preFixup = lib.dedent ''
 			if [[ -f "$out/bin/.colmena-wrapped" ]]; then
 				mv -vf "$out/bin/.colmena-wrapped" "$out/bin/colmena"
 			fi
@@ -22,7 +22,7 @@ in {
 		# and patch wl-copy to use an absolute path instead.
 		xdgMime = lib.getExe' final.xdg-utils "xdg-mime";
 
-		preConfigure = lib.trim ''
+		preConfigure = lib.dedent ''
 			substituteInPlace src/util/files.c \
 				--replace-fail 'execlp("xdg-mime"' "execlp(\"$xdgMime\""
 		'';
