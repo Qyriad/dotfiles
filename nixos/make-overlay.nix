@@ -68,16 +68,6 @@
 			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
 		};
 
-		# You know maybe asserting that cinny web and cinny desktop had the same version wasn't
-		# the best idea afterall.
-		cinny-desktop = prev.cinny-desktop.override {
-			# HACK: Affect *only* the `.version` attribute in the attrset returned by
-			# `mkDerivation`. This will NOT change `$version` in the derivation.
-			cinny = final.cinny // {
-				version = final.cinny-desktop.version;
-			};
-		};
-
 		kdePackages = prev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 			# Ripples to:
 			# - kdeconnect-kde

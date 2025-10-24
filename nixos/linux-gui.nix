@@ -108,9 +108,8 @@
 	networking.firewall.enable = false;
 
 	nixpkgs.config.permittedInsecurePackages = [
-		"olm-3.2.16" # For Cinny
+		"olm-3.2.16" # For Nheko.
 		"jitsi-meet-1.0.8043" # For Element
-		"libsoup-2.74.3" # For Cinny?
 	];
 
 	package-groups = {
@@ -164,7 +163,6 @@
 		thunderbird
 		seer
 		#mattermost-desktop
-		#cinny-desktop
 		firefoxpwa
 		#darling
 		glibc.debug
