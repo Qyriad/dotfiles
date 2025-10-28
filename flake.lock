@@ -228,11 +228,11 @@
     "log2compdb": {
       "flake": false,
       "locked": {
-        "lastModified": 1758383843,
-        "narHash": "sha256-iy0sXcPg3pGoPj5kWQbD2A1ESGFguYEgHEUtLrFhLMo=",
+        "lastModified": 1761664697,
+        "narHash": "sha256-EnJdn6oahoNhNn8bFtUFTDybqjq11W+U1qFV9U1w4hs=",
         "owner": "Qyriad",
         "repo": "log2compdb",
-        "rev": "760611662e5ef17624bb9c1859403bbd32953c89",
+        "rev": "9023111b5059c94b23407f98f71d103c2789c568",
         "type": "github"
       },
       "original": {
