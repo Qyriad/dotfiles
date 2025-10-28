@@ -2,6 +2,7 @@ include "%L"
 
 # Apostrophe. Specifically:
 # U+02BC MODIFIER LETTER APOSTROPHE
+<Multi_key> <a> <p> : "ʼ"
 <Multi_key> <slash> <quotedbl> : "ʼ"
 <Multi_key> <quotedbl> <slash> : "ʼ"
 <Multi_key> <slash> <apostrophe> : "ʼ"
