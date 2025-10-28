@@ -120,6 +120,14 @@
 		LC_TIME = "en_GB.UTF-8";
 	};
 
+	# Some programs (Signal) use this variable for what spellcheck languages to offer.
+	# We want most programs to remain in English (for now), though, so we put it higher
+	# in the priority order.
+	# However we also have to put "C" before "nl" as well, or programs that just use the
+	# *default* locale for English (which is a lot) will ignore "en" and go straight to "nl".
+	# *sighs*.
+	environment.sessionVariables."LANGUAGES" = "en:C:nl:es";
+
 	# Add ~/.local/bin to system path.
 	environment.localBinInPath = true;
 
