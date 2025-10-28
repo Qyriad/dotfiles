@@ -112,6 +112,7 @@
 		LC_IDENTIFICATION = "en_US.UTF-8";
 		LC_MEASUREMENT = "en_CA.UTF-8";
 		LC_MONETARY = "en_US.UTF-8";
+		LC_MESSAGES = "en_US.UTF-8";
 		LC_NAME = "en_US.UTF-8";
 		LC_NUMERIC = "en_US.UTF-8";
 		LC_PAPER = "en_US.UTF-8";
