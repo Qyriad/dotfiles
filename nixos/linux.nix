@@ -215,8 +215,8 @@
 	# Let us use our yubikey with age.
 	services.pcscd.enable = true;
 
-	services.nixseparatedebuginfod.enable = true;
-	systemd.services.nixseparatedebuginfod.serviceConfig = {
+	services.nixseparatedebuginfod2.enable = true;
+	systemd.services.nixseparatedebuginfod2.serviceConfig = {
 		PrivateTmp = lib.mkForce false;
 	};
 	systemd.services.cups.serviceConfig = {
