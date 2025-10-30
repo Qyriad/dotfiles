@@ -52,9 +52,6 @@
 
 		qlib = final.qyriad.qlib;
 
-		# I don't need to build aws-sdk-cpp every time, tbh.
-		nix = prev.nix.override { aws-sdk-cpp = null; };
-
 		# Nil HEAD has support for pipe operator.
 		nil = prev.nil.overrideAttrs {
 			src = nil-source;
