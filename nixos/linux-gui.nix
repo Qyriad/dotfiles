@@ -120,7 +120,7 @@
 	environment.systemPackages = with pkgs; [
 		libinput
 		libva-utils
-		glxinfo
+		mesa-demos
 		alacritty
 		ghostty
 		wezterm
@@ -135,7 +135,7 @@
 		calibre
 		kicad
 		krita
-		olive-editor
+		#olive-editor
 		# TODO: possibly switch to sddm.extraPackages if it's added
 		# https://github.com/NixOS/nixpkgs/pull/242009 (nixos/sddm: enable Wayland support)
 		weston
@@ -150,7 +150,7 @@
 		nfs-utils
 		ntfs3g
 		ddcutil
-		sequoia
+		sequoia-sq
 		sioyek
 		#neochat
 		#fluffychat

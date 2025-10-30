@@ -166,7 +166,7 @@
 		config.boot.kernelPackages.perf
 		obs-cmd
 		odin2
-		qyriad.nvtop-yuki
+		#qyriad.nvtop-yuki
 		libreoffice-qt6-fresh
 	];
 
