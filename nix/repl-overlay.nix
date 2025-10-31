@@ -66,6 +66,8 @@ self = rec {
   f = getFlake "git+file:${PWD}";
   flakePackages = f.packages.${currentSystem};
   local = qlib.importAutocall PWD;
+	l = local;
+	ll = local.lib;
   shell = qlib.importAutocall (PWD + "/shell.nix");
 
   t = lib.types;
