@@ -50,7 +50,7 @@ self = rec {
     overlays = attrValues qyriad.overlays;
     inherit config;
   };
-  nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; };
+  nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; config.minimalModules = true; };
   fenixLib = import fenix { inherit pkgs; };
   qpkgs = import qyriad-nur { inherit pkgs; };
 
