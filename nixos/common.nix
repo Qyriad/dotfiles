@@ -41,7 +41,6 @@
 				"no-url-literals"
 				"lix-custom-sub-commands"
 				#"impure-derivations"
-				"cgroups"
 				"auto-allocate-uids"
 				"fetch-closure"
 			];
