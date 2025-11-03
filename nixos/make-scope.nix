@@ -203,7 +203,7 @@ in lib.makeScope qpkgs.newScope (self: {
 			"size"
 			"strings"
 		];
-	} (lib.trim ''
+	} (lib.dedent ''
 		for name in "${shellArray "commandNames"}"; do
 			install -Dm655 "$binutils/bin/$name" --target-directory "$out/bin/"
 		done

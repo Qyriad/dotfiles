@@ -68,7 +68,7 @@
 	services.geoclue2.enable = true;
 
 	services.resolved.enable = true;
-	services.resolved.extraConfig = lib.trim ''
+	services.resolved.extraConfig = lib.dedent ''
 		MulticastDNS=yes
 	'';
 	networking.networkmanager.enable = true;

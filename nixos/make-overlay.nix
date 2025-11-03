@@ -12,9 +12,9 @@
 	xonsh-source,
 	nil-source,
 	getScope ? { pkgs, lib, qpkgs }: import ./make-scope.nix {
+		lib = lib // import (qyriad-nur + "/lib") { inherit lib; };
 		inherit
 			pkgs
-			lib
 			agenix
 			qpkgs
 			niz
