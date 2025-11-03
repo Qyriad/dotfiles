@@ -43,6 +43,7 @@
 				#"impure-derivations"
 				"cgroups"
 				"auto-allocate-uids"
+				"fetch-closure"
 			];
 
 			extra-substituters = [
