@@ -311,6 +311,7 @@
 		appimage-run
 		havn
 		below
+		rclone
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
