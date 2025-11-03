@@ -62,6 +62,8 @@
 			keep-outputs = true;
 			show-trace = true;
 
+			auto-allocate-uids = true;
+
 			repl-overlays = [ ../nix/repl-overlay.nix ];
 		};
 	};
