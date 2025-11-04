@@ -116,7 +116,7 @@
 		ripgrep
 		#qyriad.xil
 		qyriad.niz
-		moar
+		moor
 		grc
 		plistwatch
 		qyriad.git-point
