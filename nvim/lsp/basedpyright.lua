@@ -15,6 +15,8 @@ return qyriad.nested_tbl {
 		['analysis.diagnosticSeverityOverrides'] = {
 			--reportAny = 'hint',
 			reportAny = SEVERITY.INFO,
+			reportExplicitAny = SEVERITY.OFF,
+			deprecateTypingAliases = false,
 			reportUnusedCallResult = SEVERITY.OFF,
 			reportMissingParameterType = SEVERITY.INFO,
 			reportUnknownParameterType = SEVERITY.INFO,
