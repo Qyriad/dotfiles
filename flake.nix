@@ -60,6 +60,10 @@
 			url = "github:xonsh/xonsh";
 			flake = false;
 		};
+		tmux-source = {
+			url = "github:tmux/tmux";
+			flake = false;
+		};
 		nil-source = {
 			url = "github:oxalica/nil";
 			flake = false;
@@ -188,6 +192,7 @@
 					xil
 					xonsh-source
 					nil-source
+					tmux-source
 				;
 			};
 			overlays.killWrappers = import ./nixos/kill-wrappers-overlay.nix;

@@ -11,6 +11,7 @@
 	xil,
 	xonsh-source,
 	nil-source,
+	tmux-source,
 	getScope ? { pkgs, lib, qpkgs }: import ./make-scope.nix {
 		lib = lib // import (qyriad-nur + "/lib") { inherit lib; };
 		inherit
@@ -58,6 +59,11 @@
 			cargoDeps = final.rustPlatform.importCargoLock {
 				lockFile = nil-source + "/Cargo.lock";
 			};
+		};
+
+		tmux = prev.tmux.overrideAttrs {
+			version = prev.tmux.version + ".${tmux-source.shortRev}";
+			src = tmux-source;
 		};
 
 		lnav = prev.lnav.override {
