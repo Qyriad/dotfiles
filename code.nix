@@ -83,23 +83,23 @@
     ];
   };
 
-  tauri = mkShell {
-    env.LIBCLANG_PATH = "${lib.getLib libclang}/lib";
-    packages = [
-      # To make sure the actual cc is in PATH before libclang which also has cc.
-      clangStdenv.cc
-      fenixLib.stable.toolchain
-      pkg-config
-      libclang
-      pkgs.cargo-show-asm
-      pkgs.cargo-tauri
-      pkgs.libsoup_2_4
-      pkgs.nodejs
-      pkgs.nodePackages.npm
-      pkgs.nodePackages.typescript
-      pkgs.webkitgtk_4_0
-    ];
-  };
+  #tauri = mkShell {
+  #  env.LIBCLANG_PATH = "${lib.getLib libclang}/lib";
+  #  packages = [
+  #    # To make sure the actual cc is in PATH before libclang which also has cc.
+  #    clangStdenv.cc
+  #    fenixLib.stable.toolchain
+  #    pkg-config
+  #    libclang
+  #    pkgs.cargo-show-asm
+  #    pkgs.cargo-tauri
+  #    pkgs.libsoup_2_4
+  #    pkgs.nodejs
+  #    pkgs.nodePackages.npm
+  #    pkgs.nodePackages.typescript
+  #    pkgs.webkitgtk_4_0
+  #  ];
+  #};
 
   rust-nightly = mkRustShell fenixToolchain;
   rust-stable = mkRustShell fenixLib.stable.toolchain;
@@ -157,5 +157,5 @@
     ];
   });
 in builtins.deepSeq [ pkgs.path fenix.outPath ] {
-  inherit rust-nightly rust-stable rust-1_84 rust-1_85 rust-1_88 rust-pwd tauri c-cpp kde;
+  inherit rust-nightly rust-stable rust-1_84 rust-1_85 rust-1_88 rust-pwd c-cpp kde;
 }
