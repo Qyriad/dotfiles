@@ -46,9 +46,10 @@
 	};
 
 	passedLib = lib;
-	finalLib = passedLib.extend (_: _: import (qyriad-nur + "/lib") {
-		inherit lib;
-	});
+	finalLib = import qyriad-nur {
+		mode = "lib";
+		lib = passedLib;
+	};
 
 	hostname = getEnv "HOSTNAME";
 

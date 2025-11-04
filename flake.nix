@@ -89,7 +89,7 @@
 			inherit lib;
 		};
 
-		qpkgsLib = import (inputs.qyriad-nur + "/lib") { inherit lib; };
+		qpkgsLib = import inputs.qyriad-nur { mode = "lib"; inherit lib; };
 
 		/** NixOS module for configs defined in this flake.
 		 This is the only module that relies on flakeyness directly.

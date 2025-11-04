@@ -45,10 +45,9 @@
 
 		inherit (final.qpkgs) nurLib;
 
-		#lib = prev.lib // final.qpkgs.nurLib;
-		# XXX: FIXME: ^ SHOULD work but isn't. so we're doing this for now.
-		lib = prev.lib // import (qyriad-nur + "/lib") {
-			lib = prev.lib;
+		lib = import qyriad-nur {
+			mode = "lib";
+			inherit (prev) lib;
 		};
 
 		qlib = final.qyriad.qlib;
