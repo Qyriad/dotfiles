@@ -784,7 +784,6 @@ def _per_line(args: list, stdin: io.TextIOWrapper):
 	"""
 	callback: typing.Callable[[str], str] = args[0]
 	output = "\n".join([str(callback(line)) for line in stdin])
-	print(output)
 	return output
 
 aliases["pl"] = _per_line
