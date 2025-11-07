@@ -359,7 +359,7 @@ aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 aliases['striptext'] = lambda args, stdin: stdin.read().strip()
 aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
-aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat'
+aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat NIX_PAGER=cat SYSTEMD_PAGER=cat'
 aliases['nosleep'] = 'systemd-inhibit --what=sleep'
 def _nix_tmp(pkg: list):
 	""" Build a package, symlink it in /tmp, and ls --tree it """
