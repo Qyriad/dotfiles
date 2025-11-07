@@ -119,6 +119,9 @@ else:
 		return ""
 
 
+if p'/run/current-system/sw'.exists():
+	$BASH_COMPLETIONS = ['/run/current-system/sw/share/bash-completion/bash_completion']
+
 $ENABLE_ASYNC_PROMPT = True
 $PROMPT_FIELDS['exit_code'] = exit_code
 $PROMPT_FIELDS['exit_color'] = exit_color
