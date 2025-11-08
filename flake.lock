@@ -185,11 +185,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1762453176,
-        "narHash": "sha256-AWf5Oyhr/9sO/XiUcizJ5h9xlfizksdCQcdp+Z239PA=",
+        "lastModified": 1762523642,
+        "narHash": "sha256-N176NqnIhym6Ki8G13heS73I4b30ZJ2QGYhP9eL0+Zs=",
         "ref": "refs/heads/main",
-        "rev": "f00d720d83ec4c8531c69013c1948d7a3fea7ee9",
-        "revCount": 18502,
+        "rev": "3ad1af8a9883986eb95744e088eab15c752c339c",
+        "revCount": 18506,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -470,11 +470,11 @@
     "tmux-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1762171266,
-        "narHash": "sha256-Ze/CXFGvf3H25gCqlPsVCm+0WNwj1A9qqNSwzICFewQ=",
+        "lastModified": 1762524068,
+        "narHash": "sha256-tNwUHeqj3Yrwmp9FLdXB0AMX7PNM2JD5SyH07dTadHk=",
         "owner": "tmux",
         "repo": "tmux",
-        "rev": "815f7ecffbf5e7f6daecb3ce6e550bdb32b0d887",
+        "rev": "33cfe8b8096fbfd2c13998b8baa5c8e43177d5e0",
         "type": "github"
       },
       "original": {
