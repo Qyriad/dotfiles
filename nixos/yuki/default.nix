@@ -179,7 +179,7 @@
 		shotcut
 		davinci-resolve
 		blender
-		config.boot.kernelPackages.perf
+		perf
 		obs-cmd
 		odin2
 		#qyriad.nvtop-yuki
