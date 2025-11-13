@@ -1,0 +1,10 @@
+#!/usr/bin/env xonsh
+# vim: ft=xonsh
+
+$XONSH_SHOW_TRACEBACK = True
+$RAISE_SUBPROC_ERROR = True
+
+import sys
+
+expr = ' '.join(sys.argv[1:])
+echo @(expr) | nix repl

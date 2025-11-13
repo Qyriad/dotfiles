@@ -151,6 +151,11 @@ aliases['ni-ignore'] = ['rg', '-v', r'(-usr)|(-env)|(-fhs)|(-extracted)']
 aliases['nej'] = ['nix-eval-jobs', '--log-format', 'bar-with-logs', '--option', 'allow-import-from-derivation', 'false', '--verbose']
 
 @aliases.register
+def _nix_print(args: list) -> str:
+	expr = shlex.join(args)
+	echo @(expr) | niz repl
+
+@aliases.register
 @aliases.return_command
 def _sudo(args: list) -> str:
 	if not args:
