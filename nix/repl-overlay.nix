@@ -65,6 +65,9 @@ self = rec {
   # Stuff that lets me inspect the current directory easily.
   f = getFlake "git+file:${PWD}";
   flakePackages = f.packages.${currentSystem};
+	fpkgs = f.packages.${currentSystem};
+	fchecks = f.checks.${currentSystem};
+	fout = f.outputs;
   local = qlib.importAutocall PWD;
 	l = local;
 	ll = local.lib;
