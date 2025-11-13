@@ -13,6 +13,8 @@ tug = [
 	"--from", "closest_bookmark(@-)",
 	"--to", "@-",
 ]
+l = ['log', '-T', 'qshortlog']
+lo = ['log', '-T', 'qlog']
 here = ['log', '-r', 'here']
 last = ['show', '-r', '@-']
 # Non-mutating `jj op log`
@@ -83,6 +85,31 @@ qlog = '''
 		),
 		"\n",
 		indent("  ", diff.stat()),
+		"\n",
+	)
+'''
+
+qshortlog = '''
+	concat(
+		"Commit ID: " ++ qformat_id(commit_id) ++ "\n",
+		"Change ID: " ++ qformat_id(change_id) ++ "\n",
+		surround("Bookmarks: ", "\n", separate(" ", local_bookmarks, remote_bookmarks)),
+		surround("Tags     : ", "\n", tags),
+		"Author:    " ++ format_detailed_signature(author) ++ "\n",
+		if(config("ui.show-cryptographic-signatures").as_boolean(),
+			"Signature: " ++ format_detailed_cryptographic_signature(signature) ++ "\n"
+		),
+		"\n",
+		indent("    ",
+			if(description,
+				description.trim_end().first_line(),
+				label(if(empty, "empty"), description_placeholder)
+			) ++ "\n"
+		),
+		"\n",
+		indent("  ",
+			diff.summary(),
+		),
 		"\n",
 	)
 '''
