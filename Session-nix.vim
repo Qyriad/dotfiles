@@ -32,8 +32,9 @@ badd +1 nixos/templates/base/flake.nix
 badd +1 nixos/templates/python/default.nix
 badd +1 nixos/templates/python/flake.nix
 badd +1 nixos/udev-rules/default.nix
-badd +1 nixos/yuki-hardware.nix
-badd +1 nixos/yuki.nix
+badd +1 nixos/yuki/default.nix
+badd +1 nixos/yuki/hardware.nix
+badd +1 nixos/yuki/disko.nix
 badd +1 nixos/make-overlay.nix
 badd +0 nixos/make-scope.nix
 argglobal
