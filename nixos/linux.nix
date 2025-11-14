@@ -133,6 +133,7 @@
 	# *default* locale for English (which is a lot) will ignore "en" and go straight to "nl".
 	# *sighs*.
 	environment.sessionVariables."LANGUAGES" = "en:C:nl:es";
+	environment.variables."LANGUAGES" = "en:C:nl:es";
 
 	# Add ~/.local/bin to system path.
 	environment.localBinInPath = true;
