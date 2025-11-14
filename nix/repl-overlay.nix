@@ -2,30 +2,30 @@ info: final: prev:
 
 let
 self = rec {
-  # Things I don't want to have to type `builtins.` before.
-  inherit (builtins) attrValues attrNames getFlake parseFlakeRef flakeRefToString typeOf getEnv tryEval;
+	# Things I don't want to have to type `builtins.` before.
+	inherit (builtins) attrValues attrNames getFlake parseFlakeRef flakeRefToString typeOf getEnv tryEval;
 
-  # Mostly used for other stuff below,
-  # but also handy in the repl if I want to avoid parentheses.
-  PWD = getEnv "PWD";
-  HOSTNAME = getEnv "HOSTNAME";
+	# Mostly used for other stuff below,
+	# but also handy in the repl if I want to avoid parentheses.
+	PWD = getEnv "PWD";
+	HOSTNAME = getEnv "HOSTNAME";
 
-  # Bare flakes I use frequently enough.
-  qyriad = getFlake "qyriad";
-  # The version of `qyriad` that hasn't been deployed yet.
-  staging = let
-    dotfiles = getEnv "XDG_CONFIG_HOME";
-  in getFlake ("git+file:${dotfiles}");
-  nixpkgs = getFlake "nixpkgs";
-  nixpkgs-master = getFlake "github:NixOS/nixpkgs/master";
-  nixpkgs-unstable = getFlake "github:NixOS/nixpkgs/nixpkgs-unstable";
-  fenix = getFlake "github:nix-community/fenix";
-  qyriad-nur = getFlake "github:Qyriad/nur-packages";
+	# Bare flakes I use frequently enough.
+	qyriad = getFlake "qyriad";
+	# The version of `qyriad` that hasn't been deployed yet.
+	staging = let
+		dotfiles = getEnv "XDG_CONFIG_HOME";
+	in getFlake ("git+file:${dotfiles}");
+	nixpkgs = getFlake "nixpkgs";
+	nixpkgs-master = getFlake "github:NixOS/nixpkgs/master";
+	nixpkgs-unstable = getFlake "github:NixOS/nixpkgs/nixpkgs-unstable";
+	fenix = getFlake "github:nix-community/fenix";
+	qyriad-nur = getFlake "github:Qyriad/nur-packages";
 
-  currentSystem = info.currentSystem;
-  system = info.currentSystem;
+	currentSystem = info.currentSystem;
+	system = info.currentSystem;
 
-  config = { allowUnfree = true; };
+	config = { allowUnfree = true; };
 
 	/** HACK: `import` that ignores deprecation warnings. */
 	importQuiet = let
@@ -44,36 +44,38 @@ self = rec {
 		import = importQuiet;
 	};
 
-  # Instantiated forms of those flakes.
-  pkgs = importQuiet nixpkgs {
-    system = info.currentSystem;
-    overlays = attrValues qyriad.overlays;
-    inherit config;
-  };
-  nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; featureFlags.minimalModules = true; };
-  fenixLib = import fenix { inherit pkgs; };
-  qpkgs = import qyriad-nur { inherit pkgs; };
+	# Instantiated forms of those flakes.
+	pkgs = importQuiet nixpkgs {
+		system = info.currentSystem;
+		overlays = attrValues qyriad.overlays;
+		inherit config;
+	};
+	nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; featureFlags.minimalModules = true; };
+	fenixLib = import fenix { inherit pkgs; };
+	qpkgs = import qyriad-nur { inherit pkgs; };
 
-  # `pkgs.lib` is soooooo much typing.
-  inherit (pkgs) lib qlib stdenv;
+	# `pkgs.lib` is soooooo much typing.
+	inherit (pkgs) lib qlib stdenv;
 
-  nixos = qyriad.nixosConfigurations.${HOSTNAME};
-  darwin = qyriad.darwinConfigurations.${HOSTNAME};
-  stagingNixos = staging.nixosConfigurations.${HOSTNAME};
-  stagingDarwin = staging.darwinConfigurations.${HOSTNAME};
+	nixos = qyriad.nixosConfigurations.${HOSTNAME};
+	darwin = qyriad.darwinConfigurations.${HOSTNAME};
+	stagingNixos = staging.nixosConfigurations.${HOSTNAME};
+	stagingDarwin = staging.darwinConfigurations.${HOSTNAME};
 
-  # Stuff that lets me inspect the current directory easily.
-  f = getFlake "git+file:${PWD}";
-  flakePackages = f.packages.${currentSystem};
-	fpkgs = f.packages.${currentSystem};
+	# Stuff that lets me inspect the current directory easily.
+	f = getFlake "git+file:${PWD}";
+	flakePackages = f.packages.${currentSystem};
+	fpackages = f.packages.${currentSystem};
 	fchecks = f.checks.${currentSystem};
 	fout = f.outputs;
-  local = qlib.importAutocall PWD;
+	fnixpkgs = f.inputs.nixpkgs;
+	fpkgs = import f.inputs.nixpkgs { inherit system; };
+	local = qlib.importAutocall PWD;
 	l = local;
 	ll = local.lib;
-  shell = qlib.importAutocall (PWD + "/shell.nix");
+	shell = qlib.importAutocall (PWD + "/shell.nix");
 
-  t = lib.types;
+	t = lib.types;
 };
 
 # HACK: don't fetch the flakes for these lazily.
