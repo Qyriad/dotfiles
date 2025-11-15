@@ -185,6 +185,7 @@
 		#qyriad.nvtop-yuki
 		libreoffice-qt6-fresh
 		anki
+		beeper
 	];
 
 	# This value determines the NixOS release from which the default
