@@ -127,7 +127,7 @@ include "%L"
 <Multi_key> <bracketright> <greater> : "⟩" # U+27E9, Mathematical Right Angle Bracket
 
 # Shruggie
-<Multi_key> <s> <h> : "¯\\\\_(ツ)_/¯"
+<Multi_key> <s> <h> : "¯\\\\_(ツ)\\_/¯"
 <Multi_key> <p> <n> : "😔"
 
 # Thin space
