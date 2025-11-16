@@ -38,7 +38,6 @@
 				"nix-command"
 				"flakes"
 				"pipe-operator"
-				"no-url-literals"
 				"lix-custom-sub-commands"
 				#"impure-derivations"
 				"auto-allocate-uids"
