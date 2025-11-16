@@ -115,6 +115,7 @@
 				modules = nixosModules ++ [
 					inputs.lix-module.nixosModules.default
 					flake-module
+					agenix.nixosModules.default
 				] ++ lib.optionals system'.isDarwin [
 					inputs.mac-app-util.darwinModules.default
 				];

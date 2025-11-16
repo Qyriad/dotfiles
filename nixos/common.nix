@@ -1,11 +1,12 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 	imports = [
 		./modules/package-groups.nix
 		./modules/modlib.nix
 		./modules/keep-paths.nix
+		./secrets/module.nix
 	];
 
 	# Configuration for things related to Nix itself.

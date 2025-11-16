@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
 	systemd.mounts = let
@@ -7,11 +7,12 @@
 			auto = null;
 			_netdev = null;
 			nofail = null;
-			credentials = "/etc/secrets/shizue.cred";
 			gid = "users";
 			file_mode = "0764";
 			dir_mode = "0775";
+			mfsymlinks = null;
 			vers = "3.1.1";
+			credentials = config.age.secrets.shizue-cred.path;
 		};
 
 		after = [
@@ -50,6 +51,6 @@
 		};
 	in [
 		media-shizue-media
-		media-shizue-archive
+		#media-shizue-archive
 	];
 }
