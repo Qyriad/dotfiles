@@ -145,6 +145,7 @@
 		qyriad.pzl
 		#qyriad.xil
 		bat
+		guesswidth # column -t but smarter
 		ncdu
 		lnav
 		fblog
@@ -200,5 +201,6 @@
 		sacad # Download album covers
 		trippy # Network diagnostic tool
 		carl # Calendar
+		dolt # "Git for data"
 	] ++ config.fonts.packages; # I want font stuff to also be in /run/current-system please.
 }
