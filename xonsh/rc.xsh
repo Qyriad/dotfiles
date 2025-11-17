@@ -157,12 +157,12 @@ def _nix_print(args: list) -> str:
 
 @aliases.register
 @aliases.return_command
-def _sudo(args: list) -> str:
-	if not args:
-		return "sudo"
-	if expanded := aliases.eval_alias(args):
-		return [$(which -s sudo), *expanded]
-	return args
+def _sudo(args: list) -> list:
+	try:
+		return ['sudo', *aliases.eval_alias(args)]
+	except ValueError:
+		return ['sudo', *args]
+
 
 def _penv(args):
 	cat f'/proc/{args[0]}/environ' | tr '\0' '\n'
