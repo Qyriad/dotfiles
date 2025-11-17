@@ -41,17 +41,6 @@
 
 	networking.hostName = "Yuki";
 
-	# Optimize Lix. Why not.
-	nixpkgs.overlays = let
-		optimizeLix = final: prev: {
-			nix = prev.nix.override {
-				stdenv = final.stdenvAdapters.impureUseNativeOptimizations final.clangStdenv;
-			};
-		};
-	in [
-		optimizeLix
-	];
-
 	environment.etc."xkb" = {
 		enable = true;
 		source = pkgs.qyriad.xkeyboard_config-patched-inet;
