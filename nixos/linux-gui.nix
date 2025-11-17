@@ -95,6 +95,7 @@
 			fcitx5-mozc
 			fcitx5-gtk
 			kdePackages.fcitx5-qt
+			fcitx5-table-other
 		];
 	};
 
@@ -109,7 +110,7 @@
 
 	nixpkgs.config.permittedInsecurePackages = [
 		"olm-3.2.16" # For Nheko.
-		"jitsi-meet-1.0.8043" # For Element
+		"jitsi-meet-1.0.8792" # For Element
 	];
 
 	package-groups = {
