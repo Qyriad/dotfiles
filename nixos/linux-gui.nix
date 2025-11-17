@@ -233,6 +233,7 @@
 		(lib.getBin pulseaudio)
 		pulseaudio
 		qpkgs.qjackctl
+		playerctl
 	] ++ lib.optionals config.services.ratbagd.enable [
 		piper
 	];
