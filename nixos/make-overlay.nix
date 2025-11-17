@@ -12,6 +12,7 @@
 	xonsh-source,
 	nil-source,
 	tmux-source,
+	originfox-source,
 	getScope ? { pkgs, lib, qpkgs }: import ./make-scope.nix {
 		lib = import qyriad-nur { mode = "lib"; inherit lib; };
 		inherit
@@ -25,6 +26,7 @@
 			git-point
 			xil
 			xonsh-source
+			originfox-source
 		;
 	}, # getScope
 

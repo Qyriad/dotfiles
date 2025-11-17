@@ -72,6 +72,10 @@
 			url = "github:nix-community/disko/latest";
 			inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
 		};
+		originfox-source = {
+			url = "sourcehut:icewind/originfox?host=codeberg.org";
+			flake = false;
+		};
 	};
 
 	outputs = inputs @ {
@@ -194,6 +198,7 @@
 					xonsh-source
 					nil-source
 					tmux-source
+					originfox-source
 				;
 			};
 			overlays.killWrappers = import ./nixos/kill-wrappers-overlay.nix;

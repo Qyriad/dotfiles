@@ -12,6 +12,7 @@
 	git-point,
 	xil,
 	xonsh-source,
+	originfox-source,
 }: let
 
 	agenix' = import agenix { inherit pkgs; };
@@ -46,6 +47,8 @@ in lib.makeScope qpkgs.newScope (self: {
 
 	inherit xonsh-source;
 	xonsh = self.callPackage ./pkgs/xonsh { };
+
+	originfox = self.callPackage (originfox-source + "/nix/package.nix") { };
 
 	inherit (agenix') agenix;
 

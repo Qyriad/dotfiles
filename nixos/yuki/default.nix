@@ -175,6 +175,7 @@
 		libreoffice-qt6-fresh
 		anki
 		beeper
+		qyriad.originfox
 	];
 
 	# This value determines the NixOS release from which the default

@@ -368,6 +368,24 @@
         "type": "github"
       }
     },
+    "originfox-source": {
+      "flake": false,
+      "locked": {
+        "host": "codeberg.org",
+        "lastModified": 1760549878,
+        "narHash": "sha256-Ybz5r2mE56PbgjjzAcMqj1QsA6Qb+qlkcn6Mpr3lZMA=",
+        "owner": "icewind",
+        "repo": "originfox",
+        "rev": "580b84f1ca378fb778695b431fa77d228fb7fac4",
+        "type": "sourcehut"
+      },
+      "original": {
+        "host": "codeberg.org",
+        "owner": "icewind",
+        "repo": "originfox",
+        "type": "sourcehut"
+      }
+    },
     "pzl": {
       "flake": false,
       "locked": {
@@ -415,6 +433,7 @@
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_3",
         "niz": "niz",
+        "originfox-source": "originfox-source",
         "pzl": "pzl",
         "qyriad-nur": "qyriad-nur",
         "tmux-source": "tmux-source",
