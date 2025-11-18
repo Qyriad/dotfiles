@@ -188,9 +188,21 @@ use {
 use {
 	'Wansmer/treesj',
 	dependencies = { 'nvim-treesitter/nvim-treesitter' },
-	opts = {
-		use_default_keymaps = false,
-	},
+	config = function(plugin)
+		local treesj = plugin.main or require('treesj')
+		local lang_utils = require('treesj.langs.utils')
+
+		treesj.setup(qyriad.nested_tbl {
+			use_default_keymaps = false,
+			['langs.nix.formals'] = lang_utils.set_preset_for_args({
+				split = {
+					inner_indent = 'inner',
+					last_separator = true,
+				},
+				join = { space_in_brackets = true },
+			})
+		})
+	end,
 	keys = {
 		{ 'gS', '<Cmd>TSJSplit<CR>', desc = "Split block" },
 		{ 'gJ', '<Cmd>TSJJoin<CR>', desc = 'Join block' },
