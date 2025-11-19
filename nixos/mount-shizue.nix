@@ -53,4 +53,10 @@
 		media-shizue-media
 		#media-shizue-archive
 	];
+
+	age.secrets.shizue-cred = {
+		file = ../secrets/shizue-cred.age;
+		group = config.users.groups.wheel.name;
+		mode = "0440";
+	};
 }
