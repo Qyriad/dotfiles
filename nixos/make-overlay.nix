@@ -55,7 +55,7 @@
 		qlib = final.qyriad.qlib;
 
 		# Nil HEAD has support for pipe operator.
-		nil = prev.nil.overrideAttrs {
+		nil = (prev.nil.override { nix = final.lix; }).overrideAttrs {
 			src = nil-source;
 			cargoDeps = final.rustPlatform.importCargoLock {
 				lockFile = nil-source + "/Cargo.lock";
