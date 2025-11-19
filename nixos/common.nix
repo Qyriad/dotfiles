@@ -6,7 +6,6 @@
 		./modules/package-groups.nix
 		./modules/modlib.nix
 		./modules/keep-paths.nix
-		./secrets/module.nix
 	];
 
 	# Configuration for things related to Nix itself.
