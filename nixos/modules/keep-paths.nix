@@ -10,7 +10,7 @@
 			Store paths to prevent from being garbage collected in this NixOS generation
 			Useful for flake inputs.
 		'';
-		example = lib.literalExample ''
+		example = lib.literalExpression <| lib.dedent ''
 			{ inherit (inputs) nixpkgs; }
 		'';
 	};

@@ -12,7 +12,7 @@ which we then do Math™ on.
 			type = lib.types.int;
 			default = 8;
 			description = "Amount of physical memory this system has, in gibibytes";
-			example = lib.literalExample ''
+			example = lib.literalExpression <| lib.dedent ''
 				32
 			'';
 		};
@@ -21,7 +21,7 @@ which we then do Math™ on.
 			type = lib.types.int;
 			default = 8;
 			description = "Amount of CPU cores this system has. Basically the output of nproc.";
-			example = lib.literalExample ''
+			example = lib.literalExpression <| lib.dedent ''
 				16
 			'';
 		};
