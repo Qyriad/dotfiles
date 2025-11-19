@@ -75,9 +75,9 @@ in
 		enable = mkOption {
 			type = t.bool;
 			default = pkgs.stdenv.hostPlatform.isLinux && (lib.any lib.id [
-				(config.networking.networkmanager.enable)
-				(config.networking.dhcpcd.enable)
-				(config.systemd.network.enable)
+				(config.networking.networkmanager.enable or false)
+				(config.networking.dhcpcd.enable or false)
+				(config.systemd.network.enable or false)
 			]);
 			description = "Add tunctl, bridge-utils, etc";
 		};
