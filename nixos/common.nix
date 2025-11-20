@@ -41,7 +41,6 @@
 				"lix-custom-sub-commands"
 				#"impure-derivations"
 				"auto-allocate-uids"
-				"fetch-closure"
 			];
 
 			extra-substituters = [
