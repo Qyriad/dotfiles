@@ -61,6 +61,8 @@
 
 			auto-allocate-uids = true;
 
+			sandbox = "relaxed";
+
 			repl-overlays = [ ../nix/repl-overlay.nix ];
 		};
 	};
