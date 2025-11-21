@@ -157,6 +157,16 @@ def _nix_print(args: list) -> str:
 
 @aliases.register
 @aliases.return_command
+def _pcopy(args: list) -> list:
+	try:
+		args[0] = Path(args[0]).absolute().as_uri()
+	except IndexError:
+		pass
+	return ['wl-copy', '-t', 'text/uri-list', *args]
+
+
+@aliases.register
+@aliases.return_command
 def _sudo(args: list) -> list:
 	try:
 		return ['sudo', *aliases.eval_alias(args)]
