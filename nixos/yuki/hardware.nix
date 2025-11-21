@@ -28,7 +28,15 @@
 		"nvidia"
 	];
 
-	boot.kernelPackages = pkgs.linuxPackages_latest;
+	warnings = let
+		latest = pkgs.linuxPackages_latest.kernel.version;
+		current = pkgs.linuxPackages_6_17.kernel.version;
+	in lib.mkIf (latest != current) [
+		"Yuki's Linux (6.17) is no longer latest (${latest})"
+	];
+
+	boot.kernelPackages = pkgs.linuxPackages_6_17;
+
 	hardware.nvidia = {
 		modesetting.enable = true;
 		package = config.boot.kernelPackages.nvidiaPackages.beta;
