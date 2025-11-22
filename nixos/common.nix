@@ -59,7 +59,7 @@
 			keep-outputs = true;
 			show-trace = true;
 
-			auto-allocate-uids = true;
+			auto-allocate-uids = pkgs.stdenv.hostPlatform.isLinux;
 
 			sandbox = "relaxed";
 
