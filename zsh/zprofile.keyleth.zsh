@@ -1,4 +1,4 @@
-source /etc/bashrc
+emulate bash -c 'source /etc/bashrc'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_DISPLAY_INSTALL_TIMES=1
