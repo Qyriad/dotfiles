@@ -59,7 +59,8 @@
 		ast-grep
 		#havn
 		rink
-		harlequin
+		# Broken right now.
+		#harlequin
 		ipatool
 		jtbl
 		imgp
