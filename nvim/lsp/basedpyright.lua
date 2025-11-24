@@ -9,14 +9,15 @@ local SEVERITY = {
 
 return qyriad.nested_tbl {
 	filetypes = { 'python' },
-	cmd = { 'basedpyright', '--stdio', '--verbose' },
-	['settings.basedpyright'] = {
-		['analysis.inlayHints.genericTypes'] = true,
-		['analysis.diagnosticSeverityOverrides'] = {
-			--reportAny = 'hint',
+	cmd = { 'basedpyright-langserver', '--stdio', '--verbose' },
+	['settings.basedpyright.analysis'] = {
+		deprecateTypingAliases = false,
+		typeCheckingMode = 'basic',
+		['inlayHints.genericTypes'] = true,
+		['diagnosticSeverityOverrides'] = {
 			reportAny = SEVERITY.INFO,
+			reportDeprecated = SEVERITY.INFO,
 			reportExplicitAny = SEVERITY.OFF,
-			deprecateTypingAliases = false,
 			reportUnusedCallResult = SEVERITY.OFF,
 			reportMissingParameterType = SEVERITY.INFO,
 			reportUnknownParameterType = SEVERITY.INFO,
