@@ -152,6 +152,12 @@ use {
 	opts = {},
 }
 use {
+	'acarapetis/nvim-treesitter-jjconfig',
+	dependencies = { 'nvim-treesitter/nvim-treesitter' },
+	lazy = false,
+	opts = { ensure_installed = true },
+}
+use {
 	'windwp/nvim-ts-autotag',
 	ft = {
 		"html",

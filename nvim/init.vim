@@ -276,6 +276,9 @@ use 'tpope/vim-characterize' -- ga
 use 'tpope/vim-abolish'
 use 'tpope/vim-obsession'
 use 'tpope/vim-fugitive'
+use {
+	'rafikdraoui/jj-diffconflicts',
+}
 use 'tpope/vim-scriptease'
 use 'gennaro-tedesco/nvim-peekup'
 use 'AndrewRadev/bufferize.vim'

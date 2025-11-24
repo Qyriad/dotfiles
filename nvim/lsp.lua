@@ -427,3 +427,6 @@ use {
   },
   config = function(_, opts) require('lsp_signature').setup(opts) end
 }
+use {
+	'mparq/lsptrace.nvim',
+}
