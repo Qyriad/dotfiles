@@ -1,9 +1,21 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 # vim: tabstop=2
 
 [revset-aliases]
 here = "::@"
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'fork(for)' = '@..for | (@..for)-'
+
+'active-heads' = 'heads(descendants(root())) ~ (ancestors(trunk()) | tags() | remote_bookmarks() | bookmarks("git-series/"))'
+'mutable-summary' = 'ancestors(heads(mutable()), 2)'
+
+'unmerged' = '::@ ~ ancestors(trunk())'
+'unmerged(for)' = '::for ~ ancestors(trunk())'
+present-tree = 'unmerged | descendants(unmerged) | descendants(@)'
+
+squid = '@ | @- | trunk() | heads(@) | heads(@-) | heads(trunk())'
+
+'surrounding(for)' = 'descendants(for) | (ancestors(for) ~ ancestors(trunk()))'
 
 [aliases]
 s = ["status", "--no-pager"]
@@ -14,6 +26,7 @@ tug = [
 	"--to", "@-",
 ]
 l = ['log', '-T', 'qshortlog']
+lh = ['log', '-T', 'qshortlog', '-r', 'here']
 lo = ['log', '-T', 'qlog']
 here = ['log', '-r', 'here']
 last = ['show', '-r', '@-']
@@ -107,10 +120,6 @@ qshortlog = '''
 			) ++ "\n"
 		),
 		"\n",
-		indent("  ",
-			diff.summary(),
-		),
-		"\n",
 	)
 '''
 
@@ -125,3 +134,11 @@ email = "qyriad@qyriad.me"
 pager = "delta"
 diff-formatter = ":git"
 #log-word-wrap = true
+
+[merge-tools.diffconflicts]
+program = "nvim"
+merge-args = [
+	"-c", "let g:jj_diffconflicts_marker_length=$marker_length",
+	"-c", "JJDiffConflicts!", "$output", "$base", "$left", "$right",
+]
+merge-tool-edits-conflict-markers = true
