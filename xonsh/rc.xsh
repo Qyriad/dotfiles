@@ -173,6 +173,15 @@ def _sudo(args: list) -> list:
 	except ValueError:
 		return ['sudo', *args]
 
+@aliases.register
+@aliases.return_command
+def _cappy(args: list) -> list:
+	try:
+		caps = args[0]
+		return ['cappy', caps, *aliases.eval_alias(args[1:])]
+	except (ValueError, IndexError):
+		return ['cappy', *args]
+
 
 def _penv(args):
 	cat f'/proc/{args[0]}/environ' | tr '\0' '\n'
