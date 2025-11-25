@@ -371,7 +371,8 @@ aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --inf
 aliases['rclone'] = 'rclone -P'
 aliases['pgrep'] = 'pgrep -i'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
-aliases['userctl'] = 'systemctl --user'
+maybe_abbrevs['userctl'] = 'systemctl --user'
+aliases['diaryctl'] = 'journalctl --user'
 aliases["busctl"] = ["busctl", "--full", "--verbose"]
 aliases['ins'] = 'insect'
 aliases['silicon'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
