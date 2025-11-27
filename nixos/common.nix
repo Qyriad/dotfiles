@@ -95,6 +95,7 @@
 		fd
 		ripgrep
 		edir
+		sd
 		unar
 		ouch
 		atool
