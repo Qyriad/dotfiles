@@ -174,7 +174,8 @@
 		gdu
 		hwatch
 		litecli
-		fcp
+		# Nixpkgs broke it
+		#fcp
 		mediainfo
 		qyriad.glances
 		qpkgs.otree
