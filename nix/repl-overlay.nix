@@ -76,6 +76,8 @@ self = rec {
 	shell = qlib.importAutocall (PWD + "/shell.nix");
 
 	t = lib.types;
+
+	idx = index: list: builtins.elemAt list index;
 };
 
 # HACK: don't fetch the flakes for these lazily.
