@@ -1,5 +1,17 @@
 local qyriad = require('qyriad')
 
+clangd_cmd = {
+	'clangd',
+	'--rename-file-limit=100',
+	'--enable-config',
+}
+
+if vim.fn.executable('clang') then
+	vim.list_extend(clangd_cmd, {
+		string.format('--query-driver=%s', vim.fn.exepath('clang')),
+	})
+end
+
 return qyriad.nested_tbl {
 	filetypes = {
 		'c',
@@ -9,10 +21,7 @@ return qyriad.nested_tbl {
 		'cuda',
 		'proto',
 	},
-	cmd = {
-		'clangd',
-		'--rename-file-limit=100',
-	},
+	cmd = clangd_cmd,
 	capabilities = {
 		['textDocument.completion.editsNearCursor'] = true,
 		offsetEncoding = { 'utf-8', 'utf-16' },
