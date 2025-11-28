@@ -6,6 +6,7 @@
 
 	environment.pathsToLink = [
 		"/include"
+		"/opt"
 	];
 
 	environment.extraOutputsToInstall = [
@@ -15,6 +16,7 @@
 	];
 
 	environment.systemPackages = with pkgs; [
+		(pkgs.qyriad.callPackage ./pkgs/llvm-keg.nix { })
 		#llvmPackages_latest.clangUseLLVM
 		#llvmPackages_latest.lld
 		qyriad.log2compdb
