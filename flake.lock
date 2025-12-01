@@ -185,11 +185,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1764411919,
-        "narHash": "sha256-yiE8HAWDJVfoVX1yQJ+wjaUUEktOGGGPAaRcgqaZ7Qs=",
+        "lastModified": 1764505734,
+        "narHash": "sha256-BYhf+kWGQiaNpJZ1KAk0o7ERx7GgpGvN3lNuSGg2HLY=",
         "ref": "refs/heads/main",
-        "rev": "24497d08bc5aa0ee1f587b93ef46bb1838cb9b33",
-        "revCount": 18623,
+        "rev": "0c6d299e162e595cbc8cb089c135dc02fe58ca83",
+        "revCount": 18627,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -212,11 +212,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763435414,
-        "narHash": "sha256-i2467FddWfd19q5Qoj+1/BAeg6LZmM5m4mYGRSQn/as=",
+        "lastModified": 1764519849,
+        "narHash": "sha256-XnNABKfIYKSimQVvKc9FnlC2H0LurOhd9MS6l0Z67lE=",
         "ref": "refs/heads/main",
-        "rev": "192c92b603731fbc1bade6c1b18c8d8a0086f703",
-        "revCount": 169,
+        "rev": "6c95c0b6f73f831226453fc6905c216ab634c30f",
+        "revCount": 170,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/nixos-module"
       },
@@ -338,11 +338,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1764242076,
-        "narHash": "sha256-sKoIWfnijJ0+9e4wRvIgm/HgE27bzwQxcEmo2J/gNpI=",
+        "lastModified": 1764517877,
+        "narHash": "sha256-pp3uT4hHijIC8JUK5MEqeAWmParJrgBVzHLNfJDZxg4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2fad6eac6077f03fe109c4d4eb171cf96791faa4",
+        "rev": "2d293cbfa5a793b4c50d17c05ef9e385b90edf6c",
         "type": "github"
       },
       "original": {
@@ -489,11 +489,11 @@
     "tmux-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1764331269,
-        "narHash": "sha256-eAmtsagfzSQCHXyimtTCPNcyL0xn7RimqhUdUZikIdM=",
+        "lastModified": 1764583268,
+        "narHash": "sha256-OwPkWz8mDQ94ZhyJf7sSde3ucFOEK2to1CwW486p4+I=",
         "owner": "tmux",
         "repo": "tmux",
-        "rev": "e9afd2bb5efa385de70a273ee93022d365fdd5de",
+        "rev": "194d0a0e251e17b74b23ccadb42f9046187705c2",
         "type": "github"
       },
       "original": {
