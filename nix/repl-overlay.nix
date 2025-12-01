@@ -47,7 +47,7 @@ self = rec {
 	# Instantiated forms of those flakes.
 	pkgs = importQuiet nixpkgs {
 		system = info.currentSystem;
-		overlays = attrValues qyriad.overlays;
+		overlays = [ qyriad.overlays.default ];
 		inherit config;
 	};
 	nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; featureFlags.minimalModules = true; };
