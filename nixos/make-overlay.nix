@@ -123,9 +123,12 @@
 			#});
 
 			# Ripples to:
-			systemsettings = kdePrev.systemsettings.overrideAttrs (pkgPrev: {
-				patches = pkgPrev.patches or [ ] ++ [
-					./pkgs/kde_systemsettings_showmodulename.patch
+			systemsettings = kdePrev.systemsettings.overrideAttrs (pkgFinal: pkgPrev: let
+				prevPatches = pkgPrev.patches or [ ];
+			in {
+				_showmodulepatch = ./pkgs/kde_systemsettings_showmodulename.patch;
+				patches = if pkgPrev ? _showmodulepatch then prevPatches else prevPatches ++ [
+					pkgFinal._showmodulepatch
 				];
 			});
 		});
