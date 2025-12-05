@@ -60,10 +60,6 @@
 			url = "github:xonsh/xonsh";
 			flake = false;
 		};
-		tmux-source = {
-			url = "github:tmux/tmux";
-			flake = false;
-		};
 		nil-source = {
 			url = "github:oxalica/nil";
 			flake = false;

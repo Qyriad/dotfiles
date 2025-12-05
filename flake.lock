@@ -436,7 +436,6 @@
         "originfox-source": "originfox-source",
         "pzl": "pzl",
         "qyriad-nur": "qyriad-nur",
-        "tmux-source": "tmux-source",
         "xil": "xil",
         "xonsh-source": "xonsh-source"
       }
@@ -483,22 +482,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-darwin",
-        "type": "github"
-      }
-    },
-    "tmux-source": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1764756069,
-        "narHash": "sha256-MV2n6286wjYYvRkaFUlIttFY7QXrIZyH5Ki13CL2jZ0=",
-        "owner": "tmux",
-        "repo": "tmux",
-        "rev": "796539c60bff4e3d4007878e1b5fd3d86d192ecb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tmux",
-        "repo": "tmux",
         "type": "github"
       }
     },
