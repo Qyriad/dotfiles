@@ -62,11 +62,6 @@
 			};
 		};
 
-		tmux = prev.tmux.overrideAttrs {
-			version = prev.tmux.version + ".${tmux-source.shortRev}";
-			src = tmux-source;
-		};
-
 		lnav = prev.lnav.override {
 			# Nixpkgs forgot to make this dependency conditional on not-Darwin.
 			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
