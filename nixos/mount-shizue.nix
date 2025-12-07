@@ -55,7 +55,7 @@
 		};
 	in [
 		media-shizue-media
-		#media-shizue-archive
+		media-shizue-archive
 	];
 
 	age.secrets.shizue-cred = {
