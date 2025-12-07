@@ -145,7 +145,7 @@ augroup END
 " zg to add word to dictionary
 " z= to open suggestion list
 augroup spellcheck
-	autocmd! FileType gitcommit,markdown,text setlocal spell spelllang=en_us spellcapcheck=
+	autocmd! FileType gitcommit,text setlocal spell spelllang=en_us spellcapcheck=
 augroup END
 " Note: spell check is also explicitly disabled in after/ftplugin/xonsh.vim
 
