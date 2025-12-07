@@ -1,5 +1,5 @@
 # vim: shiftwidth=4 tabstop=4 noexpandtab
-{ config, pkgs, lib, ... }:
+{ options, config, pkgs, lib, ... }:
 
 {
 	# Bootloader.
@@ -162,7 +162,10 @@
 	users.users.qyriad = {
 		isNormalUser = true;
 		description = "Qyriad";
-		extraGroups = [ "wheel" "networkmanager" "plugdev" "dialout" "video" "cdrom" "i2c" ];
+		extraGroups = lib.mkMerge [
+			[ "wheel" "networkmanager" "plugdev" "dialout" "video" "cdrom" "i2c" ]
+			(lib.mkIf (options ? age) [ "keys" ])
+		];
 		shell = pkgs.zsh;
 	};
 	users.groups = {
