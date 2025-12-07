@@ -348,13 +348,13 @@ endfunction
 command! NoFormatOnSave call StopFormatOnSave("<buffer>")
 ]]
 
-use {
-	'neovim/nvim-lspconfig',
-	ft = lsp_filetypes,
-	config = function()
-		lspconfig = require("lspconfig")
-	end,
-}
+--use {
+--	'neovim/nvim-lspconfig',
+--	ft = lsp_filetypes,
+--	config = function()
+--		lspconfig = require("lspconfig")
+--	end,
+--}
 use {
 	'rcarriga/nvim-notify',
 	config = function()
@@ -396,7 +396,7 @@ use {
 }
 use { 'nanotee/nvim-lsp-basics', lazy = true }
 --use { 'weilbith/nvim-code-action-menu', lazy = true }
-use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
+--use { 'tamago324/nlsp-settings.nvim', event = "LspAttach" }
 ---@type rustaceanvim.Opts
 vim.g.rustaceanvim = {
 	cmd = { "rust_analyzer" },
