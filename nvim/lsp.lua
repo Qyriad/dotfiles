@@ -206,6 +206,12 @@ end
 
 vim.lsp.enable(lsp_modules)
 
+vim.diagnostic.config({
+	signs = {
+		severity = vim.g.diagnostic_severity,
+	},
+})
+
 --lsp_vim_capabilities = vim.lsp.protocol.make_client_capabilities()
 
 clients = {}
