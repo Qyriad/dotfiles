@@ -10,9 +10,19 @@ let
 	green = "${csi}[32m";
   	normal = "${csi}[0m";
 	bold = "${csi}[1m";
+
+	t = lib.types;
 in
 {
+	options = {
+		qyriad.inputs = lib.mkOption {
+			type = t.attrsOf (t.either t.pathInStore t.package);
+		};
+	};
+
 	config = {
+		qyriad.inputs = flake.inputs;
+
 		nixpkgs.overlays = [
 			flake.overlays.default
 		];
