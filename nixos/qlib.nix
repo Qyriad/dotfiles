@@ -249,11 +249,33 @@ let
 		inherit system modules;
 	};
 
+	/** Abstraction that selects `nixosSystem` and `darwinSystem`
+	 * based on the `system` argument.
+	 */
+	mkSystemConfiguration = {
+		nixpkgs ? <nixpkgs>,
+		nix-darwin ? lookupPathOr "nix-darwin" <| fetchGit "https://github.com/nix-darwin/nix-darwin",
+		# string
+		system,
+		# { _type = "configuration"; }
+		configuration,
+	}: let
+		system' = lib.systems.elaborate system;
+		systemFnMap = {
+			linux = nixosSystem;
+			darwin = darwinSystem;
+		};
+		mkConfigFn = systemFnMap.${system'.parsed.kernel.name};
+		args = { inherit nixpkgs system configuration; } // lib.optionalAttrs system'.isDarwin {
+			inherit nix-darwin;
+		};
+	in mkConfigFn args;
+
 	force = value: lib.deepSeq value value;
 
-	override = pkg: pkg.override;
-	overrideAttrs = pkg: pkg.overrideAttrs;
-	overridePythonAttrs = pkg: pkg.overridePythonAttrs;
+	override             = pkg: pkg.override;
+	overrideAttrs        = pkg: pkg.overrideAttrs;
+	overridePythonAttrs  = pkg: pkg.overridePythonAttrs;
 	override'            = attrs: pkg: pkg.override attrs;
 	overrideAttrs'       = attrs: pkg: pkg.overrideAttrs attrs;
 	overridePythonAttrs' = attrs: pkg: pkg.overridePythonAttrs attrs;
