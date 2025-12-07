@@ -7,10 +7,14 @@
 			auto = null;
 			_netdev = null;
 			nofail = null;
-			gid = "users";
-			file_mode = "0764";
-			dir_mode = "0775";
+			#gid = "users";
+			#file_mode = "0764";
+			#dir_mode = "0775";
 			mfsymlinks = null;
+			cifsacl = null;
+			noperm = null;
+			idsfromsid = null;
+			setuids = null;
 			vers = "3.1.1";
 			credentials = config.age.secrets.shizue-cred.path;
 		};
