@@ -263,8 +263,8 @@ use {
 		gitsigns.setup {
 			-- Don't fill the signcolumn for untracked files.
 			attach_to_untracked = false,
-			-- Higher priority than MarkSigns.
-			sign_priority = 11,
+			-- Lower priority than MarkSigns.
+			sign_priority = 9,
 		}
 	end,
 }
