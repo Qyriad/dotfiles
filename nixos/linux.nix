@@ -154,7 +154,7 @@
 		# Enable support for other systems resolving us via mDNS.
 		publish = {
 			enable = true;
-			addresses = true;
+			addresses = false;
 		};
 	};
 
