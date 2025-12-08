@@ -204,6 +204,17 @@ def _vimman(args: list):
 	topic = args[0]
 	return ['nvim', '-c', f'ManCur {topic}']
 
+@aliases.register
+@aliases.return_command
+def _msn(args: list):
+	try:
+		if args[0] in ('setup', 'configure'):
+			return ['meson', *args]
+	except IndexError:
+		return ['meson', *args]
+
+	return ['meson', args[0], '-C', 'build', *args[1:]]
+
 # Fix Neovim for stuff like git commit.
 #no_thread = lambda *a, **kw: False
 #__xonsh__.commands_cache.predict_threadable = no_thread
