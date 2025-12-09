@@ -1,14 +1,10 @@
 {
 	lib,
-	stdenv,
-	pkg-config,
+	clangStdenv,
 	meson,
 	ninja,
-	cmake,
-	fmt,
 }: let
-	inherit (stdenv) hostPlatform;
-	isLinuxClang = hostPlatform.isLinux && stdenv.cc.isClang;
+	stdenv = clangStdenv;
 in stdenv.mkDerivation (self: {
 	pname = "PROJECT_NAME";
 	version = "0.0.1";
@@ -26,27 +22,18 @@ in stdenv.mkDerivation (self: {
 	};
 
 	nativeBuildInputs = [
-		pkg-config
 		meson
 		ninja
-		cmake
 	];
-
-	buildInputs = [
-		fmt
-	];
-
-	dontUseCmakeConfigure = true;
 
 	mesonBuildType = "debugoptimized";
-	mesonFlags = lib.optionals isLinuxClang [
-		"-Db_lto=false"
-	];
 
 	passthru.mkDevShell = {
 		mkShell,
 		clang-tools,
-	}: mkShell {
+	}: let
+		mkShell' = mkShell.override { inherit stdenv; };
+	in mkShell' {
 		inputsFrom = [ self.finalPackage ];
 		packages = [ clang-tools ];
 	};
