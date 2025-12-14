@@ -229,6 +229,8 @@ nnoremap <leader>ba <Cmd>b#<CR>
 nnoremap <C-f> 11<c-e>
 nnoremap <C-b> 11<C-y>
 
+nnoremap <leader>wd <Cmd>:close<CR>
+
 " Tired:
 function! SwitchSourceHeader() abort
 	let l:ext = expand("%:e")
