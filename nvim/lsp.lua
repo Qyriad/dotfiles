@@ -177,6 +177,7 @@ local lsp_modules = {
 	'basedpyright',
 	'taplo',
 	'autotools',
+	'tsgo',
 }
 local req_no_config = setmetatable({ }, { __index = table })
 local req_no_exe = setmetatable({ }, { __index = table })
@@ -185,7 +186,8 @@ for _, modname in ipairs(lsp_modules) do
 	if not config then
 		req_no_config:insert(modname)
 	else
-		local exe = config.cmd[1]
+		local cmd = vim.is_callable(config.cmd) and config.cmd() or config.cmd
+		local exe = cmd[1]
 		if vim.fn.executable(exe) ~= 1 then
 			req_no_exe:insert(modname)
 		end
