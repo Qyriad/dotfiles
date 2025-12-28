@@ -50,6 +50,14 @@ in lib.makeScope qpkgs.newScope (self: {
 
 	originfox = self.callPackage (originfox-source + "/nix/package.nix") { };
 
+	# An extremely cursed solution to our problem of Yuki waking up to a tty instead of
+	# the lock screen until a key is pressed.
+	unfuck-seat = ./pkgs/unfuck-seat.py
+	|> (src: pkgs.replaceVars src {
+		PYTHON = lib.getExe (pkgs.python3.withPackages (p: [ p.evdev ]));
+	})
+	|> (src: pkgs.writeScriptBin "unfuck-seat" (builtins.readFile src));
+
 	inherit (agenix') agenix;
 
 	obs-studio = pkgs.wrapOBS {

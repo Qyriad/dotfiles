@@ -77,7 +77,19 @@
 
 	systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
-	#boot.kernelPackages = pkgs.linuxPackages_latest;
+	systemd.services."meow" = {
+		after = [ "suspend.target" ];
+		wantedBy = [ "suspend.target" ];
+		script = lib.dedent ''
+			sleep 10
+			echo 1 | tee /sys/class/leds/*::capslock/brightness
+			${lib.getExe' pkgs.acl "setfacl"} -m 'u:qyriad:rw' /dev/uinput
+			${lib.getExe pkgs.sudo} -u qyriad ${lib.getExe pkgs.qyriad.unfuck-seat}
+
+		'';
+	};
+
+	systemd.coredump.extraConfig = "MaxUse=1";
 
 	environment.etc."modprobe.d/v4l2loopback.conf" = {
 		text = (lib.trim ''
@@ -176,6 +188,8 @@
 		anki
 		beeper
 		qyriad.originfox
+		jj-fzf
+		qyriad.unfuck-seat
 	];
 
 	# This value determines the NixOS release from which the default
