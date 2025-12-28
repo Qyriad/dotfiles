@@ -113,11 +113,17 @@
 				};
 
 				modules = nixosModules ++ [
-					inputs.lix-module.nixosModules.default
 					flake-module
 					agenix.nixosModules.default
+				] ++ lib.optionals system'.isLinux [
+					inputs.lix-module.nixosModules.default
 				] ++ lib.optionals system'.isDarwin [
 					inputs.mac-app-util.darwinModules.default
+					(inputs.lix-module.darwinModules.default or {
+						nixpkgs.overlays = let
+							lix-overlay = inputs.lix-module.overlays.default;
+						in [ lix-overlay ];
+					})
 				];
 
 			in mkConfigFn.${system'.parsed.kernel.name} {
