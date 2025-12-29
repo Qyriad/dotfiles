@@ -25,6 +25,7 @@ tug = [
 	"--from", "closest_bookmark(@-)",
 	"--to", "@-",
 ]
+present = ['log', '-r', 'present-tree']
 l = ['log', '-T', 'qshortlog']
 lh = ['log', '-T', 'qshortlog', '-r', 'here']
 lo = ['log', '-T', 'qlog']
@@ -32,6 +33,7 @@ here = ['log', '-r', 'here']
 last = ['show', '-r', '@-']
 # Non-mutating `jj op log`
 op-inspect = ['op', 'log', '--at-op=@', '--ignore-working-copy']
+stat = ['show', '--stat']
 
 [templates]
 log = 'builtin_log_comfortable'
