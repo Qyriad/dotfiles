@@ -107,7 +107,7 @@ in lib.makeScope qpkgs.newScope (self: {
 			"psutil"
 		];
 	};
-	cappy = import cappy { inherit pkgs; };
+	cappy = import cappy { inherit pkgs qpkgs; };
 	git-point = import git-point { inherit pkgs qpkgs; };
 
 	#armcord = pkgs.armcord.overrideAttrs (prev: {
