@@ -6,11 +6,12 @@ $XONSH_SUBPROC_OUTPUT_FORMAT = 'stream_lines'
 $XONSH_SHOW_TRACEBACK = True
 
 import argparse
+from dataclasses import dataclass
 import enum
 from enum import StrEnum
 import functools
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional, Sequence, override
 
 _uses_xdg = None
 def uses_xdg() -> bool:
@@ -34,11 +35,29 @@ def generation_spec(arg: int | str) -> int | str:
 		return int(arg)
 	return arg
 
+@dataclass
+class ProfileBase:
+	base: Path
+
+	def __post_init__(self):
+		self.base = Path(self.base)
+
+	def _stem(self) -> str:
+		return self.base.name
+
+	def _dir(self) -> Path:
+		return self.base.parent
+
+	def _gens(self) -> list[str]:
+		#return $(fd -t l @(f'^{self._stem}-') @(base) | sort --numeric-sort).splitlines()
+		# --version-sort is a hack to handle sorting numbers of different digit lengths
+		return $(fd -t l @(f'^{self._stem()}-') @(self._dir()) | sort --version-sort).splitlines()
+
 class ProfileKind(StrEnum):
 	system = enum.auto()
 	user = enum.auto()
 
-	def _base(self) -> str:
+	def _dir(self) -> str:
 		match self:
 			case 'system':
 				return '/nix/var/nix/profiles/'
@@ -55,11 +74,14 @@ class ProfileKind(StrEnum):
 			case 'user':
 				return 'profile'
 
+	def base(self) -> Path:
+		return Path(self._dir()) / self._stem()
+
 	def _gens(self, base: str, stem: str) -> list[str]:
 		return $(fd -t l @(f'^{stem}-') @(base) | sort --numeric-sort).splitlines()
 
 	def get(self, gen: Optional[int]) -> str:
-		base = self._base()
+		base = self._dir()
 		stem = self._stem()
 		if gen is None:
 			return f'{base}{stem}'
@@ -68,14 +90,69 @@ class ProfileKind(StrEnum):
 		return gen_path
 
 	def list(self) -> list[str]:
-		base = self._base()
+		base = self._dir()
 		stem = self._stem()
 
 		return self._gens(base, stem)
 
+#class ProfileKindAction(argparse.Action):
+#	def __init__(self, *args, **kwargs):
+#		super().__init__(*args, **kwargs)
+#
+#	@override
+#	def __call__(
+#		self,
+#		parser: argparse.ArgumentParser,
+#		namespace: argparse.Namespace,
+#		values: str | Sequence[Any],
+#		option_string: Optional[str] = None,
+#	):
+#		print(
+#			f"{parser=}\n{namespace=}\n{values=}\n{option_string=}",
+#		)
+#		print()
+#
+#		if namespace.base is None:
+#			pass
+class UserAction(argparse.Action):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+
+	@override
+	def __call__(
+		self,
+		parser: argparse.ArgumentParser,
+		namespace: argparse.Namespace,
+		values: str | Sequence[Any] | None,
+		option_string: Optional[str] = None,
+	):
+		tilde = None
+
+		match values:
+			case None:
+				tilde = '~'
+			case str(s):
+				tilde = f'~s'
+				raise NotImplementedError()
+			case [*values]:
+				raise NotImplementedError()
+
+		setattr(namespace, 'base', pf'{tilde}/.local/state'.expanduser() / 'nix/profiles')
+
 parser = argparse.ArgumentParser()
-parser.add_argument('profile_kind', default='system', nargs='?', type=ProfileKind, choices=ProfileKind)
-parser.add_argument('-u', '--user', type=str, help="Override user to use for 'user' type profile")
+parser.add_argument('-b', '--base', type=Path, default='/nix/var/nix/profiles/system')
+#parser.add_argument('profile_kind', default='system', nargs='?', type=ProfileKind, choices=ProfileKind)
+#parser.add_argument('profile_kind', default='system', nargs='?', action=ProfileKindAction)
+parser.add_argument('-s', '--system', dest='base', action='store_const', const=ProfileKind.system.base(),
+	help='equivalent to --base=/nix/var/nix/profiles/system',
+)
+
+#parser.add_argument('-u', '--user', type=str, help="Override user to use for 'user' type profile")
+parser.add_argument('-u', '--user',
+	type=str,
+	nargs='?',
+	action=UserAction,
+)
 parser.add_argument('-g', '--generation', required=False, type=generation_spec, metavar="GEN",
 	help='if negative, indexes from the most recent. -1 is the most recent, -2 is the next most recent',
 )
@@ -85,14 +162,22 @@ parser.add_argument('-a', '--all', action='store_true',
 parser.add_argument('-c', '--current', action='store_true',
 	help='equivalent to --generation=-1',
 )
+parser.add_argument('--print-base', action='store_true')
 
 args = parser.parse_args()
-if args.all:
-	args.generation = "all"
-if args.current:
-	args.generation = -1
+print(f"{args=}")
 
-if args.generation == "all":
-	print("\n".join(args.profile_kind.list()))
+base = ProfileBase(args.base)
+if args.print_base:
+	print(base.base)
 else:
-	print(args.profile_kind.get(args.generation))
+	print("\n".join(base._gens()))
+#if args.all:
+#	args.generation = "all"
+#if args.current:
+#	args.generation = -1
+#
+#if args.generation == "all":
+#	print("\n".join(args.profile_kind.list()))
+#else:
+#	print(args.profile_kind.get(args.generation))
