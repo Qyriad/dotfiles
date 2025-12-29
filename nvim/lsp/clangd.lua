@@ -6,9 +6,13 @@ clangd_cmd = {
 	'--enable-config',
 }
 
-if vim.fn.executable('clang') then
+local drivers = vim.iter({'clang', 'clang++', 'gcc', 'g++', '/run/current-system/sw/opt/llvm/bin/clang'})
+	:filter(vim.fn.executable)
+	:map(vim.fn.exepath)
+	:join(",")
+if drivers ~= "" then
 	vim.list_extend(clangd_cmd, {
-		string.format('--query-driver=%s', vim.fn.exepath('clang')),
+		string.format('--query-driver=%s', drivers)
 	})
 end
 
