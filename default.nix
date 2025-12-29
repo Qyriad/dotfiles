@@ -103,9 +103,14 @@ in {
 		inherit lib nixosLib;
 	} // inputs
 	|> lib.mapAttrs (_: sysconf: sysconf.extendModules {
-		modules = extraModules ++ [{
-			nixpkgs.overlays = [ self.overlay ];
-		}];
+		modules = extraModules ++ [
+			{
+				_module.args = {
+					baseModules = import <nixpkgs/nixos/modules/module-list.nix>;
+				};
+				nixpkgs.overlays = [ self.overlay ];
+			}
+		];
 	})
 	;
 
