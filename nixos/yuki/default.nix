@@ -121,6 +121,32 @@
 	services.freshrss = {
 	};
 
+	boot.enableContainers = true;
+	programs.extra-container.enable = true;
+
+	containers.hass = {
+		autoStart = false;
+		config = { ... }: {
+			imports = [ ../container-dataovermind.nix ];
+			nixpkgs.pkgs = pkgs;
+			services.openssh.enable = true;
+			users.users.root.openssh.authorizedKeys.keys = [
+				"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDI6Tdxcbr3XSD2Ok2tUb4RJ3nOszqKklkqXUrgnFM1F cardno:26_907_287"
+				"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGuURQDdkB0wJGCCZra7TD7SRB+AJw3jlimZ40qq8OLE qyriad@Yuki"
+			];
+			system.stateVersion = "25.05";
+		};
+		additionalCapabilities = [ "CAP_NET_ADMIN" ];
+		privateNetwork = true;
+		bindMounts."/var/lib/ha-pluralkit" = {
+			hostPath = "/home/qyriad/code/ha-pluralkit";
+		};
+	};
+	#networking.interfaces.enp93s0 = {
+	#	name = "enp93s0";
+	#	wakeOnLan.enable = true;
+	#};
+
 	virtualisation.waydroid.enable = true;
 
 	services.pipewire.extraConfig.pipewire-pulse = {
