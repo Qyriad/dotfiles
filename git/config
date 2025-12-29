@@ -113,6 +113,8 @@
 	pushInsteadOf = "https://github.com"
 [url "ssh://git@codeberg.org"]
 	pushInsteadOf = "https://codeberg.org"
+[url "ssh://git@git.afnix.fr"]
+	pushInsteadOf = "https://git.afnix.fr"
 [git-extras "get"]
 	clone-path = /Users/qyriad/code/builds
 [rerere]
