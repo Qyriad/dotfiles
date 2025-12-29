@@ -8,6 +8,34 @@ let
 	t = lib.types;
 
 	cfg = config.package-groups;
+
+	mkPackageGroupOptions = {
+		name,
+		enableDefault,
+		enableDesc,
+		packages,
+	}: {
+		enable = mkOption {
+			type = t.bool;
+			default = false;
+			description = enableDesc;
+		};
+		remove-packages = mkOption {
+			type = t.listOf t.package;
+			default = [ ];
+			description = "Packages normally included in ${name} to instead not include.";
+		};
+		default-packages = mkOption {
+			type = t.listOf t.package;
+			readOnly = true;
+			default = packages;
+		};
+
+		final-packages = mkOption {
+			type = t.listOf t.package;
+			internal = true;
+		};
+	};
 in
 {
 	# Interface.
