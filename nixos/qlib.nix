@@ -304,6 +304,7 @@ in {
 		evalNixos
 		darwinSystem
 		evalDarwin
+		mkSystemConfiguration
 		mkOverrides
 		removeAttrs'
 		drvListByNamePipe
