@@ -26,11 +26,11 @@
     "cappy": {
       "flake": false,
       "locked": {
-        "lastModified": 1759325486,
-        "narHash": "sha256-GkAFaapt+juMjHy5wupPiHXMS4kw7O8fRBT4NsPHha8=",
+        "lastModified": 1767007183,
+        "narHash": "sha256-poRds/U7su2a+arOmYcqyQ3FtEH8w6faGiWBO1WREBU=",
         "owner": "Qyriad",
         "repo": "cappy",
-        "rev": "e091dd104e571ea1d34f88b2d363ba35b7aaaa95",
+        "rev": "a36c4ba695ea28d34105fdf93f6e96eced843b8e",
         "type": "github"
       },
       "original": {
