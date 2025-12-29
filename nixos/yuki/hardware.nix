@@ -30,12 +30,12 @@
 
 	warnings = let
 		latest = pkgs.linuxPackages_latest.kernel.version;
-		current = pkgs.linuxPackages_6_17.kernel.version;
+		current = config.boot.kernelPackages.kernel.version;
 	in lib.mkIf (latest != current) [
-		"Yuki's Linux (6.17) is no longer latest (${latest})"
+		"Yuki's Linux (${current}) is no longer latest (${latest})"
 	];
 
-	boot.kernelPackages = pkgs.linuxPackages_6_17;
+	boot.kernelPackages = pkgs.linuxPackages_6_18;
 
 	hardware.nvidia = {
 		modesetting.enable = true;
