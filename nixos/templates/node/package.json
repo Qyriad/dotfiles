@@ -1,0 +1,19 @@
+{
+	"name": "PACKAGENAME",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"lint": "tsc -noEmit",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"typescript": "~5.9.3",
+		"vite": "^7.2.4",
+		"vite-console-forward-plugin": "^2.0.1"
+	},
+	"dependencies": {
+	}
+}
