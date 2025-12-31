@@ -72,6 +72,7 @@
 		autotools-language-server
 		qpkgs.lsptrace
 		mergiraf
+		typescript-go
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
 	];
