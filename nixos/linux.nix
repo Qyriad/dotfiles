@@ -317,6 +317,8 @@
 		havn
 		below
 		rclone
+		# Awesome command.
+		try
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
