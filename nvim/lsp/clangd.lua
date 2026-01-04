@@ -4,18 +4,10 @@ clangd_cmd = {
 	'clangd',
 	'--rename-file-limit=100',
 	'--enable-config',
+	'--query-driver=**/*',
 }
 
-local drivers = vim.iter({'clang', 'clang++', 'gcc', 'g++', '/run/current-system/sw/opt/llvm/bin/clang'})
-	:filter(vim.fn.executable)
-	:map(vim.fn.exepath)
-	:join(",")
-if drivers ~= "" then
-	vim.list_extend(clangd_cmd, {
-		string.format('--query-driver=%s', drivers)
-	})
-end
-
+---@type vim.lsp.ClientConfig
 return qyriad.nested_tbl {
 	filetypes = {
 		'c',
@@ -26,6 +18,9 @@ return qyriad.nested_tbl {
 		'proto',
 	},
 	cmd = clangd_cmd,
+	cmd_env = {
+		PATH = string.format("%s:/run/current-system/sw/opt/llvm/bin", vim.env.PATH),
+	},
 	capabilities = {
 		['textDocument.completion.editsNearCursor'] = true,
 		offsetEncoding = { 'utf-8', 'utf-16' },
