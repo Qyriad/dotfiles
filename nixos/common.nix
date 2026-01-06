@@ -63,6 +63,8 @@
 
 			sandbox = "relaxed";
 
+			log-format = "multiline-with-logs";
+
 			repl-overlays = [ ../nix/repl-overlay.nix ];
 		};
 	};
