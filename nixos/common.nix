@@ -161,7 +161,6 @@
 		git-series
 		git-revise
 		p7zip
-		dogdns
 		doggo
 		magic-wormhole
 		age
