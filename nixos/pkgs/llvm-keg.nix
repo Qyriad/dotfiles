@@ -1,5 +1,6 @@
 {
 	lib,
+	libgcc,
 	llvmPackages,
 	wrapBintoolsWith,
 	runCommandMinimal,
