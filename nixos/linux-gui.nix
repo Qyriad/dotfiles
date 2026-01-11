@@ -178,7 +178,8 @@
 		qyriad.obs-studio
 		v4l-utils
 		gajim
-		inlyne
+		# Nixpkgs broke it.
+		#inlyne
 		tesseract
 		smile
 		gst_all_1.gstreamer
