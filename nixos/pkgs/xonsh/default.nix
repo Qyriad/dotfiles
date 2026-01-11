@@ -40,6 +40,8 @@
   beautifulsoup4,
   python-fontconfig,
   keyring,
+	hass-client,
+	multidict,
 }: stdlib.mkSimpleEnv (self: assert __checks; {
   extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
     src = xonsh-source;
@@ -77,6 +79,8 @@
     #glib
     #graphene
     #gobject-introspection
+		hass-client
+		multidict
   ] ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [
     pydbus
     sdbus
