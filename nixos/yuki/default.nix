@@ -13,6 +13,11 @@
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
+	nixpkgs.config.permittedInsecurePackages = [
+		"ventoy-qt5-1.1.07"
+		"olm-3.2.16"
+	];
+
 	fileSystems."/media/data" = {
 		device = "/dev/disk/by-label/YukiExtdata";
 		fsType = "ext4";
