@@ -319,6 +319,8 @@
 		rclone
 		# Awesome command.
 		try
+		ego
+		lazyjournal
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
