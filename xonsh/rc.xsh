@@ -390,6 +390,8 @@ aliases['silicon'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
 aliases["moaro"] = [$PAGER, "-quit-if-one-screen"]
 aliases['jg'] = 'jj'
 aliases['jgn'] = 'jj --ignore-working-copy --no-pager'
+aliases['jl'] = 'jj log'
+aliases['jlr'] = 'jj log -r'
 aliases['hyfetch'] = 'env SHELL=xonsh hyfetch'
 aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 aliases['striptext'] = lambda args, stdin: stdin.read().strip()
