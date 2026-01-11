@@ -35,6 +35,8 @@ in lib.makeScope qpkgs.newScope (self: {
 		};
 	in pkgs.runCommandLocal name attrs' text;
 
+	llvm-keg = self.callPackage ./pkgs/llvm-keg.nix { };
+
 	steam-launcher-script = pkgs.writeShellScriptBin "launch-steam" ''
 		export STEAM_FORCE_DESKTOPUI_SCALING=2.0
 		export GDK_SCALE=2

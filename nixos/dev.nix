@@ -16,7 +16,7 @@
 	];
 
 	environment.systemPackages = with pkgs; [
-		(pkgs.qyriad.callPackage ./pkgs/llvm-keg.nix { })
+		qyriad.llvm-keg
 		#llvmPackages_latest.clangUseLLVM
 		#llvmPackages_latest.lld
 		qyriad.log2compdb
