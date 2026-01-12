@@ -219,7 +219,7 @@
 		anki
 		beeper
 		qyriad.originfox
-		jj-fzf
+		#jj-fzf
 		qyriad.unfuck-seat
 	];
 
