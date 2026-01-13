@@ -143,21 +143,6 @@
 
 	services.openssh.enable = true;
 
-	services.avahi = {
-		enable = true;
-
-		# systemd-resolved handles that for us.
-		nssmdns4 = false;
-
-		reflector = true;
-
-		# Enable support for other systems resolving us via mDNS.
-		publish = {
-			enable = true;
-			addresses = false;
-		};
-	};
-
 	# Our normal user.
 	users.users.qyriad = {
 		isNormalUser = true;
