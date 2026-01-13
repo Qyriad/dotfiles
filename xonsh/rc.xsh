@@ -303,7 +303,7 @@ aliases['lg'] = 'lazygit'
 
 # Utilities that I want to modify their default arguments, but also colorize if available.
 maybe_colorize = { }
-maybe_colorize['lspci'] = 'lspci -nn'
+maybe_colorize['lspci'] = 'lspci'
 maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 #aliases['lsd'] = 'lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,PARTLABEL,PARTTYPE'
 
