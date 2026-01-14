@@ -221,6 +221,7 @@
 		qyriad.originfox
 		#jj-fzf
 		qyriad.unfuck-seat
+		qyriad.color-journal
 	];
 
 	# This value determines the NixOS release from which the default

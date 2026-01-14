@@ -37,6 +37,32 @@ in lib.makeScope qpkgs.newScope (self: {
 
 	llvm-keg = self.callPackage ./pkgs/llvm-keg.nix { };
 
+	/** We've been running this command from our shell history for aaaages
+	grcc /run/current-system/sw/bin/journalctl -efb0 | rg -v 'Trying to replace notification with id' --line-buffered | spacer --after 10 --stopwatch -w 90
+	*/
+	color-journal = self.callInline ({
+		writeShellScriptBin,
+		writeShellApplication
+	}: writeShellApplication {
+		name = "color-journal";
+
+		derivationArgs = {
+			__structuredAttrs = true;
+			strictDeps = true;
+		};
+
+		text = lib.dedent ''
+			set -euo pipefail
+			bin="/run/current-system/sw/bin"
+			"$bin/grc" --colour=on \
+				"$bin/journalctl" --pager-end --follow --boot=0 \
+				| "$bin/rg" --line-buffered -v 'Trying to repalce notification with id' \
+				| "$bin/rg" --line-buffered -v 'beeper.+beeper\.local' \
+				| "$bin/spacer" --after 10 --stopwatch -w 90
+		'';
+		}
+	);
+
 	steam-launcher-script = pkgs.writeShellScriptBin "launch-steam" ''
 		export STEAM_FORCE_DESKTOPUI_SCALING=2.0
 		export GDK_SCALE=2
