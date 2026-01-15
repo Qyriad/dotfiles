@@ -19,6 +19,8 @@
 	shellArray = name: "\${${name}[@]}";
 
 in lib.makeScope qpkgs.newScope (self: {
+	callInline = f: self.callPackage f { };
+
 	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
 	# which do things like check man pages and patch ELFs.
 	runCommandMinimal = name: attrs: text: let
