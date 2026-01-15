@@ -306,6 +306,9 @@
 		try
 		ego
 		lazyjournal
+		gping
+		procs
+		choose
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
