@@ -68,9 +68,11 @@
 	services.geoclue2.enable = true;
 
 	services.resolved.enable = true;
-	services.resolved.extraConfig = lib.dedent ''
-		MulticastDNS=yes
-	'';
+	services.resolved.settings = {
+		MulticastDNS = "yes";
+		Cache = "no-negative";
+	};
+		#FallbackDNS=192.168.50.1 86.54.11.100 1.1.1.1 8.8.8.8
 	networking.networkmanager.enable = true;
 	networking.networkmanager.dns = "systemd-resolved";
 	# Automatically enabled by enabling NetworkManager.
