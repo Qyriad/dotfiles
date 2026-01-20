@@ -209,11 +209,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1768430609,
-        "narHash": "sha256-ufQfZZbcbStyxPThxyEXxOKW+cjfHQkLhSvos4UWEEU=",
+        "lastModified": 1768903716,
+        "narHash": "sha256-72eLr+8jxI30LmvzuIc8d2qVYhQt5CLX27Hwg4br/yE=",
         "ref": "refs/heads/main",
-        "rev": "63b0a01d751689b310251c6b5a8c65f40630573a",
-        "revCount": 18774,
+        "rev": "eca222c7ca4e9255426daad805d54de4194ee4ae",
+        "revCount": 18804,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -315,11 +315,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768220509,
-        "narHash": "sha256-8wMrJP/Xk5Dkm0TxzaERLt3eGFEhHTWaJKUpK3AoL4o=",
+        "lastModified": 1768764703,
+        "narHash": "sha256-5ulSDyOG1U+1sJhkJHYsUOWEsmtLl97O0NTVMvgIVyc=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "7b1d394e7d9112d4060e12ef3271b38a7c43e83b",
+        "rev": "0fc4e7ac670a0ed874abacf73c4b072a6a58064b",
         "type": "github"
       },
       "original": {
@@ -409,11 +409,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1768305791,
-        "narHash": "sha256-AIdl6WAn9aymeaH/NvBj0H9qM+XuAuYbGMZaP0zcXAQ=",
+        "lastModified": 1768564909,
+        "narHash": "sha256-Kell/SpJYVkHWMvnhqJz/8DqQg2b6PguxVWOuadbHCc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1412caf7bf9e660f2f962917c14b1ea1c3bc695e",
+        "rev": "e4bae1bd10c9c57b2cf517953ab70060a828ee6f",
         "type": "github"
       },
       "original": {
@@ -617,11 +617,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750332928,
-        "narHash": "sha256-N6KfZItdlYAQbePYLaSp64ImYgxL67+eazB3pJtpKjo=",
+        "lastModified": 1767616784,
+        "narHash": "sha256-S5EDTuhK4cMV3h5fN6U0P1/qLIeH7l+DC/QD+cuWtms=",
         "owner": "Qyriad",
         "repo": "Xil",
-        "rev": "88e886f5693a0adc30312bd17509a4b22359d48d",
+        "rev": "685026679f38c43ef09991810dfd9c3e80954265",
         "type": "github"
       },
       "original": {
@@ -633,11 +633,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1768459988,
-        "narHash": "sha256-cdgrVL/ekfD1SShJXwlQNzbF1IfEbmk0KJujMpvFJk8=",
+        "lastModified": 1768758989,
+        "narHash": "sha256-BSkDxP4o4Y7I9oKbp+E6a+kHiacxKAXSd+cZAaqgGVk=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "21b8e3bd4fe7d5670330cb91fda1f6ce77efd77c",
+        "rev": "14333a633a9437a38f140515a28745b22745267b",
         "type": "github"
       },
       "original": {
