@@ -68,7 +68,7 @@
 	services.geoclue2.enable = true;
 
 	services.resolved.enable = true;
-	services.resolved.settings = {
+	services.resolved.settings.Resolve = {
 		MulticastDNS = "yes";
 		Cache = "no-negative";
 	};
