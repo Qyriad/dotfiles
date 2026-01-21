@@ -81,7 +81,7 @@
 
 	services.tailscale = {
 		enable = true;
-		useRoutingFeatures = "both";
+		#useRoutingFeatures = "both";
 	};
 	systemd.services.tailscaled.serviceConfig = {
 		# Tailscaled is a biiiit too logspamy, and it's pretty stable.
