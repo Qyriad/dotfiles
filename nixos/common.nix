@@ -179,7 +179,6 @@
 		# Nixpkgs broke it
 		#fcp
 		mediainfo
-		qyriad.glances
 		qpkgs.otree
 		qpkgs.cyme
 		qpkgs.sequin

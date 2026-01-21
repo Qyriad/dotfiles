@@ -222,6 +222,7 @@
 		#jj-fzf
 		qyriad.unfuck-seat
 		qyriad.color-journal
+		qyriad.glances
 	];
 
 	# This value determines the NixOS release from which the default

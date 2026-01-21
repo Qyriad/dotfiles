@@ -222,6 +222,11 @@
 				];
 				Yuki = yuki;
 
+				rosie = mkConfig "x86_64-linux" [
+					./nixos/rosie
+				];
+				Rosie = rosie;
+
 				#minimal-aarch64-linux = mkConfig "aarch64-linux" [
 				#	./nixos/minimal.nix
 				#];
