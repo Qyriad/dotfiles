@@ -79,6 +79,15 @@
 	# I don't need it though.
 	networking.modemmanager.enable = false;
 
+	services.avahi = {
+		enable = true;
+		# We'll use avahi for *publish*, but systemd-resolved for resolve.
+		nssmdns4 = false;
+		nssmdns6 = false;
+		publish.enable = true;
+		publish.addresses = true;
+	};
+
 	services.tailscale = {
 		enable = true;
 		#useRoutingFeatures = "both";
