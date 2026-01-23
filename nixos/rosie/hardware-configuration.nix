@@ -24,7 +24,7 @@
 		options = [ "fmask=0077" "dmask=0077" ];
 	};
 
-	boot.loader.efi.efiSysMountPoint = lib.mkForce "/boot/efi";
+	boot.loader.efi.efiSysMountPoint = lib.mkForce "/boot";
 
 	swapDevices = [
 		{ device = "/dev/disk/by-uuid/50696825-38d9-40c6-81ab-4cefcc682d79"; }
