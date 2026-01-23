@@ -1,13 +1,6 @@
 local qyriad = require('qyriad')
 
-qyriad.lsp = qyriad.lsp or { }
-qyriad.lsp.tsgo = qyriad.lsp.tsgo or { }
----@param dispatchers vim.lsp.rpc.Dispatchers
----@param config vim.lsp.ClientConfig
----@return vim.lsp.rpc.PublicClient
-function qyriad.lsp.tsgo.cmd(dispatchers, config)
-end
-
+---@type vim.lsp.ClientConfig
 return qyriad.nested_tbl {
 	---@param dispatchers vim.lsp.rpc.Dispatchers
 	---@param config vim.lsp.ClientConfig
@@ -20,9 +13,9 @@ return qyriad.nested_tbl {
 		end
 		if dispatchers == nil then
 			return { cmd, '--lsp', '--stdio' }
-		else
-			return vim.lsp.rpc.start({ cmd, '--lsp', '--stdio' }, dispatchers)
 		end
+
+		return vim.lsp.rpc.start({ cmd, '--lsp', '--stdio' }, dispatchers)
 	end,
 	filetypes = {
 		'javascript',
