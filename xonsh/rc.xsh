@@ -127,25 +127,6 @@ def _pcopy(args: list) -> list:
 		pass
 	return ['wl-copy', '-t', 'text/uri-list', *args]
 
-
-@aliases.register
-@aliases.return_command
-def _sudo(args: list) -> list:
-	try:
-		return ['sudo', *aliases.eval_alias(args)]
-	except ValueError:
-		return ['sudo', *args]
-
-@aliases.register
-@aliases.return_command
-def _cappy(args: list) -> list:
-	try:
-		caps = args[0]
-		return ['cappy', caps, *aliases.eval_alias(args[1:])]
-	except (ValueError, IndexError):
-		return ['cappy', *args]
-
-
 def _penv(args):
 	cat f'/proc/{args[0]}/environ' | tr '\0' '\n'
 
@@ -930,6 +911,9 @@ class ShortcutAutovar:
 #	'/home/qyriad/.local/opt/xwin/sdk/lib/um/x64/'
 #])
 
+
+# Xontribs in our own dotfiles should be less silent.
+xontrib load sudo_alias
 
 # xontrib-abbrevs, xonsh-direnv, xontrib-term-integrations, xontrib-broot
 xontrib load -s abbrevs, direnv, term_integration, broot
