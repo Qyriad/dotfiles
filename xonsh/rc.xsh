@@ -58,13 +58,13 @@ except ImportError:
 
 def exit_code():
 	try:
-		return str(_.rtn)
+		return str(@.lastcmd.rtn)
 	except (AttributeError, NameError):
 		return '0'
 
 def exit_color():
 	try:
-		return '{RED}' if _.rtn != 0 else '{GREEN}'
+		return '{RED}' if @.lastcmd.rtn != 0 else '{GREEN}'
 	except (AttributeError, NameError):
 		return '{GREEN}'
 
