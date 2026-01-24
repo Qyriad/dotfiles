@@ -8,16 +8,6 @@ try:
 except KeyError:
 	pass
 
-# XXX VERY HACK for NixOS
-if "IN_NIX_SHELL" not in ${...}:
-	if @.imp.xonsh.__path__[0].startswith('/nix/store'):
-		to_delete = []
-		for elem in $PATH:
-			if pf'{elem}/xonsh'.is_file() and not elem.startswith('/run'):
-				to_delete.append(elem)
-		for elem in to_delete:
-			$PATH.remove(elem)
-
 import builtins, operator, typing
 import os, sys, io, errno, ctypes
 import struct, re, shlex, shutil, textwrap, functools
