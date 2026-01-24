@@ -159,12 +159,6 @@ def _msn(args: list):
 
 	return ['meson', args[0], '-C', 'build', *args[1:]]
 
-# Fix Neovim for stuff like git commit.
-#no_thread = lambda *a, **kw: False
-#__xonsh__.commands_cache.predict_threadable = no_thread
-#for command in ['nvim', 'git', 'vidir', 'systemctl', 'pacman', 'yay', 'vidir', 'pip', 'pip2', 'pip3']:
-	#__xonsh__.commands_cache.threadable_predictors[command] = no_thread
-
 # Make stuff follow XDG.
 if sys.platform != 'darwin':
 	#$XDG_RUNTIME_DIR = "/run/user/" + $(id -u).strip()
@@ -212,7 +206,6 @@ if shutil.which("trash-put"):
 else:
 	aliases['tp'] = 'trash put'
 aliases['lsof'] = 'grc lsof +c0'
-#aliases['man'] = ['env', 'MANWIDTH=@(min(int($(tput cols)), 120))',  'man']
 
 # Coreutils-alike
 aliases['rip'] = 'rip --seance'
@@ -415,8 +408,6 @@ def _cmplinux():
 		f.write(installed)
 
 	if boot != installed:
-		#delta <@(boot) <@(installed) | tail -2
-		#sh -c f"delta <(echo {boot}) <(echo {installed}) | tail -2"
 		delta /tmp/boot /tmp/installed | tail -2
 	else:
 		echo @(boot.strip())
@@ -471,8 +462,6 @@ aliases['reagent'] = _reagent
 def _rekey():
 	$SSH_AUTH_SOCK = $(gpgconf --list-dirs agent-ssh-socket).strip()
 	gpg-connect-agent reloadagent /bye > /dev/null
-	#$GPG_TTY = $(tty).strip()
-#gpg-connect-agent updatestartuptty reloadagent /bye > /dev/null
 
 aliases['rekey'] = _rekey
 
@@ -556,31 +545,6 @@ aliases['nix-json-to-raw'] = [
 	'--slurp',
 ]
 
-#aliases['drv-json'] = ['jq', 'to_entries | map(.value + { drvPath: .key })']
-#aliases['drv-json'] = [
-#	'jq',
-#	'''
-#	to_entries
-#	| map(
-#		del(
-#			..
-#			| select(. == null or . == "" or . == {} or . == [])
-#		)
-#		| .value + { drvPath: .key }
-#		#.value + {
-#		#	drvPath: .key,
-#		#	env: .value.env
-#		#		| map_values(select(. != "")),
-#		#	# Remove empty attributes in each `inputDrvs`
-#		#	inputDrvs: .value.inputDrvs
-#		#		| map_values(
-#		#			map_values(select(. != {}))
-#		#		),
-#		#}
-#	)
-#	| if length == 1 then .[0] else . end
-#	''',
-#]
 aliases['drv-json'] = ['jq', '--from-file', '~/.config/xonsh/drv_json.jq']
 
 
@@ -598,15 +562,6 @@ def _gitls(args):
 
 aliases['gitls'] = _gitls
 
-#def _s(subst):
-	#cmd = $(history show -1 | sed -E @(subst)).strip()
-	#print(cmd)
-	#@(cmd.split())
-
-
-#aliases['s'] = _s
-
-
 def _gac(name):
 	git cherry-pick -n @(name)
 	git reset
@@ -614,15 +569,6 @@ def _gac(name):
 aliases['gac'] = _gac
 
 bashcomp = __xonsh__.completers['bash']
-
-#def _gac_complete(prefix, line, start, end, ctx):
-	#if line.startswith("gac "):
-		#return bashcomp(prefix, line.replace("gac", "git cherry-pick", 1), start, end, ctx)
-	#else:
-		#return None
-
-#__xonsh__.completers["gac"] = _gac_complete
-#__xonsh__.completers.move_to_end("gac", last=False)
 
 from xonsh.completers.tools import *
 from xonsh.parsers.completion_context import CommandArg
