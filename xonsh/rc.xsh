@@ -809,21 +809,8 @@ aliases["intext"] = _intext
 # Append a trailing newline, since some commands don't.
 aliases["withnl"] = lambda args, stdin: _intext([print], stdin)
 
-# The first parentheses are a non-capturing group that matches whitespace or the start of the string.
-# The second parenthese are the group we're interested in.
-# The third is a lookahead assertion (to not consume) for whitespace or the end of the string.
-UNQUOTED_INSTALLABLE_PATTERN = re.compile(r"(?:\s|^)+(\w+#\w+)(?=\s|$)+")
-@events.on_transform_command
-def unfuck_nix_installabes(cmd: str):
-	if installables := UNQUOTED_INSTALLABLE_PATTERN.findall(cmd):
-		for installable in installables:
-			cmd = cmd.replace(installable, f'"""{installable}"""')
-
-	return cmd
-
-
 #
-# Horrible datetime convenience functions and types.
+# Datetime convenience functions and types.
 #
 
 def localnow():
