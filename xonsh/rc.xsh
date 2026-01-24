@@ -9,9 +9,8 @@ except KeyError:
 	pass
 
 # XXX VERY HACK for NixOS
-import xonsh
 if "IN_NIX_SHELL" not in ${...}:
-	if xonsh.__path__[0].startswith('/nix/store'):
+	if @.imp.xonsh.__path__[0].startswith('/nix/store'):
 		to_delete = []
 		for elem in $PATH:
 			if pf'{elem}/xonsh'.is_file() and not elem.startswith('/run'):
@@ -28,9 +27,9 @@ from zoneinfo import ZoneInfo
 import pathlib
 from pathlib import Path
 
-import xonsh
 from xonsh.events import events
 from xonsh.procs.specs import SpecAttrDecoratorAlias
+from xonsh.tools import unthreadable
 
 # These variables are set to lambdas, and are not exported to subprocesses
 # unless they have been evaluated at least once, it seems.
@@ -807,7 +806,7 @@ def _git_root(path=None):
 		if pf"{parent}/.git".is_dir():
 			return parent
 
-@xonsh.tools.unthreadable
+@unthreadable
 def _git_workout(args: list):
 	# Get the git root.
 	git_root = _git_root($PWD)
@@ -832,7 +831,7 @@ def _git_workout(args: list):
 
 aliases["git-workout"] = _git_workout
 
-@xonsh.tools.unthreadable
+@unthreadable
 def _git_diff_merge(args: list):
 	main = args[0]
 	feature = args[1]
