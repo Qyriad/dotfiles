@@ -888,30 +888,6 @@ class ToZone:
 
 zone = ToZone
 
-class ShortcutAutovar:
-	def __init__(self, callback):
-		self.callback = callback
-		self.value = None
-
-	def __repr__(self):
-		self.value = self.callback()
-		return str(self.value)
-
-	def __getattr__(self, key):
-		return getattr(self.value, key)
-
-# Git dir
-#from xonsh.prompt import gitstatus
-#$gitd = ShortcutAutovar(lambda : Path($PROMPT_FIELDS['gitstatus.branch'].value).resolve())
-#$gitb = ShortcutAutovar(xonsh.prompt.vc.current_branch)
-
-#$LIB = EnvPath([
-#	'/home/qyriad/.local/opt/xwin/crt/lib/x64/',
-#	'/home/qyriad/.local/opt/xwin/sdk/Lib/ucrt/x64',
-#	'/home/qyriad/.local/opt/xwin/sdk/lib/um/x64/'
-#])
-
-
 # Xontribs in our own dotfiles should be less silent.
 xontrib load sudo_alias
 
