@@ -29,29 +29,6 @@ sys.path[0:0] = $XONSHRC_DIR[:]
 $HOSTNAME
 $HOSTTYPE
 
-# Not available on Windows.
-try:
-	import fcntl
-except ImportError:
-	pass
-
-try:
-	import psutil
-	from psutils import Process
-except ImportError:
-	pass
-
-try:
-	from unidecode import unidecode
-except ImportError:
-	pass
-
-try:
-	import pipe
-	from pipe import Pipe, select, where, skip, take
-except ImportError:
-	pass
-
 #
 # Xonsh special environment variables.
 #
@@ -705,7 +682,7 @@ def utcnow():
 # Xontribs in our own dotfiles should be less silent.
 xontrib load sudo_alias
 # Uncomment when we determine performance impact.
-#xontrib load zonehacks
+#xontrib load zonehacks, prelude
 
 # xontrib-abbrevs, xonsh-direnv, xontrib-term-integrations, xontrib-broot
 xontrib load -s abbrevs, direnv, term_integration, broot
