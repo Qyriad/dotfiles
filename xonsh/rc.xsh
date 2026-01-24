@@ -21,6 +21,9 @@ from xonsh.events import events
 from xonsh.procs.specs import SpecAttrDecoratorAlias
 from xonsh.tools import unthreadable
 
+# Add xonsh/rc.d and friends to sys.path, so we can import them interactively.
+sys.path[0:0] = $XONSHRC_DIR[:]
+
 # These variables are set to lambdas, and are not exported to subprocesses
 # unless they have been evaluated at least once, it seems.
 $HOSTNAME
@@ -46,30 +49,6 @@ except ImportError:
 try:
 	import pipe
 	from pipe import Pipe, select, where, skip, take
-except ImportError:
-	pass
-
-try:
-	import requests
-
-	#
-	# You want to see cursed? I'll give you cursed~
-	#
-	def response_repr(self):
-		s = [f"<Response [{self.status_code}]>"]
-		try:
-			if json_data := self.json():
-				s.append(str(json_data))
-			elif self.content:
-				s.append(self.content.decode(errors="backslashreplace"))
-
-			return "\n".join(s)
-		except requests.exceptions.JSONDecodeError:
-			return self._original_repr()
-
-	requests.Response._original_repr = requests.Response.__repr__
-	requests.Response.__repr__ = response_repr
-
 except ImportError:
 	pass
 
