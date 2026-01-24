@@ -394,29 +394,6 @@ def _wine32(args):
 
 aliases['wine32'] = _wine32
 
-def _cmplinux():
-	boot = $(uname -r)
-	if boot.find('lts') >= 0:
-		installed = $(basename /usr/lib/modules/*lts*)
-	else:
-		installed = $(basename /usr/lib/modules/*arch*)
-
-	with open("/tmp/boot", "w") as f:
-		f.write(boot)
-
-	with open("/tmp/installed", "w") as f:
-		f.write(installed)
-
-	if boot != installed:
-		delta /tmp/boot /tmp/installed | tail -2
-	else:
-		echo @(boot.strip())
-		echo @(installed.strip())
-
-	/bin/rm -f /tmp/boot /tmp/installed
-
-aliases['cmplinux'] = _cmplinux
-
 def _mkcd(path):
 	mkdir -vp @(path)
 	cd @(path)
