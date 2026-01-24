@@ -689,39 +689,6 @@ def _nix_create_dev_files(args: list):
 
 aliases["nix-create-dev-files"] = _nix_create_dev_files
 
-def _git_root(path=None):
-	path = Path(path) if path is not None else Path($PWD)
-	if pf"{path}/.git".is_dir():
-		return path
-	for parent in path.parents:
-		if pf"{parent}/.git".is_dir():
-			return parent
-
-@unthreadable
-def _git_workout(args: list):
-	# Get the git root.
-	git_root = _git_root($PWD)
-	# Get available branches.
-	branches = $(git branch --list '--format=%(refname:lstrip=2)').strip().split('\n')
-	branch = args[0]
-	echo f"git-workout: using branch {branch}"
-	if branch in ["main", "master"]:
-		$[cd @(git_root)]
-		return
-	$[mkdir -p f"{git_root}/.w/{branch}"]
-	# Check if the worktree already exists
-	if not pf"{git_root}/.w/{branch}/.git".is_file():
-		if branch not in branches:
-			echo f':: git worktree add -b "{git_root}/.w/{branch}" f"{branch}"'
-			$[git worktree add f"{git_root}/.w/{branch}" -b f"{branch}"]
-		else:
-			echo f':: git worktree add "{git_root}/.w/{branch}" f"{branch}"'
-			$[git worktree add f"{git_root}/.w/{branch}" f"{branch}"]
-
-	$[cd f"{git_root}/.w/{branch}"]
-
-aliases["git-workout"] = _git_workout
-
 @unthreadable
 def _git_diff_merge(args: list):
 	main = args[0]
