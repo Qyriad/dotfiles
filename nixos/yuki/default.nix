@@ -10,6 +10,7 @@
 		../dev.nix
 		../resources.nix
 		../mount-shizue.nix
+		../modules/mount-usr.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
@@ -23,6 +24,8 @@
 		fsType = "ext4";
 		options = [ "discard" "nofail" ];
 	};
+
+	system.mount-usr.enable = true;
 
 	systemd.user = {
 		sockets.dbus-monitor-pcap = {
