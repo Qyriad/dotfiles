@@ -218,31 +218,31 @@ maybe_colorize['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
 
 
 # Color output. Note: aliases recursive into aliases other than themselves.
-if shutil.which('grc'):
-
-	# Forced color grc.
-	grcc = 'grc --colour=on'
-	aliases['grcc'] = grcc
-
-	commands = \
-		['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'ifconfig']
-
-	for command in commands:
-		aliases[command] = 'grc ' + command
-
-		forced = command + 'c' # Force color, even when piping.
-		aliases[forced] = f"{grcc} {command}"
-
-	for command, alias in maybe_colorize.items():
-		aliases[command] = f'grc {alias}'
-
-		forced = command + 'c' # Force color, even when piping.
-		aliases[forced] = f"{grcc} {alias}"
-
-	del commands, command, forced
-
-else:
-	aliases.update(maybe_colorize)
+#if shutil.which('grc'):
+#
+#	# Forced color grc.
+#	grcc = 'grc --colour=on'
+#	aliases['grcc'] = grcc
+#
+#	commands = \
+#		['df', 'free', 'ip', 'mount', 'netstat', 'ping', 'as', 'last', 'lsusb', 'netstat', 'ifconfig']
+#
+#	for command in commands:
+#		aliases[command] = 'grc ' + command
+#
+#		forced = command + 'c' # Force color, even when piping.
+#		aliases[forced] = f"{grcc} {command}"
+#
+#	for command, alias in maybe_colorize.items():
+#		aliases[command] = f'grc {alias}'
+#
+#		forced = command + 'c' # Force color, even when piping.
+#		aliases[forced] = f"{grcc} {alias}"
+#
+#	del commands, command, forced
+#
+#else:
+#	aliases.update(maybe_colorize)
 
 del maybe_colorize
 
@@ -641,30 +641,6 @@ def _git_diff_merge(args: list):
 
 aliases["git-diff-merge"] = _git_diff_merge
 
-def _per_line(args: list, stdin: io.TextIOWrapper):
-	"""
-		Callable alias that you can pass a lambda to to process stdin line-by-line. e.g.:
-		@ cat ./foo.txt | pl @(lambda line: line.split()[2])
-		to get the second whitespace-delimited word of each line.
-	"""
-	callback: typing.Callable[[str], str] = args[0]
-	output = "\n".join([str(callback(line)) for line in stdin])
-	return output
-
-aliases["pl"] = _per_line
-
-def _intext(args: list, stdin: io.TextIOWrapper):
-	callback: typing.Callable[[str], str] = args[0]
-	output = callback(stdin.read())
-	print(output)
-	return output
-
-# Like per-line, but for the entire stdin text at once.
-aliases["intext"] = _intext
-
-# Append a trailing newline, since some commands don't.
-aliases["withnl"] = lambda args, stdin: _intext([print], stdin)
-
 #
 # Datetime convenience functions and types.
 #
@@ -680,9 +656,9 @@ def utcnow():
 	return datetime.now().astimezone(ZoneInfo('UTC'))
 
 # Xontribs in our own dotfiles should be less silent.
-xontrib load sudo_alias
+xontrib load sudo_alias maybe_colorize
 # Uncomment when we determine performance impact.
-#xontrib load zonehacks, prelude
+#xontrib load zonehacks prelude
 
 # xontrib-abbrevs, xonsh-direnv, xontrib-term-integrations, xontrib-broot
 xontrib load -s abbrevs, direnv, term_integration, broot
