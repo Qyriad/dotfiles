@@ -30,8 +30,6 @@
 	# networking.proxy.default = "http://user:password@proxy:port/";
 	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-	services.tailscale.enable = lib.mkForce false;
-
 	# Enable networking
 	networking.networkmanager.enable = true;
 
@@ -81,9 +79,13 @@
 	# Or disable the firewall altogether.
 	# networking.firewall.enable = false;
 
-	systemd.services.tailscale.enable = lib.mkForce false;
 	#networking.networkmanager.dns = lib.mkForce "systemd-resolved";
 	#services.resolved.enable = lib.mkForce false;
+
+	#services.soju = {
+	#
+	#};
+	#environment.etc."soju.conf".source = config.services.soju.configFile;
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
