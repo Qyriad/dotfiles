@@ -219,7 +219,8 @@
 		kdePackages.konversation
 		qyriad.nixos-khelpcenter
 		systemdgenie
-		kdotool
+		# Rustc deny-by-default broke it, for now.
+		#kdotool
 		kid3-kde
 		# Might want to use this to hack some idle detection scripts or something.
 		#awatcher
