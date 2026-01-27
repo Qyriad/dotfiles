@@ -50,7 +50,6 @@
 	programs.bash.completion.enable = true;
 	programs.nix-index.enable = true;
 	programs.tmux.enable = true;
-	services.nixseparatedebuginfod2.enable = true;
 
 	programs.gnupg.agent = {
 		enable = lib.mkForce false;
