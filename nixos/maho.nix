@@ -16,8 +16,6 @@
 	networking.computerName = "Maho";
 	networking.localHostName = "Maho";
 
-	#programs.neovim.enable = true;
-
 	nix = {
 		settings = {
 			experimental-features = [
