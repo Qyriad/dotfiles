@@ -274,13 +274,6 @@ function on_lsp_attach(bufnr, client_id)
 
 	require("lsp_basics").make_lsp_commands(client, bufnr)
 
-	vim.lsp.completion.enable(true, client.id, bufnr, {
-		autotrigger = true,
-		convert = function(item)
-			return vim.g.lsp_completion_convert_func(item)
-		end,
-	})
-
 	-- The LSP-provided tagfunc causes more problems than it solves.
 	-- It takes precedence over tag files, and if we *have* tag files in a workspace where we have LSP,
 	-- then there's probably something the tags are giving us that LSP is not.
