@@ -90,7 +90,9 @@ nnoremap <leader>tT <Cmd>Telescope lsp_type_definitions<CR>
 nnoremap <leader>a <Cmd>call v:lua.vim.lsp.buf.code_action()<CR>
 nnoremap <leader>ca <Cmd> call v:lua.vim.lsp.buf.code_action()<CR>
 nnoremap <leader>tw <Cmd>Telescope lsp_dynamic_workspace_symbols<CR>
-nnoremap <leader>e <Cmd>call v:lua.vim.diagnostic.open_float()<CR>
+
+" For <leader>e, show the floating window for any severity.
+nnoremap <leader>e <Cmd>lua vim.diagnostic.open_float({ severity = { min = vim.diagnostic.severity.HINT } })<CR>
 nnoremap <leader>td <Cmd>Telescope diagnostics<CR>
 nnoremap <leader>tr <Cmd>Telescope lsp_references<CR>
 lua vim.g.diagnostic_severity = { min = vim.diagnostic.severity.WARN }
