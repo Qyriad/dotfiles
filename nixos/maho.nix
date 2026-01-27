@@ -42,6 +42,11 @@
 		};
 	};
 
+	system.keyboard = {
+		enableKeyMapping = true;
+		remapCapsLockToEscape = true;
+	};
+
 	programs.bash.completion.enable = true;
 
 	programs.gnupg.agent = {
