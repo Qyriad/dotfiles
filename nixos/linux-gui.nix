@@ -146,7 +146,7 @@
 		imagemagick
 		(lib.getBin x264)
 		(lib.getBin x265)
-		aegisub
+		qyriad.aegisub
 		cifs-utils
 		nfs-utils
 		ntfs3g
