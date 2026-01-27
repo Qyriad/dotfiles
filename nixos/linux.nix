@@ -255,7 +255,7 @@
 		group = "users";
 		source = lib.getExe' pkgs.util-linux "dmesg";
 		capabilities = "cap_syslog+ep";
-		permissions = "u+r,g+rx,o+r";
+		permissions = "u+rx,g+rx,o+r";
 	};
 
 	boot.kernelModules = lib.optionals config.package-groups.music-production.enable [
