@@ -67,12 +67,6 @@
 			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
 		};
 
-		systemdgenie = prev.systemdgenie.overrideAttrs (prev: {
-			cmakeFlags = prev.cmakeFlags or [ ] ++ [
-				"-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-			];
-		});
-
 		kdePackages = prev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 			# Ripples to:
 			# - kdeconnect-kde
