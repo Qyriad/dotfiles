@@ -23,9 +23,14 @@ in
 		};
 
 		system.activationScripts."99-mount-usr" = {
-			deps = [ "stdio" "usrbinenv" "var" "etc" "specialfs" "binsh" ];
+			deps = [ "stdio" "usrbinenv" "var" "etc" "specialfs" "binsh" "users" "groups" "agenix" "modprobe" ];
 			supportsDryActivation = true;
 			text = pkgs.replaceVars ./mount-usr-mount.sh { inherit MOUNT; } |> builtins.readFile;
 		};
+
+		#fileSystems."/usr" = {
+		#	device = "/run/current-system";
+		#	options = [ "bind" "x-systemd.wants=multi-user.target" "x-systemd.after=multi-user.target" "nofail" ];
+		#};
 	};
 }
