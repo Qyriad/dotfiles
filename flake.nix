@@ -243,6 +243,10 @@
 				];
 				keyleth = Keyleth;
 
+				Maho = mkConfig "x86_64-darwin" [
+					./nixos/maho.nix
+				];
+
 				Sodachi = mkConfig "aarch64-darwin" [
 					./nixos/sodachi.nix
 					inputs.mac-app-util.darwinModules.default
