@@ -49,6 +49,7 @@
 
 	programs.bash.completion.enable = true;
 	programs.nix-index.enable = true;
+	programs.tmux.enable = true;
 	services.nixseparatedebuginfod2.enable = true;
 
 	programs.gnupg.agent = {
@@ -60,10 +61,6 @@
 		casks = [
 			"wezterm"
 		];
-	};
-
-	programs.tmux = {
-		enable = true;
 	};
 
 	environment.enableAllTerminfo = true;
