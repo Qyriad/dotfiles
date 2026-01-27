@@ -107,7 +107,8 @@
 
 	#environment.enableDebugInfo = true;
 	environment.extraOutputsToInstall = [
-		"dev"
+		# Apparently this is how to get dig in our system path.
+		"dnsutils"
 	];
 
 	systemd.network = {
