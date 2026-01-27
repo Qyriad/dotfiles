@@ -39,6 +39,28 @@ in lib.makeScope qpkgs.newScope (self: {
 
 	llvm-keg = self.callPackage ./pkgs/llvm-keg.nix { };
 
+	gcc-keg = self.callInline ({
+		lib,
+		stdenv,
+		runCommandMinimal,
+		lndir,
+	}: runCommandMinimal "gcc-keg" {
+		nativeBuildInputs = [ lndir ];
+
+		gcc = stdenv.cc;
+		ld = stdenv.cc.bintools;
+		libc = stdenv.cc.libc;
+
+		outOpt = "${builtins.placeholder "out"}/opt/gcc";
+
+		meta.description = "stdenv tools not in /bin";
+	} <| lib.dedent ''
+		mkdir -vp "$outOpt"
+		lndir -silent "$gcc" "$outOpt"
+		lndir -silent "$ld" "$outOpt"
+		lndir -silent "$libc" "$outOpt"
+	'');
+
 	/** We've been running this command from our shell history for aaaages
 	grcc /run/current-system/sw/bin/journalctl -efb0 | rg -v 'Trying to replace notification with id' --line-buffered | spacer --after 10 --stopwatch -w 90
 	*/

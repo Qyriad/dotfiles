@@ -17,6 +17,7 @@
 
 	environment.systemPackages = with pkgs; [
 		qyriad.llvm-keg
+		qyriad.gcc-keg
 		#llvmPackages_latest.clangUseLLVM
 		#llvmPackages_latest.lld
 		qyriad.log2compdb
