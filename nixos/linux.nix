@@ -92,7 +92,7 @@
 		enable = true;
 		#useRoutingFeatures = "both";
 	};
-	systemd.services.tailscaled.serviceConfig = {
+	systemd.services.tailscaled.serviceConfig = lib.mkIf config.services.tailscale.enable {
 		# Tailscaled is a biiiit too logspamy, and it's pretty stable.
 		# We'll shove its logs to /var/log instead of our system journal.
 		StandardOutput = "file:/var/log/tailscaled.log";
