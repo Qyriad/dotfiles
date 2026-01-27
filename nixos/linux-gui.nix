@@ -281,6 +281,13 @@
 		};
 	};
 
+	security.wrappers.kdeconnectd = {
+		owner = "root";
+		group = "root";
+		capabilities = "cap_net_admin=ep";
+		source = lib.getExe' config.programs.kdeconnect.package "kdeconnectd";
+	};
+
 	# Used for noise suppression.
 	programs.noisetorch.enable = true;
 

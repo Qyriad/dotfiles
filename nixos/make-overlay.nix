@@ -126,6 +126,13 @@
 					pkgFinal._showmodulepatch
 				];
 			});
+
+			kdeconnect-kde = kdePrev.kdeconnect-kde.overrideAttrs (pkgFinal: pkgPrev: {
+				postInstall = lib.trim ''
+					substituteInPlace "$out/etc/xdg/autostart/org.kde.kdeconnect.daemon.desktop" \
+						--replace-fail "Exec=$out/bin/kdeconnectd" "Exec=/run/wrappers/bin/kdeconnectd"
+				'';
+			});
 		});
 
 		# FIXME: this is a pretty weird way of overriding the final OBS...
