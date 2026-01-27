@@ -113,7 +113,7 @@ function! DiagnosticsComplete(arglead, cmdline, cursorpos) abort
 	return ["error", "warn", "info", "hint"]
 endfunction
 
-luafile ./diag.lua
+source $CONFIGPATH/diag.lua
 
 "command! -complete=customlist,DiagnosticsComplete -nargs=? Diagnostics call v:lua._cmd_diagnostics_impl(<f-args>)
 ]]
