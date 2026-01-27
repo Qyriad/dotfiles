@@ -113,6 +113,8 @@ function! DiagnosticsComplete(arglead, cmdline, cursorpos) abort
 	return ["error", "warn", "info", "hint"]
 endfunction
 
+luafile ./diag.lua
+
 "command! -complete=customlist,DiagnosticsComplete -nargs=? Diagnostics call v:lua._cmd_diagnostics_impl(<f-args>)
 ]]
 
@@ -209,12 +211,6 @@ end
 --end)
 
 vim.lsp.enable(lsp_modules)
-
-vim.diagnostic.config({
-	signs = {
-		severity = vim.g.diagnostic_severity,
-	},
-})
 
 --lsp_vim_capabilities = vim.lsp.protocol.make_client_capabilities()
 
