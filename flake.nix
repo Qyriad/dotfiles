@@ -118,7 +118,6 @@
 				] ++ lib.optionals system'.isLinux [
 					inputs.lix-module.nixosModules.default
 				] ++ lib.optionals system'.isDarwin [
-					inputs.mac-app-util.darwinModules.default
 					(inputs.lix-module.darwinModules.default or {
 						nixpkgs.overlays = let
 							lix-overlay = inputs.lix-module.overlays.default;
@@ -234,16 +233,19 @@
 			darwinConfigurations = rec {
 				Aigis = mkConfig "aarch64-darwin" [
 					./nixos/darwin.nix
+					inputs.mac-app-util.darwinModules.default
 				];
 				aigis = Aigis;
 
 				Keyleth = mkConfig "aarch64-darwin" [
 					./nixos/keyleth.nix
+					inputs.mac-app-util.darwinModules.default
 				];
 				keyleth = Keyleth;
 
 				Sodachi = mkConfig "aarch64-darwin" [
 					./nixos/sodachi.nix
+					inputs.mac-app-util.darwinModules.default
 				];
 				sodachi = Sodachi;
 			};
