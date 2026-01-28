@@ -43,6 +43,8 @@
 	hass-client,
 	multidict,
 	evdev,
+	pyusb,
+	pyudev,
 }: stdlib.mkSimpleEnv (self: assert __checks; {
 	extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
 		src = xonsh-source;
@@ -89,11 +91,13 @@
 		pygobject3
 		gtk4
 		evdev
+		pyusb
+		pyudev
 	] ++ lib.concatLists [
 		self.xonsh.propagatedBuildInputs
 	];
 
-	extraAttrs.pythonShebang = "#!" + (builtins.placeholder "out") + "/bin/python3";
+	extraAttrs.pythonShebang = "#!" + (placeholder "out") + "/bin/python3";
 
 	# FIXME: patch all Python things in /bin
 	postInstall = lib.trim ''
