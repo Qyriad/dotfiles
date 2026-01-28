@@ -42,6 +42,7 @@
 	keyring,
 	hass-client,
 	multidict,
+	evdev,
 }: stdlib.mkSimpleEnv (self: assert __checks; {
 	extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
 		src = xonsh-source;
@@ -87,6 +88,7 @@
 		jeepney
 		pygobject3
 		gtk4
+		evdev
 	] ++ lib.concatLists [
 		self.xonsh.propagatedBuildInputs
 	];
