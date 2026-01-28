@@ -1,105 +1,105 @@
 {
-  lib,
-  stdenvNoCC,
-  xonsh-source,
-  stdlib,
-  python3Packages,
-  python-pipe,
-  xontrib-abbrevs,
-  xonsh-direnv,
-  # FIXME: requires a patch to sitecustomize.py
-  gobject-introspection,
-  gtk3,
-  gtk4,
-  glib,
-  graphene,
+	lib,
+	stdenvNoCC,
+	xonsh-source,
+	stdlib,
+	python3Packages,
+	python-pipe,
+	xontrib-abbrevs,
+	xonsh-direnv,
+	# FIXME: requires a patch to sitecustomize.py
+	gobject-introspection,
+	gtk3,
+	gtk4,
+	glib,
+	graphene,
 
-  # Setting `programs.xonsh.package` to this causes NixOS to call
-  # `.override { extraPackages = }` on us.
-  extraPackages ? lib.const [ ],
-  __checks ? extraPackages python3Packages == [ ],
+	# Setting `programs.xonsh.package` to this causes NixOS to call
+	# `.override { extraPackages = }` on us.
+	extraPackages ? lib.const [ ],
+	__checks ? extraPackages python3Packages == [ ],
 }: lib.callWith' python3Packages ({
-  unidecode,
-  psutil,
-  requests,
-  jsondiff,
-  setproctitle,
-  httpx,
-  tqdm,
-  pip,
-  pydbus,
-  sdbus,
-  jeepney,
-  pygobject3,
-  ds-store,
-  xmltodict,
-  python-box,
-  matplotlib,
-  pillow,
-  pytesseract,
-  beautifulsoup4,
-  python-fontconfig,
-  keyring,
+	unidecode,
+	psutil,
+	requests,
+	jsondiff,
+	setproctitle,
+	httpx,
+	tqdm,
+	pip,
+	pydbus,
+	sdbus,
+	jeepney,
+	pygobject3,
+	ds-store,
+	xmltodict,
+	python-box,
+	matplotlib,
+	pillow,
+	pytesseract,
+	beautifulsoup4,
+	python-fontconfig,
+	keyring,
 	hass-client,
 	multidict,
 }: stdlib.mkSimpleEnv (self: assert __checks; {
-  extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
-    src = xonsh-source;
+	extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
+		src = xonsh-source;
 
 		disabledTests = prev.disabledTests ++ [
 			# idk why this fails in the nix build but don't feel like debugging it.
 			"test_on_command_not_found_replacement"
 		];
-  });
+	});
 
-  layers = [
-    self.xonsh
-    python-pipe
-    xontrib-abbrevs
-    xonsh-direnv
+	layers = [
+		self.xonsh
+		python-pipe
+		xontrib-abbrevs
+		xonsh-direnv
 
-    unidecode
-    psutil
-    requests
-    jsondiff
-    setproctitle
-    httpx
-    tqdm
-    pip
-    ds-store
-    xmltodict
-    python-box
-    matplotlib
-    pillow
-    pytesseract
-    beautifulsoup4
-    # Nixpkgs broke it.
-    #python-fontconfig
-    keyring
-    #glib
-    #graphene
-    #gobject-introspection
+		unidecode
+		psutil
+		requests
+		jsondiff
+		setproctitle
+		httpx
+		tqdm
+		pip
+		ds-store
+		xmltodict
+		python-box
+		matplotlib
+		pillow
+		pytesseract
+		beautifulsoup4
+		# Nixpkgs broke it.
+		#python-fontconfig
+		keyring
+		#glib
+		#graphene
+		#gobject-introspection
 		hass-client
 		multidict
-  ] ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [
-    pydbus
-    sdbus
-    jeepney
-    pygobject3
-    gtk4
-  ] ++ lib.concatLists [
-    self.xonsh.propagatedBuildInputs
-  ];
+	] ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [
+		pydbus
+		sdbus
+		jeepney
+		pygobject3
+		gtk4
+	] ++ lib.concatLists [
+		self.xonsh.propagatedBuildInputs
+	];
 
-  extraAttrs.pythonShebang = "#!" + (builtins.placeholder "out") + "/bin/python3";
+	extraAttrs.pythonShebang = "#!" + (builtins.placeholder "out") + "/bin/python3";
 
-  # FIXME: patch all Python things in /bin
-  postInstall = ''
-    sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh"
-    sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh-cat"
-    sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh-uname"
-    sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh-uptime"
-  '';
+	# FIXME: patch all Python things in /bin
+	postInstall = lib.trim ''
+		sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh"
+		sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh-cat"
+		sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh-uname"
+		sed --in-place -e "1c$pythonShebang" "$out/bin/xonsh-uptime"
+	'';
 
-  extraAttrs.meta.mainProgram = "xonsh";
+	extraAttrs.meta.mainProgram = "xonsh";
 }))
