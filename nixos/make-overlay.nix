@@ -144,6 +144,18 @@
 			};
 		});
 
+		# Update to 4.2.495 broke it for us.
+		# And wrapAppImage is not `lib.mkOverrideable`'d, so overriding the source is a pain in the ass.
+		beeper = let
+			nixpkgs-beeper = final.fetchFromGitHub {
+				owner = "NixOS";
+				repo = "nixpkgs";
+				# Commit before the update.
+				rev = "5d361f1d1d9861315db845a33fa2ac6c77f075ef";
+				hash = "sha256-5mqcNC1Cg9P6WKLHmpcdrZrJgWeu38fuUODLLcUmD8s=";
+			};
+		in final.callPackage (nixpkgs-beeper + "/pkgs/by-name/be/beeper/package.nix") { };
+
 		vesktop = prev.vesktop.overrideAttrs (prev: {
 			desktopItems = lib.forEach prev.desktopItems (item: item.override {
 				exec = lib.concatStringsSep " " [
