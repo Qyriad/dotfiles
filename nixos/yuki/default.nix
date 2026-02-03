@@ -11,6 +11,7 @@
 		../resources.nix
 		../mount-shizue.nix
 		../modules/mount-usr.nix
+		./elgato.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
