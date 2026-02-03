@@ -50,6 +50,8 @@
 
 	networking.hostName = "Yuki";
 
+	networking.useNetworkd = true;
+
 	environment.etc."xkb" = {
 		enable = true;
 		source = pkgs.qyriad.xkeyboard_config-patched-inet;
@@ -65,6 +67,8 @@
 		users = config.modlib.usersInGroup "users" |> lib.mapAttrsToList (_: user: user.name);
 	};
 	services.ratbagd.enable = true;
+
+	services.printing.enable = lib.mkForce false;
 
 	# Options from our custom NixOS module in ./resources.nix
 	resources = {
@@ -165,6 +169,10 @@
 		};
 	};
 
+	services.inputplumber = {
+
+	};
+
 	services.samba = {
 		enable = true;
 		openFirewall = true;
@@ -228,6 +236,7 @@
 		qyriad.unfuck-seat
 		qyriad.color-journal
 		qyriad.glances
+		footswitch
 	];
 
 	# This value determines the NixOS release from which the default

@@ -25,6 +25,7 @@ return qyriad.nested_tbl {
 			reportUnknownMemberType = SEVERITY.INFO,
 			reportUnknownArgumentType = SEVERITY.INFO,
 			reportWildcardImportFromLibrary = SEVERITY.INFO,
+			reportReturnType = SEVERITY.WARN,
 		},
 	},
 }

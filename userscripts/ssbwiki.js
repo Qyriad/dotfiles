@@ -4,6 +4,15 @@
 @match       *://*.ssbwiki.com/*
 ==/UserStyle== */
 
+const stylesheet = `
+/* Make the table image captions small so they don't disrupt the table cell sizes. */
+figure.table-link {
+	font-size: xx-small;
+	line-height: normal;
+	margin: 0 0 0 0;
+}
+`;
+
 // Look for <td> elements which contain a single <a> which themselves contain an <img>
 for (const td of document.querySelectorAll("table.wikitable td:has(> a > img)").values()) {
 	// Verify that we indeed only have 1 <a> in this <td>.

@@ -11,5 +11,10 @@ return qyriad.nested_tbl {
 	['settings.nixd'] = {
 		['nixos.expr'] = "(import ~/.).nixos.options",
 		--['nixpkgs.expr'] = [[import <nixpkgs> { overlays = [ (builtins.getFlake "qyriad").overlays.default ]}]],
+		diagnostic = {
+			suppress = {
+				"sema-primop-unknown",
+			},
+		},
 	},
 }

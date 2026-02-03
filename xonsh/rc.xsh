@@ -317,6 +317,7 @@ def _nix_tmp(pkg: list):
 		ls --tree @(out_path)
 
 aliases['nix-tmp'] = _nix_tmp
+maybe_abbrevs['nds'] = 'niz develop -f ./shell.nix'
 # strace --color=always --silence=attach,exit --signal=none -y -e read,write -s999
 # strace handy arguments:
 # -z / --successful-only
@@ -338,6 +339,7 @@ aliases['stracey'] = [
 	'--signal=none',
 	'--tips=id:random,format:compact',
 ]
+# trace=symlink,rename,creat,open,chmod,chown,chown32,copy_file_range,fchmod,fchmodat,fchown,fchown32,fchown32,fcntl,fcntl64,fsetxattr,ftruncate,ftruncate64,ioctl,lchown,lchown32,link,linkat,lsetxattr,mkdir,mkdirat,mknod,mknodat,rename,renameat,renameat2,removexattr,rmdir,setxattr,symlink,symlinkat,truncate,truncate64,unlink,unlinkat
 aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--signal=!all', '--successful-only', '--follow-forks', '--seccomp-bpf', '-e', 'execve']
 
 # objdump handy arguments:
@@ -355,6 +357,9 @@ $YTDLP_YOUTUBE = '%(channel)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %
 $YTDLP_TWITCH  = '%(uploader)s/%(upload_date>%Y-%m-%d,release_date>%Y-%m-%d)s - %(title)s [%(id)s].%(ext)s'
 
 $FFMPEG_MUX_ONLY = shlex.split("-map_metadata 0 -map_chapters 0 -map 0 -c:v copy -c:a copy -c:s copy")
+
+$CMAKE_DEFAULT = shlex.split("-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo")
+#$CMAKE_MULTI = shlex.split("-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_DEFAULT_BUILD_TYPE=RelWithDebInfo")
 
 def _wine32(args):
 	overrides = {
@@ -642,6 +647,8 @@ def _git_diff_merge(args: list):
 
 aliases["git-diff-merge"] = _git_diff_merge
 
+aliases['verynice'] = shlex.split('ionice -c 3 nice')
+aliases['lspid'] = 'ps -A --no-headers -o pid'
 #
 # Datetime convenience functions and types.
 #
@@ -666,7 +673,10 @@ xontrib load -s abbrevs, direnv, term_integration, broot
 
 if "abbrevs" in globals():
 	abbrevs["|&"] = "2>&1 |"
-	abbrevs['procinfo'] = 'ps -wwc -o user,pid,ppid,ucomm,state,%mem=MEM%,%cpu=CPU%,args -p'
+	#abbrevs['procinfo'] = 'ps -wwc -o user,pid,ppid,ucomm,state,%mem=MEM%,%cpu=CPU%,args -p'
+	abbrevs['procinfo'] = 'ps -wwc -o user,pid,ppid,ucomm,state,%mem=MEM%,%cpu=CPU%,nice,pgid,sess,args -p'
+else:
+	aliases['procinfo'] = 'ps -wwc -o user,pid,ppid,ucomm,state,%mem=MEM%,%cpu=CPU%,nice,pgid,sess,args -p'
 
 #xontrib load output_search
 #xontrib load whole_word_jumping

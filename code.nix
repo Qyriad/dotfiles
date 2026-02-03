@@ -76,7 +76,7 @@
       pkgs.cargo-nextest
       pkgs.gnuplot
       pkgs.mdbook
-      pkgs.mdbook-alerts
+      #pkgs.mdbook-alerts
       pkgs.mdbook-mermaid
       pkgs.mdbook-katex
       pkgs.mdbook-linkcheck

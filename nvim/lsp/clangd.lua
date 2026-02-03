@@ -4,6 +4,7 @@ clangd_cmd = {
 	'clangd',
 	'--rename-file-limit=100',
 	'--enable-config',
+	'--clang-tidy',
 	'--query-driver=**/*',
 }
 

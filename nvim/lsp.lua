@@ -140,8 +140,8 @@ if not vim.fn.has("nvim-0.11.0") then
 	vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help, { })
 end
 
-vim.lsp.log = require('vim.lsp.log')
-vim.lsp.protocol = require('vim.lsp.protocol')
+--vim.lsp.log = require('vim.lsp.log')
+--vim.lsp.protocol = require('vim.lsp.protocol')
 vim.lsp.set_log_level(vim.lsp.log_levels.INFO)
 
 lsp_filetypes = {
@@ -176,7 +176,8 @@ local lsp_modules = {
 	'vimls',
 	'luals',
 	'clangd',
-	'nil',
+	--'nil',
+	'nixd',
 	'mesonlsp',
 	'basedpyright',
 	'taplo',

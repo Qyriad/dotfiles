@@ -40,11 +40,16 @@ endfunction
 
 lua << EOF
 function lsp_status_info()
-	if lsp_status ~= nil then
-		return lsp_status.status()
-	else
-		return ""
-	end
+	--if lsp_status ~= nil then
+	--	return lsp_status.status()
+	--else
+	--	return ""
+	--end
+	--local line = vim.split(vim.lsp.status(), "\n", { trimempty = true })[1] or ""
+	--return line
+	--local line = vim.lsp.status() or ""
+	--return require('plenary.strings').truncate(line, 50)
+	return ""
 end
 
 --LAST_PROGRESS = { }

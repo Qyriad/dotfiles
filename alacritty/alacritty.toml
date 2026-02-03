@@ -5,7 +5,7 @@ cyan = "0x54ced6"
 green = "0x9ec400"
 magenta = "0xb77ee0"
 red = "0xff3334"
-white = "0xffffff"
+white = "0xffddff"
 yellow = "0xe7c547"
 
 [colors.normal]
