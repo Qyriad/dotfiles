@@ -7,13 +7,20 @@
 {
 	services.udev.packages = let
 		elgato-rules = pkgs.qyriad.runCommandMinimal "elgato-rules" {
-			src = ./70-elgato.rules;
+			src = ./80-elgato.rules;
 			outDir = (placeholder "out") + "/lib/udev/rules.d";
+			systemdRun = lib.getExe' pkgs.systemd "systemd-run";
+			notifySend = lib.getExe' pkgs.libnotify "notify-send";
 		} <| lib.dedent ''
-			install --verbose -Dm644 "$src" "--target-directory=$outDir"
+			cp "$src" ./80-elgato.rules
+			substituteInPlace "./80-elgato.rules" \
+				--replace-fail "@SYSTEMD_RUN@" "$systemdRun" \
+				--replace-fail "@NOTIFY_SEND@" "$notifySend"
+			install --verbose -Dm644 "./80-elgato.rules" "--target-directory=$outDir"
 		'';
 	in [
 		elgato-rules
+		pkgs.systemd
 	];
 
 	systemd.services.ffcap-elgato = {
