@@ -664,7 +664,7 @@ def utcnow():
 	return datetime.now().astimezone(ZoneInfo('UTC'))
 
 # Xontribs in our own dotfiles should be less silent.
-xontrib load sudo_alias maybe_colorize
+xontrib load sudo_alias maybe_colorize capabilityprompt
 # Uncomment when we determine performance impact.
 #xontrib load zonehacks prelude
 
