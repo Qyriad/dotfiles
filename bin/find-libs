@@ -5,6 +5,7 @@ import shlex
 import os
 from pathlib import Path
 import sys
+import subprocess
 
 NIXOS_OPT_LLVM = Path('/run/current-system/sw/opt/llvm/bin/cc')
 
@@ -19,6 +20,11 @@ if not CC:
 if not CC:
     raise ValueError("cannot find C compiler; set $CC to override")
 
+cc_bin = Path(CC).parent
+path = os.environ['PATH'].split(os.pathsep)
+path.insert(0, cc_bin.as_posix())
+os.environ['PATH'] = os.pathsep.join(path)
+
 libraries = sys.argv[1:]
 if not libraries:
     raise ValueError("usage: find-lib <FOOLIB>")
@@ -26,7 +32,8 @@ if not libraries:
 args = [
     CC,
     "-Wl,-t",
-    "-o", "/dev/null",
+    # GNU ld complains if both input and output file are /dev/null
+    "-o", "/dev/zero",
     "/dev/null",
     "-shared",
     "-nostdlib",
@@ -34,4 +41,23 @@ args = [
     *shlex.split(os.getenv("CFLAGS", "")),
 ]
 
-os.execv(CC, args)
+proc = subprocess.run(
+    args,
+    executable=CC,
+    stdout=subprocess.PIPE,
+    encoding='utf-8',
+    universal_newlines=True,
+    timeout=10.0,
+)
+if proc.returncode:
+    print(proc.stdout, flush=True)
+    sys.exit(proc.returncode)
+
+lines = proc.stdout.splitlines()
+try:
+    # GNU ld includes the input source file as well as libraries.
+    lines.remove("/dev/null")
+except ValueError:
+    pass
+
+print('\n'.join(lines), flush=True)
