@@ -31,43 +31,53 @@
 	}, # getScope
 
 }: let
-	overlay = final: prev: let
-		availableOnHost = lib.meta.availableOn final.stdenv.hostPlatform;
+	overlay = pkgsFinal: pkgsPrev: let
+		availableOnHost = lib.meta.availableOn pkgsFinal.stdenv.hostPlatform;
 	in {
 		qyriad = getScope {
-			pkgs = final;
-			lib = prev.lib;
-			inherit (final) qpkgs;
+			pkgs = pkgsFinal;
+			lib = pkgsPrev.lib;
+			inherit (pkgsFinal) qpkgs;
 		};
 
 		qpkgs = import qyriad-nur {
-			pkgs = final;
-			lib = prev.lib;
+			pkgs = pkgsFinal;
+			lib = pkgsPrev.lib;
 		};
 
-		inherit (final.qpkgs) nurLib;
+		inherit (pkgsFinal.qpkgs) nurLib;
 
 		lib = import qyriad-nur {
 			mode = "lib";
-			inherit (prev) lib;
+			inherit (pkgsPrev) lib;
 		};
 
-		qlib = final.qyriad.qlib;
+		qlib = pkgsFinal.qyriad.qlib;
+
+		nix = (pkgsPrev.nix.override {
+			capnproto = pkgsPrev.capnproto.overrideAttrs (prev: {
+				separateDebugInfo = false;
+				dontStrip = true;
+			});
+		}).overrideAttrs (prev: {
+			separateDebugInfo = false;
+			dontStrip = true;
+		});
 
 		# Nil HEAD has support for pipe operator.
-		nil = (prev.nil.override { nix = final.lix; }).overrideAttrs {
+		nil = (pkgsPrev.nil.override { nix = pkgsFinal.lix; }).overrideAttrs {
 			src = nil-source;
-			cargoDeps = final.rustPlatform.importCargoLock {
+			cargoDeps = pkgsFinal.rustPlatform.importCargoLock {
 				lockFile = nil-source + "/Cargo.lock";
 			};
 		};
 
-		lnav = prev.lnav.override {
+		lnav = pkgsPrev.lnav.override {
 			# Nixpkgs forgot to make this dependency conditional on not-Darwin.
-			gpm = lib.optionalDrvAttr (availableOnHost prev.gpm) prev.gpm;
+			gpm = lib.optionalDrvAttr (availableOnHost pkgsPrev.gpm) pkgsPrev.gpm;
 		};
 
-		kdePackages = prev.kdePackages.overrideScope (kdeFinal: kdePrev: {
+		kdePackages = pkgsPrev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 			# Ripples to:
 			# - kdeconnect-kde
 			# - plasma-pa
@@ -130,14 +140,14 @@
 		});
 
 		# FIXME: this is a pretty weird way of overriding the final OBS...
-		wrapOBS = prev.wrapOBS.override {
-			obs-studio = final.qpkgs.obs-studio-unwrapped;
+		wrapOBS = pkgsPrev.wrapOBS.override {
+			obs-studio = pkgsFinal.qpkgs.obs-studio-unwrapped;
 		};
 
 		# Our license only covers Bitwig 5.2.7.
-		bitwig-studio5-unwrapped = prev.bitwig-studio5-unwrapped.overrideAttrs (pkgFinal: pkgPrev: {
+		bitwig-studio5-unwrapped = pkgsPrev.bitwig-studio5-unwrapped.overrideAttrs (pkgFinal: pkgPrev: {
 			version = "5.2.7";
-			src = final.fetchurl {
+			src = pkgsFinal.fetchurl {
 				name = "bitwig-studio-${pkgFinal.version}.deb";
 				url = "https://www.bitwig.com/dl/Bitwig%20Studio/${pkgFinal.version}/installer_linux/";
 				hash = "sha256-Tyi7qYhTQ5i6fRHhrmz4yHXSdicd4P4iuF9FRKRhkMI=";
@@ -147,16 +157,16 @@
 		# Update to 4.2.495 broke it for us.
 		# And wrapAppImage is not `lib.mkOverrideable`'d, so overriding the source is a pain in the ass.
 		beeper = let
-			nixpkgs-beeper = final.fetchFromGitHub {
+			nixpkgs-beeper = pkgsFinal.fetchFromGitHub {
 				owner = "NixOS";
 				repo = "nixpkgs";
 				# Commit before the update.
 				rev = "5d361f1d1d9861315db845a33fa2ac6c77f075ef";
 				hash = "sha256-5mqcNC1Cg9P6WKLHmpcdrZrJgWeu38fuUODLLcUmD8s=";
 			};
-		in final.callPackage (nixpkgs-beeper + "/pkgs/by-name/be/beeper/package.nix") { };
+		in pkgsFinal.callPackage (nixpkgs-beeper + "/pkgs/by-name/be/beeper/package.nix") { };
 
-		vesktop = prev.vesktop.overrideAttrs (prev: {
+		vesktop = pkgsPrev.vesktop.overrideAttrs (prev: {
 			desktopItems = lib.forEach prev.desktopItems (item: item.override {
 				exec = lib.concatStringsSep " " [
 					"vesktop"
@@ -171,7 +181,7 @@
 			});
 		});
 
-		obsidian = prev.obsidian.overrideAttrs (prev: {
+		obsidian = pkgsPrev.obsidian.overrideAttrs (prev: {
 			desktopItem = prev.desktopItem.override {
 				exec = lib.concatStringsSep " " [
 					"obsidian"
@@ -185,7 +195,7 @@
 			};
 		});
 
-		grc = prev.grc.overrideAttrs (prev: {
+		grc = pkgsPrev.grc.overrideAttrs (prev: {
 			permitUserSite = true;
 			makeWrapperArgs = prev.makeWrapperArgs or [ ] ++ [
 				"--set-default" "PYTHONUNBUFFERED" "1"
