@@ -22,11 +22,11 @@ in
 			text = pkgs.replaceVars ./mount-usr-unmount.sh { inherit MOUNTPOINT UMOUNT; } |> builtins.readFile;
 		};
 
-		system.activationScripts."99-mount-usr" = {
-			deps = [ "stdio" "usrbinenv" "var" "etc" "specialfs" "binsh" "users" "groups" "agenix" "modprobe" ];
-			supportsDryActivation = true;
-			text = pkgs.replaceVars ./mount-usr-mount.sh { inherit MOUNT; } |> builtins.readFile;
-		};
+		#system.activationScripts."99-mount-usr" = {
+		#	deps = [ "stdio" "usrbinenv" "var" "etc" "specialfs" "binsh" "users" "groups" "agenix" "modprobe" ];
+		#	supportsDryActivation = true;
+		#	text = pkgs.replaceVars ./mount-usr-mount.sh { inherit MOUNT; } |> builtins.readFile;
+		#};
 
 		#fileSystems."/usr" = {
 		#	device = "/run/current-system";
