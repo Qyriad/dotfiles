@@ -9,14 +9,18 @@ from typing import cast
 import os
 import sys
 
+def prepend(var_name: str, elem: str):
+    old = os.getenv(var_name, '').split(os.pathsep)
+    os.environ[var_name] = os.pathsep.join([elem, *old])
+
 systemctl = shutil.which('systemctl') or os.environ.get('SYSTEMCTL', None)
 if not systemctl:
     raise ValueError("'systemctl' binary not found")
 
 systemctl_lib = Path(systemctl).resolve().parent.parent.joinpath('lib').as_posix()
 
-os.environ['LIBRARY_PATH'] = ':'.join([systemctl_lib, *os.getenv('LIBRARY_PATH', '').split(':')])
-os.environ['LD_LIBRARY_PATH'] = ':'.join([systemctl_lib, *os.getenv('LD_LIBRARY_PATH', '').split(':')])
+prepend('LIBRARY_PATH', systemctl_lib)
+prepend('LD_LIBRARY_PATH', systemctl_lib)
 
 sofile = subprocess.check_output(['find-libs', 'systemd'], encoding='utf-8').strip()
 if not sofile:
@@ -25,7 +29,7 @@ if not sofile:
 libsystemd = cdll.LoadLibrary(sofile)
 
 parser = ArgumentParser("pid-unit")
-parser.add_argument("pids", type=int, nargs=REMAINDER)
+parser.add_argument("pids", type=int, nargs='+')
 args = parser.parse_args()
 pids = cast(list[int], args.pids)
 
