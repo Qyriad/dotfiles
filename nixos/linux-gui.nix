@@ -171,9 +171,9 @@
 		# ceph is broken. again.
 		#qemu_full
 		#qemu-utils
-		xorg.xlsclients
-		xorg.xset # Make OBS shut up.
-		xorg.xcursorgen
+		xlsclients
+		xset # Make OBS shut up.
+		xcursorgen
 		seer
 		qyriad.obs-studio
 		v4l-utils
@@ -225,7 +225,7 @@
 		# Might want to use this to hack some idle detection scripts or something.
 		#awatcher
 		# Symlink the thing that includes the default XCompose files into current-system
-		xorg.libX11
+		libX11
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
