@@ -132,7 +132,6 @@
 		pstree
 		silicon
 		hyperfine
-		nixos-option
 		nix-prefetch
 		qyriad.nix-helpers
 		any-nix-shell
