@@ -51,7 +51,7 @@ in lib.makeScope qpkgs.newScope (self: {
 		ld = stdenv.cc.bintools;
 		libc = stdenv.cc.libc;
 
-		outOpt = "${builtins.placeholder "out"}/opt/gcc";
+		outOpt = "${placeholder "out"}/opt/gcc";
 
 		meta.description = "stdenv tools not in /bin";
 	} <| lib.dedent ''
@@ -258,11 +258,14 @@ in lib.makeScope qpkgs.newScope (self: {
 
 	# binutils without "toolchain" stuff like `ld`, `ar`, etc.
 	binutils-nolink = self.runCommandMinimal "binutils-nolink" {
+		pname = "binutils-wrapper-no-link";
 		inherit (pkgs) binutils;
 		outputs = [ "out" "man" "info" ];
 		binutilsMan = lib.getMan pkgs.binutils;
 		binutilsInfo = lib.getOutput "info" pkgs.binutils;
-		passthru = pkgs.binutils;
+		passthru = pkgs.binutils
+		# `passthru.out` wins against `out`, I guess.
+		|> lib.removeAttrsCalled pkgs.binutils.outputs;
 		commandNames = [
 			"addr2line"
 			"nm"
@@ -273,7 +276,7 @@ in lib.makeScope qpkgs.newScope (self: {
 		];
 	} (lib.dedent ''
 		for name in "${shellArray "commandNames"}"; do
-			install -Dm655 "$binutils/bin/$name" --target-directory "$out/bin/"
+			install -Dm a=rx "$binutils/bin/$name" --target-directory "$out/bin/"
 		done
 
 		cp --reflink=auto -r "$binutilsMan" "$man"
