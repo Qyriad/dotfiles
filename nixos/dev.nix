@@ -31,7 +31,8 @@
 		nil
 		nixd
 		lua-language-server
-		zls
+		# Nixpkgs broke it.
+		#zls
 		mesonlsp
 		bear
 		universal-ctags
