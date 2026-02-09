@@ -46,20 +46,22 @@
 	systemd.user.slices.user-builder.sliceConfig = config.resources.builderSliceConfig;
 
 	# Make Nix builds not OOM my machine please.
-	systemd.services.nix-daemon = {
+	systemd.services."nix-daemon@" = {
 		serviceConfig = {
-			OOMScoreAdjust = "950";
+			#OOMScoreAdjust = "950";
 			Slice = "system-builder.slice";
-			MemoryPressureWatch = "on";
-			ManagedOOMMemoryPressure = "kill";
-			ManagedOOMMemoryPressureLimit = "85%";
-			inherit (config.resources.builderSliceConfig) MemoryHigh MemoryMax;
-			IOWeight = 20;
-			MemoryAccounting = true;
-			IOAccounting = true;
-			# Make the nix-daemon not kill our computer, at all costs.
-			IOSchedulingClass = lib.mkForce "idle";
-			IOSchedulingPriority = lib.mkForce 7; # Lowest priority.
+			#MemoryPressureWatch = "on";
+			#ManagedOOMMemoryPressure = "kill";
+			#ManagedOOMMemoryPressureLimit = "85%";
+			#inherit (config.resources.builderSliceConfig) MemoryHigh MemoryMax;
+			#IOWeight = 20;
+			#MemoryAccounting = true;
+			#IOAccounting = true;
+			## Make the nix-daemon not kill our computer, at all costs.
+			#IOSchedulingClass = lib.mkForce "idle";
+			#IOSchedulingPriority = lib.mkForce 7; # Lowest priority.
+
+			PassEnvironment = "SSH_AUTH_SOCK";
 		};
 	};
 
