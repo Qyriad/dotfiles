@@ -58,6 +58,7 @@
 
 			keep-outputs = true;
 			show-trace = true;
+			keep-going = true;
 
 			sandbox = "relaxed";
 
