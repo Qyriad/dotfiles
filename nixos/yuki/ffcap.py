@@ -54,12 +54,12 @@ def log_file() -> io.TextIOBase:
     return _LOG_FILE
 
 _seen_exceptions = set()
-def write_log(*args, **kwargs):
+def write_log(msg, *args, **kwargs):
     global _seen_exceptions
     try:
         kwargs['file'] = log_file()
         kwargs['flush'] = True
-        print(*args, **kwargs)
+        print(msg, *args, **kwargs)
     except Exception as e:
         msg = str(e)
         if msg not in _seen_exceptions:
@@ -98,7 +98,7 @@ fps_buffer: FpsBuffer = FpsBuffer()
 def _add_fps(fps: float):
     fps_buffer._push(fps)
 
-def _avg_too_low(threshold: float = 45.0) -> bool:
+def _avg_too_low(threshold: float = 58.0) -> bool:
     avg = fps_buffer._avg()
     return avg is not None and avg < threshold
 
@@ -108,8 +108,8 @@ def _avg_too_low(threshold: float = 45.0) -> bool:
     #avg = sum(fps_buffer) / float(len(fps_buffer))
     #return avg < threshold
 
-def _stop_if_fps_too_low(stdout: bytes, threshold: float = 30.0):
-    lines = stdout.decode('utf-8', errors='backslashreplace').splitlines()
+def _stop_if_fps_too_low(text: str, threshold: float = 30.0):
+    lines = text.splitlines()
     try:
         line = next(filter(lambda line: line.startswith('fps='), lines))
     except StopIteration:
@@ -143,15 +143,18 @@ def proxy_to_stdout(file: io.FileIO):
         subprocess.check_call(["systemd-notify", "--ready"], executable=resolve_cmd("systemd-notify"))
         HAS_NOTIFIED = True
 
-    _stop_if_fps_too_low(data)
+    text = data.decode('utf-8', errors='backslashreplace')
+    write_log(text)
+    _stop_if_fps_too_low(text)
 
     if not data:
         raise TimeoutError("no stdout received in 4 seconds")
 
 def proxy_to_stderr(file: io.FileIO):
     data = file.read()
-    for line in data.decode('utf-8').splitlines():
-        pass
+    write_log(data.decode('utf-8'))
+    #for line in data.decode('utf-8').splitlines():
+    #    pass
         #print(f'{DEBUG_PREFIX}{line}')
 
 
@@ -379,13 +382,14 @@ def main():
             events = selector.select(timeout)
             if not events:
                 raise TimeoutError(f"no events within {timeout} seconds")
+            write_log(f"{events=}")
             for key, mask in events:
                 key.data(key.fileobj)
 
         except KeyboardInterrupt:
             print("Killed by CtrlC", flush=True)
             proc.kill()
-            raise
+            sys.exit(0)
 
         except subprocess.TimeoutExpired as e:
             print(f"Timed out: {e}", flush=True)
