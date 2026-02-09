@@ -210,7 +210,7 @@
 
 	programs.wireshark = {
 		enable = true;
-		package = pkgs.wireshark-qt;
+		package = pkgs.wireshark;
 		usbmon.enable = true;
 	};
 	users.users.qyriad.extraGroups = [ "wireshark" ];
