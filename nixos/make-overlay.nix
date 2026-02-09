@@ -54,12 +54,7 @@
 
 		qlib = pkgsFinal.qyriad.qlib;
 
-		nix = (pkgsPrev.nix.override {
-			capnproto = pkgsPrev.capnproto.overrideAttrs (prev: {
-				separateDebugInfo = false;
-				dontStrip = true;
-			});
-		}).overrideAttrs (prev: {
+		nix = pkgsPrev.nix.overrideAttrs (prev: {
 			separateDebugInfo = false;
 			dontStrip = true;
 		});
