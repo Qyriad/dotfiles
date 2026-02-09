@@ -18,12 +18,14 @@
 	# Yes mount /tmp as a tmpfs.
 	boot.tmp.useTmpfs = true;
 
+	nix.nrBuildUsers = 32;
 	nix.settings = {
 		experimental-features = [
 			"cgroups"
 		];
 
 		use-cgroups = true;
+		build-users-group = "nixbld";
 	};
 
 	services.smartd = {
