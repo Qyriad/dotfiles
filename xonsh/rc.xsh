@@ -63,13 +63,21 @@ else:
 	def _prompt_escape():
 		return ""
 
+def _jobs():
+	num_jobs = len(__xonsh__.all_jobs)
+	if not num_jobs:
+		return ""
+	if num_jobs == 1:
+		return f"| (1 job)"
+	return f"| ({num_jobs} jobs)"
 
 $ENABLE_ASYNC_PROMPT = True
 $PROMPT_FIELDS['exit_code'] = exit_code
 $PROMPT_FIELDS['exit_color'] = exit_color
 $PROMPT_FIELDS['shlvl'] = shlvl_diff
 $PROMPT_FIELDS['prompt_escape'] = _prompt_escape
-$TITLE = '{cwd} | {exit_code} | SL {shlvl}'
+$PROMPT_FIELDS['jobs'] = _jobs
+$TITLE = '{cwd} | {exit_code} | SL {shlvl}{jobs}'
 $PROMPT = '{env_name}{GREEN}{user}@{hostname} {PURPLE}{cwd}{INTENSE_CYAN}{curr_branch: ({})}{exit_color} {prompt_end}{RESET} {prompt_escape}'
 $CASE_SENSITIVE_COMPLETIONS = False
 $DYNAMIC_CWD_ELISION_CHAR = "…"
