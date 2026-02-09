@@ -57,7 +57,7 @@
 		nix-eval-jobs
 		colmena
 		rr
-		nixfmt-rfc-style
+		nixfmt
 		nixpkgs-review
 		quickemu
 		gh
