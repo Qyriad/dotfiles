@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import argparse
-from datetime import datetime
+from collections.abc import Sequence
+from datetime import datetime, timedelta
+from dataclasses import dataclass
 import copy
 from pathlib import Path
 from fcntl import fcntl, F_SETFL, F_GETFL
@@ -13,12 +15,47 @@ import shlex
 import shutil
 import subprocess
 import sys
+import textwrap
 import typing
-from typing import Any
+from typing import Any, Self, override
 from zoneinfo import ZoneInfo
 import time
 
 # ffmpeg -progress 'pipe:1' -nostdin -f video4linux2 -framerate 60 -video_size 1920x1080 -input_format yuyv422 -fflags nobuffer -i /dev/v4l/by-id/usb-Elgato_Game_Capture_HD60_S+_0004C809C2000-video-index0 -vf format=yuyv422 -f video4linux2 /dev/video10
+
+@dataclass
+class FfmpegProgress:
+    frame: int
+    fps: float
+    bitrate: int | float | None
+    out_time_us: int
+    out_time_ms: int
+    out_time: timedelta
+    dup_frames: int
+    drop_frames: int
+    speed: float
+    progress: str
+
+    @classmethod
+    def dontcares(cls) -> Sequence[str]:
+        return ["stream_0_0_q"]
+
+    @classmethod
+    def from_output(cls, text: str) -> Self:
+        lines = text.strip().splitlines()
+        all_fields = dict([line.split('=') for line in lines])
+        fields = cls.__dataclass_fields__
+        args = {
+            k: fields[k].type(v)
+            for k, v in all_fields.items()
+            if k in fields.keys()
+        }
+        return cls(**args)
+
+def maybe_pluralize(word: str, amount: int | float) -> str:
+    if amount == 1:
+        return f"1 {word}"
+    return f"{amount} {word}s"
 
 @functools.cache
 def resolve_cmd(command: str) -> str:
@@ -53,18 +90,25 @@ def log_file() -> io.TextIOBase:
 
     return _LOG_FILE
 
+def utcnow():
+    return datetime.now().astimezone(ZoneInfo("UTC"))
+
 _seen_exceptions = set()
-def write_log(msg, *args, **kwargs):
+def write_log(msg: str, *args, **kwargs):
     global _seen_exceptions
     try:
         kwargs['file'] = log_file()
         kwargs['flush'] = True
-        print(msg, *args, **kwargs)
+        now = utcnow()
+        if '\n' in msg:
+            print(f"{now}:\n{textwrap.indent(msg.strip(), '  ')}", *args, **kwargs)
+        else:
+            print(f"{now}: {msg}", *args, **kwargs)
     except Exception as e:
         msg = str(e)
         if msg not in _seen_exceptions:
             _seen_exceptions.add(msg)
-            print(f"(Ignored): Error writing to log file: {e}", file=sys.stderr, flush=True)
+            print(f"<4> (Ignored): Error writing to log file: {e}", file=sys.stderr, flush=True)
 
 
 NOTIFY_ENABLED = "NOTIFY_SOCKET" in os.environ
@@ -72,48 +116,72 @@ HAS_NOTIFIED = False
 
 DEBUG_PREFIX = '<7>: ' if NOTIFY_ENABLED else ''
 
+class StatusRingBuffer(list[int]):
+    """ Element 0 is the most recently pushed. """
+    def __init__(self, size: int, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._size = size
+
+    def push(self, frame: int):
+        self.insert(0, frame)
+        if len(self) > self._size:
+            self.pop()
+
+        if self.same_for_how_many() >= self._size:
+            print(f"<4> we appear to have stalled: {self}")
+            raise TimeoutError(f"Appears to have stalled: {self}")
+
+    def same_for_how_many(self) -> int:
+        if not self:
+            return 0
+        return self.count(self[0])
+
+status_ring_buffer = StatusRingBuffer(size=10)
+
 class FpsBuffer(list[float]):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._every10 = 0
 
     def _push(self, fps: float):
-        self.insert(0, fps)
         if len(fps_buffer) > 10:
-            self._every10 += 1
-            self.pop()
-
-        if self._every10 >= 100:
-            write_log(f"FPS AVG: {self._avg()}")
-            self._every10 = 0
+            self.clear()
+        self.insert(0, fps)
 
     def _avg(self) -> float | None:
         if len(self) < 10:
             return None
 
-        return sum(self) / float(len(self))
+        return float(sum(self)) / float(len(self))
 
 fps_buffer: FpsBuffer = FpsBuffer()
 
 def _add_fps(fps: float):
     fps_buffer._push(fps)
 
-def _avg_too_low(threshold: float = 58.0) -> bool:
-    avg = fps_buffer._avg()
-    return avg is not None and avg < threshold
+def _avg_too_low(threshold: float) -> bool:
+    if avg := fps_buffer._avg():
+        return avg < threshold
+    return False
 
-    #if len(fps_buffer) < 10:
-    #    return False
-    #
-    #avg = sum(fps_buffer) / float(len(fps_buffer))
-    #return avg < threshold
-
-def _stop_if_fps_too_low(text: str, threshold: float = 30.0):
+def _stop_if_fps_too_low(text: str, threshold: float = 57.0):
     lines = text.splitlines()
+
+    try:
+        line = next(filter(lambda line: line.startswith('frame='), lines))
+        (_, frame) = line.split('=')
+        frame = int(frame)
+        status_ring_buffer.push(frame)
+    except (StopIteration, ValueError):
+        write_log(f"couldn't find frame status in {textwrap.indent(text, "  ")}")
+        try:
+            status_ring_buffer.push(status_ring_buffer[0])
+        except IndexError:
+            pass
     try:
         line = next(filter(lambda line: line.startswith('fps='), lines))
     except StopIteration:
-        line = 'fps=0.0'
+        write_log(f"couldnt find FPS in {textwrap.indent(text, "  ")}")
+        line = 'fps=57'
 
     try:
         (_, fps) = line.split('=')
@@ -125,13 +193,18 @@ def _stop_if_fps_too_low(text: str, threshold: float = 30.0):
     except ValueError:
         return
 
-    if fps < threshold * 1.1:
+    if fps < 58.9:
         print(f"<5>: FPS is low: {fps=}", flush=True)
         write_log(f"FPS is low: {fps=}")
 
-    _add_fps(fps)
-    #print(f"{fps_buffer=}", flush=True)
-    if _avg_too_low(threshold):
+    if fps != 0:
+        _add_fps(fps)
+    else:
+        print(f"<5>: got 0 FPS, maybe spurious?", flush=True)
+        write_log("got 0 FPS, maybe spurious?")
+        _add_fps(threshold)
+    if _avg_too_low(threshold=threshold):
+        write_log(f"{fps_buffer=}")
         raise TimeoutError(f"data rate got too low ({fps=})")
 
 def proxy_to_stdout(file: io.FileIO):
@@ -152,7 +225,7 @@ def proxy_to_stdout(file: io.FileIO):
 
 def proxy_to_stderr(file: io.FileIO):
     data = file.read()
-    write_log(data.decode('utf-8'))
+    #write_log(data.decode('utf-8'))
     #for line in data.decode('utf-8').splitlines():
     #    pass
         #print(f'{DEBUG_PREFIX}{line}')
@@ -382,7 +455,9 @@ def main():
             events = selector.select(timeout)
             if not events:
                 raise TimeoutError(f"no events within {timeout} seconds")
-            write_log(f"{events=}")
+            num_events = sum([ev[0].events for ev in events])
+            if num_events != 2:
+                write_log(f"Selector got {maybe_pluralize('event', num_events)}")
             for key, mask in events:
                 key.data(key.fileobj)
 
