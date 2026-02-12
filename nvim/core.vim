@@ -263,6 +263,15 @@ noremap <A-r> %:r<tab>
 " Expands to the directory of the current filename, using ~ for $HOME,
 " and using path relative to the current directory if applicable.
 " `help fnamemodify()`
+function! ExpandCurrentDirectory() abort
+	if expand("%:h") == "."
+		return "./<tab>"
+	else
+		return expand("%:h<tab>")
+	endif
+endfunction
+cnoremap <expr> <C-e> expand("%:h") == "." ? "./<tab>" : expand("%:h<tab>")
+"cnoremap <C-e> %:h<tab>
 cnoremap <C-e> %:h<tab>
 cnoremap <A-e> %:h<tab>
 
