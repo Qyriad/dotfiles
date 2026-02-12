@@ -55,8 +55,10 @@
 		qlib = pkgsFinal.qyriad.qlib;
 
 		nix = pkgsPrev.nix.overrideAttrs (prev: {
+			pname = "lix-patched";
 			separateDebugInfo = false;
 			dontStrip = true;
+			patches = prev.patches or [ ] ++ [ ./pkgs/lix-print-cgroup-drvs.patch ];
 		});
 
 		# Nil HEAD has support for pipe operator.
