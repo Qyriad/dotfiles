@@ -105,6 +105,36 @@ function Tagstack() abort
 	return v:lua.tagstack()
 endfunction
 
+function! ShorterFileName(name)
+	if a:name ==# ''
+		return '[No Name]'
+	endif
+
+	let l:namelen = len(a:name)
+	if l:namelen > 50 && l:namelen < 70
+		if l:namelen < 70
+			return pathshorten(a:name, 5)
+		elseif l:namelen < 80
+			return pathshorten(a:name, 4)
+		else
+			return pathshorten(a:name, 3)
+		endif
+	endif
+	return a:name
+endfunction
+
+function! LightlineTabFileName(n) abort
+	let l:buflist = tabpagebuflist(a:n)
+	let l:winnr = tabpagewinnr(a:n)
+	let l:name = expand('#' . l:buflist[l:winnr - 1] . ':f')
+	return ShorterFileName(l:name)
+endfunction
+
+function! LightlineTabWinCount(n) abort
+	let l:wincount = tabpagewinnr(a:n, '$')
+	return '(' .. l:wincount .. ')'
+endfunction
+
 
 " Core lightline config.
 " Gods this looks so much better in lua without vim's line continuation syntax.
@@ -112,11 +142,13 @@ lua << EOF
 vim.g.lightline = {
 	active = {
 		left  = {{"mode", "paste"}, {"readonly", "filename", "modified"}, {"zoomed"}},
-		right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {"lspstatus"}},
+		--right = {{}, {"dir", "filetype", "lineinfo", "percent", "fileformat"}, {"lspstatus"}},
+		right = {{}, {"filetype", "lineinfo", "percent", "fileformat"}, {"lspstatus"}},
 	},
 	inactive = {
 		left  = {{"readonly", "filename", "modified"}},
-		right = {{"lineinfo"}, {"percent"}, {"dir"}},
+		--right = {{"lineinfo"}, {"percent"}, {"dir"}},
+		right = {{"lineinfo"}, {"percent"} },
 	},
 	separator = {
 		-- Lua 5.5 is when Lua got \uxxxx escapes, but Lua 5.3 has \u{xx..} style escapes, and
@@ -125,13 +157,25 @@ vim.g.lightline = {
 		right = "\u{e0b2}",
 	},
 	--separator = { left = utf8.char(0xe0b0), right = utf8.char(0xe0b2) },
-	component = { filetype = '%{&ft!=#""?&ft:"no ft"}%<' },
+	component = {
+		filetype = '%{&ft!=#""?&ft:"no ft"}%<',
+		filename = '%f',
+	},
+	tab_component_function = {
+		filename = 'LightlineTabFileName',
+		wincount = 'LightlineTabWinCount',
+	},
 	component_function = {
 		dir = "HomeRelDir",
 		zoomed = "zoom#statusline",
 		synitem = "SyntaxItem",
 		--tagstack = "LspStatus",
 		lspstatus = "LspStatus",
+	},
+	tab = {
+		--active = { 'tabnum', 'filename', 'modified' },
+		active = { 'tabnum', 'filename', 'modified' },
+		inactive = { 'tabnum', 'filename', 'modified', 'wincount' },
 	},
 	--tabline = {
 	--	right = {{ 'LspProgress' }},
