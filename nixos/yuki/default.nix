@@ -110,7 +110,7 @@
 		'') + "\n";
 	};
 
-	#environment.enableDebugInfo = true;
+	environment.enableDebugInfo = true;
 	environment.extraOutputsToInstall = [
 		# Apparently this is how to get dig in our system path.
 		"dnsutils"
