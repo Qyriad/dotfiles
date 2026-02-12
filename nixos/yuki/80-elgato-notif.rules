@@ -1,0 +1,2 @@
+# vim: filetype=udevrules
+ACTION=="add", KERNEL=="video[0-9]*", SUBSYSTEM=="video4linux", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006a", RUN+="@SYSTEMD_RUN@ --machine=qyriad@.host --user @NOTIFY_SEND@ 'Device Added' '%s{name} ($name)'"

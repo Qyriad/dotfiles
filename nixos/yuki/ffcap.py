@@ -7,8 +7,9 @@ import copy
 from pathlib import Path
 from fcntl import fcntl, F_SETFL, F_GETFL
 import functools
-import json
 import io
+import json
+import logging
 import os
 import selectors
 import shlex
@@ -20,6 +21,63 @@ import typing
 from typing import Any, Self, override
 from zoneinfo import ZoneInfo
 import time
+
+class SystemdAwareLoggerFormat(logging.Formatter):
+    def _maybe_systemd(self, s: str) -> str:
+        if self._in_systemd:
+            return s
+        return ''
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self._in_systemd = int(os.getenv('IN_SYSTEMD', '0')) == 1
+
+        self._systemd_formats = {
+            logging.DEBUG: "<7>",
+            logging.INFO: "<6>",
+            logging.WARNING: "<4>",
+            logging.ERROR: "<3>",
+            logging.CRITICAL: "<2>"
+        }
+
+        self._formats = {
+            logging.DEBUG: self.fmt.format(self.grey),
+            logging.INFO: self.fmt.format(self.green),
+            logging.WARNING: self.fmt.format(self.yellow),
+            logging.ERROR: self.fmt.format(self.red),
+            logging.CRITICAL: self.fmt.format(self.bold_red),
+        }
+
+        logging.addLevelName(logging.WARNING, "WARN")
+        logging.addLevelName(logging.CRITICAL, "CRIT")
+
+    grey = "\x1b[38;5;247m"
+    green = "\x1b[38;5;34m"
+    yellow = "\x1b[33;20m"
+    red = "\x1b[31;20m"
+    bold_red = "\x1b[31;1m"
+    reset = "\x1b[0m"
+    fmt = "[%(name)s] {}%(levelname)-5s\x1b[0m %(message)s (%(filename)s:%(lineno)d)"
+
+    def format(self, record: logging.LogRecord) -> str:
+        try:
+            prefix = self._maybe_systemd(self._systemd_formats[record.levelno])
+            log_fmt = prefix + self._formats[record.levelno]
+        except (IndexError, TypeError):
+            log_fmt = None
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)
+
+logger = logging.getLogger()
+try:
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(SystemdAwareLoggerFormat())
+    logger.addHandler(ch)
+except Exception as e:
+    print(f"Error instantiating logger: {e}")
 
 # ffmpeg -progress 'pipe:1' -nostdin -f video4linux2 -framerate 60 -video_size 1920x1080 -input_format yuyv422 -fflags nobuffer -i /dev/v4l/by-id/usb-Elgato_Game_Capture_HD60_S+_0004C809C2000-video-index0 -vf format=yuyv422 -f video4linux2 /dev/video10
 
@@ -203,9 +261,9 @@ def _stop_if_fps_too_low(text: str, threshold: float = 57.0):
         print(f"<5>: got 0 FPS, maybe spurious?", flush=True)
         write_log("got 0 FPS, maybe spurious?")
         _add_fps(threshold)
-    if _avg_too_low(threshold=threshold):
-        write_log(f"{fps_buffer=}")
-        raise TimeoutError(f"data rate got too low ({fps=})")
+    #if _avg_too_low(threshold=threshold):
+    #    write_log(f"{fps_buffer=}")
+    #    raise TimeoutError(f"data rate got too low ({fps=})")
 
 def proxy_to_stdout(file: io.FileIO):
     global HAS_NOTIFIED
@@ -402,7 +460,8 @@ def main():
     )
     parser.add_argument("--timeout", type=float, default=4)
     parser.add_argument("--framerate", type=int, default=60)
-    parser.add_argument("--video-size", type=str, default="1920x1080")
+    #parser.add_argument("--video-size", type=str, default="1920x1080")
+    parser.add_argument("--video-size", type=str, default="3840x2160")
     parser.add_argument("--input-format", type=str, default="yuyv422")
     parser.add_argument("--output-format", type=str, default="yuyv422",)
     #parser.add_argument("--autodetect", action=argparse.BooleanOptionalAction)
@@ -413,7 +472,8 @@ def main():
 
     args = parser.parse_args()
     timeout: float = args.timeout
-    devnode = autodetect_capturecard().as_posix()
+    #devnode = autodetect_capturecard().as_posix()
+    devnode = "/dev/v4l/by-id/usb-Elgato_Game_Capture_HD60_S+_0004C809C2000-video-index0"
     outnode = autodetect_output().as_posix()
 
     time.sleep(1)

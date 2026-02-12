@@ -8,6 +8,7 @@
 	services.udev.packages = let
 		elgato-rules = pkgs.qyriad.runCommandMinimal "elgato-rules" {
 			src = ./80-elgato.rules;
+			notif = ./80-elgato-notif.rules;
 			outDir = (placeholder "out") + "/lib/udev/rules.d";
 			systemdRun = lib.getExe' pkgs.systemd "systemd-run";
 			notifySend = lib.getExe' pkgs.libnotify "notify-send";
@@ -17,11 +18,19 @@
 				--replace-fail "@SYSTEMD_RUN@" "$systemdRun" \
 				--replace-fail "@NOTIFY_SEND@" "$notifySend"
 			install --verbose -Dm644 "./80-elgato.rules" "--target-directory=$outDir"
+			install --verbose -Dm644 "$notif" "$outDir/80-elgato-notif.rules"
 		'';
 	in [
 		elgato-rules
 		pkgs.systemd
 	];
+
+	systemd.targets.ffcap-elgato = {
+		description = "ffcap-elgato";
+		unitConfig = {
+			Conflicts = [ "shutdown.target" ];
+		};
+	};
 
 	systemd.services.ffcap-elgato = {
 		environment = {
@@ -37,6 +46,7 @@
 			SyslogLevelPrefix = true;
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
+		wantedBy = [ "ffcap-elgato.target" ];
 	};
 
 	systemd.services.ffcap-onfail = {
