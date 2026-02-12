@@ -25,7 +25,10 @@ self = rec {
 	currentSystem = info.currentSystem;
 	system = info.currentSystem;
 
-	config = { allowUnfree = true; };
+	config = {
+    allowUnfree = true;
+    microsoftVisualStudioLicenseAccepted = true;
+  };
 
 	/** HACK: `import` that ignores deprecation warnings. */
 	importQuiet = let

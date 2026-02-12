@@ -9,15 +9,18 @@
 	];
 
 	# Configuration for things related to Nix itself.
-	nixpkgs.config.allowUnfree = true;
-	# Commented out because I don't want them by default, but they're handy.
-	#nixpkgs.config.showDerivationWarnings = [
-	#	"maintainerless"
-	#	"unknown-meta"
-	#	"broken-outputs"
-	#	"non-source"
-	#];
-	#nixpkgs.config.fetchedSourceNameDefault = "versioned";
+	nixpkgs.config = {
+		allowUnfree = true;
+		microsoftVisualStudioLicenseAccepted = true;
+		#showDerivationWarnings = [
+		#	"maintainerless"
+		#	"unknown-meta"
+		#	"broken-outputs"
+		#	"non-source"
+		#];
+		# Commented out because I don't want them by default, but they're handy.
+		#fetchedSourceNameDefault = "versioned";
+	};
 	# HACK: I'm trying out this fancy new thing called "-N"
 	nixpkgs.overlays = let
 		patchLixOverlay = final: prev: {
