@@ -7,22 +7,47 @@
 {
 	services.udev.packages = let
 		elgato-rules = pkgs.qyriad.runCommandMinimal "elgato-rules" {
-			src = ./80-elgato.rules;
-			notif = ./80-elgato-notif.rules;
+			src = lib.fileset.toSource {
+				root = ./.;
+				fileset = lib.fileset.unions [
+					./80-elgato.rules
+					./80-elgato-notif.rules
+				];
+			};
 			outDir = (placeholder "out") + "/lib/udev/rules.d";
 			systemdRun = lib.getExe' pkgs.systemd "systemd-run";
 			notifySend = lib.getExe' pkgs.libnotify "notify-send";
 		} <| lib.dedent ''
-			cp "$src" ./80-elgato.rules
-			substituteInPlace "./80-elgato.rules" \
-				--replace-fail "@SYSTEMD_RUN@" "$systemdRun" \
+			cp "$src/"* ./
+			substituteInPlace "./80-elgato-notif.rules" \
+				--replace-fail "@SYSTEMD_RUN@" "$notif" \
 				--replace-fail "@NOTIFY_SEND@" "$notifySend"
 			install --verbose -Dm644 "./80-elgato.rules" "--target-directory=$outDir"
-			install --verbose -Dm644 "$notif" "$outDir/80-elgato-notif.rules"
+			install --verbose -Dm644 "./80-elgato-notif.rules" "$outDir/80-elgato-notif.rules"
+		'';
+
+		# Unused for the moment.
+		device-notifs = pkgs.qyriad.runCommandMinimal "device-notifs-rules" {
+			src = ./90-device-notifs.rules;
+			script = ./90-device-notifs.zsh;
+			binDir = (placeholder "out") + "/bin";
+			rulesDir = (placeholder "out") + "/lib/udev/rules.d";
+			systemdRun = lib.getExe' pkgs.systemd "systemd-run";
+			notifySend = lib.getExe' pkgs.libnotify "notify-send";
+			zsh = lib.getExe pkgs.zsh;
+			jq = lib.getExe pkgs.jq;
+			dbusSend = lib.getExe' pkgs.dbus "dbus-send";
+		} <| lib.dedent ''
+			cp "$script" ./90-device-notifs.zsh
+			substituteInPlace "./90-device-notifs.zsh" \
+				--replace-fail "@ZSH@" "$zsh" \
+				--replace-fail "@DBUS_SEND@" "$dbusSend" \
+				--replace-fail "@SYSTEMD_NOTIFY" "$systemdNotify"
+
+			cp "$src" ./90-device-notifs.rules
 		'';
 	in [
 		elgato-rules
-		pkgs.systemd
 	];
 
 	systemd.targets.ffcap-elgato = {
@@ -46,7 +71,7 @@
 			SyslogLevelPrefix = true;
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
-		wantedBy = [ "ffcap-elgato.target" ];
+		#wantedBy = [ "ffcap-elgato.target" ];
 	};
 
 	systemd.services.ffcap-onfail = {
