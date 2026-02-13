@@ -241,6 +241,7 @@
 		qyriad.color-journal
 		qyriad.glances
 		footswitch
+		syncplay
 		gpu-screen-recorder-gtk
 		config.programs.gpu-screen-recorder.package
 	];
