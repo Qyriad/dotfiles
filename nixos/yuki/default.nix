@@ -215,6 +215,10 @@
 	};
 	users.users.qyriad.extraGroups = [ "wireshark" ];
 
+	programs.gpu-screen-recorder = {
+		enable = true;
+	};
+
 	environment.systemPackages = with pkgs; [
 		qyriad.steam-launcher-script
 		config.programs.steam.package.run
@@ -237,6 +241,8 @@
 		qyriad.color-journal
 		qyriad.glances
 		footswitch
+		gpu-screen-recorder-gtk
+		config.programs.gpu-screen-recorder.package
 	];
 
 	# This value determines the NixOS release from which the default
