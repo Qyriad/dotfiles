@@ -237,6 +237,10 @@
 		pulseaudio
 		qpkgs.qjackctl
 		playerctl
+	] ++ lib.optionals config.services.dbus.enable [
+		# Honestly idk when ever you'd be including linux-gui and *not* have DBus enabled.
+		# But whatever.
+		bustle
 	] ++ lib.optionals config.services.ratbagd.enable [
 		piper
 	];
