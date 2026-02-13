@@ -27,6 +27,8 @@
 	environment.plasma6.excludePackages = with pkgs.kdePackages; [
 		# We use our patched nixos-khelpcenter instead.
 		khelpcenter
+		# We include a *subset* of kwin-x11's outputs down below.
+		kwin-x11
 	];
 
 	# "A stop job is running for X11—" fuck off.
@@ -226,6 +228,7 @@
 		#awatcher
 		# Symlink the thing that includes the default XCompose files into current-system
 		libX11
+		(lib.removeAttrsCalled [ "debug" ] kdePackages.kwin-x11.out)
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
