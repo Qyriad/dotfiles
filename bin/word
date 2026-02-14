@@ -14,22 +14,3 @@ word = int(sys.argv[1])
 with contextlib.suppress(EOFError):
     while (line := input()):
         print(shlex.split(line)[word], flush=True)
-
-#!/usr/bin/env bash
-
-#set -euo pipefail
-#
-#if [[ "$#" -lt 1 || "$1" = "--help" ]]; then
-#	echo "word: select Nth word per line of stdin" 2>&2
-#	echo "Usage: word <N>" >&2
-#	exit 0
-#fi
-#
-#set -o noglob
-#declare -a arr
-#while IFS='' read -r line; do
-#	arr=($line)
-#	echo "${arr[$1]}"
-#done
-#
-##perl -anE "say \"\$F[$1]\""
