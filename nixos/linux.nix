@@ -36,6 +36,8 @@
 	systemd.settings.Manager = {
 		# Make the systemd stop timeout more reasonable.
 		DefaultTimeoutStopSec = 20;
+		DefaultJobRunningStopSec = 20;
+		DefaultDeviceTimeoutSec = 20;
 
 		# I think these are default but I'm forcing the issue.
 		DefaultMemoryAccounting = "yes";

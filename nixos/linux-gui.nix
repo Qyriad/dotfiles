@@ -43,8 +43,10 @@
 	#	TimeoutStopSec = "10";
 	#};
 	# And tbh let's just shorten the stop timeout for all user units a bit.
-	systemd.user.extraConfig = lib.trim ''
+	systemd.user.extraConfig = lib.dedent ''
 		DefaultTimeoutStopSec=20
+		DefaultDeviceTimeoutSec=20
+		DefaultJobRunningStopSec=20
 	'';
 
 	# Enabling a display manager automatically enables a text to speech daemon, in NixOS,
