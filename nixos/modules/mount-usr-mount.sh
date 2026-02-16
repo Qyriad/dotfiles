@@ -2,17 +2,13 @@
 
 set -euo pipefail
 
-echo "99-mount-usr: mounting /usr to /run/current-system/sw in ${NIXOS_ACTION:-}"
+echo "99-mount-usr: mounting /usr to /run/current-system/sw"
 
 MOUNT="@MOUNT@"
 
 [[ -n "${MOUNT:-}" ]]
 
 declare -a ARGS=()
-
-if [[ "${NIXOS_ACTION:-}" = "dry-activate" ]]; then
-	ARGS=("--fake")
-fi
 
 if [[ -h /run/current-system ]]; then
 	echo -n "99-mount-usr: "

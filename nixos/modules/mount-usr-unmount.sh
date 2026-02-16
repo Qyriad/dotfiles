@@ -18,7 +18,7 @@ fi
 
 if "$MOUNTPOINT" /usr >/dev/null; then
 	echo -n "01-unmount-usr: "
-	"$UMOUNT" "${ARGS[@]}" --verbose /usr
+	"$UMOUNT" "${ARGS[@]}" --verbose --no-canonicalize --recursive --lazy /usr
 else
 	echo "01-unmount-usr: /usr is not a mountpoint; nothing to do"
 fi

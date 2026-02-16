@@ -22,6 +22,20 @@ in
 			text = pkgs.replaceVars ./mount-usr-unmount.sh { inherit MOUNTPOINT UMOUNT; } |> builtins.readFile;
 		};
 
+		systemd.services."mount-usr-after-activation" = {
+			description = "Mount /usr after activation";
+			serviceConfig = {
+				Type = "oneshot";
+				ExecStart = lib.getExe <| pkgs.writeShellApplication {
+					name = "mount-usr-mount.sh";
+					text = pkgs.replaceVars ./mount-usr-mount.sh { inherit MOUNT; } |> builtins.readFile;
+				};
+				ConditionPathExists = "/run/current-system";
+			};
+			wantedBy = [ "sysinit.target" ];
+			after = [ "sysinit.target" ];
+		};
+
 		#system.activationScripts."99-mount-usr" = {
 		#	deps = [ "stdio" "usrbinenv" "var" "etc" "specialfs" "binsh" "users" "groups" "agenix" "modprobe" ];
 		#	supportsDryActivation = true;
