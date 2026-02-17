@@ -20,7 +20,7 @@
 		} <| lib.dedent ''
 			cp "$src/"* ./
 			substituteInPlace "./80-elgato-notif.rules" \
-				--replace-fail "@SYSTEMD_RUN@" "$notif" \
+				--replace-fail "@SYSTEMD_RUN@" "$systemdRun" \
 				--replace-fail "@NOTIFY_SEND@" "$notifySend"
 			install --verbose -Dm644 "./80-elgato.rules" "--target-directory=$outDir"
 			install --verbose -Dm644 "./80-elgato-notif.rules" "$outDir/80-elgato-notif.rules"
