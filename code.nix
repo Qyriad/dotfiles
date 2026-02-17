@@ -72,6 +72,7 @@
 			pkg-config
 			libclang
 			llvmPackages.bintools
+			pkgs.openssl
 			pkgs.cargo-show-asm
 			pkgs.cargo-nextest
 			pkgs.gnuplot
