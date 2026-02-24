@@ -45,6 +45,7 @@
 	evdev,
 	pyusb,
 	pyudev,
+	beartype,
 }: stdlib.mkSimpleEnv (self: assert __checks; {
 	extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
 		src = xonsh-source;
@@ -84,6 +85,7 @@
 		#gobject-introspection
 		hass-client
 		multidict
+		beartype
 	] ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [
 		pydbus
 		sdbus
