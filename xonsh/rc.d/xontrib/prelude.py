@@ -34,5 +34,10 @@ def _load_xontrib_(xsh: XonshSession, **_) -> dict:
             take=pipe.take,
         )
 
+    import importlib
+    prelude |= dict(
+        importlib=importlib,
+    )
+
 
     return prelude
