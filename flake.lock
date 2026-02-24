@@ -225,11 +225,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1771888307,
-        "narHash": "sha256-yMoViM+9ffGn25A7gCKXKjKsW7EiOmSx4BWb2TjxVSk=",
+        "lastModified": 1771932525,
+        "narHash": "sha256-xBWBRAEa3ch90Q+FIZn7idN+XOMoBn2xC/3WyCPE5Wc=",
         "ref": "refs/heads/main",
-        "rev": "1ef7ccfc7242b25159ca17f2e0afe3ed8dc9a98e",
-        "revCount": 18968,
+        "rev": "6b4de44461dbd872d12eca8721f24b8756f2ee99",
+        "revCount": 18969,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -492,11 +492,11 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1771156644,
-        "narHash": "sha256-tUqmgs0PoqldjURjt4eaQzueRAu6ZsidQhAPDCfqr3o=",
+        "lastModified": 1771936566,
+        "narHash": "sha256-lF6DYP8eWjDH8D20KlYeKhrWuEocVUed80dqDtAhxqw=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "a1b5ff7ca6134ab10fe0c213c422c1e4819c2d29",
+        "rev": "e637bdfbaece85a5ee7b0ba221c9bb1c4b13c801",
         "type": "github"
       },
       "original": {
