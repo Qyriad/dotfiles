@@ -36,6 +36,9 @@
 	passedLib = lib;
 	overlay = pkgsFinal: pkgsPrev: let
 		inherit (pkgsFinal) lib;
+		inherit (lib.mkPlatformPredicates pkgsFinal.stdenv.hostPlatform)
+			optionalDarwin
+		;
 		availableOnHost = passedLib.meta.availableOn pkgsFinal.stdenv.hostPlatform;
 	in {
 		qyriad = getScope {
@@ -80,7 +83,7 @@
 
 		# https://github.com/NixOS/nixpkgs/pull/485980
 		dbus = pkgsPrev.dbus.overrideAttrs (prev: {
-			mesonFlags = prev.mesonFlags or [ ] ++ [
+			mesonFlags = prev.mesonFlags or [ ] ++ optionalDarwin [
 				(lib.mesonOption "dbus_session_bus_listen_address" "unix:tmpdir=/tmp")
 			];
 		});
