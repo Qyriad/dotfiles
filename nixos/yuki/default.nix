@@ -103,11 +103,9 @@
 
 	systemd.coredump.extraConfig = "MaxUse=1";
 
-	environment.etc."modprobe.d/v4l2loopback.conf" = {
-		text = (lib.trim ''
-			options v4l2loopback video_nr=10,11,12 card_label=Virt0,Virt1,Virt2 exclusive_caps=1,1,1
-		'') + "\n";
-	};
+	environment.etc."modprobe.d/v4l2loopback.conf".text = lib.dedent ''
+		options v4l2loopback video_nr=10,11,12 card_label=Virt0,Virt1,Virt2 exclusive_caps=1,1,1
+	'';
 
 	environment.enableDebugInfo = true;
 	environment.extraOutputsToInstall = [
