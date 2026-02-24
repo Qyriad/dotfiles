@@ -132,6 +132,7 @@ use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use { 'qnighy/lalrpop.vim' }
 use {
 	'nvim-treesitter/nvim-treesitter',
+	branch = "master",
 	lazy = false,
 	--build = ":TSUpdate",
 	dependencies = {
