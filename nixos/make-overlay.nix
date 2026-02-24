@@ -61,6 +61,10 @@
 
 		qlib = pkgsFinal.qyriad.qlib;
 
+		# ooo lets do something cursed
+		pkgsSrcs = pkgsFinal
+		|> lib.mapDerivationAttrsetRecursive pkgsFinal.srcOnly;
+
 		lix = pkgsPrev.lix.overrideAttrs (prev: {
 			pname = "lix-patched";
 			separateDebugInfo = false;
