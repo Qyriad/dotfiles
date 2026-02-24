@@ -49,6 +49,7 @@
 
 	# Make Nix builds not OOM my machine please.
 	systemd.services."nix-daemon@" = {
+		path = [ config.services.openssh.package ];
 		serviceConfig = {
 			#OOMScoreAdjust = "950";
 			Slice = "system-builder.slice";
