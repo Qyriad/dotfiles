@@ -555,6 +555,7 @@ if 'gac_alias' in XSH.completers:
 
 completer add gac_alias _gac_completer
 
+xontrib load qcompleters
 
 def read_to_bytes(name):
 	with open(name, 'rb') as f:
