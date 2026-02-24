@@ -31,7 +31,7 @@
 	sdbus,
 	jeepney,
 	pygobject3,
-	ds-store,
+	#ds-store,
 	xmltodict,
 	python-box,
 	matplotlib,
@@ -69,7 +69,7 @@
 		httpx
 		tqdm
 		pip
-		ds-store
+		#ds-store
 		xmltodict
 		python-box
 		matplotlib

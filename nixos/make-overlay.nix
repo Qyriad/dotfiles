@@ -31,8 +31,10 @@
 	}, # getScope
 
 }: let
+	passedLib = lib;
 	overlay = pkgsFinal: pkgsPrev: let
-		availableOnHost = lib.meta.availableOn pkgsFinal.stdenv.hostPlatform;
+		inherit (pkgsFinal) lib;
+		availableOnHost = passedLib.meta.availableOn pkgsFinal.stdenv.hostPlatform;
 	in {
 		qyriad = getScope {
 			pkgs = pkgsFinal;
@@ -72,6 +74,25 @@
 		lnav = pkgsPrev.lnav.override {
 			# Nixpkgs forgot to make this dependency conditional on not-Darwin.
 			gpm = lib.optionalDrvAttr (availableOnHost pkgsPrev.gpm) pkgsPrev.gpm;
+		};
+
+		# python313 -> python3 -> python3Packages
+		python313 = pkgsPrev.python313.override {
+			packageOverrides = (pyFinal: pyPrev: {
+				batinfo = pyPrev.batinfo.overridePythonAttrs (prev: {
+					dontPatch = true;
+				});
+			});
+		};
+
+		makemkv = pkgsPrev.makemkv.overrideAttrs (prev: {
+			buildInputs = prev.buildInputs or [ ] ++ [
+				pkgsFinal.expat
+			];
+		});
+
+		pulseview = pkgsPrev.pulseview.override {
+			boost = pkgsFinal.boost188;
 		};
 
 		kdePackages = pkgsPrev.kdePackages.overrideScope (kdeFinal: kdePrev: {
@@ -196,6 +217,19 @@
 			permitUserSite = true;
 			makeWrapperArgs = prev.makeWrapperArgs or [ ] ++ [
 				"--set-default" "PYTHONUNBUFFERED" "1"
+			];
+		});
+
+		# https://github.com/NixOS/nixpkgs/issues/493431
+		lager = pkgsPrev.lager.override {
+			boost = pkgsFinal.boost188;
+		};
+
+		# https://github.com/NixOS/nixpkgs/pull/493604
+		anki = pkgsPrev.anki.overridePythonAttrs (prev: {
+			buildInputs = prev.buildInputs or [ ] ++ [
+				pkgsFinal.qt6.qtwebchannel
+				pkgsFinal.qt6.qtwebengine
 			];
 		});
 

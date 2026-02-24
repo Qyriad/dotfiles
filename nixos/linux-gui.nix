@@ -137,7 +137,6 @@
 		vesktop
 		# For voice.
 		discord
-		calibre
 		kicad
 		krita
 		#olive-editor
