@@ -26,9 +26,9 @@ self = rec {
 	system = info.currentSystem;
 
 	config = {
-    allowUnfree = true;
-    microsoftVisualStudioLicenseAccepted = true;
-  };
+		allowUnfree = true;
+		microsoftVisualStudioLicenseAccepted = true;
+	};
 
 	/** HACK: `import` that ignores deprecation warnings. */
 	importQuiet = let
@@ -79,6 +79,8 @@ self = rec {
 	shell = qlib.importAutocall (PWD + "/shell.nix");
 
 	t = lib.types;
+	/** Perform module-system type checking and resolving on a single option value. */
+	inherit (lib) typeCheck;
 
 	idx = index: list: builtins.elemAt list index;
 };
