@@ -1,4 +1,4 @@
-# vim: tabstop=4 shiftwidth=0 noexpandtab
+# vim: tabstop=2 shiftwidth=0 noexpandtab
 {
 	lib,
 	agenix,
@@ -56,7 +56,7 @@
 
 		qlib = pkgsFinal.qyriad.qlib;
 
-		nix = pkgsPrev.nix.overrideAttrs (prev: {
+		lix = pkgsPrev.lix.overrideAttrs (prev: {
 			pname = "lix-patched";
 			separateDebugInfo = false;
 			dontStrip = true;

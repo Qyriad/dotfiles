@@ -24,12 +24,13 @@
 	# HACK: I'm trying out this fancy new thing called "-N"
 	nixpkgs.overlays = let
 		patchLixOverlay = final: prev: {
-			lix = prev.lix.overrideAttrs {
+			lix = prev.lix.overrideAttrs (lixPrev: {
+				pname = "lix-short-no-link";
 				doInstallCheck = false;
-				patches = [
+				patches = lixPrev.patches or [ ] ++ [
 					./pkgs/lix-nix-build-short-no-link.patch
 				];
-			};
+			});
 		};
 	in lib.mkAfter [
 		patchLixOverlay
