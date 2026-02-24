@@ -72,6 +72,10 @@
 			url = "sourcehut:icewind/originfox?host=codeberg.org";
 			flake = false;
 		};
+		fx-autoconfig-source = {
+			url = "github:MrOtherGuy/fx-autoconfig";
+			flake = false;
+		};
 	};
 
 	outputs = inputs @ {
@@ -200,6 +204,7 @@
 					nil-source
 					tmux-source
 					originfox-source
+					fx-autoconfig-source
 				;
 			};
 			overlays.killWrappers = import ./nixos/kill-wrappers-overlay.nix;

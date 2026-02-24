@@ -13,6 +13,7 @@
 	xil,
 	xonsh-source,
 	originfox-source,
+	fx-autoconfig-source,
 }: let
 
 	agenix' = import agenix { inherit pkgs; };

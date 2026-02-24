@@ -169,6 +169,22 @@
         "type": "github"
       }
     },
+    "fx-autoconfig-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765622861,
+        "narHash": "sha256-xiCikg8c855w+PCy7Wmc3kPwIHr80pMkkK7mFQbPCs4=",
+        "owner": "MrOtherGuy",
+        "repo": "fx-autoconfig",
+        "rev": "76232083171a8d609bf0258549d843b0536685e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MrOtherGuy",
+        "repo": "fx-autoconfig",
+        "type": "github"
+      }
+    },
     "git-point": {
       "flake": false,
       "locked": {
@@ -495,6 +511,7 @@
         "cappy": "cappy",
         "disko": "disko",
         "flake-utils": "flake-utils",
+        "fx-autoconfig-source": "fx-autoconfig-source",
         "git-point": "git-point",
         "lix": "lix",
         "lix-module": "lix-module",
