@@ -31,6 +31,16 @@ runtime ftplugin/man.vim
 
 let $CONFIGPATH = stdpath('config')
 
+" On Nix-managed systems we don't usually have a compiler in our PATH,
+" *unless* we're in a dev shell.
+" If we have some existing `cc`, we don't want to fuck with that.
+" But if we don't, we'll let Vim access a compiler we have in our Nix systems
+" that is not normally in our PATH.
+" Among other things, this makes treesitter installs Just Work.
+if !executable("cc") && isdirectory("/run/current-system/sw/opt/llvm/bin")
+	let $PATH = $PATH .. ":" .. "/run/current-system/sw/opt/llvm/bin"
+endif
+
 source $CONFIGPATH/core.vim
 source $CONFIGPATH/utils.vim
 source $CONFIGPATH/syntax.vim
