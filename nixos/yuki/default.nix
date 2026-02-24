@@ -1,4 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
 { config, pkgs, lib, modulesPath, ... }:
 
 {
@@ -137,6 +136,8 @@
 
 	boot.enableContainers = true;
 	programs.extra-container.enable = true;
+
+	programs.firefox.autoConfig = lib.readFile pkgs.qyriad.fx-autoconfig;
 
 	containers.hass = {
 		autoStart = false;

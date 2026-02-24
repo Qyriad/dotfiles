@@ -1,4 +1,4 @@
-# vim: tabstop=4 shiftwidth=0 noexpandtab
+# vim: tabstop=2 shiftwidth=0 noexpandtab
 {
 	pkgs,
 	lib,
@@ -21,6 +21,9 @@
 
 in lib.makeScope qpkgs.newScope (self: {
 	callInline = f: self.callPackage f { };
+
+	# https://github.com/MrOtherGuy/fx-autoconfig
+	fx-autoconfig = fx-autoconfig-source + "/program/config.js";
 
 	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
 	# which do things like check man pages and patch ELFs.
