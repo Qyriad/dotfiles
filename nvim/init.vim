@@ -221,9 +221,7 @@ use {
 		-- or anything.
 		-- So here we run autoclose's normal setup, and then restore the original mapping, but save
 		-- the autoclose mapping in our plugin shortcut global `p.autoclose`.
-		local pl = lazy.core.config.plugins['autoclose.nvim']
-		local main_name = lazy.core.loader.get_main(plugin)
-		local main = require(main_name)
+		local main = require('autoclose')
 
 		-- Get the <CR> mapping before calling setup().
 		local existing_cr = vim.fn.maparg('<CR>', 'i', false, true)
