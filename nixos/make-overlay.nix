@@ -78,6 +78,13 @@
 			gpm = lib.optionalDrvAttr (availableOnHost pkgsPrev.gpm) pkgsPrev.gpm;
 		};
 
+		# https://github.com/NixOS/nixpkgs/pull/485980
+		dbus = pkgsPrev.dbus.overrideAttrs (prev: {
+			mesonFlags = prev.mesonFlags or [ ] ++ [
+				(lib.mesonOption "dbus_session_bus_listen_address" "unix:tmpdir=/tmp")
+			];
+		});
+
 		# python313 -> python3 -> python3Packages
 		python313 = pkgsPrev.python313.override {
 			packageOverrides = (pyFinal: pyPrev: {
