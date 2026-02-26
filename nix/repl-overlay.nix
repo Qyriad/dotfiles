@@ -61,6 +61,10 @@ self = rec {
 	inherit (pkgs) lib qlib stdenv clangStdenv;
 	mkShell' = pkgs.mkShell.override { stdenv = clangStdenv; };
 
+	# Very cursed.
+	pkgsSrcs = pkgs
+	|> lib.mapDerivationAttrsetRecursive pkgs.srcOnly;
+
 	nixos = qyriad.nixosConfigurations.${HOSTNAME};
 	darwin = qyriad.darwinConfigurations.${HOSTNAME};
 	stagingNixos = staging.nixosConfigurations.${HOSTNAME};
