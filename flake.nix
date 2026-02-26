@@ -86,14 +86,12 @@
 		agenix,
 		...
 	}: let
-		inherit (nixpkgs) lib;
-		inherit (lib.attrsets) recursiveUpdate;
-
-		qlib = import ./nixos/qlib.nix {
-			inherit lib;
+		lib = import inputs.qyriad-nur {
+			mode = "lib";
+			inherit (nixpkgs) lib;
 		};
 
-		qpkgsLib = import inputs.qyriad-nur { mode = "lib"; inherit lib; };
+		inherit (lib.attrsets) recursiveUpdate;
 
 		/** NixOS module for configs defined in this flake.
 		 This is the only module that relies on flakeyness directly.
@@ -132,7 +130,7 @@
 			in mkConfigFn.${system'.parsed.kernel.name} {
 				inherit system modules;
 				# HACK: pass our combined lib to modules.
-				specialArgs.lib = lib // qpkgsLib;
+				specialArgs.lib = lib;
 			}
 		;
 
@@ -155,7 +153,7 @@
 			# Whatever.
 			apps.nix-flake-upgrade-most = let
 				mostInputs = lib.removeAttrs inputs [ "nixpkgs" ] |> lib.attrNames;
-				drv = pkgs.writeShellScriptBin "nix-flake-upgrade-most" (lib.trim ''
+				drv = pkgs.writeShellScriptBin "nix-flake-upgrade-most" (lib.dedent ''
 					set -euo pipefail
 					niz flake update --commit-lock-file ${lib.concatStringsSep " " mostInputs}
 					systemd-inhibit --what=sleep rebuild build
