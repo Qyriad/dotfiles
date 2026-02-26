@@ -1,0 +1,52 @@
+diff --git a/src/useractions.cpp b/src/useractions.cpp
+index c849ed89b..d45e1c577 100644
+--- a/src/useractions.cpp
++++ b/src/useractions.cpp
+@@ -200,21 +200,21 @@ void UserActionsMenu::init()
+     if (m_menu) {
+         return;
+     }
+     m_menu = new QMenu;
+     connect(m_menu, &QMenu::aboutToShow, this, &UserActionsMenu::menuAboutToShow);
+ 
+     // the toplevel menu gets closed before a submenu's action is invoked
+     connect(m_menu, &QMenu::aboutToHide, this, &UserActionsMenu::menuAboutToHide, Qt::QueuedConnection);
+     connect(m_menu, &QMenu::triggered, this, &UserActionsMenu::slotWindowOperation);
+ 
+-    QMenu *advancedMenu = new QMenu(m_menu);
++    QMenu *advancedMenu = m_menu;
+     connect(advancedMenu, &QMenu::aboutToShow, this, [this, advancedMenu]() {
+         if (m_window) {
+             advancedMenu->setPalette(m_window->palette());
+         }
+     });
+ 
+     m_moveOperation = advancedMenu->addAction(i18n("&Move"));
+     m_moveOperation->setIcon(QIcon::fromTheme(QStringLiteral("transform-move")));
+     setShortcut(m_moveOperation, QStringLiteral("Window Move"));
+     m_moveOperation->setData(Options::UnrestrictedMoveOp);
+@@ -277,24 +277,20 @@ void UserActionsMenu::init()
+     m_maximizeOperation->setIcon(QIcon::fromTheme(QStringLiteral("window-maximize")));
+     setShortcut(m_maximizeOperation, QStringLiteral("Window Maximize"));
+     m_maximizeOperation->setCheckable(true);
+     m_maximizeOperation->setData(Options::MaximizeOp);
+ 
+     m_minimizeOperation = m_menu->addAction(i18n("Mi&nimize"));
+     m_minimizeOperation->setIcon(QIcon::fromTheme(QStringLiteral("window-minimize")));
+     setShortcut(m_minimizeOperation, QStringLiteral("Window Minimize"));
+     m_minimizeOperation->setData(Options::MinimizeOp);
+ 
+-    QAction *overflowAction = m_menu->addMenu(advancedMenu);
+-    overflowAction->setText(i18n("&More Actions"));
+-    overflowAction->setIcon(QIcon::fromTheme(QStringLiteral("overflow-menu")));
+-
+     m_menu->addSeparator();
+ 
+     m_closeOperation = m_menu->addAction(i18n("&Close"));
+     m_closeOperation->setIcon(QIcon::fromTheme(QStringLiteral("window-close")));
+     setShortcut(m_closeOperation, QStringLiteral("Window Close"));
+     m_closeOperation->setData(Options::CloseOp);
+ }
+ 
+ void UserActionsMenu::discard()
+ {

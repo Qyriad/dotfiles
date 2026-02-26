@@ -19,6 +19,37 @@
 		"olm-3.2.16"
 	];
 
+	nixpkgs.overlays = let
+		kwin-useractions-no-overflow = pkgsFinal: pkgsPrev: {
+			kdePackages = pkgsPrev.kdePackages.overrideScope (kdeFinal: kdePrev: {
+				# Oh boy.
+				# Ripples to:
+				# - plasma-workspace
+				# - plasma-desktop
+				# - plasma-pa
+				# - xdg-desktop-portal-kde
+				# - kwin-x11
+				# - plasma-browser-integration
+				# - powerdevil
+				# - kinfocenter
+				# - kdeplasma-addons
+				# - firefox (wrapper, thankfully)
+				kwin = kdePrev.kwin.overrideAttrs (pkgFinal: pkgPrev: {
+					nativeBuildInputs = pkgPrev.nativeBuildInputs or [ ] ++ [
+						kdeFinal.extra-cmake-modules
+					];
+					patches = pkgPrev.patches or [ ] ++ [
+						# This patch inlines the "More Actions" submenu, in the menu that you
+						# get from right-clicking on a window's title bar.
+						./../pkgs/kwin-useractions-no-overflow.patch
+					];
+				});
+			});
+		};
+	in [
+		kwin-useractions-no-overflow
+	];
+
 	fileSystems."/media/data" = {
 		device = "/dev/disk/by-label/YukiExtdata";
 		fsType = "ext4";
@@ -127,9 +158,6 @@
 		#		DHCP = "yes";
 		#	};
 		#};
-	};
-
-	services.freshrss = {
 	};
 
 	boot.enableContainers = true;
