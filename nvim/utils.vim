@@ -83,6 +83,11 @@ local SUFFIX_PATTERN = VERY_MAGIC .. vim.fn.trim([[ [_.](n?)vim$ ]])
 -- This function gets called from some autocommands set in init.vim.
 function lazy_import_plugin(plugin_name, plugin)
 
+	-- HACK to hardcode this but whatever
+	if plugin_name == "wezterm" or plugin_name == "wezterm-types" then
+		return
+	end
+
 	-- The LazyLoad event only passes us the plugin name, so in that case we'll have to find
 	-- the plugin table object that matches that name from Lazy's API.
 	-- The LazyDone event callback passes us the full plugin table, so if that's passed
