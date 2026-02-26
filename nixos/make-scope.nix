@@ -25,6 +25,15 @@ in lib.makeScope qpkgs.newScope (self: {
 	# https://github.com/MrOtherGuy/fx-autoconfig
 	fx-autoconfig = fx-autoconfig-source + "/program/config.js";
 
+	# Currently unused. Would be nice to point Neovim at these.
+	nvim-treesitter-parsers-all = pkgs.buildEnv {
+		name = "nvim-treesitter-parsers-all";
+		#extraPrefix = "/share/nvim/runtime";
+		paths = pkgs.vimPlugins.nvim-treesitter-parsers
+		|> lib.attrValues
+		|> lib.filter lib.isDerivation;
+	};
+
 	# Just like `pkgs.runCommandLocal`, but without stdenv's default hooks,
 	# which do things like check man pages and patch ELFs.
 	runCommandMinimal = name: attrs: text: let
