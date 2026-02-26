@@ -72,5 +72,6 @@
   "vim-toml": { "branch": "main", "commit": "1b63257680eeb65677eb1ca5077809a982756d58" },
   "vim-zoom": { "branch": "master", "commit": "01c737005312c09e0449d6518decf8cedfee32c7" },
   "vis": { "branch": "master", "commit": "6a87efbfbd97238716b602c2b53564aa6329b5de" },
+  "wezterm-types": { "branch": "main", "commit": "d8bc27fcf78ccb07329aa35ed668fa14edf339bb" },
   "xonsh-vim": { "branch": "master", "commit": "46cee92f29b9a48f38674dc44d705f4a3ce688f3" }
 }

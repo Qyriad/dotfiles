@@ -370,9 +370,13 @@ use {
 use {
 	"folke/lazydev.nvim",
 	ft = { "vim", "lua" },
+	dependencies = {
+		'DrKJeff16/wezterm-types',
+	},
 	opts = {
 		library = {
 			{ path = "luavit-meta/library", words = { "vim%.uv" } },
+			{ path = 'wezterm-types', mods = { 'wezterm' } },
 		},
 	},
 }

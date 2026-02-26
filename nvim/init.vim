@@ -319,6 +319,7 @@ use {
 		telescope.builtin = require('telescope.builtin')
 		telescope.actions = require('telescope.actions')
 		telescope.sorters = require('telescope.sorters')
+		telescope.utils = require('telescope.utils')
 		telescope.load_extension("ui-select")
 	end,
 }
@@ -342,6 +343,12 @@ use {
 	lazy = true,
 	cmd = "Repl",
 }
+
+vim.cmd[[
+imap <buffer> <Up> <Plug>(neorepl-hist-prev)
+imap <buffer> <Down> <Plug>(neorepl-hist-next)
+imap <buffer> <C-L> <Cmd>lua require('neorepl.bufs').get():clear()<CR>
+]]
 
 use {
 	'chentoast/marks.nvim',
@@ -386,7 +393,8 @@ p = {}
 vim.api.nvim_create_autocmd("User", {
 	pattern = "LazyLoad",
 	callback = function(autocmd_event)
-		lazy_import_plugin(autocmd_event.data)
+		pcall(lazy_import_plugin, autocmd_event.data)
+		--lazy_import_plugin(autocmd_event.data)
 	end,
 })
 
@@ -394,7 +402,15 @@ vim.api.nvim_create_autocmd("User", {
 	pattern = "LazyDone",
 	callback = function(autocmd_event)
 		for i, lazy_plugin in ipairs(lazy.plugins()) do
-			lazy_import_plugin(lazy_plugin.name, lazy_plugin)
+			--lazy_import_plugin(lazy_plugin.name, lazy_plugin)
+			status, res = pcall(lazy_import_plugin, lazy_plugin.name, lazy_plugin)
+			if not status then
+				vim.notify(string.format(
+					"lazy_import_plugin(%s) failed: %s",
+					lazy_plugin.name,
+					vim.inspect(res)
+				))
+			end
 		end
 	end,
 })
