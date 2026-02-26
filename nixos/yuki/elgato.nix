@@ -54,6 +54,12 @@
 		description = "ffcap-elgato";
 		unitConfig = {
 			Conflicts = [ "shutdown.target" ];
+			# When ffcap-elgato.service fails, ffcap-elgato.target will also fail.
+			# If we `systemctl add-wants default.target ffcap-elgato.target`, then
+			# ffcap-elgato.target failing will pull default.target into "degraded",
+			# and ffcap-elgato.service will be started again when the device comes
+			# back online.
+			BindsTo = [ "ffcap-elgato.service" ];
 		};
 	};
 
@@ -71,7 +77,7 @@
 			SyslogLevelPrefix = true;
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
-		#wantedBy = [ "ffcap-elgato.target" ];
+		wantedBy = [ "ffcap-elgato.target" ];
 	};
 
 	systemd.services.ffcap-onfail = {
