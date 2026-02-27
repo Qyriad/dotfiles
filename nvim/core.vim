@@ -291,6 +291,21 @@ nnoremap <leader>vs <Cmd>vsplit<CR>
 " Open the current file again in a new tab.
 nnoremap <leader>ts <Cmd>tab split<CR>
 
+" Repeatable window resizes.
+nnoremap <C->> <C-w>>
+nnoremap <C-lt> <C-w><lt>
+
+" Let's see which ones we use more.
+nnoremap <A->> <C-w>>
+nnoremap <A-lt> <C-w><lt>
+
+" We generally use <C-w>hjkl for window movement, but if we're intending to resize
+" multiple windows then these might be useful.
+nnoremap <A-H> <C-w>h
+nnoremap <A-L> <C-w>l
+nnoremap <A-J> <C-w>j
+nnoremap <A-K> <C-w>k
+
 " Delete a Python type hint comment on the current line. ...Apparently I used this enough to make this a mapping?
 "nnoremap <leader>dt <Cmd>substitute/\s#\stype:.\+//<CR>
 " I did not. But I did instead use:
