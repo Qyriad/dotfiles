@@ -166,6 +166,10 @@ config.mouse_bindings = {
 	},
 }
 
+conf {
+	enable_csi_u_key_encoding = true,
+}
+
 config.colors = {
 	--foreground = "#c7c7c7",
 	foreground = "#eaeaea",
