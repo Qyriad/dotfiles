@@ -59,7 +59,7 @@
 			# ffcap-elgato.target failing will pull default.target into "degraded",
 			# and ffcap-elgato.service will be started again when the device comes
 			# back online.
-			BindsTo = [ "ffcap-elgato.service" ];
+			#BindsTo = [ "ffcap-elgato.service" ];
 		};
 	};
 
@@ -69,6 +69,7 @@
 			FFMPEG = "/run/current-system/sw/bin/ffmpeg";
 			SYSTEMD_NOTIFY = "/run/current-system/sw/bin/systemd-notify";
 		};
+		path = [ pkgs.python3Packages.setproctitle ];
 		serviceConfig = {
 			Type = "notify";
 			ExecStart = "/run/current-system/sw/bin/python3 /home/qyriad/.config/nixos/yuki/ffcap.py";
@@ -77,12 +78,12 @@
 			SyslogLevelPrefix = true;
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
-		wantedBy = [ "ffcap-elgato.target" ];
+		#wantedBy = [ "ffcap-elgato.target" ];
 	};
 
 	systemd.services.ffcap-onfail = {
 		serviceConfig.Type = "oneshot";
-		script = lib.dedent ''
+		script = ''
 			set -euxo pipefail
 			echo 0 > /sys/bus/usb/devices/6-4/bConfigurationValue
 			sleep 10s

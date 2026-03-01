@@ -22,6 +22,15 @@ from typing import Any, Self, override
 from zoneinfo import ZoneInfo
 import time
 
+try:
+    from setproctitle import setproctitle, setthreadtitle
+except ModuleNotFoundError as e:
+    print("<4>: setproctitle not found: {e}; ignoring")
+    def setproctitle(*args, **kwargs):
+        pass
+    def setthreadtitle(*args, **kwargs):
+        pass
+
 class SystemdAwareLoggerFormat(logging.Formatter):
     def _maybe_systemd(self, s: str) -> str:
         if self._in_systemd:
@@ -454,6 +463,7 @@ class HelpFormatter(argparse.HelpFormatter):
 
 
 def main():
+    setproctitle("ffcap.py")
     parser = argparse.ArgumentParser("ffcap",
         #formatter_class=HelpFormatter,
         #usage="%(prog)s [-h] [--timeout TIMEOUT] [[--no]-autodetect[=PAT]] ...",
