@@ -44,6 +44,13 @@
 						./../pkgs/kwin-useractions-no-overflow.patch
 					];
 				});
+
+				# Ripples to:
+				kdeconnect-kde = kdePrev.kdeconnect-kde.overrideAttrs (pkgFinal: pkgPrev: {
+					cmakeFlags = pkgPrev.cmakeFlags or [ ] ++ [
+						"-DBLUETOOTH_ENABLED=OFF"
+					];
+				});
 			});
 		};
 	in [
