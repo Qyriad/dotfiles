@@ -51,13 +51,14 @@ def _load_xontrib_(xsh: XonshSession, **_) -> dict:
     def _intext(args: list, stdin: io.TextIOWrapper):
         callback: typing.Callable[[str], str] = args[0]
         output = callback(stdin.read())
-        print(output)
+        #print(output)
+        #return ""
 
     # Append a trailing newline, since some commands don't.
     @aliases.register
     def _withnl(args: list, stdin: io.TextIOWrapper):
         _intext([print], stdin)
-        return ""
+        #return ""
 
     @aliases.register("pl")
     def _per_line(args: list, stdin: io.TextIOWrapper):
