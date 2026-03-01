@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+declare MAN_PAGE
+
+# If `man(1)` executes us as a pager, then `MAN_PN` will be set, and
+# the man page contents will come from stdin.
+# We don't actually care about the stdin; we'll use Vim's `Man` command instead.
+# But if we're executed as a command by the user, and not as a pager,
+# then the man page will be passed as an argument.
+if [[ -n "${MAN_PN:-}" ]]; then
+	MAN_PAGE="$MAN_PN"
+else
+	MAN_PAGE="$1"
+fi
+
+exec nvim -c "bdelete!" -c "ManCur $MAN_PAGE"
