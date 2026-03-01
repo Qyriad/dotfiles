@@ -229,6 +229,8 @@
 		# Symlink the thing that includes the default XCompose files into current-system
 		libX11
 		(lib.removeAttrsCalled [ "debug" ] kdePackages.kwin-x11.out)
+		# Keystroke visualizer.
+		qpkgs.tapshow
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
