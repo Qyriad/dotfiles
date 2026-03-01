@@ -119,7 +119,7 @@
 		jq
 		yq
 		yt-dlp
-		pstree
+		psmisc
 		silicon
 		hyperfine
 		nix-prefetch
