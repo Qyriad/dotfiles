@@ -122,12 +122,6 @@ $NETCTL_EDITOR = $EDITOR
 # Open nvim in read-only mode, pretending that the specified file is not actually a file
 aliases['nvimscratch'] = 'nvim -R "+setlocal buftype=nofile bufhidden=hide noswapfile"'
 aliases['rnvim'] = 'nvim -R'
-@aliases.register
-@aliases.return_command
-def _vimman(args: list):
-	assert len(args) == 1, f"should only be one argument: {args=}"
-	topic = args[0]
-	return ['nvim', '-c', f'ManCur {topic}']
 
 @aliases.register
 @aliases.return_command
@@ -156,6 +150,7 @@ aliases['tmux'] = 'tmux -u'
 $PAGER = $(which moor).strip()
 $DELTA_PAGER = 'moor --no-clear-on-exit --quit-if-one-screen --tab-size=4 --no-statusbar'
 $NIX_PAGER = 'less'
+$MANPAGER = 'vimman'
 
 def Pipe__repr__(self):
 	return str(self())
