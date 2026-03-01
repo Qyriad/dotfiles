@@ -692,3 +692,4 @@ else:
 #xontrib load whole_word_jumping
 #xontrib load argcomplete
 
+xontrib load prelude
