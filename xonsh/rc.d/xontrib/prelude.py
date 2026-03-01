@@ -34,6 +34,12 @@ def _load_xontrib_(xsh: XonshSession, **_) -> dict:
             take=pipe.take,
         )
 
+    with suppress(ModuleNotFoundError):
+        import requests
+        prelude |= dict(
+            requests=requests,
+        )
+
     import importlib
     prelude |= dict(
         importlib=importlib,
