@@ -17,6 +17,10 @@
 		"usbhid"
 		"usb_storage"
 		"sd_mod"
+		"nvidia"
+		"nvidia_modeset"
+		"nvidia_uvm"
+		"nvidia_drm"
 	];
 	boot.initrd.kernelModules = [ ];
 	boot.kernelModules = [
