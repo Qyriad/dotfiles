@@ -119,7 +119,6 @@
 		jq
 		yq
 		yt-dlp
-		psmisc
 		silicon
 		hyperfine
 		nix-prefetch

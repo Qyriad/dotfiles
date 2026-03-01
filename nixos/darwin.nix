@@ -132,6 +132,7 @@
 		qyriad.xonsh
 		git
 		coreutils-full
+		pstree
 		iterm2
 		karabiner-elements
 		rectangle
