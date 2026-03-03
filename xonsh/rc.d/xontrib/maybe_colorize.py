@@ -18,11 +18,13 @@ commands = [
     'lsusb',
     'netstat',
     'ifconfig',
+    'ss',
 ]
 
 aliases_colorized = { }
 aliases_colorized['lspci'] = 'lspci'
 aliases_colorized['lsdsk'] = 'lsblk -o NAME,FSTYPE,LABEL,TYPE,MOUNTPOINT,SIZE'
+aliases_colorized['ssx'] = 'ss --no-queues --process --tcp --udp state connected'
 
 grcc = 'grc --colour=on'
 
