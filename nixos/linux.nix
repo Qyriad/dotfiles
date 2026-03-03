@@ -9,6 +9,8 @@
 		efi.efiSysMountPoint = "/boot/efi";
 	};
 
+	boot.extraSystemdUnitPaths = [ "/etc/systemd-mutable/system" ];
+
 	# We want sysrqs to work.
 	#boot.kernelParams = [ "sysrq_always_enabled" ];
 	boot.kernel.sysctl = {
