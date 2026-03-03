@@ -5,6 +5,22 @@ let
 	MOUNT = lib.getExe' pkgs.util-linux "mount";
 	UMOUNT = lib.getExe' pkgs.util-linux "umount";
 	MOUNTPOINT = lib.getExe' pkgs.util-linux "mountpoint";
+
+	# TODO: warn or error on replacements that aren't used.
+	replaceVarsInString = { ... }@replacements: s: replacements
+	|> lib.foldlAttrs (acc: name: value: assert lib.strings.isConvertibleWithToString value; {
+		names = acc.names ++ [ "@${toString name}@" ];
+		values = acc.values ++ [ value ];
+	}) { names = [ ]; values = [ ]; }
+	|> ({ names, values }: lib.replaceStrings names values s)
+	|> lib.splitLines
+	|> lib.imap (i: line: let
+			matches = lib.match ''.*@([A-Za-z0-9_]+)@.*'' line;
+			joined = lib.concatStringsSep ", " matches;
+			msg = "line ${toString i} has unreplaced variable(s): ${joined}";
+	in assert lib.assertMsg (matches == null) msg; line)
+	|> lib.joinLines
+	;
 in
 {
 	# Interface.
@@ -19,7 +35,8 @@ in
 		system.activationScripts."01-unmount-usr" = {
 			deps = [ "stdio" ];
 			supportsDryActivation = true;
-			text = pkgs.replaceVars ./mount-usr-unmount.sh { inherit MOUNTPOINT UMOUNT; } |> builtins.readFile;
+			text = builtins.readFile ./mount-usr-unmount.sh
+			|> replaceVarsInString { inherit MOUNTPOINT UMOUNT; };
 		};
 
 		systemd.services."mount-usr-after-activation" = {
@@ -28,7 +45,8 @@ in
 				Type = "oneshot";
 				ExecStart = lib.getExe <| pkgs.writeShellApplication {
 					name = "mount-usr-mount.sh";
-					text = pkgs.replaceVars ./mount-usr-mount.sh { inherit MOUNT; } |> builtins.readFile;
+					text = builtins.readFile ./mount-usr-mount.sh
+					|> replaceVarsInString { inherit MOUNT; };
 				};
 				ConditionPathExists = "/run/current-system";
 			};
