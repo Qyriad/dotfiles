@@ -33,7 +33,7 @@ if [[ -n "${COLS:-}" ]]; then
 	declare -i PARSED_COLS
 	if printf -v PARSED_COLS "%d" "$COLS" 2>/dev/null; then
 		if [[ "$PARSED_COLS" -gt "$MAX_COLS" ]]; then
-			export MANWIDTH="$PARSED_COLS"
+			export MANWIDTH="$MAX_COLS"
 		else
 			export MANWIDTH="$COLS"
 		fi
