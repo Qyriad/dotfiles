@@ -9,9 +9,35 @@ declare MAN_PAGE
 # But if we're executed as a command by the user, and not as a pager,
 # then the man page will be passed as an argument.
 if [[ -n "${MAN_PN:-}" ]]; then
-	MAN_PAGE="$MAN_PN"
+	# …It's also backslash escaped, apparently...
+	MAN_PAGE="${MAN_PN//\\/}"
 else
 	MAN_PAGE="$1"
 fi
 
-exec nvim -c "bdelete!" -c "ManCur $MAN_PAGE"
+# Also, limit the width to no more than 160.
+MAX_COLS="${MAX_COLS:-160}"
+declare COLS
+COLS="$({
+	# Doing this in a subshell, so we can handle e.g. `tput` not existing gracefully.
+	if ! tput cols; then
+		return
+	fi
+})"
+
+
+if [[ -n "${COLS:-}" ]]; then
+	# Safely try to parse COLS as an integer.
+	# Unlike arithmetic expansion, `printf -v` will fail
+	# if $COLS is not integer-y.
+	declare -i PARSED_COLS
+	if printf -v PARSED_COLS "%d" "$COLS" 2>/dev/null; then
+		if [[ "$PARSED_COLS" -gt "$MAX_COLS" ]]; then
+			export MANWIDTH="$PARSED_COLS"
+		else
+			export MANWIDTH="$COLS"
+		fi
+	fi
+fi
+
+exec nvim "man://$MAN_PAGE"

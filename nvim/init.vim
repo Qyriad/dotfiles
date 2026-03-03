@@ -27,6 +27,10 @@ function post_plugins(fn)
 end
 EOF
 
+if getenv("MANWIDTH") != v:null
+	let g:man_hardwrap = 1
+endif
+
 runtime ftplugin/man.vim
 
 let $CONFIGPATH = stdpath('config')
