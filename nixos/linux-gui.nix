@@ -136,7 +136,6 @@
 		vesktop
 		# For voice.
 		discord
-		kicad
 		krita
 		#olive-editor
 		# TODO: possibly switch to sddm.extraPackages if it's added
