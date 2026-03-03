@@ -125,6 +125,8 @@
 		"i2c-dev"
 	];
 
+	boot.loader.systemd-boot.consoleMode = "max";
+
 	systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
 	systemd.services."meow" = {
