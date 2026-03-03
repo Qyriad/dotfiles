@@ -265,7 +265,6 @@
 		makemkv
 		valgrind
 		ryubing
-		shotcut
 		davinci-resolve
 		blender
 		perf
