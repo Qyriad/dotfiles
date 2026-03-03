@@ -146,6 +146,8 @@ $PAGER = $(which moor).strip()
 $DELTA_PAGER = 'moor --no-clear-on-exit --quit-if-one-screen --tab-size=4 --no-statusbar'
 $NIX_PAGER = 'less'
 $MANPAGER = 'vimman'
+# Do not justify.
+$MANOPT = '--nj'
 
 def Pipe__repr__(self):
 	return str(self())
