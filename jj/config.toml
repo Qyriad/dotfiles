@@ -27,7 +27,14 @@ tug = [
 	"--to", "@-",
 ]
 present = ['log', '-r', 'present-tree']
-l = ['log', '-T', 'qshortlog']
+#l = ['log', '-T', 'qshortlog']
+l = ['util', 'exec', '--', 'zsh', '-c', """
+set -euo pipefail
+if [[ "$#" -gt 2 ]] && [[ "$3" != "-r" ]]; then
+	exec jj log -r "$@"
+fi
+exec jj log "$@"
+"""]
 lh = ['log', '-T', 'qshortlog', '-r', 'here']
 lo = ['log', '-T', 'qlog']
 here = ['log', '-r', 'here']
