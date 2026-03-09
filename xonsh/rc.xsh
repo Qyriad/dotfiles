@@ -314,7 +314,8 @@ maybe_abbrevs['userctl'] = 'systemctl --user'
 aliases['diaryctl'] = 'journalctl --user'
 aliases["busctl"] = ["busctl", "--full", "--verbose"]
 aliases['ins'] = 'insect'
-aliases['silicon'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
+aliases['siliconx'] = 'silicon --no-window-controls --pad-horiz=20 --pad-vert=20'
+aliases['silicon-slide'] = 'silicon --no-window-controls --pad-horiz=0 --pad-vert=0 --no-round-corner --no-line-number'
 aliases["moaro"] = [$PAGER, "-quit-if-one-screen"]
 aliases['jg'] = 'jj'
 aliases['jgn'] = 'jj --ignore-working-copy --no-pager'
