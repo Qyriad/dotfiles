@@ -172,11 +172,11 @@
     "fx-autoconfig-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1765622861,
-        "narHash": "sha256-xiCikg8c855w+PCy7Wmc3kPwIHr80pMkkK7mFQbPCs4=",
+        "lastModified": 1773035931,
+        "narHash": "sha256-vOsXpuU2XlbIfXGm1RJicY8ghbkU5FvnctQMBMXCXbs=",
         "owner": "MrOtherGuy",
         "repo": "fx-autoconfig",
-        "rev": "76232083171a8d609bf0258549d843b0536685e1",
+        "rev": "8da9268f7afcbf5d438b099e976fe8aa46a111d0",
         "type": "github"
       },
       "original": {
@@ -331,11 +331,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772379624,
-        "narHash": "sha256-NG9LLTWlz4YiaTAiRGChbrzbVxBfX+Auq4Ab/SWmk4A=",
+        "lastModified": 1773000227,
+        "narHash": "sha256-zm3ftUQw0MPumYi91HovoGhgyZBlM4o3Zy0LhPNwzXE=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "52d061516108769656a8bd9c6e811c677ec5b462",
+        "rev": "da529ac9e46f25ed5616fd634079a5f3c579135f",
         "type": "github"
       },
       "original": {
