@@ -31,8 +31,8 @@ sys.path[0:0] = $XONSHRC_DIR[:]
 $HOSTNAME
 $HOSTTYPE
 
-if p'/run/current-system/sw/bin/bash'.exists():
-	$XONSH_BASH_PATH_OVERRIDE = '/run/current-system/sw/bin/bash'
+#if p'/run/current-system/sw/bin/bash'.exists():
+#	$XONSH_BASH_PATH_OVERRIDE = '/run/current-system/sw/bin/bash'
 
 #
 # Xonsh special environment variables.
