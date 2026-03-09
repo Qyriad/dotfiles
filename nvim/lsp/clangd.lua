@@ -8,6 +8,11 @@ clangd_cmd = {
 	'--query-driver=**/*',
 }
 
+local PATH = vim.env.PATH
+if vim.fs.exists("/run/current-system/sw/opt/llvm/bin") then
+	PATH = string.format("%s:/run/current-system/sw/opt/llvm/bin", PATH)
+end
+
 ---@type vim.lsp.ClientConfig
 return qyriad.nested_tbl {
 	filetypes = {
@@ -19,9 +24,9 @@ return qyriad.nested_tbl {
 		'proto',
 	},
 	cmd = clangd_cmd,
-	cmd_env = {
-		PATH = string.format("%s:/run/current-system/sw/opt/llvm/bin", vim.env.PATH),
-	},
+	 cmd_env = {
+	 	PATH = PATH,
+	 },
 	capabilities = {
 		['textDocument.completion.editsNearCursor'] = true,
 		offsetEncoding = { 'utf-8', 'utf-16' },
