@@ -9,7 +9,7 @@ clangd_cmd = {
 }
 
 local PATH = vim.env.PATH
-if vim.fs.exists("/run/current-system/sw/opt/llvm/bin") then
+if vim.uv.fs_stat("/run/current-system/sw/opt/llvm/bin") then
 	PATH = string.format("%s:/run/current-system/sw/opt/llvm/bin", PATH)
 end
 
