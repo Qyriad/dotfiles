@@ -1,5 +1,5 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
-{ pkgs, config, ... }:
+# vim: shiftwidth=0 tabstop=2 noexpandtab
+{ pkgs, lib, config, ... }:
 
 {
 	# General development stuffs.
@@ -76,6 +76,7 @@
 		qpkgs.lsptrace
 		mergiraf
 		typescript-go
+		#qyriad.nvim-treesitter-parsers-all
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
 	];
