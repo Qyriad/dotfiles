@@ -145,7 +145,7 @@ aliases['tmux'] = 'tmux -u'
 $PAGER = $(which moor).strip()
 $DELTA_PAGER = 'moor --no-clear-on-exit --quit-if-one-screen --tab-size=4 --no-statusbar'
 $NIX_PAGER = 'less'
-$MANPAGER = 'vimman'
+$MANPAGER = 'moor'
 # Do not justify.
 $MANOPT = '--nj'
 
