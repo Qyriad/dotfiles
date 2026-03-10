@@ -13,6 +13,7 @@
   "gitsigns.nvim": { "branch": "main", "commit": "abf82a65f185bd54adc0679f74b7d6e1ada690c9" },
   "highlight-undo.nvim": { "branch": "main", "commit": "ee32e12693d70e66f954d09a504a7371d110fc27" },
   "jj-diffconflicts": { "branch": "main", "commit": "6d9eedadf1fab87bccb0a4a7ceda829da8023efb" },
+  "jj.nvim": { "branch": "main", "commit": "bbba4051c862473637e98277f284d12b050588ca" },
   "jsonc.vim": { "branch": "master", "commit": "6fb92460f9e50505c9b93181a00f27d10c9b383f" },
   "jsonpath.nvim": { "branch": "main", "commit": "9e7a3c2aec3465a8f7c86cec6424cf98ee62ee24" },
   "lalrpop.vim": { "branch": "master", "commit": "7073eec8efdeff37cacd4bca378c28dad02c3c14" },

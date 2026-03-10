@@ -289,6 +289,12 @@ use 'tpope/vim-abolish'
 use 'tpope/vim-obsession'
 use 'tpope/vim-fugitive'
 use {
+	'NicolasGB/jj.nvim',
+	opts = {
+
+	}
+}
+use {
 	'rafikdraoui/jj-diffconflicts',
 }
 use 'tpope/vim-scriptease'
