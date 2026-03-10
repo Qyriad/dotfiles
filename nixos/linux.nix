@@ -42,6 +42,10 @@
 		# I think these are default but I'm forcing the issue.
 		DefaultMemoryAccounting = "yes";
 		DefaultTasksAccounting = "yes";
+
+		# "Reached target Remote File Systems." -> "Reached target remote-fs.target - Remote File Systems."
+		# Much better.
+		StatusUnitFormat = "combined";
 	};
 
 	systemd.slices.system-builder.sliceConfig = config.resources.builderSliceConfig;
