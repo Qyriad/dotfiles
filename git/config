@@ -115,6 +115,8 @@
 	pushInsteadOf = "https://codeberg.org"
 [url "ssh://git@git.afnix.fr"]
 	pushInsteadOf = "https://git.afnix.fr"
+[url "ssh://git@git.lix.systems"]
+	pushInsteadOf = "https://git.lix.systems"
 [url "ssh://git@open.metrolo.gy"]
 	pushInsteadOf = "https://open.metrolo.gy"
 [git-extras "get"]
