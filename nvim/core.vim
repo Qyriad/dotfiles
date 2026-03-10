@@ -108,6 +108,12 @@ augroup insert_nohlsearch
 	autocmd! InsertEnter * nohlsearch
 augroup END
 
+" Stdin is always considered "modified" by default.
+" Let's not.
+augroup StdinNoModified
+	autocmd! StdinReadPost * set nomodified
+augroup END
+
 function! PagerMode() abort
 	nnoremap <buffer> J <C-e>j
 	nnoremap <buffer> K <C-y>k
