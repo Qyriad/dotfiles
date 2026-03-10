@@ -1,9 +1,12 @@
 from contextlib import suppress
+from typing import cast
 
+from xonsh.aliases import Aliases
 from xonsh.built_ins import DynamicAccessProxy, XonshSession
 
 def _load_xontrib_(xsh: XonshSession, **_) -> dict:
     prelude = dict()
+    aliases = cast(Aliases, xsh.aliases)
 
     with suppress(ModuleNotFoundError):
         # Not available on Windows.
@@ -43,6 +46,16 @@ def _load_xontrib_(xsh: XonshSession, **_) -> dict:
     import importlib
     prelude |= dict(
         importlib=importlib,
+    )
+
+    from xonsh.xoreutils.ulimit import ulimit as _ulimit
+    aliases['ulimit'] = _ulimit
+
+    import dataclasses
+    from dataclasses import dataclass, field
+    prelude |= dict(
+        dataclasses=dataclasses,
+        dataclass=dataclass,
     )
 
 
