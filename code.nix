@@ -59,12 +59,17 @@
 		llvmPackages
 	;
 
+	cargoCompletion = pkgs.linkFarm "cargo-bash-completions" {
+		"share/bash-completion/completions" = pkgs.cargo + "/share/bash-completion/completions";
+	};
+
 	callPackageFrom = fromSet: f: fromSet.callPackage f { };
 
 	mkShell = pkgs.mkShell.override { stdenv = clangStdenv; };
 
 	mkRustShell = rustToolchain: mkShell {
-		env.LIBCLANG_PATH = "${lib.getLib libclang}/lib";
+		#env.LIBCLANG_PATH = "${lib.getLib libclang}/lib";
+		env.LIBCLANG_PATH = lib.makeLibraryPath [ libclang ];
 		packages = [
 			# To make sure the actual cc is in PATH before libclang which also has cc.
 			clangStdenv.cc
@@ -81,6 +86,7 @@
 			pkgs.mdbook-mermaid
 			pkgs.mdbook-katex
 			pkgs.mdbook-linkcheck
+			cargoCompletion
 		];
 	};
 
