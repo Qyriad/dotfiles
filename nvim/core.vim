@@ -276,7 +276,7 @@ function! ExpandCurrentDirectory() abort
 		return expand("%:h<tab>")
 	endif
 endfunction
-cnoremap <expr> <C-e> expand("%:h") == "." ? "./<tab>" : expand("%:h<tab>")
+cnoremap <expr> <C-e> expand("%:h") == "." ? "./<tab>" : expand("%:h") .. "/"
 cnoremap <A-e> %:h<tab>
 
 " Use escape to exit terminal mode.
