@@ -310,6 +310,7 @@ aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
 aliases['nopager'] = 'env PAGER=cat GIT_PAGER=cat NIX_PAGER=cat SYSTEMD_PAGER=cat'
 aliases['nosleep'] = 'systemd-inhibit --what=sleep'
+aliases['nixos-rebuild'] = 'nixos-rebuild --sudo --no-reexec'
 def _nix_tmp(pkg: list):
 	""" Build a package, symlink it in /tmp, and ls --tree it """
 	pkg, *rest = pkg
