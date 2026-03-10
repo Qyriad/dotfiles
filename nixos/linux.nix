@@ -277,6 +277,24 @@
 		permissions = "u+rx,g+rx,o+r";
 	};
 
+	security.wrappers.glances = {
+		owner = "root";
+		group = "wheel";
+		source = lib.getExe pkgs.glances;
+		#capabilities = "cap_sys_resource=ep,cap_sys_nice=ep,cap_sys_ptrace=ep,cap_dac_override=ep,cap_sys_admin=ep";
+		capabilities = [
+			"cap_sys_resource"
+			"cap_sys_nice"
+			"cap_sys_ptrace"
+			"cap_dac_override"
+			"cap_sys_admin"
+		]
+		#|> lib.map (s: "${s}=ep")
+		|> lib.concatStringsSep ","
+		|> (s: "${s}=ep");
+		permissions = "u+rx,g+rx,o+r";
+	};
+
 	boot.kernelModules = lib.optionals config.package-groups.music-production.enable [
 		"snd_virmidi"
 	];
