@@ -48,8 +48,8 @@ in
 					text = builtins.readFile ./mount-usr-mount.sh
 					|> replaceVarsInString { inherit MOUNT; };
 				};
-				ConditionPathExists = "/run/current-system";
 			};
+			unitConfig.ConditionPathExists = "/run/current-system";
 			wantedBy = [ "sysinit.target" ];
 			after = [ "sysinit.target" ];
 		};
