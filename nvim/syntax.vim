@@ -40,6 +40,7 @@ EOF
 
 let g:xsh_highlight_all = v:true
 
+nnoremap <leader>T <Cmd>lua vim.treesitter.dev.inspect_tree { command = "vnew" }<CR>
 nnoremap <leader>I <Cmd>Inspect<CR>
 
 function! SynNameStack() abort
