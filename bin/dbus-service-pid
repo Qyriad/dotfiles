@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+exec qdbus org.freedesktop.DBus / org.freedesktop.DBus.GetConnectionUnixProcessID $@
