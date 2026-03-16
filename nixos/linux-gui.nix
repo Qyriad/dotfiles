@@ -241,6 +241,8 @@
 		pulseaudio
 		qpkgs.qjackctl
 		playerctl
+		carla
+		coppwr
 	] ++ lib.optionals config.services.dbus.enable [
 		# Honestly idk when ever you'd be including linux-gui and *not* have DBus enabled.
 		# But whatever.
