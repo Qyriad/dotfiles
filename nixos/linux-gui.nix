@@ -305,6 +305,10 @@
 	fonts.packages = with pkgs; [
 		nerd-fonts.inconsolata-go
 		noto-fonts-cjk-sans
+		# Humanist sans serif fonts:
+		noto-fonts
+		junction-font
+		vegur
 	];
 
 	# NixOS's KDE module sets the default monospace font to [ "Hack" "Noto Sans Mono" ].
