@@ -129,17 +129,17 @@
 
 	systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
-	systemd.services."meow" = {
-		after = [ "suspend.target" ];
-		wantedBy = [ "suspend.target" ];
-		script = lib.dedent ''
-			sleep 10
-			echo 1 | tee /sys/class/leds/*::capslock/brightness
-			${lib.getExe' pkgs.acl "setfacl"} -m 'u:qyriad:rw' /dev/uinput
-			${lib.getExe pkgs.sudo} -u qyriad ${lib.getExe pkgs.qyriad.unfuck-seat}
-
-		'';
-	};
+	# omg this hack seems no longer needed?
+	#systemd.services."meow" = {
+	#	after = [ "suspend.target" ];
+	#	wantedBy = [ "suspend.target" ];
+	#	script = lib.dedent ''
+	#		sleep 10
+	#		echo 1 | tee /sys/class/leds/*::capslock/brightness
+	#		${lib.getExe' pkgs.acl "setfacl"} -m 'u:qyriad:rw' /dev/uinput
+	#		${lib.getExe pkgs.sudo} -u qyriad ${lib.getExe pkgs.qyriad.unfuck-seat}
+	#	'';
+	#};
 
 	systemd.coredump.extraConfig = "MaxUse=1";
 
