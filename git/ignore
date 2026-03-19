@@ -5,3 +5,4 @@ gdb-session.log
 *.bak
 /.jj
 Session*.vim
+compile_commands.json
