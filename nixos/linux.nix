@@ -327,7 +327,7 @@
 		bpftrace
 		trace-cmd
 		watchexec
-		exfatprogs
+		exfat
 		caligula
 		trashy
 		socat
