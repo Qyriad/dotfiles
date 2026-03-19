@@ -230,6 +230,7 @@
 		(lib.removeAttrsCalled [ "debug" ] kdePackages.kwin-x11.out)
 		# Keystroke visualizer.
 		qpkgs.tapshow
+		kernelshark
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt

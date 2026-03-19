@@ -325,6 +325,7 @@
 		qpkgs.intentrace
 		ltrace
 		bpftrace
+		trace-cmd
 		watchexec
 		exfatprogs
 		caligula
