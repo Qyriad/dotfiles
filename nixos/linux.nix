@@ -328,6 +328,7 @@
 		trace-cmd
 		watchexec
 		exfat
+		udftools
 		caligula
 		trashy
 		socat
