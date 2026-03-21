@@ -269,6 +269,47 @@ in lib.makeScope qpkgs.newScope (self: {
 		'';
 	});
 
+	wireplumber-patched = pkgs.wireplumber.overrideAttrs (prev: {
+		pname = "wireplumber-patched";
+		patches = prev.patches or [ ] ++ [
+			./pkgs/wireplumber-logging.patch
+		];
+	});
+
+	#wireplumber-patched = self.runCommandMinimal "wireplumber-patched" {
+	#	pname = "wireplumber";
+	#	inherit (pkgs.wireplumber)
+	#		version
+	#		#buildInputs
+	#	;
+	#
+	#	outputs = [ "out" "dev" "doc" ];
+	#
+	#	#nativeBuildInputs = pkgs.wireplumber.nativeBuildInputs ++ [ pkgs.lndir ];
+	#	inputDerivation = pkgs.wireplumber;
+	#	nativeBuildInputs = [ pkgs.lndir ];
+	#
+	#	#src = pkgs.symlinkJoin {
+	#	#	name = "wireplumber-outputs";
+	#	#	paths = [
+	#	#		pkgs.wireplumber.out
+	#	#		pkgs.wireplumber.dev
+	#	#		pkgs.wireplumber.doc
+	#	#	];
+	#	#};
+	#	src = pkgs.linkFarm "wireplumber-outputs" {
+	#		inherit (pkgs.wireplumber)
+	#			out
+	#			dev
+	#			doc
+	#		;
+	#	};
+	#} <| lib.dedent ''
+	#	cp --reflink=auto -r "$src/out" "$out"
+	#	cp --reflink=auto -r "$src/dev" "$dev"
+	#	cp --reflink=auto -r "$src/doc" "$doc"
+	#'';
+
 	# binutils without "toolchain" stuff like `ld`, `ar`, etc.
 	binutils-nolink = self.runCommandMinimal "binutils-nolink" {
 		pname = "binutils-wrapper-no-link";

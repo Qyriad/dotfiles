@@ -1,0 +1,16 @@
+diff --git a/src/scripts/linking/find-media-role-sink-target.lua b/src/scripts/linking/find-media-role-sink-target.lua
+index d6ab4c3846..48ea9ae358 100644
+--- a/src/scripts/linking/find-media-role-sink-target.lua
++++ b/src/scripts/linking/find-media-role-sink-target.lua
+@@ -48,7 +48,10 @@
+     }
+ 
+     if input_node == nil then
+-       log:warning (si, string.format("No input node for %s found", link_group))
++       log:warning (si, string.format(
++         "No input node for '%s' (%s) / '%s' / '%s' found",
++         node_name,
++         tostring (si_props ["node.id"]), media_class, link_group))
+        return
+     end
+ 
