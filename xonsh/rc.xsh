@@ -24,6 +24,11 @@ from xonsh.tools import unthreadable
 # Add xonsh/rc.d and friends to sys.path, so we can import them interactively.
 sys.path[0:0] = $XONSHRC_DIR[:]
 
+# These variables are set to lambdas, and are not exported to subprocesses
+# unless they have been evaluated at least once, it seems.
+$HOSTNAME
+$HOSTTYPE
+
 #
 # Xonsh special environment variables.
 #
