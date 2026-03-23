@@ -92,6 +92,9 @@
 		'';
 	};
 
+	systemd.user.services.wireplumber.path = [
+		pkgs.libcamera
+	];
 	systemd.user.services.loopback-elgato = {
 		script = lib.dedent ''
 			exec /run/current-system/sw/bin/pw-loopback \
