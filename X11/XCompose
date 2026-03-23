@@ -1,7 +1,9 @@
+# vim: ft=xcompose
 include "%L"
 
 # Apostrophe. Specifically:
 # U+02BC MODIFIER LETTER APOSTROPHE
+# https://tedclancy.wordpress.com/2015/06/03/which-unicode-character
 <Multi_key> <a> <p> : "ʼ"
 <Multi_key> <slash> <quotedbl> : "ʼ"
 <Multi_key> <quotedbl> <slash> : "ʼ"
