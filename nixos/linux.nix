@@ -91,8 +91,9 @@
 	networking.modemmanager.enable = false;
 
 	services.avahi = {
-		enable = true;
-		# We'll use avahi for *publish*, but systemd-resolved for resolve.
+		enable = false;
+		# ~~We'll use avahi for *publish*, but systemd-resolved for resolve.~~
+		# Okay that doesn't seem to actually work. Disable Avahi for now.
 		nssmdns4 = false;
 		nssmdns6 = false;
 		publish.enable = true;
