@@ -31,10 +31,14 @@ class ToZone:
         if isinstance(zone, ZoneInfo):
             self.zone = zone
         elif isinstance(zone, str):
+            zone = zone.replace(' ', '_')
             try:
                 self.zone = ZoneInfo(zone)
             except zoneinfo._common.ZoneInfoNotFoundError:
                 for name in zoneinfo.available_timezones():
+                    if name.lower() == zone.lower():
+                        self.zone = ZoneInfo(zone)
+                        break
                     if name.split('/')[-1].lower() == zone.lower():
                         self.zone = ZoneInfo(name)
                         break
