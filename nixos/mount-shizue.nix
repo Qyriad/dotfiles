@@ -21,7 +21,6 @@
 
 		after = [
 			"network-online.target"
-			"multi-user.target"
 			#"avahi-daemon.service"
 		];
 		requires = after;
@@ -34,6 +33,9 @@
 		unitConfig = {
 			StartLimitIntervalSec = "30s";
 			StartLimitBurst = "1";
+			StopPropagatedFrom = [
+				"network-online.target"
+			];
 		};
 
 		wantedBy = [ "multi-user.target" ];
