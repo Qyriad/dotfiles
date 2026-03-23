@@ -229,6 +229,13 @@ in {
 		};
 	});
 
+	wireplumber = pkgsPrev.wireplumber.overrideAttrs (prev: {
+		pname = "wireplumber-patched";
+		patches = prev.patches or [ ] ++ [
+			./pkgs/wireplumber-logging.patch
+		];
+	});
+
 	grc = pkgsPrev.grc.overrideAttrs (prev: {
 		permitUserSite = true;
 		makeWrapperArgs = prev.makeWrapperArgs or [ ] ++ [

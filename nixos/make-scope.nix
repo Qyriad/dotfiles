@@ -269,13 +269,6 @@ in lib.makeScope qpkgs.newScope (self: {
 		'';
 	});
 
-	wireplumber-patched = pkgs.wireplumber.overrideAttrs (prev: {
-		pname = "wireplumber-patched";
-		patches = prev.patches or [ ] ++ [
-			./pkgs/wireplumber-logging.patch
-		];
-	});
-
 	#wireplumber-patched = self.runCommandMinimal "wireplumber-patched" {
 	#	pname = "wireplumber";
 	#	inherit (pkgs.wireplumber)
