@@ -34,9 +34,10 @@
 
 	warnings = let
 		latest = pkgs.linuxPackages_latest.kernel.version;
+		stable = pkgs.linuxPackages.kernel.version;
 		current = config.boot.kernelPackages.kernel.version;
-	in lib.mkIf (latest != current) [
-		"Yuki's Linux (${current}) is no longer latest (${latest})"
+	in lib.mkIf (current != latest) [
+		"Yuki's Linux (${current}) is no longer latest (${latest}) (stable: ${stable})"
 	];
 
 	boot.kernelPackages = pkgs.linuxPackages_6_18;
