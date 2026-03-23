@@ -361,6 +361,7 @@
 		gping
 		procs
 		choose
+		daemontools
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
