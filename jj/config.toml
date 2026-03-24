@@ -30,7 +30,11 @@ present = ['log', '-r', 'present-tree']
 #l = ['log', '-T', 'qshortlog']
 l = ['util', 'exec', '--', 'zsh', '-c', """
 set -euo pipefail
-if [[ "$#" -gt 0 ]] && [[ "$1" != "-r" ]]; then
+# No arguments case.
+if [[ "$#" -eq 0 ]]; then
+	exec jj log "$@"
+fi
+if [[ "$1" != "-r" ]]; then
 	exec jj log -r "$@"
 fi
 exec jj log "$@"
@@ -45,13 +49,56 @@ stat = ['show', '--stat']
 sh = ['show', '-T', 'qlog']
 
 [templates]
-log = 'builtin_log_comfortable'
+#log = 'builtin_log_comfortable'
+log = 'qlog_comfortable'
 
 [colors]
 qshortest = { fg = "bright blue", bold = true }
 qshort = { fg = "blue", bold = false }
 
 [template-aliases]
+qlog_comfortable = 'qlog_compact ++ "\n"'
+
+'q_added_removed(stat)' = '''
+concat(
+	label("diff added",
+		"+" ++ stat.total_added(),
+	),
+	" ",
+	label("diff removed",
+		"-" ++ stat.total_removed(),
+	),
+)
+'''
+
+qlog_compact = 'qlog_compact(self)'
+# A very slight modification on the default `builtin_log_compact(commit)`.
+'qlog_compact(commit)' = '''
+if(commit.root(),
+	format_root_commit(commit),
+	label(
+		separate(" ",
+			if(commit.current_working_copy(), "working_copy"),
+			if(commit.immutable(), "immutable", "mutable"),
+			if(commit.conflict(), "conflicted"),
+		),
+		concat(
+			format_short_commit_header(commit) ++ "\n",
+			separate(" ",
+				if(commit.empty(), empty_commit_marker),
+				if(commit.description(),
+					commit.description().first_line(),
+					label(if(commit.empty(), "empty"), description_placeholder),
+				),
+				surround("(", ")",
+					q_added_removed(commit.diff().stat()),
+				),
+			) ++ "\n",
+		),
+	)
+)
+'''
+
 # Format an ID highlighting the shortest prefix in bold and color,
 # the rest of the "short" prefix in unbolded color,
 # and the rest in the "rest" grey color.
