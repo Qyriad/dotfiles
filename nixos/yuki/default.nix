@@ -127,7 +127,7 @@
 
 	boot.loader.systemd-boot.consoleMode = "max";
 
-	systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+	systemd.sleep.settings.Sleep.HibernateDelaySec = "30m";
 
 	# omg this hack seems no longer needed?
 	#systemd.services."meow" = {
