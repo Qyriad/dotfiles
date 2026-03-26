@@ -215,7 +215,8 @@ in lib.makeScope qpkgs.newScope (self: {
 			pysmart
 			zeroconf
 		] ++ lib.optionals pkgs.stdenv.isLinux [
-			batinfo
+			# Nixpkgs broke batinfo.
+			#batinfo
 			wifi
 		];
 	});
