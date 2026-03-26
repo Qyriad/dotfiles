@@ -210,6 +210,8 @@ in lib.makeScope qpkgs.newScope (self: {
 	#unpackDrvSrc = drv: self.unpackSource { inherit (drv.src) url; };
 
 	glances = pkgs.glances.overridePythonAttrs (prev: {
+		# It's trying to run some network tests and I don't feel like dealing with that rn.
+		dontUsePytestCheck = true;
 		propagatedBuildInputs = with pkgs.python3Packages; (prev.propagatedBuildInputs or [ ]) ++ [
 			nvidia-ml-py
 			pysmart
