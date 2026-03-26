@@ -69,7 +69,10 @@ in {
 		pname = "lix-patched";
 		separateDebugInfo = false;
 		dontStrip = true;
-		patches = prev.patches or [ ] ++ [ ./pkgs/lix-print-cgroup-drvs.patch ];
+		patches = prev.patches or [ ] ++ [
+			./pkgs/lix-print-cgroup-drvs.patch
+			./pkgs/lix-act-export-references.patch
+		];
 	});
 
 	# Nil HEAD has support for pipe operator.

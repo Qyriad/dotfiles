@@ -1,0 +1,32 @@
+diff --git a/lix/libstore/store-api.cc b/lix/libstore/store-api.cc
+index 1e2cf35e37..f0820fb505 100644
+--- a/lix/libstore/store-api.cc
++++ b/lix/libstore/store-api.cc
+@@ -837,9 +837,18 @@
+ kj::Promise<Result<StorePathSet>>
+ Store::exportReferences(const StorePathSet & storePaths, const StorePathSet & inputPaths)
+ try {
++    Activity act = logger->startActivity(
++        lvlWarn,
++        actUnknown,
++        "exporting references",
++        {}
++    );
++    uint64_t done = 0;
+     StorePathSet paths;
+ 
+     for (auto & storePath : storePaths) {
++        ACTIVITY_PROGRESS(act, done);
++        done += 1;
+         if (!inputPaths.count(storePath))
+             throw BuildError("cannot export references of path '%s' because it is not in the input closure of the derivation", printStorePath(storePath));
+ 
+@@ -853,6 +862,8 @@
+     auto paths2 = paths;
+ 
+     for (auto & j : paths2) {
++        ACTIVITY_PROGRESS(act, done);
++        done += 1;
+         if (j.isDerivation()) {
+             Derivation drv = TRY_AWAIT(derivationFromPath(j));
+             for (auto & k : drv.outputsAndPaths(*this)) {
