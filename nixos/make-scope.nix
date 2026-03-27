@@ -306,6 +306,10 @@ in lib.makeScope qpkgs.newScope (self: {
 	#	cp --reflink=auto -r "$src/doc" "$doc"
 	#'';
 
+	qmlls = pkgs.linkFarm "qmlls" {
+		"bin/qmlls" = lib.getExe' pkgs.qt6.qtdeclarative "qmlls";
+	};
+
 	# binutils without "toolchain" stuff like `ld`, `ar`, etc.
 	binutils-nolink = self.runCommandMinimal "binutils-nolink" {
 		pname = "binutils-wrapper-no-link";

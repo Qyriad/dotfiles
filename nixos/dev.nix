@@ -76,6 +76,7 @@
 		qpkgs.lsptrace
 		mergiraf
 		typescript-go
+		qyriad.qmlls
 		#qyriad.nvim-treesitter-parsers-all
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
