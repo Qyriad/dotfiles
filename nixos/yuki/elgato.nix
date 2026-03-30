@@ -96,12 +96,21 @@
 	systemd.user.services.wireplumber.path = [
 		pkgs.libcamera
 	];
+
 	systemd.user.services.loopback-elgato = {
-		script = lib.dedent ''
-			exec /run/current-system/sw/bin/pw-loopback \
-				-C "alsa_input.usb-Elgato_Game_Capture_HD60_S__0004C809C2000-03.analog-stereo" \
-				-P default.audio.sink \
-				-n loopback.capturecard
-		'';
+		#script = lib.dedent ''
+		#	exec /run/current-system/sw/bin/pw-loopback \
+		#		--group null \
+		#		-C "alsa_input.usb-Elgato_Game_Capture_HD60_S__0004C809C2000-03.analog-stereo" \
+		#		--capture-props '{ node.dont-fallback = true, node.linger = true, media.class = "Audio/Sink", node.virtual = true, stream.capture.sink = false, monitor.channel-volumes = false }' \
+				#-P default.audio.sink \
+		#		--playback-props '{ media.class = "Stream/Output/Audio" }' \
+		#		-n loopback.capturecard
+		#'';
+		path = [ pkgs.pipewire ];
+		serviceConfig = {
+			ExecSearchPath = lib.makeBinPath [ pkgs.pipewire ];
+			ExecStart = "pipewire -c loopback-elgato.conf";
+		};
 	};
 }
