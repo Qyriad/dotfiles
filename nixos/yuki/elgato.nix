@@ -76,6 +76,7 @@
 			SendSIGHUP = "yes";
 			NotifyAccess = "all";
 			SyslogLevelPrefix = true;
+			KillMode = "SIGINT";
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
 		#wantedBy = [ "ffcap-elgato.target" ];
