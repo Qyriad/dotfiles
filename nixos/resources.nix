@@ -41,13 +41,15 @@ which we then do Math™ on.
 		maxMemory = floor (config.resources.memory * 0.85);
 	in {
 		resources.builderSliceConfig = {
-			CPUWeight = lib.mkDefault "90";
-			CPUQuota = "${toString (mostCpus * 90)}%";
-			MemoryHigh = "${toString mostMemory}G";
-			MemoryMax = "${toString maxMemory}G";
-			IOWeight = 20;
+			#CPUWeight = lib.mkDefault "90";
+			CPUQuota = "${toString (mostCpus * 100)}%";
+			#MemoryHigh = "${toString mostMemory}G";
+			#MemoryMax = "${toString maxMemory}G";
+			#IOWeight = 20;
 			MemoryAccounting = true;
 			IOAccounting = true;
+
+			Nice = "-5";
 		};
 
 		nix.settings.cores = mostCpus;
