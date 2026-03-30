@@ -254,6 +254,12 @@
 		PrivateTmp = lib.mkForce false;
 	};
 
+	# Systemd is complaining that the modprobe@ instances can't find `modprobe`.
+	# idk if this is a NixOS bug or what but it's easy to fix.
+	systemd.services."modprobe@".serviceConfig.ExecSearchPath = lib.makeBinPath [
+		pkgs.kmod
+	];
+
 	systemd.user.services.waydroid-session = lib.mkIf config.virtualisation.waydroid.enable {
 		serviceConfig = {
 			Type = "simple";
