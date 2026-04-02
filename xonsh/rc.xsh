@@ -314,6 +314,7 @@ aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
 aliases['nopager'] = 'env PAGER=cat MANPAGER=cat GIT_PAGER=cat NIX_PAGER=cat SYSTEMD_PAGER=cat'
 aliases['nosleep'] = 'systemd-inhibit --what=sleep'
+aliases['nd'] = 'niz develop'
 aliases['nixos-rebuild'] = 'nixos-rebuild --sudo --no-reexec'
 def _nix_tmp(pkg: list):
 	""" Build a package, symlink it in /tmp, and ls --tree it """
@@ -644,6 +645,7 @@ def _nix_create_dev_files(args: list):
 		$[nix print-dev-env f".#{dev_env}" > f".nix/{dev_env}.sh"]
 
 aliases["nix-create-dev-files"] = _nix_create_dev_files
+aliases['nr'] = ['niz', 'repl']
 
 @unthreadable
 def _git_diff_merge(args: list):
