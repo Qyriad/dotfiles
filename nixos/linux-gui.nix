@@ -306,11 +306,14 @@
 	fonts.packages = with pkgs; [
 		nerd-fonts.inconsolata-go
 		noto-fonts-cjk-sans
+		noto-fonts-color-emoji
 		# Humanist sans serif fonts:
 		noto-fonts
 		junction-font
 		vegur
 	];
+
+	fonts.fontDir.enable = true;
 
 	# NixOS's KDE module sets the default monospace font to [ "Hack" "Noto Sans Mono" ].
 	fonts.fontconfig.defaultFonts.monospace = lib.mkForce [
@@ -318,7 +321,6 @@
 		"Hack"
 		"Noto Sans Mono"
 	];
-
 
 	# Enable reasonable default fonts for unicode and emoji.
 	fonts.enableDefaultPackages = true;
