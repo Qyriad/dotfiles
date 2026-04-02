@@ -133,7 +133,7 @@ use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use { 'qnighy/lalrpop.vim' }
 use {
 	'nvim-treesitter/nvim-treesitter',
-	branch = "master",
+	branch = "main",
 	lazy = false,
 	--build = ":TSUpdate",
 	dependencies = {
@@ -141,18 +141,18 @@ use {
 	},
 	config = function()
 		treesitter = require('nvim-treesitter')
-		treesitter.configs = require('nvim-treesitter.configs')
-		treesitter.install = require('nvim-treesitter.install')
-		treesitter.utils = require('nvim-treesitter.utils')
-		treesitter.info = require('nvim-treesitter.info')
-		treesitter.configs.setup(treesitter_configs_setup)
+		--treesitter.configs = require('nvim-treesitter.configs')
+		--treesitter.install = require('nvim-treesitter.install')
+		--treesitter.utils = require('nvim-treesitter.utils')
+		--treesitter.info = require('nvim-treesitter.info')
+		--treesitter.configs.setup(treesitter_configs_setup)
 	end,
 }
-use {
-	'IndianBoy42/tree-sitter-just',
-	ft = "just",
-	opts = {},
-}
+--use {
+--	'IndianBoy42/tree-sitter-just',
+--	ft = "just",
+--	opts = {},
+--}
 use {
 	'acarapetis/nvim-treesitter-jjconfig',
 	dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -191,6 +191,7 @@ use {
 }
 use {
 	'nvim-treesitter/nvim-treesitter-textobjects',
+	branch = 'main',
 	after = 'nvim-treesitter',
 }
 use {
