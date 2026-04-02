@@ -27,7 +27,7 @@
 		llvmPackages.clang-tools
 		ruby
 		basedpyright
-		nodePackages.vim-language-server
+		vim-language-server
 		#javascript-typescript-langserver
 		nil
 		nixd
@@ -64,7 +64,7 @@
 		gh
 		gql
 		shellcheck
-		nodePackages.prettier
+		prettier
 		awscli2
 		pkgdiff
 		ast-grep
