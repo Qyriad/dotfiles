@@ -1,16 +1,18 @@
 {
 	lib,
-	stdenv,
+	clangStdenv,
 	rustHooks,
 	rustPlatform,
 	cargo,
 	clippy,
 	versionCheckHook,
 }: let
+  stdenv = clangStdenv;
 	cargoToml = lib.importTOML ./Cargo.toml;
 	cargoPackage = cargoToml.package;
-
-in stdenv.mkDerivation (self: {
+in stdenv.mkDerivation (finalAttrs: let
+	self = finalAttrs.finalPackage;
+in {
 	pname = cargoPackage.name;
 	version = cargoPackage.version;
 
@@ -45,11 +47,25 @@ in stdenv.mkDerivation (self: {
 
 	passthru.mkDevShell = {
 		mkShell,
+		fenixToolchain,
+		linkFarm,
+		cargo,
 	}: let
 		mkShell' = mkShell.override { stdenv = stdenv; };
+		# Fenix's Cargo doesn't have completions, but Nixpkgs' does.
+		cargoCompletions = linkFarm "cargo-bash-completions" {
+			"share/bash-completion" = cargo + "/share/bash-completion";
+		};
 	in mkShell' {
 		name = "${self.pname}-devshell-${self.version}";
 		inputsFrom = [ self.finalPackage ];
+		packages = [
+			stdenv.cc
+			fenixToolchain
+			cargoCompletions
+		];
+
+		passthru = { inherit cargoCompletions; };
 	};
 
 	passthru.tests.clippy = self.finalPackage.overrideAttrs (prev: {

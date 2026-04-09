@@ -3,10 +3,11 @@
 	qpkgs ? let
 		src = fetchTree (builtins.parseFlakeRef "github:Qyriad/nur-packages");
 	in import src { inherit pkgs; },
+	clangStdenv ? pkgs.clangStdenv,
 }: let
 	inherit (qpkgs) lib;
 
-	PKGNAME = qpkgs.callPackage ./package.nix { };
+	PKGNAME = qpkgs.callPackage ./package.nix { inherit clangStdenv; };
 
 	byStdenv = lib.mapAttrs (stdenvName: stdenv: let
 		withStdenv = PKGNAME.override { inherit stdenv; };
