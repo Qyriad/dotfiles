@@ -85,7 +85,6 @@
 			#pkgs.mdbook-alerts
 			pkgs.mdbook-mermaid
 			pkgs.mdbook-katex
-			pkgs.mdbook-linkcheck
 			cargoCompletion
 		];
 	};
