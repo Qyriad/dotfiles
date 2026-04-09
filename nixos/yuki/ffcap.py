@@ -292,10 +292,10 @@ def proxy_to_stdout(file: io.FileIO):
 
 def proxy_to_stderr(file: io.FileIO):
     data = file.read()
-    #write_log(data.decode('utf-8'))
-    #for line in data.decode('utf-8').splitlines():
-    #    pass
-        #print(f'{DEBUG_PREFIX}{line}')
+    write_log(data.decode('utf-8'))
+    if status_ring_buffer.same_for_how_many() > 3:
+        for line in data.decode('utf-8').splitlines():
+            print(f'{DEBUG_PREFIX}{line}')
 
 
 def mainloop(in_systemd: bool, selector: selectors.BaseSelector):
