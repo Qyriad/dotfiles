@@ -1,32 +1,238 @@
+diff --git a/lix/libmain/progress-bar.cc b/lix/libmain/progress-bar.cc
+index 378ffacd3a..b8d067628c 100644
+--- a/lix/libmain/progress-bar.cc
++++ b/lix/libmain/progress-bar.cc
+@@ -200,6 +200,17 @@
+         || (type == actCopyPath && hasAncestor(*state, actSubstitute, parent)))
+         i->visible = false;
+ 
++    if (type == actExportReferences) {
++        auto const pathCount = getI(fields, 0);
++        auto const inputCount = getI(fields, 1);
++        i->s = fmt("exporting references for '%s' with '%s' input(s)", pathCount, inputCount);
++    }
++
++    //if (type == actComputeFsClosure) {
++    //    auto const startCount = getI(fields, 0);
++    //    i->s = fmt("computing closure for %s path(s)", startCount);
++    //}
++
+     update(*state);
+     return BufferState::HasSpace;
+ }
+@@ -549,6 +560,10 @@
+         res += fmt(ANSI_RED "%d untrusted" ANSI_NORMAL, state.untrustedPaths);
+     }
+ 
++    showActivity(actExportReferences, "%s exported");
++
++    showActivity(actComputeFsClosure, "%s of closure computed");
++
+     return res;
+ }
+ 
+diff --git a/lix/libstore/misc.cc b/lix/libstore/misc.cc
+index 5f52e56a6f..fcf91cefca 100644
+--- a/lix/libstore/misc.cc
++++ b/lix/libstore/misc.cc
+@@ -17,8 +17,12 @@
+ namespace nix {
+ 
+ kj::Promise<Result<void>> Store::computeFSClosure(const StorePathSet & startPaths,
+-    StorePathSet & paths_, bool flipDirection, bool includeOutputs, bool includeDerivers)
++    StorePathSet & out, bool flipDirection, bool includeOutputs, bool includeDerivers)
++{
+ try {
++    Activity act = logger->startActivity(lvlInfo, actComputeFsClosure, "", {startPaths.size()});
++    uint64_t done = 0;
++
+     std::function<
+         kj::Promise<Result<std::set<StorePath>>>(const StorePath & path, ref<const ValidPathInfo>)>
+         queryDeps;
+@@ -30,18 +34,31 @@
+                 StorePathSet res;
+                 StorePathSet referrers;
+                 TRY_AWAIT(queryReferrers(path, referrers));
+-                for (auto& ref : referrers)
+-                    if (ref != path)
++                for (auto& ref : referrers) {
++                    if (ref != path) {
++                        ACTIVITY_PROGRESS(act, 1);
++                        done += 1;
+                         res.insert(ref);
++                    }
++                }
+ 
+-                if (includeOutputs)
+-                    for (auto& i : TRY_AWAIT(queryValidDerivers(path)))
++                if (includeOutputs) {
++                    for (auto& i : TRY_AWAIT(queryValidDerivers(path))) {
++                        ACTIVITY_PROGRESS(act, 1);
++                        done += 1;
+                         res.insert(i);
++                    }
++                }
+ 
+-                if (includeDerivers && path.isDerivation())
+-                    for (auto& [_, outPath] : TRY_AWAIT(queryDerivationOutputMap(path)))
+-                        if (TRY_AWAIT(isValidPath(outPath)))
++                if (includeDerivers && path.isDerivation()) {
++                    for (auto& [_, outPath] : TRY_AWAIT(queryDerivationOutputMap(path))) {
++                        if (TRY_AWAIT(isValidPath(outPath))) {
++                            ACTIVITY_PROGRESS(act, 1);
++                            done += 1;
+                             res.insert(outPath);
++                        }
++                    }
++                }
+                 co_return res;
+             } catch (...) {
+                 co_return result::current_exception();
+@@ -53,17 +70,29 @@
+                         ref<const ValidPathInfo> info) -> kj::Promise<Result<std::set<StorePath>>> {
+             try {
+                 StorePathSet res;
+-                for (auto& ref : info->references)
+-                    if (ref != path)
++                for (auto& ref : info->references) {
++                    if (ref != path) {
++                        ACTIVITY_PROGRESS(act, 1);
++                        done += 1;
+                         res.insert(ref);
++                    }
++                }
+ 
+-                if (includeOutputs && path.isDerivation())
+-                    for (auto& [_, outPath] : TRY_AWAIT(queryDerivationOutputMap(path)))
+-                        if (TRY_AWAIT(isValidPath(outPath)))
++                if (includeOutputs && path.isDerivation()) {
++                    for (auto& [_, outPath] : TRY_AWAIT(queryDerivationOutputMap(path))) {
++                        if (TRY_AWAIT(isValidPath(outPath))) {
++                            ACTIVITY_PROGRESS(act, 1);
++                            done += 1;
+                             res.insert(outPath);
++                        }
++                    }
++                }
+ 
+-                if (includeDerivers && info->deriver && TRY_AWAIT(isValidPath(*info->deriver)))
++                if (includeDerivers && info->deriver && TRY_AWAIT(isValidPath(*info->deriver))) {
++                    ACTIVITY_PROGRESS(act, 1);
++                    done += 1;
+                     res.insert(*info->deriver);
++                }
+                 co_return res;
+             } catch (...) {
+                 co_return result::current_exception();
+@@ -71,7 +100,7 @@
+         };
+     }
+ 
+-    paths_.merge(TRY_AWAIT(computeClosureAsync<StorePath>(
++    out.merge(TRY_AWAIT(computeClosureAsync<StorePath>(
+         startPaths,
+         // NOLINTNEXTLINE(cppcoreguidelines-avoid-capturing-lambda-coroutines)
+         [&](const StorePath& path) -> kj::Promise<Result<StorePathSet>> {
+@@ -85,6 +114,7 @@
+ } catch (...) {
+     co_return result::current_exception();
+ }
++}
+ 
+ kj::Promise<Result<void>> Store::computeFSClosure(const StorePath & startPath,
+     StorePathSet & paths_, bool flipDirection, bool includeOutputs, bool includeDerivers)
 diff --git a/lix/libstore/store-api.cc b/lix/libstore/store-api.cc
-index 1e2cf35e37..f0820fb505 100644
+index 1e2cf35e37..7e33fb7e2f 100644
 --- a/lix/libstore/store-api.cc
 +++ b/lix/libstore/store-api.cc
-@@ -837,9 +837,18 @@
+@@ -837,29 +837,47 @@
  kj::Promise<Result<StorePathSet>>
  Store::exportReferences(const StorePathSet & storePaths, const StorePathSet & inputPaths)
  try {
 +    Activity act = logger->startActivity(
 +        lvlWarn,
-+        actUnknown,
++        actExportReferences,
 +        "exporting references",
-+        {}
++        {storePaths.size(), inputPaths.size()}
 +    );
 +    uint64_t done = 0;
      StorePathSet paths;
  
++    StorePathSet computeClosureFrom;
      for (auto & storePath : storePaths) {
-+        ACTIVITY_PROGRESS(act, done);
++        ACTIVITY_PROGRESS(act, 1);
 +        done += 1;
          if (!inputPaths.count(storePath))
              throw BuildError("cannot export references of path '%s' because it is not in the input closure of the derivation", printStorePath(storePath));
  
-@@ -853,6 +862,8 @@
-     auto paths2 = paths;
+-        TRY_AWAIT(computeFSClosure({storePath}, paths));
++        computeClosureFrom.insert(storePath);
++        //TRY_AWAIT(computeFSClosure({storePath}, paths));
+     }
++    TRY_AWAIT(computeFSClosure(computeClosureFrom, paths));
  
-     for (auto & j : paths2) {
-+        ACTIVITY_PROGRESS(act, done);
-+        done += 1;
-         if (j.isDerivation()) {
-             Derivation drv = TRY_AWAIT(derivationFromPath(j));
-             for (auto & k : drv.outputsAndPaths(*this)) {
+     /* If there are derivations in the graph, then include their
+        outputs as well.  This is useful if you want to do things
+        like passing all build-time dependencies of some path to a
+        derivation that builds a NixOS DVD image. */
+-    auto paths2 = paths;
++    auto alreadyFound = paths;
+ 
+-    for (auto & j : paths2) {
+-        if (j.isDerivation()) {
+-            Derivation drv = TRY_AWAIT(derivationFromPath(j));
+-            for (auto & k : drv.outputsAndPaths(*this)) {
+-                TRY_AWAIT(computeFSClosure(k.second.second, paths));
+-            }
++    computeClosureFrom = {};
++    for (auto & path : alreadyFound) {
++        if (!path.isDerivation()) {
++            continue;
++        }
++        Derivation drv = TRY_AWAIT(derivationFromPath(path));
++        for (auto & [name, output] : drv.outputsAndPaths(*this)) {
++            ACTIVITY_PROGRESS(act, 1);
++            done += 1;
++            computeClosureFrom.insert(output.second);
++            //TRY_AWAIT(computeFSClosure(output.second, paths));
+         }
+     }
++    TRY_AWAIT(computeFSClosure(computeClosureFrom, paths));
+ 
+     co_return paths;
+ } catch (...) {
+diff --git a/lix/libutil/logging-rpc.hh b/lix/libutil/logging-rpc.hh
+index b8a47d1225..e5f0eb5b6d 100644
+--- a/lix/libutil/logging-rpc.hh
++++ b/lix/libutil/logging-rpc.hh
+@@ -46,6 +46,8 @@
+     case actQueryPathInfo: return log::ActivityType::QUERY_PATH_INFO;
+     case actPostBuildHook: return log::ActivityType::POST_BUILD_HOOK;
+     case actBuildWaiting:  return log::ActivityType::BUILD_WAITING;
++    case actExportReferences: return log::ActivityType::UNKNOWN;
++    case actComputeFsClosure: return log::ActivityType::UNKNOWN;
+     }
+     // clang-format on
+ }
+diff --git a/lix/libutil/logging.hh b/lix/libutil/logging.hh
+index 0e4a0ae9be..b44df74626 100644
+--- a/lix/libutil/logging.hh
++++ b/lix/libutil/logging.hh
+@@ -47,6 +47,17 @@
+      */
+     actPostBuildHook = 110,
+     actBuildWaiting = 111,
++
++    /**
++     * 0: int: store path count
++     * 1: int: input path count
++     */
++    actExportReferences = 112,
++
++    /**
++     * 0: int: start path count
++     */
++    actComputeFsClosure = 113,
+ } ActivityType;
+ 
+ template<>
