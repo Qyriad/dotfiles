@@ -74,6 +74,19 @@ nnoremap [f <Cmd>TSTextobjectGotoPreviousStart @function.inner<CR>
 xnoremap [f <Cmd>TSTextobjectGotoPreviousStart @function.inner<CR>
 
 lua <<EOF
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(ev)
+		local amatch = ev.amatch
+		if amatch == "qf" then
+			vim.treesitter.stop(ev.buf)
+			return
+		end
+		pcall(function()
+			vim.treesitter.start(ev.buf)
+			--vim.bo[ev.buf].syntax = 'ON'
+		end)
+	end,
+})
 treesitter_configs_setup = {
 	sync_install = false,
 	auto_install = false,
