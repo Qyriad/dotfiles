@@ -54,6 +54,7 @@
 		description = "ffcap-elgato";
 		unitConfig = {
 			Conflicts = [ "shutdown.target" ];
+			# Requires = [ "dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device" ];
 			# When ffcap-elgato.service fails, ffcap-elgato.target will also fail.
 			# If we `systemctl add-wants default.target ffcap-elgato.target`, then
 			# ffcap-elgato.target failing will pull default.target into "degraded",
@@ -111,6 +112,14 @@
 		serviceConfig = {
 			ExecSearchPath = lib.makeBinPath [ pkgs.pipewire ];
 			ExecStart = "pipewire -c loopback-elgato.conf";
+			Requires = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+			After = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+			RequiredBy = [
+				"ffcap-elgato.target"
+			];
+			WantedBy = [
+				"graphical-session.target"
+			];
 		};
 	};
 }
