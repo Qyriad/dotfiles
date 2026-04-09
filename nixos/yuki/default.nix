@@ -283,6 +283,7 @@
 		syncplay
 		gpu-screen-recorder-gtk
 		config.programs.gpu-screen-recorder.package
+		tana
 	];
 
 	# This value determines the NixOS release from which the default
