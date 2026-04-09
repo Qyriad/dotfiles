@@ -77,6 +77,8 @@
 		mergiraf
 		typescript-go
 		qyriad.qmlls
+		# Command-line profiler.
+		samply
 		#qyriad.nvim-treesitter-parsers-all
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
