@@ -1,6 +1,9 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 # vim: tabstop=2
 
+[fileset-aliases]
+'LOCK' = '**/Cargo.lock | **/package-lock.json | **/flake.lock | **/lazy-lock.json'
+
 [revset-aliases]
 here = "::@"
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
