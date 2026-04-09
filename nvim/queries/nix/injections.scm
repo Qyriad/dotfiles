@@ -4,7 +4,7 @@
 (binding
 	attrpath: ((attrpath) @_path
 		(#match? @_path "^([a-z][A-Za-z]*Phase|(pre|post)[A-Z][A-Za-z]*|(.*\\.)?script)|(script)|(buildCommand)$"))
-	expression: (_
+	expression: (
 		(indented_string_expression
 			((string_fragment) @injection.content)
 			(#set! injection.language "bash")
@@ -14,16 +14,23 @@
 )
 
 ; FIXME: apply to anything that is lib.dedent'd
-;(apply_expression
-;	function: (apply_expression
-;		function: (_) @_func
-;			(#match? @_func "(^(dedent)$")
-;	)
-;	argument: (indented_string_expression
-;		((string_fragment) @injection.content)
-;		(#set! injection.language "bash")
-;	)
-;)
+(apply_expression
+	function: (apply_expression
+		;function: (_) @_func
+		;	(#match? @_func "(^(dedent)$")
+		function: (apply_expression
+			function: (select_expression
+				attrpath: (attrpath
+					attr: (identifier)
+				)
+			)
+		)
+	)
+	argument: (indented_string_expression
+		((string_fragment) @injection.content)
+		(#set! injection.language "bash")
+	)
+)
 
 
 
