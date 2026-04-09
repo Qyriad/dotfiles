@@ -17,6 +17,8 @@ from zoneinfo import ZoneInfo
 import pathlib
 from pathlib import Path
 
+import xonsh as xonshmod
+from xonsh.commands_cache import predict_true
 from xonsh.events import events
 from xonsh.procs.specs import SpecAttrDecoratorAlias
 from xonsh.tools import unthreadable
@@ -28,6 +30,9 @@ sys.path[0:0] = $XONSHRC_DIR[:]
 # unless they have been evaluated at least once, it seems.
 $HOSTNAME
 $HOSTTYPE
+
+if p'/run/current-system/sw/bin/bash'.exists():
+	$XONSH_BASH_PATH_OVERRIDE = '/run/current-system/sw/bin/bash'
 
 #
 # Xonsh special environment variables.
@@ -52,7 +57,7 @@ def shlvl_diff():
 		return str(int($SHLVL) - 2)
 	return str(int($SHLVL) - 1)
 
-if "TMUX" in ${...}:
+if "TMUX" in os.environ:
 	# "Start of heading"
 	SOH = "\x01"
 	# "Start of text"
@@ -180,6 +185,8 @@ aliases['grep'] = 'grep --color=auto'
 aliases['egrep'] = 'egrep --color=auto'
 aliases['sed'] = 'sed -E'
 aliases['less'] = 'less -R'
+# `dict` is a Python keyword, lol
+aliases['dct'] = 'dict'
 if shutil.which("trash-put"):
 	aliases['tp'] = 'trash-put'
 else:
@@ -298,6 +305,7 @@ aliases['lsyncn'] = '/usr/bin/rsync -rvhhh --links --checksum --whole-file --inf
 aliases['rclone'] = 'rclone -P'
 aliases['pgrep'] = 'pgrep -i'
 aliases['ppid'] = 'ps -o ppid= -p' # Get parent pid of process specified by pid.
+aliases['ptree'] = 'pstree --long --show-pids --show-parents --color=age'
 maybe_abbrevs['userctl'] = 'systemctl --user'
 aliases['diaryctl'] = 'journalctl --user'
 aliases["busctl"] = ["busctl", "--full", "--verbose"]
