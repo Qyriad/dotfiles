@@ -666,27 +666,38 @@ EOF
 lua << EOF
 use 'tpope/vim-surround'
 use 'justinmk/vim-sneak'
-use {
-	'numToStr/Comment.nvim',
-	opts = {
-		-- Don't add a space for commented-out lines.
-		padding = false,
-		toggler = {
-			line = "<leader>cc",
-			block = "<leader>bc",
-		},
-		opleader = {
-			line = "<leader>cc",
-			block = "<leader>bc",
-		},
-	},
-	keys = {
-		{ "<leader>cc" },
-		{ "<leader>bc" },
-		{ "<leader>cc", mode = "v" },
-		{ "<leader>bc", mode = "v" },
-	},
-}
+
+local line_rhs = function()
+	return vim._comment.operator() .. '_'
+end
+vim.keymap.set('n', vim.keycode('<leader>cc'), line_rhs, { expr = true })
+vim.keymap.set('x', vim.keycode('<leader>cc'), vim._comment.operator, { expr = true })
+
+--use {
+--	'numToStr/Comment.nvim',
+--	opts = {
+--		-- Don't add a space for commented-out lines.
+--		padding = false,
+--		toggler = {
+--			line = "<leader>cc",
+--			block = "<leader>bc",
+--		},
+--		opleader = {
+--			line = "<leader>cc",
+--			block = "<leader>bc",
+--		},
+--	},
+--	keys = {
+--		{ "<leader>cc" },
+--		{ "<leader>bc" },
+--		{ "<leader>cc", mode = "v" },
+--		{ "<leader>bc", mode = "v" },
+--	},
+--	pre_hook = function(c)
+--		vim.notify({ commentstring = vim.o.commentstring })
+--		return vim.o.commentstring
+--	end,
+--}
 use 'vim-scripts/vis' -- Block selection range commands.
 use 'wsdjeg/vim-fetch'
 use 'famiu/bufdelete.nvim' -- :Bdelete without messing up window layout.

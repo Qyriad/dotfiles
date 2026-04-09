@@ -128,6 +128,10 @@ treesitter_configs_setup = {
 }
 EOF
 
+augroup ReapplyEditorconfig
+	autocmd! FileType * doautocmd nvim.editorconfig BufRead
+augroup END
+
 lua << EOF
 use { 'Shirk/vim-gas', ft = "gas" }
 use { 'neoclide/jsonc.vim', ft = "jsonc" }

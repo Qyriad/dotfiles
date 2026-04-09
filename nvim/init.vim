@@ -4,6 +4,21 @@ lua << EOF
 
 qyriad = require('qyriad')
 
+vim._core = qyriad.tbl_override(vim._core, {
+	ui2 = require('vim._core.ui2'),
+})
+vim._comment = qyriad.tbl_override(vim._comment, require('vim._comment'))
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		vim._core.ui2.enable {
+			enable = true,
+			--msg = {
+			--
+			--},
+		}
+	end,
+})
+
 -- Bootstrap lazy.nvim.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

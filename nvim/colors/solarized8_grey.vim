@@ -18,8 +18,8 @@ lua vim.api.nvim_set_hl(0, "@lsp.type.comment.lua", {})
 
 " Unlink the Treesitter and LSP comment modifiers (which also get applied to doc-comments),
 " so the italics
-highlight @lsp.type.comment.rust cterm=italic ctermfg=242
-highlight @comment.rust cterm=italic ctermfg=242
+"highlight @lsp.type.comment.rust cterm=italic ctermfg=242
+"highlight @comment.rust cterm=italic ctermfg=242
 
 " Override just these specific colors.
 " The first one makes the normal background a medium-dark grey, instead of the blue

@@ -156,6 +156,8 @@ $PAGER = $(which moor).strip()
 $DELTA_PAGER = 'moor --no-clear-on-exit --quit-if-one-screen --tab-size=4 --no-statusbar'
 $NIX_PAGER = 'less'
 $MANPAGER = 'moor'
+$SYSTEMD_PAGER = 'moor --quit-if-one-screen --no-clear-on-exit'
+$SYSTEMD_PAGERSECURE = 0
 # Do not justify.
 $MANOPT = '--nj'
 

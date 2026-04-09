@@ -51,7 +51,7 @@ nnoremap <leader>gr <Cmd>Telescope lsp_references<CR>
 
 function! JumpDeclaration() abort
 	if exists('b:lsp_client')
-		autocmd BufReadPost * ++once Fixname
+		autocmd BufReadPost * ++once call FixNameIfNeeded()
 		call v:lua.vim.lsp.buf.declaration()
 	elseif !empty(taglist(expand('<cword>')))
 		echo "jumped to tag"
@@ -63,7 +63,7 @@ endfunction
 
 function! JumpDefinition() abort
 	if exists('b:lsp_client')
-		autocmd BufReadPost * ++once Fixname
+		autocmd BufReadPost * ++once call FixNameIfNeeded()
 		Telescope lsp_definitions
 	elseif !empty(taglist(expand('<cword>')))
 		echo "jumped to tag"
@@ -74,7 +74,7 @@ function! JumpDefinition() abort
 endfunction
 
 function! JumpImplementations() abort
-	autocmd BufReadPost * ++once Fixname
+	autocmd BufReadPost * ++once call FixNameIfNeeded()
 	Telescope lsp_implementations
 endfunction
 
@@ -142,7 +142,7 @@ end
 
 --vim.lsp.log = require('vim.lsp.log')
 --vim.lsp.protocol = require('vim.lsp.protocol')
-vim.lsp.set_log_level(vim.lsp.log_levels.INFO)
+vim.lsp.log.set_level(vim.lsp.log_levels.WARN)
 
 lsp_filetypes = {
 	"vim",
@@ -183,6 +183,7 @@ local lsp_modules = {
 	'taplo',
 	'autotools',
 	'tsgo',
+	'justls',
 }
 local req_no_config = setmetatable({ }, { __index = table })
 local req_no_exe = setmetatable({ }, { __index = table })
@@ -269,7 +270,10 @@ function on_lsp_attach(bufnr, client_id)
 	vim.b[bufnr].lsp_client = client_id
 	clients[client_id] = client
 	clients[client.name] = client
-	vim.notify(string.format("LSP %s attached to %d", client.name or "<unknown>", bufnr))
+	local msg = string.format("LSP %s attached to %d", client.name or "<unknown>", bufnr)
+	vim.defer_fn(function()
+		vim.notify(msg, vim.log.levels.INFO)
+	end, 100)
 
 	require("lsp_basics").make_lsp_commands(client, bufnr)
 
