@@ -209,23 +209,24 @@
 	system.mount-usr.enable = true;
 
 	systemd.user = {
-		sockets.dbus-monitor-pcap = {
-			unitConfig.ConditionPathExists = "%t/bus";
-			socketConfig.ListenFIFO = "%t/bus.pcap";
-			wantedBy = [ "sockets.target" ];
 		};
-		services.dbus-monitor-pcap = {
-			unitConfig.ConditionPathExists = [
-				"%t/bus"
-				"/run/current-system/sw/bin/dbus-monitor"
-			];
-			serviceConfig = {
-				Type = "simple";
-				ExecStart = "/run/current-system/sw/bin/dbus-monitor --session --pcap";
-				Sockets = config.systemd.user.sockets.dbus-monitor-pcap.name;
-				StandardOutput = "fd:${config.systemd.user.sockets.dbus-monitor-pcap.name}";
-			};
-		};
+		# sockets.dbus-monitor-pcap = {
+		# 	unitConfig.ConditionPathExists = "%t/bus";
+		# 	socketConfig.ListenFIFO = "%t/bus.pcap";
+		# 	wantedBy = [ "sockets.target" ];
+		# };
+		# services.dbus-monitor-pcap = {
+		# 	unitConfig.ConditionPathExists = [
+		# 		"%t/bus"
+		# 		"/run/current-system/sw/bin/dbus-monitor"
+		# 	];
+		# 	serviceConfig = {
+		# 		Type = "simple";
+		# 		ExecStart = "/run/current-system/sw/bin/dbus-monitor --session --pcap";
+		# 		Sockets = config.systemd.user.sockets.dbus-monitor-pcap.name;
+		# 		StandardOutput = "fd:${config.systemd.user.sockets.dbus-monitor-pcap.name}";
+		# 	};
+		# };
 	};
 
 	networking.hostName = "Yuki";
