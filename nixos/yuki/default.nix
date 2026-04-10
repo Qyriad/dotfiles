@@ -209,6 +209,8 @@
 	system.mount-usr.enable = true;
 
 	systemd.user = {
+		services.speech-dispatcher.unitConfig = {
+			StopWhenUnneeded = true;
 		};
 		# sockets.dbus-monitor-pcap = {
 		# 	unitConfig.ConditionPathExists = "%t/bus";
