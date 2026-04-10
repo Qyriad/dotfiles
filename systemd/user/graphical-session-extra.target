@@ -1,0 +1,33 @@
+[Unit]
+After=graphical-session.target
+# Stopping these units also stops graphical-session-extra.target.
+PartOf=graphical-session.target
+
+After=sound.target
+Requires=sound.target
+
+# Make graphical-session-extra.target pull *in* these units.
+Upholds=pipewire.service pipewire-pulse.service wireplumber.service
+Upholds=filter-chain.service meeting-virtual-monitor.service
+
+# Make these units not-being-active bring *down* graphical-session-extra.target
+BindsTo=pipewire.service pipewire-pulse.service wireplumber.service
+BindsTo=filter-chain.service meeting-virtual-monitor.service
+
+BindsTo=plasma-core.target plasma-workspace.target plasma-workspace-wayland.target
+# Pretty sure these are redundant, but w/e.
+BindsTo=plasma-plasmashell.service plasma-kwin_wayland.service
+
+# Note that *stopping* graphical-session-extra.target does *not* stop any of these units.
+# Starting this target means "make sure these units are always up", and stopping this
+# target means "stop making sure these units are always up".
+
+# Require that some basic session environment variables are set.
+AssertEnvironment=XDG_RUNTIME_DIR
+AssertEnvironment=DBUS_SESSION_BUS_ADDRESS
+AssertEnvironment=WAYLAND_DISPLAY
+
+Conflicts=shutdown.target
+
+DefaultDependencies=false
+AllowIsolate=false

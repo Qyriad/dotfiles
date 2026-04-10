@@ -1,0 +1,13 @@
+[Unit]
+Requires=sound.target
+BindsTo=pipewire.service
+After=graphical-session.target sound.target
+
+[Service]
+Type=idle
+ExecStart=pipewire -c meeting-virtual-monitor.conf
+ExecSearchPath=/run/current-system/sw/bin
+Slice=session.slice
+
+[Install]
+WantedBy=graphical-session.target
