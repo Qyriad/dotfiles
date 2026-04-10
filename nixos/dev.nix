@@ -79,6 +79,7 @@
 		qyriad.qmlls
 		# Command-line profiler.
 		samply
+		wasm-language-tools
 		#qyriad.nvim-treesitter-parsers-all
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
