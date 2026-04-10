@@ -24,7 +24,7 @@ in stdenv.mkDerivation (self: {
 	installPhase = ''
 		runHook preInstall
 		mkdir -p "$out/lib/udev/rules.d"
-		cp -v "$src" "$out/lib/udev/rules.d"
+		cp -v "$src" "$out/lib/udev/rules.d/60-i2c.rules"
 		runHook postInstall
 	'';
 
