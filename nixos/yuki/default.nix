@@ -287,7 +287,7 @@
 	#	'';
 	#};
 
-	systemd.coredump.extraConfig = "MaxUse=1";
+	#systemd.coredump.extraConfig = "MaxUse=1";
 
 	environment.etc."modprobe.d/snd_virmidi.conf".text = lib.dedent ''
 		options snd_virmidi midi_devs=1
