@@ -44,9 +44,7 @@ in
 			path = [ pkgs.util-linux ];
 			before = [ "shutdown.target" "umount.target" ];
 			wantedBy = [ "shutdown.target" "umount.target" ];
-			script = lib.dedent ''
-				umount --verbose --no-canonicalize --recursive --lazy /usr
-			'';
+			ExecStart = "${UMOUNT} --verbose --no-canonicalize --recursive --lazy /usr";
 			unitConfig = {
 				DefaultDependencies = false;
 			};
