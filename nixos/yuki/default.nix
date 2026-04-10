@@ -210,7 +210,8 @@
 
 	systemd.user = {
 		services.speech-dispatcher.unitConfig = {
-			StopWhenUnneeded = true;
+			# Okay that breaks things.
+			#StopWhenUnneeded = true;
 		};
 		# sockets.dbus-monitor-pcap = {
 		# 	unitConfig.ConditionPathExists = "%t/bus";
