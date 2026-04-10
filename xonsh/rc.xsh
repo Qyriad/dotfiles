@@ -327,14 +327,16 @@ aliases['nopager'] = 'env PAGER=cat MANPAGER=cat GIT_PAGER=cat NIX_PAGER=cat SYS
 aliases['nosleep'] = 'systemd-inhibit --what=sleep'
 aliases['nd'] = 'niz develop'
 aliases['nixos-rebuild'] = 'nixos-rebuild --sudo --no-reexec'
-def _nix_tmp(pkg: list):
-	""" Build a package, symlink it in /tmp, and ls --tree it """
-	pkg, *rest = pkg
-	for out_path in $(@lines niz build f"nixpkgs#{pkg}" -o f"/tmp/result-{pkg}" @(rest)):
-		print(out_path, flush=True)
-		ls --tree @(out_path)
-
-aliases['nix-tmp'] = _nix_tmp
+@aliases.register
+@aliases.return_command
+def _nix_tmp(args: list):
+	pkg, *rest = args
+	return [
+		'niz',
+		'build',
+		'-o', f'/tmp/result-{pkg}',
+		f'nixpkgs#{pkg}^*',
+	]
 maybe_abbrevs['nds'] = 'niz develop -f ./shell.nix'
 # strace --color=always --silence=attach,exit --signal=none -y -e read,write -s999
 # strace handy arguments:
