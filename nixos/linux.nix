@@ -48,6 +48,10 @@
 		StatusUnitFormat = "combined";
 	};
 
+	systemd.user.extraConfig = lib.dedent ''
+		StatusUnitFormat=combined
+	'';
+
 	systemd.slices.system-builder.sliceConfig = config.resources.builderSliceConfig;
 	systemd.user.slices.user-builder.sliceConfig = config.resources.builderSliceConfig;
 
