@@ -49,7 +49,8 @@ which we then do Math™ on.
 			MemoryAccounting = true;
 			IOAccounting = true;
 
-			Nice = "-5";
+			# This is only a thing in [Service] apparently.
+			#Nice = "-5";
 		};
 
 		nix.settings.cores = mostCpus;

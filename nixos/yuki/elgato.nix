@@ -109,17 +109,15 @@
 		#		-n loopback.capturecard
 		#'';
 		path = [ pkgs.pipewire ];
+		wantedBy = [ "graphical-session.target" ];
+		requiredBy = [ "ffcap-elgato.target" ];
+		unitConfig = {
+			Requires = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+			After = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+		};
 		serviceConfig = {
 			ExecSearchPath = lib.makeBinPath [ pkgs.pipewire ];
 			ExecStart = "pipewire -c loopback-elgato.conf";
-			Requires = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
-			After = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
-			RequiredBy = [
-				"ffcap-elgato.target"
-			];
-			WantedBy = [
-				"graphical-session.target"
-			];
 		};
 	};
 }
