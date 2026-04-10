@@ -310,6 +310,13 @@ in lib.makeScope qpkgs.newScope (self: {
 		"bin/qmlls" = lib.getExe' pkgs.qt6.qtdeclarative "qmlls";
 	};
 
+	pulseaudio-pactl = pkgs.linkFarm "pulseaudio-pactl" {
+		"bin" = (lib.getBin pkgs.pulseaudio) + "/bin";
+		"share/bash-completion" = pkgs.pulseaudio + "/share/bash-completion";
+		"share/zsh" = pkgs.pulseaudio + "/share/zsh";
+		"share/man" = (lib.getMan pkgs.pulseaudio) + "/share/man";
+	};
+
 	# binutils without "toolchain" stuff like `ld`, `ar`, etc.
 	binutils-nolink = self.runCommandMinimal "binutils-nolink" {
 		pname = "binutils-wrapper-no-link";

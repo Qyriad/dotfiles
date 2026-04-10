@@ -238,8 +238,7 @@
 		wayfarer
 		qpwgraph
 		# Cursed. But gives me access to pactl.
-		(lib.getBin pulseaudio)
-		pulseaudio
+		qyriad.pulseaudio-pactl
 		qpkgs.qjackctl
 		playerctl
 		carla
