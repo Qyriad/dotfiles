@@ -317,6 +317,7 @@ aliases["moaro"] = [$PAGER, "-quit-if-one-screen"]
 aliases['jg'] = 'jj'
 aliases['jgn'] = 'jj --ignore-working-copy --no-pager'
 aliases['jl'] = 'jj l'
+aliases['js'] = 'jj s'
 aliases['hyfetch'] = 'env SHELL=xonsh hyfetch'
 aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 aliases['striptext'] = lambda args, stdin: stdin.read().strip()
