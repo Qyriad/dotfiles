@@ -44,11 +44,11 @@ in
 			path = [ pkgs.util-linux ];
 			before = [ "shutdown.target" "umount.target" ];
 			wantedBy = [ "shutdown.target" "umount.target" ];
-			ExecStart = "${UMOUNT} --verbose --no-canonicalize --recursive --lazy /usr";
 			unitConfig = {
 				DefaultDependencies = false;
 			};
 			serviceConfig = {
+				ExecStart = "${UMOUNT} --verbose --no-canonicalize --recursive --lazy /usr";
 				Type = "oneshot";
 				Restart = "no";
 				RemainAfterExit = true;
