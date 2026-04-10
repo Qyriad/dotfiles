@@ -39,6 +39,24 @@ in
 			|> replaceVarsInString { inherit MOUNTPOINT UMOUNT; };
 		};
 
+		systemd.services."umount-usr-before-shutdown" = {
+			enableDefaultPath = false;
+			path = [ pkgs.util-linux ];
+			before = [ "shutdown.target" "umount.target" ];
+			wantedBy = [ "shutdown.target" "umount.target" ];
+			script = lib.dedent ''
+				umount --verbose --no-canonicalize --recursive --lazy /usr
+			'';
+			unitConfig = {
+				DefaultDependencies = false;
+			};
+			serviceConfig = {
+				Type = "oneshot";
+				Restart = "no";
+				RemainAfterExit = true;
+			};
+		};
+
 		systemd.services."mount-usr-after-activation" = {
 			description = "Mount /usr after activation";
 			serviceConfig = {
