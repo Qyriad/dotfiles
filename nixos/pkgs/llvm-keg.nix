@@ -19,6 +19,7 @@
 	libgcc = libgcc.out;
 
 	llvm = llvmPackages.llvm.out;
+	llvmDev = llvmPackages.llvm.dev;
 
 	meta.description = "llvm tools not in /bin";
 } <| lib.dedent ''
@@ -26,6 +27,7 @@
 	lndir -silent "$clang" "$out/opt/llvm"
 	lndir -silent "$lld" "$out/opt/llvm"
 	lndir -silent "$llvm" "$out/opt/llvm"
+	ln -s "$llvmDev/bin/llvm-config" "$out/opt/llvm/bin/llvm-config"
 	mkdir -p "$out/opt/llvm/include"
 	# Bleh. libstdc++ includes.
 	lndir -silent "$libgcc/include" "$out/opt/llvm/include"
