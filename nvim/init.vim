@@ -73,6 +73,9 @@ source $CONFIGPATH/statusline.vim
 " Copy to tmux.
 vnoremap <leader>y :Tyank<CR>
 
+" Sort visual selection.
+vnoremap gs :'<,'>sort u<CR>
+
 " Easy-Align
 "xmap ga <Plug>(EasyAlign)
 
