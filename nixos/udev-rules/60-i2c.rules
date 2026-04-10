@@ -1,2 +1,2 @@
 # vim: filetype=udevrules
-SUBSYSTEMS=="i2c-dev", KERNEL=="i2c-[0-9]*", GROUP="wheel", RUN+="@setfacl@ -m g:wheel:rwx $devpath"
+SUBSYSTEMS=="i2c-dev", KERNEL=="i2c-[0-9]*", GROUP="wheel", RUN+="@setfacl@ -m g:wheel:rwx $devnode"
