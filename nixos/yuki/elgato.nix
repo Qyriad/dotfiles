@@ -3,8 +3,12 @@
 	lib,
 	...
 }:
-
+let
+	systemd-extra = pkgs.callPackage ./systemd-extra/package.nix { };
+in
 {
+	systemd.packages = [ systemd-extra ];
+
 	services.udev.packages = let
 		elgato-rules = pkgs.qyriad.runCommandMinimal "elgato-rules" {
 			src = lib.fileset.toSource {
@@ -80,6 +84,7 @@
 			KillSignal = "SIGINT";
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
+		unitConfig.Requisite = "ffcap-elgato-wanted.target";
 		#wantedBy = [ "ffcap-elgato.target" ];
 	};
 
@@ -92,6 +97,7 @@
 			echo 1 > /sys/bus/usb/devices/6-4/bConfigurationValue
 			echo "done!"
 		'';
+		unitConfig.Requisite = "ffcap-elgato-wanted.target";
 	};
 
 	systemd.user.services.wireplumber.path = [

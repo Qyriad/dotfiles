@@ -1,0 +1,18 @@
+# vim: filetype=systemd
+[Unit]
+# Stopping these units also stops self.
+PartOf=sound.target
+
+# Make self pull *in* these units.
+Upholds=ffcap-elgato.service ffcap-elgato.target
+
+# Make these units not-being-active bring *down* self.
+BindsTo=graphical.target
+
+Conflicts=sleep.target shutdown.target
+
+DefaultDependencies=false
+AllowIsolate=false
+
+# TODO: make ffcap-onfail.service have Requisite=ffcap-elgato-wanted.target
+# That way -onfail will not do anything if ffcap-elgato is not "wanted".
