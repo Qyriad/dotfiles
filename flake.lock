@@ -225,11 +225,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1776867975,
-        "narHash": "sha256-J9m2mbSeSpvz5zSQ4EkoHQTRzv09LFxytWH3inXh6cU=",
+        "lastModified": 1777046179,
+        "narHash": "sha256-ukqkOXABDV9aNOtM6jm1Xfkak4hVUOsB65j7Jsvnjug=",
         "ref": "refs/heads/main",
-        "rev": "be34bc0481c29f858f9444989851a6527c3e813c",
-        "revCount": 19146,
+        "rev": "de212be82bfb51dd7cc96c1485b1b7d713696501",
+        "revCount": 19148,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -650,11 +650,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1776870193,
-        "narHash": "sha256-2Z6xsu0d0fCJD5vYjxP5lMCIJ6RvYoVGtHSyYcZNx9U=",
+        "lastModified": 1777268504,
+        "narHash": "sha256-USSxettgYWwH7slqienw1PWAe7OSZJc7hnoE0XwmzZI=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "cac1476cb845a9ec751bf4aa1c1a894c0eb91a62",
+        "rev": "59238739f1c8448c6015bb9242294d2edb98d48a",
         "type": "github"
       },
       "original": {
