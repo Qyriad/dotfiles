@@ -161,7 +161,7 @@
 		dust
 		gdu
 		hwatch
-		litecli
+		#litecli
 		# Nixpkgs broke it
 		#fcp
 		mediainfo
