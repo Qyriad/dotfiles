@@ -31,7 +31,6 @@ in
 	# Implementation.
 	config = lib.mkIf cfg.enable {
 
-		# Eh, what's a little IFD between system closures.
 		system.activationScripts."01-unmount-usr" = {
 			deps = [ "stdio" ];
 			supportsDryActivation = true;
