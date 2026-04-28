@@ -19,7 +19,7 @@ here = "::@"
 #squid = '@ | @- | trunk() | heads(@) | heads(@-) | heads(trunk())'
 
 'surrounding(for)' = 'descendants(for) | (ancestors(for) ~ ancestors(trunk()))'
-priv = "description(glob:'PRIVATE:*')"
+priv = "description(glob:'PRIVATE:*') | description(glob:'QYRIAD:*')"
 
 [aliases]
 s = ["status", "--no-pager"]
@@ -183,6 +183,10 @@ qshortlog = '''
 		"\n",
 	)
 '''
+
+[git]
+# Don't push these commits.
+private-commits = 'priv'
 
 [snapshot]
 auto-track = "none()"
