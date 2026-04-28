@@ -32,10 +32,10 @@ index 378ffacd3a..b8d067628c 100644
  }
  
 diff --git a/lix/libstore/misc.cc b/lix/libstore/misc.cc
-index 5f52e56a6f..fcf91cefca 100644
+index 5f52e56a6f..ba52b65e61 100644
 --- a/lix/libstore/misc.cc
 +++ b/lix/libstore/misc.cc
-@@ -17,8 +17,12 @@
+@@ -17,8 +17,11 @@
  namespace nix {
  
  kj::Promise<Result<void>> Store::computeFSClosure(const StorePathSet & startPaths,
@@ -44,21 +44,19 @@ index 5f52e56a6f..fcf91cefca 100644
 +{
  try {
 +    Activity act = logger->startActivity(lvlInfo, actComputeFsClosure, "", {startPaths.size()});
-+    uint64_t done = 0;
 +
      std::function<
          kj::Promise<Result<std::set<StorePath>>>(const StorePath & path, ref<const ValidPathInfo>)>
          queryDeps;
-@@ -30,18 +34,31 @@
+@@ -30,18 +33,28 @@
                  StorePathSet res;
                  StorePathSet referrers;
                  TRY_AWAIT(queryReferrers(path, referrers));
 -                for (auto& ref : referrers)
 -                    if (ref != path)
 +                for (auto& ref : referrers) {
++                    ACTIVITY_PROGRESS(act, 1);
 +                    if (ref != path) {
-+                        ACTIVITY_PROGRESS(act, 1);
-+                        done += 1;
                          res.insert(ref);
 +                    }
 +                }
@@ -68,7 +66,6 @@ index 5f52e56a6f..fcf91cefca 100644
 +                if (includeOutputs) {
 +                    for (auto& i : TRY_AWAIT(queryValidDerivers(path))) {
 +                        ACTIVITY_PROGRESS(act, 1);
-+                        done += 1;
                          res.insert(i);
 +                    }
 +                }
@@ -78,9 +75,8 @@ index 5f52e56a6f..fcf91cefca 100644
 -                        if (TRY_AWAIT(isValidPath(outPath)))
 +                if (includeDerivers && path.isDerivation()) {
 +                    for (auto& [_, outPath] : TRY_AWAIT(queryDerivationOutputMap(path))) {
++                        ACTIVITY_PROGRESS(act, 1);
 +                        if (TRY_AWAIT(isValidPath(outPath))) {
-+                            ACTIVITY_PROGRESS(act, 1);
-+                            done += 1;
                              res.insert(outPath);
 +                        }
 +                    }
@@ -88,7 +84,7 @@ index 5f52e56a6f..fcf91cefca 100644
                  co_return res;
              } catch (...) {
                  co_return result::current_exception();
-@@ -53,17 +70,29 @@
+@@ -53,17 +66,26 @@
                          ref<const ValidPathInfo> info) -> kj::Promise<Result<std::set<StorePath>>> {
              try {
                  StorePathSet res;
@@ -97,7 +93,6 @@ index 5f52e56a6f..fcf91cefca 100644
 +                for (auto& ref : info->references) {
 +                    if (ref != path) {
 +                        ACTIVITY_PROGRESS(act, 1);
-+                        done += 1;
                          res.insert(ref);
 +                    }
 +                }
@@ -109,7 +104,6 @@ index 5f52e56a6f..fcf91cefca 100644
 +                    for (auto& [_, outPath] : TRY_AWAIT(queryDerivationOutputMap(path))) {
 +                        if (TRY_AWAIT(isValidPath(outPath))) {
 +                            ACTIVITY_PROGRESS(act, 1);
-+                            done += 1;
                              res.insert(outPath);
 +                        }
 +                    }
@@ -118,13 +112,12 @@ index 5f52e56a6f..fcf91cefca 100644
 -                if (includeDerivers && info->deriver && TRY_AWAIT(isValidPath(*info->deriver)))
 +                if (includeDerivers && info->deriver && TRY_AWAIT(isValidPath(*info->deriver))) {
 +                    ACTIVITY_PROGRESS(act, 1);
-+                    done += 1;
                      res.insert(*info->deriver);
 +                }
                  co_return res;
              } catch (...) {
                  co_return result::current_exception();
-@@ -71,7 +100,7 @@
+@@ -71,7 +93,7 @@
          };
      }
  
@@ -133,7 +126,7 @@ index 5f52e56a6f..fcf91cefca 100644
          startPaths,
          // NOLINTNEXTLINE(cppcoreguidelines-avoid-capturing-lambda-coroutines)
          [&](const StorePath& path) -> kj::Promise<Result<StorePathSet>> {
-@@ -85,6 +114,7 @@
+@@ -85,6 +107,7 @@
  } catch (...) {
      co_return result::current_exception();
  }
@@ -142,10 +135,10 @@ index 5f52e56a6f..fcf91cefca 100644
  kj::Promise<Result<void>> Store::computeFSClosure(const StorePath & startPath,
      StorePathSet & paths_, bool flipDirection, bool includeOutputs, bool includeDerivers)
 diff --git a/lix/libstore/store-api.cc b/lix/libstore/store-api.cc
-index 1e2cf35e37..7e33fb7e2f 100644
+index 1e2cf35e37..07991b6f9b 100644
 --- a/lix/libstore/store-api.cc
 +++ b/lix/libstore/store-api.cc
-@@ -837,29 +837,47 @@
+@@ -837,29 +837,44 @@
  kj::Promise<Result<StorePathSet>>
  Store::exportReferences(const StorePathSet & storePaths, const StorePathSet & inputPaths)
  try {
@@ -155,13 +148,11 @@ index 1e2cf35e37..7e33fb7e2f 100644
 +        "exporting references",
 +        {storePaths.size(), inputPaths.size()}
 +    );
-+    uint64_t done = 0;
      StorePathSet paths;
  
 +    StorePathSet computeClosureFrom;
      for (auto & storePath : storePaths) {
 +        ACTIVITY_PROGRESS(act, 1);
-+        done += 1;
          if (!inputPaths.count(storePath))
              throw BuildError("cannot export references of path '%s' because it is not in the input closure of the derivation", printStorePath(storePath));
  
@@ -192,7 +183,6 @@ index 1e2cf35e37..7e33fb7e2f 100644
 +        Derivation drv = TRY_AWAIT(derivationFromPath(path));
 +        for (auto & [name, output] : drv.outputsAndPaths(*this)) {
 +            ACTIVITY_PROGRESS(act, 1);
-+            done += 1;
 +            computeClosureFrom.insert(output.second);
 +            //TRY_AWAIT(computeFSClosure(output.second, paths));
          }
@@ -215,7 +205,7 @@ index b8a47d1225..e5f0eb5b6d 100644
      // clang-format on
  }
 diff --git a/lix/libutil/logging.hh b/lix/libutil/logging.hh
-index 0e4a0ae9be..b44df74626 100644
+index a1103a29c3..d4294fee0d 100644
 --- a/lix/libutil/logging.hh
 +++ b/lix/libutil/logging.hh
 @@ -47,6 +47,17 @@
@@ -233,6 +223,6 @@ index 0e4a0ae9be..b44df74626 100644
 +     * 0: int: start path count
 +     */
 +    actComputeFsClosure = 113,
- } ActivityType;
+ };
  
  template<>

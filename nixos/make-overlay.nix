@@ -71,7 +71,7 @@ in {
 		dontStrip = true;
 		patches = prev.patches or [ ] ++ [
 			./pkgs/lix-print-cgroup-drvs.patch
-			#./pkgs/lix-act-export-references.patch
+			./pkgs/lix-act-export-references.patch
 		];
 	});
 
