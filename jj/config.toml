@@ -8,6 +8,11 @@ NONLOCK = '~LOCK'
 
 [revset-aliases]
 here = "::@"
+
+# Basically x::y but reversible.
+# Because we sometimes forget which order it is.
+'between(x, y)' = 'x::y | y::x'
+
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'fork(for)' = '@..for | (@..for)-'
 
