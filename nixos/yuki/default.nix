@@ -432,6 +432,8 @@
 		config.programs.gpu-screen-recorder.package
 		tana
 		config.programs.nix-ld.package
+		# For v4l2loopback-ctl
+		linuxPackages.v4l2loopback
 	];
 
 	# This value determines the NixOS release from which the default
