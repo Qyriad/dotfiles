@@ -34,6 +34,7 @@ tug = [
 present = ['log', '-r', 'present-tree']
 #l = ['log', '-T', 'qshortlog']
 l = ['util', 'exec', '--', 'zsh', '-c', """
+#!/usr/bin/env zsh
 set -euo pipefail
 # No arguments case.
 if [[ "$#" -eq 0 ]]; then
