@@ -179,7 +179,11 @@
 		qyriad.obs-studio
 		v4l-utils
 		gajim
+
+		# Markdown viewers
 		inlyne
+		gh-markdown-preview
+
 		tesseract
 		smile
 		gst_all_1.gstreamer
