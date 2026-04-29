@@ -5,6 +5,8 @@ self = rec {
 	# Things I don't want to have to type `builtins.` before.
 	inherit (builtins) attrValues attrNames getFlake parseFlakeRef flakeRefToString typeOf getEnv tryEval;
 
+	fetchFlakeRef = flakeref: flakeref |> parseFlakeRef |> fetchTree;
+
 	# Mostly used for other stuff below,
 	# but also handy in the repl if I want to avoid parentheses.
 	PWD = getEnv "PWD";
