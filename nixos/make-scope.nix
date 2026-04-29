@@ -90,12 +90,12 @@ in lib.makeScope qpkgs.newScope (self: {
 
 		text = lib.dedent ''
 			set -euo pipefail
-			bin="/run/current-system/sw/bin"
-			"$bin/grc" --colour=on \
-				"$bin/journalctl" --pager-end --follow --boot=0 \
-				| "$bin/rg" --line-buffered -v 'Trying to repalce notification with id' \
-				| "$bin/rg" --line-buffered -v 'beeper.+beeper\.local' \
-				| "$bin/spacer" --after 10 --stopwatch -w 90
+			export PATH="/run/current-system/sw/bin:$PATH"
+			grc --colour=on \
+				journalctl --pager-end --follow --boot=0 --no-tail --no-hostname \
+				| rg --line-buffered -v 'Trying to repalce notification with id' \
+				| rg --line-buffered -v 'Failed to load module.+appmenu-gtk-module.+gtk_module_display_init' \
+				| spacer --after 10 --stopwatch -w 90
 		'';
 		}
 	);
