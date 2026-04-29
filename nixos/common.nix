@@ -11,6 +11,9 @@
 	# Configuration for things related to Nix itself.
 	nixpkgs.config = {
 		allowUnfree = true;
+		allowUnfreePredicate = pkg: lib.elem (lib.getName pkg) [
+			"cuda-merged"
+		];
 		microsoftVisualStudioLicenseAccepted = true;
 		#showDerivationWarnings = [
 		#	"maintainerless"
