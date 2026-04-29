@@ -6,3 +6,4 @@ gdb-session.log
 /.jj
 Session*.vim
 compile_commands.json
+/result*
