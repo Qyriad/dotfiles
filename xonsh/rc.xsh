@@ -368,6 +368,8 @@ aliases['strace-exec'] = ['strace', '--silent=attach,exit', '-s', '9999', '--sig
 # --demangle
 aliases['objdumpx'] = ['objdump', '--special-syms', '--disassembler-color=extended', '--visualize-jumps=extended-color']
 
+aliases['timex'] = ["time", "-f", "Elapsed: %e seconds\nUser: %U\nSystem: %S\nMaxres: %M Kbytes"]
+
 aliases['@lines'] = SpecAttrDecoratorAlias(dict(output_format="list_lines"), "Use list_lines output format")
 aliases['@path'] = SpecAttrDecoratorAlias({
 	"output_format": lambda lines: Path(":".join(lines)),
