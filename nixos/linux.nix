@@ -394,4 +394,25 @@
 		config.console.packages # and including console fonts too...
 		config.boot.extraModulePackages # and extra kernel modules.
 	];
+
+
+	# WIP for exploring NixOS's mire of PAM options.
+	passthru.security.pam.enabledServices = config.security.pam.services
+	|> lib.filterAttrs (_: { ... }@service: service.enable)
+	|> lib.mapAttrs (_: { ... }@service: service
+		|> lib.removeAttrsCalled [ "enableKwallet" ]
+		|> lib.filterAttrs (_: serviceOption: (serviceOption.enable or serviceOption) != false)
+	)
+	;
+
+	# passthru.security.pam.allModules = config.passthru.security.pam.enabledServices
+	# |> lib.foldlAttrs (acc: name: {
+	# 	# account, auth, password, session, etc
+	# 	rules,
+	# 	...,
+	# }: let
+	# 	modulesPerRule = rules
+	# in acc ++ [ value ]
+	# ) [ ]
+	# ;
 }
