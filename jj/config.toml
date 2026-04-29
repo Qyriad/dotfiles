@@ -206,6 +206,7 @@ email = "qyriad@qyriad.me"
 [ui]
 pager = "delta"
 diff-formatter = ":git"
+diff-editor = ":builtin"
 #log-word-wrap = true
 
 [merge-tools.diffconflicts]
