@@ -14,6 +14,13 @@
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
+	# This is dumb but it works.
+	environment.etc."pam.d/weston-remote-access".text = lib.dedent ''
+		account required /run/current-system/sw/lib/security/pam_unix.so # unix (order 11000)
+		auth sufficient /run/current-system/sw/lib/security/pam_unix.so likeauth nullok try_first_pass # unix (order 12900)
+		password sufficient /run/current-system/sw/lib/security/pam_unix.so nullok yescrypt # unix (order 10200)
+	'';
+
 	nixpkgs.config.permittedInsecurePackages = [
 		"ventoy-qt5-1.1.07"
 		"olm-3.2.16"
