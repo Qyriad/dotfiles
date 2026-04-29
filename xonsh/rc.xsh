@@ -323,7 +323,7 @@ aliases['dedent'] = lambda args, stdin: textwrap.dedent(stdin.read())
 aliases['striptext'] = lambda args, stdin: stdin.read().strip()
 aliases['tcopy'] = 'tmux load-buffer -w -'
 aliases['tpaste'] = 'tmux save-buffer -'
-aliases['nopager'] = 'env PAGER=cat MANPAGER=cat GIT_PAGER=cat NIX_PAGER=cat SYSTEMD_PAGER=cat'
+aliases['nopager'] = 'env PAGER=cat MANPAGER=cat GIT_PAGER=cat NIX_PAGER=cat SYSTEMD_PAGER=cat DELTA_PAGER=cat'
 aliases['nosleep'] = 'systemd-inhibit --what=sleep'
 aliases['nd'] = 'niz develop'
 aliases['nixos-rebuild'] = 'nixos-rebuild --sudo --no-reexec'
