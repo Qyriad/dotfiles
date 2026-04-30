@@ -447,12 +447,6 @@ def _delssh(linenum):
 
 aliases['delssh'] = _delssh
 
-def runlist(cmds: list[list]):
-	with ${...}.swap(RAISE_SUBPROC_ERROR=True):
-		for cmd in cmds:
-			print(' '.join([shlex.quote(arg) for arg in cmd]))
-			@(cmd)
-
 def _proc_get(p, key):
 	if key == "pid":
 		return p.pid
