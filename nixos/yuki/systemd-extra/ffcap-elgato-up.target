@@ -4,11 +4,12 @@
 BindsTo=ffcap-elgato.service ffcap-elgato.target
 BindsTo=dev-v4l-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2dvideo\x2dindex0.device
 
+# Making starting (or stopping) these units pull *up* self.
+PartOf=ffcap-elgato.service ffcap-elgato-wanted.target
 
 Conflicts=sleep.target shutdown.target
 
 DefaultDependencies=false
 AllowIsolate=false
 
-# FIXME: how do we make this unit always start when all of its BindsTos are up?
 After=graphical.target
