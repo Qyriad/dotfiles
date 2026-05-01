@@ -57,6 +57,14 @@ self = rec {
 		overlays = [ qyriad.overlays.default ];
 		inherit config;
 	};
+	pkgs-master = importQuiet nixpkgs-master {
+		inherit system config;
+		overlays = [ qyriad.overlays.default ];
+	};
+	pkgs-unstable = importQuiet nixpkgs-unstable {
+		inherit system config;
+		overlays = [ qyriad.overlays.default ];
+	};
 	nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; featureFlags.minimalModules = true; };
 	fenixLib = import fenix { inherit pkgs; };
 	craneLib = import crane { inherit pkgs; };
