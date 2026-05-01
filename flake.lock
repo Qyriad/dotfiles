@@ -650,11 +650,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1777580856,
-        "narHash": "sha256-2rfRUvc3o27lHmrCAI67Z4+8TXvqJMS+lbVKABCxWio=",
+        "lastModified": 1777582061,
+        "narHash": "sha256-2jw4RSqMHtCuqaNQo+A05wpXucVADLoban+q+jriI10=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "c3aefafb351caabbea0874217abeebe47e8afb0a",
+        "rev": "a02067e950aaf1477aab0f7d73fe00e00268b5ab",
         "type": "github"
       },
       "original": {
