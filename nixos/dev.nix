@@ -80,6 +80,7 @@
 		# Command-line profiler.
 		samply
 		wasm-language-tools
+		elf-info
 		#qyriad.nvim-treesitter-parsers-all
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
