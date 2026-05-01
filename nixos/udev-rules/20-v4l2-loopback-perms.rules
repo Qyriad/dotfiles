@@ -1,0 +1,4 @@
+# vim: filetype=udevrules
+
+# The "control" node /dev/v4l2loopback.
+ACTION=="add", KERNEL=="v4l2loopback", GROUP="video", MODE="0660", TAG+="uaccess"
