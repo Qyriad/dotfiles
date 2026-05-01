@@ -14,6 +14,7 @@
     root = ./.;
     fileset = lib.fileset.unions [
       ./20-v4l2-loopback-perms.rules
+			./60-systemd-tags.rules
       ./60-common.rules
       ./60-openocd.rules
       #./60-i2c.rules
