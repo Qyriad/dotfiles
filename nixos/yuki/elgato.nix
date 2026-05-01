@@ -14,7 +14,7 @@ in
 			src = lib.fileset.toSource {
 				root = ./.;
 				fileset = lib.fileset.unions [
-					./80-elgato.rules
+					./60-elgato.rules
 					./80-elgato-notif.rules
 				];
 			};
@@ -26,7 +26,7 @@ in
 			substituteInPlace "./80-elgato-notif.rules" \
 				--replace-fail "@SYSTEMD_RUN@" "$systemdRun" \
 				--replace-fail "@NOTIFY_SEND@" "$notifySend"
-			install --verbose -Dm644 "./80-elgato.rules" "--target-directory=$outDir"
+			install --verbose -Dm644 "./60-elgato.rules" "--target-directory=$outDir"
 			install --verbose -Dm644 "./80-elgato-notif.rules" "$outDir/80-elgato-notif.rules"
 		'';
 
