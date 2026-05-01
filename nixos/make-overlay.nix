@@ -110,10 +110,6 @@ in {
 		];
 	});
 
-	pulseview = pkgsPrev.pulseview.override {
-		boost = pkgsFinal.boost188;
-	};
-
 	kdePackages = pkgsPrev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 		# Ripples to:
 		# - kdeconnect-kde
