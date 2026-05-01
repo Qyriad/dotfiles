@@ -22,6 +22,8 @@ self = rec {
 	nixpkgs-master = getFlake "github:NixOS/nixpkgs/master";
 	nixpkgs-unstable = getFlake "github:NixOS/nixpkgs/nixpkgs-unstable";
 	fenix = getFlake "github:nix-community/fenix";
+	crane = getFlake "github:ipetkov/crane";
+	oxalica-rust = getFlake "github:oxalica/rust-overlay";
 	qyriad-nur = getFlake "github:Qyriad/nur-packages";
 
 	currentSystem = info.currentSystem;
@@ -57,6 +59,7 @@ self = rec {
 	};
 	nixosLib = import (nixpkgs + "/nixos/lib") { inherit (pkgs) lib; featureFlags.minimalModules = true; };
 	fenixLib = import fenix { inherit pkgs; };
+	craneLib = import crane { inherit pkgs; };
 	qpkgs = import qyriad-nur { inherit pkgs; };
 
 	# `pkgs.lib` is soooooo much typing.
