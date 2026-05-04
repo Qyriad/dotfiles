@@ -1,44 +1,44 @@
 {
-  lib,
-  stdenvNoCC,
-  replaceVars,
-  acl,
+	lib,
+	stdenvNoCC,
+	replaceVars,
+	acl,
 }: stdenvNoCC.mkDerivation (self: {
-  pname = "qyriad-udev-rules";
-  version = "0.1.0";
+	pname = "qyriad-udev-rules";
+	version = "0.1.0";
 
-  strictDeps = true;
-  __structuredAttrs = true;
+	strictDeps = true;
+	__structuredAttrs = true;
 
-  src = lib.fileset.toSource {
-    root = ./.;
-    fileset = lib.fileset.unions [
-      ./20-v4l2-loopback-perms.rules
+	src = lib.fileset.toSource {
+		root = ./.;
+		fileset = lib.fileset.unions [
+			./20-v4l2-loopback-perms.rules
 			./60-systemd-tags.rules
-      ./60-common.rules
-      ./60-openocd.rules
-      #./60-i2c.rules
-      ./70-avermedia-symlink.rules
-      # Okay this seems broken actually
-      #./20-v4l2-loopback-ids.rules
-    ];
-  };
+			./60-common.rules
+			./60-openocd.rules
+			#./60-i2c.rules
+			./70-avermedia-symlink.rules
+			# Okay this seems broken actually
+			#./20-v4l2-loopback-ids.rules
+		];
+	};
 
-  dontConfigure = true;
-  dontBuild = true;
+	dontConfigure = true;
+	dontBuild = true;
 
-  installPhase = ''
-    runHook preInstall
+	installPhase = ''
+		runHook preInstall
 
-    mkdir -p "$out/lib/udev/rules.d"
-    cp -v "$src"/*.rules "$out/lib/udev/rules.d/"
+		mkdir -p "$out/lib/udev/rules.d"
+		cp -v "$src"/*.rules "$out/lib/udev/rules.d/"
 
-    runHook postInstall
-  '';
+		runHook postInstall
+	'';
 
-  dontFixup = true;
+	dontFixup = true;
 
-  meta = {
-    description = "Qyriad personal udev rules";
-  };
+	meta = {
+		description = "Qyriad personal udev rules";
+	};
 })
