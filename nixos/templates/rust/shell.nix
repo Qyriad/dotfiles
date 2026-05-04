@@ -31,7 +31,7 @@
 }: let
 	inherit (pkgs) lib;
 
-	mkDevShell = PKGNAME: qpkgs.callPackage PKGNAME.mkDevShell { };
+	mkDevShell = PKGNAME: qpkgs.callPackage PKGNAME.mkDevShell { inherit fenixToolchain; ;};
 	devShell = mkDevShell PKGNAME;
 
 	byStdenv = lib.mapAttrs (lib.const mkDevShell) PKGNAME.byStdenv;
