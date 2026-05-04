@@ -403,7 +403,8 @@
 	hardware.steam-hardware.enable = lib.mkForce false;
 
 	programs.wireshark = {
-		enable = true;
+		# Nixpkgs broke it.
+		enable = false;
 		package = pkgs.wireshark;
 		usbmon.enable = true;
 	};
