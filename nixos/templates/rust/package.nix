@@ -58,7 +58,7 @@ in {
 		};
 	in mkShell' {
 		name = "${self.pname}-devshell-${self.version}";
-		inputsFrom = [ self.finalPackage ];
+		inputsFrom = [ self ];
 		packages = [
 			stdenv.cc
 			fenixToolchain
@@ -68,7 +68,7 @@ in {
 		passthru = { inherit cargoCompletions; };
 	};
 
-	passthru.tests.clippy = self.finalPackage.overrideAttrs (prev: {
+	passthru.tests.clippy = self.overrideAttrs (prev: {
 		pname = "${self.pname}-clippy";
 
 		nativeCheckInputs = prev.nativeCheckInputs or [ ] ++ [
