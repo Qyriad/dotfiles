@@ -15,7 +15,9 @@
 
 	pyprojectToml = lib.importTOML ./pyproject.toml;
 	project = pyprojectToml.project;
-in stdenv.mkDerivation (self: {
+in stdenv.mkDerivation (finalAttrs: let
+	self = finalAttrs.finalPackage;
+in {
 	pname = "${python.pythonAttr}-${project.name}";
 	version = project.version;
 
@@ -64,13 +66,21 @@ in stdenv.mkDerivation (self: {
 	passthru.mkDevShell = {
 		mkShellNoCC,
 		pylint,
-		uv,
-	}: mkShellNoCC {
-		name = "nix-shell-${self.finalPackage.name}";
-		inputsFrom = [ self.finalPackage ];
+	}: let
+		# coalesce null and unset to empty string.
+		bashVarCoalesce = varName: "\${${varName}:-}";
+	in mkShellNoCC {
+		name = lib.suffixName self "devShell";
+		inputsFrom = [ self ];
+		shellHook = lib.dedent ''
+			if [[ -z "${bashVarCoalesce "PYTHONPATH"}" ]]; then
+				export PYTHONPATH="$PWD/src"
+			else
+				export PYTHONPATH="$PWD/src:$PYTHONPATH"
+			fi
+		'';
 		packages = [
 			pylint
-			uv
 		];
 	};
 
