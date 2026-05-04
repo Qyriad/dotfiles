@@ -333,7 +333,7 @@
 		lsof
 		iotop
 		difftastic
-		qpkgs.strace-with-colors
+		strace
 		qpkgs.intentrace
 		ltrace
 		bpftrace
