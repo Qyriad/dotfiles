@@ -373,6 +373,7 @@
 		procs
 		choose
 		daemontools
+		systemfd
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		pulsemixer
