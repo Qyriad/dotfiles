@@ -99,7 +99,10 @@ self = rec {
 	/** Perform module-system type checking and resolving on a single option value. */
 	inherit (lib) typeCheck;
 
+	# Should probably move these into qyriad-nur lib or something.
 	idx = index: list: builtins.elemAt list index;
+	doesntThrow = v: (builtins.tryEval v).success;
+	filterThrowingAttrs = lib.filterAttrs (k: v: doesntThrow v);
 };
 
 # HACK: don't fetch the flakes for these lazily.
