@@ -483,8 +483,10 @@ def main():
     args = parser.parse_args()
     timeout: float = args.timeout
     #devnode = autodetect_capturecard().as_posix()
-    devnode = "/dev/v4l/by-id/usb-Elgato_Game_Capture_HD60_S+_0004C809C2000-video-index0"
-    outnode = autodetect_output().as_posix()
+    # devnode = "/dev/v4l/by-id/usb-Elgato_Game_Capture_HD60_S+_0004C809C2000-video-index0"
+    devnode = "/dev/v4l/by-id/usb-AVerMedia_Live_Gamer_Ultra-Video_5202418300266-video-index0"
+    #outnode = autodetect_output().as_posix()
+    outnode = '/dev/video10'
 
     time.sleep(1)
 

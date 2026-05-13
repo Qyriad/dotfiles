@@ -1,3 +1,6 @@
 # vim: filetype=udevrules
-# Make systemd `.device` units for all v4l devices
-ACTION=="add", SUBSYSTEMS=="video4linux", TAG+="systemd"
+# Make systemd `.device` units for all v4l devices.
+ACTION=="add", SUBSYSTEM=="video4linux", TAG+="systemd"
+
+# Make systemd `.device` units for all USB devices.
+ACTION=="add", SUBSYSTEM=="usb", TAG+="systemd"

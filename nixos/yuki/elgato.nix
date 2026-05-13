@@ -82,6 +82,8 @@ in
 			NotifyAccess = "all";
 			SyslogLevelPrefix = true;
 			KillSignal = "SIGINT";
+			RestartSec = "1";
+			RestartStep = "1";
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
 		unitConfig.Requisite = "ffcap-elgato-wanted.target";
@@ -118,8 +120,8 @@ in
 		wantedBy = [ "graphical-session.target" ];
 		requiredBy = [ "ffcap-elgato.target" ];
 		unitConfig = {
-			Requires = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
-			After = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+			#Requires = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+			#After = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
 		};
 		serviceConfig = {
 			ExecSearchPath = lib.makeBinPath [ pkgs.pipewire ];
