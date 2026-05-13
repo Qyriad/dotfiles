@@ -283,6 +283,10 @@
 
 	systemd.sleep.settings.Sleep.HibernateDelaySec = "30m";
 
+	boot.binfmt.emulatedSystems = [
+		"aarch64-linux"
+	];
+
 	# omg this hack seems no longer needed?
 	#systemd.services."meow" = {
 	#	after = [ "suspend.target" ];
