@@ -77,6 +77,52 @@ self = rec {
 	pkgsSrcs = pkgs
 	|> lib.mapDerivationAttrsetRecursive pkgs.srcOnly;
 
+	# If I'm using pkgsCross, I probably want to silence unsupported system.
+	pkgsCross = let
+		pkgs = importQuiet nixpkgs {
+			inherit system;
+			overlays = [ qyriad.overlays.default ];
+			config = config // {
+				allowUnsupportedSystem = true;
+				allowUnfree = true;
+			};
+		};
+	in pkgs.pkgsCross;
+
+	sumPlat = {
+		config,
+		linker,
+		...
+	}: "${config}+${linker}";
+
+	sumStdenv = {
+		buildPlatform,
+		hostPlatform,
+		targetPlatform,
+		...
+	}: {
+		build = sumPlat buildPlatform;
+		host = sumPlat hostPlatform;
+		target = sumPlat targetPlatform;
+		__toString = {
+			build,
+			host,
+			target,
+			...
+		}: ''
+			build:  ${build}
+			host:   ${host}
+			target: ${target}
+		'' |> lib.dedent |> lib.trim;
+	};
+
+	ssumStdenv = {
+		buildPlatform,
+		hostPlatform,
+		targetPlatform,
+		...
+	}@stdenv: toString (sumStdenv stdenv);
+
 	nixos = qyriad.nixosConfigurations.${HOSTNAME};
 	darwin = qyriad.darwinConfigurations.${HOSTNAME};
 	stagingNixos = staging.nixosConfigurations.${HOSTNAME};
@@ -103,6 +149,7 @@ self = rec {
 	idx = index: list: builtins.elemAt list index;
 	doesntThrow = v: (builtins.tryEval v).success;
 	filterThrowingAttrs = lib.filterAttrs (k: v: doesntThrow v);
+	call = callFrom: f: callFrom.callPackage f { };
 };
 
 # HACK: don't fetch the flakes for these lazily.
