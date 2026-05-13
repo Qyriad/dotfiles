@@ -196,9 +196,7 @@
 			# ...but don't singlehandledly double my nixos-rebuild times please.
 			generateAtRuntime = true;
 		};
-		# This fails with `cannot lookup '<nixpkgs>' in pure evaluation mode.
-		# TODO: debug
-		#nixos.includeAllModules = true;
+		nixos.includeAllModules = true;
 	};
 
 	programs.xonsh = {

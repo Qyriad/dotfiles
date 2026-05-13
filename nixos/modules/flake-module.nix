@@ -17,6 +17,7 @@ in
 	options = {
 		qyriad.inputs = lib.mkOption {
 			type = t.attrsOf (t.either t.pathInStore t.package);
+			description = "The `inputs` flake input attrset";
 		};
 	};
 

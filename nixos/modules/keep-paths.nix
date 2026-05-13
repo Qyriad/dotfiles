@@ -6,7 +6,7 @@
 	options.storePathsToKeep = lib.mkOption {
 		type = with lib.types; attrsOf pathInStore;
 		default = { };
-		description = ''
+		description = lib.dedent ''
 			Store paths to prevent from being garbage collected in this NixOS generation
 			Useful for flake inputs.
 		'';
@@ -18,6 +18,8 @@
 	options.systemKeptPaths = lib.mkOption {
 		type = lib.types.nullOr lib.types.package;
 		readOnly = true;
+
+		description = "Read-only representation of the derivation that gets included";
 
 		default = pkgs.qyriad.runCommandMinimal "system-kept-paths" {
 			# Load bearing. keep-paths.sh does not work without structured attrs.
@@ -32,7 +34,7 @@
 	options.echoKeptStorePaths = lib.mkOption {
 		type = lib.types.bool;
 		default = true;
-		description = ''
+		description = lib.dedent ''
 			Whether to echo the store paths kept by `options.storePathsToKeep` during build or not.
 		'';
 	};

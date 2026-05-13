@@ -29,6 +29,7 @@ let
 			type = t.listOf t.package;
 			readOnly = true;
 			default = packages;
+			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
 
 		final-packages = mkOption {
@@ -63,6 +64,7 @@ in
 				pkgs.qpkgs.qsynth
 				bitwig-studio5
 			];
+			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
 
 		final-packages = mkOption {
@@ -91,11 +93,13 @@ in
 				wev
 				wayfarer
 			];
+			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
 
 		final-packages = mkOption {
 			type = t.listOf t.package;
-			internal = true;
+			readOnly = true;
+			description = "Read-only representation of the final package list";
 		};
 	};
 
@@ -115,6 +119,7 @@ in
 				tunctl
 				bridge-utils
 			];
+			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
 		remove-packages = mkOption {
 			type = t.listOf t.package;
@@ -124,7 +129,8 @@ in
 
 		final-packages = mkOption {
 			type = t.listOf t.package;
-			internal = true;
+			readOnly = true;
+			description = "Read-only representation of the final package list";
 		};
 	};
 

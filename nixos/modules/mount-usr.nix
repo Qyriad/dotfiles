@@ -69,4 +69,8 @@ in
 			after = [ "sysinit.target" ];
 		};
 	};
+
+	meta = {
+		maintainers = with lib.maintainers; [ qyriad ];
+	};
 }
