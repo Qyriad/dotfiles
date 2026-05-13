@@ -242,11 +242,6 @@ in {
 		];
 	});
 
-	# https://github.com/NixOS/nixpkgs/issues/493431
-	lager = pkgsPrev.lager.override {
-		boost = pkgsFinal.boost188;
-	};
-
 	# Optimize Ghostty for x86-64-v4
 	#ghostty = prev.ghostty.overrideAttrs (prev: let
 	#	inherit (final.stdenv) hostPlatform;
