@@ -407,9 +407,7 @@
 	hardware.steam-hardware.enable = lib.mkForce false;
 
 	programs.wireshark = {
-		# Nixpkgs broke it.
-		enable = false;
-		package = pkgs.wireshark;
+		enable = true;
 		usbmon.enable = true;
 	};
 	users.users.qyriad.extraGroups = [ "wireshark" ];
