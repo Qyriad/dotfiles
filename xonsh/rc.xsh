@@ -58,6 +58,8 @@ def shlvl_diff():
 	return str(int($SHLVL) - 1)
 
 if "TMUX" in os.environ:
+	# We mark this as "zero width" with Prompt Toolkit's escapes for that.
+	# https://python-prompt-toolkit.readthedocs.io/en/3.0.52/pages/reference.html#prompt_toolkit.formatted_text.ANSI
 	# "Start of heading"
 	SOH = "\x01"
 	# "Start of text"
