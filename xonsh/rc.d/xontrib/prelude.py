@@ -43,6 +43,13 @@ def _load_xontrib_(xsh: XonshSession, **_) -> dict:
             requests=requests,
         )
 
+    with suppress(ModuleNotFoundError):
+        import gi
+        gi.Repository.get_default().prepend_search_path('/run/current-system/sw/lib/girepository-1.0')
+        prelude |= dict(
+            gi=gi,
+        )
+
     import importlib
     prelude |= dict(
         importlib=importlib,

@@ -13,6 +13,7 @@
 	gtk4,
 	glib,
 	graphene,
+	pango,
 
 	# Setting `programs.xonsh.package` to this causes NixOS to call
 	# `.override { extraPackages = }` on us.
@@ -80,12 +81,7 @@
 		pillow
 		pytesseract
 		beautifulsoup4
-		# Nixpkgs broke it.
-		#python-fontconfig
 		keyring
-		#glib
-		#graphene
-		#gobject-introspection
 		hass-client
 		multidict
 		beartype
@@ -98,6 +94,12 @@
 		evdev
 		pyusb
 		pyudev
+		# Nixpkgs broke it.
+		#python-fontconfig
+		glib
+		graphene
+		pango
+		gobject-introspection
 	] ++ lib.concatLists [
 		self.xonsh.propagatedBuildInputs
 	];
