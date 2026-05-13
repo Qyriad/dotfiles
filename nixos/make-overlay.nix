@@ -247,14 +247,6 @@ in {
 		boost = pkgsFinal.boost188;
 	};
 
-	# https://github.com/NixOS/nixpkgs/pull/493604
-	anki = pkgsPrev.anki.overridePythonAttrs (prev: {
-		buildInputs = prev.buildInputs or [ ] ++ [
-			pkgsFinal.qt6.qtwebchannel
-			pkgsFinal.qt6.qtwebengine
-		];
-	});
-
 	# Optimize Ghostty for x86-64-v4
 	#ghostty = prev.ghostty.overrideAttrs (prev: let
 	#	inherit (final.stdenv) hostPlatform;
