@@ -191,7 +191,11 @@
 		# Include -dev manpages
 		dev.enable = true;
 		# Make apropos(1) work.
-		#man.generateCaches = true;
+		man.cache = {
+			enable = true;
+			# ...but don't singlehandledly double my nixos-rebuild times please.
+			generateAtRuntime = true;
+		};
 		# This fails with `cannot lookup '<nixpkgs>' in pure evaluation mode.
 		# TODO: debug
 		#nixos.includeAllModules = true;
