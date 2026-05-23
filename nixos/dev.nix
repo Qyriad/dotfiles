@@ -42,7 +42,8 @@
 		lazygit
 		rust-analyzer
 		#rustfmt
-		#cargo
+		# Cargo but *not* anything else.
+		cargo
 		cargo-limit
 		#cargo-info
 		cargo-clone
