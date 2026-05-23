@@ -5,9 +5,13 @@
 	python3Packages,
 	pythonHooks,
 	argparse-manpage ? null,
+	# Enable when there's man pages to enable =P
+	withManpages ? false,
 }: lib.callWith' python3Packages ({
 	python,
 	setuptools,
+	pydantic,
+	beartype,
 }: let
 	stdenv = stdenvNoCC;
 	# FIXME: should this be python.stdenv?
@@ -35,16 +39,17 @@ in {
 		];
 	};
 
-	outputs = [ "out" "dist" ] ++ lib.optionals (argparse-manpage != null) [
+	outputs = [ "out" "dist" ] ++ lib.optionals withManpages [
 		"man"
 	];
 
 	nativeBuildInputs = (pythonHooks python).asList ++ [
 		setuptools
+	] ++ lib.optionals withManpages [
 		argparse-manpage
 	];
 
-	postInstall = lib.optionalString (argparse-manpage != null) <| lib.trim ''
+	postInstall = lib.optionalString withManpages <| lib.dedent ''
 		argparse-manpage \
 			--module PKGNAME \
 			--function get_parser \
@@ -57,11 +62,16 @@ in {
 			--output "$man/share/man1/PKGNAME.1"
 	'';
 
-	postFixup = ''
+	postFixup = lib.dedent ''
 		echo "wrapping Python programs in postFixup..."
 		wrapPythonPrograms
 		echo "done wrapping Python programs in postFixup"
 	'';
+
+	propagatedBuildInputs = [
+		beartype
+		pydantic
+	];
 
 	passthru.mkDevShell = {
 		mkShellNoCC,
@@ -90,7 +100,7 @@ in {
 		maintainers = with lib.maintainers; [ qyriad ];
 		license = with lib.licenses; [ mit ];
 		sourceProvenance = with lib.sourceTypes; [ fromSource ];
-		platforms = lib.platforms.linux;
+		#platforms = lib.platforms.linux;
 		# The version specified in pyproject.toml.
 		#disabled = (python.pythonOlder "3.11") || python.isPyPy;
 		broken = self.finalPackage.meta.disabled or false;

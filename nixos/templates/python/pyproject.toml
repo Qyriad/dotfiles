@@ -7,6 +7,10 @@ authors = [
 	{ name = "Qyriad", email = "qyriad@qyriad.me" },
 ]
 #requires-python = ""
+dependencies = [
+	"beartype",
+	"pydantic",
+]
 
 [project.urls]
 Homepage = "https://github.com/Qyriad/PKGNAME"
@@ -21,3 +25,11 @@ build-backend = "setuptools.build_meta"
 
 #[project.optional-dependencies]
 #dev = ["argparse-manpage>=4.6"]
+
+[tool.pyright]
+# Not *everything* needs to be perfectly type checked.
+reportAny = false
+reportExplicitAny = false
+reportUnknownVariableType = false
+reportUnknownParameterType = false
+reportMissingTypeArgument = false
