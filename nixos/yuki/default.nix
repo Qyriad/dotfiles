@@ -1,6 +1,8 @@
 { config, pkgs, lib, modulesPath, ... }:
 
 {
+	_class = "nixos";
+
 	imports = [
 		./hardware.nix
 		../common.nix
