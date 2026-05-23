@@ -98,6 +98,7 @@
 	networking.hostName = "Yuki";
 
 	networking.useNetworkd = true;
+	networking.nftables.enable = true;
 
 	environment.etc."xkb" = {
 		enable = true;
@@ -133,6 +134,8 @@
 		"v4l2loopback"
 		# For DDC/CI.
 		"i2c-dev"
+		# For Waydroid.
+		"ip_tables"
 	];
 
 	boot.loader.systemd-boot.consoleMode = "max";
