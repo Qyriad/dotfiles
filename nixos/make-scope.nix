@@ -133,6 +133,11 @@ in lib.makeScope qpkgs.newScope (self: {
 				input-overlay
 				obs-pipewire-audio-capture
 				obs-vkcapture
+				obs-backgroundremoval
+				obs-gstreamer
+				obs-multi-rtmp
+				obs-replay-source
+				obs-source-record
 			;
 		};
 	};
