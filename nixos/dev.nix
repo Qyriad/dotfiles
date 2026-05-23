@@ -74,6 +74,7 @@
 		oxlint
 		scspell
 		autotools-language-server
+		crates-lsp
 		qpkgs.lsptrace
 		mergiraf
 		typescript-go
