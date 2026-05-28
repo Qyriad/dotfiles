@@ -6,6 +6,12 @@
 LOCK = '**/Cargo.lock | **/package-lock.json | **/flake.lock | **/lazy-lock.json'
 NONLOCK = '~LOCK'
 
+[revsets]
+# The revset `jj log` without a `-r` argument.
+# The default is: 'present(@) | ancestors(immutable_heads().., 2) | trunk()'.
+# Let's bump that from 2 to 6 to show a lil more context.
+log = 'present(@) | ancestors(immutable_heads().., 6) | trunk()'
+
 [revset-aliases]
 # Basically the traditional `git log` "revset".
 here = "::@"
