@@ -165,7 +165,7 @@
 		thunderbird
 		seer
 		#mattermost-desktop
-		firefoxpwa
+		# firefoxpwa
 		#darling
 		glibc.debug
 		qt6.qtbase
