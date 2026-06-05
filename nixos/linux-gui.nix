@@ -167,6 +167,7 @@
 		seer
 		#mattermost-desktop
 		# firefoxpwa
+		video-compare
 		#darling
 		glibc.debug
 		qt6.qtbase
