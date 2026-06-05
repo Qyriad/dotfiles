@@ -159,6 +159,7 @@
 		nheko
 		element-desktop
 		curl
+		dmidecode
 		kdePackages.kcachegrind
 		flamegraph
 		signal-desktop
