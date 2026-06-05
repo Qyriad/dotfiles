@@ -52,10 +52,11 @@ set -euo pipefail
 if [[ "$#" -eq 0 ]]; then
 	exec jj log "$@"
 fi
-if [[ "$1" != "-r" ]]; then
-	exec jj log -r "$@"
+# Leave untouched if the the first argument starts with a hyphen.
+if [[ "${1[1]}" = "-" ]]; then
+	exec jj log "$@"
 fi
-exec jj log "$@"
+exec jj log -r "$@"
 """, ""]
 lh = ['log', '-T', 'qshortlog', '-r', 'here']
 lo = ['log', '-T', 'qlog']
