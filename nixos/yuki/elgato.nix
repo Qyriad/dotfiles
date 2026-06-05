@@ -86,7 +86,7 @@ in
 			RestartStep = "1";
 		};
 		unitConfig.OnFailure = "ffcap-onfail.service";
-		unitConfig.Requisite = "ffcap-elgato-wanted.target";
+		#unitConfig.Requisite = "ffcap-elgato-wanted.target";
 		#wantedBy = [ "ffcap-elgato.target" ];
 	};
 
