@@ -70,6 +70,7 @@
 		pkgdiff
 		ast-grep
 		nmap
+		masscan
 		taplo
 		oxlint
 		scspell
@@ -85,7 +86,17 @@
 		elf-info
 		#qyriad.nvim-treesitter-parsers-all
 		patchutils
+		sslh
+		caddy
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
 	];
+
+	security.wrappers."sslh-select" = {
+		owner = "root";
+		group = "wheel";
+		source = lib.getExe' pkgs.sslh "sslh-select";
+		capabilities = "cap_net_bind_service,cap_net_raw+ep";
+		permissions = "u+rx,g+rx,o+r";
+	};
 }
