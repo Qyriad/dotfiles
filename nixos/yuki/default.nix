@@ -232,6 +232,11 @@
 
 	};
 
+	services.syncthing = {
+		enable = true;
+		openDefaultPorts = true;
+	};
+
 	services.samba = {
 		enable = true;
 		openFirewall = true;
