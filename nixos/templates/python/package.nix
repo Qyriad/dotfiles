@@ -12,6 +12,7 @@
 	setuptools,
 	pydantic,
 	beartype,
+	loguru,
 }: let
 	stdenv = stdenvNoCC;
 	# FIXME: should this be python.stdenv?
@@ -71,6 +72,7 @@ in {
 	propagatedBuildInputs = [
 		beartype
 		pydantic
+		loguru
 	];
 
 	passthru.mkDevShell = {

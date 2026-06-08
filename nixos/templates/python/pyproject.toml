@@ -10,6 +10,7 @@ authors = [
 dependencies = [
 	"beartype",
 	"pydantic",
+	"loguru",
 ]
 
 [project.urls]
