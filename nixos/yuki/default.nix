@@ -227,6 +227,7 @@
 			"pulse.min.req" = "1024/48000";
 		};
 	};
+	services.pipewire.raopOpenFirewall = true;
 
 	services.inputplumber = {
 
