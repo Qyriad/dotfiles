@@ -7,13 +7,17 @@
 	python-pipe,
 	xontrib-abbrevs,
 	xonsh-direnv,
-	# FIXME: requires a patch to sitecustomize.py
+	pipewire-gobject,
+	python-pipewire-gobject,
 	gobject-introspection,
-	gtk3,
 	gtk4,
+	gdk-pixbuf,
 	glib,
 	graphene,
 	pango,
+	harfbuzz,
+
+	gusb,
 
 	# Setting `programs.xonsh.package` to this causes NixOS to call
 	# `.override { extraPackages = }` on us.
@@ -47,6 +51,7 @@
 	pyusb,
 	pyudev,
 	beartype,
+	pymupdf,
 }: stdlib.mkSimpleEnv (self: assert __checks; {
 	extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
 		src = xonsh-source;
@@ -84,22 +89,28 @@
 		keyring
 		hass-client
 		multidict
-		beartype
+		# beartype
+		pymupdf
 	] ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [
 		pydbus
 		sdbus
 		jeepney
-		pygobject3
 		gtk4
 		evdev
 		pyusb
 		pyudev
 		# Nixpkgs broke it.
 		#python-fontconfig
-		glib
+		#glib
 		graphene
 		pango
-		gobject-introspection
+		harfbuzz
+		#pygobject3
+		#gobject-introspection
+		#pipewire-gobject
+		#python-pipewire-gobject
+		gdk-pixbuf
+		gusb
 	] ++ lib.concatLists [
 		self.xonsh.propagatedBuildInputs
 	];
