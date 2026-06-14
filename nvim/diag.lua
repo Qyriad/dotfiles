@@ -47,7 +47,7 @@ DIAG_CONFIG = {
 			-- in the message.
 			local code_part = ""
 			if diagnostic.code then
-				if not qyriad._vaguely_in(diagnostic.code, diagnostic.message) then
+				if not qyriad._vaguely_in(tostring(diagnostic.code), diagnostic.message) then
 					code_part = ("%s: "):format(diagnostic.code)
 				end
 			end
