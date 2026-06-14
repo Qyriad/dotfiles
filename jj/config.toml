@@ -71,6 +71,16 @@ op-inspect = ['op', 'log', '--at-op=@', '--ignore-working-copy']
 stat = ['show', '--stat']
 sh = ['show', '-T', 'qlog']
 
+# "List versions".
+# The regex is: ^v?\d+
+# However we have two levels of string escaping to manage.
+# TOML double quotes will let use use single quotes for the `regex:` argument, but
+# then TOML will parse `\d` as a string escape.
+# TOML single quotes will means we have to use double quotes for the `regex:` argument,
+# and then JJ would parse `\d` as a string escape.
+# So we use a triple-single-quotes TOML string to use a single-quotes JJ string.
+vls = ['--config=ui.paginate=never', 'tag', 'list', '--sort=name', '''regex:'^v?\d+'''']
+
 [templates]
 #log = 'builtin_log_comfortable'
 log = 'qlog_comfortable'
