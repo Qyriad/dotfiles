@@ -12,6 +12,10 @@ NONLOCK = '~LOCK'
 # Let's bump that from 2 to 6 to show a lil more context.
 log = 'present(@) | ancestors(immutable_heads().., 6) | trunk()'
 
+# The default `--to` argument for `jj bookmark advance`.
+# It defaults to "@", which is almost never what we want.
+bookmark-advance-to = "@-"
+
 [revset-aliases]
 # Basically the traditional `git log` "revset".
 here = "::@"
