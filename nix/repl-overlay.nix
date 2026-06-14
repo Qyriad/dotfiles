@@ -73,6 +73,27 @@ self = rec {
 	inherit (pkgs) lib qlib stdenv clangStdenv;
 	mkShell' = pkgs.mkShell.override { stdenv = clangStdenv; };
 
+	meta = {
+		name,
+		pname ? null,
+		version ? null,
+		passthru ? null,
+		meta ? { },
+		...
+	}: {
+		inherit name pname version;
+		description = meta.description;
+		homepage = meta.homepage or null;
+		mainProgram = meta.mainProgram or null;
+		outputsToInstall = meta.outputsToInstall or null;
+		position = meta.position or null;
+	}
+	|> lib.filterAttrs (_: value: value != null)
+	;
+
+	pkgsMeta = pkgs
+	|> lib.mapDerivationAttrsetRecursive meta;
+
 	# Very cursed.
 	pkgsSrcs = pkgs
 	|> lib.mapDerivationAttrsetRecursive pkgs.srcOnly;
