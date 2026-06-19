@@ -4,6 +4,7 @@
 	llvmPackages,
 	wrapBintoolsWith,
 	runCommandMinimal,
+	rustc,
 	lndir,
 }: runCommandMinimal "llvm-keg" {
 
@@ -21,6 +22,9 @@
 	llvm = llvmPackages.llvm.out;
 	llvmDev = llvmPackages.llvm.dev;
 
+	rustc = rustc.out;
+	rustcMan = rustc.man;
+
 	meta.description = "llvm tools not in /bin";
 } <| lib.dedent ''
 	mkdir -p "$out/opt/llvm"
@@ -29,6 +33,10 @@
 	lndir -silent "$llvm" "$out/opt/llvm"
 	ln -s "$llvmDev/bin/llvm-config" "$out/opt/llvm/bin/llvm-config"
 	mkdir -p "$out/opt/llvm/include"
+
 	# Bleh. libstdc++ includes.
 	lndir -silent "$libgcc/include" "$out/opt/llvm/include"
+
+	lndir -silent "$rustc" "$out/opt/llvm"
+	lndir -silent "$rustcMan" "$out/opt/llvm"
 ''
