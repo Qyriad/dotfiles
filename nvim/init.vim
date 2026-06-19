@@ -137,32 +137,10 @@ nnoremap <leader>tj <Cmd>Telescope jumplist<CR>
 "augroup END
 
 " Fix buffer names that should be relative paths.
-function! FixName() abort
-	if &l:modifiable != v:true
-		throw "buffer must be modifiable"
-	endif
-
-	lua vim.cmd.file(vim.fn.expand("%:."))
-	edit!
+function! Recd() abort
+	cd $PWD
 endfunction
-command! Fixname call FixName()
-
-function! FixNameIfNeeded() abort
-	if &l:modifiable != v:true
-		return
-	endif
-
-	let l:expanded = expand("%:.")
-	if l:expanded != bufname()
-		execute "keepalt file " .. l:expanded
-	endif
-endfunction
-
-"augroup AutoFixName
-"	autocmd! BufReadPost * call FixNameIfNeeded()
-"augroup END
-
-"command! FixName call FixName()
+command! Recd cd $PWD
 
 lua <<EOF
 function _hl_cursor_col()

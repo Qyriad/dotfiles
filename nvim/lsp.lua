@@ -51,7 +51,6 @@ nnoremap <leader>gr <Cmd>Telescope lsp_references<CR>
 
 function! JumpDeclaration() abort
 	if exists('b:lsp_client')
-		autocmd BufReadPost * ++once call FixNameIfNeeded()
 		call v:lua.vim.lsp.buf.declaration()
 	elseif !empty(taglist(expand('<cword>')))
 		echo "jumped to tag"
@@ -63,7 +62,6 @@ endfunction
 
 function! JumpDefinition() abort
 	if exists('b:lsp_client')
-		autocmd BufReadPost * ++once call FixNameIfNeeded()
 		Telescope lsp_definitions
 	elseif !empty(taglist(expand('<cword>')))
 		echo "jumped to tag"
@@ -74,7 +72,6 @@ function! JumpDefinition() abort
 endfunction
 
 function! JumpImplementations() abort
-	autocmd BufReadPost * ++once call FixNameIfNeeded()
 	Telescope lsp_implementations
 endfunction
 
