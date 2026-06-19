@@ -71,6 +71,9 @@ op-inspect = ['op', 'log', '--at-op=@', '--ignore-working-copy']
 stat = ['show', '--stat']
 sh = ['show', '-T', 'qlog']
 
+# Diff without lockfiles.
+df = ["diff", "NONLOCK"]
+
 # "List versions".
 # The regex is: ^v?\d+
 # However we have two levels of string escaping to manage.
