@@ -1,4 +1,5 @@
 {
+  "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "PKGBUILD.vim": { "branch": "master", "commit": "ca8e436e42ac0e303f4ce67e673cb3fe23eacf1b" },
   "SimpylFold": { "branch": "master", "commit": "ff4c85197c5555715093c08a8d4f9d493c4d80cd" },
   "autoclose.nvim": { "branch": "main", "commit": "bafd0368716216fa6a7bb2a43ecd889b44efdb46" },
