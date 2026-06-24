@@ -223,6 +223,13 @@
 		lfs.enable = true;
 	};
 
+	programs.tmux = {
+		enable = true;
+		plugins = with pkgs.tmuxPlugins; [
+			tmux-thumbs
+		];
+	};
+
 	# Covered by nix-index, not that its integrations support our shell.
 	programs.command-not-found.enable = false;
 
