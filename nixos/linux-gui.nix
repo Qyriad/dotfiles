@@ -236,6 +236,7 @@
 		# Keystroke visualizer.
 		qpkgs.tapshow
 		kernelshark
+		elf-dissector
 	] ++ lib.optionals config.services.pipewire.enable [
 		pavucontrol
 		lxqt.pavucontrol-qt
