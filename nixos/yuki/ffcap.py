@@ -203,7 +203,7 @@ class StatusRingBuffer(list[int]):
             return 0
         return self.count(self[0])
 
-status_ring_buffer = StatusRingBuffer(size=10)
+status_ring_buffer = StatusRingBuffer(size=20)
 
 class FpsBuffer(list[float]):
     def __init__(self, *args, **kwargs):
@@ -215,7 +215,7 @@ class FpsBuffer(list[float]):
         self.insert(0, fps)
 
     def _avg(self) -> float | None:
-        if len(self) < 10:
+        if len(self) < 20:
             return None
 
         return float(sum(self)) / float(len(self))
@@ -287,8 +287,8 @@ def proxy_to_stdout(file: io.FileIO):
     write_log(text)
     _stop_if_fps_too_low(text)
 
-    if not data:
-        raise TimeoutError("no stdout received in 4 seconds")
+    # if not data:
+    #     raise TimeoutError("no stdout received in 4 seconds")
 
 def proxy_to_stderr(file: io.FileIO):
     data = file.read()
@@ -461,6 +461,19 @@ class HelpFormatter(argparse.HelpFormatter):
         return f'--[no-]{name}[=PAT]'
 
 
+def recreate_loopback():
+    cmd = [
+        'v4l2loopback-ctl',
+        'add',
+        '--name', 'Virt0',
+        '--verbose',
+        '--min-width', '1920',
+        '--min-height', '1080',
+        '--max-width', '1920',
+        '--max-height', '1080',
+        '--max-openers', '4',
+        '/dev/video10',
+    ]
 
 def main():
     setproctitle("ffcap.py")
@@ -468,11 +481,11 @@ def main():
         #formatter_class=HelpFormatter,
         #usage="%(prog)s [-h] [--timeout TIMEOUT] [[--no]-autodetect[=PAT]] ...",
     )
-    parser.add_argument("--timeout", type=float, default=4)
+    parser.add_argument("--timeout", type=float, default=10)
     parser.add_argument("--framerate", type=int, default=60)
-    #parser.add_argument("--video-size", type=str, default="1920x1080")
-    parser.add_argument("--video-size", type=str, default="3840x2160")
-    parser.add_argument("--input-format", type=str, default="yuyv422")
+    parser.add_argument("--video-size", type=str, default="1920x1080")
+    #parser.add_argument("--video-size", type=str, default="3840x2160")
+    parser.add_argument("--input-format", type=str, default="nv12")
     parser.add_argument("--output-format", type=str, default="yuyv422",)
     #parser.add_argument("--autodetect", action=argparse.BooleanOptionalAction)
     #parser.add_argument("--autodetect", action=TristateOptionalAction, type=str, metavar="PAT",
@@ -494,13 +507,14 @@ def main():
         "ffmpeg",
         "-progress", "pipe:1",
         "-nostdin",
+        #*"-fflags discardcorrupt",
         *"-f video4linux2".split(),
         "-framerate", f"{args.framerate}",
         "-video_size", args.video_size,
         "-input_format", args.input_format,
+        *'-framerate 60'.split(),
         *"-fflags nobuffer".split(),
         "-i", devnode,
-        #"-vf", "format=yuyv422",
         "-vf", f"format={args.output_format}",
         "-f", "video4linux2",
         outnode,
