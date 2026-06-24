@@ -273,6 +273,11 @@
 	# Priority exactly 1 stronger than the default.
 	hardware.steam-hardware.enable = lib.mkForce false;
 
+	# We don't want it by default but sometimes I do.
+	specialisation."nix-ld".configuration = { ... }: {
+		programs.nix-ld.enable = true;
+	};
+
 	programs.wireshark = {
 		enable = true;
 		usbmon.enable = true;
