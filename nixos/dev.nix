@@ -88,6 +88,8 @@
 		patchutils
 		sslh
 		caddy
+		# The Witchcraft Compiler Collection.
+		wcc
 	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
 	];
