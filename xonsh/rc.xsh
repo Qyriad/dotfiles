@@ -604,7 +604,7 @@ def _ranger_cd(path=None):
 		os.remove(temp)
 
 
-aliases['ranger'] = _ranger_cd
+#aliases['ranger'] = _ranger_cd
 
 
 def _detach_kernel_drivers(dev):
