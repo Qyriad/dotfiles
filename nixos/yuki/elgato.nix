@@ -54,78 +54,78 @@ in
 		elgato-rules
 	];
 
-	systemd.targets.ffcap-elgato = {
-		description = "ffcap-elgato";
-		unitConfig = {
-			Conflicts = [ "shutdown.target" ];
-			# Requires = [ "dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device" ];
-			# When ffcap-elgato.service fails, ffcap-elgato.target will also fail.
-			# If we `systemctl add-wants default.target ffcap-elgato.target`, then
-			# ffcap-elgato.target failing will pull default.target into "degraded",
-			# and ffcap-elgato.service will be started again when the device comes
-			# back online.
-			#BindsTo = [ "ffcap-elgato.service" ];
-		};
-	};
-
-	systemd.services.ffcap-elgato = {
-		environment = {
-			UDEVADM = "/run/current-system/sw/bin/udevadm";
-			FFMPEG = "/run/current-system/sw/bin/ffmpeg";
-			SYSTEMD_NOTIFY = "/run/current-system/sw/bin/systemd-notify";
-		};
-		path = [ pkgs.python3Packages.setproctitle ];
-		serviceConfig = {
-			Type = "notify";
-			ExecStart = "/run/current-system/sw/bin/python3 /home/qyriad/.config/nixos/yuki/ffcap.py";
-			SendSIGHUP = "yes";
-			NotifyAccess = "all";
-			SyslogLevelPrefix = true;
-			KillSignal = "SIGINT";
-			RestartSec = "1";
-			RestartStep = "1";
-		};
-		unitConfig.OnFailure = "ffcap-onfail.service";
-		#unitConfig.Requisite = "ffcap-elgato-wanted.target";
-		#wantedBy = [ "ffcap-elgato.target" ];
-	};
-
-	systemd.services.ffcap-onfail = {
-		serviceConfig.Type = "oneshot";
-		script = ''
-			set -euxo pipefail
-			echo 0 > /sys/bus/usb/devices/6-4/bConfigurationValue
-			sleep 10s
-			echo 1 > /sys/bus/usb/devices/6-4/bConfigurationValue
-			echo "done!"
-		'';
-		unitConfig.Requisite = "ffcap-elgato-wanted.target";
-	};
+	#systemd.targets.ffcap-elgato = {
+	#	description = "ffcap-elgato";
+	#	unitConfig = {
+	#		Conflicts = [ "shutdown.target" ];
+	#		# Requires = [ "dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device" ];
+	#		# When ffcap-elgato.service fails, ffcap-elgato.target will also fail.
+	#		# If we `systemctl add-wants default.target ffcap-elgato.target`, then
+	#		# ffcap-elgato.target failing will pull default.target into "degraded",
+	#		# and ffcap-elgato.service will be started again when the device comes
+	#		# back online.
+	#		#BindsTo = [ "ffcap-elgato.service" ];
+	#	};
+	#};
+	#
+	#systemd.services.ffcap-elgato = {
+	#	environment = {
+	#		UDEVADM = "/run/current-system/sw/bin/udevadm";
+	#		FFMPEG = "/run/current-system/sw/bin/ffmpeg";
+	#		SYSTEMD_NOTIFY = "/run/current-system/sw/bin/systemd-notify";
+	#	};
+	#	path = [ pkgs.python3Packages.setproctitle ];
+	#	serviceConfig = {
+	#		Type = "notify";
+	#		ExecStart = "/run/current-system/sw/bin/python3 /home/qyriad/.config/nixos/yuki/ffcap.py";
+	#		SendSIGHUP = "yes";
+	#		NotifyAccess = "all";
+	#		SyslogLevelPrefix = true;
+	#		KillSignal = "SIGINT";
+	#		RestartSec = "1";
+	#		RestartStep = "1";
+	#	};
+	#	unitConfig.OnFailure = "ffcap-onfail.service";
+	#	#unitConfig.Requisite = "ffcap-elgato-wanted.target";
+	#	#wantedBy = [ "ffcap-elgato.target" ];
+	#};
+	#
+	#systemd.services.ffcap-onfail = {
+	#	serviceConfig.Type = "oneshot";
+	#	script = ''
+	#		set -euxo pipefail
+	#		echo 0 > /sys/bus/usb/devices/6-4/bConfigurationValue
+	#		sleep 10s
+	#		echo 1 > /sys/bus/usb/devices/6-4/bConfigurationValue
+	#		echo "done!"
+	#	'';
+	#	unitConfig.Requisite = "ffcap-elgato-wanted.target";
+	#};
 
 	systemd.user.services.wireplumber.path = [
 		pkgs.libcamera
 	];
 
-	systemd.user.services.loopback-elgato = {
-		#script = lib.dedent ''
-		#	exec /run/current-system/sw/bin/pw-loopback \
-		#		--group null \
-		#		-C "alsa_input.usb-Elgato_Game_Capture_HD60_S__0004C809C2000-03.analog-stereo" \
-		#		--capture-props '{ node.dont-fallback = true, node.linger = true, media.class = "Audio/Sink", node.virtual = true, stream.capture.sink = false, monitor.channel-volumes = false }' \
-				#-P default.audio.sink \
-		#		--playback-props '{ media.class = "Stream/Output/Audio" }' \
-		#		-n loopback.capturecard
-		#'';
-		path = [ pkgs.pipewire ];
-		wantedBy = [ "graphical-session.target" ];
-		requiredBy = [ "ffcap-elgato.target" ];
-		unitConfig = {
-			#Requires = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
-			#After = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
-		};
-		serviceConfig = {
-			ExecSearchPath = lib.makeBinPath [ pkgs.pipewire ];
-			ExecStart = "pipewire -c loopback-elgato.conf";
-		};
-	};
+	#systemd.user.services.loopback-elgato = {
+	#	#script = lib.dedent ''
+	#	#	exec /run/current-system/sw/bin/pw-loopback \
+	#	#		--group null \
+	#	#		-C "alsa_input.usb-Elgato_Game_Capture_HD60_S__0004C809C2000-03.analog-stereo" \
+	#	#		--capture-props '{ node.dont-fallback = true, node.linger = true, media.class = "Audio/Sink", node.virtual = true, stream.capture.sink = false, monitor.channel-volumes = false }' \
+	#			#-P default.audio.sink \
+	#	#		--playback-props '{ media.class = "Stream/Output/Audio" }' \
+	#	#		-n loopback.capturecard
+	#	#'';
+	#	path = [ pkgs.pipewire ];
+	#	wantedBy = [ "graphical-session.target" ];
+	#	requiredBy = [ "ffcap-elgato.target" ];
+	#	unitConfig = {
+	#		#Requires = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+	#		#After = [ ''dev-snd-by\x2did-usb\x2dElgato_Game_Capture_HD60_S\x2b_0004C809C2000\x2d03.device'' ];
+	#	};
+	#	serviceConfig = {
+	#		ExecSearchPath = lib.makeBinPath [ pkgs.pipewire ];
+	#		ExecStart = "pipewire -c loopback-elgato.conf";
+	#	};
+	#};
 }
