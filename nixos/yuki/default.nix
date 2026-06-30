@@ -26,6 +26,7 @@
 	nixpkgs.config.permittedInsecurePackages = [
 		"ventoy-qt5-1.1.07"
 		"olm-3.2.16"
+		"pnpm-10.29.2" # For Vesktop.
 	];
 	nixpkgs.overlays = let
 		kwin-useractions-no-overflow = pkgsFinal: pkgsPrev: {
