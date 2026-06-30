@@ -141,6 +141,7 @@ function! Recd() abort
 	cd $PWD
 endfunction
 command! Recd cd $PWD
+nnoremap <leader>rcd <Cmd>Recd<CR>
 
 lua <<EOF
 function _hl_cursor_col()
