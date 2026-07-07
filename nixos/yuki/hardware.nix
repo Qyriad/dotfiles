@@ -41,11 +41,11 @@
 		"Yuki's Linux (${current}) is no longer latest (${latest}) (stable: ${stable})"
 	];
 
-	boot.kernelPackages = pkgs.linuxPackages_7_0;
+	boot.kernelPackages = pkgs.linuxPackages_7_1;
 
 	hardware.nvidia = {
 		modesetting.enable = true;
-		package = config.boot.kernelPackages.nvidiaPackages.beta;
+		package = config.boot.kernelPackages.nvidiaPackages.stable;
 		open = true;
 		powerManagement.enable = true;
 	};
