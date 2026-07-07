@@ -71,6 +71,9 @@ op-inspect = ['op', 'log', '--at-op=@', '--ignore-working-copy']
 stat = ['show', '--stat']
 sh = ['show', '-T', 'qlog']
 
+sp = ['split', '--interactive']
+sq = ['squash', '--interactive']
+
 # Diff without lockfiles.
 df = ["diff", "NONLOCK"]
 
