@@ -41,6 +41,7 @@ nnoremap <leader>xc <Cmd>TroubleToggle<CR>
 highlight! NotifyBackground guibg=#1b1b1b
 
 command! LspClients echo v:lua.qyriad.lsp_iter_clients()
+command! LspStopAll lua vim.iter(vim.lsp.get_clients()):map(function(client) return client:stop() end):totable()
 
 
 if exists('g:tagbar_sort')
