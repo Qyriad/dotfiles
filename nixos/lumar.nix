@@ -173,6 +173,9 @@
 		rectangle
 		thaw
 
+		# Other macOS addition stuff.
+		macshot
+
 		# General GUI stuff.
 		obsidian
 		vesktop
