@@ -154,6 +154,7 @@
 		ast-grep
 		#havn
 		rink
+		plistwatch
 		# Broken right now.
 		#harlequin
 		ipatool
