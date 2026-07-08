@@ -198,6 +198,14 @@ command! -bang WhatIndent call WhatIndentCmd("<bang>")
 lua << EOF
 -- Text editing.
 use {
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
+	opts = {
+		auto_integrations = true,
+	},
+}
+use {
 	-- Python folds.
 	'tmhedberg/SimpylFold',
 	filetype = "python",
@@ -428,7 +436,8 @@ lazy.core = {
 lazy.setup(plugin_spec, {
 	install = {
 		missing = true, -- Default
-		colorscheme = { "solorized8_grey" },
+		--colorscheme = { "solorized8_grey" },
+		colorscheme = { "catppuccin-macchiato" },
 	},
 })
 
