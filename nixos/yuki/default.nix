@@ -108,6 +108,14 @@
 		source = pkgs.qyriad.xkeyboard_config-patched-inet;
 	};
 
+	security.wrappers."sslh-select" = {
+		owner = "root";
+		group = "wheel";
+		source = lib.getExe' pkgs.sslh "sslh-select";
+		capabilities = "cap_net_bind_service,cap_net_raw+ep";
+		permissions = "u+rx,g+rx,o+r";
+	};
+
 	services.fwupd.enable = true;
 
 	services.hardware.bolt.enable = true;
@@ -297,6 +305,8 @@
 		ryubing
 		davinci-resolve
 		blender
+		quickemu
+		qyriad.qmlls
 		perf
 		obs-cmd
 		odin2

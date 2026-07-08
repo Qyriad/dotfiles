@@ -16,8 +16,6 @@
 	];
 
 	environment.systemPackages = with pkgs; [
-		qyriad.llvm-keg
-		qyriad.gcc-keg
 		lldb
 		#llvmPackages_latest.clangUseLLVM
 		#llvmPackages_latest.lld
@@ -58,10 +56,8 @@
 		nix-update
 		nix-eval-jobs
 		colmena
-		rr
 		nixfmt
 		nixpkgs-review
-		quickemu
 		gh
 		gql
 		shellcheck
@@ -79,7 +75,6 @@
 		qpkgs.lsptrace
 		mergiraf
 		typescript-go
-		qyriad.qmlls
 		# Command-line profiler.
 		samply
 		wasm-language-tools
@@ -88,17 +83,12 @@
 		patchutils
 		sslh
 		caddy
+	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		# The Witchcraft Compiler Collection.
 		wcc
-	] ++ lib.optionals config.nixpkgs.hostPlatform.isLinux [
 		systemd-lsp
+		rr
+		qyriad.llvm-keg
+		qyriad.gcc-keg
 	];
-
-	security.wrappers."sslh-select" = {
-		owner = "root";
-		group = "wheel";
-		source = lib.getExe' pkgs.sslh "sslh-select";
-		capabilities = "cap_net_bind_service,cap_net_raw+ep";
-		permissions = "u+rx,g+rx,o+r";
-	};
 }
