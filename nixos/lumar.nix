@@ -45,7 +45,6 @@
 	system.keyboard = {
 		enableKeyMapping = true;
 		remapCapsLockToEscape = true;
-		nonUS.remapTilde = true;
 	};
 
 	fonts.packages = with pkgs; [
@@ -60,6 +59,16 @@
 		enableGlobalCompInit = true;
 	};
 	programs.tmux.enable = true;
+
+	homebrew = {
+		enable = true;
+		casks = [
+		];
+		greedyCasks = [
+			# Karabiner Elements' extensions and services are a little awkward from nix-darwin.
+			{ name = "karabiner-elements"; greedy = true; }
+		];
+	};
 
 	environment.systemPackages = with pkgs; [
 		#qyriad.xil
@@ -89,7 +98,13 @@
 		sacad
 		mousecape
 		sloth-app
+
+		# Core things like our terminal emulator.
 		wezterm
+
+		# Essential macOS addition.
+		rectangle
+		thaw
 	];
 }
 
