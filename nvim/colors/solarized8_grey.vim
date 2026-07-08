@@ -29,6 +29,9 @@ lua vim.api.nvim_set_hl(0, "@lsp.type.comment.lua", {})
 highlight Normal            guibg=#1b1b1b
 highlight LineNR ctermfg=11 guibg=#212728
 
+" Bring the Identifier contrast up from 4.68:1 to 5.16:1.
+highlight Identifier guifg=#2492e0
+
 " Make the CursorLine less saturated and less bright.
 " Initial value: #073642
 highlight CursorLine guibg=#13282d
