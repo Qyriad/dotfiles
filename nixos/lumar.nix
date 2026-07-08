@@ -77,6 +77,12 @@
 			# View -> Show Status Bar.
 			"ShowOverlayStatusBar" = true;
 		};
+
+		"com.apple.dock" = {
+			# System Preferences -> Desktop & Dock ->
+			# Automatically rearrange Spaces based on most recent use.
+			"mru-spaces" = false;
+		};
 	};
 
 	# Some hardware stuffs.
