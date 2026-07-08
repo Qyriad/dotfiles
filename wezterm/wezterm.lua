@@ -124,11 +124,15 @@ wezterm.on('update-right-status', function(window, pane)
 	})
 end)
 
+if wezterm.hostname():lower() == 'lumar' then
+	conf { font_size = 14 }
+else
+	conf { font_size = 12 }
+end
 conf {
 	default_prog = { "zsh", "--login" },
 	font = wezterm.font("InconsolataGo Nerd Font Mono"),
 	--font_size = 11.5,
-	font_size = 12,
 
 	window_decorations = "TITLE|RESIZE",
 
