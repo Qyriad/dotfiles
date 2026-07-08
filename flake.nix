@@ -246,6 +246,11 @@
 				];
 				keyleth = Keyleth;
 
+				Lumar = mkConfig "aarch64-darwin" [
+					./nixos/lumar.nix
+				];
+				lumar = Lumar;
+
 				Maho = mkConfig "x86_64-darwin" [
 					./nixos/maho.nix
 				];
