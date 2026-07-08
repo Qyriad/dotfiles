@@ -13,7 +13,10 @@
 	nixpkgs.config.allowUnfree = true;
 
 	networking.computerName = "Lumar";
-	networking.localHostName = "Lumar";
+	# This appears to be what fills $HOSTNAME in Xonsh.
+	# If we set localHostName but not hostName,
+	# then $HOSTNAME becomes "Lumar.local".
+	networking.hostName = "Lumar";
 
 	nix = {
 		settings = {
@@ -99,12 +102,12 @@
 		mousecape
 		sloth-app
 
-		# Core things like our terminal emulator.
+		# Core apps.
 		wezterm
+		_1password-gui
 
 		# Essential macOS addition.
 		rectangle
 		thaw
 	];
 }
-
