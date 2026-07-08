@@ -39,10 +39,43 @@
 	};
 
 	system.primaryUser = "qyriad";
+	system.defaults.NSGlobalDomain = {
+		"AppleShowAllExtensions" = true;
+
+		# Expand save panels by default.
+		"NSNavPanelExpandedStateForSaveMode" = true;
+		"NSNavPanelExpandedStateForSaveMode2" = true;
+	};
+	system.defaults.finder = {
+		# --group-directories-first our beloved.
+		"_FXSortFoldersFirst" = true;
+		# Not sure if this is any different from the one in NSGlobalDomain.
+		"AppleShowAllExtensions" = true;
+		# List view.
+		"FXPreferredViewStyle" = "Nlsv";
+		# Show path breadcrumbs at the bottom.
+		"ShowPathbar" = true;
+		"ShowStatusBar" = true;
+		# Resize columns to fit filenames.
+		"_FXEnableColumnAutoSizing" = true;
+	};
+	system.defaults.screencapture = {
+		"location" = "~/Pictures/Screenshots";
+	};
+	system.defaults.trackpad = {
+		# System Preferences -> Trackpad -> Tap to click.
+		# Is this any different from system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior"?
+		"Clicking" = true;
+	};
 	system.defaults.CustomUserPreferences = {
 		# Yes really...
 		${lib.escapeShellArg "Apple Global Domain"} = {
 			"AppleMenuBarVisibleInFullscreen" = "1";
+		};
+
+		"com.apple.Safari" = {
+			# View -> Show Status Bar.
+			"ShowOverlayStatusBar" = true;
 		};
 	};
 
@@ -131,6 +164,7 @@
 		thaw
 
 		# General GUI stuff.
+		obsidian
 		vesktop
 	];
 }

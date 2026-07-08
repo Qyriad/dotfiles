@@ -199,7 +199,7 @@ in {
 		};
 	in pkgsFinal.callPackage (nixpkgs-beeper + "/pkgs/by-name/be/beeper/package.nix") { };
 
-	vesktop = pkgsPrev.vesktop.overrideAttrs (prev: {
+	vesktop = pkgsPrev.vesktop.overrideAttrs (prev: let
 		desktopItems = lib.forEach prev.desktopItems (item: item.override {
 			exec = lib.concatStringsSep " " [
 				"vesktop"
@@ -212,9 +212,13 @@ in {
 			];
 			#exec = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --use-wayland-ime %U";
 		});
+		# If we don't already have any desktopItems, we're probably on macOS.
+	in lib.optionalAttrs (prev ? desktopItems) {
+		inherit desktopItems;
 	});
 
-	obsidian = pkgsPrev.obsidian.overrideAttrs (prev: {
+	obsidian = pkgsPrev.obsidian.overrideAttrs (prev: let
+		# If we don't already have a desktopItem, we're probably on macOS.
 		desktopItem = prev.desktopItem.override {
 			exec = lib.concatStringsSep " " [
 				"obsidian"
@@ -226,6 +230,8 @@ in {
 				"%U"
 			];
 		};
+	in lib.optionalAttrs (prev ? desktopItem) {
+		inherit desktopItem;
 	});
 
 	wireplumber = pkgsPrev.wireplumber.overrideAttrs (prev: {
