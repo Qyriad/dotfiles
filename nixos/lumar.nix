@@ -179,5 +179,6 @@
 		# General GUI stuff.
 		obsidian
 		vesktop
+		iina
 	];
 }
