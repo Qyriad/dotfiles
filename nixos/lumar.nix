@@ -109,6 +109,8 @@
 		casks = [
 			# Karabiner Elements' extensions and services are a little awkward from nix-darwin.
 			{ name = "karabiner-elements"; greedy = true; }
+			# We expect the same of Tailscale tbh.
+			{ name = "tailscale-app"; greedy = true; }
 
 			{ name = "beeper"; greedy = true; }
 			{ name = "signal@beta"; greedy = true; }
