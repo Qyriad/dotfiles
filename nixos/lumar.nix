@@ -114,6 +114,7 @@
 
 			{ name = "beeper"; greedy = true; }
 			{ name = "signal@beta"; greedy = true; }
+			{ name = "calibre"; greedy = true; }
 		];
 		masApps = {
 			# Safari Extensions.
