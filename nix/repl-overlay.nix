@@ -21,6 +21,7 @@ self = rec {
 	nixpkgs = getFlake "nixpkgs";
 	nixpkgs-master = getFlake "github:NixOS/nixpkgs/master";
 	nixpkgs-unstable = getFlake "github:NixOS/nixpkgs/nixpkgs-unstable";
+	nixpkgs-staging = getFlake "github:NixOS/nixpkgs/staging";
 	fenix = getFlake "github:nix-community/fenix";
 	crane = getFlake "github:ipetkov/crane";
 	oxalica-rust = getFlake "github:oxalica/rust-overlay";
@@ -61,6 +62,10 @@ self = rec {
 		overlays = [ qyriad.overlays.default ];
 	};
 	pkgs-unstable = importQuiet nixpkgs-unstable {
+		inherit system config;
+		overlays = [ qyriad.overlays.default ];
+	};
+	pkgs-staging = importQuiet nixpkgs-staging {
 		inherit system config;
 		overlays = [ qyriad.overlays.default ];
 	};
