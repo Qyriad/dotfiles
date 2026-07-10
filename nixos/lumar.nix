@@ -127,6 +127,10 @@
 			{ name = "beeper"; greedy = true; }
 			{ name = "signal@beta"; greedy = true; }
 			{ name = "calibre"; greedy = true; }
+
+			# https://github.com/macmade/Hot
+			# Might package it ourselves at some point.
+			{ name = "hot"; greedy = true; }
 		];
 		masApps = {
 			# Safari Extensions.
