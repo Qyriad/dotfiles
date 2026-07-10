@@ -90,7 +90,8 @@
 		ripgrep
 		edir
 		sd
-		unar
+		# Broken.
+		#unar
 		ouch
 		atool
 		unzip
