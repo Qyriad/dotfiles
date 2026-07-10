@@ -1,5 +1,6 @@
 {
 	lib,
+	stdlib,
 	clangStdenv,
 	rustHooks,
 	rustPlatform,
@@ -10,17 +11,11 @@
   stdenv = clangStdenv;
 	cargoToml = lib.importTOML ./Cargo.toml;
 	cargoPackage = cargoToml.package;
-in stdenv.mkDerivation (finalAttrs: let
+in stdlib.makePackage stdenv (finalAttrs: let
 	self = finalAttrs.finalPackage;
 in {
 	pname = cargoPackage.name;
 	version = cargoPackage.version;
-
-	strictDeps = true;
-	__structuredAttrs = true;
-
-	doCheck = true;
-	doInstallCheck = true;
 
 	src = lib.fileset.toSource {
 		root = ./.;
@@ -51,13 +46,13 @@ in {
 		linkFarm,
 		cargo,
 	}: let
-		mkShell' = mkShell.override { stdenv = stdenv; };
+		mkShell' = mkShell.override { inherit stdenv; };
 		# Fenix's Cargo doesn't have completions, but Nixpkgs' does.
 		cargoCompletions = linkFarm "cargo-bash-completions" {
 			"share/bash-completion" = cargo + "/share/bash-completion";
 		};
 	in mkShell' {
-		name = "${self.pname}-devshell-${self.version}";
+		pname = "${self.pname}-devshell";
 		inputsFrom = [ self ];
 		packages = [
 			stdenv.cc
@@ -81,17 +76,23 @@ in {
 		dontFixup = true;
 		dontInstallCheck = true;
 
-		checkPhase = lib.trim ''
+		checkPhase = lib.dedent ''
 			echo "cargoClippyPhase()"
 			cargo clippy --all-targets --profile "$cargoCheckType" -- --deny warnings
 		'';
 
-		installPhase = lib.trim ''
+		installPhase = lib.dedent ''
 			touch "$out"
 		'';
 	});
 
 	meta = {
+		homepage = "https://github.com/Qyirad/PKGNAME";
+		#description = "";
+		maintainers = with lib.maintainers; [ qyriad ];
+		#license = with lib.licenses; [ ];
+		sourceProvenance = with lib.sourceTypes; [ fromSource ];
+		#platforms = lib.platforms.all;
 		mainProgram = "PKGNAME";
 	};
 })
