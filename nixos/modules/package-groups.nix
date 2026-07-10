@@ -56,7 +56,7 @@ in
 			readOnly = true;
 			default = with pkgs; [
 				ardour
-				musescore
+				#musescore
 				fluidsynth
 				soundfont-ydp-grand
 				soundfont-fluid
