@@ -152,6 +152,7 @@
 		qyriad.niz
 		qyriad.git-point
 		nixpkgs-review
+		nom
 		nixfmt-rfc-style
 		nil
 		nix-output-monitor
