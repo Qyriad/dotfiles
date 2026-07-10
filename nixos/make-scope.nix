@@ -219,7 +219,8 @@ in lib.makeScope qpkgs.newScope (self: {
 		dontUsePytestCheck = true;
 		propagatedBuildInputs = with pkgs.python3Packages; (prev.propagatedBuildInputs or [ ]) ++ [
 			nvidia-ml-py
-			pysmart
+			# Nixpkgs broke it
+			#pysmart
 			zeroconf
 		] ++ lib.optionals pkgs.stdenv.isLinux [
 			# Nixpkgs broke batinfo.
