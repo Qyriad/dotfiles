@@ -429,10 +429,10 @@ def _rm_transient(name):
 
 aliases['rm-transient'] = _rm_transient
 
+@aliases.register
+@aliases.return_command
 def _reenv():
-	source-bash --aliascmd '' $(tmux show-environment -s | rg -v unset)
-
-aliases['reenv'] = _reenv
+	return ["source-bash", "--aliascmd", "", $(tmux show-environment -s | rg -v unset)]
 
 def _rekey():
 	$SSH_AUTH_SOCK = $(gpgconf --list-dirs agent-ssh-socket).strip()
