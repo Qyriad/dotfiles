@@ -90,6 +90,7 @@
 		ripgrep
 		edir
 		sd
+		ssh-agent-mux
 		# Broken.
 		#unar
 		ouch
