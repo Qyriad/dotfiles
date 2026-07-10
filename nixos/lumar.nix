@@ -107,6 +107,12 @@
 	};
 	programs.tmux.enable = true;
 
+	# Does rely on the ~/.gnupg directory existing in some way.
+	programs.gnupg.agent = {
+		enable = true;
+		enableSSHSupport = true;
+	};
+
 	# GUI stuff in programs.*
 	programs._1password-gui.enable = true;
 
@@ -177,6 +183,7 @@
 		macshot
 
 		# General GUI stuff.
+		pinentry_mac
 		obsidian
 		vesktop
 		iina
