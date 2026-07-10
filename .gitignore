@@ -6,7 +6,7 @@
 !/environment.d
 !/gh
 !/git
-!/gnupg
+!/gnupg/*.conf
 !/grc
 !/host
 !/htop
