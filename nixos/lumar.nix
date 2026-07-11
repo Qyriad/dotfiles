@@ -131,6 +131,8 @@
 			# https://github.com/macmade/Hot
 			# Might package it ourselves at some point.
 			{ name = "hot"; greedy = true; }
+
+			{ name = "whatcable"; greedy = true; }
 		];
 		masApps = {
 			# Safari Extensions.
