@@ -166,6 +166,8 @@
 		#havn
 		rink
 		plistwatch
+		# FIXME: automatically convert our XCompose files to DefaultKeyBindings.dict and apply it?
+		qpkgs.macos-compose
 		# Broken right now.
 		#harlequin
 		ipatool
