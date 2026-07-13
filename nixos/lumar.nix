@@ -177,7 +177,8 @@
 		#harlequin
 		# For jj.
 		watchman
-		ipatool
+		# Nixpkgs broke it.
+		#ipatool
 		jtbl
 		pipet
 		sacad
