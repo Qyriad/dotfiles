@@ -133,6 +133,7 @@
 			{ name = "hot"; greedy = true; }
 
 			{ name = "whatcable"; greedy = true; }
+			{ name = "tana"; greedy = true; }
 		];
 		masApps = {
 			# Safari Extensions.
