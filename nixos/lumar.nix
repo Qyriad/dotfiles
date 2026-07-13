@@ -123,6 +123,8 @@
 			{ name = "karabiner-elements"; greedy = true; }
 			# We expect the same of Tailscale tbh.
 			{ name = "tailscale-app"; greedy = true; }
+			# Nixpkgs broke it.
+			{ name = "rectangle"; greedy = true; }
 
 			{ name = "beeper"; greedy = true; }
 			{ name = "signal@beta"; greedy = true; }
@@ -187,7 +189,8 @@
 		config.programs._1password-gui.package
 
 		# Essential macOS addition.
-		rectangle
+		# Nixpkgs broke it.
+		#rectangle
 		thaw
 
 		# Other macOS addition stuff.
