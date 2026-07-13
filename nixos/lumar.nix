@@ -173,6 +173,8 @@
 		qpkgs.macos-compose
 		# Broken right now.
 		#harlequin
+		# For jj.
+		watchman
 		ipatool
 		jtbl
 		imgp
