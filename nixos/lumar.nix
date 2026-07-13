@@ -177,7 +177,6 @@
 		watchman
 		ipatool
 		jtbl
-		imgp
 		pipet
 		sacad
 		mousecape
