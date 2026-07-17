@@ -148,22 +148,39 @@ use { 'linkinpark342/xonsh-vim', ft = "xonsh" }
 use { 'peterhoeg/vim-qml', ft = "qml" }
 use { 'nickel-lang/vim-nickel', ft = "nickel" }
 use { 'qnighy/lalrpop.vim' }
+--use {
+--	'nvim-treesitter/nvim-treesitter',
+--	branch = "main",
+--	lazy = false,
+--	--build = ":TSUpdate",
+--	dependencies = {
+--		'JoosepAlviste/nvim-ts-context-commentstring',
+--	},
+--	config = function()
+--		treesitter = require('nvim-treesitter')
+--		--treesitter.configs = require('nvim-treesitter.configs')
+--		--treesitter.install = require('nvim-treesitter.install')
+--		--treesitter.utils = require('nvim-treesitter.utils')
+--		--treesitter.info = require('nvim-treesitter.info')
+--		--treesitter.configs.setup(treesitter_configs_setup)
+--	end,
+--}
 use {
-	'nvim-treesitter/nvim-treesitter',
-	branch = "main",
-	lazy = false,
-	--build = ":TSUpdate",
-	dependencies = {
-		'JoosepAlviste/nvim-ts-context-commentstring',
+	'romus204/tree-sitter-manager.nvim',
+	opts = qyriad.nested_tbl {
+		-- These are the default, but we are spelling them out explicitly so we don't forget.
+		parser_dir = vim.fn.stdpath('data') .. '/site/parser',
+		query_dir = vim.fn.stdpath('data') .. '/site/queries',
+
+		languages = {
+			numbat = {
+				install_info = {
+					url = 'https://github.com/irevoire/tree-sitter-numbat',
+					queries = 'queries',
+				},
+			},
+		},
 	},
-	config = function()
-		treesitter = require('nvim-treesitter')
-		--treesitter.configs = require('nvim-treesitter.configs')
-		--treesitter.install = require('nvim-treesitter.install')
-		--treesitter.utils = require('nvim-treesitter.utils')
-		--treesitter.info = require('nvim-treesitter.info')
-		--treesitter.configs.setup(treesitter_configs_setup)
-	end,
 }
 --use {
 --	'IndianBoy42/tree-sitter-just',
@@ -172,7 +189,7 @@ use {
 --}
 use {
 	'acarapetis/nvim-treesitter-jjconfig',
-	dependencies = { 'nvim-treesitter/nvim-treesitter' },
+	--dependencies = { 'nvim-treesitter/nvim-treesitter' },
 	lazy = false,
 	opts = { ensure_installed = true },
 }
@@ -213,7 +230,7 @@ use {
 }
 use {
 	'Wansmer/treesj',
-	dependencies = { 'nvim-treesitter/nvim-treesitter' },
+	--dependencies = { 'nvim-treesitter/nvim-treesitter' },
 	config = function(plugin)
 		local treesj = plugin.main or require('treesj')
 		local lang_utils = require('treesj.langs.utils')
