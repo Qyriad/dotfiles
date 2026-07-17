@@ -110,6 +110,19 @@ in {
 		];
 	});
 
+	# https://github.com/Syncplay/syncplay/issues/774
+	# https://github.com/NixOS/nixpkgs/issues/543881
+	syncplay = pkgsPrev.syncplay.overrideAttrs (final: prev: {
+		pyopensslFix = pkgsFinal.fetchpatch2 {
+			url = "https://github.com/Syncplay/syncplay/commit/077f628d8ac9714f0c31a0d05b670bb8bda5ac24.patch";
+			hash = "sha256-UD9/WQBdcpx8EXCKnDgssBDhjGN9c49qC7V1TUVJlrY=";
+		};
+
+		patches = prev.patches or [ ] ++ [
+			final.pyopensslFix
+		];
+	});
+
 	kdePackages = pkgsPrev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 		# Ripples to:
 		# - kdeconnect-kde
