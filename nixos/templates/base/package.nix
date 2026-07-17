@@ -1,16 +1,13 @@
 {
 	lib,
+	stdlib,
 	stdenv,
 	versionCheckHook,
-}: stdenv.mkDerivation (self: {
+}: stdlib.makePackage stdenv (finalAttrs: let
+	self = finalAttrs.finalPackage;
+in {
 	pname = "PACKAGENAME";
 	version = "0.0.1";
-
-	strictDeps = true;
-	__structuredAttrs = true;
-
-	doCheck = true;
-	doInstallCheck = true;
 
 	src = lib.fileset.toSource {
 		root = ./.;
@@ -31,13 +28,19 @@
 	passthru.mkDevShell = {
 		mkShell,
 	}: let
-		mkShell' = mkShell.override { stdenv = stdenv; };
+		mkShell' = mkShell.override { inherit stdenv; };
 	in mkShell' {
-		name = "${self.pname}-devshell-${self.version}";
-		inputsFrom = [ self.finalPackage ];
+		name = lib.suffixName "devshell";
+		inputsFrom = [ self ];
 	};
 
 	meta = {
+		homepage = "https://github.com/Qyriad/PKGNAME";
+		#description = "";
+		maintainers = with lib.maintainers; [ qyriad ];
+		#license = with lib.licenses; [ ];
+		sourceProvenance = with lib.sourceTypes; [ fromSource ];
+		#platforms = lib.platforms.all;
 		mainProgram = "PKGNAME";
 	};
 })

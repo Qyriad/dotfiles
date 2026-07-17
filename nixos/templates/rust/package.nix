@@ -87,7 +87,7 @@ in {
 	});
 
 	meta = {
-		homepage = "https://github.com/Qyirad/PKGNAME";
+		homepage = "https://github.com/Qyriad/PKGNAME";
 		#description = "";
 		maintainers = with lib.maintainers; [ qyriad ];
 		#license = with lib.licenses; [ ];
