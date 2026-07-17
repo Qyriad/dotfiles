@@ -1,6 +1,7 @@
 # qpkgs.callPackage
 {
 	lib,
+	stdlib,
 	stdenvNoCC,
 	python3Packages,
 	pythonHooks,
@@ -15,22 +16,14 @@
 	loguru,
 }: let
 	stdenv = stdenvNoCC;
-	# FIXME: should this be python.stdenv?
-	inherit (stdenv) hostPlatform buildPlatform;
 
 	pyprojectToml = lib.importTOML ./pyproject.toml;
 	project = pyprojectToml.project;
-in stdenv.mkDerivation (finalAttrs: let
+in stdlib.makePackage stdenv (finalAttrs: let
 	self = finalAttrs.finalPackage;
 in {
 	pname = "${python.pythonAttr}-${project.name}";
 	version = project.version;
-
-	strictDeps = true;
-	__structuredAttrs = true;
-
-	doCheck = true;
-	doInstallCheck = true;
 
 	src = lib.fileset.toSource {
 		root = ./.;
