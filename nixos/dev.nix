@@ -69,6 +69,8 @@
 		masscan
 		taplo
 		oxlint
+		oxfmt
+		vscode-langservers-extracted
 		scspell
 		autotools-language-server
 		crates-lsp
