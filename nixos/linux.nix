@@ -385,6 +385,7 @@
 		systemfd
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
+		alsa-lib
 		pulsemixer
 		qpkgs.wiremix
 	] ++ lib.optionals config.services.smartd.enable [
