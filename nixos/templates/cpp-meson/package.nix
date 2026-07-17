@@ -1,16 +1,16 @@
 {
 	lib,
+	stdlib,
 	clangStdenv,
 	meson,
 	ninja,
 }: let
 	stdenv = clangStdenv;
-in stdenv.mkDerivation (self: {
+in stdlib.makePackage stdenv (finalAttrs: let
+	self = finalAttrs.finalPackage;
+in {
 	pname = "PROJECT_NAME";
 	version = "0.0.1";
-
-	strictDeps = true;
-	__structuredAttrs = true;
 
 	src = lib.fileset.toSource {
 		root = ./.;
@@ -34,7 +34,7 @@ in stdenv.mkDerivation (self: {
 	}: let
 		mkShell' = mkShell.override { inherit stdenv; };
 	in mkShell' {
-		inputsFrom = [ self.finalPackage ];
+		inputsFrom = [ self ];
 		packages = [ clang-tools ];
 	};
 
@@ -48,4 +48,3 @@ in stdenv.mkDerivation (self: {
 		#mainProgram = "";
 	};
 })
-

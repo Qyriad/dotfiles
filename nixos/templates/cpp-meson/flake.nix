@@ -1,30 +1,45 @@
 {
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+		nixpkgs = {
+			url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+			flake = false;
+		};
 		flake-utils.url = "github:numtide/flake-utils";
+		qyriad-nur = {
+			url = "github:Qyriad/nur-packages";
+			flake = false;
+		};
 	};
 
 	outputs = {
 		self,
 		nixpkgs,
 		flake-utils,
+		qyriad-nur,
 	}: flake-utils.lib.eachDefaultSystem (system: let
-
 		pkgs = import nixpkgs { inherit system; };
+		qpkgs = import qyriad-nur { inherit pkgs; };
+		inherit (qpkgs) lib;
 
-		PROJECT_NAME = import ./default.nix { inherit pkgs; };
+		PKGNAME = import ./default.nix { inherit pkgs qpkgs; };
+		extraVersions = lib.mapAttrs' (stdenvName: value: {
+			name = "${stdenvName}-PKGNAME";
+			inherit value;
+		}) PKGNAME.byStdenv;
 
+		devShell = import ./shell.nix { inherit pkgs qpkgs PKGNAME; };
+		extraDevShells = lib.mapAttrs' (stdenvName: value: {
+			name = "${stdenvName}-PKGNAME";
+			inherit value;
+		}) PKGNAME.byStdenv;
 	in {
-		packages = {
-			default = PROJECT_NAME;
-			inherit PROJECT_NAME;
+		packages = extraVersions // {
+			default = PKGNAME;
+			inherit PKGNAME;
 		};
 
-		devShells.default = pkgs.callPackage PROJECT_NAME.mkDevShell { };
-
-		checks = {
-			package = self.packages.${system}.PROJECT_NAME;
-			devShell = self.devShells.${system}.default;
+		devShells = extraDevShells // {
+			default = devShell;
 		};
-	}); # outputs
+	});
 }
