@@ -225,11 +225,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1784282195,
-        "narHash": "sha256-H1/S4yi3nfoRkvlm3mgm4VCaapwmSXnUK53zslmRZps=",
+        "lastModified": 1784636793,
+        "narHash": "sha256-7qgPwwlb0d5OnO4GWS6iOSc6zXwAq7I8IlYgi+uytdo=",
         "ref": "refs/heads/main",
-        "rev": "4c4d8b8ccd0c4e3bb0597d7209131e96ae1af04e",
-        "revCount": 19323,
+        "rev": "eb7009316b012d48a82735e36bc9485a32558658",
+        "revCount": 19362,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -331,11 +331,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784123936,
-        "narHash": "sha256-IOWwQMJhUxcojm0MRvuKs1fKLH727u4+hHeEOPhdUyA=",
+        "lastModified": 1784500460,
+        "narHash": "sha256-UvORnAxTRHax7RG74W8Z2t4GvIkX6AjJ5kk0QlwZomo=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "a4cf1d10853b0d2be19b9eca35d749e201d70b55",
+        "rev": "57a3171f94705599a2499248ca5758d5eb47c0e0",
         "type": "github"
       },
       "original": {
@@ -425,11 +425,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1784120854,
-        "narHash": "sha256-KesHgItiZPgGX740axSiQLcIQ8D24MDqNpkKYWIek8k=",
+        "lastModified": 1784497964,
+        "narHash": "sha256-vlHUuqAcbcH2RKmHbPiuQzbv1pnzzavXnI62RD0bqCU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
+        "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
         "type": "github"
       },
       "original": {
@@ -458,19 +458,17 @@
     "originfox-source": {
       "flake": false,
       "locked": {
-        "host": "codeberg.org",
         "lastModified": 1760549878,
         "narHash": "sha256-Ybz5r2mE56PbgjjzAcMqj1QsA6Qb+qlkcn6Mpr3lZMA=",
-        "owner": "icewind",
-        "repo": "originfox",
+        "ref": "refs/heads/main",
         "rev": "580b84f1ca378fb778695b431fa77d228fb7fac4",
-        "type": "sourcehut"
+        "revCount": 17,
+        "type": "git",
+        "url": "https://codeberg.org/icewind/originfox"
       },
       "original": {
-        "host": "codeberg.org",
-        "owner": "icewind",
-        "repo": "originfox",
-        "type": "sourcehut"
+        "type": "git",
+        "url": "https://codeberg.org/icewind/originfox"
       }
     },
     "pzl": {
@@ -650,11 +648,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1784103701,
-        "narHash": "sha256-uCBkNTB8qjWHoiZJgoqs40b1PSqaRdqa4WuB4fYVzsg=",
+        "lastModified": 1784623499,
+        "narHash": "sha256-JWE6xMMzcuQCeMyeW8pJmG7q3NATsF9QxJWwRCxOvRE=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "feae90718a30dc92dff1d26a70685add614e272d",
+        "rev": "207f15af953442dd519cdf00c00152399437c389",
         "type": "github"
       },
       "original": {
