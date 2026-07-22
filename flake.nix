@@ -69,7 +69,7 @@
 			inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
 		};
 		originfox-source = {
-			url = "sourcehut:icewind/originfox?host=codeberg.org";
+			url = "git+https://codeberg.org/icewind/originfox";
 			flake = false;
 		};
 		fx-autoconfig-source = {

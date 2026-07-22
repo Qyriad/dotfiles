@@ -81,6 +81,9 @@ in {
 		cargoDeps = pkgsFinal.rustPlatform.importCargoLock {
 			lockFile = nil-source + "/Cargo.lock";
 		};
+
+		# It's checking for docstring matches and Lix's changed or something.
+		doCheck = false;
 	};
 
 	lnav = pkgsPrev.lnav.override {
