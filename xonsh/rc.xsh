@@ -620,6 +620,8 @@ envs_pattern = re.compile(r"\$(.+?)\b")
 def envs(s: str):
 	return [envs_pattern.sub(lambda varmatch: os.environ.get(varmatch.group(1), ""), s)]
 
+
+@aliases.register
 def _bak(args: list):
 	for file in args:
 		# Be a bit smart. If we were given something like `bak foo.txt.bak`,
@@ -633,6 +635,7 @@ def _bak(args: list):
 
 		$[mv @(file) f"{file}.bak"]
 
+@aliases.register
 def _unbak(args: list):
 	for file in args:
 		# Be a bit smart. If we were given something like `unbak foo.txt`,
@@ -645,9 +648,6 @@ def _unbak(args: list):
 				file = with_bak
 
 		$[mv @(file) f"{file.removesuffix('.bak')}"]
-
-aliases["bak"] = _bak
-aliases["unbak"] = _unbak
 
 def _nix_create_dev_files(args: list):
 	import platform
