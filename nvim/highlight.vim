@@ -44,7 +44,8 @@ use {
 	"lifepillar/vim-solarized8",
 	--config = ":colorscheme solarized8_grey",
 	config = function()
-		vim.cmd("colorscheme solarized8_grey")
+		--vim.cmd("colorscheme solarized8_grey")
+		vim.cmd("colorscheme catppuccin-macchiato")
 	end,
 	lazy = false,
 	priority = 100,
