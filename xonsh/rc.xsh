@@ -40,7 +40,7 @@ $HOSTTYPE
 
 def exit_code():
 	try:
-		return str(__xonsh__.lastcmd.rtn)
+		return str(__xonsh__.lastcmd.pipecode)
 	except (AttributeError, NameError):
 		return '0'
 
