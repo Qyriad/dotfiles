@@ -13,6 +13,9 @@
 	nixpkgs.hostPlatform = lib.mkDefault { system = "aarch64-darwin"; };
 
 	nixpkgs.config.allowUnfree = true;
+	nixpkgs.config.permittedInsecurePackages = [
+		"electron-40.10.5" # Vesktop.
+	];
 
 	networking.computerName = "Lumar";
 	# This appears to be what fills $HOSTNAME in Xonsh.
