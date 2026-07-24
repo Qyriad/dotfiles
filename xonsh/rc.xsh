@@ -96,6 +96,8 @@ $COMMANDS_CACHE_SIZE_WARNING = 8000
 $CMD_COMPLETIONS_SHOW_DESC = True # Show path to binary in description of command completions.
 $XONSH_HISTORY_BACKEND = 'sqlite'
 $XONSH_HISTORY_SIZE = (2 ** 32, "commands")
+# For things like LD_LIBRARY_PATH when using ctypes.
+$UPDATE_OS_ENVIRON = True
 
 xontrib load -s abbrevs
 if 'abbrevs' not in globals():
