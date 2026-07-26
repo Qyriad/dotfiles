@@ -1,1 +1,1 @@
-vim.o.formatprog = 'prettier --stdin-filepath=%'
+vim.o.formatprg = 'prettier --stdin-filepath=%'
