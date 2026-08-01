@@ -66,7 +66,7 @@
 		};
 		disko = {
 			url = "github:nix-community/disko/latest";
-			inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		originfox-source = {
 			url = "git+https://codeberg.org/icewind/originfox";
