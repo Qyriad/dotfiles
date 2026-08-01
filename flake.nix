@@ -138,6 +138,7 @@
 		perSystemOutputs = flake-utils.lib.eachDefaultSystem (system: let
 			pkgs = import nixpkgs {
 				inherit system;
+				config.allowUnfree = true;
 				overlays = [ self.overlays.default ];
 			};
 			filterDerivations = lib.filterAttrs (lib.const lib.isDerivation);
@@ -181,11 +182,6 @@
 
 		# NixOS configuration outputs, which are each for one specific system.
 		universalOutputs = {
-			lib = let
-				pkgs = import nixpkgs {
-					overlays = [ self.overlays.default ];
-				};
-			in pkgs.qlib;
 
 			overlays.main = import ./nixos/make-overlay.nix {
 				inherit (nixpkgs) lib;
