@@ -11,7 +11,6 @@
 	xil,
 	xonsh-source,
 	nil-source,
-	tmux-source,
 	originfox-source,
 	fx-autoconfig-source,
 	getScope ? { pkgs, lib, qpkgs }: import ./make-scope.nix {

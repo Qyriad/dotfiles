@@ -196,7 +196,6 @@
 					xil
 					xonsh-source
 					nil-source
-					tmux-source
 					originfox-source
 					fx-autoconfig-source
 				;
