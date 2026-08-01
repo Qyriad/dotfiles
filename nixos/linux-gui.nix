@@ -107,10 +107,6 @@
 
 	services.colord.enable = true;
 
-	# A little bit cursed to put this in linux-gui, but generally this is the file that won't be sourced
-	# for servers.
-	networking.firewall.enable = false;
-
 	nixpkgs.config.permittedInsecurePackages = [
 		"olm-3.2.16" # For Nheko.
 		"jitsi-meet-1.0.8792" # For Element
