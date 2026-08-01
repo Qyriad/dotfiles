@@ -139,6 +139,8 @@
 
 			{ name = "whatcable"; greedy = true; }
 			{ name = "tana"; greedy = true; }
+
+			{ name = "uniclipboard"; greedy = true; }
 		];
 		masApps = {
 			# Safari Extensions.
