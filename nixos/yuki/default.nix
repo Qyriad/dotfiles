@@ -288,6 +288,27 @@
 		programs.nix-ld.enable = true;
 	};
 
+	programs.nix-ld.libraries = with pkgs; [
+		# Electron!
+		glib
+		nss
+		gtk3
+		libGL
+		at-spi2-atk.out
+		cairo.out
+		cups.lib
+		dbus.lib
+		expat.out
+		libgbm.out
+		libxcb.out
+		libxcomposite.out
+		libxdamage.out
+		libxext.out
+		libxfixes.out
+		libxkbcommon.out
+		libxrandr.out
+	];
+
 	programs.wireshark = {
 		enable = true;
 		usbmon.enable = true;
