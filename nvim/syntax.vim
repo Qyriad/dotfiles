@@ -179,6 +179,12 @@ use {
 					queries = 'queries',
 				},
 			},
+			xonsh = {
+				install_info = {
+					url = 'https://github.com/FoamScience/tree-sitter-xonsh',
+					queries = 'queries',
+				},
+			},
 		},
 	},
 }
