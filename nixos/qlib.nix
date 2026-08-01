@@ -44,52 +44,6 @@ let
 		tried = tryLookupPath lookupPath;
 	in if tried != null then tried else fallback;
 
-	overrideStdenvForDrv = newStdenv: drv:
-		newStdenv.mkDerivation (drv.overrideAttrs (self: { passthru.attrs = self; })).attrs
-	;
-
-	#overrideStdenvForDerivation = newStdenv: drv: let
-	#	prevAttrs = getAttrs drv;
-	#in newStdenv.mkDerivation prevAttrs;
-
-	mkImpureNative = prev:
-		overrideStdenvForDrv (prev.stdenvAdapters.impureUseNativeOptimizations prev.stdenv)
-	;
-
-	# Gets the original but evaluated arguments to mkDerivation, given a derivation created with mkDerivation.
-	#getAttrs =
-	#	# A mkDerivation derivation.
-	#	drv:
-	#		assert lib.assertMsg (drv ? overrideAttrs) "getAttrs passed non-mkDerivation attrset ${toString drv}";
-	#		let
-	#			overriden = drv.overrideAttrs (prev: {
-	#				passthru.__attrs = prev;
-	#			});
-	#		in
-	#			overriden.__attrs
-	#;
-
-	# Gets the original but evaluated arguments to buildPythonPackage (and friends), given a derivation
-	# created with one of those functions.
-	getPythonAttrs =
-		# A buildPythonPackage family derivation.
-		drv:
-			assert lib.assertMsg (drv ? overridePythonAttrs) "getPythonAttrs passed a non-buildPythonPackage attrset ${toString drv}";
-			let
-				overriden = drv.overridePythonAttrs (prev: {
-					passthru.__attrs = prev;
-				});
-			in
-				overriden.__attrs
-	;
-
-	/** Assumes that your overrides compose in any order. Which is *probably* true. */
-	mkOverrides = overrideSets: pkg: let
-		folder = acc: overrider: overrideArgs: let
-			overrideFn = acc.${overrider} or (throw "package ${pkg.name} does not an override method '${overrider}'");
-		in overrideFn overrideArgs;
-	in lib.foldlAttrs folder pkg overrideSets;
-
 	/**
 	Generate a suitable for passing to `mount -o` or the fs_mntops field of fstab entries
 	from a structured representation of the options.
@@ -258,10 +212,6 @@ in {
 	inherit
 		mkDebug
 		mkDebugForEach
-		overrideStdenvForDrv
-		mkImpureNative
-		#getAttrs
-		getPythonAttrs
 		genMountOpts
 		drvListByName
 		referencedDrvs
@@ -274,7 +224,6 @@ in {
 		darwinSystem
 		evalDarwin
 		mkSystemConfiguration
-		mkOverrides
 		drvListByNamePipe
 		force
 		override
