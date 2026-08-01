@@ -1,8 +1,6 @@
 source /etc/zshrc
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export HOMEBREW_DISPLAY_INSTALL_TIMES=1
-export HOMEBREW_KEEP_OUTPUT=1
 
 # Adds things like coreutils to PATH.
 source "$HOME/.config/zsh/zprofile.macos.zsh"
