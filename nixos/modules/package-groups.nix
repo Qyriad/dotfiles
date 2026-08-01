@@ -63,6 +63,8 @@ in
 				tenacity
 				pkgs.qpkgs.qsynth
 				bitwig-studio5
+				yabridge
+				yabridgectl
 			];
 			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
