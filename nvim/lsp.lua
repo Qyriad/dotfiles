@@ -174,12 +174,15 @@ local lsp_modules = {
 	'vimls',
 	'luals',
 	'clangd',
+	-- FIXME: add 'apple_clangd' when on macOS
+	--'apple_clangd',
 	'nil',
 	--'nixd',
 	'mesonlsp',
 	'basedpyright',
 	'taplo',
-	'autotools',
+	--'autotools',
+	'makels',
 	'tsgo',
 	'justls',
 }
