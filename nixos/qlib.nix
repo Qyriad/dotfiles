@@ -138,11 +138,6 @@ let
 			else [ ];
 	in lib.concatMap f (lib.attrValues drv.drvAttrs);
 
-	removeAttrs' = lib.flip builtins.removeAttrs;
-
-	# TODO: map meta.license to (map (getAttr meta.license.shortName)) or something.
-	cleanMeta = removeAttrs' [ "maintainers" "platforms" "license" ];
-
 	/** Gives a nice overview of a derivation's attributes that aren't details for building
 	 * said derivation.
 	 */
@@ -165,11 +160,7 @@ let
 			"drvAttrs" # We also want to remove drvAttrs itself.
 		] ++ inDrvAttrsToRemove;
 
-	in (removeAttrs' allDrvAttrs drv) // {
-		# This really is highly specific to us, but these meta attrs just take too much screen output.
-		# If I want it, I'll ask for it.
-		meta = cleanMeta (drv.meta or { });
-	};
+	in (lib.removeAttrsCalled allDrvAttrs drv);
 
 	importAutocall = path: let
 		imported = import path;
@@ -182,7 +173,7 @@ let
 	partial = partialArgs: fn: {
 		__functor = self: fnArgs: fn (fnArgs // partialArgs);
 		# Hurray for lib.functionArgs using __functionArgs for functors.
-		__functionArgs = removeAttrs' (lib.attrNames partialArgs) (lib.functionArgs fn);
+		__functionArgs = lib.removeAttrsCalled (lib.attrNames partialArgs) (lib.functionArgs fn);
 	};
 
 
@@ -275,7 +266,6 @@ in {
 		drvListByName
 		referencedDrvs
 		flakeInputToUrl
-		cleanMeta
 		nonDrvAttrs
 		importAutocall
 		partial
@@ -285,7 +275,6 @@ in {
 		evalDarwin
 		mkSystemConfiguration
 		mkOverrides
-		removeAttrs'
 		drvListByNamePipe
 		force
 		override
