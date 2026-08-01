@@ -8,14 +8,6 @@
 }:
 
 let
-
-	trimString = str: let
-		result = builtins.match "[[:space:]]*(.*[^[:space:]])[[:space:]]*";
-	in lib.optionalString (result != null) (lib.head result);
-
-	joinPaths = lib.strings.concatStringsSep "/";
-	joinPaths' = first: second: joinPaths [ first second ];
-
 	# This gets used in linux-gui.nix
 	mkDebug = pkg: (pkg.overrideAttrs { separateDebugInfo = true; }).debug;
 	mkDebugForEach = map mkDebug;
@@ -285,9 +277,6 @@ in {
 		flakeInputToUrl
 		cleanMeta
 		nonDrvAttrs
-		joinPaths
-		joinPaths'
-		trimString
 		importAutocall
 		partial
 		nixosSystem
