@@ -30,7 +30,7 @@ in {
 	}: let
 		mkShell' = mkShell.override { inherit stdenv; };
 	in mkShell' {
-		name = lib.suffixName "devshell";
+		name = lib.suffixName self "devshell";
 		inputsFrom = [ self ];
 	};
 
