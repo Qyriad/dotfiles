@@ -253,9 +253,10 @@
 		openFirewall = true;
 		nsswins = true;
 		settings.public = {
-			path = "/";
-			"read only" = false;
+			path = "/home/qyriad";
+			"read only" = "yes";
 			"browsable" = "yes";
+			"guest ok" = "yes";
 		};
 		settings.global = {
 			workgroup = "WORKGROUP";
