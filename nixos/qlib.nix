@@ -146,15 +146,6 @@ let
 			else [ ];
 	in lib.concatMap f (lib.attrValues drv.drvAttrs);
 
-
-	/** Like lib.genAttrs, but allows the name to be changed. */
-	genAttrs' =
-		list:
-		mkPair:
-		#lib.listToAttrs (lib.concatMap (name: [ (mkPair name) ]) list);
-		lib.concatMap (name: [ (mkPair name ) ]) list
-		|> lib.listToAttrs;
-
 	removeAttrs' = lib.flip builtins.removeAttrs;
 
 	# TODO: map meta.license to (map (getAttr meta.license.shortName)) or something.
@@ -292,7 +283,6 @@ in {
 		drvListByName
 		referencedDrvs
 		flakeInputToUrl
-		genAttrs'
 		cleanMeta
 		nonDrvAttrs
 		joinPaths
