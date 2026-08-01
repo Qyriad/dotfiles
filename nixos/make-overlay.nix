@@ -106,6 +106,14 @@ in {
 		});
 	};
 
+	# https://github.com/NixOS/nixpkgs/issues/544083
+	poetry = pkgsPrev.poetry.overridePythonAttrs (final: prev: {
+		disabledTests = prev.disabledTests or [ ] ++ [
+			"test_execute_executes_a_batch_of_operations"
+			"test_execute_prints_warning_for_yanked_package"
+		];
+	});
+
 	makemkv = pkgsPrev.makemkv.overrideAttrs (prev: {
 		buildInputs = prev.buildInputs or [ ] ++ [
 			pkgsFinal.expat
