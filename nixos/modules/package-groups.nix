@@ -120,6 +120,7 @@ in
 				# iproute2 is already handled by NixOS.
 				tunctl
 				bridge-utils
+				ethtool
 			];
 			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
