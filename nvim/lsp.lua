@@ -187,29 +187,36 @@ local lsp_modules = {
 	'justls',
 	'bashls',
 }
-local req_no_config = setmetatable({ }, { __index = table })
-local req_no_exe = setmetatable({ }, { __index = table })
-for _, modname in ipairs(lsp_modules) do
-	local config = vim.lsp.config[modname]
-	if not config then
-		req_no_config:insert(modname)
-	else
-		local cmd = vim.is_callable(config.cmd) and config.cmd() or config.cmd
-		local exe = cmd[1]
-		if vim.fn.executable(exe) ~= 1 then
-			req_no_exe:insert(modname)
+vim.api.nvim_create_autocmd('VimEnter', {
+	desc = 'Check for enabled but uninstalled or unconfigured LSPs',
+	callback = function(_opts)
+		local req_no_config = setmetatable({ }, { __index = table })
+		local req_no_exe = setmetatable({ }, { __index = table })
+		for _, modname in ipairs(lsp_modules) do
+			local config = vim.lsp.config[modname]
+			if not config then
+				req_no_config:insert(modname)
+			else
+				local cmd = vim.is_callable(config.cmd) and config.cmd() or config.cmd
+				local exe = cmd[1]
+				if vim.fn.executable(exe) ~= 1 then
+					req_no_exe:insert(modname)
+				end
+			end
 		end
-	end
-end
 
-if #req_no_config > 0 then
-	req_no_config = string.format([['%s']], vim.iter(req_no_config):join(", '"))
-	vim.notify(string.format("LSP: requested but no config: %s", req_no_config), vim.log.levels.WARN)
-end
-if #req_no_exe > 0 then
-	req_no_exe = string.format([['%s']], vim.iter(req_no_exe):join(", '"))
-	vim.notify(string.format("LSP: requested but no executable: %s", req_no_exe), vim.log.levels.WARN)
-end
+		if #req_no_config > 0 then
+			local joined = vim.iter(req_no_config):join(", ")
+			vim.notify(string.format("LSP: requested but no config: %s", joined), vim.log.levels.WARN)
+		end
+
+		if #req_no_exe > 0 then
+			local joined = vim.iter(req_no_exe):join(", ")
+			vim.notify(string.format("LSP: requested but no executable: %s", joined), vim.log.levels.WARN)
+		end
+	end,
+})
+
 --req_no_exe:foreachi(function(modname)
 --	vim.notify(string.format("LSP '%s' requested but executable '%s' not found", modname, exe), vim.log.levels.WARN)
 --end)
