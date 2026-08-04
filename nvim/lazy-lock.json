@@ -34,7 +34,7 @@
   "nvim-notify": { "branch": "master", "commit": "8701bece920b38ea289b457f902e2ad184131a5d" },
   "nvim-peekup": { "branch": "master", "commit": "82251c54cd60f8504dfd9acd853eae57fe832447" },
   "nvim-projectconfig": { "branch": "master", "commit": "db11fd7d51f7180ede292a7584eb62bb48f91863" },
-  "nvim-treesitter-context": { "branch": "master", "commit": "b311b30818951d01f7b4bf650521b868b3fece16" },
+  "nvim-treesitter-context": { "branch": "master", "commit": "f3061339b8eaf9fda873600bc425b8d2d8502533" },
   "nvim-treesitter-jjconfig": { "branch": "main", "commit": "2fd8c829ef69db360007e477625f8f679fa356af" },
   "nvim-treesitter-textobjects": { "branch": "main", "commit": "898ee307df58f854d11cd7edd06472574d48014e" },
   "nvim-ts-autotag": { "branch": "main", "commit": "88c1453db4ba7dd24131086fe51fdf74e587d275" },
@@ -74,6 +74,6 @@
   "vim-toml": { "branch": "main", "commit": "da051b7c23bad3c52d18886203c594739780ec09" },
   "vim-zoom": { "branch": "master", "commit": "01c737005312c09e0449d6518decf8cedfee32c7" },
   "vis": { "branch": "master", "commit": "6a87efbfbd97238716b602c2b53564aa6329b5de" },
-  "wezterm-types": { "branch": "main", "commit": "ad5d3319a9b3358a7953db34677a554a4268ae58" },
+  "wezterm-types": { "branch": "main", "commit": "851470ad5d2dfb56bda936e6aeef2f3a45e7f199" },
   "xonsh-vim": { "branch": "master", "commit": "46cee92f29b9a48f38674dc44d705f4a3ce688f3" }
 }
