@@ -185,6 +185,7 @@ local lsp_modules = {
 	'makels',
 	'tsgo',
 	'justls',
+	'bashls',
 }
 local req_no_config = setmetatable({ }, { __index = table })
 local req_no_exe = setmetatable({ }, { __index = table })
