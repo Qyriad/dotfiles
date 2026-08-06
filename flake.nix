@@ -3,6 +3,7 @@
 {
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs-26_05.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
 		flake-utils.url = "github:numtide/flake-utils";
 		agenix = {
 			url = "github:ryantm/agenix";
@@ -11,6 +12,10 @@
 		nix-darwin = {
 			url = "github:nix-darwin/nix-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		nix-darwin-26_05 = {
+			url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
+			inputs.nixpkgs.follows = "nixpkgs-26_05";
 		};
 		qyriad-nur = {
 			url = "github:Qyriad/nur-packages";
@@ -136,7 +141,8 @@
 
 		# Package outputs, which we want to define for multiple systems.
 		perSystemOutputs = flake-utils.lib.eachDefaultSystem (system: let
-			pkgs = import nixpkgs {
+			thisNixpkgs = if system == "x86_64-darwin" then inputs.nixpkgs-26_05 else nixpkgs;
+			pkgs = import thisNixpkgs {
 				inherit system;
 				config.allowUnfree = true;
 				overlays = [ self.overlays.default ];
@@ -246,9 +252,19 @@
 				];
 				lumar = Lumar;
 
-				Maho = mkConfig "x86_64-darwin" [
-					./nixos/maho.nix
-				];
+				Maho = inputs.nix-darwin-26_05.lib.darwinSystem {
+					lib = import inputs.qyriad-nur {
+						mode = "lib";
+						inherit (inputs.nixpkgs-26_05) lib;
+					};
+					system = "x86_64-darwin";
+					modules = [
+						./nixos/maho.nix
+						flake-module
+						agenix.nixosModules.default
+						inputs.lix-module.darwinModules.default
+					];
+				};
 
 				Sodachi = mkConfig "aarch64-darwin" [
 					./nixos/sodachi.nix
