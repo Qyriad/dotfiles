@@ -163,7 +163,7 @@
 		qyriad.git-point
 		nixpkgs-review
 		nom
-		nixfmt-rfc-style
+		nixfmt
 		nil
 		nix-output-monitor
 		nix-index

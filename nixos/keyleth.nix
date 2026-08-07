@@ -47,7 +47,7 @@
 		qyriad.niz
 		qyriad.git-point
 		nixpkgs-review
-		nixfmt-rfc-style
+		nixfmt
 		nil
 		nix-output-monitor
 		nix-index
