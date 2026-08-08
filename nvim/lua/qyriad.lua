@@ -1,6 +1,7 @@
-local M = {}
+---@class qyriad
+local qyriad = {}
 
-M.BufInfo = require('qyriad.bufinfo')
+qyriad.BufInfo = require('qyriad.bufinfo')
 
 --- Like `vim.tbl_get`, but the opposite.
 ---
@@ -10,7 +11,7 @@ M.BufInfo = require('qyriad.bufinfo')
 ---@param key_list string[]
 ---@param value any
 ---@return table
-function M.tbl_set(tbl, key_list, value)
+function qyriad.tbl_set(tbl, key_list, value)
 	local next_tbl = tbl
 	local final_key
 	local final_tbl
@@ -28,7 +29,10 @@ function M.tbl_set(tbl, key_list, value)
 	return tbl
 end
 
-function M.nested_tbl(tbl)
+---@generic V
+---@param tbl table<string, V>
+---@return table<string|table, V>
+function qyriad.nested_tbl(tbl)
 	local ret = { }
 	for key, value in pairs(tbl) do
 		if type(key) == 'string' then
@@ -37,13 +41,13 @@ function M.nested_tbl(tbl)
 				trimempty = true,
 			})
 			if type(value) == 'table' then
-				M.tbl_set(ret, split_key, M.nested_tbl(value))
+				qyriad.tbl_set(ret, split_key, qyriad.nested_tbl(value))
 			else
-				M.tbl_set(ret, split_key, value)
+				qyriad.tbl_set(ret, split_key, value)
 			end
 		else
 			if type(value) == 'table' then
-				ret[key] = M.nested_tbl(value)
+				ret[key] = qyriad.nested_tbl(value)
 			else
 				ret[key] = value
 			end
@@ -53,7 +57,8 @@ function M.nested_tbl(tbl)
 	return ret
 end
 
-M.t = {
+---@class qyriad.t
+qyriad.t = {
 	number = type(0),
 	string = type(""),
 	boolean = type(true),
@@ -67,7 +72,7 @@ M.t = {
 ---Run a callback based on the type of the value.
 ---@param value any
 ---@param handlers table<string|string[], function>
-function M.switch(value, handlers)
+function qyriad.switch(value, handlers)
 	local value_type = type(value)
 	local simple_handler = handlers[value_type]
 	if simple_handler ~= nil then
@@ -84,7 +89,7 @@ end
 ---Lua-ish version of `empty()`, ish.
 ---@param value any
 ---@return boolean
-function M.vim_isempty(value)
+function qyriad.vim_isempty(value)
 	if value == nil then
 		return true
 	end
@@ -95,11 +100,11 @@ function M.vim_isempty(value)
 
 
 	local value_type = type(value)
-	if value_type == M.t.number then
+	if value_type == qyriad.t.number then
 		return value == 0
-	elseif value_type == M.t.string then
+	elseif value_type == qyriad.t.string then
 		return value == ""
-	elseif value_type == M.t.table then
+	elseif value_type == qyriad.t.table then
 		-- Also covers vim.empty_dict()
 		return next(value) == nil
 	end
@@ -107,7 +112,7 @@ function M.vim_isempty(value)
 	return false
 end
 
-M.MODE_MAP = {
+qyriad.MODE_MAP = {
 	n = 'NORMAL',
 	i = 'INSERT',
 	r = 'REPLACE',
@@ -121,19 +126,28 @@ M.MODE_MAP = {
 	t = 'TERMINAL',
 }
 
-function M.mode()
+function qyriad.mode()
 	local mode = vim.api.nvim_get_mode().mode
-	return M.MODE_MAP[mode]
+	return qyriad.MODE_MAP[mode]
 end
 
 ---Shortcut for `vim.tbl_extend('force', lhs, rhs)` where `lhs` can be `nil`.
 ---@param lhs table|nil
 ---@param rhs table
-function M.tbl_override(lhs, rhs)
+function qyriad.tbl_override(lhs, rhs)
 	vim.validate {
 		rhs = { rhs, 'table' },
 	}
 	return vim.tbl_extend('force', lhs or { }, rhs)
+end
+
+---Shortcut for `vim.tbl_extend('keep', lhs, rhs)` where 'rhs' can be `nil`.
+---@param lhs table|nil
+---@param rhs table
+---@return table
+function qyriad.tbl_initialize(lhs, rhs)
+	vim.validate('rhs', rhs, 'table')
+	return vim.tbl_extend('keep', lhs or { }, rhs)
 end
 
 function _save_mark_cmd_impl(filename)
@@ -150,8 +164,8 @@ function _save_mark_cmd_impl(filename)
 end
 
 ---Opens help for `subject` in the current window.
----@param subject string
-function M.help_curwin(subject)
+---@param subject string Virtual argument to `:help`
+function qyriad.help_curwin(subject)
 	vim.validate('subject', subject, 'string')
 
 	local curtab = vim.api.nvim_get_current_tabpage()
@@ -181,7 +195,7 @@ function M.help_curwin(subject)
 	vim.api.nvim_win_close(helpwin, false)
 end
 
-vim.api.nvim_create_user_command("HelpCurwin", function(opts) M.help_curwin(opts.args) end, {
+vim.api.nvim_create_user_command("HelpCurwin", function(opts) qyriad.help_curwin(opts.args) end, {
 	nargs = 1,
 	complete = "help",
 })
@@ -197,7 +211,7 @@ vim.api.nvim_create_user_command("HelpCurwin", function(opts) M.help_curwin(opts
 ---@return table
 ---
 --- Works like `:map <lhs>`, and returns things that *start* with `<lhs>` as well.
-function M.vim_keymap_get(mode, lhs)
+function qyriad.vim_keymap_get(mode, lhs)
 	local matching_mode = vim.api.nvim_get_keymap(mode)
 
 	local matching_lhs = vim.iter(matching_mode)
@@ -211,7 +225,7 @@ function M.vim_keymap_get(mode, lhs)
 end
 
 ---@param iter Iter
-function M.opaque_iter(iter)
+function qyriad.opaque_iter(iter)
 	return setmetatable(iter, {
 		__tostring = function(self)
 			return string.format("vim.Iter over %s elements", #self._table)
@@ -229,7 +243,7 @@ function WinInfo(tbl)
 	})
 end
 
-function M.iter_wins()
+function qyriad.iter_wins()
 	--vim.iter(vim.api.nvim_list_wins()):map(function(win) return qyriad.tbl_override({ win = win}, vim.api.nvim_win_get_config(win)) end):map(function(win) return qyriad.tbl_override(win, { bufnr = vim.api.nvim_win_get_buf(win.win) }) end):map(function(win)
 	return vim.iter(vim.api.nvim_list_wins()):map(function(winid)
 		local config = vim.api.nvim_win_get_config(winid)
@@ -266,7 +280,7 @@ function M.iter_wins()
 end
 
 
-function M.lsp_iter_clients()
+function qyriad.lsp_iter_clients()
 	return vim.iter(vim.lsp.get_clients())
 		:map(function(c) return {
 			id = c.id,
@@ -280,7 +294,7 @@ end
 ---@param mode string
 ---@param lhs string
 ---@param desc string
-function M.add_desc_to_keymap(mode, lhs, desc)
+function qyriad.add_desc_to_keymap(mode, lhs, desc)
 	local global_keymaps = vim.api.nvim_get_keymap(mode)
 
 	-- Find the keymap with that LHS.
@@ -302,4 +316,4 @@ function M.add_desc_to_keymap(mode, lhs, desc)
 	vim.api.nvim_set_keymap(matching_keymap.mode, matching_keymap.lhs, matching_keymap.rhs, matching_keymap.opts)
 end
 
-return M
+return qyriad
