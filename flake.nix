@@ -148,10 +148,14 @@
 				overlays = [ self.overlays.default ];
 			};
 			filterDerivations = lib.filterAttrs (lib.const lib.isDerivation);
+			nixosToplevels = self.nixosConfigurations
+			|> lib.mapAttrs (name: { config, ... }: config.system.build.toplevel)
+			|> lib.filterAttrs (name: { ... }@toplevel: toplevel.system == system);
 		in {
 			# This flake's packages output is just a re-export of the stuff
 			# our overlay adds.
-			packages = filterDerivations pkgs.qyriad;
+			packages = (filterDerivations pkgs.qyriad)
+			// nixosToplevels;
 			# Truly dirty hack. This will let us transparently refer to overriden
 			# or not overriden packages in nixpkgs, as flake.packages.foo is preferred over
 			# flake.legacyPackages.foo by commands like `nix build`.
@@ -169,6 +173,8 @@
 				program = lib.getExe drv;
 				type = "app";
 			};
+
+			checks = self.packages.${system};
 
 			#checks = {
 			#	nixosEvals = self.nixosConfigurations
