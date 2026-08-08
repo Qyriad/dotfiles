@@ -20,6 +20,9 @@ bookmark-advance-to = "@-"
 # Basically the traditional `git log` "revset".
 here = "::@"
 
+# Just allow using trunk() without parentheses.
+trunk = 'trunk()'
+
 # Basically x::y but reversible.
 # Because we sometimes forget which order it is.
 'between(x, y)' = 'x::y | y::x'
