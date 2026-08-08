@@ -154,8 +154,8 @@
 		in {
 			# This flake's packages output is just a re-export of the stuff
 			# our overlay adds.
-			packages = (filterDerivations pkgs.qyriad)
-			// nixosToplevels;
+			packages = (filterDerivations pkgs.qyriad);
+			#// nixosToplevels; # FIXME: this is somehow bringing in x86_64-linux packages into the nix-darwin closures??
 			# Truly dirty hack. This will let us transparently refer to overriden
 			# or not overriden packages in nixpkgs, as flake.packages.foo is preferred over
 			# flake.legacyPackages.foo by commands like `nix build`.
