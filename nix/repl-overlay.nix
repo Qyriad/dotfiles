@@ -25,6 +25,7 @@ self = rec {
 	fenix = getFlake "github:nix-community/fenix";
 	crane = getFlake "github:ipetkov/crane";
 	oxalica-rust = getFlake "github:oxalica/rust-overlay";
+	flake-utils = getFlake "github:numtide/flake-utils";
 	qyriad-nur = getFlake "github:Qyriad/nur-packages";
 
 	currentSystem = info.currentSystem;
