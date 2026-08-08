@@ -22,13 +22,22 @@ return {
 				path = { "?.lua", "?/init.lua" },
 				pathStrict = false, -- FIXME: maybe?
 			},
-			workspace = {
-				checkThirdParty = false,
-				library = lua_runtime_paths,
+			codeLens = { enable = true },
+			hint = {
+				enable = true,
 			},
-			diagnostics = {
-				globals = { 'vim' },
+			type = {
+				inferParamType = true,
 			},
+			-- You're welcome.
+			telemetry = { enable = true },
+			--workspace = {
+			--	checkThirdParty = false,
+			--	library = lua_runtime_paths,
+			--},
+			--diagnostics = {
+			--	globals = { 'vim' },
+			--},
 		},
 	},
 }
