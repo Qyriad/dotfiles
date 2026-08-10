@@ -107,11 +107,6 @@
 
 	services.colord.enable = true;
 
-	nixpkgs.config.permittedInsecurePackages = [
-		"olm-3.2.16" # For Nheko.
-		"jitsi-meet-1.0.8792" # For Element
-	];
-
 	package-groups = {
 		music-production.enable = lib.mkDefault true;
 		wayland-tools.enable = lib.mkDefault true;
