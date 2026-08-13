@@ -114,6 +114,7 @@
 
 	environment.systemPackages = with pkgs; [
 		libinput
+		evsieve
 		libva-utils
 		mesa-demos
 		alacritty
