@@ -75,6 +75,7 @@
 		autotools-language-server
 		crates-lsp
 		qpkgs.lsptrace
+		qpkgs.xonsh-lsp
 		mergiraf
 		typescript-go
 		# Command-line profiler.

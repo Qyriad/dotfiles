@@ -186,6 +186,7 @@ local lsp_modules = {
 	'tsgo',
 	'justls',
 	'bashls',
+	'xonshls',
 }
 vim.api.nvim_create_autocmd('VimEnter', {
 	desc = 'Check for enabled but uninstalled or unconfigured LSPs',
