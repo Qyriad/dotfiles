@@ -17,6 +17,7 @@
 			./60-systemd-tags.rules
 			./60-common.rules
 			./60-openocd.rules
+			./60-gamepads.rules
 			#./60-i2c.rules
 			./70-avermedia-symlink.rules
 			# Okay this seems broken actually

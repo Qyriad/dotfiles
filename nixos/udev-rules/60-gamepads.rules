@@ -1,0 +1,2 @@
+# vim: filetype=udevrules
+SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="0f0d", ATTRS{idProduct}=="00c1", GROUP="input", MODE="0660", TAG+="uaccess"
