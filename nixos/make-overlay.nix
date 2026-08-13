@@ -236,9 +236,21 @@ in {
 				"--wayland-text-input-version=3"
 				"%U"
 			];
+
+			# Fix generic icon.
+			# https://forum.obsidian.md/t/linux-shows-generic-wayland-icon-electron-app-id/116863/4
+			startupWMClass = "md.Obsidian";
 		};
+
 	in lib.optionalAttrs (prev ? desktopItem) {
-		inherit desktopItem;
+		# Nixpkgs uses a let/in for the desktop item, and they copy it with
+		# ${} in `installPhase`, so we have no way of overriding it.
+		# So instead, we'll just copy-overwrite it after their installPhase.
+		nativeBuildInputs = prev.nativeBuildInputs ++ [
+			pkgsFinal.copyDesktopItems
+		];
+		# desktopItem*s* is what the copyDesktopItems hook uses.
+		desktopItems = [ desktopItem ];
 	});
 
 	wireplumber = pkgsPrev.wireplumber.overrideAttrs (prev: {
