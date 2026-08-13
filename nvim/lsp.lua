@@ -94,8 +94,8 @@ nnoremap <leader>e <Cmd>lua vim.diagnostic.open_float({ severity = { min = vim.d
 nnoremap <leader>td <Cmd>Telescope diagnostics<CR>
 nnoremap <leader>tr <Cmd>Telescope lsp_references<CR>
 lua vim.g.diagnostic_severity = { min = vim.diagnostic.severity.WARN }
-nnoremap [d <Cmd>call v:lua.vim.diagnostic.goto_prev({ "severity": g:diagnostic_severity })<CR>
-nnoremap ]d <Cmd>call v:lua.vim.diagnostic.goto_next({ "severity": g:diagnostic_severity })<CR>
+nnoremap [d <Cmd>call v:lua.vim.diagnostic.jump({ "count": -1, "severity": g:diagnostic_severity })<CR>
+nnoremap ]d <Cmd>call v:lua.vim.diagnostic.jump({ "count": 1, "severity": g:diagnostic_severity })<CR>
 nnoremap <leader>h <Cmd>call v:lua.vim.lsp.buf.document_highlight()<CR>
 "nnoremap <leader>c <Cmd>call v:lua.vim.lsp.buf.clear_references()<CR>
 " 'Symbol rename'
