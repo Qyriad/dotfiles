@@ -95,10 +95,21 @@
 	# I don't need it though.
 	networking.modemmanager.enable = false;
 
+	services.resolved.settings.Resolve = {
+		LLMNR = "no";
+		MulticastDNS = "resolve";
+	};
+
+	# Firewall for systemd-resolved.
+	networking.firewall = {
+		allowedTCPPorts = [ 5353 5355 ];
+		allowedUDPPorts = [ 5353 5355 ];
+	};
+
 	services.avahi = {
-		enable = false;
-		# ~~We'll use avahi for *publish*, but systemd-resolved for resolve.~~
-		# Okay that doesn't seem to actually work. Disable Avahi for now.
+		enable = true;
+		openFirewall = true;
+		# We'll use avahi for *publish*, but systemd-resolved for resolve.
 		nssmdns4 = false;
 		nssmdns6 = false;
 		publish.enable = true;
@@ -108,6 +119,7 @@
 	services.tailscale = {
 		enable = true;
 		#useRoutingFeatures = "both";
+		openFirewall = true;
 	};
 	systemd.services.tailscaled.serviceConfig = lib.mkIf config.services.tailscale.enable {
 		# Tailscaled is a biiiit too logspamy, and it's pretty stable.
