@@ -93,8 +93,9 @@ in lib.makeScope qpkgs.newScope (self: {
 			export PATH="/run/current-system/sw/bin:$PATH"
 			grc --colour=on \
 				journalctl --pager-end --follow --boot=0 --no-tail --no-hostname \
-				| rg --line-buffered -v 'Trying to repalce notification with id' \
+				| rg --line-buffered -v 'Trying to replace notification with id' \
 				| rg --line-buffered -v 'Failed to load module.+appmenu-gtk-module.+gtk_module_display_init' \
+				| rg --line-buffered -v 'beeper(\x1b.+?m)?\[\d+\](\x1b.+?m)?: \[SDK\]' \
 				| spacer --after 10 --stopwatch -w 90
 		'';
 		}
