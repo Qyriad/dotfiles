@@ -114,11 +114,8 @@ in {
 		];
 	});
 
-	makemkv = pkgsPrev.makemkv.overrideAttrs (prev: {
-		buildInputs = prev.buildInputs or [ ] ++ [
-			pkgsFinal.expat
-		];
-	});
+	makemkv = pkgsPrev.makemkv.override { ffmpeg = pkgsFinal.ffmpeg_8; };
+	waypipe = pkgsPrev.waypipe.override { ffmpeg = pkgsFinal.ffmpeg_8; };
 
 	kdePackages = pkgsPrev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 		# Ripples to:
