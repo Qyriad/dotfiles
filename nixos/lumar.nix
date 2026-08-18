@@ -198,7 +198,6 @@
 		# Essential macOS addition.
 		# Nixpkgs broke it.
 		#rectangle
-		thaw
 
 		# Other macOS addition stuff.
 		macshot
