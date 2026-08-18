@@ -142,6 +142,7 @@
 		bat
 		guesswidth # column -t but smarter
 		ncdu
+		leaves # ncdu but WinDirStat-ified
 		lnav
 		fblog
 		fx
