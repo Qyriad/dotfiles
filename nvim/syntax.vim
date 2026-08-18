@@ -273,5 +273,9 @@ use {
 		})
 	end,
 }
+use {
+	'cfdrake/vim-pbxproj',
+	lazy = false,
+}
 
 EOF
