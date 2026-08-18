@@ -268,7 +268,7 @@
 		openFirewall = true;
 		nsswins = true;
 		settings.public = {
-			path = "/home/qyriad";
+			path = "/home/qyriad/Documents";
 			"read only" = "yes";
 			"browsable" = "yes";
 			"guest ok" = "yes";
