@@ -155,6 +155,23 @@
 		};
 	};
 
+	system.activationScripts.preActivation.text = let
+		pyScript = builtins.toFile "check-fda.py" (lib.dedent ''
+			print("Checking that macOS Full Disk Access is available")
+			import os
+			import sys
+			import subprocess
+			from pathlib import Path
+			p = Path("~qyriad/Library/Containers/com.apple.Safari").expanduser().as_posix()
+			print(f'{p=}')
+			if not os.access(p, mode=os.W_OK):
+			    print("ERROR: Full Disk Access permission not granted...", file=sys.stderr)
+			    sys.exit(1)
+			sys.exit(0)
+			EOF
+		'');
+	in lib.mkBefore ''${lib.getExe pkgs.python3} "${pyScript}"'';
+
 	environment.systemPackages = with pkgs; [
 		#qyriad.xil
 		neovim
@@ -191,6 +208,9 @@
 		mousecape
 		sloth-app
 
+		# FIXME: why is this necessary?
+		config.programs.bash.completion.package
+
 		# Core apps.
 		wezterm
 		config.programs._1password-gui.package
@@ -207,5 +227,8 @@
 		obsidian
 		vesktop
 		iina
+
+		# Mac dev stuff.
+		xcbeautify
 	];
 }

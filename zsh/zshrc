@@ -1,7 +1,7 @@
-echo "ZSH: interactive shell"
+#echo "ZSH: interactive shell"
 
 if [[ -o LOGIN ]]; then
-	echo "ZSH: login shell"
+	#echo "ZSH: login shell"
 	PROMPT="%m %# "
 	xonsh && exit
 	return

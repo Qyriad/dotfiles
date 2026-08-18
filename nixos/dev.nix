@@ -78,6 +78,7 @@
 		qpkgs.xonsh-lsp
 		bash-language-server
 		just-lsp
+		neocmakelsp
 		mergiraf
 		typescript
 		# Command-line profiler.
