@@ -173,6 +173,7 @@
 		gdu
 		hwatch
 		litecli
+		sabiql
 		# Nixpkgs broke it
 		#fcp
 		mediainfo
