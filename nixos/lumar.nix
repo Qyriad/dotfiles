@@ -182,6 +182,7 @@
 		#harlequin
 		# For jj.
 		watchman
+		age-plugin-yubikey
 		# Nixpkgs broke it.
 		#ipatool
 		jtbl
