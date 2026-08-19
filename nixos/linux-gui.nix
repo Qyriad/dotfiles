@@ -285,6 +285,30 @@
 	#	};
 	#};
 
+	# Place apps in `app-heavy.slice` to SIGSTOP them on idle.
+	systemd.user.slices.app-heavy = { };
+	systemd.user.services.pause-gui-apps-on-idle = let
+		stop = "systemctl --user kill --kill-whom=all --signal=SIGSTOP app-heavy.slice";
+		resume = "systemctl --user kill --kill-whom=all --signal=SIGCONT app-heavy.slice";
+	in {
+		unitConfig = {
+			# Doesn't make sense without a graphical session running.
+			# TODO: BindsTo?
+			Requires = [ "graphical-session.target" ];
+			After = [ "graphical-session.target" ];
+		};
+		wantedBy = [ "graphical-session.target" ];
+		serviceConfig = {
+			Type = "notify";
+			NotifyAccess = "all";
+			Environment = "PATH=/run/current-system/sw/bin";
+			ExecSearchPath = "/run/current-system/sw/bin";
+			ExecStart = lib.dedent ''
+				systemd-proxy-notify --detach swayidle -dw timeout 600 "${stop}" resume "${resume}"
+			'';
+		};
+	};
+
 	# GUI programs with NixOS modules that we can enable, instead of using environment.systemPackages.
 	programs = {
 		partition-manager.enable = true;
