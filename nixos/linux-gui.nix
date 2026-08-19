@@ -67,6 +67,9 @@
 		NIXOS_OZONE_WL = "1";
 	};
 
+	# Enable CUPS for printing.
+	services.printing.enable = true;
+
 	# Enable sound with Pipewire.
 	services.pulseaudio.enable = false;
 	security.rtkit.enable = true;

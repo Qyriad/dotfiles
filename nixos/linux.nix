@@ -178,9 +178,6 @@
 	# Add ~/.local/bin to system path.
 	environment.localBinInPath = true;
 
-	# Enable CUPS for printing.
-	services.printing.enable = true;
-
 	services.openssh.enable = true;
 
 	# Our normal user.
