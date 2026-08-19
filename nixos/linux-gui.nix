@@ -221,6 +221,8 @@
 		kdePackages.konversation
 		qyriad.nixos-khelpcenter
 		systemdgenie
+		# Apparently KWin supports this.
+		swayidle
 		# Rustc deny-by-default broke it, for now.
 		#kdotool
 		kid3-kde
