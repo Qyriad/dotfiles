@@ -6,6 +6,7 @@ import shutil
 import subprocess
 from subprocess import Popen, TimeoutExpired
 import sys
+import textwrap
 import time
 
 # "Configuration error".
@@ -18,14 +19,30 @@ EX_CONFIG = 78
 SYSTEMD_NOTIFY = os.environ.get('SYSTEMD_NOTIFY', shutil.which('systemd-notify'))
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--timeout-sec', type=float, default=1.0,
+    parser = argparse.ArgumentParser(
+        description="""
+            Shim naïve systemd `Type=notify` support into external services
+        """,
+    )
+    parser.add_argument('--timeout-sec', metavar='TIMEOUT', type=float, default=1.0,
         help="If the process exits before this time, it's considered failed",
     )
     parser.add_argument('--detach', dest='detach', action='store_true', default=True,
+        help="""
+            Start the service in a new session (inheriting stdio),
+            so this process can exit once startup is complete.
+            This is the default, but can be used to undo the effect of --no-detach.
+        """,
     )
-    parser.add_argument('--no-detach', dest='detach', action='store_false', default=True)
-    parser.add_argument('command', nargs=argparse.REMAINDER, type=str)
+    parser.add_argument('--no-detach', dest='detach', action='store_false', default=True,
+        help="""
+            Wait for the service process to exit before the proxy process itself exits.
+            Use this if the default (detaching) behavior gives you problems.
+        """,
+    )
+    parser.add_argument('command', nargs=argparse.REMAINDER, type=str,
+        help="The command and its arguments to execute for the service",
+    )
     args = parser.parse_args()
 
     if SYSTEMD_NOTIFY is None:
