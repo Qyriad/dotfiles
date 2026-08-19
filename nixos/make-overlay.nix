@@ -8,6 +8,7 @@
 	pzl,
 	cappy,
 	git-point,
+	systemd-proxy-notify,
 	xil,
 	xonsh-source,
 	nil-source,
@@ -24,6 +25,7 @@
 			pzl
 			cappy
 			git-point
+			systemd-proxy-notify
 			xil
 			xonsh-source
 			originfox-source

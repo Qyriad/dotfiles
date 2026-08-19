@@ -547,8 +547,25 @@
         "originfox-source": "originfox-source",
         "pzl": "pzl",
         "qyriad-nur": "qyriad-nur",
+        "systemd-proxy-notify": "systemd-proxy-notify",
         "xil": "xil",
         "xonsh-source": "xonsh-source"
+      }
+    },
+    "systemd-proxy-notify": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787224054,
+        "narHash": "sha256-rS8i5XfdwuQ9h0qf8ZQeak+a9k/uptqoCKi3WY4D8Zw=",
+        "ref": "refs/heads/main",
+        "rev": "cf6ef1b1b8a76032e12d753faf00aa27104fb3f8",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://codeberg.org/Qyriad/systemd-proxy-notify"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/Qyriad/systemd-proxy-notify"
       }
     },
     "systems": {

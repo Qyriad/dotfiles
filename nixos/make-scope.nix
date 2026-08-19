@@ -10,6 +10,7 @@
 	pzl,
 	cappy,
 	git-point,
+	systemd-proxy-notify,
 	xil,
 	xonsh-source,
 	originfox-source,
@@ -180,6 +181,7 @@ in lib.makeScope qpkgs.newScope (self: {
 	};
 	cappy = import cappy { inherit pkgs qpkgs; };
 	git-point = import git-point { inherit pkgs qpkgs; };
+	systemd-proxy-notify = import systemd-proxy-notify { inherit pkgs qpkgs; };
 
 	#armcord = pkgs.armcord.overrideAttrs (prev: {
 	#	installPhase = ''

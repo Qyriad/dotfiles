@@ -395,6 +395,7 @@
 		choose
 		daemontools
 		systemfd
+		qyriad.systemd-proxy-notify
 	] ++ lib.optionals config.services.pipewire.enable [
 		alsa-utils
 		alsa-lib

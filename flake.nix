@@ -41,6 +41,10 @@
 			url = "github:Qyriad/git-point";
 			flake = false;
 		};
+		systemd-proxy-notify = {
+			url = "git+https://codeberg.org/Qyriad/systemd-proxy-notify";
+			flake = false;
+		};
 		xil = {
 			url = "github:Qyriad/Xil";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -205,6 +209,7 @@
 					pzl
 					cappy
 					git-point
+					systemd-proxy-notify
 					xil
 					xonsh-source
 					nil-source
