@@ -172,6 +172,7 @@
 		seer
 		qyriad.obs-studio
 		v4l-utils
+		desktop-file-utils
 		gajim
 
 		# Markdown viewers
