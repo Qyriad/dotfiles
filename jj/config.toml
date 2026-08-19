@@ -94,6 +94,16 @@ vls = ['--config=ui.paginate=never', 'tag', 'list', '--sort=name', '''regex:'^v?
 #log = 'builtin_log_comfortable'
 log = 'qlog_comfortable'
 
+# Show the diff in the commit description.
+# Equivalent of `git config commit.verbose true`.
+draft_commit_description = """
+concat(
+	builtin_draft_commit_description,
+	"\nJJ: ignore-rest\n",
+	self.diff().git(),
+)
+"""
+
 [colors]
 qshortest = { fg = "bright blue", bold = true }
 qshort = { fg = "blue", bold = false }
