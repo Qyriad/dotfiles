@@ -251,6 +251,9 @@
 		bustle
 	] ++ lib.optionals config.services.ratbagd.enable [
 		piper
+	] ++ lib.optionals config.services.displayManager.enable [
+		# Put /share/wayland-sessions in /run/current-system/sw
+		config.services.displayManager.sessionData.desktops
 	];
 
 	hardware.i2c.enable = true;
