@@ -227,11 +227,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1787092242,
-        "narHash": "sha256-Xv0pguwNvT+gbnR5pMsR9RULuAmP0GMtTNd1eHkLoBQ=",
+        "lastModified": 1787344544,
+        "narHash": "sha256-3zu6v8xui15m9/YfMsRem8lugJQ0vQKdGcYqfz2uI5c=",
         "ref": "refs/heads/main",
-        "rev": "3470ce4d506416a1d70f6d3efec454e768aaae58",
-        "revCount": 19476,
+        "rev": "049cc4e1322b07173f79f67bf64ecd257afeb7d0",
+        "revCount": 19494,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
@@ -254,11 +254,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779730214,
+        "lastModified": 1787347232,
         "narHash": "sha256-Ikdf593tWTFMkKhtScxE+t2fV+Myh8n4JeYU/0Xc8H8=",
         "ref": "refs/heads/main",
-        "rev": "727d859b6f5f3289ce49fe26146b3f006387d457",
-        "revCount": 184,
+        "rev": "c5b8d8576206ddce31b86e336476c2f9b8361085",
+        "revCount": 188,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/nixos-module"
       },
@@ -448,11 +448,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1787070829,
-        "narHash": "sha256-vXNVDVtvfiQuXthP0NHPFdNvvMTkGpx0UP8oddIWbNk=",
+        "lastModified": 1787360063,
+        "narHash": "sha256-dt4WdcvsA8/RCe+VZZwqU0X+XMM3wBbGCWA0/sFWzGo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0ae2bc1419c3f345984c2629e72e7a631820fa4d",
+        "rev": "2c423e03bbafcff28bfadc6781a4a8257f205cb5",
         "type": "github"
       },
       "original": {
@@ -513,11 +513,11 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1786191884,
-        "narHash": "sha256-ihxhOAHhdNOT4diOK5Y5vbG5gcrYlqTkNQ2quFPMN/s=",
+        "lastModified": 1787315560,
+        "narHash": "sha256-O96drte+YL0ROqSP0F7c0Z+tmxYiW/LZPqOipJfCIdw=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "51b7779df141b27c985660a9fb4c208b766b5a90",
+        "rev": "b9321c0c144491f546d45fbbf50a079ed642d831",
         "type": "github"
       },
       "original": {
@@ -555,11 +555,11 @@
     "systemd-proxy-notify": {
       "flake": false,
       "locked": {
-        "lastModified": 1787224054,
-        "narHash": "sha256-rS8i5XfdwuQ9h0qf8ZQeak+a9k/uptqoCKi3WY4D8Zw=",
+        "lastModified": 1787506997,
+        "narHash": "sha256-By0OmFVIJ0bTcUP9hxbkqjR9dcRa5dXqAGKvxcFGn5E=",
         "ref": "refs/heads/main",
-        "rev": "cf6ef1b1b8a76032e12d753faf00aa27104fb3f8",
-        "revCount": 4,
+        "rev": "aee388ee9ef07625978026e801a2a54311dbb9ca",
+        "revCount": 18,
         "type": "git",
         "url": "https://codeberg.org/Qyriad/systemd-proxy-notify"
       },
