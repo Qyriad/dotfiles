@@ -285,6 +285,9 @@ aliases['fdc'] = 'fd --color=always'
 aliases['rg'] = 'rg --smart-case'
 aliases['rgi'] = 'rg --smart-case --no-ignore'
 aliases['rgih'] = 'rg --no-ignore --hidden'
+aliases['rgl'] = 'rg --smart-case --follow'
+aliases['rgli'] = 'rg --smart-case --follow --no-ignore'
+aliases['rglih'] = 'rg --smart-case --follow --no-ignore --hidden'
 # use -E, --exclude for globbing
 aliases['fdi'] = 'fd --no-ignore'
 
