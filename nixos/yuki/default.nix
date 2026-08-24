@@ -12,12 +12,14 @@
 		../resources.nix
 		../mount-shizue.nix
 		../modules/mount-usr.nix
+		../modules/dnssd.nix
 		../modules/plasma-xdgdata-hack.nix
 		./elgato.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
 	hacks.kde-plasma-xdg-datadirs-fix.enable = true;
+
 	# This is dumb but it works.
 	environment.etc."pam.d/weston-remote-access".text = lib.dedent ''
 		account required /run/current-system/sw/lib/security/pam_unix.so # unix (order 11000)
@@ -203,6 +205,16 @@
 		#	};
 		#};
 	};
+
+	# Currently disabled due to https://github.com/systemd/systemd/issues/39990
+	#services.resolved.dnssd.services = {
+	#	sshd.Service = {
+	#		Name = "%H SSH Server";
+	#		Type = "_ssh._tcp";
+	#		Port = 22;
+	#	};
+	#};
+
 
 	boot.enableContainers = true;
 	programs.extra-container.enable = true;
