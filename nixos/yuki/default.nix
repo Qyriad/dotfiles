@@ -12,10 +12,12 @@
 		../resources.nix
 		../mount-shizue.nix
 		../modules/mount-usr.nix
+		../modules/plasma-xdgdata-hack.nix
 		./elgato.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
 
+	hacks.kde-plasma-xdg-datadirs-fix.enable = true;
 	# This is dumb but it works.
 	environment.etc."pam.d/weston-remote-access".text = lib.dedent ''
 		account required /run/current-system/sw/lib/security/pam_unix.so # unix (order 11000)
