@@ -153,7 +153,12 @@
 		git-series
 		git-revise
 		p7zip
+
+		# DNS stuff.
 		doggo
+		mhost
+		q
+
 		magic-wormhole
 		age
 		asciinema
