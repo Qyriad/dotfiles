@@ -138,7 +138,8 @@ in lib.makeScope qpkgs.newScope (self: {
 				obs-backgroundremoval
 				obs-gstreamer
 				obs-multi-rtmp
-				obs-replay-source
+				# Nixpkgs update broke it.
+				#obs-replay-source
 				obs-source-record
 			;
 		};
