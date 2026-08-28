@@ -348,7 +348,7 @@
 		obs-cmd
 		odin2
 		#qyriad.nvtop-yuki
-		libreoffice-qt6-fresh
+		libreoffice-qt-stable
 		anki
 		beeper
 		qyriad.originfox
