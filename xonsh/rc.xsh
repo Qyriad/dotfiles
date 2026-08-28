@@ -293,6 +293,10 @@ aliases['fdi'] = 'fd --no-ignore'
 
 # Miscellaneous.
 aliases['wgetc'] = 'wget --content-disposition' # Uses server filename across redirects.
+#aliases['curlc'] = 'curl --remote-name --remote-header-name --location --fail-with-body --xattr --write-out "%{stderr}\n%{filename_effective}\n"'
+aliases['curlc'] = 'curl --remote-name --remote-header-name --location --fail-with-body --xattr'
+# Other useful: `-I`/`--head`
+aliases['curlv'] = 'curl --fail-with-body --location --show-headers'
 aliases['xh'] = 'xh --all --verbose --check-status'
 aliases['xhs'] = 'xhs --all --verbose --check-status'
 aliases['xdgo'] = 'xdg-open'
