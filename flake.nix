@@ -73,6 +73,10 @@
 			url = "github:oxalica/nil";
 			flake = false;
 		};
+		yabridge-source = {
+			url = "github:robbert-vdh/yabridge";
+			flake = false;
+		};
 		disko = {
 			url = "github:nix-community/disko/latest";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -213,6 +217,7 @@
 					xil
 					xonsh-source
 					nil-source
+					yabridge-source
 					originfox-source
 					fx-autoconfig-source
 				;

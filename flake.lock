@@ -549,7 +549,8 @@
         "qyriad-nur": "qyriad-nur",
         "systemd-proxy-notify": "systemd-proxy-notify",
         "xil": "xil",
-        "xonsh-source": "xonsh-source"
+        "xonsh-source": "xonsh-source",
+        "yabridge-source": "yabridge-source"
       }
     },
     "systemd-proxy-notify": {
@@ -700,6 +701,22 @@
       "original": {
         "owner": "xonsh",
         "repo": "xonsh",
+        "type": "github"
+      }
+    },
+    "yabridge-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785659154,
+        "narHash": "sha256-TiKiyE3GZYCX1+vooHdD03fAhNQPAA1IzTfkG++I7TY=",
+        "owner": "robbert-vdh",
+        "repo": "yabridge",
+        "rev": "b580a9f7fc46509767ca156d4f92872552b9e571",
+        "type": "github"
+      },
+      "original": {
+        "owner": "robbert-vdh",
+        "repo": "yabridge",
         "type": "github"
       }
     }

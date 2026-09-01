@@ -12,6 +12,7 @@
 	xil,
 	xonsh-source,
 	nil-source,
+	yabridge-source,
 	originfox-source,
 	fx-autoconfig-source,
 	getScope ? { pkgs, lib, qpkgs }: import ./make-scope.nix {
@@ -191,6 +192,26 @@ in {
 			url = "https://www.bitwig.com/dl/Bitwig%20Studio/${pkgFinal.version}/installer_linux/";
 			hash = "sha256-Tyi7qYhTQ5i6fRHhrmz4yHXSdicd4P4iuF9FRKRhkMI=";
 		};
+	});
+
+	# Development version of yabridge.
+	yabridge = pkgsPrev.yabridge.overrideAttrs (pkgFinal: pkgPrev: {
+		src = pkgsFinal.fetchFromGitHub {
+			owner = "robbert-vdh";
+			repo = "yabridge";
+			# Well this is cursed.
+			rev = yabridge-source.rev;
+			hash = yabridge-source.narHash;
+		};
+
+		patches = (pkgPrev.patches
+		# I believe this is already part of the development version.
+		|> lib.filter (patch: (lib.strings.hasPrefix (toString patch) "drop-32-bit-support.patch"))
+		);
+	});
+
+	wineWow64Packages = pkgsPrev.wineWow64Packages.extend (wineFinal: winePrev: {
+		yabridge = wineFinal.staging;
 	});
 
 	# Update to 4.2.495 broke it for us.
