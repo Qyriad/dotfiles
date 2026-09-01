@@ -56,6 +56,8 @@
 	extraAttrs.xonsh = python3Packages.xonsh.overridePythonAttrs (prev: {
 		src = xonsh-source;
 
+		version = "0.24.2";
+
 		dontPatch = true;
 		dontUsePytestCheck = true;
 
