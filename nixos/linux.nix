@@ -359,6 +359,7 @@
 		watchexec
 		exfat
 		udftools
+		nfs-utils
 		caligula
 		trashy
 		socat
