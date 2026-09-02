@@ -97,7 +97,10 @@
 
 	services.resolved.settings.Resolve = {
 		LLMNR = "no";
-		MulticastDNS = "resolve";
+		#MulticastDNS = "resolve";
+		MulticastDNS = "yes";
+		ResolveUnicastSingleLabel = "yes";
+		Cache = "no-negative";
 	};
 
 	# Firewall for systemd-resolved.
@@ -107,13 +110,17 @@
 	};
 
 	services.avahi = {
-		enable = true;
+		enable = lib.mkForce false;
 		openFirewall = true;
 		# We'll use avahi for *publish*, but systemd-resolved for resolve.
 		nssmdns4 = false;
 		nssmdns6 = false;
 		publish.enable = true;
 		publish.addresses = true;
+		publish.domain = true;
+		publish.hinfo = true;
+		publish.userServices = true;
+		reflector = true;
 	};
 
 	services.tailscale = {
