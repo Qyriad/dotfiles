@@ -72,6 +72,16 @@ local function conf(tbl)
 end
 
 conf {
+	keys = {
+		-- Make <C-<BS>> equivalent to <A-<BS>>
+		{
+			key = 'Backspace',
+			mods = 'CTRL',
+			action = wezterm.action.SendString('\x1b\x08'),
+		},
+	},
+}
+
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
