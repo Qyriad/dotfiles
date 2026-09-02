@@ -118,6 +118,9 @@
 		direnv
 		moor
 		faketty
+		yank
+		peep
+		stderred
 		htop
 		inxi
 		hyfetch
