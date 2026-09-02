@@ -242,6 +242,12 @@
 	# Covered by nix-index, not that its integrations support our shell.
 	programs.command-not-found.enable = false;
 
+	programs.zoxide.enable = true;
+
+	programs.yazi = {
+		enable = true;
+	};
+
 	programs.usbtop.enable = true;
 
 	services.keyd = {
