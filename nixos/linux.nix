@@ -393,6 +393,7 @@
 		app2unit
 		#systemd-wait # cannot import GLib, introspection typelib not found
 		pipectl
+		lndir
 		appimage-run
 		havn
 		below
