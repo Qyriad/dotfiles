@@ -21,6 +21,7 @@
 
 	llvm = llvmPackages.llvm.out;
 	llvmDev = llvmPackages.llvm.dev;
+	libclang = llvmPackages.libclang;
 
 	rustc = rustc.out;
 	rustcMan = rustc.man;
@@ -31,6 +32,7 @@
 	lndir -silent "$clang" "$out/opt/llvm"
 	lndir -silent "$lld" "$out/opt/llvm"
 	lndir -silent "$llvm" "$out/opt/llvm"
+	lndir -silent "$libclang" "$out/opt/llvm"
 	ln -s "$llvmDev/bin/llvm-config" "$out/opt/llvm/bin/llvm-config"
 	mkdir -p "$out/opt/llvm/include"
 
