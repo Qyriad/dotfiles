@@ -2,6 +2,10 @@
 { options, config, pkgs, lib, ... }:
 
 {
+	imports = [
+		./modules/tailscale-ext.nix
+	];
+
 	# Bootloader.
 	boot.loader = {
 		systemd-boot.enable = true;

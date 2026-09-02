@@ -215,6 +215,7 @@
 	#	};
 	#};
 
+	services.tailscale.encryptState = true;
 
 	boot.enableContainers = true;
 	programs.extra-container.enable = true;
