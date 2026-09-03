@@ -1,8 +1,11 @@
 from collections.abc import Iterable, Iterator
-from typing import Any, Callable, Never
+from typing import Any, Callable, Never, Self
 
 def splat[*Ts, R](f: Callable[[*Ts], R]) -> Callable[[tuple[*Ts]], R]:
-    """Adapt f(*args) into g(iterable). Like itertools.starmap for a single item."""
+    """Adapt f(*args) into g(iterable). Like itertools.starmap for a single item.
+
+    This lets you do things like `lambda key, value: key…` instead of `lambda item: item[0]…`.
+    """
 
     # Technically it should be `Iterable[*Ts]`, because not only tuples are accepted.
     # But tuple type vars are not allowed as type argument to seemingly anything but
@@ -14,8 +17,6 @@ def splat[*Ts, R](f: Callable[[*Ts], R]) -> Callable[[tuple[*Ts]], R]:
     starred.__wrapped__ = f
 
     return starred
-
-from typing import Self
 
 class IterOnce[T](Iterable[T]):
     def __init__(self, item: T):
@@ -49,9 +50,3 @@ def ignore_each(iterable: Iterable[object]) -> Iterable[None]:
     for _ in iterable:
         pass
     yield
-
-
-
-    #return IterOnce(obj)
-
-    #return [obj]
