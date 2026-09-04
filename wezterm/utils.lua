@@ -40,6 +40,26 @@ function M.table.merge(first, second)
 	end
 end
 
+function M.table.has_value(table, value)
+	for _, v in pairs(table) do
+		if value == v then
+			return true
+		end
+	end
+	return false
+end
+
+function M.is_empty(value)
+	if not value then
+		return true
+	elseif value == '' then
+		return true
+	elseif value == {} then
+		return true
+	else
+		return false
+	end
+end
 
 function M.tab_title(tab_info)
 	local title = tab_info.tab_title
