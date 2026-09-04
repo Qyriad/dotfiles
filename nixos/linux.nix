@@ -308,6 +308,12 @@
 		};
 	};
 
+	# We agree with sudo-rs's reasoning:
+	# https://github.com/trifectatechfoundation/sudo-rs/commit/fb51e41919c25e3b178c4f994e668a5fc80136ee
+	security.sudo.extraConfig = lib.dedent ''
+		Defaults pwfeedback
+	'';
+
 	security.wrappers."dmesg" = {
 		owner = "root";
 		group = "users";
