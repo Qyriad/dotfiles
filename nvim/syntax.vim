@@ -82,8 +82,15 @@ vim.api.nvim_create_autocmd("FileType", {
 			return
 		end
 		pcall(function()
-			vim.treesitter.start(ev.buf)
-			--vim.bo[ev.buf].syntax = 'ON'
+			local ts_enabled = vim.b[ev.buf].treesitter
+			if ts_enabled ~= false then
+				vim.treesitter.start(ev.buf)
+			else
+				--vim.treesitter.stop(ev.buf)
+				-- idk why this needs the defer but it seems to.
+				vim.defer_fn(function() vim.treesitter.stop(ev.buf) end, 1)
+				vim.bo[ev.buf].syntax = 'ON'
+			end
 		end)
 	end,
 })
