@@ -56,11 +56,7 @@ in {
 			--output "$man/share/man1/PKGNAME.1"
 	'';
 
-	postFixup = lib.dedent ''
-		echo "wrapping Python programs in postFixup..."
-		wrapPythonPrograms
-		echo "done wrapping Python programs in postFixup"
-	'';
+	postFixupHooks = [ "wrapPythonProgram" ];
 
 	propagatedBuildInputs = [
 		beartype
@@ -83,6 +79,7 @@ in {
 			else
 				export PYTHONPATH="$PWD/src:$PYTHONPATH"
 			fi
+			export PYTHONDEVMODE=1
 		'';
 		packages = [
 			pylint
