@@ -161,6 +161,8 @@ self = rec {
 	fpackages = f.packages.${currentSystem};
 	fchecks = f.checks.${currentSystem};
 	fout = f.outputs;
+	fouts = f.outputs
+	|> lib.mapAttrs (name: value: value // value.${system} or { });
 	fnixpkgs = f.inputs.nixpkgs;
 	fpkgs = import f.inputs.nixpkgs { inherit system; };
 	local = qlib.importAutocall PWD;
