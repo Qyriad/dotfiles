@@ -448,11 +448,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1788316716,
-        "narHash": "sha256-bc7rSpXIdn9QWGNqfWcPZWOhEVF8NoeAZkWq0XWnf/k=",
+        "lastModified": 1788614874,
+        "narHash": "sha256-7QYjT2vHLuX9Z1pdxHXDKCbh1CR3D/2rywB9Tx0MPRg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3ed67ec0a4d3c7ab4ae1f04f8ee8df07bfa506a2",
+        "rev": "c043004d1c6985732bcc1cbc5a9c9aecbbb4e0f0",
         "type": "github"
       },
       "original": {
@@ -513,11 +513,11 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1788448709,
-        "narHash": "sha256-MqOHBJxPUx7ruUxR8C4AfZUwia1iRXpmDK/F3YhnvVg=",
+        "lastModified": 1788610836,
+        "narHash": "sha256-29DhBqrjHRMNIDLn7PHyjDIgRljRaCFm3vIevf3swFg=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "c3980508b5e6d50a3d7b079a77c96895e9cca71c",
+        "rev": "963e81d3c6d32db228d5215b2cdf8a222b155b4f",
         "type": "github"
       },
       "original": {
@@ -691,11 +691,11 @@
     "xonsh-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1788256710,
-        "narHash": "sha256-cfdRGz3WWusbuGcte5QXfw6zAS/419OCg6qlF8SN0fw=",
+        "lastModified": 1788674879,
+        "narHash": "sha256-kxucdWaZkqaXGzdTZBi8Gc+xDg7uuY2hjRVkw+JArkM=",
         "owner": "xonsh",
         "repo": "xonsh",
-        "rev": "5947465e59e2df26f6fe1d0b85e6bc23f08cb9c1",
+        "rev": "e4181e32018787ddb517de32cbf5e1b8a5faf1a9",
         "type": "github"
       },
       "original": {
