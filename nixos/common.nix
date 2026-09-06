@@ -88,6 +88,7 @@
 		tig
 		fd
 		ripgrep
+		helix # Experimenting.
 		edir
 		sd
 		ssh-agent-mux
