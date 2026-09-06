@@ -378,6 +378,11 @@ nnoremap <leader>ml <Cmd>Telescope fusen marks<CR>
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
 
+use {
+	'OXY2DEV/foldtext.nvim',
+	lazy = false,
+}
+
 -- For our convenience, let's create a table that'll have all the main lua modules
 -- for each of our plugins, with a normalized key name.
 p = {}

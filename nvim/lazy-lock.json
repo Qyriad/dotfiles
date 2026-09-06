@@ -9,6 +9,7 @@
   "catppuccin": { "branch": "main", "commit": "edefef779ab08ce1a4a404713e3012b0d202bd35" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "997d20e6bc83ea1a6223c08d2b9db76943abf56b" },
   "diagflow.nvim": { "branch": "main", "commit": "b13321b517ff64bf42eeac2214085d3c76d83a0d" },
+  "foldtext.nvim": { "branch": "main", "commit": "bfe4c68c7b318139e9b11124b7324e95cfd9f283" },
   "fusen.nvim": { "branch": "main", "commit": "2fd4e40df111e1be0e49a232045df48839d734d0" },
   "git-conflict.nvim": { "branch": "main", "commit": "a1badcd070d176172940eb55d9d59029dad1c5a6" },
   "gitsigns.nvim": { "branch": "main", "commit": "5be654f2232c10ddcad19c1607a67b6b4b78fc29" },
