@@ -256,7 +256,21 @@ use {
 					last_separator = true,
 				},
 				join = { space_in_brackets = true },
-			})
+			}),
+			['langs.kdl.node_children'] = lang_utils.set_preset_for_dict {
+				split = {
+					separator = "",
+				},
+				join = {
+					separator = "",
+					space_in_brackets = true,
+					-- The semicolons in the treesitter CST for KDL aren't a separate node.
+					-- Per "treesj" docs:
+					-- > `separator` is a separate node, `force_insert` is a last symbol of code instruction.
+					-- It seems to work.
+					force_insert = ";",
+				},
+			},
 		})
 	end,
 	keys = {
