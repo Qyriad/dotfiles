@@ -6,6 +6,8 @@ local lua_runtime_paths = vim.iter(vim.api.nvim_get_runtime_file("lua/", true))
 	end)
 	:totable()
 
+local library_paths = { }
+
 return {
 	filetypes = { 'lua' },
 	cmd = { 'lua-language-server' },
@@ -15,6 +17,21 @@ return {
 		'wezterm.lua',
 		'.git',
 	},
+	---@param params lsp.InitializedParams
+	---@param config vim.lsp.ClientConfig
+	before_init = function(params, config)
+		--vim.notify(vim.inspect {
+		--	root_dir = config.root_dir,
+		--}, vim.log.levels.WARN)
+		if config.root_dir == vim.fn.stdpath('config') then
+			vim.notify(vim.inspect { library = lua_runtime_paths })
+			config.settings = vim.tbl_deep_extend('force', config.settings, {
+				workspace = {
+					library = lua_runtime_paths,
+				}
+			})
+		end
+	end,
 	settings = {
 		Lua = {
 			runtime = {
