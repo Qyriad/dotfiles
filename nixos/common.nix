@@ -92,8 +92,7 @@
 		edir
 		sd
 		ssh-agent-mux
-		# Broken.
-		#unar
+		unar
 		ouch
 		atool
 		unzip
