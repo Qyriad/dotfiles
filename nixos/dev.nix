@@ -77,7 +77,7 @@
 		qpkgs.lsptrace
 		qpkgs.xonsh-lsp
 		mergiraf
-		typescript-go
+		typescript
 		# Command-line profiler.
 		samply
 		wasm-language-tools
