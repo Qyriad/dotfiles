@@ -341,7 +341,7 @@
 		makemkv
 		valgrind
 		ryubing
-		davinci-resolve
+		#davinci-resolve
 		blender
 		quickemu
 		qyriad.qmlls
