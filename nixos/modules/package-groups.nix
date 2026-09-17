@@ -65,6 +65,8 @@ in
 				bitwig-studio5
 				yabridge
 				yabridgectl
+				pkgs.qpkgs.toneboosters-plugins
+				zrythm
 			];
 			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
