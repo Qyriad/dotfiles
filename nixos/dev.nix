@@ -80,7 +80,8 @@
 		typescript
 		# Command-line profiler.
 		samply
-		wasm-language-tools
+		# Nixpkgs update broke the tests.
+		#wasm-language-tools
 		elf-info
 		#qyriad.nvim-treesitter-parsers-all
 		patchutils
