@@ -364,6 +364,7 @@
 		tana
 		# For v4l2loopback-ctl
 		linuxPackages.v4l2loopback
+		binaryninja-free
 	];
 
 	# This value determines the NixOS release from which the default
