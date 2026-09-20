@@ -175,7 +175,8 @@ vim.g.lightline = {
 	tab = {
 		--active = { 'tabnum', 'filename', 'modified' },
 		active = { 'tabnum', 'filename', 'modified' },
-		inactive = { 'tabnum', 'filename', 'modified', 'wincount' },
+		--inactive = { 'tabnum', 'filename', 'modified', 'wincount' },
+		inactive = { 'tabnum', 'filename', 'modified' },
 	},
 	--tabline = {
 	--	right = {{ 'LspProgress' }},
