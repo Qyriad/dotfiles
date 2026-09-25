@@ -513,11 +513,11 @@
     "qyriad-nur": {
       "flake": false,
       "locked": {
-        "lastModified": 1789998346,
-        "narHash": "sha256-bGZSahcLgJvnHLyVwSCOSbsi6L/v301K+2UWy1EVjcE=",
+        "lastModified": 1790346797,
+        "narHash": "sha256-7lZ9N/G0vRfghf02fXjFXN5Hrb0PFVyuxJA7s87zIRc=",
         "owner": "Qyriad",
         "repo": "nur-packages",
-        "rev": "5947de8265c1003ddd7280cfda17db487f6544cf",
+        "rev": "e71525447f9c1d3eddb0411061d695e004f3eb59",
         "type": "github"
       },
       "original": {
