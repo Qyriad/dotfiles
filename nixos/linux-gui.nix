@@ -299,6 +299,7 @@
 		};
 		wantedBy = [ "graphical-session.target" ];
 		serviceConfig = {
+			Slice = "background.slice";
 			Type = "notify";
 			NotifyAccess = "all";
 			Environment = "PATH=/run/current-system/sw/bin";
