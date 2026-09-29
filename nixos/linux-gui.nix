@@ -313,6 +313,13 @@
 	programs = {
 		partition-manager.enable = true;
 		firefox.enable = true;
+		firefox.nativeMessagingHosts.packages = [
+			pkgs.kdePackages.plasma-browser-integration
+			# 1Password doesn't have a /lib/mozilla/native-messaging-hosts??
+			# Does its desktop-browser integration work… differently, somehow?
+			# Or did Nixpkgs not package it right?
+			#config.programs._1password-gui.package
+		];
 		kdeconnect.enable = true;
 		_1password-gui = {
 			enable = true;
