@@ -348,7 +348,9 @@ def _nix_tmp(args: list):
 		'niz',
 		'build',
 		'-o', f'/tmp/result-{pkg}',
-		f'nixpkgs#{pkg}^*',
+		'-f', '<nixpkgs>',
+		'--arg', 'config', '{ allowUnfree = true; microsoftVisualStudioLicenseAccepted = true; }',
+		f'{pkg}^*',
 	]
 maybe_abbrevs['nds'] = 'niz develop -f ./shell.nix'
 # strace --color=always --silence=attach,exit --signal=none -y -e read,write -s999
