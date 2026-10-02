@@ -278,7 +278,7 @@
 			"server string" = "yuki";
 			"netbios name" = "yuki";
 			"security" = "user";
-			"hosts allow" = "192.168. 100.64. 127.0.0.1 localhost";
+			"hosts allow" = "192.168. 100.64. 100.110. 127.0.0.1 localhost";
 			"hosts deny" = "0.0.0.0/0";
 			"guest account" = "nobody";
 			"map to guest" = "bad user";
