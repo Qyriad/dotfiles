@@ -376,7 +376,7 @@
 		difftastic
 		strace
 		qpkgs.intentrace
-		ltrace
+		#ltrace
 		bpftrace
 		trace-cmd
 		watchexec
