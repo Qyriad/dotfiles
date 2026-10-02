@@ -66,7 +66,7 @@ in
 				yabridge
 				yabridgectl
 				pkgs.qpkgs.toneboosters-plugins
-				zrythm
+				#zrythm
 			];
 			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
