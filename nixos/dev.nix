@@ -76,6 +76,8 @@
 		crates-lsp
 		qpkgs.lsptrace
 		qpkgs.xonsh-lsp
+		bash-language-server
+		just-lsp
 		mergiraf
 		typescript
 		# Command-line profiler.
