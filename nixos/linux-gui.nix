@@ -182,6 +182,9 @@
 		inlyne
 		gh-markdown-preview
 
+		# Nice lil' media player.
+		strawberry
+
 		tesseract
 		smile
 		gst_all_1.gstreamer
