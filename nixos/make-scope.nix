@@ -254,7 +254,9 @@ in lib.makeScope qpkgs.newScope (self: {
 
 	aegisub = pkgs.aegisub.overrideAttrs (prev: {
 		# PR 61 + our own patches
-		patches = [ ./pkgs/aegisub-sync-karaoke-video.patch ];
+		# FIXME: the patch broke with an update.
+		# Check if it's even needed anymore.
+		#patches = [ ./pkgs/aegisub-sync-karaoke-video.patch ];
 	});
 
 	xkeyboard_config-patched-inet = self.callPackage ./pkgs/xkb-config-patched-inet.nix { };
