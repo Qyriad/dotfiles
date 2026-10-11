@@ -427,7 +427,7 @@ vim.g.rustaceanvim = {
 --}
 use { 'simrat39/symbols-outline.nvim', event = "LspAttach" }
 --use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', event = "LspAttach" }
-use { 'https://git.sr.ht/~p00f/clangd_extensions.nvim', ft = { "c", "cpp" } }
+use { 'https://git.sr.ht/~chinmay/clangd_extensions.nvim', ft = { "c", "cpp" } }
 --use {
 --	'folke/trouble.nvim',
 --	event = "LspAttach",
