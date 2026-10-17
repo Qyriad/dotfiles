@@ -137,7 +137,7 @@
 		nix-btm
 		nix-info
 		nix-query-tree-viewer
-		nix-top
+		#nix-top # Nixpkgs broke it on Darwin
 		#nix-visualize
 		qyriad.niz
 		qyriad.pzl
