@@ -187,6 +187,7 @@ local lsp_modules = {
 	'justls',
 	'bashls',
 	'xonshls',
+	'neocmake',
 }
 vim.api.nvim_create_autocmd('VimEnter', {
 	desc = 'Check for enabled but uninstalled or unconfigured LSPs',
