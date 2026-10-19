@@ -102,6 +102,26 @@ in lib.makeScope qpkgs.newScope (self: {
 		}
 	);
 
+	# Systemd's upstream bash completions for systemctl don't include the (relatively new)
+	# `--verbose` option.
+	# It's annoying.
+	# Let's just patch it in.
+	systemctl-patched-bash-completions = self.callInline ({
+		lib,
+		runCommandMinimal,
+		systemd,
+	}: runCommandMinimal "systemctl-patched-bash-completions" {
+		inherit systemd;
+		completionPath = "share/bash-completion/completions";
+		# Lower integer values are more prioritized.
+		meta.priority = lib.meta.defaultPriority - 1;
+	} <| lib.dedent ''
+		install -Dm666 "$systemd/$completionPath/systemctl" ./systemctl
+		substituteInPlace ./systemctl \
+			--replace-fail "--version" "--version --verbose"
+		install -Dm644 --target-directory="$out/$completionPath" ./systemctl
+	'');
+
 	steam-launcher-script = pkgs.writeShellScriptBin "launch-steam" ''
 		export STEAM_FORCE_DESKTOPUI_SCALING=2.0
 		export GDK_SCALE=2
