@@ -7,6 +7,11 @@
 	environment.pathsToLink = [
 		"/include"
 		"/opt"
+		# NOTE: this does NOT link to /etc.
+		# These get linked to to /run/current-system/sw/etc.
+		# Not all software that has stuff in /etc gets in `environment.etc.*`,
+		# and linking /etc in systemPackages helps us inspect those differences.
+		"/etc"
 	];
 
 	environment.extraOutputsToInstall = [
