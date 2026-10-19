@@ -253,6 +253,10 @@
 		bustle
 	] ++ lib.optionals config.services.ratbagd.enable [
 		piper
+	] ++ lib.optionals config.programs.gnupg.agent.enable [
+		# If `org.gnupg.pinentry-qt.desktop` is not present, `gpg-agent.service` will complain that it can't
+		# register its app ID.
+		config.programs.gnupg.agent.pinentryPackage
 	] ++ lib.optionals config.services.displayManager.enable [
 		# Put /share/wayland-sessions in /run/current-system/sw
 		config.services.displayManager.sessionData.desktops
