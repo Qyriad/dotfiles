@@ -434,6 +434,8 @@
 		config.services.ratbagd.package
 	] ++ lib.optionals config.services.acpid.enable [
 		acpid
+	] ++ lib.optionals config.hardware.bluetooth.enable [
+		bluez-tools
 	] ++ lib.concatLists [
 		config.systemd.packages # I want system services to also be in /run/current-system please.
 		config.services.udev.packages # Same for udev...
