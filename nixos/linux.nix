@@ -119,12 +119,13 @@
 		# We'll use avahi for *publish*, but systemd-resolved for resolve.
 		nssmdns4 = false;
 		nssmdns6 = false;
-		publish.enable = true;
-		publish.addresses = true;
-		publish.domain = true;
-		publish.hinfo = true;
-		publish.userServices = true;
-		reflector = true;
+		settings = {
+			publish.enable = true;
+			publish.addresses = true;
+			publish.domain = true;
+			publish.hinfo = true;
+			reflector.enable-reflector = true;
+		};
 	};
 
 	services.tailscale = {
