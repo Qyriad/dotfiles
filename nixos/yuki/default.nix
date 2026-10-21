@@ -365,6 +365,8 @@
 		# For v4l2loopback-ctl. And we *only* want `bin`, not `out`.
 		(lib.meta.addMetaAttrs { outputsToInstall = [ "bin" ]; } linuxPackages.v4l2loopback)
 		binaryninja-free
+		qpkgs.magic-pods-core
+		qpkgs.magic-pods-linux
 		qpkgs.midiminder
 	];
 
