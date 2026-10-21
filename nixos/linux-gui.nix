@@ -247,6 +247,8 @@
 		playerctl
 		carla
 		coppwr
+		pipeweaver
+		pipewire-control-center
 	] ++ lib.optionals config.services.dbus.enable [
 		# Honestly idk when ever you'd be including linux-gui and *not* have DBus enabled.
 		# But whatever.
