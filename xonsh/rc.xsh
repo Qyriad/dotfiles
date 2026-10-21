@@ -99,6 +99,13 @@ $XONSH_HISTORY_SIZE = (2 ** 32, "commands")
 # For things like LD_LIBRARY_PATH when using ctypes.
 $UPDATE_OS_ENVIRON = True
 
+# Oh my gods what you can do this??
+# This makes `:::foo<TAB>` show a list of Unicode symbols matching "foo".
+$XONSH_COMPLETER_SYMBOLS_PREFIX = ':::'
+# And same for emoji.
+$XONSH_COMPLETER_EMOJI_PREFIX = '::'
+
+
 xontrib load -s abbrevs
 if 'abbrevs' not in globals():
 	maybe_abbrevs = aliases
