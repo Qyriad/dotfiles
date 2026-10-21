@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+PKG_CONFIG="${PKG_CONFIG:-pkgconfig}"
+
+pkg="$1"
+"$PKG_CONFIG" \
+	--print-variables "$pkg" \
+	| xargs -I '{}' sh -c \
+	"printf '%s\t' '{}' && \"$PKG_CONFIG\" '--variable={}' \"$pkg\"" \
+	| column -t
