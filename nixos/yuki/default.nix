@@ -365,7 +365,15 @@
 		# For v4l2loopback-ctl. And we *only* want `bin`, not `out`.
 		(lib.meta.addMetaAttrs { outputsToInstall = [ "bin" ]; } linuxPackages.v4l2loopback)
 		binaryninja-free
+		qpkgs.midiminder
 	];
+
+	users.users.midiminder = {
+		isSystemUser = true;
+		packages = [ pkgs.qpkgs.midiminder ];
+		group = "midiminder";
+	};
+	users.groups.midiminder = { };
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
