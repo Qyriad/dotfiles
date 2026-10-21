@@ -362,8 +362,8 @@
 		gpu-screen-recorder-gtk
 		config.programs.gpu-screen-recorder.package
 		tana
-		# For v4l2loopback-ctl
-		linuxPackages.v4l2loopback
+		# For v4l2loopback-ctl. And we *only* want `bin`, not `out`.
+		(lib.meta.addMetaAttrs { outputsToInstall = [ "bin" ]; } linuxPackages.v4l2loopback)
 		binaryninja-free
 	];
 
