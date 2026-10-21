@@ -368,6 +368,7 @@
 		qpkgs.magic-pods-core
 		qpkgs.magic-pods-linux
 		qpkgs.midiminder
+		qyriad.pcloud-opt
 	];
 
 	users.users.midiminder = {

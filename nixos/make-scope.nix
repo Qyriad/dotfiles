@@ -102,6 +102,20 @@ in lib.makeScope qpkgs.newScope (self: {
 		}
 	);
 
+	# PCloud's package is an *extracted* appimage, with vendored libraries
+	# in `/lib` instead of linking against Nixpkgs libraries.
+	# We don't want those in our own `/run/current-system/sw/lib`,
+	# so we'll move the extracted appimage to `/opt`, and symlink the stuff
+	# we care about (commands, .desktop files, icons) to `/`.
+	pcloud-opt = self.callInline ({
+		linkFarm,
+		pcloud,
+	}: linkFarm "${lib.getName pcloud}-opt-${lib.getVersion pcloud}" {
+		"opt/pcloud" = pcloud;
+		"bin" = "${placeholder "out"}/opt/pcloud/bin";
+		"share" = "${placeholder "out"}/opt/pcloud/share";
+	});
+
 	# Systemd's upstream bash completions for systemctl don't include the (relatively new)
 	# `--verbose` option.
 	# It's annoying.
