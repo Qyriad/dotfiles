@@ -65,7 +65,7 @@ bindkey '^[[5~' history-beginning-search-backward-end
 bindkey '^[[6~' history-beginning-search-forward-end
 
 # Allow editing the command in vim
-autoload -Uz edit-command-line # Load the function from ZSH runtime 
+autoload -Uz edit-command-line # Load the function from ZSH runtime
 zle -N edit-command-line # Expose the function as a widget
 bindkey "" "edit-command-line" # Call the widget upon <C-X><C-E>
 
