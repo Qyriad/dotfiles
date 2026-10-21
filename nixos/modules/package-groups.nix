@@ -67,6 +67,7 @@ in
 				yabridgectl
 				pkgs.qpkgs.toneboosters-plugins
 				#zrythm
+				kmidimon
 			];
 			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
