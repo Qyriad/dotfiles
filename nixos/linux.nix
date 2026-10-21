@@ -294,6 +294,17 @@
 		PrivateTmp = lib.mkForce false;
 	};
 
+	# Mentioned by `power-profiles-daemon.service` under `After=`.
+	# We'll give it what it wants.
+	systemd.targets."display-manager" = {
+		partOf = [ "display-manager.service" ];
+		bindsTo = [ "display-manager.service" ];
+		after = [ "display-manager.service" ];
+	};
+	systemd.services."display-manager" = {
+		upholds = [ "display-manager.target" ];
+	};
+
 	# Systemd is complaining that the modprobe@ instances can't find `modprobe`.
 	# idk if this is a NixOS bug or what but it's easy to fix.
 	systemd.services."modprobe@".serviceConfig.ExecSearchPath = lib.makeBinPath [
