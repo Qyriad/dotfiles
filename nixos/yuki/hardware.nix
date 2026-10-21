@@ -53,6 +53,15 @@
 		MAILADDR qyriad@qyriad.me
 	'';
 
+	hardware.bluetooth = {
+		enable = true;
+		powerOnBoot = false;
+		settings.General = {
+			DeviceID = "bluetooth:004C:0000:0000";
+			Experimental = true;
+		};
+	};
+
 
 	#fileSystems."/" = {
 	#	device = "/dev/disk/by-uuid/4a86932f-5e2d-464e-9699-cde6d010847d";
