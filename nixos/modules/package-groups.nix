@@ -68,6 +68,10 @@ in
 				pkgs.qpkgs.toneboosters-plugins
 				#zrythm
 				kmidimon
+				# librnnoise_ladspa.so isn't included in outputsToInstall by default.
+				(rnnoise-plugin |> lib.meta.addMetaAttrs {
+					outputsToInstall = [ "out" "ladspa" "lv2" "lxvst" "vst3" ];
+				})
 			];
 			description = "The default set of packages. Place unwanted items in `remove-packages` to remove them.";
 		};
