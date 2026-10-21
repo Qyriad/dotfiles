@@ -196,7 +196,7 @@
 		isNormalUser = true;
 		description = "Qyriad";
 		extraGroups = lib.mkMerge [
-			[ "wheel" "networkmanager" "plugdev" "dialout" "video" "cdrom" "i2c" "input" "pipewire" ]
+			[ "wheel" "networkmanager" "plugdev" "dialout" "video" "audio" "cdrom" "i2c" "input" "pipewire" ]
 			(lib.mkIf (options ? age) [ "keys" ])
 		];
 		shell = pkgs.zsh;
