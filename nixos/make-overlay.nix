@@ -117,19 +117,6 @@ in {
 		];
 	});
 
-	# https://github.com/NixOS/nixpkgs/issues/576522
-	# https://github.com/NixOS/nixpkgs/pull/576793
-	mozc = pkgsPrev.mozc.overrideAttrs (final: prev: {
-		fixqt612Compat = pkgsFinal.fetchpatch {
-			name = "mozc-qt6-12-compat.patch";
-			url = "https://github.com/google/mozc/commit/29c082a64b577b661694148760a2ae19817beb57.patch";
-			hash = "sha256-Gft1mnLPSMexDMg/PVhwjUVl9D9g1cVGvVNgFmpK168=";
-		};
-		patches = prev.patches or [ ] ++ [
-			final.fixqt612Compat
-		];
-	});
-
 	kdePackages = pkgsPrev.kdePackages.overrideScope (kdeFinal: kdePrev: {
 		# Ripples to:
 		# - kdeconnect-kde
