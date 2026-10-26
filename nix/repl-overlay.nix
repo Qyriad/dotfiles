@@ -78,6 +78,7 @@ self = rec {
 	# `pkgs.lib` is soooooo much typing.
 	inherit (pkgs) lib qlib stdenv clangStdenv;
 	mkShell' = pkgs.mkShell.override { stdenv = clangStdenv; };
+	inherit (qpkgs) stdlib;
 
 	meta = {
 		name,
