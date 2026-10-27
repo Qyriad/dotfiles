@@ -223,8 +223,7 @@
 		systemdgenie
 		# Apparently KWin supports this.
 		swayidle
-		# Rustc deny-by-default broke it, for now.
-		#kdotool
+		kdotool
 		kid3-kde
 		# Might want to use this to hack some idle detection scripts or something.
 		#awatcher
