@@ -63,6 +63,14 @@
 		xdgOpenUsePortal = true;
 	};
 
+	# NixOS gives this unit a minimal PATH that overrides environment.d, so GIO can't find
+	# any app's Exec binary: OpenURI shows the app chooser and then silently fails to launch.
+	systemd.user.services.xdg-desktop-portal.path = [
+		"/run/wrappers"
+		"/etc/profiles/per-user/%u"
+		"/run/current-system/sw"
+	];
+
 	# And also let Blink stuffs use Wayland.
 	environment.sessionVariables = {
 		NIXOS_OZONE_WL = "1";
