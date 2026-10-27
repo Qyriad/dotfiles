@@ -244,6 +244,7 @@
 		pavucontrol
 		lxqt.pavucontrol-qt
 		pwvucontrol
+		kdePackages.kmix
 		wayfarer
 		qpwgraph
 		# Cursed. But gives me access to pactl.
@@ -252,8 +253,10 @@
 		playerctl
 		carla
 		coppwr
+		crosspipe
 		pipeweaver
 		pipewire-control-center
+		easyeffects
 	] ++ lib.optionals config.services.dbus.enable [
 		# Honestly idk when ever you'd be including linux-gui and *not* have DBus enabled.
 		# But whatever.
