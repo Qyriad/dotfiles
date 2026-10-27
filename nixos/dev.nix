@@ -40,6 +40,7 @@
 		mesonlsp
 		bear
 		universal-ctags
+		cpplint
 		patchelf
 		nix-doc
 		lazygit
