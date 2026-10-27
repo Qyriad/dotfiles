@@ -5,9 +5,12 @@
 {
 	# Enable GUI stuff.
 	services.displayManager = {
-		sddm.enable = true;
+		sddm.enable = false;
 		sddm.autoNumlock = true;
 		sddm.wayland.enable = true;
+		plasma-login-manager = {
+			enable = true;
+		};
 		defaultSession = "plasma";
 	};
 
