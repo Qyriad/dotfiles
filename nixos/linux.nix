@@ -226,7 +226,7 @@
 	};
 
 	environment.sessionVariables = {
-		BASH_COMPLETIONS = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
+		BASH_COMPLETIONS = "${config.programs.bash.completion.package}/share/bash-completion/bash_completion";
 	};
 
 	programs.zsh.enable = true;
