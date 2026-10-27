@@ -217,15 +217,21 @@
 		kdePackages.plasma-disks
 		kdePackages.sddm-kcm
 		kdePackages.flatpak-kcm
+		kdePackages.kwalletmanager
+		kdePackages.plasma-firewall # kcm_firewall
 		kdePackages.sweeper
 		kdePackages.kconfig
 		kdePackages.konversation
 		qyriad.nixos-khelpcenter
+		kdePackages.applet-window-buttons6
+		kdePackages.baloo-widgets
+		kdePackages.kdenetwork-filesharing
 		systemdgenie
 		# Apparently KWin supports this.
 		swayidle
 		kdotool
 		kid3-kde
+		kdePackages.union # A theme ig?
 		# Might want to use this to hack some idle detection scripts or something.
 		#awatcher
 		# Symlink the thing that includes the default XCompose files into current-system
