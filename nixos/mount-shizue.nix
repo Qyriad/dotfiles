@@ -4,7 +4,7 @@
 {
 	systemd.mounts = let
 		shizueOpts = pkgs.qlib.genMountOpts {
-			auto = null;
+			noauto = null;
 			_netdev = null;
 			nofail = null;
 			#gid = "users";
@@ -22,6 +22,8 @@
 		after = [
 			"network-online.target"
 			#"avahi-daemon.service"
+			"local-fs.target"
+			"nss-lookup.target"
 		];
 		requires = after;
 
@@ -31,14 +33,15 @@
 		};
 
 		unitConfig = {
-			StartLimitIntervalSec = "30s";
-			StartLimitBurst = "1";
-			StopPropagatedFrom = [
-				"network-online.target"
-			];
+			#StartLimitIntervalSec = "30s";
+			#StartLimitBurst = "3";
+			#StopPropagatedFrom = [
+			#	"network-online.target"
+			#];
 		};
 
-		wantedBy = [ "multi-user.target" ];
+		#wantedBy = [ "multi-user.target" ];
+		wantedBy = [ ];
 
 		media-shizue-media = {
 			type = "cifs";
@@ -59,6 +62,14 @@
 		media-shizue-media
 		media-shizue-archive
 	];
+
+	#systemd.automounts = let
+	#	media-shizue-media = {
+	#		where = "/media/shizue/media";
+	#	};
+	#in [
+	#	media-shizue-media
+	#];
 
 	age.secrets.shizue-cred = {
 		file = ./secrets/shizue-cred.age;
