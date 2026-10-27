@@ -142,6 +142,7 @@
 		qyriad.aegisub
 		cifs-utils
 		nfs-utils
+		nfs-utils.lib
 		ntfs3g
 		ddcutil
 		sequoia-sq
