@@ -389,7 +389,7 @@
 		difftastic
 		strace
 		qpkgs.intentrace
-		#ltrace
+		ltrace
 		bpftrace
 		trace-cmd
 		watchexec
@@ -402,8 +402,7 @@
 		# Let us use our yubikey with age.
 		age-plugin-yubikey
 		yubikey-manager
-		# Broken at the moment as dependency `pkgs.linux-doc` is broken.
-		#systeroid
+		systeroid
 		poke
 		libtree
 		lurk
