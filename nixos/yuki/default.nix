@@ -133,8 +133,6 @@
 	};
 	services.ratbagd.enable = true;
 
-	services.printing.enable = lib.mkForce false;
-
 	# Options from our custom NixOS module in ./resources.nix
 	resources = {
 		memory = 32;
