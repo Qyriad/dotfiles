@@ -14,6 +14,7 @@
 		../modules/mount-usr.nix
 		../modules/dnssd.nix
 		../modules/plasma-xdgdata-hack.nix
+		../modules/services-midiminder.nix
 		./elgato.nix
 		(modulesPath + "/installer/scan/not-detected.nix")
 	];
@@ -335,6 +336,8 @@
 		enable = true;
 	};
 
+	services.midiminder.enable = true;
+
 	environment.systemPackages = with pkgs; [
 		qyriad.steam-launcher-script
 		config.programs.steam.package.run
@@ -367,16 +370,8 @@
 		binaryninja-free
 		qpkgs.magic-pods-core
 		qpkgs.magic-pods-linux
-		qpkgs.midiminder
 		qyriad.pcloud-opt
 	];
-
-	users.users.midiminder = {
-		isSystemUser = true;
-		packages = [ pkgs.qpkgs.midiminder ];
-		group = "midiminder";
-	};
-	users.groups.midiminder = { };
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
