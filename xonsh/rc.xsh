@@ -186,6 +186,7 @@ aliases['ls'] = 'eza -l --header --group --group-directories-first --classify --
 aliases['lsod'] = 'eza -l --header --group --group-directories-first --classify --binary --sort=modified'
 aliases['lsg'] = 'eza -l --header --group --group-directories-first --classify --binary --git --git-ignore'
 aliases['la'] = 'eza -l --header --group --group-directories-first --classify --binary --all --all'
+aliases['lsd'] = 'eza -l --header --group --group-directories-first --classify --binary --all --all --treat-dirs-as-files --extended --mounts --icons=always'
 aliases['cp'] = 'cp -vi'
 aliases['mv'] = 'mv -vi'
 aliases['rm'] = 'rm -vI'
