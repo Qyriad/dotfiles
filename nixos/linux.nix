@@ -381,7 +381,7 @@
 		lm_sensors
 		psmisc
 		# apksigner dependency fails to build on macOS
-		(diffoscope.overrideAttrs { enableBloat = false; })
+		#(diffoscope.overrideAttrs { enableBloat = false; }) # libguestfs is broken
 		rpm
 		qyriad.binutils-nolink
 		lsof
