@@ -219,7 +219,13 @@
 	boot.enableContainers = true;
 	programs.extra-container.enable = true;
 
-	programs.firefox.autoConfig = lib.readFile pkgs.qyriad.fx-autoconfig;
+	programs.firefox = {
+		autoConfigFiles = [
+			pkgs.qyriad.fx-autoconfig
+			# I do not know why this needs to be coerced first.
+			"${../pkgs/firefox-tweaks/sidebar-per-window.cfg.js}"
+		];
+	};
 
 	#containers.hass = {
 	#	autoStart = false;
