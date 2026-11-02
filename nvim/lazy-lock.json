@@ -12,7 +12,7 @@
   "foldtext.nvim": { "branch": "main", "commit": "bfe4c68c7b318139e9b11124b7324e95cfd9f283" },
   "fusen.nvim": { "branch": "main", "commit": "2fd4e40df111e1be0e49a232045df48839d734d0" },
   "git-conflict.nvim": { "branch": "main", "commit": "a1badcd070d176172940eb55d9d59029dad1c5a6" },
-  "gitsigns.nvim": { "branch": "main", "commit": "683137003522aebd6948358334164a6ba2ca7cd5" },
+  "gitsigns.nvim": { "branch": "main", "commit": "1e9d0fbfe7ff848bc402d2c2e2854fb4eff2dce7" },
   "highlight-undo.nvim": { "branch": "main", "commit": "ee32e12693d70e66f954d09a504a7371d110fc27" },
   "jj-diffconflicts": { "branch": "main", "commit": "a2aa9a247b56d2c1a6f6be81bcf41c5450cc82ff" },
   "jj.nvim": { "branch": "main", "commit": "9b1dca730f459b664f8a03f93e0d282693d7d5f8" },
@@ -46,7 +46,7 @@
   "portal.nvim": { "branch": "main", "commit": "77d9d53fec945bfa407d5fd7120f1b4f117450ed" },
   "rainbow": { "branch": "master", "commit": "76ca1a20aa42edb5c65c19029968aad4625790dc" },
   "ranger.vim": { "branch": "master", "commit": "91e82debdf566dfaf47df3aef0a5fd823cedf41c" },
-  "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
+  "rust.vim": { "branch": "main", "commit": "2beee60144703b574fd95adaa07e0dfd83e71006" },
   "symbols-outline.nvim": { "branch": "master", "commit": "564ee65dfc9024bdde73a6621820866987cbb256" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "40aedd8a68c78a656a10a8d62d80c54af59420fb" },
@@ -76,6 +76,6 @@
   "vim-toml": { "branch": "main", "commit": "da051b7c23bad3c52d18886203c594739780ec09" },
   "vim-zoom": { "branch": "master", "commit": "01c737005312c09e0449d6518decf8cedfee32c7" },
   "vis": { "branch": "master", "commit": "6a87efbfbd97238716b602c2b53564aa6329b5de" },
-  "wezterm-types": { "branch": "main", "commit": "39511289aa040a7746a9e2d551b35ef330f15c77" },
+  "wezterm-types": { "branch": "main", "commit": "c4ca18ef6c8bff12dc7469db6ec69eafff18de35" },
   "xonsh-vim": { "branch": "master", "commit": "46cee92f29b9a48f38674dc44d705f4a3ce688f3" }
 }
