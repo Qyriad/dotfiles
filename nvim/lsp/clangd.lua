@@ -22,9 +22,9 @@ return qyriad.nested_tbl {
 		'proto',
 	},
 	cmd = clangd_cmd,
-	 cmd_env = {
-	 	PATH = PATH,
-	 },
+	cmd_env = {
+		PATH = PATH,
+	},
 	capabilities = {
 		['textDocument.completion.editsNearCursor'] = true,
 		offsetEncoding = { 'utf-8', 'utf-16' },
