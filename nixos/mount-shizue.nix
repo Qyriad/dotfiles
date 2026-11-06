@@ -1,7 +1,81 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
+# vim: shiftwidth=2 tabstop=2 noexpandtab
 { pkgs, config, ... }:
 
 {
+
+	fileSystems = let
+		shizueOpts = [
+			"noauto"
+			"_netdev"
+			"nofail"
+			"mfsymlinks"
+			"cifsacl"
+			"noperm"
+			"idsfromsid"
+			"setuids"
+			"vers=3.1.1"
+			"credentials=${config.age.secrets.shizue-cred.path}"
+			"x-systemd.requires=network-online.target"
+			"x-systemd.automount"
+			"x-systemd.mount-timeout=10s"
+		];
+	in {
+		"/media/shizue/media" = {
+			options = shizueOpts;
+			device = "//shizue.local/Media";
+			fsType = "cifs";
+		};
+		"/media/shizue/archive" = {
+			options = shizueOpts;
+			device = "//shizue.local/Archive";
+			fsType = "cifs";
+		};
+	};
+
+	#fileSystems."/media/shizue/media" = {
+	#	device = "//shizue.local/Media";
+	#	fsType = "cifs";
+	#};
+	#
+	#fileSystems."/media/shizue/archive" = {
+	#	options = [
+	#		"noauto"
+	#		"_netdev"
+	#		"nofail"
+	#		"mfsymlinks"
+	#		"cifsacl"
+	#		"noperm"
+	#		"idsfromsid"
+	#		"setuids"
+	#		"vers=3.1.1"
+	#		"credentials=${config.age.secrets.shizue-cred.path}"
+	#		"x-systemd.requires=network-online.target"
+	#		"x-systemd.automount"
+	#		"x-systemd.mount-timeout=10s"
+	#	];
+	#	device = "//shizue.local/Archive";
+	#	fsType = "cifs";
+	#};
+
+	systemd.timers.graphical-late = {
+		after = [ "graphical.target" ];
+		wantedBy = [ "graphical.target" ];
+		timerConfig.Unit = "graphical-late.target";
+		timerConfig.OnActiveSec = "60";
+	};
+	systemd.targets.graphical-late = {
+		requisite = [ "graphical.target" "local-fs.target" ];
+	};
+
+	systemd.targets.logged-in = {
+		bindsTo = [ "user@1000.service" ];
+	};
+
+	systemd.services."user@" = {
+		overrideStrategy = "asDropin";
+		upholds = [ "logged-in.target" ];
+	};
+
 	systemd.mounts = let
 		shizueOpts = pkgs.qlib.genMountOpts {
 			noauto = null;
@@ -59,8 +133,8 @@
 			inherit after requires wantedBy mountConfig unitConfig;
 		};
 	in [
-		media-shizue-media
-		media-shizue-archive
+		#media-shizue-media
+		#media-shizue-archive
 	];
 
 	#systemd.automounts = let
