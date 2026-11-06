@@ -1,5 +1,6 @@
 if not $XONSH_INTERACTIVE:
 	$XONSH_RAISE_SUBPROC_ERROR = True
+	$XONSH_SUBPROC_CMD_RAISE_ERROR = True
 
 try:
 	# Nixpkgs likes to set this for purity, but I want Xonsh to be able to use
