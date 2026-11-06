@@ -383,6 +383,14 @@ use {
 	lazy = false,
 }
 
+use {
+	'chrisgrieser/nvim-origami',
+	event = "VeryLazy",
+	opts = {
+
+	},
+}
+
 -- For our convenience, let's create a table that'll have all the main lua modules
 -- for each of our plugins, with a normalized key name.
 p = {}
