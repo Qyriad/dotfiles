@@ -288,11 +288,6 @@ function on_lsp_attach(bufnr, client_id)
 
 	require("lsp_basics").make_lsp_commands(client, bufnr)
 
-	-- The LSP-provided tagfunc causes more problems than it solves.
-	-- It takes precedence over tag files, and if we *have* tag files in a workspace where we have LSP,
-	-- then there's probably something the tags are giving us that LSP is not.
-	vim.bo.tagfunc = ""
-
 	--vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
 	--if client.name == 'nil_ls' then
