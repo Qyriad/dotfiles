@@ -144,7 +144,7 @@ use { 'Shirk/vim-gas', ft = "gas" }
 use { 'neoclide/jsonc.vim', ft = "jsonc" }
 use { 'cespare/vim-toml', branch = 'main' }
 use { 'leafgarland/typescript-vim', ft = "typescript" }
-use { 'rust-lang/rust.vim', ft = "rust" }
+use { 'rust-lang/rust.vim', ft = "rust", branch = "main" }
 --use 'Glench/Vim-Jinja2-Syntax'
 --use 'mitsuhiko/vim-jinja'
 use { 'Firef0x/PKGBUILD.vim', ft = "PKGBUILD" }
