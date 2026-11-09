@@ -26,6 +26,8 @@ let g:python_highlight_space_errors = 1
 let g:python_highlight_class_vars = 1
 "let g:python_highlight_func_calls = 1
 
+let g:markdown_syntax_conceal = 1
+
 " Fuck off.
 let g:zig_fmt_autosave = v:false
 
