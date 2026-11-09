@@ -466,6 +466,18 @@
 	)
 	;
 
+	passthru.kernel-version = {
+		latest = lib.getVersion pkgs.linuxPackages_latest.kernel;
+		stable = lib.getVersion pkgs.linuxPackages.kernel;
+		current = lib.getVersion config.boot.kernelPackages.kernel.version;
+	};
+
+	warnings = let
+		cfg = config.passthru.kernel-version;
+	in lib.mkIf ((cfg.current != cfg.latest) && (cfg.current != cfg.stable)) [
+		"Pinned Linux kernel version (${cfg.current}) is outdated; stable: ${cfg.stable}, latest: ${cfg.latest}"
+	];
+
 	# passthru.security.pam.allModules = config.passthru.security.pam.enabledServices
 	# |> lib.foldlAttrs (acc: name: {
 	# 	# account, auth, password, session, etc
