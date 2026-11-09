@@ -1,5 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
-
 {
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

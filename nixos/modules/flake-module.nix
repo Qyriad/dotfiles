@@ -1,4 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
 /** This is a function-that-returns-a-module, used with `lib.modules.importApply`.
  */
 flake:

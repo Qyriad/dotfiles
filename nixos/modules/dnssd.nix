@@ -1,4 +1,3 @@
-# vim: shiftwidth=0 tabstop=2 noexpandtab
 { config, lib, pkgs, utils, ... }:
 let
 	inherit (lib.options) mkOption;

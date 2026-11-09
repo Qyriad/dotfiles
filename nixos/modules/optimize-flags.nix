@@ -1,5 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
-
 { config, lib, pkgs, ... }:
 
 /** WIP: A NixOS module to store desired CPU optimize flags. */

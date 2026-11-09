@@ -1,4 +1,3 @@
-# vim: shiftwidth=2 tabstop=2 noexpandtab
 /**
  Miscellaneous passthru attributes to aide in debugging or exploration.
 */

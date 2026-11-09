@@ -1,4 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
 { config, lib, ... }:
 
 /** A NixOS module to let each host declare numbers for their hardware resources,

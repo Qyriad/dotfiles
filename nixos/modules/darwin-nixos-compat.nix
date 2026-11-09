@@ -1,5 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
-
 # This module assumes it is only included on Darwin!
 
 { lib, config, ... }:

@@ -1,4 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
 { lib, options, config, ... }:
 
 /** Library functions that operate on a NixOS configuration.

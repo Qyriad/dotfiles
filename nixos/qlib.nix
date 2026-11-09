@@ -1,5 +1,3 @@
-# vim: tabstop=2 shiftwidth=0 noexpandtab
-
 # Utility functions for use in our NixOS modules.
 # We have to be a little careful here because this is `recursiveUpdate`d into specialArgs.qyriad,
 # which means these names can shadow packages in `qyriad`.

@@ -1,5 +1,3 @@
-# vim: shiftwidth=4 tabstop=4 noexpandtab
-
 { config, lib, pkgs, ... }:
 
 {

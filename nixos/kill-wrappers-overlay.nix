@@ -1,4 +1,3 @@
-# vim: tabstop=4 shiftwidth=0 noexpandtab
 final: prev: let
 	inherit (final) lib;
 in {
