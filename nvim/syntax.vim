@@ -142,21 +142,9 @@ augroup ReapplyEditorconfig
 augroup END
 
 lua << EOF
-use { 'Shirk/vim-gas', ft = "gas" }
-use { 'neoclide/jsonc.vim', ft = "jsonc" }
-use { 'cespare/vim-toml', branch = 'main' }
-use { 'leafgarland/typescript-vim', ft = "typescript" }
-use { 'rust-lang/rust.vim', ft = "rust", branch = "main" }
 --use 'Glench/Vim-Jinja2-Syntax'
 --use 'mitsuhiko/vim-jinja'
-use { 'Firef0x/PKGBUILD.vim', ft = "PKGBUILD" }
-use { 'chikamichi/mediawiki.vim', ft = "mediawiki" }
-use { 'dzeban/vim-log-syntax', ft = "log" }
 -- use "meatballs/vim-xonsh"
-use { 'linkinpark342/xonsh-vim', ft = "xonsh" }
-use { 'peterhoeg/vim-qml', ft = "qml" }
-use { 'nickel-lang/vim-nickel', ft = "nickel" }
-use { 'qnighy/lalrpop.vim' }
 --use {
 --	'nvim-treesitter/nvim-treesitter',
 --	branch = "main",
@@ -174,131 +162,27 @@ use { 'qnighy/lalrpop.vim' }
 --		--treesitter.configs.setup(treesitter_configs_setup)
 --	end,
 --}
-use {
-	'romus204/tree-sitter-manager.nvim',
-	opts = qyriad.nested_tbl {
-		-- These are the default, but we are spelling them out explicitly so we don't forget.
-		parser_dir = vim.fn.stdpath('data') .. '/site/parser',
-		query_dir = vim.fn.stdpath('data') .. '/site/queries',
-
-		languages = {
-			numbat = {
-				install_info = {
-					url = 'https://github.com/irevoire/tree-sitter-numbat',
-					queries = 'queries',
-				},
-			},
-			xonsh = {
-				install_info = {
-					url = 'https://github.com/FoamScience/tree-sitter-xonsh',
-					queries = 'queries',
-				},
-			},
-		},
-	},
-}
 --use {
---	'IndianBoy42/tree-sitter-just',
---	ft = "just",
---	opts = {},
+--	'romus204/tree-sitter-manager.nvim',
+--	opts = qyriad.nested_tbl {
+--		-- These are the default, but we are spelling them out explicitly so we don't forget.
+--		parser_dir = vim.fn.stdpath('data') .. '/site/parser',
+--		query_dir = vim.fn.stdpath('data') .. '/site/queries',
+--
+--		languages = {
+--			numbat = {
+--				install_info = {
+--					url = 'https://github.com/irevoire/tree-sitter-numbat',
+--					queries = 'queries',
+--				},
+--			},
+--			xonsh = {
+--				install_info = {
+--					url = 'https://github.com/FoamScience/tree-sitter-xonsh',
+--					queries = 'queries',
+--				},
+--			},
+--		},
+--	},
 --}
-use {
-	'acarapetis/nvim-treesitter-jjconfig',
-	--dependencies = { 'nvim-treesitter/nvim-treesitter' },
-	lazy = false,
-	opts = { ensure_installed = true },
-}
-use {
-	'windwp/nvim-ts-autotag',
-	ft = {
-		"html",
-		"javascript",
-		"jsx",
-		"markdown",
-		"php",
-		"svelte",
-		"tsx",
-		"typescript",
-		"xml",
-	},
-}
-use {
-	'nvim-treesitter/nvim-treesitter-context',
-	lazy = false,
-	opts = {
-		max_lines = 3,
-		on_attach = function(bufnr)
-			if vim.bo[bufnr].filetype == "markdown" then
-				return false
-			end
-		end,
-	},
-}
-use {
-	'JoosepAlviste/nvim-ts-context-commentstring',
-	lazy = false,
-}
-use {
-	'nvim-treesitter/nvim-treesitter-textobjects',
-	branch = 'main',
-	after = 'nvim-treesitter',
-}
-use {
-	'Wansmer/treesj',
-	--dependencies = { 'nvim-treesitter/nvim-treesitter' },
-	config = function(plugin)
-		local treesj = plugin.main or require('treesj')
-		local lang_utils = require('treesj.langs.utils')
-
-		treesj.setup(qyriad.nested_tbl {
-			use_default_keymaps = false,
-			['langs.nix.formals'] = lang_utils.set_preset_for_args({
-				split = {
-					inner_indent = 'inner',
-					last_separator = true,
-				},
-				join = { space_in_brackets = true },
-			}),
-			['langs.kdl.node_children'] = lang_utils.set_preset_for_dict {
-				split = {
-					separator = "",
-				},
-				join = {
-					separator = "",
-					space_in_brackets = true,
-					-- The semicolons in the treesitter CST for KDL aren't a separate node.
-					-- Per "treesj" docs:
-					-- > `separator` is a separate node, `force_insert` is a last symbol of code instruction.
-					-- It seems to work.
-					force_insert = ";",
-				},
-			},
-		})
-	end,
-	keys = {
-		{ 'gS', '<Cmd>TSJSplit<CR>', desc = "Split block" },
-		{ 'gJ', '<Cmd>TSJJoin<CR>', desc = 'Join block' },
-	},
-}
-use {
-	'phelipetls/jsonpath.nvim',
-	ft = {"json"},
-	config = function()
-		jsonpath = require("jsonpath")
-		-- FIXME: we're planning on switching statusline plugins;
-		-- we'll setup how we do winbar stuff properly then.
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = "json",
-			once = true,
-			callback = function(details)
-				vim.opt_local.winbar = "%#jsonKeyword#%{%v:lua.jsonpath.get()%}"
-			end,
-		})
-	end,
-}
-use {
-	'cfdrake/vim-pbxproj',
-	lazy = false,
-}
-
 EOF

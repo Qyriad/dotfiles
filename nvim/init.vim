@@ -179,217 +179,10 @@ endfunction
 command! -bang WhatIndent call WhatIndentCmd("<bang>")
 
 lua << EOF
--- Text editing.
-use {
-	"catppuccin/nvim",
-	name = "catppuccin",
-	priority = 1000,
-	opts = {
-		auto_integrations = true,
-	},
-}
-use {
-	-- Python folds.
-	'tmhedberg/SimpylFold',
-	filetype = "python",
-}
-use {
-	'junegunn/vim-easy-align',
-	lazy = true,
-}
-
--- Utilities.
-use 'tpope/vim-eunuch'
-use {
-	'm4xshen/autoclose.nvim',
-	opts = {
-		options = {
-			disable_command_mode = true,
-			disable_when_touch = true,
-		},
-		keys = {
-			-- Don't autoclose quotes — single or double — or backticks.
-			['"'] = { close = false },
-			["'"] = { close = false },
-			["`"] = { close = false },
-			-- Don't autoclose square brackets either.
-			["["] = { close = false },
-			--["<CR>"] = { close = false },
-		},
-	},
-	config = function(plugin, opts)
-		-- HACK: autoclose overrides all our other <CR> mappings (eunuch, pum-accept).
-		-- But stupid private functions mean we can't just `require('autoclose.nvim').autoclose_cr()
-		-- or anything.
-		-- So here we run autoclose's normal setup, and then restore the original mapping, but save
-		-- the autoclose mapping in our plugin shortcut global `p.autoclose`.
-		local main = require('autoclose')
-
-		-- Get the <CR> mapping before calling setup().
-		local existing_cr = vim.fn.maparg('<CR>', 'i', false, true)
-		p.autoclose = qyriad.tbl_override(p.autoclose, { previous_cr = existing_cr })
-
-		-- Let autoclose mess with things.
-		main.setup(opts)
-
-
-		-- Save the mapping information from autoclose.
-		p.autoclose.new_cr = vim.fn.maparg('<CR>', 'i', false, true)
-
-		-- And then restore the original mapping.
-		if not vim.tbl_isempty(existing_cr) then
-			vim.fn.mapset(existing_cr)
-		end
-	end,
-}
-use {
-	'johmsalas/text-case.nvim',
-	-- TODO: nnoremap <leader>gac <Cmd>lua vim.fn.setreg("", '_' .. p.textcase.api.to_camel_case(vim.fn.expand('<cword>')))<CR>
-	opts = {
-		prefix = "<leader>a"
-	},
-}
--- lua vim.print((function() local mappings = vim.api.nvim_get_keymap('n'); local filtered = { }; for i, mapping in ipairs(mappings) do if mapping.rhs ~= nil and string.find(mapping.rhs, 'textcase') then table.insert(filtered, mapping); end end return filtered end)())
-use 'rbgrouleff/bclose.vim' -- Dependency for ranger.vim
-use {
-	'francoiscabrol/ranger.vim',
-	dependencies = { 'rbgrouleff/bclose.vim' },
-}
-use 'tpope/vim-tbone' -- :Tyank and :Tput
-use {
-	'lewis6991/gitsigns.nvim',
-	config = function()
-		gitsigns = require("gitsigns")
-		gitsigns.setup {
-			-- Don't fill the signcolumn for untracked files.
-			attach_to_untracked = false,
-			-- Lower priority than MarkSigns.
-			sign_priority = 9,
-		}
-	end,
-}
-use {
-	'akinsho/git-conflict.nvim',
-	opts = {},
-}
-use 'tpope/vim-characterize' -- ga
-use 'tpope/vim-abolish'
-use 'tpope/vim-obsession'
-use 'tpope/vim-fugitive'
-use {
-	'NicolasGB/jj.nvim',
-	opts = {
-
-	}
-}
-use {
-	'rafikdraoui/jj-diffconflicts',
-}
-use 'tpope/vim-scriptease'
-use 'gennaro-tedesco/nvim-peekup'
-use 'AndrewRadev/bufferize.vim'
-use {
-	'windwp/nvim-projectconfig',
-	opts = { },
-}
-
--- Pickers
---use 'ctrlpvim/ctrlp.vim'
--- Dependency for telescope.
-use {
-	'nvim-lua/plenary.nvim',
-	config = function()
-		plenary = require('plenary')
-	end,
-}
-use {
-	'nvim-telescope/telescope.nvim',
-	dependencies = { 'nvim-lua/plenary.nvim' },
-	config = function()
-		telescope = require('telescope')
-		telescope.setup {
-			--defaults = {
-			--
-			--}
-			--create_layout = function(picker)
-			--end,
-		}
-		telescope.builtin = require('telescope.builtin')
-		telescope.actions = require('telescope.actions')
-		telescope.sorters = require('telescope.sorters')
-		telescope.utils = require('telescope.utils')
-		telescope.load_extension("ui-select")
-	end,
-}
-use {
-	-- Use telescope as the picker for things like vim.lsp.buf.code_action()
-	"nvim-telescope/telescope-ui-select.nvim",
-}
-
--- Display.
-use 'dhruvasagar/vim-zoom' -- <C-w>m
-
--- We don't really like the icons but we're getting tired of plugin stuff just showing question marks
--- and we don't want to worry about overriding it all right now.
-use {
-	'nvim-tree/nvim-web-devicons',
-	opts = {},
-}
-
-use {
-	'ii14/neorepl.nvim',
-	lazy = true,
-	cmd = "Repl",
-}
-
-use {
-	'chentoast/marks.nvim',
-	opts = {
-		-- Sure, let's try it.
-		default_mappings = true,
-		builtin_marks = {
-			"'", -- position of the latest jump
-			"^", -- position of last InsertExit
-			".", -- position last change was made
-		},
-	},
-}
-
-use {
-	'walkersumida/fusen.nvim',
-	event = "VimEnter",
-	opts = {
-		keymaps = {
-			add_mark = '<leader>me',
-			clear_mark = '<leader>mc',
-			next_mark = '<leader>]m',
-			prev_mark = '<leader>[m',
-		},
-		annotation_display = {
-			mode = 'both',
-		},
-		sign_priority = 100,
-	},
-}
-vim.cmd[[
-nnoremap <leader>ml <Cmd>Telescope fusen marks<CR>
-]]
 
 --use 'Konfekt/vim-alias'
 --use 'thinca/vim-ft-vim_fold'
 
-use {
-	'OXY2DEV/foldtext.nvim',
-	lazy = false,
-}
-
-use {
-	'chrisgrieser/nvim-origami',
-	event = "VeryLazy",
-	opts = {
-
-	},
-}
 
 -- For our convenience, let's create a table that'll have all the main lua modules
 -- for each of our plugins, with a normalized key name.
@@ -428,14 +221,24 @@ lazy.core = {
 	util = require("lazy.core.util"),
 	loader = require("lazy.core.loader"),
 }
+lazy.util = require('lazy.util')
 
-lazy.setup(plugin_spec, {
-	install = {
-		missing = true, -- Default
-		--colorscheme = { "solorized8_grey" },
-		colorscheme = { "catppuccin-macchiato" },
+--lazy.setup(plugin_spec, {
+--	install = {
+--		missing = true, -- Default
+--		--colorscheme = { "solorized8_grey" },
+--		colorscheme = { "catppuccin-macchiato" },
+--	},
+--})
+lazy.setup {
+	-- Load plugin specs from `nvim/lua/plugins` (...technically from &rtp/lua/plugins but w/e).
+	spec = { import = 'plugins' },
+	install = { colorscheme = { 'catppuccin-macchiato' } },
+	profiling = {
+		loader = true,
+		require = true,
 	},
-})
+}
 
 -- Let us use :Lazy commands right after startup, like for `nvim -c`.
 require('lazy.view.commands').setup()
@@ -447,6 +250,8 @@ require('lazy.view.commands').setup()
 --end
 
 EOF
+
+colorscheme catppuccin-macchiato
 
 "autocmd User VeryLazy lua record()
 

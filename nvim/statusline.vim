@@ -187,8 +187,4 @@ vim.g.lightline = {
 	--}
 }
 
-
--- And add lightline to the plugin list while we're at it.
-use 'itchyny/lightline.vim'
-use 'nvim-lualine/lualine.nvim'
 EOF
