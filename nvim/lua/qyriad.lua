@@ -70,6 +70,20 @@ function qyriad.str_replace(s, needle, replacement)
 
 	return s:gsub(vim.pesc(needle), replacement)
 end
+
+---Replaces $HOME and $VIMRUNTIME with literal `~` and `$VIMRUNTIME` respectively.
+---@param path string
+---@return string
+function qyriad.summarize_path(path)
+	vim.validate('path', path, 'string')
+
+	local modified = path
+	modified = vim.fn.fnamemodify(modified, ':~')
+	modified = qyriad.str_replace(modified, vim.env.VIMRUNTIME, '$VIMRUNTIME')
+
+	return modified
+end
+
 ---@class qyriad.t
 qyriad.t = {
 	number = type(0),
