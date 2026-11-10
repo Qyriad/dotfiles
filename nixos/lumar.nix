@@ -229,5 +229,8 @@
 
 		# Mac dev stuff.
 		xcbeautify
+
+		# General dev stuff.
+		imhex
 	];
 }
