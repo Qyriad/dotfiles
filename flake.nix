@@ -62,6 +62,7 @@
 			url = "github:hraban/mac-app-util";
 			inputs.nixpkgs.follows = "nixpkgs";
 			inputs.flake-utils.follows = "flake-utils";
+			inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 			inputs.cl-nix-lite.inputs.nixpkgs.follows = "nixpkgs";
 			inputs.cl-nix-lite.inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
 		};
