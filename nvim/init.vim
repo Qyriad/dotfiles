@@ -178,6 +178,10 @@ endfunction
 
 command! -bang WhatIndent call WhatIndentCmd("<bang>")
 
+augroup NotifyWhenSearchWrapped
+	autocmd! SearchWrapped * lua vim.notify('Search wrapped!', vim.log.levels.WARN)
+augroup END
+
 lua << EOF
 
 --use 'Konfekt/vim-alias'
