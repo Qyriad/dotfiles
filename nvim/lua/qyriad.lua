@@ -57,6 +57,19 @@ function qyriad.nested_tbl(tbl)
 	return ret
 end
 
+--- Like string.gsub, but literal strings instead of patterns.
+--- Jesus hell why is this not in the standard library?
+--- Lua come *on*.
+---@param s string
+---@param needle string
+---@param replacement string
+function qyriad.str_replace(s, needle, replacement)
+	vim.validate('s', s, 'string')
+	vim.validate('needle', needle, 'string')
+	vim.validate('replacement', replacement, 'string')
+
+	return s:gsub(vim.pesc(needle), replacement)
+end
 ---@class qyriad.t
 qyriad.t = {
 	number = type(0),
