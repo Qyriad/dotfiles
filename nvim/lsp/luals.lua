@@ -2,14 +2,14 @@
 
 local qyriad = require('qyriad')
 
-local lua_runtime_paths = vim.iter(vim.api.nvim_get_runtime_file("lua/", true))
-	:map(function(item)
-		-- Remove the trailing slash.
-		return item:sub(1, #item - 1)
-	end)
-	:totable()
-
-local library_paths = { }
+local function get_lua_runtime_paths()
+	return vim.iter(vim.api.nvim_get_runtime_file("lua/", true))
+		:map(function(item)
+			-- Remove the trailing slash.
+			return item:sub(1, #item - 1)
+		end)
+		:totable()
+end
 
 return {
 	filetypes = { 'lua' },
@@ -20,20 +20,24 @@ return {
 		'wezterm.lua',
 		'.git',
 	},
+	trace = 'verbose',
 	---@param params lsp.InitializedParams
 	---@param config vim.lsp.ClientConfig
 	before_init = function(params, config)
 		if config.root_dir == vim.fn.stdpath('config') then
+			local lua_runtime_paths = get_lua_runtime_paths()
+			vim.g._lua_runtime_paths = lua_runtime_paths
 			local lines = vim.iter(lua_runtime_paths)
 				:map(qyriad.summarize_path)
 				:map(function(path) return string.format('- %s', path) end)
 				:join('\n')
-			vim.notify(lines, vim.log.levels.INFO, {
-				title = '[luals] workspace.library'
-			})
+			--vim.notify(lines, vim.log.levels.INFO, {
+			--	title = '[luals] workspace.library'
+			--})
 			config.settings = qyriad.tbl_override(config.settings, {
 				workspace = {
-					library = lua_runtime_paths,
+					--library = lua_runtime_paths,
+					library = vim.api.nvim_get_runtime_file('', true),
 				}
 			})
 		end
@@ -42,7 +46,8 @@ return {
 		Lua = {
 			runtime = {
 				version = "LuaJIT",
-				path = { "?.lua", "?/init.lua" },
+				--path = { "?.lua", "?/init.lua" },
+				path = { 'lua/?.lua', 'lua/?/init.lua', },
 				pathStrict = false, -- FIXME: maybe?
 			},
 			codeLens = { enable = true },
@@ -54,6 +59,10 @@ return {
 			},
 			-- You're welcome.
 			telemetry = { enable = true },
+			workspace = {
+				checkThirdParty = false,
+				library = vim.api.nvim_get_runtime_file('', true),
+			},
 			--workspace = {
 			--	checkThirdParty = false,
 			--	library = lua_runtime_paths,

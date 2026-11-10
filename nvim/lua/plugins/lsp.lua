@@ -4,19 +4,30 @@ return {
 	--
 	-- Generic.
 	--
+	--{
+	--	'rcarriga/nvim-notify',
+	--	opts = {
+	--		--stages = 'fade',
+	--		stages = 'static',
+	--		fps = 60,
+	--	},
+	--	config = function(plugin, opts)
+	--		_G._vim_notify_bak = vim.notify
+	--		local notify = plugin.main or require('notify')
+	--		notify.setup(opts)
+	--		vim.notify = notify
+	--	end,
+	--	-- Setup after high priority stuff, but before lspconfig.
+	--	priority = 60,
+	--},
 	{
-		'rcarriga/nvim-notify',
+		'y3owk1n/notifier.nvim',
+		-- Bro why doesn't LuaLS see this type I"m dying.
+		---@type notifier.config
 		opts = {
-			stages = 'fade',
+			border = 'rounded',
+			animation = { enabled = true },
 		},
-		config = function(plugin, opts)
-			_G._vim_notify_bak = vim.notify
-			local notify = plugin.main or require('notify')
-			notify.setup(opts)
-			vim.notify = notify
-		end,
-		-- Setup after high priority stuff, but before lspconfig.
-		priority = 60,
 	},
 
 	{ 'nanotee/nvim-lsp-basics', event = 'LspAttach' },
