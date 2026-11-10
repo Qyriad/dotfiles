@@ -3,6 +3,7 @@
 {
 	imports = [
 		./modules/tailscale-ext.nix
+		./modules/passthru-misc.nix
 	];
 
 	# Bootloader.

@@ -5,7 +5,6 @@
 		./modules/package-groups.nix
 		./modules/modlib.nix
 		./modules/keep-paths.nix
-		./modules/passthru-misc.nix
 	];
 
 	# Configuration for things related to Nix itself.
