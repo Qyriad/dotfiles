@@ -73,7 +73,9 @@ return {
 		-- TODO: establish if we still want chrisgrieser/nvim-origami.
 		'chrisgrieser/nvim-origami',
 		event = "VeryLazy",
-		opts = { },
+		opts = {
+			autoFold = { enabled = false },
+		},
 	},
 	-- I think we don't need this anymore.
 	--{
