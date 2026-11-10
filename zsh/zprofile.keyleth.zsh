@@ -5,7 +5,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Adds things like coreutils to PATH.
 source "$HOME/.config/zsh/zprofile.macos.zsh"
 
-export PATH="$PATH:/opt/homebrew-rosetta/bin"
+
+RBREWBIN="/opt/homebrew-rosetta/bin"
+if [[ -e "$RBREWBIN" ]]; then
+	PATH="$PATH:/opt/homebrew-rosetta/bin"
+fi
 
 export XDG_CACHE_HOME="/Users/qyriad/.cache"
 export XDG_CONFIG_HOME="/Users/qyriad/.config"
