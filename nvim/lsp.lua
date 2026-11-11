@@ -267,7 +267,7 @@ LspComplKindAbbr = {
 }
 Kind = nil
 
----@param item vim.lsp.CompletionItem
+---@param item lsp.CompletionItem
 vim.g.lsp_completion_convert_func = function(item)
 	vim.b.last_completion_item = item
 	local kind = LspComplKindAbbr[item.kind] or vim.lsp.protocol.SymbolKind[item.kind] or item.kind
