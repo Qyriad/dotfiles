@@ -4,6 +4,7 @@ let
 self = rec {
 	# Things I don't want to have to type `builtins.` before.
 	inherit (builtins) attrValues attrNames getFlake parseFlakeRef flakeRefToString typeOf getEnv tryEval;
+	inherit (builtins) unsafeGetAttrPos;
 
 	fetchFlakeRef = flakeref: flakeref |> parseFlakeRef |> fetchTree;
 
