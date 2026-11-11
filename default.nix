@@ -1,25 +1,62 @@
 # vim: shiftwidth=0 tabstop=2 noexpandtab
+let
+	/** Takes the result of a `builtins.tryEval` invocation, and a fallback value.
+	 *
+	 * If the `tryEval` succeeded, return its value. Otherwise, return `fallback`.
+	 */
+	tryResOr = {
+		success,
+		value,
+	}: fallback: if success then value else fallback;
+
+	/** Fallable alternative to <nixpkgs> syntax.
+	 * Returns the path if found, or null if not.
+	 */
+	tryLookupPath = lookupPath: let
+		# This covers both pure evaluation mode and the path not being in nixPath.
+		tried = builtins.tryEval (
+			builtins.findFile builtins.nixPath lookupPath
+		);
+	in builtins.addErrorContext ("in `tryLookupPath` for '${toString lookupPath}'") (tryResOr tried null);
+
+	/** Fallable alternative to <nixpkgs> syntax.
+	 * Returns the path if found, or `fallback` if not.
+	 */
+	lookupPathOr = lookupPath: fallback: let
+		tried = tryLookupPath lookupPath;
+	in if tried != null then tried else fallback;
+
+	fetchFlakeRef = flakeRef: fetchTree (builtins.parseFlakeRef flakeRef);
+
+	inherit (builtins) getFlake;
+in
 {
-	nixpkgs ? <nixpkgs>,
-	lib ? import <nixpkgs/lib>,
-	agenix ? <agenix>,
-	nix-darwin ? <nix-darwin>,
-	qyriad-nur ? <qyriad-nur>,
-	niz ? <niz>,
-	log2compdb ? <log2compdb>,
-	pzl ? <pzl>,
-	cappy ? <cappy>,
-	git-point ? <git-point>,
-	xil ? <xil>,
-	lix ? <lix>,
-	lix-module ? <lix-module>,
-	mac-app-util ? <mac-app-util>,
-	xonsh-source ? <xonsh-source>,
-	nil-source ? <nil-source>,
-	disko ? <disko>,
+	nixpkgs ? lookupPathOr "nixpkgs" (getFlake "github:NixOS/nixpkgs"),
+	lib ? import (nixpkgs + "/lib"),
+	agenix ? lookupPathOr "agenix" (getFlake "github:ryantm/agenix"),
+	nix-darwin ? lookupPathOr "nix-darwin" (getFlake "github:nix-darwin/nix-darwin"),
+	qyriad-nur ? lookupPathOr "qyriad-nur" (getFlake "github:Qyriad/nur-packages"),
+	niz ? lookupPathOr "niz" (getFlake "github:Qyriad/niz"),
+	log2compdb ? lookupPathOr "log2compdb" (getFlake "github:Qyriad/log2compdb"),
+	pzl ? lookupPathOr "pzl" (getFlake "github:Qyriad/pzl"),
+	cappy ? lookupPathOr "cappy" (getFlake "github:Qyriad/cappy"),
+	git-point ? lookupPathOr "git-point" (getFlake "github:Qyriad/git-point"),
+	systemd-proxy-notify ? lookupPathOr "systemd-proxy-notify" (getFlake "git+https://codeberg.org/Qyriad/systemd-proxy-notify"),
+	xil ? tryLookupPath "xil" (getFlake "github:Qyriad/xil"),
+	lix ? tryLookupPath "lix" (getFlake "git+https://git.lix.systems/lix-project/lix"),
+	lix-module ? tryLookupPath "lix-module" (getFlake "git+https://git.lix.systems/lix-project/nixos-module"),
+	mac-app-util ? tryLookupPath "mac-app-util" (getFlake "github:hraban/mac-app-util"),
+	xonsh-source ? tryLookupPath "xonsh-source" (getFlake "github:xonsh/xonsh"),
+	nil-source ? tryLookupPath "nil-source" (getFlake "github:oxalica/nil"),
+	yabridge-source ? tryLookupPath "yabridge-source" (fetchFlakeRef "github:robbert-vdh/yabridge"),
+	disko ? tryLookupPath "disko" (getFlake "github:nix-community/disko/latest"),
+	originfox-source ? tryLookupPath "originfox-source" (fetchFlakeRef "git+https://codeberg.org/icewind/originfox"),
+	fx-autoconfig-source ? tryLookupPath "fx-autoconfig-source" (fetchFlakeRef "github:MrOtherGuy/fx-autoconfig"),
 	extraModules ? [
 		(disko + "/module.nix")
-	] ++ import <nixpkgs/nixos/modules/module-list.nix>,
+	] ++ import (nixpkgs + "/nixos/modules/module-list.nix"),
+
+	hostname ? (builtins.getEnv "HOSTNAME")
 }: let
 	inherit (builtins)
 		getEnv
@@ -36,12 +73,16 @@
 			pzl
 			cappy
 			git-point
+			systemd-proxy-notify
 			xil
 			lix
 			lix-module
 			mac-app-util
 			xonsh-source
+			yabridge-source
 			nil-source
+			originfox-source
+			fx-autoconfig-source
 		;
 	};
 
@@ -91,6 +132,10 @@ in {
 			xil
 			xonsh-source
 			nil-source
+			systemd-proxy-notify
+			yabridge-source
+			originfox-source
+			fx-autoconfig-source
 			#nixosLib
 		;
 	};
