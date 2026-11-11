@@ -183,11 +183,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1793817706,
-        "narHash": "sha256-G/yURBA5cXtLn47hEsHSX3+QQRJiQ5T1XnW+8r6lmwc=",
+        "lastModified": 1794321406,
+        "narHash": "sha256-ShM6zMYauCbKklXmErxsrnFKRXem88nDkLdLmylLqRE=",
         "ref": "refs/heads/main",
-        "rev": "e3aada3cbac5b2a1453536258222716193ced361",
-        "revCount": 19597,
+        "rev": "400fd751ed92d77453d9ea5d5e06a27056d73b2b",
+        "revCount": 19623,
         "type": "git",
         "url": "https://git.lix.systems/lix-project/lix"
       },
