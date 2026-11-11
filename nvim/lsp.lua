@@ -105,7 +105,7 @@ nnoremap <leader>sh <Cmd>ClangdSwitchSourceHeader<CR>
 " NOTE: no explicit binding for formatting. gq will use `formatexpr`.
 
 " 'Notification dismiss'.
-nnoremap <leader>nd <Cmd>lua p.notify.dismiss({ pending = true })<CR>
+nnoremap <leader>nd <Cmd>lua p.notifier.dismiss_all()<CR>
 
 function! DiagnosticsComplete(arglead, cmdline, cursorpos) abort
 	return ["error", "warn", "info", "hint"]
