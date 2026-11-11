@@ -357,13 +357,14 @@
 		odin2
 		#qyriad.nvtop-yuki
 		libreoffice-qt-stable
-		anki
+		# Nixpkgs broke it. Restore when https://github.com/NixOS/nixpkgs/pull/584713 makes it to nixos-unstable.
+		#anki
 		beeper
 		qyriad.originfox
 		#jj-fzf
 		qyriad.unfuck-seat
 		qyriad.color-journal
-		qyriad.glances
+		#qyriad.glances
 		footswitch
 		syncplay
 		gpu-screen-recorder-gtk

@@ -99,6 +99,53 @@ in {
 		];
 	});
 
+	below = pkgsPrev.below.overrideAttrs (prev: {
+		buildInputs = prev.buildInputs or [ ] ++ [
+			pkgsFinal.zstd
+		];
+	});
+
+	samply = pkgsPrev.samply.overrideAttrs (prev: {
+		buildInputs = prev.buildInputs or [ ] ++ [
+			pkgsFinal.sqlite
+		];
+	});
+
+	cargo-clone = pkgsPrev.cargo-clone.overrideAttrs (prev: {
+		buildInputs = prev.buildInputs or [ ] ++ [
+			pkgsFinal.sqlite
+		];
+	});
+
+	cargo-outdated = pkgsPrev.cargo-outdated.overrideAttrs (prev: {
+		buildInputs = prev.buildInputs or [ ] ++ [
+			pkgsFinal.sqlite
+		];
+	});
+
+	sacad = pkgsPrev.sacad.overrideAttrs (prev: {
+		nativeBuildInputs = prev.nativeBuildInputs or [ ] ++ [
+			pkgsFinal.pkg-config
+		];
+		buildInputs = prev.buildInputs or [ ] ++ [
+			pkgsFinal.aws-lc
+		];
+	});
+
+	neocmakelsp = pkgsPrev.neocmakelsp.overrideAttrs (prev: {
+		nativeBuildInputs = [
+			pkgsFinal.pkg-config
+			pkgsFinal.installShellFiles
+		];
+		buildInputs = pkgsPrev.buildInputs or [ ] ++ [
+			pkgsFinal.oniguruma
+		];
+	});
+
+	termshot = pkgsPrev.termshot.overrideAttrs (prev: {
+		doCheck = false;
+	});
+
 	# python313 -> python3 -> python3Packages
 	python313 = pkgsPrev.python313.override {
 		packageOverrides = (pyFinal: pyPrev: {
