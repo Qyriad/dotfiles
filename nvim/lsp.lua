@@ -308,7 +308,7 @@ function client_by_name(name)
 		error("client_by_name(name): name must be a string")
 	end
 
-	for _i, client in ipairs(vim.lsp.get_active_clients()) do
+	for _i, client in ipairs(vim.lsp.get_clients()) do
 		if client.name == name then
 			return client
 		end
@@ -317,7 +317,7 @@ end
 
 function lsp_active_client_names()
 	names = {}
-	for _i, client in ipairs(vim.lsp.get_active_clients()) do
+	for _i, client in ipairs(vim.lsp.get_clients()) do
 		table.insert(names, client.name)
 	end
 	return names
