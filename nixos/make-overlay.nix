@@ -136,6 +136,12 @@ in {
 		doCheck = false;
 	});
 
+	tana = pkgsPrev.tana.overrideAttrs (prev: {
+		# Nixpkgs has a patch to change `Name=tana` to `Name=Tana`.
+		# But upstream changed their .desktop file from `Name=tana` to `Name=Tana Outliner`.
+		postFixup = null;
+	});
+
 	# python313 -> python3 -> python3Packages
 	python313 = pkgsPrev.python313.override {
 		packageOverrides = (pyFinal: pyPrev: {
