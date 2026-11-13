@@ -338,6 +338,7 @@ aliases["moaro"] = [$PAGER, "-quit-if-one-screen"]
 aliases['jg'] = 'jj'
 aliases['jgn'] = 'jj --ignore-working-copy --no-pager'
 aliases['jl'] = 'jj l'
+aliases['jlo'] = 'jj lo'
 aliases['js'] = 'jj s'
 aliases['jsp'] = 'jj split -i'
 aliases['hyfetch'] = 'env SHELL=xonsh hyfetch'
