@@ -132,16 +132,6 @@ in {
 		];
 	});
 
-	neocmakelsp = pkgsPrev.neocmakelsp.overrideAttrs (prev: {
-		nativeBuildInputs = [
-			pkgsFinal.pkg-config
-			pkgsFinal.installShellFiles
-		];
-		buildInputs = pkgsPrev.buildInputs or [ ] ++ [
-			pkgsFinal.oniguruma
-		];
-	});
-
 	termshot = pkgsPrev.termshot.overrideAttrs (prev: {
 		doCheck = false;
 	});
