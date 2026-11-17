@@ -99,15 +99,6 @@ in {
 		];
 	});
 
-	sacad = pkgsPrev.sacad.overrideAttrs (prev: {
-		nativeBuildInputs = prev.nativeBuildInputs or [ ] ++ [
-			pkgsFinal.pkg-config
-		];
-		buildInputs = prev.buildInputs or [ ] ++ [
-			pkgsFinal.aws-lc
-		];
-	});
-
 	termshot = pkgsPrev.termshot.overrideAttrs (prev: {
 		doCheck = false;
 	});
