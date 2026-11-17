@@ -99,12 +99,6 @@ in {
 		];
 	});
 
-	cargo-clone = pkgsPrev.cargo-clone.overrideAttrs (prev: {
-		buildInputs = prev.buildInputs or [ ] ++ [
-			pkgsFinal.sqlite
-		];
-	});
-
 	cargo-outdated = pkgsPrev.cargo-outdated.overrideAttrs (prev: {
 		buildInputs = prev.buildInputs or [ ] ++ [
 			pkgsFinal.sqlite
