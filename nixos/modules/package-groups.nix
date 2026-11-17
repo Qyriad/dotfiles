@@ -55,7 +55,7 @@ in
 			readOnly = true;
 			default = with pkgs; [
 				ardour
-				#musescore
+				musescore
 				fluidsynth
 				soundfont-ydp-grand
 				soundfont-fluid
@@ -65,7 +65,7 @@ in
 				yabridge
 				yabridgectl
 				pkgs.qpkgs.toneboosters-plugins
-				#zrythm
+				zrythm
 				kmidimon
 				# librnnoise_ladspa.so isn't included in outputsToInstall by default.
 				(rnnoise-plugin |> lib.meta.addMetaAttrs {
