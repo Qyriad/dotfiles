@@ -469,7 +469,7 @@
 	passthru.kernel-version = {
 		latest = lib.getVersion pkgs.linuxPackages_latest.kernel;
 		stable = lib.getVersion pkgs.linuxPackages.kernel;
-		current = lib.getVersion config.boot.kernelPackages.kernel.version;
+		current = lib.getVersion config.boot.kernelPackages.kernel;
 	};
 
 	warnings = let
