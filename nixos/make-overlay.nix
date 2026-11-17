@@ -99,12 +99,6 @@ in {
 		];
 	});
 
-	samply = pkgsPrev.samply.overrideAttrs (prev: {
-		buildInputs = prev.buildInputs or [ ] ++ [
-			pkgsFinal.sqlite
-		];
-	});
-
 	cargo-clone = pkgsPrev.cargo-clone.overrideAttrs (prev: {
 		buildInputs = prev.buildInputs or [ ] ++ [
 			pkgsFinal.sqlite
