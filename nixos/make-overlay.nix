@@ -99,10 +99,6 @@ in {
 		];
 	});
 
-	termshot = pkgsPrev.termshot.overrideAttrs (prev: {
-		doCheck = false;
-	});
-
 	tana = pkgsPrev.tana.overrideAttrs (prev: {
 		# Nixpkgs has a patch to change `Name=tana` to `Name=Tana`.
 		# But upstream changed their .desktop file from `Name=tana` to `Name=Tana Outliner`.
