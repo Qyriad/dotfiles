@@ -99,12 +99,6 @@ in {
 		];
 	});
 
-	below = pkgsPrev.below.overrideAttrs (prev: {
-		buildInputs = prev.buildInputs or [ ] ++ [
-			pkgsFinal.zstd
-		];
-	});
-
 	samply = pkgsPrev.samply.overrideAttrs (prev: {
 		buildInputs = prev.buildInputs or [ ] ++ [
 			pkgsFinal.sqlite
