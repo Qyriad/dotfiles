@@ -99,12 +99,6 @@ in {
 		];
 	});
 
-	cargo-outdated = pkgsPrev.cargo-outdated.overrideAttrs (prev: {
-		buildInputs = prev.buildInputs or [ ] ++ [
-			pkgsFinal.sqlite
-		];
-	});
-
 	sacad = pkgsPrev.sacad.overrideAttrs (prev: {
 		nativeBuildInputs = prev.nativeBuildInputs or [ ] ++ [
 			pkgsFinal.pkg-config
